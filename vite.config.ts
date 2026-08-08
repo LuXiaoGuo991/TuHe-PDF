@@ -52,21 +52,7 @@ function loadPages(): Set<string> {
     }
   }
 
-  const rootPages = [
-    'index',
-    'about',
-    'contact',
-    'faq',
-    'privacy',
-    'terms',
-    'licensing',
-    'tools',
-    '404',
-    'pdf-converter',
-    'pdf-editor',
-    'pdf-security',
-    'pdf-merge-split',
-  ];
+  const rootPages = ['index', 'privacy', 'terms', '404'];
   rootPages.forEach((p) => pages.add(p));
 
   return pages;
@@ -381,10 +367,6 @@ function flattenPagesPlugin(): Plugin {
         }
       }
 
-      if (process.env.SIMPLE_MODE === 'true' && bundle['simple-index.html']) {
-        moves.push({ from: 'simple-index.html', to: 'index.html' });
-      }
-
       for (const { from, to } of moves) {
         const oldPath = resolve(outDir, from);
         const newPath = resolve(outDir, to);
@@ -519,7 +501,7 @@ export default defineConfig(() => {
       }),
     ],
     define: {
-      __SIMPLE_MODE__: JSON.stringify(process.env.SIMPLE_MODE === 'true'),
+      __SIMPLE_MODE__: JSON.stringify(true),
       __BRAND_NAME__: JSON.stringify(process.env.VITE_BRAND_NAME || ''),
       __DISABLED_TOOLS__: JSON.stringify(
         (process.env.DISABLE_TOOLS || '')
@@ -556,23 +538,10 @@ export default defineConfig(() => {
     build: {
       rollupOptions: {
         input: {
-          main:
-            process.env.SIMPLE_MODE === 'true'
-              ? resolve(__dirname, 'simple-index.html')
-              : resolve(__dirname, 'index.html'),
-          about: resolve(__dirname, 'about.html'),
-          contact: resolve(__dirname, 'contact.html'),
-          faq: resolve(__dirname, 'faq.html'),
+          main: resolve(__dirname, 'index.html'),
           privacy: resolve(__dirname, 'privacy.html'),
           terms: resolve(__dirname, 'terms.html'),
-          licensing: resolve(__dirname, 'licensing.html'),
-          tools: resolve(__dirname, 'tools.html'),
           '404': resolve(__dirname, '404.html'),
-          // Category Hub Pages
-          'pdf-converter': resolve(__dirname, 'pdf-converter.html'),
-          'pdf-editor': resolve(__dirname, 'pdf-editor.html'),
-          'pdf-security': resolve(__dirname, 'pdf-security.html'),
-          'pdf-merge-split': resolve(__dirname, 'pdf-merge-split.html'),
           // Tool Pages
           bookmark: resolve(__dirname, 'src/pages/bookmark.html'),
           'table-of-contents': resolve(
