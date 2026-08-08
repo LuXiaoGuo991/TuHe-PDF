@@ -1,0 +1,13 @@
+services:
+  tuhe-pdf:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_BRAND_NAME: TuHe PDF
+        VITE_FOOTER_TEXT: Copyright 2026 TuHe PDF
+        SITE_URL: http://localhost:8080
+    container_name: tuhe-pdf
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
