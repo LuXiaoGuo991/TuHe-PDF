@@ -88,7 +88,6 @@ ENV PORT=8080
 
 USER root
 RUN apk upgrade --no-cache
-USER nginx
 
 COPY --chown=nginx:nginx --from=builder /app/dist /usr/share/nginx/html${BASE_URL%/}
 COPY --chown=nginx:nginx nginx.conf /etc/nginx/nginx.conf
@@ -96,7 +95,11 @@ COPY --chown=nginx:nginx --from=builder /app/security-headers.conf /etc/nginx/se
 COPY --chown=nginx:nginx --from=builder /app/security-headers-docs.conf /etc/nginx/security-headers-docs.conf
 COPY --chown=nginx:nginx --chmod=755 nginx-ipv6.sh /docker-entrypoint.d/99-disable-ipv6.sh
 COPY --chown=nginx:nginx --chmod=755 nginx-noindex.sh /docker-entrypoint.d/98-noindex.sh
-RUN mkdir -p /etc/nginx/tmp && chown -R nginx:nginx /etc/nginx/tmp
+RUN sed -i 's/\r$//' /docker-entrypoint.d/98-noindex.sh /docker-entrypoint.d/99-disable-ipv6.sh \
+    && mkdir -p /etc/nginx/tmp \
+    && chown -R nginx:nginx /etc/nginx/tmp
+
+USER nginx
 
 EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
