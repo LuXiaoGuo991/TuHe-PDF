@@ -51,3 +51,8 @@ bentopdf-*.tgz
 # test 
 dist-test
 test
+
+# Project task logs are documentation and must be version controlled.
+!docs/
+!docs/logs/
+!docs/logs/*.md
