@@ -1,27 +1,31 @@
-# Project Log Index
+# 项目日志索引
 
-This directory is the chronological record of repository work. Files use the `YYYY-MM-DD.md` format; multiple tasks on the same day are appended as separate entries.
+本目录按日期记录仓库工作。文件名使用 `YYYY-MM-DD.md`；同一天的多个任务追加为独立条目。日志正文统一使用中文，代码路径、命令和专有名词按原样保留。
 
-## Log Files
+## 日志文件
 
-| Date                        | Summary                                                                                   | Tags                                      |
-| --------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------- |
-| [2026-08-08](2026-08-08.md) | Personal-project baseline, local Docker deployment, testing findings, and logging policy. | bootstrap, cleanup, docker, testing, logs |
-| [2026-08-09](2026-08-09.md) | Progress review based on repository logs; prioritized next steps and remaining risks.     | progress, planning, testing, deployment   |
+| 日期                        | 摘要                                                                                | 标签                                                                                            |
+| --------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| [2026-08-08](2026-08-08.md) | 项目基线、Docker 本地部署、测试结果和日志规范初始化。                               | bootstrap, cleanup, docker, testing, logs                                                       |
+| [2026-08-09](2026-08-09.md) | 前端门面规划、办公用户审计、部署准备、DNS/安全组记录、TuHe T/H 标志探索和技能安装。 | progress, planning, testing, deployment, frontend, design, logo, imagegen, office-users, skills |
 
-## Query Workflow
+## 查询方式
 
-Before changing code or configuration, read this index and search the logs for the affected area:
+只有用户明确要求检索日志时，才先读本索引并执行针对性搜索：
 
 ```powershell
-rg -n "Dockerfile|compose|<feature-or-file-name>" docs/logs
+rg -n "Dockerfile|compose|<功能或文件名>" docs/logs
 ```
 
-Use the matching entries to identify previous rationale, files affected, verification results, and unresolved risks. Append the result of that review to the new task entry.
+不要为了形式而通读全部日志；只读取与当前任务直接相关的条目。
 
-## Current Constraints
+## 日志格式决定
 
-- `LICENSE` remains AGPL-3.0-only and must be preserved.
-- The local Docker service is named `tuhe-pdf` and exposes port `8080`.
-- Shell scripts copied into the Linux image may have Windows CRLF endings; Dockerfile normalizes them before startup.
-- Two qpdf integration tests require missing PDF fixtures. See the 2026-08-08 test entry before changing tests.
+日志采用“YAML frontmatter + Markdown 正文”。YAML 只保存日期、标签、状态等结构化元数据，Markdown 保存中文叙述和命令结果。这样同时兼顾机器检索、局部 `rg` 搜索和人工阅读；不建议把整篇日志写成纯 YAML。
+
+## 当前约束
+
+- 必须保留 `LICENSE` 的 AGPL-3.0-only 许可。
+- 本地 Docker 服务名为 `tuhe-pdf`，暴露端口 `8080`。
+- 复制到 Linux 镜像中的 Shell 脚本可能带有 Windows CRLF 换行；Dockerfile 会在启动前统一处理。
+- 两个 qpdf 集成测试缺少 PDF fixture。修改测试前先查看 2026-08-08 日志中的测试记录。

@@ -1,36 +1,45 @@
-# Agent Operating Instructions
+# 代理工作说明
 
-## Mandatory Task Logging
+## 任务日志
 
-Every task performed in this repository must be recorded in `docs/logs/`, including investigation-only tasks that make no file changes.
+仓库中的每项任务都必须记录在 `docs/logs/`，包括只调查、不修改文件的任务。
 
-Before planning, editing, deleting, or running a verification command:
+### 读取历史日志
 
-1. Read `docs/logs/README.md`.
-2. Search relevant prior entries with `rg -n "<file|feature|error|decision>" docs/logs`.
-3. Identify prior decisions, changed files, known failures, and constraints that could be affected by the task.
-4. Preserve those decisions unless the task explicitly supersedes them; record the reason when it does.
+只有用户明确要求查看、检索或整理日志时，才读取历史日志。用户要求查日志时，应先阅读 `docs/logs/README.md`，再用 `rg -n` 检索相关文件、功能、错误或决策。
 
-After each task:
+### 记录任务
 
-1. Create or append to the current date file using `YYYY-MM-DD.md` in `docs/logs/`.
-2. Add an entry with a clear task title and timestamp.
-3. Update `docs/logs/README.md` when a date file is first created or its summary changes.
-4. Do not consider the task complete until its log entry has been written.
+每项任务结束后：
 
-Each log entry must include:
+1. 在 `docs/logs/` 创建或追加当前日期文件，文件名使用 `YYYY-MM-DD.md`。
+2. 添加包含明确标题和时间戳的任务条目。
+3. 如果首次创建日期文件，或当天索引摘要发生变化，更新 `docs/logs/README.md`。
+4. 日志写入完成后，任务才算完成。
 
-- Background and objective.
-- Prior log entries consulted and decisions preserved or superseded.
-- Files created, changed, moved, or deleted.
-- Commands run and verification results.
-- Known warnings, failures, risks, and follow-up work.
+日志统一使用中文。保留代码路径、命令、类名、变量名、域名、品牌名和必要的英文专有名词，不翻译这些可检索标识。
 
-Keep entries concise, factual, searchable, and in Markdown. Use stable terms for files, features, errors, and deployment components. Never write secrets, tokens, private keys, passwords, user data, or full environment-variable values to logs.
+### 日志格式
 
-## Change Safety
+采用“YAML frontmatter + Markdown 正文”的 `.md` 格式：
 
-- Inspect existing files and relevant logs before modifying shared configuration, deployment files, or feature code.
-- Prefer preserving working behavior over broad cleanup.
-- For destructive changes, record the exact targets and the reason they are no longer needed.
-- After code or configuration changes, run focused verification appropriate to the change and record the outcome.
+- YAML frontmatter 用于 `date`、`tags`、`status` 等稳定元数据，便于脚本和 `rg` 检索。
+- Markdown 正文用于背景、目标、决策、文件、命令、验证结果和风险，便于人工阅读。
+- 不把整篇日志写成纯 YAML；纯 YAML 对长文本的阅读和局部查看不如 Markdown。
+
+每个日志条目必须包含：
+
+- 背景与目标。
+- 查阅过的历史日志（如果本任务确实查阅过），以及保留或替代的决策。
+- 创建、修改、移动或删除的文件。
+- 执行的命令和验证结果。
+- 已知警告、失败、风险和后续工作。
+
+日志应简洁、客观、可检索。标题、标签、文件路径、命令和错误名称应保持稳定。不得写入密钥、令牌、私钥、密码、用户数据或完整环境变量值。
+
+## 变更安全
+
+- 修改共享配置、部署文件或功能代码前，先检查相关文件；历史日志仅在用户明确要求时读取。
+- 优先保留已工作的行为，避免无关的大范围清理。
+- 进行破坏性变更时，记录确切目标以及不再需要这些目标的原因。
+- 完成代码或配置变更后，运行与变更风险相称的聚焦验证，并把结果记录到日志。
