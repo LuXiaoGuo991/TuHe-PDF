@@ -126,35 +126,7 @@
   <body
     class="antialiased bg-gray-900 h-[100dvh] overflow-hidden flex flex-col"
   >
-    <!-- Navigation -->
-    <nav class="bg-gray-800 border-b border-gray-700 flex-none z-30">
-      <div class="container mx-auto px-4">
-        <div class="flex justify-between items-center h-16">
-          <div class="flex-shrink-0 flex items-center">
-            <img
-              src="{{baseUrl}}{{#if brandLogo}}{{brandLogo}}{{else}}images/favicon-no-bg.svg{{/if}}"
-              alt="{{#if brandName}}{{brandName}}{{else}}Bento PDF{{/if}} Logo"
-              class="h-8 w-8"
-            />
-            <span class="text-white font-bold text-xl ml-2">
-              <a href="/"
-                >{{#if brandName}}{{brandName}}{{else}}BentoPDF{{/if}}</a
-              >
-            </span>
-            <span class="text-gray-400 ml-3 text-sm sm:text-base"
-              >PDF Multi Tool</span
-            >
-          </div>
-          <button
-            id="close-tool-btn"
-            class="flex items-center gap-1 bg-gray-700 hover:bg-gray-600 text-white px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded text-xs sm:text-sm md:text-base"
-          >
-            <i data-lucide="x" class="w-4 h-4 sm:w-5 sm:h-5"></i>
-            <span data-i18n="common.close">Close</span>
-          </button>
-        </div>
-      </div>
-    </nav>
+    <!-- Navigation removed: workbench top bar is now the single global header -->
 
     <!-- SEO H1 (visually hidden but present for search engines) -->
     <h1 class="sr-only">PDF Multi Tool Free Online - Edit & Organize PDFs</h1>

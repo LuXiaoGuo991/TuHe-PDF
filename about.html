@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Primary Meta Tags -->
+    <title>关于我们 - TuHe PDF</title>
+    <meta
+      name="description"
+      content="TuHe PDF（图合）是一个纯浏览器端的 PDF 工作台：合并、拆分、压缩、转换，文件全程不出本机。"
+    />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.tuhepdf.cn/about" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.tuhepdf.cn/about" />
+    <meta property="og:title" content="关于我们 - TuHe PDF" />
+    <meta
+      property="og:description"
+      content="TuHe PDF（图合）是一个纯浏览器端的 PDF 工作台：合并、拆分、压缩、转换，文件全程不出本机。"
+    />
+    <meta property="og:site_name" content="TuHe PDF" />
+
+    <link href="/src/css/styles.css" rel="stylesheet" />
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/images/favicon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="/images/favicon-512x512.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/images/apple-touch-icon.png"
+    />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  </head>
+
+  <body class="antialiased bg-gray-900 text-gray-300">
+    {{> navbar }}
+
+    <div id="app" class="container mx-auto p-4 md:p-8">
+      <section class="max-w-4xl mx-auto py-12">
+        <h1 class="text-4xl md:text-5xl font-bold text-center text-white mb-4">
+          关于我们
+        </h1>
+        <p class="text-center text-gray-500">TuHe PDF · 图合</p>
+
+        <div class="legal-content mt-12">
+          <h2>我们是谁</h2>
+          <p>
+            TuHe PDF（图合）是一个专注于办公场景的 PDF 工作台。
+            我们把日常最常用的 PDF
+            操作——合并、拆分、压缩、格式转换、页面整理、签名与水印——
+            集中在一个统一的界面里，让你打开浏览器就能完成全部工作。
+          </p>
+
+          <h2>纯浏览器端处理</h2>
+          <p>
+            我们的核心原则是：<strong>你的文件属于你</strong>。 所有 PDF
+            处理都在你自己的浏览器中完成（基于 JavaScript 与 WebAssembly），
+            文件从头到尾不会上传到任何服务器。这意味着：
+          </p>
+          <ul>
+            <li>文件内容、文件名和元数据都不会离开你的电脑；</li>
+            <li>没有上传等待，处理速度只取决于你的设备性能；</li>
+            <li>没有文件大小和次数限制，无需注册登录。</li>
+          </ul>
+
+          <h2>工作台式设计</h2>
+          <p>
+            与「一个工具一个页面」的传统站点不同，TuHe PDF
+            采用工作台式布局：左侧是工具卡片栏，右侧是多标签工作区。
+            你可以同时打开多个工具、在标签之间自由切换，像在桌面软件里一样处理文档。
+          </p>
+
+          <h2>开源基础</h2>
+          <p>
+            TuHe PDF 基于开源项目
+            <a
+              href="https://github.com/alam00000/bentopdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-indigo-400 hover:underline"
+              >BentoPDF</a
+            >
+            二次开发，遵循 AGPL-3.0 许可证。详见<a
+              href="licensing.html"
+              class="text-indigo-400 hover:underline"
+              >许可</a
+            >页面。
+          </p>
+        </div>
+      </section>
+    </div>
+
+    {{> footer }}
+    <script type="module" src="src/js/utils/lucide-init.ts"></script>
+    <script type="module" src="src/js/mobileMenu.ts"></script>
+    <script type="module" src="src/js/main.ts"></script>
+  </body>
+</html>

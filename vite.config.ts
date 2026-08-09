@@ -53,7 +53,15 @@ function loadPages(): Set<string> {
     }
   }
 
-  const rootPages = ['index', 'privacy', 'terms', '404'];
+  const rootPages = [
+    'index',
+    'privacy',
+    'terms',
+    '404',
+    'about',
+    'contact',
+    'licensing',
+  ];
   rootPages.forEach((p) => pages.add(p));
 
   return pages;
@@ -547,6 +555,9 @@ export default defineConfig(({ mode }) => {
           privacy: resolve(__dirname, 'privacy.html'),
           terms: resolve(__dirname, 'terms.html'),
           '404': resolve(__dirname, '404.html'),
+          about: resolve(__dirname, 'about.html'),
+          contact: resolve(__dirname, 'contact.html'),
+          licensing: resolve(__dirname, 'licensing.html'),
           // Tool Pages
           bookmark: resolve(__dirname, 'src/pages/bookmark.html'),
           'table-of-contents': resolve(
