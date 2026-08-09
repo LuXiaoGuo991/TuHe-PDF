@@ -22,6 +22,7 @@ import {
   isToolDisabled,
   isCurrentPageDisabled,
 } from './utils/disabled-tools.js';
+import { initWorkbench } from './workbench.js';
 declare const __BRAND_NAME__: string;
 
 const init = async () => {
@@ -283,6 +284,15 @@ const init = async () => {
     'PDF to PDF/A': 'tools:pdfToPdfa',
     'Rasterize PDF': 'tools:rasterizePdf',
   };
+
+  // TuHe 工作台：门面页初始化左侧卡片栏 + 右侧多标签工作区（无 #tool-rail 时自动跳过）
+  initWorkbench({
+    categories,
+    categoryTranslationKeys,
+    toolTranslationKeys,
+    t,
+    isToolDisabled,
+  });
 
   // Homepage-only tool grid rendering (not used on individual tool pages)
   if (dom.toolGrid) {

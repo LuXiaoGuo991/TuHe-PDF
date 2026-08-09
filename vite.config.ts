@@ -3,6 +3,7 @@ import type { IncomingMessage, ServerResponse } from 'http';
 import http from 'http';
 import https from 'https';
 import type { Connect, Plugin } from 'vite';
+import { loadEnv } from 'vite';
 // import basicSsl from '@vitejs/plugin-basic-ssl';
 import tailwindcss from '@tailwindcss/vite';
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
@@ -432,7 +433,11 @@ function rewriteHtmlPathsPlugin(): Plugin {
   };
 }
 
-export default defineConfig(() => {
+export default defineConfig(({ mode }) => {
+  // 加载 .env 文件中的品牌/构建变量（真实环境变量优先）
+  const fileEnv = loadEnv(mode, __dirname, '');
+  const envOf = (key: string): string => process.env[key] ?? fileEnv[key] ?? '';
+
   const USE_CDN = process.env.VITE_USE_CDN === 'true';
 
   if (USE_CDN) {
@@ -457,9 +462,9 @@ export default defineConfig(() => {
         context: {
           baseUrl: (process.env.BASE_URL || '/').replace(/\/?$/, '/'),
           simpleMode: process.env.SIMPLE_MODE === 'true',
-          brandName: process.env.VITE_BRAND_NAME || '',
-          brandLogo: process.env.VITE_BRAND_LOGO || '',
-          footerText: process.env.VITE_FOOTER_TEXT || '',
+          brandName: envOf('VITE_BRAND_NAME'),
+          brandLogo: envOf('VITE_BRAND_LOGO'),
+          footerText: envOf('VITE_FOOTER_TEXT'),
           appVersion: process.env.npm_package_version || 'Unknown',
         },
       }),
@@ -502,7 +507,7 @@ export default defineConfig(() => {
     ],
     define: {
       __SIMPLE_MODE__: JSON.stringify(true),
-      __BRAND_NAME__: JSON.stringify(process.env.VITE_BRAND_NAME || ''),
+      __BRAND_NAME__: JSON.stringify(envOf('VITE_BRAND_NAME')),
       __DISABLED_TOOLS__: JSON.stringify(
         (process.env.DISABLE_TOOLS || '')
           .split(',')
