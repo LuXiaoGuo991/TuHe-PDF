@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Primary Meta Tags -->
+    <title>许可 - TuHe PDF</title>
+    <meta
+      name="description"
+      content="TuHe PDF 的开源许可说明：基于 BentoPDF 二次开发，遵循 GNU AGPL-3.0 许可证。"
+    />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.tuhepdf.cn/licensing" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.tuhepdf.cn/licensing" />
+    <meta property="og:title" content="许可 - TuHe PDF" />
+    <meta
+      property="og:description"
+      content="TuHe PDF 的开源许可说明：基于 BentoPDF 二次开发，遵循 GNU AGPL-3.0 许可证。"
+    />
+    <meta property="og:site_name" content="TuHe PDF" />
+
+    <link href="/src/css/styles.css" rel="stylesheet" />
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/images/favicon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="/images/favicon-512x512.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/images/apple-touch-icon.png"
+    />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  </head>
+
+  <body class="antialiased bg-gray-900 text-gray-300">
+    {{> navbar }}
+
+    <div id="app" class="container mx-auto p-4 md:p-8">
+      <section class="max-w-4xl mx-auto py-12">
+        <h1 class="text-4xl md:text-5xl font-bold text-center text-white mb-4">
+          许可
+        </h1>
+        <p class="text-center text-gray-500">开源许可与第三方声明</p>
+
+        <div class="legal-content mt-12">
+          <h2>1. 许可证</h2>
+          <p>
+            TuHe PDF 的源代码依据
+            <strong>GNU Affero General Public License v3.0（AGPL-3.0）</strong>
+            发布。你可以自由使用、研究、修改和再分发本软件，前提是遵循该许可证的条款；
+            完整许可证文本见源代码仓库根目录的 <code>LICENSE</code> 文件，或访问
+            <a
+              href="https://www.gnu.org/licenses/agpl-3.0.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-indigo-400 hover:underline"
+              >gnu.org/licenses/agpl-3.0.html</a
+            >。
+          </p>
+
+          <h2>2. 上游项目</h2>
+          <p>
+            TuHe PDF 基于
+            <a
+              href="https://github.com/alam00000/bentopdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-indigo-400 hover:underline"
+              >BentoPDF</a
+            >
+            二次开发。感谢上游作者与贡献者的工作；BentoPDF 同样以 AGPL-3.0
+            许可发布。
+          </p>
+
+          <h2>3. 第三方组件</h2>
+          <p>
+            本软件使用了若干优秀的开源库，包括但不限于 PDF-lib、PDF.js、
+            PDF-lib.js 生态工具及 WebAssembly 组件。这些组件各自的许可证
+            （MIT、Apache-2.0 等）归其作者所有，详见源代码仓库的依赖清单。
+          </p>
+
+          <h2>4. 你的文件</h2>
+          <p>
+            软件许可不影响你文件的版权。使用 TuHe PDF 处理的文档，
+            其全部权利始终归你所有；处理过程在你的浏览器本地完成，
+            我们不会对文件主张任何权利，也无法接触其内容。
+          </p>
+
+          <h2>5. 免责声明</h2>
+          <p>
+            本软件按「现状」提供，不附带任何明示或默示的保证，
+            包括但不限于适销性和特定用途适用性的保证。
+            使用本软件产生的风险由你自行承担，详见 AGPL-3.0 许可证条款。
+          </p>
+        </div>
+      </section>
+    </div>
+
+    {{> footer }}
+    <script type="module" src="src/js/utils/lucide-init.ts"></script>
+    <script type="module" src="src/js/mobileMenu.ts"></script>
+    <script type="module" src="src/js/main.ts"></script>
+  </body>
+</html>

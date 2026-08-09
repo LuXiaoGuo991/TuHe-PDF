@@ -184,10 +184,6 @@ function initializeTool() {
 
   initializeGlobalShortcuts();
 
-  document.getElementById('close-tool-btn')?.addEventListener('click', () => {
-    window.location.href = import.meta.env.BASE_URL;
-  });
-
   document.getElementById('upload-pdfs-btn')?.addEventListener('click', () => {
     console.log('Upload button clicked, isRendering:', isRendering);
     if (isRendering) {

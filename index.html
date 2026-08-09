@@ -4,6 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- 防循环嵌套：工作台只能在顶层窗口运行；
+         若被误当作普通页面塞进 iframe（例如某静态页缺失、dev 服务器回退到本页），
+         立即跳出，避免工作台无限自我嵌套 -->
+    <script>
+      if (window.self !== window.top) {
+        try {
+          window.top.location.replace(window.location.href);
+        } catch (e) {
+          window.location.replace('about:blank');
+        }
+      }
+    </script>
+
     <!-- Primary Meta Tags -->
     <title>TuHe PDF - 图合 · 浏览器端 PDF 工作台</title>
     <meta name="title" content="TuHe PDF - 图合 · 浏览器端 PDF 工作台" />
