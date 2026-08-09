@@ -1,0 +1,7 @@
+www.tuhepdf.cn {
+    redir https://tuhepdf.cn{uri} permanent
+}
+
+tuhepdf.cn {
+    reverse_proxy tuhe-pdf:8080
+}

@@ -1,0 +1,33 @@
+services:
+  tuhe-pdf:
+    image: tuhe-pdf:production
+    container_name: tuhe-pdf
+    restart: unless-stopped
+    expose:
+      - "8080"
+    networks:
+      - tuhe-internal
+
+  caddy:
+    image: docker.xuanyuan.run/library/caddy:2.11.4-alpine
+    container_name: tuhe-caddy
+    restart: unless-stopped
+    depends_on:
+      - tuhe-pdf
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    networks:
+      - tuhe-internal
+
+networks:
+  tuhe-internal:
+
+volumes:
+  caddy-data:
+  caddy-config:
