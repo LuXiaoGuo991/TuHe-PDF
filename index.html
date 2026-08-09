@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary Meta Tags -->
-    <title>PDF Tools</title>
-    <meta name="title" content="PDF Tools" />
+    <title>TuHe PDF - 图合 · 浏览器端 PDF 工作台</title>
+    <meta name="title" content="TuHe PDF - 图合 · 浏览器端 PDF 工作台" />
     <meta
       name="description"
-      content="Free online PDF tools - Merge, split, compress, convert PDFs. 100% browser-based, no signup required, unlimited files."
+      content="TuHe PDF（图合）- 纯浏览器端 PDF 工具台：合并、拆分、压缩、转换 PDF，文件不出本机，免注册，无限制。"
     />
 
     <!-- Mobile Web App -->
@@ -19,7 +19,7 @@
       name="apple-mobile-web-app-status-bar-style"
       content="black-translucent"
     />
-    <meta name="apple-mobile-web-app-title" content="PDF Tools" />
+    <meta name="apple-mobile-web-app-title" content="TuHe PDF" />
 
     <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
@@ -46,210 +46,236 @@
   </head>
 
   <body class="antialiased">
-    <!-- Simple Mode Navbar -->
-    <nav
-      class="bg-gray-800 border-b border-gray-700 sticky top-0 z-30"
-      data-simple-nav="true"
-    >
-      <div class="container mx-auto px-4">
-        <div class="flex justify-start items-center h-16">
-          <div class="flex-shrink-0 flex items-center cursor-pointer">
-            <img
-              src="{{baseUrl}}{{#if brandLogo}}{{brandLogo}}{{else}}images/favicon-no-bg.svg{{/if}}"
-              alt="{{#if brandName}}{{brandName}}{{else}}Bento PDF{{/if}} Logo"
-              class="h-8 w-8"
-            />
-            <span class="text-white font-bold text-xl ml-2">
-              <a href="/"
-                >{{#if brandName}}{{brandName}}{{else}}BentoPDF{{/if}}</a
-              >
-            </span>
-          </div>
-        </div>
-      </div>
-    </nav>
+    <!-- ===== 全局唯一顶部导航 ===== -->
+    <header class="wb-topbar">
+      <button
+        id="topbar-brand"
+        class="wb-topbar-brand"
+        type="button"
+        title="TuHe PDF 首页"
+      >
+        <img
+          src="{{baseUrl}}{{#if brandLogo}}{{brandLogo}}{{else}}images/favicon-no-bg.svg{{/if}}"
+          alt="TuHe PDF Logo"
+        />
+        <span class="wb-topbar-brand-name">TuHe PDF</span>
+        <span class="wb-topbar-version">v{{appVersion}}</span>
+      </button>
+      <nav class="wb-topbar-nav">
+        <a
+          href="about.html"
+          data-page-tab="about"
+          data-page-title="关于我们"
+          data-page-icon="ph-info"
+          >关于我们</a
+        >
+        <a
+          href="contact.html"
+          data-page-tab="contact"
+          data-page-title="联系我们"
+          data-page-icon="ph-envelope-simple"
+          >联系我们</a
+        >
+        <a
+          href="licensing.html"
+          data-page-tab="licensing"
+          data-page-title="许可"
+          data-page-icon="ph-certificate"
+          >许可</a
+        >
+        <a
+          href="https://bentopdf.com/docs/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Docs</a
+        >
+        <div id="topbar-lang-switcher" class="flex items-center ml-1"></div>
+      </nav>
+    </header>
 
-    <div id="app" class="min-h-screen container mx-auto p-4 md:p-8">
-      <!-- Simple Mode Header -->
-      <div id="tools-header" class="text-center mb-12 pt-8">
-        <h1 class="text-3xl md:text-4xl font-bold text-white mb-3">
-          <span data-i18n="simpleMode.title">PDF Tools</span>
-        </h1>
-        <p class="text-gray-400" data-i18n="simpleMode.subtitle">
-          Select a tool to get started
-        </p>
-      </div>
-
-      <div id="grid-view">
-        <div class="mb-8 max-w-lg mx-auto">
-          <div class="relative">
-            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-              <i data-lucide="search" class="w-5 h-5 text-gray-400"></i>
-            </span>
+    <div id="workbench">
+      <!-- ===== 左侧卡片栏 ===== -->
+      <aside id="tool-rail" aria-label="工具卡片栏">
+        <div class="rail-top">
+          <div class="rail-search-wrap">
+            <i data-lucide="search"></i>
             <input
               type="text"
-              id="search-bar"
-              class="w-full pl-10 pr-4 py-3 bg-gray-700 text-white border border-gray-600 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
-              placeholder="Search for a tool (e.g., 'split', 'organize'...)"
-              data-i18n-placeholder="tools.searchPlaceholder"
+              id="rail-search-input"
+              placeholder="搜索工具… (Ctrl+K)"
+              autocomplete="off"
             />
-            <span
-              class="absolute inset-y-0 right-0 flex items-center rounded-lg pr-2 gap-2"
-            >
-              <kbd
-                id="shortcut"
-                class="bg-gray-800 px-2.5 py-1.5 rounded-md text-xs font-semibold text-gray-300 border border-gray-700 shadow-sm"
-              ></kbd>
-              <button
-                id="open-shortcuts-btn"
-                class="p-1 hover:bg-gray-600 rounded-md text-gray-400 hover:text-white transition-colors"
-                title="Keyboard Shortcuts"
-              >
-                <i data-lucide="settings" class="w-4 h-4"></i>
-              </button>
-            </span>
           </div>
-        </div>
-
-        <div
-          id="tool-grid"
-          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6"
-        ></div>
-      </div>
-
-      <div
-        id="tool-interface"
-        class="hidden w-full max-w-4xl mx-auto bg-gray-800 rounded-xl shadow-2xl p-6 md:p-8 border border-gray-700"
-      >
-        <button
-          id="back-to-grid"
-          class="flex items-center gap-2 text-indigo-400 hover:text-indigo-300 mb-6 font-semibold"
-        >
-          <i data-lucide="arrow-left" class="cursor-pointer"></i>
-          <span class="cursor-pointer" data-i18n="tools.backToTools">
-            Back to Tools
-          </span>
-        </button>
-        <div id="tool-content"></div>
-      </div>
-
-      <div
-        id="loader-modal"
-        class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
-      >
-        <div
-          class="bg-gray-800 p-8 rounded-lg flex flex-col items-center gap-4 border border-gray-700 shadow-xl"
-        >
-          <div class="solid-spinner"></div>
-          <p
-            id="loader-text"
-            class="text-white text-lg font-medium"
-            data-i18n="loader.processing"
-          >
-            Processing...
-          </p>
-        </div>
-      </div>
-
-      <div
-        id="alert-modal"
-        class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
-      >
-        <div
-          class="bg-gray-800 max-w-sm w-full p-6 rounded-lg border border-gray-700 shadow-xl text-center"
-        >
-          <h3 id="alert-title" class="text-xl font-bold text-white mb-2">
-            Alert
-          </h3>
-          <p id="alert-message" class="text-gray-300 mb-6 whitespace-pre-line">
-            This is an alert message.
-          </p>
           <button
-            id="alert-ok"
-            class="btn bg-indigo-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-indigo-700"
+            id="rail-toggle"
+            class="rail-toggle"
+            type="button"
+            title="展开 / 收起卡片栏"
+            aria-label="展开或收起卡片栏"
           >
-            OK
+            <i data-lucide="panel-left-open" class="w-4 h-4"></i>
           </button>
         </div>
-      </div>
 
-      <div
-        id="preview-modal"
-        class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-40 p-4"
-      >
-        <div
-          class="bg-white text-black rounded-lg shadow-xl w-full max-w-4xl h-[90vh] flex flex-col"
-        >
-          <div class="p-4 border-b flex justify-between items-center">
-            <h3 class="text-xl font-bold">Document Preview</h3>
-            <div class="flex gap-4">
-              <button
-                id="preview-download-btn"
-                class="btn bg-indigo-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-indigo-700"
-              >
-                Download as PDF
-              </button>
-              <button
-                id="preview-close-btn"
-                class="btn bg-gray-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-gray-700"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-          <div id="preview-content" class="p-8 overflow-y-auto flex-grow"></div>
+        <div id="rail-scroll" class="rail-scroll">
+          <div id="rail-categories"></div>
         </div>
-      </div>
 
-      <!-- Shortcuts Modal -->
-      {{> settings-modal }}
+        <div class="rail-foot">
+          <!-- 预留：未来账号登录后在此显示账号信息 -->
+          <div id="rail-account" class="rail-account"></div>
+        </div>
+      </aside>
 
-      <!-- Warning Modal -->
-      {{> warning-modal }}
+      <div id="rail-backdrop"></div>
 
-      <div id="signature-ghost" class="hidden"></div>
+      <!-- ===== 右侧工作区 ===== -->
+      <main id="workspace">
+        <div id="tab-bar" role="tablist">
+          <div id="tab-list" class="flex items-end gap-1"></div>
+        </div>
 
-      <!-- Scroll to Top Button -->
-      <button
-        id="scroll-to-top-btn"
-        class="fixed bottom-12 right-8 bg-indigo-600 hover:bg-indigo-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 translate-y-10 invisible z-40"
-        aria-label="Scroll to top"
-      >
-        <i data-lucide="arrow-up" class="w-6 h-6"></i>
-      </button>
+        <div id="workspace-body">
+          <!-- TuHe 默认首页：没有打开任何工具标签页时显示 -->
+          <section id="tuhe-home">
+            <div class="tuhe-home-inner">
+              <div class="tuhe-logo-badge">
+                <img
+                  src="{{baseUrl}}{{#if brandLogo}}{{brandLogo}}{{else}}images/favicon-no-bg.svg{{/if}}"
+                  alt="TuHe PDF"
+                />
+              </div>
+              <h1 class="tuhe-title">
+                TuHe <span class="tuhe-title-cn">图合</span> PDF
+              </h1>
+              <p class="tuhe-subtitle">
+                纯浏览器端的 PDF 工作台 · 合并、拆分、压缩、转换 ·
+                文件全程不出本机
+              </p>
+
+              <p class="tuhe-quick-title">常用工具</p>
+              <div class="tuhe-quick-grid">
+                <button class="tuhe-quick-card" data-open-tool="merge-pdf">
+                  <i class="ph ph-browsers"></i>
+                  <span>合并 PDF</span>
+                </button>
+                <button class="tuhe-quick-card" data-open-tool="split-pdf">
+                  <i class="ph ph-scissors"></i>
+                  <span>拆分 PDF</span>
+                </button>
+                <button class="tuhe-quick-card" data-open-tool="compress-pdf">
+                  <i class="ph ph-lightning"></i>
+                  <span>压缩 PDF</span>
+                </button>
+                <button class="tuhe-quick-card" data-open-tool="jpg-to-pdf">
+                  <i class="ph ph-file-jpg"></i>
+                  <span>JPG 转 PDF</span>
+                </button>
+                <button class="tuhe-quick-card" data-open-tool="edit-pdf">
+                  <i class="ph ph-pencil-simple"></i>
+                  <span>PDF 编辑器</span>
+                </button>
+                <button class="tuhe-quick-card" data-open-tool="sign-pdf">
+                  <i class="ph ph-pen-nib"></i>
+                  <span>签署 PDF</span>
+                </button>
+              </div>
+
+              <p class="tuhe-hint">
+                <i class="ph ph-arrow-left"></i>
+                <span
+                  >从左侧卡片栏选择任意工具开始，工具会在右侧标签页中打开</span
+                >
+              </p>
+            </div>
+          </section>
+
+          <!-- 工具标签页面板容器（iframe 由 workbench.ts 动态创建） -->
+          <div id="tab-panels"></div>
+        </div>
+      </main>
     </div>
 
-    <!-- Simple mode footer -->
-    <footer
-      class="mt-16 border-t-2 border-gray-700 py-8"
-      data-simple-footer="true"
+    <!-- 移动端打开卡片栏的悬浮按钮 -->
+    <button id="mobile-rail-btn" type="button" aria-label="打开工具卡片栏">
+      <i data-lucide="layout-grid" class="w-5 h-5"></i>
+    </button>
+
+    <div
+      id="loader-modal"
+      class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
     >
-      <div class="container mx-auto px-4">
-        <div class="flex items-center justify-between flex-wrap gap-4">
-          <div>
-            <div class="flex items-center mb-2">
-              <img
-                src="{{baseUrl}}{{#if brandLogo}}{{brandLogo}}{{else}}images/favicon.svg{{/if}}"
-                alt="{{#if brandName}}{{brandName}}{{else}}Bento PDF{{/if}} Logo"
-                class="h-8 w-8 mr-2"
-              />
-              <span class="text-white font-bold text-lg"
-                >{{#if brandName}}{{brandName}}{{else}}BentoPDF{{/if}}</span
-              >
-            </div>
-            <p class="text-gray-400 text-sm">
-              {{#if footerText}}{{footerText}}{{else}}&copy; 2026 BentoPDF. All
-              rights reserved.{{/if}}
-            </p>
-            <p class="text-gray-500 text-xs mt-2">
-              <span data-i18n="footer.version">Version</span>
-              <span id="app-version">{{appVersion}}</span>
-            </p>
-          </div>
-          <div id="simple-mode-lang-switcher" class="flex-shrink-0"></div>
-        </div>
+      <div
+        class="bg-gray-800 p-8 rounded-lg flex flex-col items-center gap-4 border border-gray-700 shadow-xl"
+      >
+        <div class="solid-spinner"></div>
+        <p
+          id="loader-text"
+          class="text-white text-lg font-medium"
+          data-i18n="loader.processing"
+        >
+          Processing...
+        </p>
       </div>
-    </footer>
+    </div>
+
+    <div
+      id="alert-modal"
+      class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
+    >
+      <div
+        class="bg-gray-800 max-w-sm w-full p-6 rounded-lg border border-gray-700 shadow-xl text-center"
+      >
+        <h3 id="alert-title" class="text-xl font-bold text-white mb-2">
+          Alert
+        </h3>
+        <p id="alert-message" class="text-gray-300 mb-6 whitespace-pre-line">
+          This is an alert message.
+        </p>
+        <button
+          id="alert-ok"
+          class="btn bg-indigo-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-indigo-700"
+        >
+          OK
+        </button>
+      </div>
+    </div>
+
+    <div
+      id="preview-modal"
+      class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-40 p-4"
+    >
+      <div
+        class="bg-white text-black rounded-lg shadow-xl w-full max-w-4xl h-[90vh] flex flex-col"
+      >
+        <div class="p-4 border-b flex justify-between items-center">
+          <h3 class="text-xl font-bold">Document Preview</h3>
+          <div class="flex gap-4">
+            <button
+              id="preview-download-btn"
+              class="btn bg-indigo-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-indigo-700"
+            >
+              Download as PDF
+            </button>
+            <button
+              id="preview-close-btn"
+              class="btn bg-gray-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-gray-700"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+        <div id="preview-content" class="p-8 overflow-y-auto flex-grow"></div>
+      </div>
+    </div>
+
+    <!-- Shortcuts Modal -->
+    {{> settings-modal }}
+
+    <!-- Warning Modal -->
+    {{> warning-modal }}
+
+    <div id="signature-ghost" class="hidden"></div>
 
     <script type="module" src="src/js/utils/lucide-init.ts"></script>
     <script type="module" src="src/js/utils/simple-mode-footer.ts"></script>
