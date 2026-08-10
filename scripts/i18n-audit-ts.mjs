@@ -15,10 +15,17 @@ walk('src/js');
 const pat =
   /(?:showAlert|showToast|showLoader)\(\s*['"`][A-Z]|textContent\s*=\s*['"`][A-Z]|placeholder\s*=\s*['"`][A-Z]|\.title\s*=\s*['"`][A-Z]/g;
 
+const hasTranslateImport = (source) =>
+  /import\s*{[^}]*\bt\b[^}]*}\s*from\s*['"][^'"]*\/i18n\/(?:index|i18n)(?:\.js)?['"]/.test(
+    source
+  );
+
 const perFile = [];
+let translatedFileCount = 0;
 for (const f of files) {
   const s = fs.readFileSync(f, 'utf8');
-  const hasT = /i18n\/index\.js/.test(s);
+  const hasT = hasTranslateImport(s);
+  if (hasT) translatedFileCount++;
   const hits = s.match(pat) || [];
   if (hits.length)
     perFile.push([f.split(path.sep).join('/'), hits.length, hasT]);
@@ -31,4 +38,7 @@ for (const [f, n, hasT] of perFile) {
 }
 console.log('---');
 console.log(`共 ${total} 处疑似硬编码，分布在 ${perFile.length} 个 TS 文件`);
-console.log(`其中已引入 i18n 的文件: ${perFile.filter((x) => x[2]).length} 个`);
+console.log(`已引入 t() 的 TS 文件: ${translatedFileCount} 个`);
+console.log(
+  `其中仍有疑似硬编码的已接入文件: ${perFile.filter((x) => x[2]).length} 个`
+);

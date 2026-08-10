@@ -645,8 +645,7 @@ document.addEventListener('DOMContentLoaded', () => {
         translate('alert.error', 'Error'),
         translate(
           'tools:compressPdf.errorMsg',
-          `An error occurred during compression. Error: ${e instanceof Error ? e.message : String(e)}`,
-          { error: e instanceof Error ? e.message : String(e) }
+          'An error occurred during compression. Please try again.'
         )
       );
     }
