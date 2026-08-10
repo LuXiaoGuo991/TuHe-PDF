@@ -118,7 +118,9 @@
     "title": "提示",
     "ok": "确定",
     "error": "错误",
-    "success": "成功"
+    "success": "成功",
+    "noFiles": "未选择文件",
+    "invalidFile": "无效文件"
   },
   "preview": {
     "title": "文档预览",
@@ -280,7 +282,8 @@
     "files": "文件",
     "close": "关闭",
     "convert": "转换",
-    "unknownError": "未知错误"
+    "unknownError": "未知错误",
+    "filePages": "共 {{count}} 页"
   },
   "about": {
     "hero": {

@@ -1,5 +1,15 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
 import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
+
 import { createIcons, icons } from 'lucide';
 import * as pdfjsLib from 'pdfjs-dist';
 import {
@@ -116,10 +126,13 @@ document.addEventListener('DOMContentLoaded', () => {
           result.pdf.destroy();
           state.files[0] = result.file;
           state.pdfDoc = await loadPdfDocument(result.bytes);
-          metaSpan.textContent = `${formatBytes(file.size)} • ${pageCount} pages`;
+          metaSpan.textContent = `${formatBytes(file.size)} • ${translate('common.filePages', `${pageCount} pages`, { count: pageCount })}`;
         } catch (error) {
           console.error('Error loading PDF:', error);
-          showAlert('Error', 'Failed to load PDF file.');
+          showAlert(
+            translate('alert.error', 'Error'),
+            translate('tools:splitPdf.loadFailed', 'Failed to load PDF file.')
+          );
           state.files = [];
           updateUI();
           return;
@@ -146,7 +159,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Cleanup any previous lazy loading observers
     cleanupLazyRendering();
 
-    showLoader('Rendering page previews...');
+    showLoader(
+      translate(
+        'tools:splitPdf.renderingPreviews',
+        'Rendering page previews...'
+      )
+    );
 
     try {
       if (!state.pdfDoc) {
@@ -156,13 +174,23 @@ document.addEventListener('DOMContentLoaded', () => {
           hideLoader();
           const result = await loadPdfWithPasswordPrompt(file);
           if (!result) {
-            showLoader('Rendering page previews...');
+            showLoader(
+              translate(
+                'tools:splitPdf.renderingPreviews',
+                'Rendering page previews...'
+              )
+            );
             throw new Error('No PDF document loaded');
           }
           result.pdf.destroy();
           state.files[0] = result.file;
           state.pdfDoc = await loadPdfDocument(result.bytes);
-          showLoader('Rendering page previews...');
+          showLoader(
+            translate(
+              'tools:splitPdf.renderingPreviews',
+              'Rendering page previews...'
+            )
+          );
         } else {
           throw new Error('No PDF document loaded');
         }
@@ -225,7 +253,13 @@ document.addEventListener('DOMContentLoaded', () => {
         useLazyLoading: true,
         lazyLoadMargin: '400px',
         onProgress: (current, total) => {
-          showLoader(`Rendering page previews: ${current}/${total}`);
+          showLoader(
+            translate(
+              'tools:splitPdf.renderingProgress',
+              `Rendering page previews: ${current}/${total}`,
+              { current, total }
+            )
+          );
         },
         onBatchComplete: () => {
           createIcons({ icons });
@@ -235,7 +269,13 @@ document.addEventListener('DOMContentLoaded', () => {
       initPagePreview(container, pdf);
     } catch (error) {
       console.error('Error rendering visual selector:', error);
-      showAlert('Error', 'Failed to render page previews.');
+      showAlert(
+        translate('alert.error', 'Error'),
+        translate(
+          'tools:splitPdf.renderFailed',
+          'Failed to render page previews.'
+        )
+      );
       // Reset the flag on error so the user can try again.
       visualSelectorRendered = false;
     } finally {
@@ -305,13 +345,16 @@ document.addEventListener('DOMContentLoaded', () => {
         ) as HTMLInputElement | null
       )?.value === 'separate';
 
-    showLoader('Splitting PDF...');
+    showLoader(translate('tools:splitPdf.splitting', 'Splitting PDF...'));
 
     let qpdf: QpdfInstanceExtended | null = null;
     const inputPath = '/split-input.pdf';
 
     try {
-      if (!state.pdfDoc) throw new Error('No PDF document loaded.');
+      if (!state.pdfDoc)
+        throw new Error(
+          translate('tools:splitPdf.noPdfLoaded', 'No PDF document loaded.')
+        );
       const srcDoc = state.pdfDoc;
 
       const totalPages = srcDoc.getPageCount();
@@ -422,9 +465,14 @@ document.addEventListener('DOMContentLoaded', () => {
           const zipBlob = await zip.generateAsync({ type: 'blob' });
           downloadFile(zipBlob, 'split-by-bookmarks.zip');
           hideLoader();
-          showAlert('Success', 'PDF split successfully!', 'success', () => {
-            resetState();
-          });
+          showAlert(
+            translate('alert.success', 'Success'),
+            translate('tools:splitPdf.splitSuccess', 'PDF split successfully!'),
+            'success',
+            () => {
+              resetState();
+            }
+          );
           return;
         }
 
@@ -433,7 +481,10 @@ document.addEventListener('DOMContentLoaded', () => {
             (document.getElementById('split-n-value') as HTMLInputElement)
               ?.value || '5'
           );
-          if (nValue < 1) throw new Error('N must be at least 1.');
+          if (nValue < 1)
+            throw new Error(
+              translate('tools:splitPdf.nMinError', 'N must be at least 1.')
+            );
 
           const zip2 = new JSZip();
           const chunks = nTimesGroups(nValue, totalPages);
@@ -446,9 +497,14 @@ document.addEventListener('DOMContentLoaded', () => {
           const zipBlob2 = await zip2.generateAsync({ type: 'blob' });
           downloadFile(zipBlob2, 'split-n-times.zip');
           hideLoader();
-          showAlert('Success', 'PDF split successfully!', 'success', () => {
-            resetState();
-          });
+          showAlert(
+            translate('alert.success', 'Success'),
+            translate('tools:splitPdf.splitSuccess', 'PDF split successfully!'),
+            'success',
+            () => {
+              resetState();
+            }
+          );
           return;
         }
       }
@@ -459,7 +515,12 @@ document.addEventListener('DOMContentLoaded', () => {
         splitMode !== 'bookmarks' &&
         splitMode !== 'n-times'
       ) {
-        throw new Error('No pages were selected for splitting.');
+        throw new Error(
+          translate(
+            'tools:splitPdf.noPagesSelected',
+            'No pages were selected for splitting.'
+          )
+        );
       }
 
       if (outputGroups && outputGroups.length > 0) {
@@ -470,7 +531,9 @@ document.addEventListener('DOMContentLoaded', () => {
             groupFilename(outputGroups[0])
           );
         } else {
-          showLoader('Creating ZIP file...');
+          showLoader(
+            translate('tools:splitPdf.creatingZip', 'Creating ZIP file...')
+          );
           const zip = new JSZip();
           const usedNames = new Map<string, number>();
           for (const group of outputGroups) {
@@ -492,16 +555,24 @@ document.addEventListener('DOMContentLoaded', () => {
         visualSelectorRendered = false;
       }
 
-      showAlert('Success', 'PDF split successfully!', 'success', () => {
-        resetState();
-      });
+      showAlert(
+        translate('alert.success', 'Success'),
+        translate('tools:splitPdf.splitSuccess', 'PDF split successfully!'),
+        'success',
+        () => {
+          resetState();
+        }
+      );
     } catch (e: unknown) {
       console.error(e);
       showAlert(
-        'Error',
+        translate('alert.error', 'Error'),
         e instanceof Error
           ? e.message
-          : 'Failed to split PDF. Please check your selection.'
+          : translate(
+              'tools:splitPdf.splitFailed',
+              'Failed to split PDF. Please check your selection.'
+            )
       );
     } finally {
       if (qpdf) {
@@ -588,12 +659,18 @@ document.addEventListener('DOMContentLoaded', () => {
         rangePanel?.classList.remove('hidden');
         outputModeWrapper?.classList.remove('hidden');
         if (outputSeparateLabel)
-          outputSeparateLabel.textContent = 'One PDF per range';
+          outputSeparateLabel.textContent = translate(
+            'tools:splitPdf.outputSeparate',
+            'One PDF per range'
+          );
       } else if (mode === 'visual') {
         visualPanel?.classList.remove('hidden');
         outputModeWrapper?.classList.remove('hidden');
         if (outputSeparateLabel)
-          outputSeparateLabel.textContent = 'One PDF per page';
+          outputSeparateLabel.textContent = translate(
+            'tools:splitPdf.outputSeparatePerPage',
+            'One PDF per page'
+          );
         renderVisualSelector();
       } else if (mode === 'even-odd') {
         evenOddPanel?.classList.remove('hidden');
@@ -616,7 +693,11 @@ document.addEventListener('DOMContentLoaded', () => {
             nTimesWarning.classList.remove('hidden');
             const warningText = document.getElementById('n-times-warning-text');
             if (warningText) {
-              warningText.textContent = `The PDF has ${totalPages} pages, which is not evenly divisible by ${nValue}. The last PDF will contain ${remainder} page(s).`;
+              warningText.textContent = translate(
+                'tools:splitPdf.nTimesWarning',
+                `The PDF has ${totalPages} pages, which is not evenly divisible by ${nValue}. The last PDF will contain ${remainder} page(s).`,
+                { total: totalPages, n: nValue, remainder }
+              );
             }
           } else if (nTimesWarning) {
             nTimesWarning.classList.add('hidden');

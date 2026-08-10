@@ -1,4 +1,15 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
+
 import {
   downloadFile,
   readFileAsArrayBuffer,
@@ -141,7 +152,12 @@ async function performPhotonCompression(
     hideLoader();
     const result = await loadPdfWithPasswordPrompt(file);
     if (!result) return null;
-    showLoader('Running Photon compression...');
+    showLoader(
+      translate(
+        'tools:compressPdf.photonRunning',
+        'Running Photon compression...'
+      )
+    );
     pdfJsDoc = result.pdf;
   } else {
     pdfJsDoc = await getPDFDocument({ data: arrayBuffer }).promise;
@@ -402,7 +418,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     try {
       if (state.files.length === 0) {
-        showAlert('No Files', 'Please select at least one PDF file.');
+        showAlert(
+          translate('alert.noFiles', 'No Files'),
+          translate(
+            'tools:compressPdf.selectPdfs',
+            'Please select at least one PDF file.'
+          )
+        );
         hideLoader();
         return;
       }
@@ -424,7 +446,12 @@ document.addEventListener('DOMContentLoaded', () => {
         let usedMethod: string;
 
         if (algorithm === 'condense') {
-          showLoader('Running Condense compression...');
+          showLoader(
+            translate(
+              'tools:compressPdf.condenseRunning',
+              'Running Condense compression...'
+            )
+          );
           const result = await performCondenseCompression(
             originalFile,
             level,
@@ -436,11 +463,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
           // Check if fallback was used
           if ((result as { usedFallback?: boolean }).usedFallback) {
-            usedMethod +=
-              ' (without image optimization due to unsupported patterns)';
+            usedMethod += translate(
+              'tools:compressPdf.fallbackSuffix',
+              ' (without image optimization due to unsupported patterns)'
+            );
           }
         } else {
-          showLoader('Running Photon compression...');
+          showLoader(
+            translate(
+              'tools:compressPdf.photonRunning',
+              'Running Photon compression...'
+            )
+          );
           const arrayBuffer = (await readFileAsArrayBuffer(
             originalFile
           )) as ArrayBuffer;
@@ -471,21 +505,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (savings > 0) {
           showAlert(
-            'Compression Complete',
-            `Method: ${usedMethod}. File size reduced from ${originalSize} to ${compressedSize} (Saved ${savingsPercent}%).`,
+            translate(
+              'tools:compressPdf.completeTitle',
+              'Compression Complete'
+            ),
+            translate(
+              'tools:compressPdf.completeMsg',
+              `Method: ${usedMethod}. File size reduced from ${originalSize} to ${compressedSize} (Saved ${savingsPercent}%).`,
+              {
+                method: usedMethod,
+                original: originalSize,
+                compressed: compressedSize,
+                percent: savingsPercent,
+              }
+            ),
             'success',
             () => resetState()
           );
         } else {
           showAlert(
-            'Compression Finished',
-            `Method: ${usedMethod}. Could not reduce file size further. Original: ${originalSize}, New: ${compressedSize}.`,
+            translate(
+              'tools:compressPdf.finishedTitle',
+              'Compression Finished'
+            ),
+            translate(
+              'tools:compressPdf.finishedMsg',
+              `Method: ${usedMethod}. Could not reduce file size further. Original: ${originalSize}, New: ${compressedSize}.`,
+              {
+                method: usedMethod,
+                original: originalSize,
+                compressed: compressedSize,
+              }
+            ),
             'warning',
             () => resetState()
           );
         }
       } else {
-        showLoader('Compressing multiple PDFs...');
+        showLoader(
+          translate(
+            'tools:compressPdf.compressingMultiple',
+            'Compressing multiple PDFs...'
+          )
+        );
         const JSZip = (await import('jszip')).default;
         const zip = new JSZip();
         let totalOriginalSize = 0;
@@ -494,7 +556,11 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < state.files.length; i++) {
           const file = state.files[i];
           showLoader(
-            `Compressing ${i + 1}/${state.files.length}: ${file.name}...`
+            translate(
+              'tools:compressPdf.compressingProgress',
+              `Compressing ${i + 1}/${state.files.length}: ${file.name}...`,
+              { current: i + 1, total: state.files.length, name: file.name }
+            )
           );
           totalOriginalSize += file.size;
 
@@ -536,15 +602,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (totalSavings > 0) {
           showAlert(
-            'Compression Complete',
-            `Compressed ${state.files.length} PDF(s). Total size reduced from ${formatBytes(totalOriginalSize)} to ${formatBytes(totalCompressedSize)} (Saved ${totalSavingsPercent}%).`,
+            translate(
+              'tools:compressPdf.completeTitle',
+              'Compression Complete'
+            ),
+            translate(
+              'tools:compressPdf.batchCompleteMsg',
+              `Compressed ${state.files.length} PDF(s). Total size reduced from ${formatBytes(totalOriginalSize)} to ${formatBytes(totalCompressedSize)} (Saved ${totalSavingsPercent}%).`,
+              {
+                count: state.files.length,
+                original: formatBytes(totalOriginalSize),
+                compressed: formatBytes(totalCompressedSize),
+                percent: totalSavingsPercent,
+              }
+            ),
             'success',
             () => resetState()
           );
         } else {
           showAlert(
-            'Compression Finished',
-            `Compressed ${state.files.length} PDF(s). Total size: ${formatBytes(totalCompressedSize)}.`,
+            translate(
+              'tools:compressPdf.finishedTitle',
+              'Compression Finished'
+            ),
+            translate(
+              'tools:compressPdf.batchFinishedMsg',
+              `Compressed ${state.files.length} PDF(s). Total size: ${formatBytes(totalCompressedSize)}.`,
+              {
+                count: state.files.length,
+                compressed: formatBytes(totalCompressedSize),
+              }
+            ),
             'info',
             () => resetState()
           );
@@ -554,8 +642,12 @@ document.addEventListener('DOMContentLoaded', () => {
       hideLoader();
       console.error('[CompressPDF] Error:', e);
       showAlert(
-        'Error',
-        `An error occurred during compression. Error: ${e instanceof Error ? e.message : String(e)}`
+        translate('alert.error', 'Error'),
+        translate(
+          'tools:compressPdf.errorMsg',
+          `An error occurred during compression. Error: ${e instanceof Error ? e.message : String(e)}`,
+          { error: e instanceof Error ? e.message : String(e) }
+        )
       );
     }
   };
