@@ -1310,6 +1310,11 @@ body:has(#workbench) {
   animation: wb-tab-out 0.18s ease forwards;
 }
 
+/* 原位替换：只淡入，不做上浮位移，避免标签条跳动 */
+.wb-tab.wb-tab-replace {
+  animation: wb-tab-fade 0.18s ease;
+}
+
 @keyframes wb-tab-in {
   from {
     opacity: 0;
@@ -1325,6 +1330,15 @@ body:has(#workbench) {
   to {
     opacity: 0;
     transform: translateY(6px);
+  }
+}
+
+@keyframes wb-tab-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 

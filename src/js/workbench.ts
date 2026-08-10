@@ -2,7 +2,7 @@
  * TuHe PDF 工作台（第一阶段：结构）
  *
  * 左侧卡片栏（收起/展开、分类、搜索、滚动）+ 右侧多标签工作区（iframe）。
- * - 点击卡片在右侧以标签页打开工具，重复点击激活已有标签页
+ * - 点击卡片在右侧打开工具；当前标签页无任务时直接替换，有任务时才新增标签页
  * - 标签页可单独关闭；全部关闭后显示 TuHe 默认首页
  * - 关闭前检测 iframe 内是否有未完成任务（文件已上传 / 处理中），有则弹确认
  */
@@ -508,8 +508,12 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
     toolId?: string;
   }
 
-  /** 通用标签页打开：工具页与静态页（关于/联系/许可）共用 */
-  const openPage = (page: PageEntry) => {
+  /**
+   * 通用标签页打开：工具页与静态页（关于/联系/许可）共用。
+   * replaceTabId 传入时做原位替换：新标签直接占据旧标签的槽位，
+   * 不走收起/追加动画，避免标签条上的位置跳动。
+   */
+  const openPage = (page: PageEntry, replaceTabId?: string) => {
     const existing = tabs.get(page.id);
     if (existing) {
       activateTab(page.id);
@@ -522,6 +526,7 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
     // 标签
     const tabEl = document.createElement('div');
     tabEl.className = 'wb-tab';
+    if (replaceTabId) tabEl.classList.add('wb-tab-replace');
     tabEl.setAttribute('role', 'tab');
     tabEl.title = title;
 
@@ -570,7 +575,22 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
     });
 
     panelEl.append(iframe, loading);
-    panelsHost.appendChild(panelEl);
+
+    if (replaceTabId) {
+      const old = tabs.get(replaceTabId);
+      tabs.delete(replaceTabId);
+      if (old) {
+        // 原位替换：位置、顺序完全不变，无位移动画
+        old.tabEl.replaceWith(tabEl);
+        old.panelEl.replaceWith(panelEl);
+      } else {
+        tabList.appendChild(tabEl);
+        panelsHost.appendChild(panelEl);
+      }
+    } else {
+      tabList.appendChild(tabEl);
+      panelsHost.appendChild(panelEl);
+    }
 
     tabs.set(id, { id, title, icon, tabEl, panelEl, iframe });
 
@@ -579,20 +599,37 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
     refreshIcons();
     closeMobileRail();
 
-    // 让新标签滚动到可见位置
-    tabEl.scrollIntoView({ behavior: 'smooth', inline: 'nearest' });
+    // 新增标签滚动到可见位置；原位替换位置不变，无需滚动
+    if (!replaceTabId) {
+      tabEl.scrollIntoView({ behavior: 'smooth', inline: 'nearest' });
+    }
   };
 
   const openTab = (toolId: string) => {
     const tool = toolIndex.get(toolId);
     if (!tool) return;
-    openPage({
-      id: tool.id,
-      title: translateToolName(tool),
-      href: tool.href,
-      icon: tool.icon,
-      toolId: tool.id,
-    });
+    /**
+     * 标签页复用：当前活动标签页没有任务（未上传文件、未在处理）时，
+     * 原位替换它，避免空闲标签页不断累积；
+     * 仅当活动标签页有任务时才新增标签页。点击同一工具仍只激活已有标签页。
+     */
+    let replaceTabId: string | undefined;
+    if (activeTabId && activeTabId !== tool.id) {
+      const activeTab = tabs.get(activeTabId);
+      if (activeTab && !isTabBusy(activeTab)) {
+        replaceTabId = activeTabId;
+      }
+    }
+    openPage(
+      {
+        id: tool.id,
+        title: translateToolName(tool),
+        href: tool.href,
+        icon: tool.icon,
+        toolId: tool.id,
+      },
+      replaceTabId
+    );
   };
 
   /* ---------- 顶部导航 ---------- */
