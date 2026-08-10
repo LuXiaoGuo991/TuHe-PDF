@@ -180,7 +180,7 @@
     "compressingProgress": "正在压缩 {{current}}/{{total}}：{{name}}...",
     "batchCompleteMsg": "已压缩 {{count}} 个 PDF。总大小从 {{original}} 降至 {{compressed}}（节省 {{percent}}%）。",
     "batchFinishedMsg": "已压缩 {{count}} 个 PDF。总大小：{{compressed}}。",
-    "errorMsg": "压缩过程中发生错误。错误：{{error}}"
+    "errorMsg": "压缩过程中发生错误，请重试。"
   },
   "pdfEditor": {
     "name": "PDF 编辑器",

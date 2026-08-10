@@ -1,8 +1,8 @@
 # i18n 接线工作流（供执行 AI 按批操作）
 
 > 目标读者：接手本仓库 i18n 改造的执行 AI。按本文档逐步执行即可，不需要额外背景。
-> 已完成：6 个高频工具页 HTML（merge/split/compress/jpg-to/edit/sign-pdf）+ merge-pdf-page.ts 动态文案。
-> 本文档描述的方法均已在本仓库实测验证通过。
+> 已完成：6 个高频工具页 HTML（merge/split/compress/jpg-to/edit/sign-pdf）及其 6 个 TS 动态文案模块。
+> 本文档描述的是当前仓库已采用的流程；每批仍须独立执行验证并记录结果。
 
 ## 0. 一句话原理
 
@@ -11,7 +11,7 @@
 - 语言包：`public/locales/{lang}/common.json`（通用文案）和 `public/locales/{lang}/tools.json`（各工具文案），共 21 种语言，**中文（zh）包已完整**。
 - 运行时：`src/js/i18n/i18n.ts`（i18next）。页面加载时 `main.ts` 调 `initI18n()` + `applyTranslations()`，把所有带 `data-i18n="键"` 的元素的 `textContent` 替换为当前语言；`data-i18n-placeholder` 换 placeholder，`data-i18n-title` 换 title。
 - 键的命名空间：`data-i18n="tools:mergePdf.xxx"` 指 tools.json 的 `mergePdf.xxx`；不带前缀（如 `data-i18n="howItWorks.hint"`）指 common.json。
-- **英文残留的唯一原因：文案没接线**。修复 = 补 `data-i18n` 属性（HTML）或改 `translate()` 调用（TS）+ 往 en/zh 语言包补键。英文可见文本一律不改，en 键值 = 原文，其他语言缺键时自动回退英文，不会破坏其余 20 种语言。
+- 手写用户文案的英文残留通常来自未接线。修复 = 补 `data-i18n` 属性（HTML）或改 `translate()` 调用（TS）+ 往 en/zh 语言包补键。英文可见文本一律不改，en 键值 = 原文，其他语言缺键时自动回退英文，不会破坏其余 20 种语言。底层异常（例如 CDN/WASM 的 `Error.message`）不得直接展示给用户，须显示本地化概述并仅在控制台保留原始错误。
 
 ## 1. 文案三层模型（修之前先判断文案在哪一层）
 
@@ -20,6 +20,7 @@
 | HTML 静态        | `src/pages/*.html` 里的可见英文文本                                                               | 元素上加 `data-i18n` / `data-i18n-placeholder` / `data-i18n-title`                               |
 | TS 动态渲染      | `src/js/logic/*-page.ts` 里 `document.createElement` 后赋值的 label/placeholder/title/textContent | 改为 `translate('tools:工具名.键', '英文原文')`                                                  |
 | TS 弹窗/加载提示 | `showAlert('Error', '...')`、`showLoader('...')`、`showToast(...)`                                | 同上；标题用通用键 `translate('alert.error', 'Error')` / `translate('alert.success', 'Success')` |
+| TS 异常消息      | `catch` 中的 `Error.message` 或第三方错误                                                         | 用户只显示本地化概述；原始异常用 `console.error` 记录，必要时按错误类型映射                      |
 
 TS 层沿用项目既有模式（参考 `src/js/logic/add-page-labels-page.ts` 开头）：
 
@@ -38,7 +39,7 @@ const translate = (
 
 动态数值用 i18next 插值：`translate('tools:mergePdf.pagesRangeLabel', fallback, { total: pageCount })`，JSON 里写 `"页码（如 1-3, 5）- 共 {{total}} 页"`。
 
-## 2. 每批标准流程（6 步）
+## 2. 每批标准流程（7 步）
 
 以"一批页面/文件"为单位循环执行。**不要一次性全仓库改**，每批可独立验证、独立提交。
 
@@ -46,6 +47,7 @@ const translate = (
 
 - HTML：读目标 `src/pages/xxx.html`，列出所有无 `data-i18n` 的可见英文文本（按钮、label、option、li、p、h3、summary、placeholder、title）。
 - TS：读目标 `src/js/logic/xxx-page.ts`，列出 `showAlert/showToast/showLoader/textContent/placeholder/.title` 的英文字面量。
+- 失败分支：检查 `catch`、worker 回调和第三方加载失败是否直接展示 `Error.message`。
 - 可运行 `node scripts/i18n-audit-ts.mjs` 看全仓库 TS 剩余规模。
 
 ### 步骤 2：**先查既有键**（最容易踩的坑）
@@ -94,6 +96,7 @@ node scripts/generate-i18n-pages.mjs          # 可选：重新生成多语言�
 
 - 模板：`scripts/i18n-smoke-test.mjs`（静态服务器 + playwright-core headless Chromium，`localStorage.setItem('i18nextLng','zh')` 模拟中文用户，断言元素文本含中文）。
 - 全流程范例：`scripts/i18n-e2e-merge.mjs`（pdf-lib 生成测试 PDF → `setInputFiles` 上传 → 点按钮 → 断言成功弹窗为中文）。涉及上传/处理的工具照此复制。
+- 对网络、CDN、WASM 等失败场景补充 E2E 断言：用户提示必须为中文，且不得包含原始英文异常。
 - Chromium 路径：`%LOCALAPPDATA%\ms-playwright\chromium_headless_shell-1223\chrome-headless-shell-win64\chrome-headless-shell.exe`。
 
 ### 步骤 7：记录日志
@@ -108,7 +111,8 @@ node scripts/generate-i18n-pages.mjs          # 可选：重新生成多语言�
 
 ## 4. 剩余工作清单（按建议批次切分）
 
-- [ ] **批 2**：第一批 6 个工具页对应的 TS 动态文案：split-pdf-page.ts（15 处）、compress-pdf-page.ts（11）、edit-pdf-page.ts（6）、jpg-to-pdf-page.ts（6）、sign-pdf-page.ts（8）。
+- [x] **批 1**：6 个高频工具页 HTML 静态文案 + merge-pdf-page.ts 动态文案。
+- [x] **批 2**：split-pdf-page.ts、compress-pdf-page.ts、edit-pdf-page.ts、jpg-to-pdf-page.ts、sign-pdf-page.ts 动态文案。
 - [ ] **批 3**：其余约 47 个工具页 HTML 静态文案（方法同批 1，参考 `scripts/i18n-wire-batch1.mjs`）。
 - [ ] **批 4**：其余约 112 个 TS 文件的动态文案（约 830 处，完整清单跑 `node scripts/i18n-audit-ts.mjs`）。优先 `src/js/utils/password-prompt.ts`（19 处，所有加密 PDF 流程共用）和 `src/js/handlers/fileHandler.ts`（9 处，全局文件处理）。
 - [ ] **批 5（可选）**：about/contact/privacy/terms/licensing/404 等静态页。
@@ -119,7 +123,7 @@ node scripts/generate-i18n-pages.mjs          # 可选：重新生成多语言�
 1. 迁移脚本全部命中，零中止。
 2. 键校验零缺失（en + zh）。
 3. `tsc` exit 0；`vite build` 成功。
-4. 浏览器冒烟/E2E 全部断言通过（中文渲染）。
+4. 浏览器冒烟/E2E 覆盖首屏、动态成功提示与失败提示；中文界面不展示原始英文异常。
 5. `git diff` 中无英文可见文本被改动（en 渲染不变），其余语言不受影响。
 6. 日志已写入 `docs/logs/`。
 

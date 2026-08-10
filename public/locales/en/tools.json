@@ -180,7 +180,7 @@
     "compressingProgress": "Compressing {{current}}/{{total}}: {{name}}...",
     "batchCompleteMsg": "Compressed {{count}} PDF(s). Total size reduced from {{original}} to {{compressed}} (Saved {{percent}}%).",
     "batchFinishedMsg": "Compressed {{count}} PDF(s). Total size: {{compressed}}.",
-    "errorMsg": "An error occurred during compression. Error: {{error}}"
+    "errorMsg": "An error occurred during compression. Please try again."
   },
   "pdfEditor": {
     "name": "PDF Editor",
