@@ -183,12 +183,14 @@
             <button
               id="file-mode-btn"
               class="flex-1 btn bg-indigo-600 text-white font-semibold py-2 rounded-md"
+              data-i18n="tools:mergePdf.fileMode"
             >
               File Mode
             </button>
             <button
               id="page-mode-btn"
               class="flex-1 btn text-gray-300 font-semibold py-2 rounded-md"
+              data-i18n="tools:mergePdf.pageMode"
             >
               Page Mode
             </button>
@@ -197,24 +199,30 @@
           <div id="file-mode-panel">
             <div class="p-3 bg-gray-900 rounded-lg border border-gray-700 mb-3">
               <p class="text-sm text-gray-300">
-                <strong class="text-white">How it works:</strong>
+                <strong class="text-white" data-i18n="howItWorks.hint"
+                  >How it works:</strong
+                >
               </p>
               <ul
                 class="list-disc list-inside text-xs text-gray-400 mt-1 space-y-1"
               >
                 <li>
-                  Click and drag the
+                  <span data-i18n="tools:mergePdf.howFile1a"
+                    >Click and drag the</span
+                  >
                   <i
                     data-lucide="grip-vertical"
                     class="inline-block w-3 h-3"
                   ></i>
-                  icon to change the order of the files.
+                  <span data-i18n="tools:mergePdf.howFile1b"
+                    >icon to change the order of the files.</span
+                  >
                 </li>
-                <li>
+                <li data-i18n="tools:mergePdf.howFile2">
                   In the "Pages" box for each file, you can specify ranges
                   (e.g., "1-3, 5") to merge only those pages.
                 </li>
-                <li>
+                <li data-i18n="tools:mergePdf.howFile3">
                   Leave the "Pages" box blank to include all pages from that
                   file.
                 </li>
@@ -226,13 +234,17 @@
           <div id="page-mode-panel" class="hidden">
             <div class="p-3 bg-gray-900 rounded-lg border border-gray-700 mb-3">
               <p class="text-sm text-gray-300">
-                <strong class="text-white">How it works:</strong>
+                <strong class="text-white" data-i18n="howItWorks.hint"
+                  >How it works:</strong
+                >
               </p>
               <ul
                 class="list-disc list-inside text-xs text-gray-400 mt-1 space-y-1"
               >
-                <li>All pages from your uploaded PDFs are shown below.</li>
-                <li>
+                <li data-i18n="tools:mergePdf.howPage1">
+                  All pages from your uploaded PDFs are shown below.
+                </li>
+                <li data-i18n="tools:mergePdf.howPage2">
                   Simply drag and drop the individual page thumbnails to create
                   the exact order you want for your new file.
                 </li>
@@ -270,7 +282,11 @@
             </span>
           </label>
 
-          <button id="process-btn" class="btn-gradient w-full mt-6">
+          <button
+            id="process-btn"
+            class="btn-gradient w-full mt-6"
+            data-i18n="tools:mergePdf.processBtn"
+          >
             Merge PDFs
           </button>
         </div>
@@ -286,7 +302,11 @@
         class="bg-gray-800 p-8 rounded-lg flex flex-col items-center gap-4 border border-gray-700 shadow-xl"
       >
         <div class="solid-spinner"></div>
-        <p id="loader-text" class="text-white text-lg font-medium">
+        <p
+          id="loader-text"
+          class="text-white text-lg font-medium"
+          data-i18n="loader.processing"
+        >
           Processing...
         </p>
       </div>
@@ -311,6 +331,7 @@
         <p id="alert-message" class="text-gray-300 mb-6"></p>
         <button
           id="alert-ok"
+          data-i18n="alert.ok"
           class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
         >
           OK
@@ -334,8 +355,13 @@
             1
           </div>
           <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white mb-1">Upload PDFs</h3>
-            <p class="text-gray-400">
+            <h3
+              class="text-lg font-semibold text-white mb-1"
+              data-i18n="tools:mergePdf.hiw1Title"
+            >
+              Upload PDFs
+            </h3>
+            <p class="text-gray-400" data-i18n="tools:mergePdf.hiw1Desc">
               Select or drag and drop multiple PDF files you want to merge
             </p>
           </div>
@@ -347,8 +373,13 @@
             2
           </div>
           <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white mb-1">Arrange Order</h3>
-            <p class="text-gray-400">
+            <h3
+              class="text-lg font-semibold text-white mb-1"
+              data-i18n="tools:mergePdf.hiw2Title"
+            >
+              Arrange Order
+            </h3>
+            <p class="text-gray-400" data-i18n="tools:mergePdf.hiw2Desc">
               Drag files up or down to reorder them in your preferred sequence
             </p>
           </div>
@@ -360,8 +391,13 @@
             3
           </div>
           <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white mb-1">Merge Files</h3>
-            <p class="text-gray-400">
+            <h3
+              class="text-lg font-semibold text-white mb-1"
+              data-i18n="tools:mergePdf.hiw3Title"
+            >
+              Merge Files
+            </h3>
+            <p class="text-gray-400" data-i18n="tools:mergePdf.hiw3Desc">
               Click the merge button to combine all PDFs into a single document
             </p>
           </div>
@@ -373,8 +409,13 @@
             4
           </div>
           <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white mb-1">Download</h3>
-            <p class="text-gray-400">
+            <h3
+              class="text-lg font-semibold text-white mb-1"
+              data-i18n="tools:mergePdf.hiw4Title"
+            >
+              Download
+            </h3>
+            <p class="text-gray-400" data-i18n="tools:mergePdf.hiw4Desc">
               Save your merged PDF - all pages combined in the order you chose
             </p>
           </div>
@@ -395,36 +436,80 @@
           href="split-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Split Pdf</h3>
-          <p class="text-gray-400 text-sm">Free online split pdf tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:splitPdf.name"
+          >
+            Split Pdf
+          </h3>
+          <p class="text-gray-400 text-sm" data-i18n="tools:splitPdf.cardDesc">
+            Free online split pdf tool
+          </p>
         </a>
         <a
           href="organize-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Organize Pdf</h3>
-          <p class="text-gray-400 text-sm">Free online organize pdf tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:duplicateOrganize.name"
+          >
+            Organize Pdf
+          </h3>
+          <p
+            class="text-gray-400 text-sm"
+            data-i18n="tools:duplicateOrganize.cardDesc"
+          >
+            Free online organize pdf tool
+          </p>
         </a>
         <a
           href="compress-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Compress Pdf</h3>
-          <p class="text-gray-400 text-sm">Free online compress pdf tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:compressPdf.name"
+          >
+            Compress Pdf
+          </h3>
+          <p
+            class="text-gray-400 text-sm"
+            data-i18n="tools:compressPdf.cardDesc"
+          >
+            Free online compress pdf tool
+          </p>
         </a>
         <a
           href="rotate-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Rotate Pdf</h3>
-          <p class="text-gray-400 text-sm">Free online rotate pdf tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:rotatePdf.name"
+          >
+            Rotate Pdf
+          </h3>
+          <p class="text-gray-400 text-sm" data-i18n="tools:rotatePdf.cardDesc">
+            Free online rotate pdf tool
+          </p>
         </a>
         <a
           href="delete-pages.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Delete Pages</h3>
-          <p class="text-gray-400 text-sm">Free online delete pages tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:deletePages.name"
+          >
+            Delete Pages
+          </h3>
+          <p
+            class="text-gray-400 text-sm"
+            data-i18n="tools:deletePages.cardDesc"
+          >
+            Free online delete pages tool
+          </p>
         </a>
       </div>
     </section>
@@ -442,10 +527,12 @@
           <summary
             class="cursor-pointer font-semibold text-white flex items-center justify-between"
           >
-            How many PDFs can I merge at once?
+            <span data-i18n="tools:mergePdf.faq1q"
+              >How many PDFs can I merge at once?</span
+            >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400">
+          <p class="mt-3 text-gray-400" data-i18n="tools:mergePdf.faq1a">
             Unlimited! Merge as many PDF files as you need in a single
             operation. No restrictions on file count or total size.
           </p>
@@ -454,10 +541,12 @@
           <summary
             class="cursor-pointer font-semibold text-white flex items-center justify-between"
           >
-            Will merging reduce PDF quality?
+            <span data-i18n="tools:mergePdf.faq2q"
+              >Will merging reduce PDF quality?</span
+            >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400">
+          <p class="mt-3 text-gray-400" data-i18n="tools:mergePdf.faq2a">
             No! BentoPDF preserves the original quality of all PDFs when
             merging. Your documents remain crisp and clear with no quality loss.
           </p>
@@ -466,10 +555,12 @@
           <summary
             class="cursor-pointer font-semibold text-white flex items-center justify-between"
           >
-            Can I reorder pages after selecting files?
+            <span data-i18n="tools:mergePdf.faq3q"
+              >Can I reorder pages after selecting files?</span
+            >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400">
+          <p class="mt-3 text-gray-400" data-i18n="tools:mergePdf.faq3a">
             Yes! Simply drag and drop files to arrange them in any order before
             clicking the merge button.
           </p>
