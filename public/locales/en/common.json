@@ -118,7 +118,9 @@
     "title": "Alert",
     "ok": "OK",
     "error": "Error",
-    "success": "Success"
+    "success": "Success",
+    "noFiles": "No Files",
+    "invalidFile": "Invalid File"
   },
   "preview": {
     "title": "Document Preview",
@@ -280,7 +282,8 @@
     "files": "Files",
     "close": "Close",
     "convert": "Convert",
-    "unknownError": "Unknown error"
+    "unknownError": "Unknown error",
+    "filePages": "{{count}} pages"
   },
   "about": {
     "hero": {

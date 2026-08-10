@@ -111,7 +111,20 @@
     "faq2a": "不会！分割后的 PDF 与原始文档质量完全一致，不会发生压缩或质量损失。",
     "faq3q": "可以一次分割多个 PDF 吗？",
     "faq3a": "可以，支持批量处理多个 PDF，文档管理更高效。",
-    "cardDesc": "免费在线 PDF 分割工具"
+    "cardDesc": "免费在线 PDF 分割工具",
+    "loadFailed": "PDF 文件加载失败。",
+    "renderingPreviews": "正在渲染页面预览...",
+    "renderingProgress": "正在渲染页面预览：{{current}}/{{total}}",
+    "renderFailed": "页面预览渲染失败。",
+    "splitting": "正在分割 PDF...",
+    "splitSuccess": "PDF 分割成功！",
+    "creatingZip": "正在创建 ZIP 文件...",
+    "splitFailed": "PDF 分割失败。请检查你的选择。",
+    "outputSeparatePerPage": "每页一个 PDF",
+    "nTimesWarning": "PDF 共 {{total}} 页，无法被 {{n}} 整除，最后一个 PDF 将包含 {{remainder}} 页。",
+    "nMinError": "N 至少为 1。",
+    "noPagesSelected": "没有选择要分割的页面。",
+    "noPdfLoaded": "未加载 PDF 文档。"
   },
   "compressPdf": {
     "name": "压缩 PDF",
@@ -154,7 +167,20 @@
     "faq2a": "推荐均衡模式，体积大幅减小且质量损失极小；轻度可最大程度保留质量，强力可获得更小文件，极限则为最大压缩率。",
     "faq3q": "有文件大小限制吗？",
     "faq3a": "没有限制！任意数量、任意大小的 PDF 都可以免费压缩。",
-    "cardDesc": "免费在线 PDF 压缩工具"
+    "cardDesc": "免费在线 PDF 压缩工具",
+    "photonRunning": "正在运行 Photon 压缩...",
+    "selectPdfs": "请至少选择一个 PDF 文件。",
+    "condenseRunning": "正在运行 Condense 压缩...",
+    "fallbackSuffix": "（因图像模式不受支持，未进行图像优化）",
+    "completeTitle": "压缩完成",
+    "completeMsg": "方式：{{method}}。文件大小从 {{original}} 降至 {{compressed}}（节省 {{percent}}%）。",
+    "finishedTitle": "压缩结束",
+    "finishedMsg": "方式：{{method}}。无法进一步减小文件大小。原始：{{original}}，现在：{{compressed}}。",
+    "compressingMultiple": "正在压缩多个 PDF...",
+    "compressingProgress": "正在压缩 {{current}}/{{total}}：{{name}}...",
+    "batchCompleteMsg": "已压缩 {{count}} 个 PDF。总大小从 {{original}} 降至 {{compressed}}（节省 {{percent}}%）。",
+    "batchFinishedMsg": "已压缩 {{count}} 个 PDF。总大小：{{compressed}}。",
+    "errorMsg": "压缩过程中发生错误。错误：{{error}}"
   },
   "pdfEditor": {
     "name": "PDF 编辑器",
@@ -165,7 +191,12 @@
     "faq2a": "完全安全！所有处理都在你的浏览器中完成，文件不会离开你的设备，隐私得到充分保障。",
     "faq3q": "有文件大小限制吗？",
     "faq3a": "没有！任意大小的文件都可以免费处理，次数不限。",
-    "cardDesc": "免费在线 PDF 编辑工具"
+    "cardDesc": "免费在线 PDF 编辑工具",
+    "invalidFileMsg": "请上传有效的 PDF 文件。",
+    "loadingEditor": "正在加载 PDF 编辑器...",
+    "downloadEdited": "下载编辑后的 PDF",
+    "downloadFailed": "下载编辑后的 PDF 失败。",
+    "loadFailed": "PDF 编辑器加载失败。"
   },
   "jpgToPdf": {
     "name": "JPG 转 PDF",
@@ -181,7 +212,15 @@
     "faq2q": "我的文件隐私安全吗？",
     "faq2a": "完全安全！所有处理都在你的浏览器中完成，文件不会离开你的设备，隐私得到充分保障。",
     "faq3q": "有文件大小限制吗？",
-    "faq3a": "没有！任意大小的文件都可以免费处理，次数不限。"
+    "faq3a": "没有！任意大小的文件都可以免费处理，次数不限。",
+    "invalidFilesTitle": "无效文件",
+    "invalidFilesMsg": "部分文件已被跳过。仅支持 JPG、JPEG、JP2 和 JPX 文件。",
+    "noFilesMsg": "请至少选择一张 JPG 或 JPEG2000 图片。",
+    "loadingEngine": "正在加载引擎...",
+    "converting": "正在将图片转换为 PDF...",
+    "createSuccess": "PDF 创建成功！",
+    "conversionErrorTitle": "转换错误",
+    "convertFailed": "图片转换为 PDF 失败。"
   },
   "signPdf": {
     "name": "签署 PDF",
@@ -193,7 +232,17 @@
     "faq2q": "我的文件隐私安全吗？",
     "faq2a": "完全安全！所有处理都在你的浏览器中完成，文件不会离开你的设备，隐私得到充分保障。",
     "faq3q": "有文件大小限制吗？",
-    "faq3a": "没有！任意大小的文件都可以免费处理，次数不限。"
+    "faq3a": "没有！任意大小的文件都可以免费处理，次数不限。",
+    "invalidFileMsg": "请选择 PDF 文件。",
+    "loadingViewer": "正在加载 PDF 查看器...",
+    "viewerNotReadyTitle": "查看器未就绪",
+    "viewerWaitMsg": "请等待 PDF 查看器加载完成。",
+    "viewerInitMsg": "PDF 查看器仍在初始化。",
+    "flattenSaving": "正在扁平化并保存 PDF...",
+    "saveSuccess": "已签署的 PDF 保存成功！",
+    "downloadSuccess": "已签署的 PDF 下载成功！",
+    "exportFailedTitle": "导出失败",
+    "exportFailedMsg": "无法导出已签署的 PDF，请重试。"
   },
   "cropPdf": {
     "name": "裁剪 PDF",

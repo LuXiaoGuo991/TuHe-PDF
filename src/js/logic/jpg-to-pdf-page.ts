@@ -1,5 +1,16 @@
 import { createIcons, icons } from 'lucide';
 import { showAlert, showLoader, hideLoader } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
+
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { loadPyMuPDF } from '../utils/pymupdf-loader.js';
 import type { PyMuPDFInstance } from '@/types';
@@ -103,8 +114,11 @@ function handleFiles(newFiles: FileList) {
 
   if (validFiles.length < newFiles.length) {
     showAlert(
-      'Invalid Files',
-      'Some files were skipped. Only JPG, JPEG, JP2, and JPX files are allowed.'
+      translate('tools:jpgToPdf.invalidFilesTitle', 'Invalid Files'),
+      translate(
+        'tools:jpgToPdf.invalidFilesMsg',
+        'Some files were skipped. Only JPG, JPEG, JP2, and JPX files are allowed.'
+      )
     );
   }
 
@@ -178,16 +192,24 @@ async function ensurePyMuPDF(): Promise<PyMuPDFInstance> {
 
 async function convertToPdf() {
   if (files.length === 0) {
-    showAlert('No Files', 'Please select at least one JPG or JPEG2000 image.');
+    showAlert(
+      translate('alert.noFiles', 'No Files'),
+      translate(
+        'tools:jpgToPdf.noFilesMsg',
+        'Please select at least one JPG or JPEG2000 image.'
+      )
+    );
     return;
   }
 
-  showLoader('Loading engine...');
+  showLoader(translate('tools:jpgToPdf.loadingEngine', 'Loading engine...'));
 
   try {
     const mupdf = await ensurePyMuPDF();
 
-    showLoader('Converting images to PDF...');
+    showLoader(
+      translate('tools:jpgToPdf.converting', 'Converting images to PDF...')
+    );
     const quality = getSelectedQuality();
     const compressedFiles: File[] = [];
     for (const file of files) {
@@ -198,14 +220,24 @@ async function convertToPdf() {
 
     downloadFile(pdfBlob, 'from_jpgs.pdf');
 
-    showAlert('Success', 'PDF created successfully!', 'success', () => {
-      resetState();
-    });
+    showAlert(
+      translate('alert.success', 'Success'),
+      translate('tools:jpgToPdf.createSuccess', 'PDF created successfully!'),
+      'success',
+      () => {
+        resetState();
+      }
+    );
   } catch (e: unknown) {
     console.error('[JpgToPdf]', e);
     showAlert(
-      'Conversion Error',
-      e instanceof Error ? e.message : 'Failed to convert images to PDF.'
+      translate('tools:jpgToPdf.conversionErrorTitle', 'Conversion Error'),
+      e instanceof Error
+        ? e.message
+        : translate(
+            'tools:jpgToPdf.convertFailed',
+            'Failed to convert images to PDF.'
+          )
     );
   } finally {
     hideLoader();

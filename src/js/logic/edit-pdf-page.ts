@@ -1,6 +1,17 @@
 // Logic for PDF Editor Page
 import { createIcons, icons } from 'lucide';
 import { showAlert, showLoader, hideLoader } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
+
 import { formatBytes, downloadFile } from '../utils/helpers.js';
 import { makeUniqueFileKey } from '../utils/deduplicate-filename.js';
 import { batchDecryptIfNeeded } from '../utils/password-prompt.js';
@@ -105,11 +116,19 @@ async function handleFiles(files: FileList) {
     (f) => f.type === 'application/pdf'
   );
   if (pdfFiles.length === 0) {
-    showAlert('Invalid File', 'Please upload a valid PDF file.');
+    showAlert(
+      translate('alert.invalidFile', 'Invalid File'),
+      translate(
+        'tools:pdfEditor.invalidFileMsg',
+        'Please upload a valid PDF file.'
+      )
+    );
     return;
   }
 
-  showLoader('Loading PDF Editor...');
+  showLoader(
+    translate('tools:pdfEditor.loadingEditor', 'Loading PDF Editor...')
+  );
 
   try {
     const pdfWrapper = document.getElementById('embed-pdf-wrapper');
@@ -120,7 +139,9 @@ async function handleFiles(files: FileList) {
 
     hideLoader();
     const decryptedFiles = await batchDecryptIfNeeded(pdfFiles);
-    showLoader('Loading PDF Editor...');
+    showLoader(
+      translate('tools:pdfEditor.loadingEditor', 'Loading PDF Editor...')
+    );
 
     if (decryptedFiles.length === 0) {
       hideLoader();
@@ -209,7 +230,10 @@ async function handleFiles(files: FileList) {
         downloadBtn = document.createElement('button');
         downloadBtn.id = 'download-edited-pdf';
         downloadBtn.className = 'btn-gradient w-full mt-6';
-        downloadBtn.textContent = 'Download Edited PDF';
+        downloadBtn.textContent = translate(
+          'tools:pdfEditor.downloadEdited',
+          'Download Edited PDF'
+        );
         pdfWrapper.appendChild(downloadBtn);
       }
       downloadBtn.classList.remove('hidden');
@@ -222,7 +246,13 @@ async function handleFiles(files: FileList) {
           downloadFile(blob, currentFileName);
         } catch (err) {
           console.error('Error downloading PDF:', err);
-          showAlert('Error', 'Failed to download the edited PDF.');
+          showAlert(
+            translate('alert.error', 'Error'),
+            translate(
+              'tools:pdfEditor.downloadFailed',
+              'Failed to download the edited PDF.'
+            )
+          );
         }
       };
 
@@ -249,7 +279,10 @@ async function handleFiles(files: FileList) {
     }
   } catch (error) {
     console.error('Error loading PDF Editor:', error);
-    showAlert('Error', 'Failed to load the PDF Editor.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate('tools:pdfEditor.loadFailed', 'Failed to load the PDF Editor.')
+    );
   } finally {
     hideLoader();
   }

@@ -7,6 +7,16 @@ import {
 } from '../utils/helpers.js';
 import { loadPdfWithPasswordPrompt } from '../utils/password-prompt.js';
 import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
+
 import { loadPdfDocument } from '../utils/load-pdf-document.js';
 import { flattenAnnotations } from '../utils/flatten-annotations.js';
 import type { SignState, PDFViewerWindow } from '@/types';
@@ -83,7 +93,10 @@ function handleFile(file: File) {
     file.type !== 'application/pdf' &&
     !file.name.toLowerCase().endsWith('.pdf')
   ) {
-    showAlert('Invalid File', 'Please select a PDF file.');
+    showAlert(
+      translate('alert.invalidFile', 'Invalid File'),
+      translate('tools:signPdf.invalidFileMsg', 'Please select a PDF file.')
+    );
     return;
   }
 
@@ -140,7 +153,7 @@ async function updateFileDisplay() {
   }
   signState.file = result.file;
   nameSpan.textContent = result.file.name;
-  metaSpan.textContent = `${formatBytes(result.file.size)} • ${result.pdf.numPages} pages`;
+  metaSpan.textContent = `${formatBytes(result.file.size)} • ${translate('common.filePages', `${result.pdf.numPages} pages`, { count: result.pdf.numPages })}`;
   result.pdf.destroy();
 }
 
@@ -150,7 +163,7 @@ async function setupSignTool() {
     signatureEditor.classList.remove('hidden');
   }
 
-  showLoader('Loading PDF viewer...');
+  showLoader(translate('tools:signPdf.loadingViewer', 'Loading PDF viewer...'));
 
   const container = document.getElementById('canvas-container-sign');
   if (!container) {
@@ -258,7 +271,13 @@ async function setupSignTool() {
 
 async function applyAndSaveSignatures() {
   if (!signState.viewerReady || !signState.viewerIframe) {
-    showAlert('Viewer not ready', 'Please wait for the PDF viewer to load.');
+    showAlert(
+      translate('tools:signPdf.viewerNotReadyTitle', 'Viewer not ready'),
+      translate(
+        'tools:signPdf.viewerWaitMsg',
+        'Please wait for the PDF viewer to load.'
+      )
+    );
     return;
   }
 
@@ -266,7 +285,13 @@ async function applyAndSaveSignatures() {
     const viewerWindow = signState.viewerIframe
       .contentWindow as PDFViewerWindow | null;
     if (!viewerWindow || !viewerWindow.PDFViewerApplication) {
-      showAlert('Viewer not ready', 'The PDF viewer is still initializing.');
+      showAlert(
+        translate('tools:signPdf.viewerNotReadyTitle', 'Viewer not ready'),
+        translate(
+          'tools:signPdf.viewerInitMsg',
+          'The PDF viewer is still initializing.'
+        )
+      );
       return;
     }
 
@@ -277,7 +302,9 @@ async function applyAndSaveSignatures() {
     const shouldFlatten = flattenCheckbox?.checked;
 
     if (shouldFlatten) {
-      showLoader('Flattening and saving PDF...');
+      showLoader(
+        translate('tools:signPdf.flattenSaving', 'Flattening and saving PDF...')
+      );
 
       const rawPdfBytes = await app.pdfDocument.saveDocument(
         app.pdfDocument.annotationStorage
@@ -306,14 +333,25 @@ async function applyAndSaveSignatures() {
       downloadFile(blob, signState.file?.name || 'document.pdf');
 
       hideLoader();
-      showAlert('Success', 'Signed PDF saved successfully!', 'success', () => {
-        resetState();
-      });
+      showAlert(
+        translate('alert.success', 'Success'),
+        translate(
+          'tools:signPdf.saveSuccess',
+          'Signed PDF saved successfully!'
+        ),
+        'success',
+        () => {
+          resetState();
+        }
+      );
     } else {
       app.eventBus?.dispatch('download', { source: app });
       showAlert(
-        'Success',
-        'Signed PDF downloaded successfully!',
+        translate('alert.success', 'Success'),
+        translate(
+          'tools:signPdf.downloadSuccess',
+          'Signed PDF downloaded successfully!'
+        ),
         'success',
         () => {
           resetState();
@@ -324,8 +362,11 @@ async function applyAndSaveSignatures() {
     console.error('Failed to export the signed PDF:', error);
     hideLoader();
     showAlert(
-      'Export failed',
-      'Could not export the signed PDF. Please try again.'
+      translate('tools:signPdf.exportFailedTitle', 'Export failed'),
+      translate(
+        'tools:signPdf.exportFailedMsg',
+        'Could not export the signed PDF. Please try again.'
+      )
     );
   }
 }

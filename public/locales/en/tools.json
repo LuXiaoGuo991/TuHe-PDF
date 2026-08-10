@@ -111,7 +111,20 @@
     "faq2a": "No! Split PDFs maintain the exact same quality as the original document. No compression or quality loss occurs.",
     "faq3q": "Can I split multiple PDFs at once?",
     "faq3a": "Yes, process multiple PDFs in batches for efficient document management.",
-    "cardDesc": "Free online split pdf tool"
+    "cardDesc": "Free online split pdf tool",
+    "loadFailed": "Failed to load PDF file.",
+    "renderingPreviews": "Rendering page previews...",
+    "renderingProgress": "Rendering page previews: {{current}}/{{total}}",
+    "renderFailed": "Failed to render page previews.",
+    "splitting": "Splitting PDF...",
+    "splitSuccess": "PDF split successfully!",
+    "creatingZip": "Creating ZIP file...",
+    "splitFailed": "Failed to split PDF. Please check your selection.",
+    "outputSeparatePerPage": "One PDF per page",
+    "nTimesWarning": "The PDF has {{total}} pages, which is not evenly divisible by {{n}}. The last PDF will contain {{remainder}} page(s).",
+    "nMinError": "N must be at least 1.",
+    "noPagesSelected": "No pages were selected for splitting.",
+    "noPdfLoaded": "No PDF document loaded."
   },
   "compressPdf": {
     "name": "Compress PDF",
@@ -154,7 +167,20 @@
     "faq2a": "Balanced (recommended) offers great size reduction with minimal quality loss. Use Light to preserve maximum quality, Aggressive for smaller files, or Extreme for maximum compression.",
     "faq3q": "Are there file size limits?",
     "faq3a": "No limits! Compress as many PDFs as you need, of any size, completely free.",
-    "cardDesc": "Free online compress pdf tool"
+    "cardDesc": "Free online compress pdf tool",
+    "photonRunning": "Running Photon compression...",
+    "selectPdfs": "Please select at least one PDF file.",
+    "condenseRunning": "Running Condense compression...",
+    "fallbackSuffix": " (without image optimization due to unsupported patterns)",
+    "completeTitle": "Compression Complete",
+    "completeMsg": "Method: {{method}}. File size reduced from {{original}} to {{compressed}} (Saved {{percent}}%).",
+    "finishedTitle": "Compression Finished",
+    "finishedMsg": "Method: {{method}}. Could not reduce file size further. Original: {{original}}, New: {{compressed}}.",
+    "compressingMultiple": "Compressing multiple PDFs...",
+    "compressingProgress": "Compressing {{current}}/{{total}}: {{name}}...",
+    "batchCompleteMsg": "Compressed {{count}} PDF(s). Total size reduced from {{original}} to {{compressed}} (Saved {{percent}}%).",
+    "batchFinishedMsg": "Compressed {{count}} PDF(s). Total size: {{compressed}}.",
+    "errorMsg": "An error occurred during compression. Error: {{error}}"
   },
   "pdfEditor": {
     "name": "PDF Editor",
@@ -165,7 +191,12 @@
     "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
     "faq3q": "Is there a file size limit?",
     "faq3a": "No! Process files of any size, as many times as you want, completely free.",
-    "cardDesc": "Free online edit pdf tool"
+    "cardDesc": "Free online edit pdf tool",
+    "invalidFileMsg": "Please upload a valid PDF file.",
+    "loadingEditor": "Loading PDF Editor...",
+    "downloadEdited": "Download Edited PDF",
+    "downloadFailed": "Failed to download the edited PDF.",
+    "loadFailed": "Failed to load the PDF Editor."
   },
   "jpgToPdf": {
     "name": "JPG to PDF",
@@ -181,7 +212,15 @@
     "faq2q": "Are my files private and secure?",
     "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
     "faq3q": "Is there a file size limit?",
-    "faq3a": "No! Process files of any size, as many times as you want, completely free."
+    "faq3a": "No! Process files of any size, as many times as you want, completely free.",
+    "invalidFilesTitle": "Invalid Files",
+    "invalidFilesMsg": "Some files were skipped. Only JPG, JPEG, JP2, and JPX files are allowed.",
+    "noFilesMsg": "Please select at least one JPG or JPEG2000 image.",
+    "loadingEngine": "Loading engine...",
+    "converting": "Converting images to PDF...",
+    "createSuccess": "PDF created successfully!",
+    "conversionErrorTitle": "Conversion Error",
+    "convertFailed": "Failed to convert images to PDF."
   },
   "signPdf": {
     "name": "Sign PDF",
@@ -193,7 +232,17 @@
     "faq2q": "Are my files private and secure?",
     "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
     "faq3q": "Is there a file size limit?",
-    "faq3a": "No! Process files of any size, as many times as you want, completely free."
+    "faq3a": "No! Process files of any size, as many times as you want, completely free.",
+    "invalidFileMsg": "Please select a PDF file.",
+    "loadingViewer": "Loading PDF viewer...",
+    "viewerNotReadyTitle": "Viewer not ready",
+    "viewerWaitMsg": "Please wait for the PDF viewer to load.",
+    "viewerInitMsg": "The PDF viewer is still initializing.",
+    "flattenSaving": "Flattening and saving PDF...",
+    "saveSuccess": "Signed PDF saved successfully!",
+    "downloadSuccess": "Signed PDF downloaded successfully!",
+    "exportFailedTitle": "Export failed",
+    "exportFailedMsg": "Could not export the signed PDF. Please try again."
   },
   "cropPdf": {
     "name": "Crop PDF",
