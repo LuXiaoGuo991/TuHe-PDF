@@ -1,5 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
 import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import {
   downloadFile,
   readFileAsArrayBuffer,
@@ -51,7 +60,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const metaSpan = document.createElement('div');
         metaSpan.className = 'text-xs text-gray-400';
-        metaSpan.textContent = `${formatBytes(file.size)} • ${t('common.loadingPageCount')}`;
+        metaSpan.textContent = translate(
+          'tools:pdfToWord.dynamic.55c6560fcf',
+          `${formatBytes(file.size)} • ${t('common.loadingPageCount')}`,
+          {
+            value0: formatBytes(file.size),
+            value1: t('common.loadingPageCount'),
+          }
+        );
 
         infoContainer.append(nameSpan, metaSpan);
 
@@ -70,9 +86,17 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
           const arrayBuffer = await readFileAsArrayBuffer(file);
           const pdfDoc = await getPDFDocument({ data: arrayBuffer }).promise;
-          metaSpan.textContent = `${formatBytes(file.size)} • ${pdfDoc.numPages} pages`;
+          metaSpan.textContent = translate(
+            'tools:pdfToWord.dynamic.bc5256a321',
+            `${formatBytes(file.size)} • ${pdfDoc.numPages} pages`,
+            { value0: formatBytes(file.size), value1: pdfDoc.numPages }
+          );
         } catch {
-          metaSpan.textContent = `${formatBytes(file.size)} • Could not load page count`;
+          metaSpan.textContent = translate(
+            'tools:pdfToWord.dynamic.9ca476fb35',
+            `${formatBytes(file.size)} • Could not load page count`,
+            { value0: formatBytes(file.size) }
+          );
         }
       }
 
@@ -97,20 +121,39 @@ document.addEventListener('DOMContentLoaded', () => {
   const convert = async () => {
     try {
       if (state.files.length === 0) {
-        showAlert('No Files', 'Please select at least one PDF file.');
+        showAlert(
+          translate('alert.noFiles', 'No Files'),
+          translate(
+            'tools:pdfToWord.dynamic.6d8a487c85',
+            'Please select at least one PDF file.'
+          )
+        );
         return;
       }
 
-      showLoader('Loading PDF converter...');
+      showLoader(
+        translate(
+          'tools:pdfToWord.dynamic.1292fc8a63',
+          'Loading PDF converter...'
+        )
+      );
       const pymupdf = await loadPyMuPDF();
 
       hideLoader();
       state.files = await batchDecryptIfNeeded(state.files);
-      showLoader('Converting...');
+      showLoader(
+        translate('tools:pdfToWord.dynamic.8d9c37f316', 'Converting...')
+      );
 
       if (state.files.length === 1) {
         const file = state.files[0];
-        showLoader(`Converting ${file.name}...`);
+        showLoader(
+          translate(
+            'tools:pdfToWord.dynamic.63a03d2fbe',
+            `Converting ${file.name}...`,
+            { value0: file.name }
+          )
+        );
 
         const docxBlob = await pymupdf.pdfToDocx(file);
         const outName = file.name.replace(/\.pdf$/i, '') + '.docx';
@@ -119,8 +162,15 @@ document.addEventListener('DOMContentLoaded', () => {
         hideLoader();
 
         showAlert(
-          'Conversion Complete',
-          `Successfully converted ${file.name} to DOCX.`,
+          translate(
+            'tools:pdfToWord.dynamic.f3dfa823b1',
+            'Conversion Complete'
+          ),
+          translate(
+            'tools:pdfToWord.dynamic.f42045b8cd',
+            `Successfully converted ${file.name} to DOCX.`,
+            { value0: file.name }
+          ),
           'success',
           () => resetState()
         );
@@ -132,7 +182,11 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < state.files.length; i++) {
           const file = state.files[i];
           showLoader(
-            `Converting ${i + 1}/${state.files.length}: ${file.name}...`
+            translate(
+              'tools:pdfToWord.dynamic.08e374b418',
+              `Converting ${i + 1}/${state.files.length}: ${file.name}...`,
+              { value0: i + 1, value1: state.files.length, value2: file.name }
+            )
           );
 
           const docxBlob = await pymupdf.pdfToDocx(file);
@@ -145,15 +199,27 @@ document.addEventListener('DOMContentLoaded', () => {
           zip.file(zipEntryName, arrayBuffer);
         }
 
-        showLoader('Creating ZIP archive...');
+        showLoader(
+          translate(
+            'tools:pdfToWord.dynamic.20a5ae49d7',
+            'Creating ZIP archive...'
+          )
+        );
         const zipBlob = await zip.generateAsync({ type: 'blob' });
 
         downloadFile(zipBlob, 'converted-documents.zip');
         hideLoader();
 
         showAlert(
-          'Conversion Complete',
-          `Successfully converted ${state.files.length} PDF(s) to DOCX.`,
+          translate(
+            'tools:pdfToWord.dynamic.f3dfa823b1',
+            'Conversion Complete'
+          ),
+          translate(
+            'tools:pdfToWord.dynamic.7a04401188',
+            `Successfully converted ${state.files.length} PDF(s) to DOCX.`,
+            { value0: state.files.length }
+          ),
           'success',
           () => resetState()
         );
@@ -161,8 +227,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (e: unknown) {
       hideLoader();
       showAlert(
-        'Error',
-        `An error occurred during conversion. Error: ${e instanceof Error ? e.message : String(e)}`
+        translate('alert.error', 'Error'),
+        translate('alert.processFailed', 'Processing failed. Please try again.')
       );
     }
   };

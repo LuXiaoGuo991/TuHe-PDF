@@ -1,4 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { state } from '../state.js';
 import { createIcons, icons } from 'lucide';
@@ -272,13 +282,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const convertToPdf = async () => {
     try {
       if (state.files.length === 0) {
-        showAlert('No Files', `Please select at least one ${TOOL_NAME} file.`);
+        showAlert(
+          translate('alert.noFiles', 'No Files'),
+          translate(
+            'tools:cbzToPdf.dynamic.3767ecf995',
+            `Please select at least one ${TOOL_NAME} file.`,
+            { value0: TOOL_NAME }
+          )
+        );
         return;
       }
 
       if (state.files.length === 1) {
         const originalFile = state.files[0];
-        showLoader(`Converting ${originalFile.name}...`);
+        showLoader(
+          translate(
+            'tools:cbzToPdf.dynamic.657ec1680f',
+            `Converting ${originalFile.name}...`,
+            { value0: originalFile.name }
+          )
+        );
 
         let pdfBlob: Blob;
         if (isCbzFile(originalFile.name)) {
@@ -292,19 +315,29 @@ document.addEventListener('DOMContentLoaded', () => {
         hideLoader();
 
         showAlert(
-          'Conversion Complete',
-          `Successfully converted ${originalFile.name} to PDF.`,
+          translate('tools:cbzToPdf.dynamic.054f2e545b', 'Conversion Complete'),
+          translate(
+            'tools:cbzToPdf.dynamic.18d1e68f41',
+            `Successfully converted ${originalFile.name} to PDF.`,
+            { value0: originalFile.name }
+          ),
           'success',
           () => resetState()
         );
       } else {
-        showLoader('Converting files...');
+        showLoader(
+          translate('tools:cbzToPdf.dynamic.c44c18c174', 'Converting files...')
+        );
         const outputZip = new JSZip();
 
         for (let i = 0; i < state.files.length; i++) {
           const file = state.files[i];
           showLoader(
-            `Converting ${i + 1}/${state.files.length}: ${file.name}...`
+            translate(
+              'tools:cbzToPdf.dynamic.a9844d18c8',
+              `Converting ${i + 1}/${state.files.length}: ${file.name}...`,
+              { value0: i + 1, value1: state.files.length, value2: file.name }
+            )
           );
 
           let pdfBlob: Blob;
@@ -325,8 +358,12 @@ document.addEventListener('DOMContentLoaded', () => {
         hideLoader();
 
         showAlert(
-          'Conversion Complete',
-          `Successfully converted ${state.files.length} ${TOOL_NAME} file(s) to PDF.`,
+          translate('tools:cbzToPdf.dynamic.054f2e545b', 'Conversion Complete'),
+          translate(
+            'tools:cbzToPdf.dynamic.b27d08a94c',
+            `Successfully converted ${state.files.length} ${TOOL_NAME} file(s) to PDF.`,
+            { value0: state.files.length, value1: TOOL_NAME }
+          ),
           'success',
           () => resetState()
         );
@@ -335,8 +372,8 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error(`[${TOOL_NAME}2PDF] ERROR:`, e);
       hideLoader();
       showAlert(
-        'Error',
-        `An error occurred during conversion. Error: ${e instanceof Error ? e.message : String(e)}`
+        translate('alert.error', 'Error'),
+        translate('alert.processFailed', 'Processing failed. Please try again.')
       );
     }
   };

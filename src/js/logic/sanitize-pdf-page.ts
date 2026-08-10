@@ -1,4 +1,14 @@
 import { showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { icons, createIcons } from 'lucide';
 import { SanitizePdfState } from '@/types';
@@ -82,14 +92,24 @@ async function handleFileSelect(files: FileList | null) {
 
 async function runSanitize() {
   if (!pageState.file) {
-    showAlert('Error', 'No PDF document loaded.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:sanitizePdf.dynamic.2d61fe671a',
+        'No PDF document loaded.'
+      )
+    );
     return;
   }
 
   const loaderModal = document.getElementById('loader-modal');
   const loaderText = document.getElementById('loader-text');
   if (loaderModal) loaderModal.classList.remove('hidden');
-  if (loaderText) loaderText.textContent = 'Sanitizing PDF...';
+  if (loaderText)
+    loaderText.textContent = translate(
+      'tools:sanitizePdf.dynamic.3e222526c4',
+      'Sanitizing PDF...'
+    );
 
   try {
     const options = {
@@ -126,8 +146,11 @@ async function runSanitize() {
     const hasAnyOption = Object.values(options).some(Boolean);
     if (!hasAnyOption) {
       showAlert(
-        'No Changes',
-        'No items were selected for removal or none were found in the PDF.'
+        translate('tools:sanitizePdf.dynamic.0f6dc18170', 'No Changes'),
+        translate(
+          'tools:sanitizePdf.dynamic.00e694f932',
+          'No items were selected for removal or none were found in the PDF.'
+        )
       );
       if (loaderModal) loaderModal.classList.add('hidden');
       return;
@@ -140,7 +163,11 @@ async function runSanitize() {
       return;
     }
     if (loaderModal) loaderModal.classList.remove('hidden');
-    if (loaderText) loaderText.textContent = 'Sanitizing PDF...';
+    if (loaderText)
+      loaderText.textContent = translate(
+        'tools:sanitizePdf.dynamic.3e222526c4',
+        'Sanitizing PDF...'
+      );
     loaded.pdf.destroy();
     pageState.file = loaded.file;
     const result = await sanitizePdf(new Uint8Array(loaded.bytes), options);
@@ -150,8 +177,11 @@ async function runSanitize() {
       pageState.file?.name || 'document.pdf'
     );
     showAlert(
-      'Success',
-      'PDF has been sanitized and downloaded.',
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:sanitizePdf.dynamic.9851b480b3',
+        'PDF has been sanitized and downloaded.'
+      ),
       'success',
       () => {
         resetState();
@@ -160,7 +190,14 @@ async function runSanitize() {
   } catch (e: unknown) {
     console.error('Sanitization Error:', e);
     const msg = e instanceof Error ? e.message : String(e);
-    showAlert('Error', `An error occurred during sanitization: ${msg}`);
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:sanitizePdf.dynamic.dbfaa60a88',
+        `An error occurred during sanitization: ${msg}`,
+        { value0: msg }
+      )
+    );
   } finally {
     if (loaderModal) loaderModal.classList.add('hidden');
   }

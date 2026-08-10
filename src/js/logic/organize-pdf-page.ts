@@ -1,4 +1,14 @@
 import { createIcons, icons } from 'lucide';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { showAlert, showLoader, hideLoader } from '../ui.js';
 import { formatBytes, downloadFile } from '../utils/helpers.js';
 import { initPagePreview } from '../utils/page-preview.js';
@@ -84,7 +94,13 @@ function applyCustomOrder() {
 
   const orderString = orderInput.value;
   if (!orderString) {
-    showAlert('Invalid Order', 'Please enter a page order.');
+    showAlert(
+      translate('tools:duplicateOrganize.dynamic.3ee3f4d734', 'Invalid Order'),
+      translate(
+        'tools:duplicateOrganize.dynamic.88f1f34594',
+        'Please enter a page order.'
+      )
+    );
     return;
   }
 
@@ -94,14 +110,30 @@ function applyCustomOrder() {
   const currentGridCount = grid.children.length;
   const validNumbers = newOrder.every((n) => !isNaN(n) && n > 0); // Basic check, will validate against available thumbnails
   if (!validNumbers) {
-    showAlert('Invalid Page Numbers', `Please enter positive numbers.`);
+    showAlert(
+      translate(
+        'tools:duplicateOrganize.dynamic.6ea125d343',
+        'Invalid Page Numbers'
+      ),
+      translate(
+        'tools:duplicateOrganize.dynamic.f1ea100a4f',
+        `Please enter positive numbers.`
+      )
+    );
     return;
   }
 
   if (newOrder.length !== currentGridCount) {
     showAlert(
-      'Incorrect Page Count',
-      `The number of pages specified (${newOrder.length}) does not match the current number of pages in the document (${currentGridCount}). Please provide a complete ordering for all pages.`
+      translate(
+        'tools:duplicateOrganize.dynamic.9188d43dd0',
+        'Incorrect Page Count'
+      ),
+      translate(
+        'tools:duplicateOrganize.dynamic.9fce12d6c1',
+        `The number of pages specified (${newOrder.length}) does not match the current number of pages in the document (${currentGridCount}). Please provide a complete ordering for all pages.`,
+        { value0: newOrder.length, value1: currentGridCount }
+      )
     );
     return;
   }
@@ -109,8 +141,14 @@ function applyCustomOrder() {
   const uniqueNumbers = new Set(newOrder);
   if (uniqueNumbers.size !== newOrder.length) {
     showAlert(
-      'Duplicate Page Numbers',
-      'Please ensure all page numbers in the order are unique.'
+      translate(
+        'tools:duplicateOrganize.dynamic.6e2937ad37',
+        'Duplicate Page Numbers'
+      ),
+      translate(
+        'tools:duplicateOrganize.dynamic.d6d71e1a8b',
+        'Please ensure all page numbers in the order are unique.'
+      )
     );
     return;
   }
@@ -141,8 +179,14 @@ function applyCustomOrder() {
     !allOriginalIndicesPresent
   ) {
     showAlert(
-      'Invalid Page Order',
-      'The specified page order is incomplete or contains invalid page numbers. Please ensure you provide a new position for every original page.'
+      translate(
+        'tools:duplicateOrganize.dynamic.06bf2457c8',
+        'Invalid Page Order'
+      ),
+      translate(
+        'tools:duplicateOrganize.dynamic.473466e8f2',
+        'The specified page order is incomplete or contains invalid page numbers. Please ensure you provide a new position for every original page.'
+      )
     );
     return;
   }
@@ -153,7 +197,14 @@ function applyCustomOrder() {
 
   initializeSortable(); // Re-initialize sortable on the new order
 
-  showAlert('Success', 'Pages have been reordered.', 'success');
+  showAlert(
+    translate('alert.success', 'Success'),
+    translate(
+      'tools:duplicateOrganize.dynamic.5c34a0157f',
+      'Pages have been reordered.'
+    ),
+    'success'
+  );
 }
 
 function handleFileUpload(e: Event) {
@@ -166,7 +217,13 @@ async function handleFile(file: File) {
     file.type !== 'application/pdf' &&
     !file.name.toLowerCase().endsWith('.pdf')
   ) {
-    showAlert('Invalid File', 'Please select a PDF file.');
+    showAlert(
+      translate('alert.invalidFile', 'Invalid File'),
+      translate(
+        'tools:duplicateOrganize.dynamic.25286017ef',
+        'Please select a PDF file.'
+      )
+    );
     return;
   }
 
@@ -175,7 +232,7 @@ async function handleFile(file: File) {
   try {
     const result = await loadPdfWithPasswordPrompt(file);
     if (!result) return;
-    showLoader('Loading PDF...');
+    showLoader(translate('fileHandler.loadingPdf', 'Loading PDF...'));
 
     organizeState.pdfDoc = await loadPdfDocument(result.bytes);
     organizeState.pdfJsDoc = result.pdf;
@@ -188,7 +245,13 @@ async function handleFile(file: File) {
   } catch (error) {
     console.error('Error loading PDF:', error);
     hideLoader();
-    showAlert('Error', 'Failed to load PDF file.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:duplicateOrganize.dynamic.e5afc36c9b',
+        'Failed to load PDF file.'
+      )
+    );
   }
 }
 
@@ -210,7 +273,14 @@ function updateFileDisplay() {
 
   const metaSpan = document.createElement('div');
   metaSpan.className = 'text-xs text-gray-400';
-  metaSpan.textContent = `${formatBytes(organizeState.file.size)} • ${organizeState.totalPages} pages`;
+  metaSpan.textContent = translate(
+    'tools:duplicateOrganize.dynamic.d370ae8ed8',
+    `${formatBytes(organizeState.file.size)} • ${organizeState.totalPages} pages`,
+    {
+      value0: formatBytes(organizeState.file.size),
+      value1: organizeState.totalPages,
+    }
+  );
 
   infoContainer.append(nameSpan, metaSpan);
 
@@ -256,8 +326,14 @@ function attachEventListeners(element: HTMLElement) {
       initializeSortable();
     } else {
       showAlert(
-        'Cannot Delete',
-        'You cannot delete the last page of the document.'
+        translate(
+          'tools:duplicateOrganize.dynamic.520b80318a',
+          'Cannot Delete'
+        ),
+        translate(
+          'tools:duplicateOrganize.dynamic.1d7a59ce91',
+          'You cannot delete the last page of the document.'
+        )
       );
     }
   });
@@ -310,13 +386,19 @@ async function renderThumbnails() {
     const duplicateBtn = document.createElement('button');
     duplicateBtn.className =
       'duplicate-btn bg-green-600 hover:bg-green-700 text-white rounded-full w-8 h-8 flex items-center justify-center';
-    duplicateBtn.title = 'Duplicate Page';
+    duplicateBtn.title = translate(
+      'tools:duplicateOrganize.dynamic.b1b2a7b600',
+      'Duplicate Page'
+    );
     duplicateBtn.innerHTML = '<i data-lucide="copy-plus" class="w-5 h-5"></i>';
 
     const deleteBtn = document.createElement('button');
     deleteBtn.className =
       'delete-btn bg-red-600 hover:bg-red-700 text-white rounded-full w-8 h-8 flex items-center justify-center';
-    deleteBtn.title = 'Delete Page';
+    deleteBtn.title = translate(
+      'tools:duplicateOrganize.dynamic.93889c4f64',
+      'Delete Page'
+    );
     deleteBtn.innerHTML = '<i data-lucide="x-circle" class="w-5 h-5"></i>';
 
     controlsDiv.append(duplicateBtn, deleteBtn);
@@ -354,7 +436,12 @@ function initializeSortable() {
 }
 
 async function saveChanges() {
-  showLoader('Building new PDF...');
+  showLoader(
+    translate(
+      'tools:duplicateOrganize.dynamic.b7b2151528',
+      'Building new PDF...'
+    )
+  );
 
   try {
     const grid = document.getElementById('page-grid');
@@ -368,7 +455,13 @@ async function saveChanges() {
       .filter((index) => !isNaN(index) && index >= 0);
 
     if (finalIndices.length === 0) {
-      showAlert('Error', 'No valid pages to save.');
+      showAlert(
+        translate('alert.error', 'Error'),
+        translate(
+          'tools:duplicateOrganize.dynamic.671dda51b0',
+          'No valid pages to save.'
+        )
+      );
       return;
     }
 
@@ -386,13 +479,25 @@ async function saveChanges() {
     );
 
     hideLoader();
-    showAlert('Success', 'PDF organized successfully!', 'success', () =>
-      resetState()
+    showAlert(
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:duplicateOrganize.dynamic.6ba6c148c8',
+        'PDF organized successfully!'
+      ),
+      'success',
+      () => resetState()
     );
   } catch (error) {
     console.error('Error saving changes:', error);
     hideLoader();
-    showAlert('Error', 'Failed to save changes.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:duplicateOrganize.dynamic.3523dee9d3',
+        'Failed to save changes.'
+      )
+    );
   }
 }
 

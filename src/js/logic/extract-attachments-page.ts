@@ -1,3 +1,14 @@
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
+
 import { showAlert, showLoader } from '../ui.js';
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { createIcons, icons } from 'lucide';
@@ -75,8 +86,14 @@ worker.onmessage = function (e) {
 
     if (attachments.length === 0) {
       showAlert(
-        'No Attachments',
-        'The PDF file(s) do not contain any attachments to extract.'
+        translate(
+          'tools:extractAttachments.dynamic.99348f2682',
+          'No Attachments'
+        ),
+        translate(
+          'tools:extractAttachments.dynamic.8b078d8f78',
+          'The PDF file(s) do not contain any attachments to extract.'
+        )
       );
       resetState();
       return;
@@ -113,8 +130,12 @@ worker.onmessage = function (e) {
       downloadFile(zipBlob, 'extracted-attachments.zip');
 
       showAlert(
-        'Success',
-        `${attachments.length} attachment(s) extracted successfully!`
+        translate('alert.success', 'Success'),
+        translate(
+          'tools:extractAttachments.dynamic.88c0a4ed05',
+          `${attachments.length} attachment(s) extracted successfully!`,
+          { value0: attachments.length }
+        )
       );
 
       showStatus(
@@ -130,8 +151,14 @@ worker.onmessage = function (e) {
 
     if (errorMessage.includes('No attachments were found')) {
       showAlert(
-        'No Attachments',
-        'The PDF file(s) do not contain any attachments to extract.'
+        translate(
+          'tools:extractAttachments.dynamic.99348f2682',
+          'No Attachments'
+        ),
+        translate(
+          'tools:extractAttachments.dynamic.8b078d8f78',
+          'The PDF file(s) do not contain any attachments to extract.'
+        )
       );
       resetState();
     } else {
@@ -169,7 +196,11 @@ async function updateUI() {
 
     const countSpan = document.createElement('div');
     countSpan.className = 'font-medium text-gray-200 text-sm mb-1';
-    countSpan.textContent = `${pageState.files.length} PDF file(s) selected`;
+    countSpan.textContent = translate(
+      'tools:extractAttachments.dynamic.200c6b856a',
+      `${pageState.files.length} PDF file(s) selected`,
+      { value0: pageState.files.length }
+    );
 
     const sizeSpan = document.createElement('div');
     sizeSpan.className = 'text-xs text-gray-400';
@@ -219,7 +250,12 @@ async function extractAttachments() {
 
   try {
     pageState.files = await batchDecryptIfNeeded(pageState.files);
-    showLoader('Reading files...');
+    showLoader(
+      translate(
+        'tools:extractAttachments.dynamic.95feba5a59',
+        'Reading files...'
+      )
+    );
 
     const fileBuffers: ArrayBuffer[] = [];
     const fileNames: string[] = [];

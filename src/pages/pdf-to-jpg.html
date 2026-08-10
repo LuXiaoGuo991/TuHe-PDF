@@ -211,7 +211,11 @@
         class="bg-gray-800 p-8 rounded-lg flex flex-col items-center gap-4 border border-gray-700 shadow-xl"
       >
         <div class="solid-spinner"></div>
-        <p id="loader-text" class="text-white text-lg font-medium">
+        <p
+          id="loader-text"
+          class="text-white text-lg font-medium"
+          data-i18n="loader.processing"
+        >
           Processing...
         </p>
       </div>
@@ -236,6 +240,7 @@
         <button
           id="alert-ok"
           class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
+          data-i18n="alert.ok"
         >
           OK
         </button>
@@ -258,8 +263,13 @@
             1
           </div>
           <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white mb-1">Upload PDF</h3>
-            <p class="text-gray-400">
+            <h3
+              class="text-lg font-semibold text-white mb-1"
+              data-i18n="tools:splitPdf.hiw1Title"
+            >
+              Upload PDF
+            </h3>
+            <p class="text-gray-400" data-i18n="tools:pdfToJpg.auto.99282aa8d4">
               Select the PDF file you want to convert to images
             </p>
           </div>
@@ -271,10 +281,13 @@
             2
           </div>
           <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white mb-1">
+            <h3
+              class="text-lg font-semibold text-white mb-1"
+              data-i18n="tools:pdfToJpg.auto.97c2e18363"
+            >
               Choose Quality
             </h3>
-            <p class="text-gray-400">
+            <p class="text-gray-400" data-i18n="tools:pdfToJpg.auto.730d7fb0ef">
               Select image quality (Low, Medium, High, Maximum)
             </p>
           </div>
@@ -286,8 +299,13 @@
             3
           </div>
           <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white mb-1">Select Pages</h3>
-            <p class="text-gray-400">
+            <h3
+              class="text-lg font-semibold text-white mb-1"
+              data-i18n="tools:pdfToJpg.auto.1c1f676435"
+            >
+              Select Pages
+            </h3>
+            <p class="text-gray-400" data-i18n="tools:pdfToJpg.auto.49f7808ae9">
               Convert all pages or choose specific pages to extract
             </p>
           </div>
@@ -299,10 +317,13 @@
             4
           </div>
           <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white mb-1">
+            <h3
+              class="text-lg font-semibold text-white mb-1"
+              data-i18n="tools:pdfToJpg.auto.46730049c1"
+            >
               Download Images
             </h3>
-            <p class="text-gray-400">
+            <p class="text-gray-400" data-i18n="tools:pdfToJpg.auto.b0a1e9675f">
               Save JPG images individually or as a ZIP archive
             </p>
           </div>
@@ -323,36 +344,83 @@
           href="pdf-to-png.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Pdf To Png</h3>
-          <p class="text-gray-400 text-sm">Free online pdf to png tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:pdfToJpg.auto.450e35275a"
+          >
+            Pdf To Png
+          </h3>
+          <p
+            class="text-gray-400 text-sm"
+            data-i18n="tools:pdfToJpg.auto.08490723f9"
+          >
+            Free online pdf to png tool
+          </p>
         </a>
         <a
           href="compress-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Compress Pdf</h3>
-          <p class="text-gray-400 text-sm">Free online compress pdf tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:pdfToJpg.auto.ae395b2670"
+          >
+            Compress Pdf
+          </h3>
+          <p
+            class="text-gray-400 text-sm"
+            data-i18n="tools:compressPdf.cardDesc"
+          >
+            Free online compress pdf tool
+          </p>
         </a>
         <a
           href="split-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Split Pdf</h3>
-          <p class="text-gray-400 text-sm">Free online split pdf tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:pdfToJpg.auto.0784d816a9"
+          >
+            Split Pdf
+          </h3>
+          <p class="text-gray-400 text-sm" data-i18n="tools:splitPdf.cardDesc">
+            Free online split pdf tool
+          </p>
         </a>
         <a
           href="pdf-to-webp.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Pdf To Webp</h3>
-          <p class="text-gray-400 text-sm">Free online pdf to webp tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:pdfToJpg.auto.845fd08d7d"
+          >
+            Pdf To Webp
+          </h3>
+          <p
+            class="text-gray-400 text-sm"
+            data-i18n="tools:pdfToJpg.auto.dcec9a996f"
+          >
+            Free online pdf to webp tool
+          </p>
         </a>
         <a
           href="extract-images.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Extract Images</h3>
-          <p class="text-gray-400 text-sm">Free online extract images tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:extractImages.name"
+          >
+            Extract Images
+          </h3>
+          <p
+            class="text-gray-400 text-sm"
+            data-i18n="tools:pdfToJpg.auto.1aca319598"
+          >
+            Free online extract images tool
+          </p>
         </a>
       </div>
     </section>
@@ -373,7 +441,10 @@
             What quality should I choose?
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400">
+          <p
+            class="mt-3 text-gray-400"
+            data-i18n="tools:pdfToJpg.auto.ed7dea03db"
+          >
             Use High or Maximum for print-quality images, Medium for web use, or
             Low to save disk space. Higher quality produces larger file sizes.
           </p>
@@ -385,7 +456,10 @@
             Can I convert specific pages only?
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400">
+          <p
+            class="mt-3 text-gray-400"
+            data-i18n="tools:pdfToJpg.auto.d1d9286b84"
+          >
             Yes! You can choose to convert all pages or select specific pages
             you want as JPG images.
           </p>
@@ -397,7 +471,10 @@
             Are the JPG files compressed?
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400">
+          <p
+            class="mt-3 text-gray-400"
+            data-i18n="tools:pdfToJpg.auto.dbe7c2d813"
+          >
             Yes, JPG is a compressed format. You control the quality level -
             higher quality means less compression and larger files.
           </p>

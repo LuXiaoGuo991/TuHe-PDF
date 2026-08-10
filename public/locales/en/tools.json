@@ -13,7 +13,27 @@
   "convertToPdf": "Convert to PDF",
   "pdfMultiTool": {
     "name": "PDF Multi Tool",
-    "subtitle": "Merge, Split, Organize, Delete, Rotate, Add Blank Pages, Extract and Duplicate in an unified interface."
+    "subtitle": "Merge, Split, Organize, Delete, Rotate, Add Blank Pages, Extract and Duplicate in an unified interface.",
+    "workbenchTitle": "PDF Multi Tool Free Online - Edit & Organize PDFs",
+    "close": "Close",
+    "dynamic": {
+      "1deb501f6b": "Page {{value0}} ",
+      "27b2039e92": "Failed to create PDF.",
+      "c217864925": "PDF downloaded successfully.",
+      "a39aa2fe0f": "Failed to create split PDFs.",
+      "0c4ed9311a": "Downloaded {{value0}} PDF files in a ZIP archive.",
+      "fd05d610d0": "Please upload PDFs first.",
+      "81b6cfd8ca": "No Pages",
+      "be4757b79d": "Please select pages to mark for splitting.",
+      "fc8583604d": "No Selection",
+      "30bdcf0382": "Please select pages to duplicate.",
+      "e4fe6cdcca": "Please select pages to delete.",
+      "27a85af05b": "Please select pages to rotate.",
+      "8a1a350b31": "Failed to insert PDF. The file may be corrupted.",
+      "258deea2b3": "{{value0}} {{value1}}",
+      "81e221e4f3": "{{value0}} {{value1}}.",
+      "b05071e61a": "Repairing {{value0}}..."
+    }
   },
   "mergePdf": {
     "name": "Merge PDF",
@@ -58,7 +78,8 @@
     "rangePlaceholder": "Leave blank for all pages",
     "removeFile": "Remove file",
     "pageLabel": "Page {{page}}",
-    "filePageTitle": "{{name}} (page {{page}})"
+    "filePageTitle": "{{name}} (page {{page}})",
+    "auto": {}
   },
   "splitPdf": {
     "name": "Split PDF",
@@ -124,7 +145,8 @@
     "nTimesWarning": "The PDF has {{total}} pages, which is not evenly divisible by {{n}}. The last PDF will contain {{remainder}} page(s).",
     "nMinError": "N must be at least 1.",
     "noPagesSelected": "No pages were selected for splitting.",
-    "noPdfLoaded": "No PDF document loaded."
+    "noPdfLoaded": "No PDF document loaded.",
+    "auto": {}
   },
   "compressPdf": {
     "name": "Compress PDF",
@@ -180,7 +202,8 @@
     "compressingProgress": "Compressing {{current}}/{{total}}: {{name}}...",
     "batchCompleteMsg": "Compressed {{count}} PDF(s). Total size reduced from {{original}} to {{compressed}} (Saved {{percent}}%).",
     "batchFinishedMsg": "Compressed {{count}} PDF(s). Total size: {{compressed}}.",
-    "errorMsg": "An error occurred during compression. Please try again."
+    "errorMsg": "An error occurred during compression. Please try again.",
+    "auto": {}
   },
   "pdfEditor": {
     "name": "PDF Editor",
@@ -196,7 +219,8 @@
     "loadingEditor": "Loading PDF Editor...",
     "downloadEdited": "Download Edited PDF",
     "downloadFailed": "Failed to download the edited PDF.",
-    "loadFailed": "Failed to load the PDF Editor."
+    "loadFailed": "Failed to load the PDF Editor.",
+    "auto": {}
   },
   "jpgToPdf": {
     "name": "JPG to PDF",
@@ -220,7 +244,8 @@
     "converting": "Converting images to PDF...",
     "createSuccess": "PDF created successfully!",
     "conversionErrorTitle": "Conversion Error",
-    "convertFailed": "Failed to convert images to PDF."
+    "convertFailed": "Failed to convert images to PDF.",
+    "auto": {}
   },
   "signPdf": {
     "name": "Sign PDF",
@@ -242,27 +267,124 @@
     "saveSuccess": "Signed PDF saved successfully!",
     "downloadSuccess": "Signed PDF downloaded successfully!",
     "exportFailedTitle": "Export failed",
-    "exportFailedMsg": "Could not export the signed PDF. Please try again."
+    "exportFailedMsg": "Could not export the signed PDF. Please try again.",
+    "auto": {}
   },
   "cropPdf": {
     "name": "Crop PDF",
-    "subtitle": "Trim the margins of every page in your PDF."
+    "subtitle": "Trim the margins of every page in your PDF.",
+    "invalidFile": "Please select a PDF file.",
+    "loadingPdf": "Loading PDF...",
+    "loadFailed": "Failed to load PDF file.",
+    "renderingPage": "Rendering Page {{page}}...",
+    "renderFailed": "Failed to render page.",
+    "pageInfo": "Page {{current}} of {{total}}",
+    "noCropArea": "No Crop Area",
+    "selectAreaFirst": "Please select an area to crop first.",
+    "selectArea": "Please select an area on at least one page to crop.",
+    "applyingCrop": "Applying crop...",
+    "cropComplete": "Crop complete! Your download has started.",
+    "cropFailed": "An error occurred during cropping.",
+    "processingPage": "Processing page {{current}} of {{total}}...",
+    "auto": {
+      "396dcd0756": "Crop & Download",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf",
+      "27e16676ef": "Previous Page",
+      "5e92f5f19e": "Next Page"
+    },
+    "dynamic": {
+      "8adda31c0e": "{{value0}} • {{value1}}"
+    }
   },
   "extractPages": {
     "name": "Extract Pages",
     "subtitle": "Save a selection of pages as new files.",
-    "cardDesc": "Free online extract pages tool"
+    "cardDesc": "Free online extract pages tool",
+    "auto": {
+      "b0865d31ea": "Extract & Download ZIP",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "fa1284f132": "Failed to extract pages.",
+      "54565c518f": "Extracted {{value0}} page(s) successfully!",
+      "5632ead150": "Extracting pages...",
+      "f2ad1b2d1f": "No valid page numbers found.",
+      "8eaf742272": "Invalid Pages",
+      "82c32efccc": "Please enter page numbers to extract.",
+      "1aa78bee2c": "No Pages",
+      "56a397a4ca": "{{value0}} • {{value1}} pages",
+      "6a04af93b9": "Failed to load PDF file.",
+      "9e33c22c50": "Please select a PDF file."
+    }
   },
   "duplicateOrganize": {
     "name": "Duplicate & Organize",
     "subtitle": "Duplicate, reorder, and delete pages.",
     "saveChanges": "Save Changes",
-    "cardDesc": "Free online organize pdf tool"
+    "cardDesc": "Free online organize pdf tool",
+    "auto": {
+      "f0e46c80c1": "Apply Order",
+      "bb9dede377": "Merge Pdf",
+      "0784d816a9": "Split Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "3523dee9d3": "Failed to save changes.",
+      "6ba6c148c8": "PDF organized successfully!",
+      "671dda51b0": "No valid pages to save.",
+      "b7b2151528": "Building new PDF...",
+      "93889c4f64": "Delete Page",
+      "b1b2a7b600": "Duplicate Page",
+      "1d7a59ce91": "You cannot delete the last page of the document.",
+      "520b80318a": "Cannot Delete",
+      "d370ae8ed8": "{{value0}} • {{value1}} pages",
+      "e5afc36c9b": "Failed to load PDF file.",
+      "25286017ef": "Please select a PDF file.",
+      "5c34a0157f": "Pages have been reordered.",
+      "473466e8f2": "The specified page order is incomplete or contains invalid page numbers. Please ensure you provide a new position for every original page.",
+      "06bf2457c8": "Invalid Page Order",
+      "d6d71e1a8b": "Please ensure all page numbers in the order are unique.",
+      "6e2937ad37": "Duplicate Page Numbers",
+      "9fce12d6c1": "The number of pages specified ({{value0}}) does not match the current number of pages in the document ({{value1}}). Please provide a complete ordering for all pages.",
+      "9188d43dd0": "Incorrect Page Count",
+      "f1ea100a4f": "Please enter positive numbers.",
+      "6ea125d343": "Invalid Page Numbers",
+      "88f1f34594": "Please enter a page order.",
+      "3ee3f4d734": "Invalid Order"
+    }
   },
   "deletePages": {
     "name": "Delete Pages",
     "subtitle": "Remove specific pages from your document.",
-    "cardDesc": "Free online delete pages tool"
+    "cardDesc": "Free online delete pages tool",
+    "auto": {
+      "4b23671761": "Delete Pages & Download",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "d6a8ff2d06": "Failed to delete pages.",
+      "08211bf16d": "Deleted {{value0}} page(s) successfully!",
+      "eca34fbe2d": "Deleting pages...",
+      "964f139a29": "Cannot delete all pages.",
+      "dcec3d0552": "Please select pages to delete.",
+      "36bb3c96b4": "No Pages",
+      "8040cd3ecb": "{{value0}}",
+      "0564a7c930": "{{value0}} • {{value1}} pages",
+      "e3eece8191": "Failed to load PDF file.",
+      "1cf45e725e": "Please select a PDF file."
+    }
   },
   "editBookmarks": {
     "name": "Edit Bookmarks",
@@ -273,7 +395,44 @@
     "jsonFormat": "JSON format",
     "uploadCsvAction": "Click to upload CSV",
     "uploadJsonAction": "Click to upload JSON",
-    "orDragHere": "or drag here"
+    "orDragHere": "or drag here",
+    "auto": {
+      "8d1095d2b2": "PDF Bookmark Editor",
+      "70941407a3": "PDF Viewer",
+      "ca3cddd25b": "Bookmarks",
+      "dab564d809": "Fit",
+      "c1481b1490": "Set Color...",
+      "cc9db3a795": "Red",
+      "7d44bc449c": "Blue",
+      "933bf21afd": "Green",
+      "3526f607bc": "Yellow",
+      "32576f4fed": "Purple",
+      "0b3eb86bd7": "Set Style...",
+      "45e118d056": "Normal",
+      "19e07430ee": "Bold",
+      "1616e2e540": "Italic",
+      "61f6c81dbc": "Bold & Italic",
+      "5f197f4813": "Save PDF with Bookmarks",
+      "800c985bb1": "Extract Existing Bookmarks",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf",
+      "87af1da361": "Zoom Out",
+      "e59ac86a75": "Zoom In",
+      "388a768157": "Search bookmarks...",
+      "ae909813a0": "Bookmark title..."
+    },
+    "fitToWidth": "Fit to Width",
+    "dynamic": {
+      "80825a5a20": "Delete",
+      "4af82fdf15": "Edit",
+      "01df70fb24": "Add child",
+      "b409ca64f8": "{{value0}}%",
+      "b0765ec34b": "Page {{value0}} / {{value1}}",
+      "726081a2a6": "X: {{value0}}, Y: {{value1}} "
+    }
   },
   "tableOfContents": {
     "name": "Table of Contents",
@@ -289,11 +448,53 @@
     "errorReadingFileWithMessage": "Error reading file: {{message}}",
     "successGeneratedDownloadStarted": "Table of contents generated successfully! Download started.",
     "workerErrorWithMessage": "Error: {{message}}",
-    "workerErrorOccurred": "Worker error occurred. Check console for details."
+    "workerErrorOccurred": "Worker error occurred. Check console for details.",
+    "auto": {
+      "5ada87ccce": "Times Roman",
+      "eeee58d9fc": "Times Bold",
+      "f2e4df62b8": "Times Italic",
+      "8fc4438a6f": "Times Bold Italic",
+      "82c4f4c48d": "Helvetica",
+      "7b6c0d5051": "Helvetica Bold",
+      "eeb42827a5": "Helvetica Oblique",
+      "a53910dd92": "Helvetica Bold Oblique",
+      "be0b0bab55": "Courier",
+      "6452f5bb7f": "Courier Bold",
+      "02971ba483": "Courier Oblique",
+      "7aa242cf61": "Courier Bold Oblique",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    }
   },
   "pageNumbers": {
     "name": "Page Numbers",
-    "subtitle": "Insert page numbers into your document."
+    "subtitle": "Insert page numbers into your document.",
+    "auto": {
+      "5f27939446": "Bottom Center",
+      "922e100333": "Bottom Left",
+      "45c0e2551b": "Bottom Right",
+      "fc1405ade7": "Top Center",
+      "589ad2aaca": "Top Left",
+      "d0fa5ce893": "Top Right",
+      "4e32f5fc54": "Add Page Numbers",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "9f528540a0": "Could not add page numbers.",
+      "8616021b4d": "Page numbers added successfully!",
+      "2aae7ec78b": "Adding page numbers...",
+      "c1a36bf7c8": "Please upload a PDF file first.",
+      "b20dee6fba": "{{value0}} • {{value1}} pages",
+      "1111bc148d": "Failed to load PDF file.",
+      "26e6ad72a2": "Please upload a valid PDF file."
+    }
   },
   "addPageLabels": {
     "name": "Add Page Labels",
@@ -352,25 +553,150 @@
       "LowercaseLetters": "Lowercase Letters",
       "UppercaseLetters": "Uppercase Letters",
       "NoLabelPrefixOnly": "No Label Prefix Only"
-    }
+    },
+    "auto": {}
   },
   "batesNumbering": {
     "name": "Bates Numbering",
-    "subtitle": "Add sequential Bates numbers across one or more PDF files."
+    "subtitle": "Add sequential Bates numbers across one or more PDF files.",
+    "auto": {
+      "86547d2bf5": "PDF files (multiple supported)",
+      "fdbc696c14": "Exhibit 1 Case XYZ 000001 Page 1",
+      "874ac39d02": "Exhibit 1 Case XYZ 00001 Page 1",
+      "b8f775564e": "Exhibit 1 Case XYZ 0001 Page 1",
+      "f31e67ca19": "Exhibit 1 Case XYZ 001 Page 1",
+      "cca30d3a4c": "Exhibit 1 Case XYZ 1 Page 1",
+      "97d7b1976f": "Exhibit 1 Case XYZ 000001",
+      "e2f8aba40f": "Exhibit 1 Case XYZ 00001",
+      "dad53672d2": "Exhibit 1 Case XYZ 0001",
+      "e414540e50": "Exhibit 1 Case XYZ 001",
+      "e562b7ae50": "Exhibit 1 Case XYZ 1",
+      "5c96116147": "Case XYZ 000001",
+      "8bb5ad9ab9": "Case XYZ 00001",
+      "63e7125b25": "Case XYZ 0001",
+      "15aaec8e63": "Case XYZ 001",
+      "085c5256e5": "Case XYZ 1",
+      "aaf8af8fa1": "Custom style (other)",
+      "efbe72d06d": "Placeholders: [BATES] [PAGE] [FILE] [FILENAME]",
+      "66c052210a": "6 digits (000001)",
+      "c88cc1389f": "5 digits (00001)",
+      "6e8785cccb": "4 digits (0001)",
+      "2196d30a84": "3 digits (001)",
+      "cd9f04ae08": "No padding (1)",
+      "0290d5f22b": "Header Center",
+      "6900b082bf": "Header Left",
+      "85feb1fe2e": "Header Right",
+      "1d9fbf6bca": "Footer Center",
+      "e8b0714201": "Footer Left",
+      "8e0d9af15b": "Footer Right",
+      "82c4f4c48d": "Helvetica",
+      "5843c57155": "Times New Roman",
+      "be0b0bab55": "Courier",
+      "86d578373a": "Apply Bates Numbers",
+      "85a397f017": "Upload one or more PDF files. Drag to reorder for multi-file sequencing.",
+      "6ee17b4f2c": "Configure Style",
+      "f42d06ab75": "Choose a preset or create a custom template with placeholders like [BATES], [PAGE], [FILE].",
+      "0bf8e42298": "Get your bates-stamped PDFs instantly. Multiple files are delivered as a ZIP.",
+      "9f3f0f105f": "Add page numbers to PDFs",
+      "bd7baa8910": "Add text to page headers and footers",
+      "c746838f0d": "Watermark your PDF documents",
+      "02577a621c": "Combine multiple PDFs",
+      "684e0fea3c": "Organize PDF",
+      "da8df80df7": "Reorder and organize pages",
+      "2ea17b7486": "Bates numbering is a method of indexing legal documents for easy identification and retrieval. Each page receives a unique sequential number, often combined with a prefix or suffix.",
+      "eb282083cd": "Yes! Upload multiple PDFs and the bates numbers will continue sequentially across all files. Drag files to reorder them.",
+      "7dda5c0d61": "All processing happens entirely in your browser. Your files never leave your device."
+    },
+    "dynamic": {
+      "deed158f16": "Failed to apply Bates numbers.",
+      "c8fef9d144": "Bates numbers applied successfully! ({{value0}} through {{value1}})",
+      "a13a077a7e": "Applying Bates numbers...",
+      "41c258bb74": "Please upload at least one PDF file.",
+      "c29f451ac2": "{{value0}} file{{value1}} • {{value2}} total pages",
+      "b9063ddbd2": "{{value0}} • {{value1}} pages",
+      "c49b7cb420": "Failed to load one or more PDF files.",
+      "705817c3d7": "Please upload valid PDF files.",
+      "95189fa63d": "Loading PDFs..."
+    }
   },
   "addWatermark": {
     "name": "Add Watermark",
     "subtitle": "Stamp text or an image over your PDF pages.",
     "applyToAllPages": "Apply to all pages",
-    "cardDesc": "Free online add watermark tool"
+    "cardDesc": "Free online add watermark tool",
+    "auto": {
+      "1062570190": "Change File",
+      "50e19fda0d": "Image",
+      "ca593330ee": "Use \"all\" or specify pages, e.g. 1-3, 5, 7-9",
+      "589ad2aaca": "Top Left",
+      "cae0435c41": "Top",
+      "d0fa5ce893": "Top Right",
+      "a2391118c8": "Center",
+      "922e100333": "Bottom Left",
+      "cce7f2f2f0": "Bottom",
+      "45c0e2551b": "Bottom Right",
+      "b0b29a0e17": "Bakes the watermark into page pixels, making it tamper-resistant. Text will no longer be selectable.",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf",
+      "30dc22c2a2": "all or 1-3, 5, 7-9",
+      "84c9cc88e4": "CONFIDENTIAL"
+    },
+    "dynamic": {
+      "3201336b21": "Watermark added successfully!",
+      "ccc968f57b": "Flattening page {{value0}} of {{value1}}...",
+      "d24c2224a2": "Adding watermark...",
+      "1de34d3cec": "Please upload a PDF file first.",
+      "12062dabd4": "{{value0}} • {{value1}} pages",
+      "90d503c4bc": "Failed to load PDF file.",
+      "7180e53d65": "{{value0}} ({{value1}}, {{value2}} pages)",
+      "616dc4c0fd": "Please upload a valid PDF file."
+    }
   },
   "headerFooter": {
     "name": "Header & Footer",
-    "subtitle": "Add text to the top and bottom of pages."
+    "subtitle": "Add text to the top and bottom of pages.",
+    "auto": {
+      "7c2dc2e6b3": "Formatting Options",
+      "c2a8c3bc69": "Add Header & Footer",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "0edfb3d28a": "Header & Footer added successfully!",
+      "5426558064": "Adding header & footer...",
+      "04c0237095": "Please upload a PDF file first.",
+      "5a4117e257": "{{value0}} • {{value1}} pages",
+      "6ad0775d4d": "Failed to load PDF file.",
+      "cd24bc9f91": "Please upload a valid PDF file."
+    }
   },
   "invertColors": {
     "name": "Invert Colors",
-    "subtitle": "Create a \"dark mode\" version of your PDF."
+    "subtitle": "Create a \"dark mode\" version of your PDF.",
+    "auto": {
+      "0667a3e07a": "Click the button below to invert all colors in your PDF.",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "64d62973ef": "Could not invert PDF colors.",
+      "74f7d5dc50": "Colors inverted successfully!",
+      "8883ccb83e": "Processing page {{value0}} of {{value1}}...",
+      "2ba1c0a28f": "Inverting PDF colors...",
+      "03ab4b9cd0": "Please upload a PDF file first.",
+      "25238f70eb": "{{value0}} • {{value1}} pages",
+      "9cf793b9aa": "Failed to load PDF file.",
+      "68cde6dc8c": "Please upload a valid PDF file."
+    }
   },
   "scannerEffect": {
     "name": "Scanner Effect",
@@ -387,7 +713,29 @@
     "noise": "Noise",
     "yellowish": "Yellowish",
     "resolution": "Resolution",
-    "processButton": "Apply Scanner Effect"
+    "processButton": "Apply Scanner Effect",
+    "auto": {
+      "5185d4cfaa": "Click or drag and drop your PDF file to begin",
+      "bab0f3ae67": "Adjust Settings",
+      "892b92dcd8": "Customize the scanner effect with real-time preview",
+      "cd020bad86": "Save your scanned-looking PDF instantly",
+      "7df28a4e05": "Free online greyscale tool",
+      "fc3df6590d": "Free online invert colors tool",
+      "fe17a5bb0f": "Edit PDF"
+    },
+    "dynamic": {
+      "a539e67250": "Failed to load PDF for preview.",
+      "97d54a425f": "Loading preview...",
+      "41ae43a300": "Please upload a PDF file.",
+      "9e7466ea5e": "Failed to apply scanner effect. The file might be corrupted.",
+      "3b82b6cde5": "Scanner effect applied successfully!",
+      "260ba5b09a": "Processing page {{value0}} of {{value1}}...",
+      "f3013a6f9a": "Applying scanner effect...",
+      "774b763d99": "Please upload a PDF file first.",
+      "7bf2857a6a": "No File",
+      "758bbe8260": "{{value0}} • {{value1}} {{value2}}",
+      "7e69040d7a": "{{value0}} • {{value1}}"
+    }
   },
   "adjustColors": {
     "name": "Adjust Colors",
@@ -401,15 +749,72 @@
     "tint": "Tint",
     "gamma": "Gamma",
     "sepia": "Sepia",
-    "processButton": "Apply Color Adjustments"
+    "processButton": "Apply Color Adjustments",
+    "auto": {
+      "5185d4cfaa": "Click or drag and drop your PDF file to begin",
+      "e61e46124c": "Fine-tune color settings with real-time preview",
+      "1dd8829f05": "Save your color-adjusted PDF instantly",
+      "7df28a4e05": "Free online greyscale tool",
+      "fc3df6590d": "Free online invert colors tool",
+      "89a12214ae": "Make PDFs look scanned",
+      "8e56f3377f": "Change PDF background",
+      "0bac357f85": "Change PDF text color"
+    },
+    "dynamic": {
+      "a60905da92": "Failed to load PDF for preview.",
+      "307805124c": "Loading preview...",
+      "c30273623f": "Please upload a PDF file.",
+      "92be44edf7": "Failed to apply color adjustments. The file might be corrupted.",
+      "e3e1b023cc": "Color adjustments applied successfully!",
+      "f289e6333e": "Processing page {{value0}} of {{value1}}...",
+      "2aa3719692": "Applying color adjustments...",
+      "728e3eb370": "Please upload a PDF file first.",
+      "c1d991c32d": "No File",
+      "3eb296a549": "{{value0}} • {{value1}} {{value2}}",
+      "6b0fedbc0a": "{{value0}} • {{value1}}"
+    }
   },
   "backgroundColor": {
     "name": "Background Color",
-    "subtitle": "Change the background color of your PDF."
+    "subtitle": "Change the background color of your PDF.",
+    "auto": {
+      "bb1c84aa80": "Change Background Color",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "8fc0565b63": "Could not change the background color.",
+      "dfa29c075b": "Background color changed successfully!",
+      "526d3e3d75": "Changing background color...",
+      "20fb18bbc1": "Please upload a PDF file first.",
+      "9a4711e8a0": "{{value0}} • {{value1}} pages",
+      "f70d9e0d74": "Failed to load PDF file.",
+      "b9cf61f80d": "Please upload a valid PDF file."
+    }
   },
   "changeTextColor": {
     "name": "Change Text Color",
-    "subtitle": "Change the color of text in your PDF."
+    "subtitle": "Change the color of text in your PDF.",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "fca2960c93": "Could not change text color.",
+      "cd18866f65": "Text color changed successfully!",
+      "f5a92a1c7b": "Processing page {{value0}} of {{value1}}...",
+      "53e68d6a7d": "Changing text color...",
+      "8ad206dd8d": "Please upload a PDF file first.",
+      "1b2ec4b858": "{{value0}} • {{value1}} pages",
+      "0e00f36bee": "Failed to load PDF file.",
+      "0602b07098": "Please upload a valid PDF file."
+    }
   },
   "addStamps": {
     "name": "Add Stamps",
@@ -417,57 +822,274 @@
     "usernameLabel": "Stamp Username",
     "usernamePlaceholder": "Enter your name (for stamps)",
     "usernameHint": "This name will appear on stamps you create.",
-    "saveButton": "Save Stamped PDF"
+    "saveButton": "Save Stamped PDF",
+    "auto": {
+      "9ef4283c26": "Stamp Editor",
+      "b4ec78de54": "Use the toolbar's image stamp tool to place stamps.",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "612ed3ad3b": "Remove file"
+    }
   },
   "removeAnnotations": {
     "name": "Remove Annotations",
-    "subtitle": "Strip comments, highlights, and links."
+    "subtitle": "Strip comments, highlights, and links.",
+    "auto": {
+      "5a534832e1": "Click the button below to remove all annotations from your PDF.",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "880d584cbf": "Could not remove annotations.",
+      "7abc526444": "Annotations removed successfully!",
+      "89b910e2a6": "Removing annotations...",
+      "269b7169f3": "Please upload a PDF file first.",
+      "2e1c623bdc": "Failed to load PDF file.",
+      "b14673b883": "Please upload a valid PDF file."
+    }
   },
   "pdfFormFiller": {
     "name": "PDF Form Filler",
     "subtitle": "Fill in forms directly in the browser. Also supports XFA forms.",
     "uploadHint": "Upload a PDF with form fields. Fill them directly in the viewer below, then click the button to save and download the filled form. Also supports XFA forms.",
     "xfaNoteTitle": "Note on XFA Forms:",
-    "xfaNoteDescription": "XFA (XML Forms Architecture) is a legacy format that's only supported by certain PDF viewers like BentoPDF and Firefox. If you open an XFA PDF in other software and see blank pages or no form fields, it means that viewer doesn't support XFA. To view and fill XFA forms properly, use Firefox or BentoPDF's Form Filler."
+    "xfaNoteDescription": "XFA (XML Forms Architecture) is a legacy format that's only supported by certain PDF viewers like BentoPDF and Firefox. If you open an XFA PDF in other software and see blank pages or no form fields, it means that viewer doesn't support XFA. To view and fill XFA forms properly, use Firefox or BentoPDF's Form Filler.",
+    "auto": {
+      "f366a13291": "Save & Download Filled Form",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "2043121e88": "Cannot access viewer controls. Please use the Download button in the PDF viewer toolbar above.",
+      "b81319bcb7": "Download",
+      "9ac2d61ef5": "Please use the Download button in the PDF viewer toolbar above.",
+      "6244f7f390": "Please wait for the form to finish loading.",
+      "004d081dda": "Viewer not ready",
+      "b8ec08583a": "Failed to load PDF form viewer.",
+      "c8390ba95f": "Loading PDF form...",
+      "f6179b879d": "Failed to load PDF file.",
+      "ffef0959f2": "Please upload a valid PDF file.",
+      "e4f9662450": "Remove file",
+      "50ecff21e2": ""
+    }
   },
   "createPdfForm": {
     "name": "Create PDF Form",
     "subtitle": "Create fillable PDF forms with drag-and-drop text fields.",
     "orSeparator": "OR",
-    "createBlankPdf": "Create Blank PDF"
+    "createBlankPdf": "Create Blank PDF",
+    "auto": {
+      "ea2efedcab": "Letter (8.5\" × 11\")",
+      "5e4843a8b8": "Legal (8.5\" × 14\")",
+      "0fd10bc20a": "Tabloid (11\" × 17\")",
+      "081ae3fdc4": "Custom",
+      "9c22cd7194": "1 inch = 72 points",
+      "1d581357bc": "Start Creating",
+      "06f714b328": "Select a field to edit properties",
+      "84a5be2540": "Press Delete to remove selected field",
+      "7fef54167c": "Add Page",
+      "1d66c3d075": "Checkbox",
+      "b11bf19e3f": "Radio",
+      "fc2d12b944": "Dropdown",
+      "a1fffaaafb": "List",
+      "794145f030": "Button",
+      "2f32be1dc7": "Signature",
+      "eb9a4bc1c0": "Date",
+      "50e19fda0d": "Image",
+      "8e54dc5331": "Barcode",
+      "fd37c215ff": "Download PDF Form",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf",
+      "bccc6f1f5c": "An error occurred.",
+      "605a6e91fb": "Toggle Grid"
+    }
   },
   "removeBlankPages": {
     "name": "Remove Blank Pages",
     "subtitle": "Automatically detect and delete blank pages.",
-    "sensitivityHint": "Higher = stricter, only purely blank pages. Lower = allows pages with some content."
+    "sensitivityHint": "Higher = stricter, only purely blank pages. Lower = allows pages with some content.",
+    "auto": {
+      "4dfebfa6fa": "Detect Blank Pages",
+      "39d804bb8d": "Detected Blank Pages",
+      "9c2895adcc": "Remove Selected Blank Pages",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "5b1965e07d": "Could not remove blank pages.",
+      "5da9c11a95": "Removed {{value0}} blank page(s) successfully!",
+      "13bcc97569": "Removing {{value0}} blank page(s)...",
+      "de578e3bf9": "No pages selected for removal.",
+      "bf7c34b082": "Info",
+      "f55d42e22e": "Please upload a PDF first.",
+      "7803f683cb": "Found {{value0}} blank page(s). Click on a page to deselect it.",
+      "b44f05496c": "Could not detect blank pages.",
+      "33a372a610": "No blank pages detected in this PDF.",
+      "cf7c265e27": "Detecting blank pages...",
+      "2405929a27": "Failed to load PDF file.",
+      "96820f89e0": "Please upload a valid PDF file.",
+      "34d15e8ab1": "80"
+    }
   },
   "imageToPdf": {
     "name": "Images to PDF",
-    "subtitle": "Convert JPG, PNG, BMP, GIF, TIFF, PNM, PGM, PBM, PPM, PAM, JXR, JPX, JP2, PSD, SVG, HEIC, WebP to PDF."
+    "subtitle": "Convert JPG, PNG, BMP, GIF, TIFF, PNM, PGM, PBM, PPM, PAM, JXR, JPX, JP2, PSD, SVG, HEIC, WebP to PDF.",
+    "auto": {
+      "d148e69606": "JPG, PNG, BMP, GIF, TIFF, PNM, PGM, PBM, PPM, PAM, JXR, JPX, JP2, PSD, SVG, HEIC, WebP",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "1da1ea7fe4": "Conversion Error",
+      "73b1f127c0": "PDF created successfully!",
+      "f90007716a": "Converting images to PDF...",
+      "c6b0ac6a2c": "Loading engine...",
+      "b387c08ee8": "Processing images...",
+      "0e52b164d0": "Please select at least one image file.",
+      "7cef803f5f": "({{value0}})",
+      "011eb5b704": "Some files were skipped. Only supported image formats are allowed.",
+      "bfeaca68f4": "Invalid Files"
+    }
   },
   "pngToPdf": {
     "name": "PNG to PDF",
-    "subtitle": "Create a PDF from one or more PNG images."
+    "subtitle": "Create a PDF from one or more PNG images.",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "840d3f5430": "Conversion Error",
+      "03d2a214ed": "PDF created successfully!",
+      "8629368499": "Creating PDF from JPGs...",
+      "8d883dffcb": "Please select at least one JPG file.",
+      "06ee098f08": "({{value0}})",
+      "31345167f1": "Some files were skipped. Only PNG images are allowed.",
+      "9531a0069c": "Invalid Files"
+    }
   },
   "webpToPdf": {
     "name": "WebP to PDF",
-    "subtitle": "Create a PDF from one or more WebP images."
+    "subtitle": "Create a PDF from one or more WebP images.",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "0391c45b8e": "Conversion Error",
+      "bc9ed2df69": "PDF created successfully!",
+      "271986fc7a": "Creating PDF from JPGs...",
+      "78ccdee22c": "Please select at least one JPG file.",
+      "92f7b39102": "({{value0}})",
+      "dac29db7dd": "Some files were skipped. Only WebP images are allowed.",
+      "3c6e0f53ba": "Invalid Files"
+    }
   },
   "svgToPdf": {
     "name": "SVG to PDF",
-    "subtitle": "Create a PDF from one or more SVG images."
+    "subtitle": "Create a PDF from one or more SVG images.",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "3221b49d76": "Conversion Error",
+      "8e2c99e129": "PDF created successfully!",
+      "22c5687245": "Creating PDF from SVG files...",
+      "b1e501f07a": "Please select at least one SVG file.",
+      "f71cb9d2cc": "({{value0}})",
+      "a991f2ba33": "Some files were skipped. Only SVG graphics are allowed.",
+      "0aaa760603": "Invalid Files"
+    }
   },
   "bmpToPdf": {
     "name": "BMP to PDF",
-    "subtitle": "Create a PDF from one or more BMP images."
+    "subtitle": "Create a PDF from one or more BMP images.",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "2e2f5eaf1e": "Some files were skipped. Only BMP files are allowed.",
+      "5ae7611bcf": "Invalid Files",
+      "357b5c17a4": "Failed to convert BMP to PDF. One of the files may be invalid.",
+      "1641d9aabe": "PDF created successfully!",
+      "363556b52f": "Converting BMP to PDF...",
+      "5f18ec5ebc": "Please select at least one BMP file.",
+      "2baabe2097": "({{value0}})"
+    }
   },
   "heicToPdf": {
     "name": "HEIC to PDF",
-    "subtitle": "Create a PDF from one or more HEIC images."
+    "subtitle": "Create a PDF from one or more HEIC images.",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "a042ab46bb": "Some files were skipped. Only HEIC/HEIF files are allowed.",
+      "d48f8cda5c": "Invalid Files",
+      "b114f617f1": "Failed to convert HEIC to PDF. One of the files may be invalid.",
+      "14f5decb21": "PDF created successfully!",
+      "858af38004": "Converting HEIC to PDF...",
+      "5088e5e744": "Please select at least one HEIC file.",
+      "37dc2dff42": "({{value0}})"
+    }
   },
   "tiffToPdf": {
     "name": "TIFF to PDF",
-    "subtitle": "Create a PDF from one or more TIFF images."
+    "subtitle": "Create a PDF from one or more TIFF images.",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "f09c06a547": "Some files were skipped. Only TIFF files are allowed.",
+      "5e8d4238f0": "Invalid Files",
+      "af648ea52a": "Failed to convert TIFF to PDF. One of the files may be invalid.",
+      "67c9b92207": "PDF created successfully!",
+      "17f3b48e45": "Converting TIFF to PDF...",
+      "bcb176a1ed": "Please select at least one TIFF file.",
+      "64f495d84c": "({{value0}})"
+    }
   },
   "textToPdf": {
     "name": "Text to PDF",
@@ -480,7 +1102,35 @@
     "textColor": "Text Color",
     "pageSize": "Page Size",
     "rtlAutoDetectNote": "RTL languages (Arabic, Urdu, Persian, etc.) are automatically detected and text direction is adjusted.",
-    "createButton": "Create PDF"
+    "createButton": "Create PDF",
+    "auto": {
+      "fa7dc604ca": "Helvetica (Sans-serif)",
+      "8b08d9a072": "Tiro (Serif)",
+      "1e1e1f58c8": "Courier (Monospace)",
+      "732ccafb1a": "Times (Serif)",
+      "759c558b3f": "Letter (8.5 × 11 in)",
+      "3babc3a9d8": "Legal (8.5 × 14 in)",
+      "16aff5ecd4": "Tabloid (11 × 17 in)",
+      "66b11520b9": "Ledger (17 × 11 in)",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf",
+      "c501f2d2c6": "Start typing here..."
+    },
+    "dynamic": {
+      "699294da89": "Some files were skipped. Only text files are allowed.",
+      "abbb1a76aa": "Invalid Files",
+      "b9efcb382b": "Failed to convert text to PDF. {{value0}}",
+      "8507dd5a0d": "Text converted to PDF successfully!",
+      "c08ee56ff6": "Creating PDF...",
+      "28698eca46": "Loading engine...",
+      "1497f83234": "Please enter some text to convert.",
+      "77f8701633": "No Text",
+      "331d64523c": "Please select at least one text file.",
+      "8c9a7c9a67": "({{value0}})"
+    }
   },
   "jsonToPdf": {
     "name": "JSON to PDF",
@@ -499,6 +1149,13 @@
       "zipError": "Error creating ZIP: {{message}}",
       "workerError": "Worker Error: {{message}}",
       "getStarted": "Select JSON files to get started"
+    },
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
     }
   },
   "pdfToJpg": {
@@ -517,7 +1174,32 @@
     "loader": {
       "converting": "Converting to JPG..."
     },
-    "cardDesc": "Free online pdf to jpg tool"
+    "cardDesc": "Free online pdf to jpg tool",
+    "auto": {
+      "99282aa8d4": "Select the PDF file you want to convert to images",
+      "97c2e18363": "Choose Quality",
+      "730d7fb0ef": "Select image quality (Low, Medium, High, Maximum)",
+      "1c1f676435": "Select Pages",
+      "49f7808ae9": "Convert all pages or choose specific pages to extract",
+      "46730049c1": "Download Images",
+      "b0a1e9675f": "Save JPG images individually or as a ZIP archive",
+      "450e35275a": "Pdf To Png",
+      "08490723f9": "Free online pdf to png tool",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "845fd08d7d": "Pdf To Webp",
+      "dcec9a996f": "Free online pdf to webp tool",
+      "1aca319598": "Free online extract images tool",
+      "ed7dea03db": "Use High or Maximum for print-quality images, Medium for web use, or Low to save disk space. Higher quality produces larger file sizes.",
+      "d1d9286b84": "Yes! You can choose to convert all pages or select specific pages you want as JPG images.",
+      "dbe7c2d813": "Yes, JPG is a compressed format. You control the quality level - higher quality means less compression and larger files."
+    },
+    "dynamic": {
+      "36d422fdc3": "{{value0}}%",
+      "71ef9ac6e1": "90%",
+      "67bab51c34": "{{value0}} • {{value1}} {{value2}}",
+      "0b79ba5389": "{{value0}} • {{value1}}"
+    }
   },
   "pdfToPng": {
     "name": "PDF to PNG",
@@ -534,6 +1216,19 @@
     },
     "loader": {
       "converting": "Converting to PNG..."
+    },
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "da975953a6": "{{value0}}x",
+      "8c487e8a5e": "2.0x",
+      "5866da68d4": "{{value0}} • {{value1}} {{value2}}",
+      "dd75ee4288": "{{value0}} • {{value1}}"
     }
   },
   "pdfToWebp": {
@@ -551,6 +1246,19 @@
     },
     "loader": {
       "converting": "Converting to WebP..."
+    },
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "d019d14719": "{{value0}}%",
+      "5ac64b1153": "85%",
+      "f68d703739": "{{value0}} • {{value1}} {{value2}}",
+      "f9c3ea897f": "{{value0}} • {{value1}}"
     }
   },
   "pdfToBmp": {
@@ -566,6 +1274,17 @@
     },
     "loader": {
       "converting": "Converting to BMP..."
+    },
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "9f87fe7348": "{{value0}} • {{value1}} {{value2}}",
+      "25e694ba1c": "{{value0}} • {{value1}}"
     }
   },
   "pdfToTiff": {
@@ -586,6 +1305,27 @@
       "noFileExplanation": "Please upload a PDF file first.",
       "conversionSuccess": "PDF converted to TIFFs successfully!",
       "conversionError": "Failed to convert PDF to TIFF. The file might be corrupted."
+    },
+    "auto": {
+      "786b211bd4": "LZW (Lossless)",
+      "bcf697dca9": "Deflate / ZIP (Lossless)",
+      "8c5ef95e67": "CCITT Group 4 (B&W documents)",
+      "d96f72b8a2": "JPEG (Lossy)",
+      "5655e65ce9": "PackBits",
+      "7684d1b63b": "None (Uncompressed)",
+      "1e96ffbeed": "Color (RGB)",
+      "f918478213": "Greyscale",
+      "70847adf1c": "Black & White (1-bit)",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "c37ab99d32": "Failed to load the image processor. Please ensure your browser supports SharedArrayBuffer (requires HTTPS or localhost).",
+      "2d62cb9c86": "{{value0}} • {{value1}} {{value2}}",
+      "7caf602278": "{{value0}} • {{value1}}"
     }
   },
   "pdfToCbz": {
@@ -616,11 +1356,54 @@
       "noFileExplanation": "Please upload a PDF file first.",
       "conversionSuccess": "PDF converted to CBZ successfully!",
       "conversionError": "Failed to convert PDF to CBZ. The file might be corrupted."
+    },
+    "auto": {
+      "a45885aac5": "JPEG",
+      "70fe60b7df": "PNG",
+      "6fa39ac0c7": "WebP",
+      "e0ac968345": "Select the PDF you want to convert to a comic book archive",
+      "2613d80c87": "Choose Settings",
+      "dd048171e1": "Pick image format, quality, and optional metadata",
+      "f7e912364d": "Download CBZ",
+      "3adeac813f": "Get your .cbz file ready for any comic book reader",
+      "7649792e5b": "Convert PDF pages to JPG images",
+      "5e20d6c233": "Convert PDF pages to PNG images",
+      "5f4f59edfd": "Convert PDF pages to TIFF images",
+      "ab60d41860": "Extract all images from a PDF",
+      "30cd757363": "CBZ (Comic Book ZIP) is a popular format for digital comics and manga. It's simply a ZIP archive containing page images, supported by most comic book readers like Komga, Kavita, and CDisplayEx.",
+      "f8ce03e022": "JPEG is best for color comics (smaller files). PNG is ideal for black-and-white manga (lossless quality). WebP offers the best compression but may not work in older readers.",
+      "b48f60aa47": "ComicInfo.xml is a metadata file embedded in the CBZ that stores information like title, author, and reading direction. Comic library managers like Komga and Kavita use it to organize your collection.",
+      "8c2951fccb": "Auto-detected from filename",
+      "97d4fdb568": "Action, Adventure, Sci-Fi"
+    },
+    "dynamic": {
+      "3e224c0f45": "{{value0}}x",
+      "c58c3fe79a": "{{value0}}%",
+      "982f70cf6e": "{{value0}} • {{value1}} {{value2}}",
+      "dab1c2d482": "{{value0}} • {{value1}}"
     }
   },
   "pdfToGreyscale": {
     "name": "PDF to Greyscale",
-    "subtitle": "Convert all colors to black and white."
+    "subtitle": "Convert all colors to black and white.",
+    "auto": {
+      "91581128c3": "Convert to Greyscale",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "a8d626a999": "Please upload a PDF file.",
+      "cd8601b331": "Failed to convert PDF to greyscale. The file might be corrupted.",
+      "2969af6c0d": "PDF converted to greyscale successfully!",
+      "029c0cd7cc": "Converting to greyscale...",
+      "4a35f197d6": "Please upload a PDF file first.",
+      "47c2241964": "No File",
+      "1aa9a280e2": "{{value0}} • {{value1}} {{value2}}",
+      "6c08c2bcda": "{{value0}} • {{value1}}"
+    }
   },
   "pdfToJson": {
     "name": "PDF to JSON",
@@ -638,6 +1421,13 @@
       "zipError": "Error creating ZIP: {{message}}",
       "workerError": "Worker Error: {{message}}",
       "getStarted": "Select PDF files to get started"
+    },
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
     }
   },
   "ocrPdf": {
@@ -692,66 +1482,372 @@
     "characterFilteringLabel": "Character Filtering:",
     "characterFilteringDescription": "Use whitelists to filter out unwanted characters and improve accuracy for specific document types (invoices, forms, etc.).",
     "multiLanguageSupportLabel": "Multi-language Support:",
-    "multiLanguageSupportDescription": "Select multiple languages for documents containing mixed language content."
+    "multiLanguageSupportDescription": "Select multiple languages for documents containing mixed language content.",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "544984faf5": ""
+    }
   },
   "alternateMerge": {
     "name": "Alternate & Mix Pages",
     "subtitle": "Merge PDFs by alternating pages from each PDF. Preserves Bookmarks.",
     "retainPageLabels": "Keep original page labels from each file",
-    "retainPageLabelsHint": "Off (default): the merged PDF uses natural page numbering 1–N. On: each file's original page labels are preserved (may produce duplicate labels)."
+    "retainPageLabelsHint": "Off (default): the merged PDF uses natural page numbering 1–N. On: each file's original page labels are preserved (may produce duplicate labels).",
+    "auto": {
+      "4c7db09138": "Files Order",
+      "c5fca489f5": "Drag to reorder. Pages will be interleaved in this order.",
+      "809767c381": "Mix Pages",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "109c183332": "PDFs have been mixed successfully!",
+      "c9aa0cf1a8": "At least two valid PDFs are required.",
+      "8d708e4e13": "Alternating and mixing pages...",
+      "3c851e26bd": "Please upload at least two PDF files to alternate and mix.",
+      "7184f92fa6": "Not Enough Files",
+      "68e389ea42": "Failed to load one or more PDF files.",
+      "e8c65343b7": "{{value0}} • {{value1}} pages",
+      "ca820f834d": "Loading PDF files...",
+      "4ed44782a4": "{{value0}} PDF files selected"
+    }
   },
   "addAttachments": {
     "name": "Add Attachments",
-    "subtitle": "Embed one or more files into your PDF."
+    "subtitle": "Embed one or more files into your PDF.",
+    "auto": {
+      "e8cb193e4b": "Select Files to Attach",
+      "6db1c59993": "Click or drop files to attach",
+      "479b61ff56": "Any file type",
+      "f9dca904bf": "Attachment Level",
+      "978be941ab": "Document Level",
+      "4c355531b8": "Page Level",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "347981572d": "Failed to attach files: {{value0}}",
+      "f95aaa0707": "Attaching files to PDF...",
+      "086438607c": "Reading {{value0}} ({{value1}}/{{value2}})...",
+      "c42168707d": "Embedding files into PDF...",
+      "17dfbec9d9": "Please specify a page range for page-level attachments.",
+      "9b8eee5d44": "Please select at least one file to attach.",
+      "2a84f91d07": "Please upload a PDF first.",
+      "5af4d6db9e": "Failed to load PDF file.",
+      "97300a736c": "{{value0}} • {{value1}} pages",
+      "8413da039e": "{{value0}} • Loading...",
+      "b76c5703b2": "Worker error occurred. Check console for details.",
+      "b699690e1e": "{{value0}} file(s) attached successfully."
+    }
   },
   "extractAttachments": {
     "name": "Extract Attachments",
-    "subtitle": "Extract all embedded files from PDF(s) as a ZIP."
+    "subtitle": "Extract all embedded files from PDF(s) as a ZIP.",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "95feba5a59": "Reading files...",
+      "200c6b856a": "{{value0}} PDF file(s) selected",
+      "8b078d8f78": "The PDF file(s) do not contain any attachments to extract.",
+      "99348f2682": "No Attachments",
+      "88c0a4ed05": "{{value0}} attachment(s) extracted successfully!"
+    }
   },
   "editAttachments": {
     "name": "Edit Attachments",
-    "subtitle": "View or remove attachments in your PDF."
+    "subtitle": "View or remove attachments in your PDF.",
+    "auto": {
+      "6771ade6e8": "Attachments",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "388ac9bb09": "Failed to edit attachments.",
+      "82a44295db": "Processing attachments...",
+      "4ad1c13b08": "No attachments selected for removal.",
+      "3803b2ee79": "No Changes",
+      "6e2a60b3e8": "No PDF file loaded.",
+      "7697fda291": "Failed to load attachments from PDF.",
+      "389ecde49d": "Loading attachments...",
+      "151df6b489": "Remove attachment",
+      "03e33d2166": "Page {{value0}} attachment",
+      "9ee1e04045": "Document-level attachment",
+      "88aa4e1e76": "Deselect All",
+      "73e3ef7c28": "Remove All Attachments",
+      "df05883ac6": "No attachments found in this PDF.",
+      "a74a16433e": "Worker error occurred. Check console for details.",
+      "165ce95328": "Attachments updated successfully!"
+    }
   },
   "dividePages": {
     "name": "Divide Pages",
-    "subtitle": "Divide pages horizontally or vertically."
+    "subtitle": "Divide pages horizontally or vertically.",
+    "auto": {
+      "80881ab494": "Vertical:",
+      "3c39df6a87": "Horizontal:",
+      "12b45ef0ca": "Specify which pages to divide. Other pages will be kept as-is.",
+      "5542eb31c0": "Leave blank or use \"all\" to divide all pages.",
+      "3acf595250": "Enter page numbers separated by commas or ranges with hyphens.",
+      "6a06fadc46": "Vertical (Left & Right)",
+      "96399f8204": "Horizontal (Top & Bottom)",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf",
+      "f2359095f1": "e.g. 1-5, 8, 11-13 (leave blank for all pages)"
+    },
+    "dynamic": {
+      "fe79190873": "An error occurred while dividing the PDF.",
+      "60b2821ead": "Pages have been divided successfully!",
+      "570c1a0772": "Processing page {{value0}} of {{value1}}...",
+      "c8de0c45db": "Splitting PDF pages...",
+      "84292b3ef8": "Please enter a valid page range (e.g., 1-5, 8, 11-13).",
+      "6f90563f8c": "Invalid Range",
+      "aae540a85c": "Please upload a PDF first.",
+      "6b2f10d8ba": "Failed to load PDF file.",
+      "07ff7bec76": "{{value0}} • {{value1}} pages",
+      "c90d4c14de": "{{value0}} • Loading..."
+    }
   },
   "addBlankPage": {
     "name": "Add Blank Page",
-    "subtitle": "Insert an empty page anywhere in your PDF."
+    "subtitle": "Insert an empty page anywhere in your PDF.",
+    "auto": {
+      "19bcf761ef": "Specify the position where blank pages should be inserted.",
+      "517a547bfc": "Position 0 inserts at the beginning, position equal to page count inserts at the end.",
+      "3cd3ecbfbe": "Blank pages will match the size of the first page in your document.",
+      "f68bd2e058": "Enter 0 to insert at the beginning.",
+      "b75cdcccde": "Add Blank Pages",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "3194768496": "{{value0}} • Loading...",
+      "3f3a8dab5a": "Could not add blank page{{value0}}.",
+      "7dffb09a71": "Added {{value0}} blank page{{value1}} successfully!",
+      "bae7d9dce8": "Adding {{value0}} blank page{{value1}}...",
+      "e791afd3b7": "Please enter a valid number of pages (1 or more).",
+      "44bcb69846": "Invalid Input",
+      "6234a20c60": "Please enter a number between 0 and {{value0}}.",
+      "c2c57c5f32": "Please upload a PDF first.",
+      "b6aab8baeb": "Failed to load PDF file.",
+      "6d8c3c7f1a": "Enter 0 to insert at the beginning, or {{value0}} to insert at the end.",
+      "ceda244c1d": "{{value0}} • {{value1}} pages"
+    }
   },
   "reversePages": {
     "name": "Reverse Pages",
-    "subtitle": "Flip the order of all pages in your document."
+    "subtitle": "Flip the order of all pages in your document.",
+    "auto": {
+      "61a95548fc": "All pages will be reversed (first becomes last, last becomes first).",
+      "f8fa83c60e": "If you upload multiple PDFs, each will be reversed and downloaded as a ZIP file.",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "5010f304ef": "Could not reverse the PDF pages. Please check that your files are valid PDFs.",
+      "cd7bc3d29d": "Pages have been reversed successfully!",
+      "3efb65a545": "Reversing {{value0}} ({{value1}}/{{value2}})...",
+      "7c4c0a8d59": "Reversing page order...",
+      "dbc8218413": "Please select one or more PDF files."
+    }
   },
   "rotatePdf": {
     "name": "Rotate PDF",
     "subtitle": "Turn pages in 90-degree increments.",
-    "cardDesc": "Free online rotate pdf tool"
+    "cardDesc": "Free online rotate pdf tool",
+    "auto": {
+      "494f6a389c": "Batch Actions",
+      "6bd2206e8e": "Apply Rotations",
+      "bb9dede377": "Merge Pdf",
+      "0784d816a9": "Split Pdf",
+      "4ed7502998": "Organize Pdf",
+      "ae395b2670": "Compress Pdf"
+    },
+    "dynamic": {
+      "39dc26ce53": "Could not apply rotations.",
+      "9da1d8b293": "Rotations applied successfully!",
+      "5e8504b844": "Applying rotations...",
+      "0b9d19a4ff": "Please upload a PDF first.",
+      "dd3b66aa78": "Failed to load PDF file.",
+      "2e699f5dc4": "{{value0}} • {{value1}} pages",
+      "0e83e638d1": "{{value0}} • Loading...",
+      "0932d34a73": "{{value0}}"
+    }
   },
   "rotateCustom": {
     "name": "Rotate by Custom Degrees",
-    "subtitle": "Rotate pages by any custom angle."
+    "subtitle": "Rotate pages by any custom angle.",
+    "auto": {
+      "a9dd5d11a8": "Batch Rotation",
+      "44a04c3d23": "Apply to All",
+      "6bd2206e8e": "Apply Rotations",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "92c058ad6e": "Could not apply rotations.",
+      "40d63a64d8": "Rotations applied successfully!",
+      "95d19fd9c6": "Applying rotations...",
+      "a1087d59d9": "Please upload a PDF first.",
+      "def23aea75": "Failed to load PDF file.",
+      "e23206ea31": "{{value0}} • {{value1}} pages",
+      "105a3c6f65": "{{value0}} • Loading...",
+      "fa49b7e42c": "+",
+      "03a27bd0ab": "-",
+      "bbc1fbce78": "{{value0}}"
+    }
   },
   "nUpPdf": {
     "name": "N-Up PDF",
-    "subtitle": "Arrange multiple pages onto a single sheet."
+    "subtitle": "Arrange multiple pages onto a single sheet.",
+    "auto": {
+      "914719b7ed": "Choose how many pages to fit on each sheet (2, 4, 9, or 16).",
+      "ceacc66db0": "Select output page size and orientation.",
+      "9cd626bb13": "Optionally add margins and borders around each page.",
+      "39247fd16f": "Letter (8.5\" x 11\")",
+      "c614ba7c45": "Auto",
+      "29b7284e1b": "Add Margins",
+      "bf1a4d0ac4": "Add Border",
+      "ddf8c11aaa": "Create N-Up PDF",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "7b9b581f7c": "An error occurred while creating the N-Up PDF.",
+      "e2d154b4b1": "N-Up PDF created successfully!",
+      "7eb9ff644c": "Processing sheet {{value0}}...",
+      "de94d4ed8d": "Creating N-Up PDF...",
+      "9707a627be": "Please upload a PDF first.",
+      "b7290858ca": "Failed to load PDF file.",
+      "2190a71612": "{{value0}} • {{value1}} pages",
+      "a26647e4a0": "{{value0}} • Loading..."
+    }
   },
   "combineToSinglePage": {
     "name": "Combine to Single Page",
-    "subtitle": "Stitch all pages into one continuous scroll."
+    "subtitle": "Stitch all pages into one continuous scroll.",
+    "auto": {
+      "d256eaa316": "Vertical (Top to Bottom)",
+      "9ab26718ff": "Horizontal (Left to Right)",
+      "3de3ef168e": "Add Separator Lines",
+      "70f768f968": "Combine Pages",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "a0562d5e3c": "An error occurred while combining pages.",
+      "ac9e59466a": "Pages combined successfully!",
+      "acab7793cd": "Processing page {{value0}} of {{value1}}...",
+      "16e9c2d1d1": "Combining pages...",
+      "4a9a6f9cee": "Please upload a PDF first.",
+      "e152772381": "Failed to load PDF file.",
+      "4784218459": "{{value0}} • {{value1}} pages",
+      "33c063c234": "{{value0}} • Loading..."
+    }
   },
   "viewMetadata": {
     "name": "View Metadata",
-    "subtitle": "Inspect the hidden properties of your PDF."
+    "subtitle": "Inspect the hidden properties of your PDF.",
+    "auto": {
+      "95ff7aea01": "Document Metadata",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "a1e781c308": "Failed to copy metadata to clipboard.",
+      "af34c9a2c9": "Metadata copied to clipboard as JSON.",
+      "b27348894d": "Copied",
+      "89046c7aaa": "{{value0}}",
+      "f9436236fe": "Could not fully analyze the PDF. It may be corrupted or have an unusual structure.",
+      "674878efd6": "Analyzing full PDF metadata..."
+    }
   },
   "editMetadata": {
     "name": "Edit Metadata",
-    "subtitle": "Change the author, title, and other properties."
+    "subtitle": "Change the author, title, and other properties.",
+    "auto": {
+      "143b179529": "Custom Fields",
+      "c7a9dd0076": "Note: Custom fields are not supported by all PDF readers.",
+      "a031f9bf48": "Save Metadata",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "5dac2867d4": "Could not update metadata. Please check that date formats are correct.",
+      "92398fb88e": "Metadata updated successfully!",
+      "46bfd837f7": "Updating metadata...",
+      "fc64251da4": "Please upload a PDF first.",
+      "cd29753baa": "Failed to load PDF file.",
+      "09ea229d4e": "{{value0}} • {{value1}} pages",
+      "c2b223c470": "{{value0}} • Loading...",
+      "41a32c1325": "Value (e.g., Marketing)",
+      "16ebbac701": "Key (e.g., Department)"
+    }
   },
   "pdfsToZip": {
     "name": "PDFs to ZIP",
-    "subtitle": "Package multiple PDF files into a ZIP archive."
+    "subtitle": "Package multiple PDF files into a ZIP archive.",
+    "auto": {
+      "68e8a1dac5": "All selected PDF files will be packaged into a single ZIP archive.",
+      "149fbb3d62": "File names will be preserved in the archive.",
+      "da67bba418": "Create ZIP Archive",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "98a757251e": "Could not create ZIP archive.",
+      "28c5d104ac": "ZIP archive created successfully!",
+      "75da5af9dc": "Generating ZIP file...",
+      "c0127af1aa": "Adding {{value0}} ({{value1}}/{{value2}})...",
+      "8b3c05ec36": "Creating ZIP archive...",
+      "a2a6eeec53": "Please select PDF files to create a ZIP archive."
+    }
   },
   "comparePdfs": {
     "name": "Compare PDFs",
@@ -795,91 +1891,527 @@
     "loadingFile": "Loading {{name}}...",
     "invalidFile": "Invalid File",
     "invalidFileMsg": "Please select a valid PDF file.",
-    "loadError": "Could not load PDF. It may be corrupt or password-protected."
+    "loadError": "Could not load PDF. It may be corrupt or password-protected.",
+    "auto": {
+      "dab564d809": "Fit",
+      "85174b7376": "All changes",
+      "f90072a74b": "Content only",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf",
+      "a4ae4b24a1": "Zoom out",
+      "4fc05f2763": "Zoom in"
+    },
+    "resetZoom": "Reset zoom to fit",
+    "dynamic": {
+      "90eba7afad": "Could not export comparison PDF.",
+      "c7b2381edf": "Export Error",
+      "085a187515": "Preparing PDF export...",
+      "580338dd56": "{{value0}}%",
+      "502938ceda": "Could not load PDF. It may be corrupt or password-protected.",
+      "5579495988": "Loading {{value0}}...",
+      "581b7fca90": "Please select a valid PDF file.",
+      "f1300022a2": "Loading comparison {{value0}} of {{value1}}...",
+      "9e4f2ee2ef": "Indexing PDF 2 page {{value0}} of {{value1}}...",
+      "f0965742d4": "Indexing PDF 1 page {{value0}} of {{value1}}...",
+      "23dcc00f43": "Building page pairing model...",
+      "48db36bf56": "0"
+    },
+    "missingPage": "Page {{page}} does not exist in this PDF.",
+    "ocrRunning": "Running OCR on page {{page}}...",
+    "ocrProgress": "OCR: {{status}}"
   },
   "posterizePdf": {
     "name": "Posterize PDF",
-    "subtitle": "Split a large page into multiple smaller pages."
+    "subtitle": "Split a large page into multiple smaller pages.",
+    "auto": {
+      "7679ffa238": "Grid Layout",
+      "9e131de8f1": "Output Page Settings",
+      "ee14050617": "Letter",
+      "9f43e41fc3": "Automatic (Recommended)",
+      "a73a2ceee0": "Advanced Options",
+      "dab564d809": "Fit",
+      "12141b2c5c": "Preserves all content, may add margins.",
+      "08cdd179a5": "Fill (Crop)",
+      "aac2cce0de": "Fills the page, may crop content.",
+      "4b2a6a3149": "Points",
+      "79a0469d56": "Inches",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    }
   },
   "fixPageSize": {
     "name": "Fix Page Size",
-    "subtitle": "Standardize all pages to a uniform size."
+    "subtitle": "Standardize all pages to a uniform size.",
+    "auto": {
+      "759c558b3f": "Letter (8.5 × 11 in)",
+      "3babc3a9d8": "Legal (8.5 × 14 in)",
+      "16aff5ecd4": "Tabloid (11 × 17 in)",
+      "79a0469d56": "Inches",
+      "72e8317d35": "Millimeters",
+      "b1b2fcea15": "Auto (Keep Original)",
+      "dab564d809": "Fit",
+      "12141b2c5c": "Preserves all content, may add margins.",
+      "08cdd179a5": "Fill (Crop)",
+      "aac2cce0de": "Fills the page, may crop content.",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "52e02e9a8c": "An error occurred while standardizing pages.",
+      "626e3b2dab": "Page sizes standardized successfully!",
+      "c3a6d5d19c": "Standardizing pages...",
+      "5682a8deba": "Please upload a PDF file first.",
+      "4e7b720a89": "No File"
+    }
   },
   "linearizePdf": {
     "name": "Linearize PDF",
-    "subtitle": "Optimize PDF for fast web viewing."
+    "subtitle": "Optimize PDF for fast web viewing.",
+    "auto": {
+      "7e0fcbd5c2": "What is linearization?",
+      "a00dde403e": "Optimizes PDF structure for web viewing",
+      "0044cfe2ad": "Enables progressive loading (first page displays faster)",
+      "513423df71": "Improves user experience for online PDFs",
+      "5c47630345": "Also known as \"Fast Web View\" or \"Optimized\"",
+      "c7ec8d6df7": "Linearize PDF(s)",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "8e4a96bd32": "An error occurred: {{value0}}.",
+      "203623f104": "Linearization Failed",
+      "43fbc24099": "Processing Complete",
+      "fa5568eaf0": "Generating ZIP file...",
+      "c932412e1b": "Optimizing {{value0}} ({{value1}}/{{value2}})...",
+      "ede4d9529f": "Optimizing PDFs for web view (linearizing)...",
+      "20e8c58c29": "Please upload at least one PDF file.",
+      "3fc2420257": "No PDF Files"
+    }
   },
   "pageDimensions": {
     "name": "Page Dimensions",
-    "subtitle": "Analyze page size, orientation, and units."
+    "subtitle": "Analyze page size, orientation, and units.",
+    "auto": {
+      "f85f11d757": "Points (pt)",
+      "e481ce72c8": "Inches (in)",
+      "95b9952cb9": "Millimeters (mm)",
+      "696fa982c6": "Pixels (px)",
+      "1feee0e744": "Export to CSV",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "5f1427aa40": "Failed to load PDF file.",
+      "22472882ef": "{{value0}}°",
+      "e6a574d0ee": "{{value0}} x {{value1}} {{value2}}",
+      "f5deede4e1": ""
+    }
   },
   "removeRestrictions": {
     "name": "Remove Restrictions",
-    "subtitle": "Remove password protection and security restrictions associated with digitally signed PDF files."
+    "subtitle": "Remove password protection and security restrictions associated with digitally signed PDF files.",
+    "auto": {
+      "6855a5d3d6": "Leave empty if the PDF has no owner password.",
+      "54946c42b8": "What will be removed:",
+      "5828c61e88": "Password protection",
+      "517dc8d373": "Printing restrictions",
+      "e68b29c85c": "Editing restrictions",
+      "bff3561bc2": "Copying restrictions",
+      "69abc3e19b": "All other security limitations",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf",
+      "ded8109b8c": "Enter owner password if required"
+    },
+    "dynamic": {
+      "5057f6c5ea": "An error occurred: {{value0}}",
+      "3cbb1317ff": "Operation Failed",
+      "d7ab0131b2": "PDF restrictions removed successfully! The file is now fully editable and printable.",
+      "8f0ab838a0": "Preparing download...",
+      "0af8548308": "Removing restrictions...",
+      "a4f489ba51": "Reading PDF...",
+      "ae0f78ae39": "Initializing...",
+      "9afe460e3d": "Please upload a PDF file first.",
+      "2de7e01738": "No File"
+    }
   },
   "repairPdf": {
     "name": "Repair PDF",
-    "subtitle": "Recover data from corrupted or damaged PDF files."
+    "subtitle": "Recover data from corrupted or damaged PDF files.",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "eeab60e5f2": "An unexpected error occurred during the repair process.",
+      "f76dce6e24": "All files repaired successfully!",
+      "911ea8455c": "Creating ZIP archive...",
+      "1830bb6dfe": "Repaired {{value0}} file(s). Failed to repair: {{value1}}",
+      "5d6875a66c": "Partial Success",
+      "b2d8ad7247": "Unable to repair any of the uploaded PDF files.",
+      "bf0e2061e3": "Repair Failed",
+      "f63b91416a": "Repairing {{value0}} ({{value1}}/{{value2}})...",
+      "2fd1eb15f7": "Initializing repair engine...",
+      "a8baf6f1f3": "Please select one or more PDF files."
+    }
   },
   "encryptPdf": {
     "name": "Encrypt PDF",
-    "subtitle": "Lock your PDF by adding a password."
+    "subtitle": "Lock your PDF by adding a password.",
+    "auto": {
+      "1b0820eb8c": "This password will be required to open the PDF.",
+      "35e1d5e333": "If provided, usage restrictions will be applied. Leave empty for no restrictions.",
+      "6267033691": "Encryption Details:",
+      "221953fbbc": "256-bit AES encryption (highest security)",
+      "7a39efa86c": "User password required to open PDF",
+      "340ec7907d": "Owner password enables usage restrictions",
+      "0b2d8f92d3": "Without owner password: no restrictions applied",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf",
+      "8d7e230034": "Enter password to open PDF",
+      "61966b4d3c": "Enter password for permissions (optional)"
+    },
+    "dynamic": {
+      "f31490d96d": "An error occurred: {{value0}}",
+      "1cc9a81e1a": "Encryption Failed",
+      "73dd668652": "Preparing download...",
+      "99f5f30b9f": "Encrypting PDF with 256-bit AES...",
+      "3e80559bf0": "Reading PDF...",
+      "a90778fd81": "Initializing encryption...",
+      "cfc44e1b7f": "Please enter a user password.",
+      "bec4cf0d52": "Input Required",
+      "2c4bfd0f85": "Please upload a PDF file first.",
+      "dd9d84669b": "No File"
+    }
   },
   "sanitizePdf": {
     "name": "Sanitize PDF",
-    "subtitle": "Remove metadata, annotations, scripts, and more."
+    "subtitle": "Remove metadata, annotations, scripts, and more.",
+    "auto": {
+      "da33eea02d": "Sanitization Optionst:",
+      "92f9400df2": "Flatten Forms",
+      "a8834458bc": "Remove JavaScript",
+      "7100ada048": "Remove Embedded Files",
+      "a545503ba9": "Remove Layers (OCG)",
+      "125bcce5b7": "Remove Links",
+      "8b7fae8f13": "Remove Structure Tree",
+      "60c4b9bc07": "Remove MarkInfo",
+      "bc02a47141": "Remove Embedded Fonts",
+      "d1e643c470": "Sanitization removes sensitive content permanently. Some options may affect PDF rendering.",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "dbfaa60a88": "An error occurred during sanitization: {{value0}}",
+      "9851b480b3": "PDF has been sanitized and downloaded.",
+      "3e222526c4": "Sanitizing PDF...",
+      "00e694f932": "No items were selected for removal or none were found in the PDF.",
+      "0f6dc18170": "No Changes",
+      "2d61fe671a": "No PDF document loaded."
+    }
   },
   "decryptPdf": {
     "name": "Decrypt PDF",
-    "subtitle": "Unlock PDF by removing password protection."
+    "subtitle": "Unlock PDF by removing password protection.",
+    "auto": {
+      "e397e30897": "Enter the password used to protect this PDF.",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf",
+      "34479e0409": "Enter the PDF password"
+    },
+    "dynamic": {
+      "29b5a25d37": "An error occurred: {{value0}}",
+      "b9a3b1421d": "Decryption Failed",
+      "bf48d0a84a": "Unable to decrypt the PDF with the provided password.",
+      "be764ba645": "Password Error",
+      "845a342362": "The password you entered is incorrect. Please try again.",
+      "270381bfec": "Incorrect Password",
+      "bbb58b90fb": "Processing Complete",
+      "9460f9932f": "Generating ZIP file...",
+      "288f23f2a1": "Decrypting {{value0}} ({{value1}}/{{value2}})...",
+      "3e79faab32": "PDF decrypted successfully! Your download has started.",
+      "3a6ce860d1": "Preparing download...",
+      "d223202ae7": "Decrypting PDF...",
+      "fe448e8032": "Reading encrypted PDF...",
+      "63a056f300": "Initializing decryption...",
+      "deaa875f11": "Please enter the PDF password.",
+      "3d789ca3db": "Input Required",
+      "8e6de480a6": "Please upload at least one PDF file.",
+      "cb76be345d": "No File"
+    },
+    "processFailed": "Decryption failed. Please try again."
   },
   "flattenPdf": {
     "name": "Flatten PDF",
-    "subtitle": "Make form fields and annotations non-editable."
+    "subtitle": "Make form fields and annotations non-editable.",
+    "auto": {
+      "6e7855ae56": "What will be flattened:",
+      "1a77e5bb41": "Form fields (text fields, checkboxes, radio buttons, etc.)",
+      "9b9b4c4f72": "Annotations and comments",
+      "f2d1ad980a": "Interactive elements",
+      "e2b4463991": "Note: Flattened content cannot be edited or filled out.",
+      "e9634cd3fd": "Flatten PDF(s)",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "a5f428bdae": "No PDFs could be processed.",
+      "2fc31d0d1f": "Processed {{value0}} PDFs.",
+      "9fb9945ea7": "Flattening {{value0}}/{{value1}}: {{value2}}...",
+      "459e7aabf1": "Flattening multiple PDFs...",
+      "0b697fdcaa": "Flattening PDF...",
+      "87d5747b51": "Please select at least one PDF file."
+    }
   },
   "removeMetadata": {
     "name": "Remove Metadata",
-    "subtitle": "Strip hidden data from your PDF."
+    "subtitle": "Strip hidden data from your PDF.",
+    "auto": {
+      "54946c42b8": "What will be removed:",
+      "40d215a663": "Title, Author, Subject, Keywords",
+      "2d679f42f6": "Creator and Producer information",
+      "de60328327": "Creation and Modification dates",
+      "eb80b7f01c": "XMP Metadata streams",
+      "d02066cb8c": "Document IDs",
+      "5506a43e27": "PieceInfo (private application data)",
+      "addde70e9e": "Remove All Metadata",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "63392e9cea": "An error occurred while trying to remove metadata.",
+      "b02c7ffeb3": "Metadata removed successfully!",
+      "f39a42f002": "Removing all metadata...",
+      "293b45eafc": "Please upload a PDF file first.",
+      "9bb26fafb5": "No File"
+    }
   },
   "changePermissions": {
     "name": "Change Permissions",
-    "subtitle": "Set or change user permissions on a PDF."
+    "subtitle": "Set or change user permissions on a PDF.",
+    "auto": {
+      "02739e6de9": "Required when setting permissions or a user password. Leave all fields empty to decrypt the PDF instead.",
+      "1b1a468304": "Permissions (requires owner password)",
+      "81df9b370f": "Allow Printing",
+      "0f2e2fc819": "Allow Copying Text",
+      "49da39ae9e": "Allow Modifying",
+      "40ff5e3c8a": "Allow Annotating",
+      "80bd3e27ec": "Allow Filling Forms",
+      "3c857ede4f": "Allow Page Extraction",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf",
+      "149b393d2d": "Enter current password",
+      "c7d03d6c95": "Password to open PDF",
+      "35425172bd": "Password for permissions"
+    },
+    "dynamic": {
+      "198736bd97": "An error occurred: {{value0}}",
+      "58ff2bb05a": "Processing Failed",
+      "49601e3fe4": "This PDF is password-protected. Please enter the current password to proceed.",
+      "bdfa229250": "Password Required",
+      "16dbd6faea": "The current password you entered is incorrect. Please try again.",
+      "ac687ab07d": "Incorrect Password",
+      "3bdcee134c": "Preparing download...",
+      "9b614938cd": "Processing PDF permissions...",
+      "904ad87239": "Reading PDF...",
+      "3ecc95c571": "Initializing...",
+      "ca3aae3930": "An owner password is required when setting permissions",
+      "15c99d78f8": "Owner Password Required",
+      "d90ea623b2": "Please upload a PDF file first.",
+      "a579977c69": "No File"
+    }
   },
   "odtToPdf": {
     "name": "ODT to PDF",
     "subtitle": "Convert OpenDocument Text files to PDF format. Supports multiple files.",
     "acceptedFormats": "ODT files",
-    "convertButton": "Convert to PDF"
+    "convertButton": "Convert to PDF",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "f583343c23": "An error occurred during conversion. Error: {{value0}}",
+      "1e8451666b": "Successfully converted {{value0}} ODT file(s) to PDF.",
+      "50d48a9b28": "Conversion Complete",
+      "f1311f9c1a": "Converting {{value0}}/{{value1}}: {{value2}}...",
+      "3521d690a3": "Successfully converted {{value0}} to PDF.",
+      "c2f620d499": "Please select at least one ODT file."
+    }
   },
   "csvToPdf": {
     "name": "CSV to PDF",
     "subtitle": "Convert CSV spreadsheet files to PDF format. Supports multiple files.",
     "acceptedFormats": "CSV files",
-    "convertButton": "Convert to PDF"
+    "convertButton": "Convert to PDF",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "28b06609d0": "An error occurred during conversion. Error: {{value0}}",
+      "a0e0d1ce53": "Successfully converted {{value0}} CSV file(s) to PDF.",
+      "fa39f272c6": "Conversion Complete",
+      "d6aa78370b": "Creating ZIP archive...",
+      "0c0e61f0ae": "Converting {{value0}}/{{value1}}: {{value2}}...",
+      "c7241436c3": "Preparing conversion...",
+      "f702b2d875": "Successfully converted {{value0}} to PDF.",
+      "b3385b83d4": "Please select at least one CSV file."
+    }
   },
   "rtfToPdf": {
     "name": "RTF to PDF",
     "subtitle": "Convert Rich Text Format documents to PDF. Supports multiple files.",
     "acceptedFormats": "RTF files",
-    "convertButton": "Convert to PDF"
+    "convertButton": "Convert to PDF",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "66a33e38eb": "An error occurred during conversion. Error: {{value0}}",
+      "8ac0551c44": "Successfully converted {{value0}} RTF file(s) to PDF.",
+      "735b2a4f0d": "Conversion Complete",
+      "5d9752605c": "Converting {{value0}}/{{value1}}: {{value2}}...",
+      "edd7466655": "Converting multiple RTF files to PDF...",
+      "f98b741f34": "Successfully converted {{value0}} to PDF.",
+      "0a05ab24e5": "Please select at least one RTF file."
+    }
   },
   "wordToPdf": {
     "name": "Word to PDF",
     "subtitle": "Convert Word documents (DOCX, DOC, ODT, RTF) to PDF format. Supports multiple files.",
     "acceptedFormats": "DOCX, DOC, ODT, RTF files",
-    "convertButton": "Convert to PDF"
+    "convertButton": "Convert to PDF",
+    "auto": {
+      "03decb2650": "Upload Word Files",
+      "2530d3bf3f": "Select or drag DOCX or DOC files you want to convert",
+      "6a453166f0": "Auto Convert",
+      "158d7f01d7": "Conversion starts automatically, processing in your browser",
+      "7707856c8b": "Preview Results",
+      "8fcd6f5335": "See your converted PDF with preserved formatting",
+      "d30b1693d5": "Download PDFs",
+      "dc8cc35e96": "Save your PDF files - formatting perfectly preserved",
+      "d584b36261": "Pdf To Docx",
+      "0503bd898c": "Free online pdf to docx tool",
+      "6fdd55514f": "Excel To Pdf",
+      "e16d6513f6": "Free online excel to pdf tool",
+      "ec23f243bc": "Powerpoint To Pdf",
+      "31f26f8f66": "Free online powerpoint to pdf tool",
+      "1b0186270d": "Txt To Pdf",
+      "a75933f96a": "Free online txt to pdf tool",
+      "bb9dede377": "Merge Pdf",
+      "e69920c2ed": "Yes! BentoPDF supports both older .doc and newer .docx Microsoft Word formats.",
+      "dad3667a18": "Yes! Fonts, images, tables, headers, footers, and all formatting are preserved exactly as they appear in Word.",
+      "3911ed666d": "You'll need to unlock password-protected files first before converting them to PDF."
+    },
+    "dynamic": {
+      "4716974d31": "An error occurred during conversion. Error: {{value0}}",
+      "c7656bfe50": "Successfully converted {{value0}} Word document(s) to PDF.",
+      "ce88334fff": "Conversion Complete",
+      "ac56a3e11b": "Converting {{value0}}/{{value1}}: {{value2}}...",
+      "59a8cc5e17": "Successfully converted {{value0}} to PDF.",
+      "7e35823cb1": "Please select at least one Word document.",
+      "02029cec28": "Could not generate a preview. The file may be corrupt or contain unsupported features. Error: {{value0}}",
+      "80685ef3be": "Preview Error",
+      "5e47f85e0d": "Generating High-Quality PDF...",
+      "2729eb14bf": "\n        #preview-content { font-family: 'Times New Roman', Times, serif; font-size: 12pt; line-height: 1.5; color: black; }\n        #preview-content table { border-collapse: collapse; width: 100%; }\n        #preview-content td, #preview-content th { border: 1px solid #dddddd; text-align: left; padding: 8px; }\n        #preview-content img { max-width: 100%; height: auto; }\n        #preview-content a { color: #0000ee; text-decoration: underline; }\n      ",
+      "df5707067f": "Preparing preview...",
+      "e6ffaaa90c": "Please upload a .docx file first.",
+      "d6c3ffcaae": "No File"
+    }
   },
   "excelToPdf": {
     "name": "Excel to PDF",
     "subtitle": "Convert Excel spreadsheets (XLSX, XLS, ODS, CSV) to PDF format. Supports multiple files.",
     "acceptedFormats": "XLSX, XLS, ODS, CSV files",
-    "convertButton": "Convert to PDF"
+    "convertButton": "Convert to PDF",
+    "auto": {
+      "7800ff3767": "Pdf To Excel",
+      "fa3b5f9252": "Free online pdf to excel tool",
+      "c91e040a8e": "Word To Pdf",
+      "e9491f0c3f": "Free online word to pdf tool",
+      "c859342798": "Csv To Pdf",
+      "198967abc6": "Free online csv to pdf tool",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf"
+    },
+    "dynamic": {
+      "449960744c": "An error occurred during conversion. Error: {{value0}}",
+      "e4f52d3a24": "Successfully converted {{value0}} Excel file(s) to PDF.",
+      "520085103f": "Conversion Complete",
+      "14b92e28b5": "Converting {{value0}}/{{value1}}: {{value2}}...",
+      "74fd7493ec": "Successfully converted {{value0}} to PDF.",
+      "9d71f06b8f": "Please select at least one Excel file."
+    }
   },
   "powerpointToPdf": {
     "name": "PowerPoint to PDF",
     "subtitle": "Convert PowerPoint presentations (PPTX, PPT, ODP) to PDF format. Supports multiple files.",
     "acceptedFormats": "PPTX, PPT, ODP files",
-    "convertButton": "Convert to PDF"
+    "convertButton": "Convert to PDF",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "67f0bc730f": "An error occurred during conversion. Error: {{value0}}",
+      "d937ebcd47": "Successfully converted {{value0}} PowerPoint file(s) to PDF.",
+      "f3b510faff": "Conversion Complete",
+      "ec950a4de2": "Converting {{value0}}/{{value1}}: {{value2}}...",
+      "94609a8cae": "Successfully converted {{value0}} to PDF.",
+      "af1899e4e6": "Please select at least one PowerPoint file."
+    }
   },
   "markdownToPdf": {
     "name": "Markdown to PDF",
@@ -899,7 +2431,14 @@
     "optAllowHtml": "Allow HTML tags",
     "optBreaks": "Convert newlines to <br>",
     "optLinkify": "Auto-convert URLs to links",
-    "optTypographer": "Typographer (smart quotes, etc.)"
+    "optTypographer": "Typographer (smart quotes, etc.)",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    }
   },
   "pdfBooklet": {
     "name": "PDF Booklet",
@@ -915,120 +2454,524 @@
     "pagesPerSheet": "Pages per Sheet",
     "createBooklet": "Create Booklet",
     "processing": "Processing...",
-    "pageCount": "Page count will be padded to multiple of 4 if needed."
+    "pageCount": "Page count will be padded to multiple of 4 if needed.",
+    "auto": {
+      "2fb62d225d": "No rotation",
+      "7f99cebedf": "Rotate clockwise (90°)",
+      "0e3e98f297": "Rotate counter-clockwise (90°)",
+      "97b5e9055e": "Alternate (odd→CW, even→CCW)",
+      "ea2efedcab": "Letter (8.5\" × 11\")",
+      "5e4843a8b8": "Legal (8.5\" × 14\")",
+      "0fd10bc20a": "Tabloid (11\" × 17\")",
+      "45263ea4d5": "Ledger (17\" × 11\")",
+      "28940475fc": "Executive (7.25\" × 10.5\")",
+      "a401a03725": "Folio (8.5\" × 13\")",
+      "48ee1388be": "1×2 (Booklet)",
+      "cd9afe793a": "Auto (best for layout)",
+      "547558705a": "Upload a PDF and click \"Generate Preview\" to see the booklet layout",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "ec899ed25c": "An error occurred while creating the booklet.",
+      "3ed8d885aa": "Booklet created with {{value0}} sheets!",
+      "831fdc4675": "Creating Booklet...",
+      "1a4b3ff662": "Please load a PDF first.",
+      "a9ad50182d": "Failed to load PDF file.",
+      "efe8322c67": "{{value0}} • {{value1}} pages",
+      "4ceed58d26": "{{value0}} • Loading..."
+    }
   },
   "xpsToPdf": {
     "name": "XPS to PDF",
     "subtitle": "Convert XPS/OXPS documents to PDF format. Supports multiple files.",
     "acceptedFormats": "XPS, OXPS files",
-    "convertButton": "Convert to PDF"
+    "convertButton": "Convert to PDF",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "81a9b98533": "An error occurred during conversion. Error: {{value0}}",
+      "9c0951bc36": "Successfully converted {{value0}} {{value1}} file(s) to PDF.",
+      "3c6c3601a5": "Conversion Complete",
+      "726bc61755": "Converting {{value0}}/{{value1}}: {{value2}}...",
+      "236aadb8c0": "Converting files...",
+      "75b9ac74b8": "Successfully converted {{value0}} to PDF.",
+      "ba195f6b9f": "Converting {{value0}}...",
+      "791c680372": "Loading engine...",
+      "7d896aa183": "Please select at least one {{value0}} file."
+    }
   },
   "mobiToPdf": {
     "name": "MOBI to PDF",
     "subtitle": "Convert MOBI e-books to PDF format. Supports multiple files.",
     "acceptedFormats": "MOBI files",
-    "convertButton": "Convert to PDF"
+    "convertButton": "Convert to PDF",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "9d7ec39061": "An error occurred during conversion. Error: {{value0}}",
+      "4573138841": "Successfully converted {{value0}} {{value1}} file(s) to PDF.",
+      "70fec1ae16": "Conversion Complete",
+      "ac5faa91a9": "Converting {{value0}}/{{value1}}: {{value2}}...",
+      "3417a1bcd8": "Converting files...",
+      "e4e504b5a7": "Successfully converted {{value0}} to PDF.",
+      "b481d5a5b7": "Converting {{value0}}...",
+      "74a5661b9d": "Loading engine...",
+      "1a7abc7505": "Please select at least one {{value0}} file."
+    }
   },
   "epubToPdf": {
     "name": "EPUB to PDF",
     "subtitle": "Convert EPUB e-books to PDF format. Supports multiple files.",
     "acceptedFormats": "EPUB files",
-    "convertButton": "Convert to PDF"
+    "convertButton": "Convert to PDF",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "104b6e9a6e": "An error occurred during conversion. Error: {{value0}}",
+      "4936db3a1c": "Successfully converted {{value0}} {{value1}} file(s) to PDF.",
+      "522ff47d9d": "Conversion Complete",
+      "74fb9d5189": "Converting {{value0}}/{{value1}}: {{value2}}...",
+      "c2a02efcc5": "Converting files...",
+      "5c78b3ff7d": "Successfully converted {{value0}} to PDF.",
+      "c6ebd08683": "Converting {{value0}}...",
+      "0642d0fcdb": "Loading engine...",
+      "22b7b16873": "Please select at least one {{value0}} file."
+    }
   },
   "fb2ToPdf": {
     "name": "FB2 to PDF",
     "subtitle": "Convert FictionBook (FB2) e-books to PDF format. Supports multiple files.",
     "acceptedFormats": "FB2 files",
-    "convertButton": "Convert to PDF"
+    "convertButton": "Convert to PDF",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "7e68fa571d": "An error occurred during conversion. Error: {{value0}}",
+      "2740ed96cc": "Successfully converted {{value0}} {{value1}} file(s) to PDF.",
+      "d561d14791": "Conversion Complete",
+      "f7df6b470c": "Converting {{value0}}/{{value1}}: {{value2}}...",
+      "f3982fc6f0": "Converting files...",
+      "02e192036d": "Successfully converted {{value0}} to PDF.",
+      "ae2a0e93af": "Converting {{value0}}...",
+      "fa537f2cfc": "Loading engine...",
+      "36e0761e1c": "Please select at least one {{value0}} file."
+    }
   },
   "cbzToPdf": {
     "name": "CBZ to PDF",
     "subtitle": "Convert comic book archives (CBZ/CBR) to PDF format. Supports multiple files.",
     "acceptedFormats": "CBZ, CBR files",
-    "convertButton": "Convert to PDF"
+    "convertButton": "Convert to PDF",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "c122d39b80": "An error occurred during conversion. Error: {{value0}}",
+      "b27d08a94c": "Successfully converted {{value0}} {{value1}} file(s) to PDF.",
+      "054f2e545b": "Conversion Complete",
+      "a9844d18c8": "Converting {{value0}}/{{value1}}: {{value2}}...",
+      "c44c18c174": "Converting files...",
+      "18d1e68f41": "Successfully converted {{value0}} to PDF.",
+      "657ec1680f": "Converting {{value0}}...",
+      "3767ecf995": "Please select at least one {{value0}} file."
+    }
   },
   "wpdToPdf": {
     "name": "WPD to PDF",
     "subtitle": "Convert WordPerfect documents (WPD) to PDF format. Supports multiple files.",
     "acceptedFormats": "WPD files",
-    "convertButton": "Convert to PDF"
+    "convertButton": "Convert to PDF",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "7c3c17880d": "An error occurred during conversion. Error: {{value0}}",
+      "4452ac5793": "Successfully converted {{value0}} files to PDF.",
+      "0b68d9570d": "Conversion Complete",
+      "7c9cb61fd7": "Converting {{value0}}/{{value1}}: {{value2}}...",
+      "3a4cd8b1ef": "Converting multiple files...",
+      "9074b76c6a": "Successfully converted {{value0}} to PDF.",
+      "36762d3298": "Converting {{value0}}...",
+      "899e0e00c9": "Loading engine...",
+      "c05b666684": "Please select at least one {{value0}} file."
+    }
   },
   "wpsToPdf": {
     "name": "WPS to PDF",
     "subtitle": "Convert WPS Office documents to PDF format. Supports multiple files.",
     "acceptedFormats": "WPS files",
-    "convertButton": "Convert to PDF"
+    "convertButton": "Convert to PDF",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "f49e7b07f5": "An error occurred during conversion. Error: {{value0}}",
+      "5c94ad6bce": "Successfully converted {{value0}} files to PDF.",
+      "97bc687412": "Conversion Complete",
+      "8852f46764": "Converting {{value0}}/{{value1}}: {{value2}}...",
+      "037a6acbeb": "Converting multiple files...",
+      "41793edcbd": "Successfully converted {{value0}} to PDF.",
+      "87eac04e52": "Converting {{value0}}...",
+      "839bb28344": "Loading engine...",
+      "4af39b0805": "Please select at least one {{value0}} file."
+    }
   },
   "xmlToPdf": {
     "name": "XML to PDF",
     "subtitle": "Convert XML documents to PDF format. Supports multiple files.",
     "acceptedFormats": "XML files",
-    "convertButton": "Convert to PDF"
+    "convertButton": "Convert to PDF",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "30944475eb": "An error occurred during conversion. Error: {{value0}}",
+      "fd9379fd86": "Successfully converted {{value0}} files to PDF.",
+      "ceb9948d46": "Conversion Complete",
+      "67b168273e": "File {{value0}}/{{value1}}: {{value2}}",
+      "57a112278a": "Converting multiple files...",
+      "99ae92f70e": "Successfully converted {{value0}} to PDF.",
+      "75c05e3e4d": "Please select at least one {{value0}} file."
+    }
   },
   "pagesToPdf": {
     "name": "Pages to PDF",
     "subtitle": "Convert Apple Pages documents to PDF format. Supports multiple files.",
     "acceptedFormats": "Pages files",
-    "convertButton": "Convert to PDF"
+    "convertButton": "Convert to PDF",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "de2ca1608a": "An error occurred during conversion. Error: {{value0}}",
+      "a6652ec16b": "Successfully converted {{value0}} files to PDF.",
+      "57e99a45b9": "Conversion Complete",
+      "7e339a9f48": "Converting {{value0}}/{{value1}}: {{value2}}...",
+      "804657211b": "Converting multiple files...",
+      "00d97896d1": "Successfully converted {{value0}} to PDF.",
+      "a8b3abcef2": "Converting {{value0}}...",
+      "ef163b0d8e": "Loading engine...",
+      "6e2b64f357": "Please select at least one {{value0}} file."
+    }
   },
   "odgToPdf": {
     "name": "ODG to PDF",
     "subtitle": "Convert OpenDocument Graphics (ODG) files to PDF format. Supports multiple files.",
     "acceptedFormats": "ODG files",
-    "convertButton": "Convert to PDF"
+    "convertButton": "Convert to PDF",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "20c203b8e3": "An error occurred during conversion. Error: {{value0}}",
+      "a3b70b6e1d": "Successfully converted {{value0}} files to PDF.",
+      "34b6ede781": "Conversion Complete",
+      "f8300101f6": "Converting {{value0}}/{{value1}}: {{value2}}...",
+      "218c91e363": "Converting multiple files...",
+      "475c73b9d1": "Successfully converted {{value0}} to PDF.",
+      "333a6ea118": "Converting {{value0}}...",
+      "245fd93b2b": "Loading engine...",
+      "2a61c4b789": "Please select at least one {{value0}} file."
+    }
   },
   "odsToPdf": {
     "name": "ODS to PDF",
     "subtitle": "Convert OpenDocument Spreadsheet (ODS) files to PDF format. Supports multiple files.",
     "acceptedFormats": "ODS files",
-    "convertButton": "Convert to PDF"
+    "convertButton": "Convert to PDF",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "db4e24f563": "An error occurred during conversion. Error: {{value0}}",
+      "965300d792": "Successfully converted {{value0}} files to PDF.",
+      "a6fda8c5bb": "Conversion Complete",
+      "f6da621f2c": "Converting {{value0}}/{{value1}}: {{value2}}...",
+      "d228b70c8d": "Converting multiple files...",
+      "77a1ff6cd4": "Successfully converted {{value0}} to PDF.",
+      "4dd49077fa": "Converting {{value0}}...",
+      "4fb6de5f25": "Loading engine...",
+      "d2f643f113": "Please select at least one {{value0}} file."
+    }
   },
   "odpToPdf": {
     "name": "ODP to PDF",
     "subtitle": "Convert OpenDocument Presentation (ODP) files to PDF format. Supports multiple files.",
     "acceptedFormats": "ODP files",
-    "convertButton": "Convert to PDF"
+    "convertButton": "Convert to PDF",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "04b6f5ec3b": "An error occurred during conversion. Error: {{value0}}",
+      "e8192ceb3b": "Successfully converted {{value0}} files to PDF.",
+      "2db4b50edb": "Conversion Complete",
+      "a9468949b5": "Converting {{value0}}/{{value1}}: {{value2}}...",
+      "c1341d5885": "Converting multiple files...",
+      "907967ce32": "Successfully converted {{value0}} to PDF.",
+      "9ce08de74a": "Converting {{value0}}...",
+      "bd598b8682": "Loading engine...",
+      "3f9fd2f58f": "Please select at least one {{value0}} file."
+    }
   },
   "pubToPdf": {
     "name": "PUB to PDF",
     "subtitle": "Convert Microsoft Publisher (PUB) files to PDF format. Supports multiple files.",
     "acceptedFormats": "PUB files",
-    "convertButton": "Convert to PDF"
+    "convertButton": "Convert to PDF",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "b1f64053ff": "An error occurred during conversion. Error: {{value0}}",
+      "9df6f453cf": "Successfully converted {{value0}} files to PDF.",
+      "3f2b4785cf": "Conversion Complete",
+      "d616d0cd6d": "Converting {{value0}}/{{value1}}: {{value2}}...",
+      "d60ace324c": "Converting multiple files...",
+      "b8f690887c": "Successfully converted {{value0}} to PDF.",
+      "b0ddd3bf3e": "Converting {{value0}}...",
+      "1d973bb300": "Loading engine...",
+      "dbf215a4fb": "Please select at least one {{value0}} file."
+    }
   },
   "vsdToPdf": {
     "name": "VSD to PDF",
     "subtitle": "Convert Microsoft Visio (VSD, VSDX) files to PDF format. Supports multiple files.",
     "acceptedFormats": "VSD, VSDX files",
-    "convertButton": "Convert to PDF"
+    "convertButton": "Convert to PDF",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "10309ee8b8": "An error occurred during conversion. Error: {{value0}}",
+      "e33f180378": "Successfully converted {{value0}} files to PDF.",
+      "bfcf821388": "Conversion Complete",
+      "55e5fa7b9e": "Converting {{value0}}/{{value1}}: {{value2}}...",
+      "e08c16ff74": "Converting multiple files...",
+      "276b7bc549": "Successfully converted {{value0}} to PDF.",
+      "63888e1e6e": "Converting {{value0}}...",
+      "ecf9899daf": "Loading engine...",
+      "582b0dbbdf": "Please select at least one {{value0}} file."
+    }
   },
   "psdToPdf": {
     "name": "PSD to PDF",
     "subtitle": "Convert Adobe Photoshop (PSD) files to PDF format. Supports multiple files.",
     "acceptedFormats": "PSD files",
-    "convertButton": "Convert to PDF"
+    "convertButton": "Convert to PDF",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "e17dedd084": "An error occurred during conversion. Error: {{value0}}",
+      "84b1fe70ce": "Successfully converted {{value0}} PSD files to a single PDF.",
+      "3205ff599a": "Conversion Complete",
+      "973c4e28c8": "Converting multiple files...",
+      "ad9a65d45f": "Successfully converted {{value0}} to PDF.",
+      "c5e9e96303": "Converting {{value0}}...",
+      "0a745921f6": "Loading engine...",
+      "29f58a0131": "Please select at least one {{value0}} file."
+    }
   },
   "pdfToSvg": {
     "name": "PDF to SVG",
-    "subtitle": "Convert each page of a PDF file into a scalable vector graphic (SVG) for perfect quality at any size."
+    "subtitle": "Convert each page of a PDF file into a scalable vector graphic (SVG) for perfect quality at any size.",
+    "auto": {
+      "9b7ab83d0f": "Convert to SVG",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "de155d6aee": "Please upload PDF files.",
+      "1d741530ab": "Invalid Files",
+      "6e3c2cd056": "Failed to convert PDF to SVG. {{value0}}",
+      "98e4c4daf3": "Converted {{value0}} files ({{value1}} pages) to SVG!",
+      "03241b7aa3": "Creating ZIP file...",
+      "8deeef3d8a": "File {{value0}}/{{value1}}: Page {{value2}}/{{value3}}",
+      "58ae11ce3f": "Processing file {{value0}} of {{value1}}...",
+      "a2a5b261d2": "Converted {{value0}} pages to SVG!",
+      "d44228a493": "Converting page {{value0}} of {{value1}}...",
+      "2f5799382c": "PDF converted to SVG successfully!",
+      "733ccaa9fb": "Converting to SVG...",
+      "67967aa49b": "Loading Engine...",
+      "d03c2fba20": "Please upload at least one PDF file."
+    }
   },
   "extractTables": {
     "name": "Extract PDF Tables",
-    "subtitle": "Extract tables from PDF files and export as CSV, JSON, or Markdown."
+    "subtitle": "Extract tables from PDF files and export as CSV, JSON, or Markdown.",
+    "auto": {
+      "3281188351": "CSV",
+      "031a4e76f0": "JSON",
+      "90ab658c06": "Extract Tables",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "a9a4c9ebca": "Please upload a PDF file.",
+      "9d11f4df3a": "Failed to extract tables. {{value0}}",
+      "06afde8883": "Extracted {{value0}} tables successfully!",
+      "e26185baed": "Creating ZIP file...",
+      "bcf7770932": "Extracted 1 table successfully!",
+      "0425695ccd": "No tables were detected in this PDF.",
+      "ffa0b5036c": "No Tables Found",
+      "4e8aa3ff08": "Scanning page {{value0}} of {{value1}}...",
+      "4e588c6fbf": "Extracting tables...",
+      "79bc8aecb7": "Loading Engine...",
+      "823e9c0f13": "Please upload a PDF file first.",
+      "73433d0bfe": "No File"
+    }
   },
   "pdfToCsv": {
     "name": "PDF to CSV",
-    "subtitle": "Extract tables from PDF and convert to CSV format."
+    "subtitle": "Extract tables from PDF and convert to CSV format.",
+    "auto": {
+      "b957d38692": "Convert to CSV",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "fa8ca0aeab": "Please upload a PDF file.",
+      "f3154bcd1b": "Failed to convert PDF to CSV. {{value0}}",
+      "2d3e7a570f": "PDF converted to CSV successfully!",
+      "cf3fa196da": "No tables were detected in this PDF.",
+      "b9789e2c14": "No Tables Found",
+      "851ba63d4f": "Scanning page {{value0}} of {{value1}}...",
+      "b2a33c3624": "Extracting tables...",
+      "267db28b36": "Loading Engine...",
+      "ad03050928": "Please upload a PDF file first.",
+      "69783ee8ef": "No File"
+    }
   },
   "pdfToExcel": {
     "name": "PDF to Excel",
-    "subtitle": "Extract tables from PDF and convert to Excel (XLSX) format."
+    "subtitle": "Extract tables from PDF and convert to Excel (XLSX) format.",
+    "auto": {
+      "1b584106c1": "Convert to Excel",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "abef904a42": "Please upload a PDF file.",
+      "7f193f2e33": "Failed to convert PDF to Excel. {{value0}}",
+      "58ec90b001": "Extracted {{value0}} table(s) to Excel!",
+      "7143676af8": "Creating Excel file...",
+      "f7048f7844": "No tables were detected in this PDF.",
+      "d682b77e95": "No Tables Found",
+      "dede460ecd": "Scanning page {{value0}} of {{value1}}...",
+      "63dc1ff1bb": "Extracting tables...",
+      "9c4cf6ec2b": "Loading Engine...",
+      "2591070d22": "Please upload a PDF file first.",
+      "59516df9fc": "No File"
+    }
   },
   "pdfToText": {
     "name": "PDF to Text",
     "subtitle": "Extract text from PDF files and save as plain text (.txt). Supports multiple files.",
     "noteLabel": "Note:",
     "noteText": "This tool works ONLY with digitally created PDFs. For scanned documents or image-based PDFs, use our OCR PDF tool instead.",
-    "convertButton": "Extract Text"
+    "convertButton": "Extract Text",
+    "auto": {
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "bd2ff6bec3": "Extraction Error",
+      "8389aa2a38": "Extracted text from {{value0}} PDF files!",
+      "53e9bab963": "Extracting text from file {{value0}}/{{value1}}: {{value2}}...",
+      "7f3721e1f5": "Extracting text from multiple files...",
+      "c8c1d4f740": "Text extracted successfully!",
+      "f3aeb819f5": "Extracting text from {{value0}}...",
+      "7f1788f372": "Extracting text...",
+      "3cd2bcee0a": "Loading engine...",
+      "9b20a15e20": "Please select at least one PDF file.",
+      "2a17bf4990": "({{value0}})",
+      "fad4a0bfb8": "Some files were skipped. Only PDF files are allowed.",
+      "3003a34022": "Invalid Files"
+    }
   },
   "digitalSignPdf": {
     "name": "Digital Signature PDF",
@@ -1114,12 +3057,44 @@
     "applySignature": "Apply Digital Signature",
     "successMessage": "PDF signed successfully! The signature can be verified in any PDF reader.",
     "internetRequiredTitle": "Internet connection required",
-    "internetRequiredDescription": "Signing may need to fetch certificate chain information from your certificate issuer's server to validate the signature."
+    "internetRequiredDescription": "Signing may need to fetch certificate chain information from your certificate issuer's server to validate the signature.",
+    "auto": {},
+    "dynamic": {
+      "d265e37162": "{{value0}} - {{value1}}",
+      "3775b9c3ce": "{{value0}} • {{value1}}"
+    }
   },
   "validateSignaturePdf": {
     "name": "Validate PDF Signature",
     "pageTitle": "Validate PDF Signature - Verify Digital Signatures | BentoPDF",
-    "subtitle": "Verify digital signatures in your PDF files. Check certificate validity, view signer details, and confirm document integrity. All processing happens in your browser."
+    "subtitle": "Verify digital signatures in your PDF files. Check certificate validity, view signer details, and confirm document integrity. All processing happens in your browser.",
+    "auto": {
+      "4205553299": "Signature Validation Results",
+      "669c25442e": "Custom Certificate File X.509 (Optional)",
+      "fb82dce5a5": "Upload a trusted X.509 certificate to validate against a custom trust source.",
+      "cb52b69ce2": "Upload certificate (.pem, .crt, .cer)",
+      "5515cecbd8": "Upload Your PDF",
+      "c0481911b9": "Select a digitally signed PDF file from your device",
+      "1224313bb3": "Automatic Analysis",
+      "1118722b1e": "The tool extracts and parses all digital signatures in the document",
+      "730ace573c": "View Results",
+      "bec47e5e06": "See signer information, certificate validity, and signature status",
+      "fcf771a47b": "Digital Signature",
+      "3743e5ffa0": "Add cryptographic signature",
+      "a390b2f206": "Password protect PDF",
+      "023a377cc0": "Inspect PDF properties",
+      "1d96bf7498": "This tool validates PKCS#7 digital signatures created with X.509 certificates, the standard format used by most PDF signing tools and certificate authorities.",
+      "6a2b4465ca": "A self-signed certificate is one where the issuer and subject are the same. While the signature is technically valid, it means the certificate wasn't issued by a trusted Certificate Authority (CA).",
+      "63c5883377": "No, all processing happens entirely in your browser. Your PDF files never leave your device, ensuring complete privacy and security."
+    },
+    "dynamic": {
+      "5ae8ade49f": "Failed to validate signatures. The file may be corrupted.",
+      "2f59e87d76": "Analyzing signatures...",
+      "dfa18c01c2": "Failed to parse the certificate file.",
+      "4cff9de413": "Invalid Certificate",
+      "934e0a255a": "Please select a .pem, .crt, .cer, or .der certificate file.",
+      "ce9a858d22": "Please select a PDF file."
+    }
   },
   "timestampPdf": {
     "name": "Timestamp PDF",
@@ -1128,49 +3103,358 @@
     "tsaSectionTitle": "Timestamp Server (TSA)",
     "selectTsa": "Select a TSA server",
     "applyTimestamp": "Apply Timestamp",
-    "successMessage": "PDF timestamped successfully! The timestamp can be verified in any PDF reader."
+    "successMessage": "PDF timestamped successfully! The timestamp can be verified in any PDF reader.",
+    "auto": {
+      "bf9bc0c472": "Timestamping requires contacting the selected TSA server to obtain a trusted timestamp token.",
+      "f431115754": "Select the PDF document you want to timestamp",
+      "8763b90ca8": "Choose TSA Server",
+      "3c0dae3c70": "Select one of the trusted TSA servers",
+      "5215980529": "Timestamp & Download",
+      "c71dbd5d31": "Apply the RFC 3161 timestamp and download your timestamped PDF",
+      "fcf771a47b": "Digital Signature",
+      "114a8d8958": "Sign with X.509 certificate",
+      "0f07855beb": "Validate Signature",
+      "c38a47c616": "Verify digital signatures",
+      "e97f784fcc": "A document timestamp (RFC 3161) is a cryptographic proof that your PDF existed at a specific point in time. A trusted Time Stamp Authority (TSA) server signs a hash of your document along with the current time, creating a tamper-evident timestamp embedded in the PDF.",
+      "3691aa32b8": "No. Unlike a digital signature, a document timestamp does not require a personal certificate. The TSA server provides the trusted timestamp using its own certificate.",
+      "c909f24756": "No. Only a cryptographic hash (SHA-256) of your document is sent to the TSA server. Your actual PDF content never leaves your browser.",
+      "0302dba565": "Yes. The tool creates a standard RFC 3161 document timestamp (ETSI.RFC3161 SubFilter) that is recognized by Adobe Acrobat and other major PDF viewers."
+    },
+    "dynamic": {
+      "f75cc851aa": "Failed to timestamp PDF: {{value0}}\n\nPlease try a different TSA server or check your internet connection.",
+      "04775422d6": "Timestamp Failed",
+      "696cf328fe": "Applying timestamp...",
+      "fab49a349d": "Please upload a PDF file first.",
+      "e237ddc696": "No File",
+      "15d57e864b": "{{value0}}",
+      "90c1cb027a": "{{value0}} • {{value1}} pages",
+      "bdf9248f12": "{{value0}} • Loading pages...",
+      "a36f98a780": "Please select a PDF file."
+    }
   },
   "emailToPdf": {
     "name": "Email to PDF",
     "subtitle": "Convert email files (EML, MSG) to PDF format. Supports Outlook exports and standard email formats.",
     "acceptedFormats": "EML, MSG files",
-    "convertButton": "Convert to PDF"
+    "convertButton": "Convert to PDF",
+    "auto": {
+      "85d03fc690": "Conversion Options",
+      "ee14050617": "Letter",
+      "663f1895a4": "Upload Email File",
+      "a38c1a4b63": "Click or drag and drop your .eml or .msg file to begin",
+      "1f22ff8294": "Click the convert button to generate your PDF",
+      "21f1cf5699": "Save your converted PDF file instantly",
+      "2f4e232e46": "Convert Word documents to PDF",
+      "d43e38ba8b": "Convert text files to PDF",
+      "fe17a5bb0f": "Edit PDF",
+      "d3ff2e8cb2": "BentoPDF supports both .eml (standard email format) and .msg (Microsoft Outlook) files. These are the most common formats for exported or saved emails.",
+      "b741abdfda": "Absolutely! All processing happens in your browser. Your email files never leave your device, ensuring complete privacy for sensitive communications.",
+      "2af4ca1612": "The PDF displays a list of attachments at the bottom and also embeds the actual files into the PDF. You can access them via the Attachments panel in PDF readers like Adobe Reader or Foxit."
+    },
+    "dynamic": {
+      "39559b0498": "An error occurred during conversion. Error: {{value0}}",
+      "21867b84d8": "Successfully converted {{value0}} {{value1}} file(s) to PDF.",
+      "1c842c2b35": "Conversion Complete",
+      "cd92d7b06d": "Converting {{value0}}/{{value1}}: {{value2}}...",
+      "678d5087c0": "Converting emails...",
+      "1e59a9f4bf": "Successfully converted {{value0}} to PDF.",
+      "c34c969696": "Generating PDF...",
+      "bf0046c338": "Parsing {{value0}}...",
+      "0b58b429fa": "Loading PDF engine...",
+      "e2b1b6aa34": "Please select at least one {{value0}} file (.eml or .msg)."
+    }
   },
   "fontToOutline": {
     "name": "Font to Outline",
-    "subtitle": "Convert all fonts to vector outlines for consistent rendering across all devices."
+    "subtitle": "Convert all fonts to vector outlines for consistent rendering across all devices.",
+    "auto": {
+      "1a036f9ea6": "What this tool does:",
+      "548e9ac2aa": "Converts all text to vector paths/curves",
+      "5acbe5c979": "Eliminates font dependency issues",
+      "3a6d4fed99": "Ensures consistent rendering across all devices",
+      "51ffebf638": "Ideal for print-ready PDFs",
+      "d01f22915e": "Note: Text will no longer be selectable or searchable after conversion.",
+      "7cb75feead": "Convert to Outlines",
+      "81f0a711f8": "Select your PDF file with embedded fonts",
+      "53a0d0fee5": "Ghostscript converts all fonts to vector paths",
+      "50533a1de1": "Get your font-independent PDF instantly",
+      "0e0f0be1f5": "Make forms non-editable",
+      "c80ddda7d0": "Convert to image-based PDF",
+      "a6cc6ebc72": "Reduce PDF file size",
+      "adfbd1a347": "Convert for archiving",
+      "02a3e813d7": "Fix corrupted PDF files",
+      "a26ee4f5a0": "Converting fonts to outlines means transforming text characters from font-based representations into vector paths/curves. This ensures the PDF looks identical on any device, even if the original fonts aren't installed.",
+      "1a4d97e7db": "Use this tool when preparing PDFs for professional printing, sharing documents with special fonts, or when you need to ensure consistent appearance across different systems and devices.",
+      "4d65f6e337": "No. After conversion, text becomes vector graphics and is no longer selectable or searchable. If you need searchable text, consider using the OCR tool after conversion.",
+      "9c649e3408": "Yes! All processing happens entirely in your browser using WebAssembly. Your files never leave your device."
+    },
+    "dynamic": {
+      "bc182f005b": "No PDFs could be processed.",
+      "759b439f61": "Processed {{value0}} PDFs.",
+      "d4bf39f87d": "Processing {{value0}}/{{value1}}: {{value2}}...",
+      "b9e71d80df": "Processing multiple PDFs...",
+      "7db89a06ed": "Converting fonts to outlines...",
+      "ff6a22c28e": "Please select at least one PDF file."
+    }
   },
   "deskewPdf": {
     "name": "Deskew PDF",
-    "subtitle": "Automatically straighten tilted scanned pages using OpenCV."
+    "subtitle": "Automatically straighten tilted scanned pages using OpenCV.",
+    "auto": {
+      "d1814f6a72": "0.1° (Very Sensitive)",
+      "4963c88af5": "0.5° (Default)",
+      "2586fc2c0d": "1.0° (Normal)",
+      "da3ab1d77f": "2.0° (Less Sensitive)",
+      "bd8ec38413": "Pages with skew below this threshold won't be corrected.",
+      "9b5a66dc2f": "100 (Fast)",
+      "73964943e3": "150 (Default)",
+      "eb1160a61f": "200 (Better)",
+      "f2ae783be9": "300 (Best Quality)",
+      "da47ed36b0": "Deskew Results",
+      "7acba5f21f": "Total Pages:",
+      "16d83c4d17": "Pages Corrected:",
+      "26ef16e69a": "Select your scanned PDF with tilted pages",
+      "518fc45218": "Auto-Detect",
+      "d2da212c01": "OpenCV analyzes and detects skew angles",
+      "9160ff9602": "Get your straightened PDF instantly",
+      "c80ddda7d0": "Convert to image-based PDF",
+      "a6cc6ebc72": "Reduce PDF file size",
+      "02a3e813d7": "Fix corrupted PDF files",
+      "989dd4ea29": "Rotate PDF pages",
+      "a154d77304": "Make PDF searchable",
+      "253e8cb914": "Deskewing is the process of correcting tilted or rotated pages in scanned documents. When you scan a document, it's common for pages to be slightly skewed. This tool automatically detects and corrects that skew.",
+      "bcb7b013dd": "Our tool uses OpenCV's advanced image processing algorithms to detect skew angles with high precision. It works best on documents with clear text content.",
+      "9c649e3408": "Yes! All processing happens entirely in your browser using WebAssembly. Your files never leave your device."
+    },
+    "dynamic": {
+      "506e305bcf": "Failed to deskew PDF: {{value0}}",
+      "d1f2bb540e": "Deskewed {{value0}} file(s). {{value1}}",
+      "e35d1ef53a": "Deskewing {{value0}}...",
+      "940e55b69e": "Initializing PyMuPDF...",
+      "92c18c8069": "Please select at least one PDF file.",
+      "d5273db50d": "({{value0}} KB)",
+      "9462cdd58a": ""
+    }
   },
   "pdfToWord": {
     "name": "PDF to Word",
-    "subtitle": "Convert PDF files to editable Word documents."
+    "subtitle": "Convert PDF files to editable Word documents.",
+    "auto": {
+      "6d4fcf7a04": "Convert to DOCX",
+      "c91e040a8e": "Word To Pdf",
+      "e9491f0c3f": "Free online word to pdf tool",
+      "b4210b54f6": "Pdf To Text",
+      "5f75695a4d": "Free online pdf to text tool",
+      "7800ff3767": "Pdf To Excel",
+      "fa3b5f9252": "Free online pdf to excel tool",
+      "0a193ffe0a": "Edit Pdf"
+    },
+    "dynamic": {
+      "91c47d8ed2": "An error occurred during conversion. Error: {{value0}}",
+      "7a04401188": "Successfully converted {{value0}} PDF(s) to DOCX.",
+      "f3dfa823b1": "Conversion Complete",
+      "20a5ae49d7": "Creating ZIP archive...",
+      "08e374b418": "Converting {{value0}}/{{value1}}: {{value2}}...",
+      "f42045b8cd": "Successfully converted {{value0}} to DOCX.",
+      "63a03d2fbe": "Converting {{value0}}...",
+      "8d9c37f316": "Converting...",
+      "1292fc8a63": "Loading PDF converter...",
+      "6d8a487c85": "Please select at least one PDF file.",
+      "9ca476fb35": "{{value0}} • Could not load page count",
+      "bc5256a321": "{{value0}} • {{value1}} pages",
+      "55c6560fcf": "{{value0}} • {{value1}}"
+    }
   },
   "extractImages": {
     "name": "Extract Images",
-    "subtitle": "Extract all embedded images from your PDF files."
+    "subtitle": "Extract all embedded images from your PDF files.",
+    "auto": {
+      "28dbbb96be": "Extracted Images",
+      "5cb33b0e74": "Download All (ZIP)",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "4c5a231a14": "Creating ZIP archive...",
+      "0dd88a4111": "An error occurred during extraction. Error: {{value0}}",
+      "21a0109112": "Found {{value0}} image(s) in {{value1}} PDF(s).",
+      "580169c9a7": "Extraction Complete",
+      "7dc9d0c8cc": "No embedded images were found in the selected PDF(s).",
+      "815be584e9": "No Images Found",
+      "699a1ba99d": "Extracting images from {{value0}}...",
+      "f496e0ee9b": "Loading PDF processor...",
+      "62200eb753": "Please select at least one PDF file.",
+      "ffccc13590": "{{value0}} • Could not load page count",
+      "71adf08528": "{{value0}} • {{value1}} pages",
+      "de57f04c3f": "{{value0}} • {{value1}}"
+    }
   },
   "pdfToMarkdown": {
     "name": "PDF to Markdown",
-    "subtitle": "Convert PDF text and tables to Markdown format."
+    "subtitle": "Convert PDF text and tables to Markdown format.",
+    "auto": {
+      "d0e1f8d4bf": "Convert to Markdown",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "21ac0a03e2": "An error occurred during conversion. Error: {{value0}}",
+      "b6ada8ef5f": "Successfully converted {{value0}} PDF(s) to Markdown.",
+      "794de0ca49": "Conversion Complete",
+      "5178f580d6": "Creating ZIP archive...",
+      "1556bdf597": "Converting {{value0}}/{{value1}}: {{value2}}...",
+      "c70ab352e3": "Successfully converted {{value0}} to Markdown.",
+      "a1124f961b": "Converting {{value0}}...",
+      "9ab0c4bc34": "Converting...",
+      "0beadcf720": "Loading PDF converter...",
+      "514702f7a2": "Please select at least one PDF file.",
+      "36dc12cdf2": "{{value0}} • Could not load page count",
+      "a91a90531d": "{{value0}} • {{value1}} pages",
+      "c22fc17c8e": "{{value0}} • {{value1}}",
+      "9a68de9cfd": "Failed to convert PDF. It may be image-based or corrupted.",
+      "223165f5fd": "Conversion Error",
+      "e98ede1f9b": "Converting to Markdown..."
+    }
   },
   "preparePdfForAi": {
     "name": "Prepare PDF for AI",
-    "subtitle": "Extract PDF content as LlamaIndex JSON for RAG/LLM pipelines."
+    "subtitle": "Extract PDF content as LlamaIndex JSON for RAG/LLM pipelines.",
+    "auto": {
+      "d3dd83dfd6": "Output Format:",
+      "f1689180f8": "Each PDF will be extracted as a JSON file containing an array of LlamaIndex Document objects with:",
+      "1937b24369": "Extract for AI",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "e7858b22ed": "An error occurred during extraction. Error: {{value0}}",
+      "e38c16fa0d": "Extracted {{value0}} PDF(s), failed {{value1}}.",
+      "8a1f9370be": "Extraction Partial",
+      "a1df979002": "Successfully extracted {{value0}} PDF(s) for AI/LLM use.",
+      "68f4ee2e54": "Extraction Complete",
+      "0c98912c52": "Creating ZIP archive...",
+      "fdee42364e": "Extracting {{value0}} for AI ({{value1}}/{{value2}})...",
+      "81666e637a": "Successfully extracted PDF for AI/LLM use.",
+      "cd0eb912f2": "Extracting {{value0}} for AI...",
+      "10e7294ea2": "Extracting...",
+      "af11d57398": "Loading engine...",
+      "c088c28b80": "Please select at least one PDF file.",
+      "e06864fb5a": "{{value0}} • Could not load page count",
+      "a807df92a6": "{{value0}} • {{value1}} pages",
+      "570fd297dc": "{{value0}} • {{value1}}"
+    }
   },
   "pdfOcg": {
     "name": "PDF OCG",
-    "subtitle": "View, toggle, add, and delete OCG layers in your PDF."
+    "subtitle": "View, toggle, add, and delete OCG layers in your PDF.",
+    "auto": {
+      "039e54acff": "Load Layers",
+      "a39ef9a1e1": "Add Layer",
+      "57058a23f6": "Loading layers...",
+      "0c7a76f393": "Download Modified PDF",
+      "a111d5c383": "Enter name for the new layer:",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf",
+      "37b8c9abce": "Enter new layer name...",
+      "d4beb764b8": "Layer Name"
+    },
+    "dynamic": {
+      "3354cf3da1": "Please select a PDF file.",
+      "fc393bf7c9": "PDF with layer changes saved!",
+      "4b469a48b4": "Saving PDF with layer changes...",
+      "6f5396866d": "Please enter a layer name",
+      "421586fd8a": "Invalid Name",
+      "a6ea2beda2": "Reading layer configuration...",
+      "454a380e0d": "Loading layers from {{value0}}...",
+      "b99ff491de": "Loading engine...",
+      "e6cf4e340b": "No File",
+      "73ae148bab": "Failed to add child layer",
+      "3173dfc13e": "Failed to delete layer",
+      "762efbb2e1": "Layer not found",
+      "1bcc36f306": "Failed to toggle layer visibility",
+      "a3681b9fa8": "{{value0}} • Could not load page count",
+      "ebdf5cb44f": "{{value0}} • {{value1}} pages",
+      "1c578f88cb": "{{value0}} • {{value1}}"
+    }
   },
   "pdfToPdfa": {
     "name": "PDF to PDF/A",
-    "subtitle": "Convert PDF to PDF/A for long-term archiving."
+    "subtitle": "Convert PDF to PDF/A for long-term archiving.",
+    "auto": {
+      "94500c0b77": "PDF/A-1b (Strict, no transparency)",
+      "708ba4d448": "PDF/A-2b (Recommended, allows transparency)",
+      "f8504f4422": "PDF/A-3b (Modern, allows attachments)",
+      "8616379b2a": "Pre-flatten PDF (recommended for complex files)",
+      "e4699893d4": "Converts the PDF to images first, ensuring better PDF/A compliance. Recommended if validation fails on the normal conversion.",
+      "01d8abb362": "Convert to PDF/A",
+      "bee506ba25": "Converting...",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "d107a9b16c": "An error occurred during conversion. Error: {{value0}}",
+      "a35ab56af2": "Successfully converted {{value0}} PDF(s) to {{value1}}.",
+      "9c1d9b0762": "Conversion Complete",
+      "1a64674925": "Converting {{value0}}/{{value1}}: {{value2}}...",
+      "7c0a96310b": "Converting multiple PDFs to PDF/A...",
+      "68390fdb3e": "Successfully converted {{value0}} to {{value1}}.",
+      "7f598ce1b2": "Initializing Ghostscript...",
+      "86822cd801": "Pre-flattening PDF...",
+      "b4d3f1eaca": "Please select at least one PDF file.",
+      "5c1931ff9b": "{{value0}} • Could not load page count",
+      "7fdcb51569": "{{value0}} • {{value1}} pages",
+      "1ebf7b22d2": "{{value0}} • {{value1}}"
+    }
   },
   "rasterizePdf": {
     "name": "Rasterize PDF",
-    "subtitle": "Convert PDF to image-based PDF. Flatten layers and remove selectable text."
+    "subtitle": "Convert PDF to image-based PDF. Flatten layers and remove selectable text.",
+    "auto": {
+      "4c276f593d": "72 (Screen)",
+      "73964943e3": "150 (Default)",
+      "de843a1ccb": "200 (Good)",
+      "086eceb1ee": "300 (Print)",
+      "cd120f43cc": "600 (High Quality)",
+      "2a3202f9fd": "PNG (Lossless)",
+      "f883714d8b": "JPEG (Smaller file size)",
+      "bb9dede377": "Merge Pdf",
+      "ae395b2670": "Compress Pdf",
+      "0784d816a9": "Split Pdf",
+      "0a193ffe0a": "Edit Pdf",
+      "ed40c6ff84": "Rotate Pdf"
+    },
+    "dynamic": {
+      "6cbf4cb50e": "An error occurred during rasterization. Error: {{value0}}",
+      "2959c9c375": "Rasterized {{value0}} PDF(s), failed {{value1}}.",
+      "578a9e9e78": "Rasterization Partial",
+      "6b16ccd5f0": "Successfully rasterized {{value0}} PDF(s) at {{value1}} DPI.",
+      "7fffdf48a8": "Rasterization Complete",
+      "8b8aebca3a": "Creating ZIP archive...",
+      "024098c071": "Rasterizing {{value0}} ({{value1}}/{{value2}})...",
+      "29b590fbec": "Successfully rasterized PDF at {{value0}} DPI.",
+      "81511ff0eb": "Rasterizing {{value0}}...",
+      "ba04be1c08": "Rasterizing...",
+      "d87f270bce": "Loading engine...",
+      "d68750cff1": "Please select at least one PDF file.",
+      "3750c60c73": "{{value0}} • Could not load page count",
+      "d3132c7fc8": "{{value0}} • {{value1}} pages",
+      "5f28791b8c": "{{value0}} • {{value1}}"
+    }
   },
   "pdfWorkflow": {
     "name": "PDF Workflow Builder",
@@ -1269,7 +3553,13 @@
       "invalidWorkflowFile": "Invalid workflow file: missing nodes or connections array.",
       "storageQuotaExceeded": "Failed to save workflow: storage quota exceeded. Try deleting old templates.",
       "failedToImport": "Failed to import workflow: {{message}}"
-    }
+    },
+    "nodeCount": "{{count}} nodes",
+    "incorrectPassword": "Incorrect password",
+    "executionFailed": "Workflow execution failed. Please try again.",
+    "pdfLoadFailed": "Failed to load PDF. Please try again.",
+    "imageLoadFailed": "Failed to load images. Please try again.",
+    "fileLoadFailed": "Failed to load files. Please try again."
   },
   "wasmSettings": {
     "title": "Advanced Features Settings",
@@ -1309,7 +3599,14 @@
     "resetWithDefaults": "Custom overrides cleared. Pre-configured defaults are active.",
     "resetNoDefaults": "All configurations and cached modules have been cleared.",
     "licenseTitle": "License Notice:",
-    "licenseDescription": "The external modules (PyMuPDF, Ghostscript, CoherentPDF) are licensed under AGPL-3.0 or similar copyleft licenses. By configuring and using these modules, you agree to their respective license terms. BentoPDF is compatible with any Ghostscript WASM and PyMuPDF WASM implementation that follows the expected interface."
+    "licenseDescription": "The external modules (PyMuPDF, Ghostscript, CoherentPDF) are licensed under AGPL-3.0 or similar copyleft licenses. By configuring and using these modules, you agree to their respective license terms. BentoPDF is compatible with any Ghostscript WASM and PyMuPDF WASM implementation that follows the expected interface.",
+    "pymupdfName": "PyMuPDF",
+    "ghostscriptName": "Ghostscript",
+    "cpdfName": "CoherentPDF",
+    "pymupdfUrlPlaceholder": "https://your-cdn.com/pymupdf-wasm/",
+    "ghostscriptUrlPlaceholder": "https://your-cdn.com/ghostscript-wasm/",
+    "cpdfUrlPlaceholder": "https://your-cdn.com/cpdf/",
+    "saveFailedMessage": "Failed to save configuration. Please try again."
   },
   "pdfOverlay": {
     "name": "PDF Overlay",
@@ -1336,6 +3633,39 @@
     "faqSinglePageQuestion": "Can I use a single-page PDF as overlay for all pages?",
     "faqSinglePageAnswer": "Yes! Enable the \"Loop\" option and your overlay PDF pages will repeat across all base pages. A single-page watermark will apply to every page.",
     "faqPrivacyQuestion": "Are my files private and secure?",
-    "faqPrivacyAnswer": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy."
+    "faqPrivacyAnswer": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "auto": {
+      "ff66d47ae5": "e.g. 1-5, 8, 10-z (leave empty for all)"
+    },
+    "dynamic": {
+      "1436fe7ce3": "An error occurred: {{value0}}.",
+      "1f995b4468": "Processing Failed",
+      "7fed9a675a": "PDF {{value0}} applied successfully.",
+      "2bbca695fc": "Reading files...",
+      "657cdd2847": "Initializing PDF engine...",
+      "e3f55281aa": "Please upload both a base PDF and an overlay/underlay PDF.",
+      "fc7bc22501": "Missing Files"
+    },
+    "applying": "Applying {{mode}}...",
+    "processFailed": "Overlay processing failed. Please try again."
+  },
+  "formCreator": {
+    "dynamic": {
+      "4b5dca4049": "Error loading PDF file. Please try again with a valid PDF.",
+      "605d78d3b5": "Page {{value0}} of {{value1}}",
+      "736b20157d": "A field named \"{{value0}}\" already exists. Please rename this field to use a unique name before downloading.",
+      "300198123f": "Duplicate Field Name",
+      "56f9bd1ca6": "Your PDF has been downloaded successfully.",
+      "7253f09d38": "The following field names are used more than once: {{value0}}. Please rename these fields to use unique names before downloading.",
+      "a577a19cd6": "Duplicate Field Names",
+      "ece17e24e4": "The following field names already exist in the uploaded PDF: {{value0}}. Please rename these fields before downloading.",
+      "f486de300f": "Field Name Conflict",
+      "d005f52806": "Field name \"{{value0}}\" already exists in this {{value1}}. Please try using a unique name.",
+      "6abf499dba": "Field name cannot be empty",
+      "cbb0fa41b2": "Item 1"
+    },
+    "selectPlaceholder": "Select...",
+    "defaultButton": "Button",
+    "tooltipPlaceholder": "Description for screen readers"
   }
 }

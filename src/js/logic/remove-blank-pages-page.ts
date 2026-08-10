@@ -1,4 +1,14 @@
 import { PDFDocument } from 'pdf-lib';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import * as pdfjsLib from 'pdfjs-dist';
 import { createIcons, icons } from 'lucide';
 import { initPagePreview } from '../utils/page-preview.js';
@@ -111,18 +121,28 @@ function resetState() {
   ) as HTMLInputElement;
   if (slider) slider.value = '80';
   const sliderLabel = document.getElementById('sensitivity-value');
-  if (sliderLabel) sliderLabel.textContent = '80';
+  if (sliderLabel)
+    sliderLabel.textContent = translate(
+      'tools:removeBlankPages.dynamic.34d15e8ab1',
+      '80'
+    );
 }
 
 async function handleFileUpload(file: File) {
   if (!file || file.type !== 'application/pdf') {
-    showAlert('Error', 'Please upload a valid PDF file.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:removeBlankPages.dynamic.96820f89e0',
+        'Please upload a valid PDF file.'
+      )
+    );
     return;
   }
   try {
     const result = await loadPdfWithPasswordPrompt(file);
     if (!result) return;
-    showLoader('Loading PDF...');
+    showLoader(translate('fileHandler.loadingPdf', 'Loading PDF...'));
     result.pdf.destroy();
     pageState.pdfDoc = await loadPdfDocument(result.bytes);
     pageState.file = result.file;
@@ -132,7 +152,13 @@ async function handleFileUpload(file: File) {
     document.getElementById('preview-panel')?.classList.add('hidden');
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'Failed to load PDF file.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:removeBlankPages.dynamic.2405929a27',
+        'Failed to load PDF file.'
+      )
+    );
   } finally {
     hideLoader();
   }
@@ -181,7 +207,13 @@ async function generateThumbnail(page: pdfjsLib.PDFPageProxy): Promise<string> {
 
 async function detectBlankPages() {
   if (!pageState.pdfDoc || !pageState.file)
-    return showAlert('Error', 'Please upload a PDF first.');
+    return showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:removeBlankPages.dynamic.f55d42e22e',
+        'Please upload a PDF first.'
+      )
+    );
 
   const sensitivitySlider = document.getElementById(
     'sensitivity-slider'
@@ -189,7 +221,12 @@ async function detectBlankPages() {
   const sensitivityPercent = parseInt(sensitivitySlider?.value || '80');
   const maxNonWhitePercent = 5 - (sensitivityPercent / 100) * 4.9;
 
-  showLoader('Detecting blank pages...');
+  showLoader(
+    translate(
+      'tools:removeBlankPages.dynamic.cf7c265e27',
+      'Detecting blank pages...'
+    )
+  );
   try {
     const pdfData = await pageState.file.arrayBuffer();
     const pdfDoc = await pdfjsLib.getDocument({ data: pdfData }).promise;
@@ -209,7 +246,13 @@ async function detectBlankPages() {
     }
 
     if (pageState.detectedBlankPages.length === 0) {
-      showAlert('Info', 'No blank pages detected in this PDF.');
+      showAlert(
+        translate('tools:removeBlankPages.dynamic.bf7c34b082', 'Info'),
+        translate(
+          'tools:removeBlankPages.dynamic.33a372a610',
+          'No blank pages detected in this PDF.'
+        )
+      );
       hideLoader();
       return;
     }
@@ -224,7 +267,13 @@ async function detectBlankPages() {
     hideLoader();
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'Could not detect blank pages.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:removeBlankPages.dynamic.b44f05496c',
+        'Could not detect blank pages.'
+      )
+    );
     hideLoader();
   }
 }
@@ -235,7 +284,11 @@ function updatePreviewPanel() {
 
   if (!previewInfo || !previewContainer) return;
 
-  previewInfo.textContent = `Found ${pageState.detectedBlankPages.length} blank page(s). Click on a page to deselect it.`;
+  previewInfo.textContent = translate(
+    'tools:removeBlankPages.dynamic.7803f683cb',
+    `Found ${pageState.detectedBlankPages.length} blank page(s). Click on a page to deselect it.`,
+    { value0: pageState.detectedBlankPages.length }
+  );
   previewContainer.innerHTML = '';
 
   pageState.detectedBlankPages.forEach((pageIndex) => {
@@ -284,7 +337,13 @@ function togglePageSelection(div: HTMLElement, pageIndex: number) {
 
 async function processRemoveBlankPages() {
   if (!pageState.pdfDoc || !pageState.file)
-    return showAlert('Error', 'Please upload a PDF first.');
+    return showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:removeBlankPages.dynamic.f55d42e22e',
+        'Please upload a PDF first.'
+      )
+    );
 
   // Get selected pages to remove
   const previewContainer = document.getElementById('blank-pages-preview');
@@ -295,11 +354,23 @@ async function processRemoveBlankPages() {
   });
 
   if (selectedPages.length === 0) {
-    showAlert('Info', 'No pages selected for removal.');
+    showAlert(
+      translate('tools:removeBlankPages.dynamic.bf7c34b082', 'Info'),
+      translate(
+        'tools:removeBlankPages.dynamic.de578e3bf9',
+        'No pages selected for removal.'
+      )
+    );
     return;
   }
 
-  showLoader(`Removing ${selectedPages.length} blank page(s)...`);
+  showLoader(
+    translate(
+      'tools:removeBlankPages.dynamic.13bcc97569',
+      `Removing ${selectedPages.length} blank page(s)...`,
+      { value0: selectedPages.length }
+    )
+  );
   try {
     const newPdf = await PDFDocument.create();
     const pages = pageState.pdfDoc.getPages();
@@ -317,14 +388,24 @@ async function processRemoveBlankPages() {
       pageState.file?.name || 'document.pdf'
     );
     showAlert(
-      'Success',
-      `Removed ${selectedPages.length} blank page(s) successfully!`,
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:removeBlankPages.dynamic.5da9c11a95',
+        `Removed ${selectedPages.length} blank page(s) successfully!`,
+        { value0: selectedPages.length }
+      ),
       'success',
       resetState
     );
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'Could not remove blank pages.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:removeBlankPages.dynamic.5b1965e07d',
+        'Could not remove blank pages.'
+      )
+    );
   } finally {
     hideLoader();
   }

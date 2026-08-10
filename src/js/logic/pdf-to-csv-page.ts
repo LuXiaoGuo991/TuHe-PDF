@@ -1,4 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { createIcons, icons } from 'lucide';
 import { loadPyMuPDF } from '../utils/pymupdf-loader.js';
@@ -76,11 +86,19 @@ function tableToCsv(rows: (string | null)[][]): string {
 
 async function convert() {
   if (!file) {
-    showAlert('No File', 'Please upload a PDF file first.');
+    showAlert(
+      translate('tools:pdfToCsv.dynamic.69783ee8ef', 'No File'),
+      translate(
+        'tools:pdfToCsv.dynamic.ad03050928',
+        'Please upload a PDF file first.'
+      )
+    );
     return;
   }
 
-  showLoader('Loading Engine...');
+  showLoader(
+    translate('tools:pdfToCsv.dynamic.267db28b36', 'Loading Engine...')
+  );
 
   try {
     const pymupdf = await loadPyMuPDF();
@@ -91,7 +109,9 @@ async function convert() {
     pwResult.pdf.destroy();
     file = pwResult.file;
 
-    showLoader('Extracting tables...');
+    showLoader(
+      translate('tools:pdfToCsv.dynamic.b2a33c3624', 'Extracting tables...')
+    );
 
     const doc = await pymupdf.open(file);
     const pageCount = doc.pageCount;
@@ -100,7 +120,13 @@ async function convert() {
     const allRows: (string | null)[][] = [];
 
     for (let i = 0; i < pageCount; i++) {
-      showLoader(`Scanning page ${i + 1} of ${pageCount}...`);
+      showLoader(
+        translate(
+          'tools:pdfToCsv.dynamic.851ba63d4f',
+          `Scanning page ${i + 1} of ${pageCount}...`,
+          { value0: i + 1, value1: pageCount }
+        )
+      );
       const page = doc.getPage(i);
       const tables = page.findTables();
 
@@ -111,7 +137,13 @@ async function convert() {
     }
 
     if (allRows.length === 0) {
-      showAlert('No Tables Found', 'No tables were detected in this PDF.');
+      showAlert(
+        translate('tools:pdfToCsv.dynamic.b9789e2c14', 'No Tables Found'),
+        translate(
+          'tools:pdfToCsv.dynamic.cf3fa196da',
+          'No tables were detected in this PDF.'
+        )
+      );
       return;
     }
 
@@ -119,15 +151,25 @@ async function convert() {
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     downloadFile(blob, `${baseName}.csv`);
     showAlert(
-      'Success',
-      'PDF converted to CSV successfully!',
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:pdfToCsv.dynamic.2d3e7a570f',
+        'PDF converted to CSV successfully!'
+      ),
       'success',
       resetState
     );
   } catch (e) {
     console.error(e);
     const message = e instanceof Error ? e.message : 'Unknown error';
-    showAlert('Error', `Failed to convert PDF to CSV. ${message}`);
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:pdfToCsv.dynamic.f3154bcd1b',
+        `Failed to convert PDF to CSV. ${message}`,
+        { value0: message }
+      )
+    );
   } finally {
     hideLoader();
   }
@@ -152,7 +194,13 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     if (!validFile) {
-      showAlert('Invalid File', 'Please upload a PDF file.');
+      showAlert(
+        translate('alert.invalidFile', 'Invalid File'),
+        translate(
+          'tools:pdfToCsv.dynamic.fa8ca0aeab',
+          'Please upload a PDF file.'
+        )
+      );
       return;
     }
 

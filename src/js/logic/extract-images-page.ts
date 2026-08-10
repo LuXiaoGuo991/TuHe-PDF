@@ -1,5 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
 import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import {
   downloadFile,
   readFileAsArrayBuffer,
@@ -66,7 +75,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const metaSpan = document.createElement('div');
         metaSpan.className = 'text-xs text-gray-400';
-        metaSpan.textContent = `${formatBytes(file.size)} • ${t('common.loadingPageCount')}`;
+        metaSpan.textContent = translate(
+          'tools:extractImages.dynamic.de57f04c3f',
+          `${formatBytes(file.size)} • ${t('common.loadingPageCount')}`,
+          {
+            value0: formatBytes(file.size),
+            value1: t('common.loadingPageCount'),
+          }
+        );
 
         infoContainer.append(nameSpan, metaSpan);
 
@@ -85,9 +101,17 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
           const arrayBuffer = await readFileAsArrayBuffer(file);
           const pdfDoc = await getPDFDocument({ data: arrayBuffer }).promise;
-          metaSpan.textContent = `${formatBytes(file.size)} • ${pdfDoc.numPages} pages`;
+          metaSpan.textContent = translate(
+            'tools:extractImages.dynamic.71adf08528',
+            `${formatBytes(file.size)} • ${pdfDoc.numPages} pages`,
+            { value0: formatBytes(file.size), value1: pdfDoc.numPages }
+          );
         } catch {
-          metaSpan.textContent = `${formatBytes(file.size)} • Could not load page count`;
+          metaSpan.textContent = translate(
+            'tools:extractImages.dynamic.ffccc13590',
+            `${formatBytes(file.size)} • Could not load page count`,
+            { value0: formatBytes(file.size) }
+          );
         }
       }
 
@@ -153,12 +177,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const extract = async () => {
     try {
       if (state.files.length === 0) {
-        showAlert('No Files', 'Please select at least one PDF file.');
+        showAlert(
+          translate('alert.noFiles', 'No Files'),
+          translate(
+            'tools:extractImages.dynamic.62200eb753',
+            'Please select at least one PDF file.'
+          )
+        );
         return;
       }
 
       const decryptedFiles = await batchDecryptIfNeeded(state.files);
-      showLoader('Loading PDF processor...');
+      showLoader(
+        translate(
+          'tools:extractImages.dynamic.f496e0ee9b',
+          'Loading PDF processor...'
+        )
+      );
       state.files = decryptedFiles;
       const pymupdf = await loadPyMuPDF();
 
@@ -167,7 +202,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       for (let i = 0; i < state.files.length; i++) {
         const file = state.files[i];
-        showLoader(`Extracting images from ${file.name}...`);
+        showLoader(
+          translate(
+            'tools:extractImages.dynamic.699a1ba99d',
+            `Extracting images from ${file.name}...`,
+            { value0: file.name }
+          )
+        );
 
         const doc = await pymupdf.open(file);
         const pageCount = doc.pageCount;
@@ -199,22 +240,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (extractedImages.length === 0) {
         showAlert(
-          'No Images Found',
-          'No embedded images were found in the selected PDF(s).'
+          translate(
+            'tools:extractImages.dynamic.815be584e9',
+            'No Images Found'
+          ),
+          translate(
+            'tools:extractImages.dynamic.7dc9d0c8cc',
+            'No embedded images were found in the selected PDF(s).'
+          )
         );
       } else {
         displayImages();
         showAlert(
-          'Extraction Complete',
-          `Found ${extractedImages.length} image(s) in ${state.files.length} PDF(s).`,
+          translate(
+            'tools:extractImages.dynamic.580169c9a7',
+            'Extraction Complete'
+          ),
+          translate(
+            'tools:extractImages.dynamic.21a0109112',
+            `Found ${extractedImages.length} image(s) in ${state.files.length} PDF(s).`,
+            { value0: extractedImages.length, value1: state.files.length }
+          ),
           'success'
         );
       }
     } catch (e: unknown) {
       hideLoader();
       showAlert(
-        'Error',
-        `An error occurred during extraction. Error: ${e instanceof Error ? e.message : String(e)}`
+        translate('alert.error', 'Error'),
+        translate('alert.processFailed', 'Processing failed. Please try again.')
       );
     }
   };
@@ -222,7 +276,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const downloadAll = async () => {
     if (extractedImages.length === 0) return;
 
-    showLoader('Creating ZIP archive...');
+    showLoader(
+      translate(
+        'tools:extractImages.dynamic.4c5a231a14',
+        'Creating ZIP archive...'
+      )
+    );
     const JSZip = (await import('jszip')).default;
     const zip = new JSZip();
 

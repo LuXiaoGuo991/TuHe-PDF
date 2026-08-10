@@ -1,4 +1,14 @@
 import { createIcons, icons } from 'lucide';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { showAlert, showLoader, hideLoader } from '../ui.js';
 import {
   downloadFile,
@@ -114,13 +124,19 @@ function handleFileUpload(e: Event) {
 async function handleFiles(files: FileList) {
   const file = files[0];
   if (!file || file.type !== 'application/pdf') {
-    showAlert('Invalid File', 'Please upload a valid PDF file.');
+    showAlert(
+      translate('alert.invalidFile', 'Invalid File'),
+      translate(
+        'tools:addWatermark.dynamic.616dc4c0fd',
+        'Please upload a valid PDF file.'
+      )
+    );
     return;
   }
   try {
     const result = await loadPdfWithPasswordPrompt(file);
     if (!result) return;
-    showLoader('Loading PDF...');
+    showLoader(translate('fileHandler.loadingPdf', 'Loading PDF...'));
     const pdfBytes = new Uint8Array(result.bytes);
     pageState.pdfDoc = await loadPdfDocument(pdfBytes);
     pageState.file = result.file;
@@ -138,7 +154,15 @@ async function handleFiles(files: FileList) {
 
     const editorFileInfo = document.getElementById('editor-file-info');
     if (editorFileInfo) {
-      editorFileInfo.textContent = `${file.name} (${formatBytes(file.size)}, ${totalPageCount} pages)`;
+      editorFileInfo.textContent = translate(
+        'tools:addWatermark.dynamic.7180e53d65',
+        `${file.name} (${formatBytes(file.size)}, ${totalPageCount} pages)`,
+        {
+          value0: file.name,
+          value1: formatBytes(file.size),
+          value2: totalPageCount,
+        }
+      );
     }
 
     updatePageNavUI();
@@ -146,7 +170,13 @@ async function handleFiles(files: FileList) {
     updateWatermarkOverlay();
   } catch (error) {
     console.error(error);
-    showAlert('Error', 'Failed to load PDF file.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:addWatermark.dynamic.90d503c4bc',
+        'Failed to load PDF file.'
+      )
+    );
   } finally {
     hideLoader();
   }
@@ -166,7 +196,14 @@ function updateFileDisplay() {
   nameSpan.textContent = pageState.file.name;
   const metaSpan = document.createElement('div');
   metaSpan.className = 'text-xs text-gray-400';
-  metaSpan.textContent = `${formatBytes(pageState.file.size)} • ${pageState.pdfDoc.getPageCount()} pages`;
+  metaSpan.textContent = translate(
+    'tools:addWatermark.dynamic.12062dabd4',
+    `${formatBytes(pageState.file.size)} • ${pageState.pdfDoc.getPageCount()} pages`,
+    {
+      value0: formatBytes(pageState.file.size),
+      value1: pageState.pdfDoc.getPageCount(),
+    }
+  );
   infoContainer.append(nameSpan, metaSpan);
   const removeBtn = document.createElement('button');
   removeBtn.className = 'ml-4 text-red-400 hover:text-red-300 flex-shrink-0';
@@ -806,11 +843,19 @@ function setupDragHandlers(container: HTMLElement) {
 
 async function applyWatermark() {
   if (!pageState.pdfDoc || !pageState.pdfBytes) {
-    showAlert('Error', 'Please upload a PDF file first.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:addWatermark.dynamic.1de34d3cec',
+        'Please upload a PDF file first.'
+      )
+    );
     return;
   }
 
-  showLoader('Adding watermark...');
+  showLoader(
+    translate('tools:addWatermark.dynamic.d24c2224a2', 'Adding watermark...')
+  );
 
   try {
     saveCurrentPageConfig();
@@ -973,7 +1018,13 @@ async function applyWatermark() {
       const renderScale = 2.5;
 
       for (let i = 1; i <= totalPages; i++) {
-        showLoader(`Flattening page ${i} of ${totalPages}...`);
+        showLoader(
+          translate(
+            'tools:addWatermark.dynamic.ccc968f57b',
+            `Flattening page ${i} of ${totalPages}...`,
+            { value0: i, value1: totalPages }
+          )
+        );
         const page = await watermarkedPdf.getPage(i);
         const unscaledVP = page.getViewport({ scale: 1 });
         const viewport = page.getViewport({ scale: renderScale });
@@ -1012,12 +1063,19 @@ async function applyWatermark() {
       new Blob([new Uint8Array(resultBytes)], { type: 'application/pdf' }),
       pageState.file?.name || 'document.pdf'
     );
-    showAlert('Success', 'Watermark added successfully!', 'success');
+    showAlert(
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:addWatermark.dynamic.3201336b21',
+        'Watermark added successfully!'
+      ),
+      'success'
+    );
   } catch (e: unknown) {
     console.error(e);
     showAlert(
-      'Error',
-      e instanceof Error ? e.message : 'Could not add the watermark.'
+      translate('alert.error', 'Error'),
+      translate('alert.processFailed', 'Processing failed. Please try again.')
     );
   } finally {
     hideLoader();

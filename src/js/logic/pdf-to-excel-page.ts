@@ -1,4 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { createIcons, icons } from 'lucide';
 import { loadPyMuPDF } from '../utils/pymupdf-loader.js';
@@ -57,11 +67,19 @@ const resetState = () => {
 
 async function convert() {
   if (!file) {
-    showAlert('No File', 'Please upload a PDF file first.');
+    showAlert(
+      translate('tools:pdfToExcel.dynamic.59516df9fc', 'No File'),
+      translate(
+        'tools:pdfToExcel.dynamic.2591070d22',
+        'Please upload a PDF file first.'
+      )
+    );
     return;
   }
 
-  showLoader('Loading Engine...');
+  showLoader(
+    translate('tools:pdfToExcel.dynamic.9c4cf6ec2b', 'Loading Engine...')
+  );
 
   try {
     const pymupdf = await loadPyMuPDF();
@@ -72,7 +90,9 @@ async function convert() {
     pwResult.pdf.destroy();
     file = pwResult.file;
 
-    showLoader('Extracting tables...');
+    showLoader(
+      translate('tools:pdfToExcel.dynamic.63dc1ff1bb', 'Extracting tables...')
+    );
 
     const doc = await pymupdf.open(file);
     const pageCount = doc.pageCount;
@@ -86,7 +106,13 @@ async function convert() {
     const allTables: TableData[] = [];
 
     for (let i = 0; i < pageCount; i++) {
-      showLoader(`Scanning page ${i + 1} of ${pageCount}...`);
+      showLoader(
+        translate(
+          'tools:pdfToExcel.dynamic.dede460ecd',
+          `Scanning page ${i + 1} of ${pageCount}...`,
+          { value0: i + 1, value1: pageCount }
+        )
+      );
       const page = doc.getPage(i);
       const tables = page.findTables();
 
@@ -99,11 +125,19 @@ async function convert() {
     }
 
     if (allTables.length === 0) {
-      showAlert('No Tables Found', 'No tables were detected in this PDF.');
+      showAlert(
+        translate('tools:pdfToExcel.dynamic.d682b77e95', 'No Tables Found'),
+        translate(
+          'tools:pdfToExcel.dynamic.f7048f7844',
+          'No tables were detected in this PDF.'
+        )
+      );
       return;
     }
 
-    showLoader('Creating Excel file...');
+    showLoader(
+      translate('tools:pdfToExcel.dynamic.7143676af8', 'Creating Excel file...')
+    );
 
     const workbook = XLSX.utils.book_new();
 
@@ -127,15 +161,26 @@ async function convert() {
     });
     downloadFile(blob, `${baseName}.xlsx`);
     showAlert(
-      'Success',
-      `Extracted ${allTables.length} table(s) to Excel!`,
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:pdfToExcel.dynamic.58ec90b001',
+        `Extracted ${allTables.length} table(s) to Excel!`,
+        { value0: allTables.length }
+      ),
       'success',
       resetState
     );
   } catch (e) {
     console.error(e);
     const message = e instanceof Error ? e.message : 'Unknown error';
-    showAlert('Error', `Failed to convert PDF to Excel. ${message}`);
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:pdfToExcel.dynamic.7f193f2e33',
+        `Failed to convert PDF to Excel. ${message}`,
+        { value0: message }
+      )
+    );
   } finally {
     hideLoader();
   }
@@ -160,7 +205,13 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     if (!validFile) {
-      showAlert('Invalid File', 'Please upload a PDF file.');
+      showAlert(
+        translate('alert.invalidFile', 'Invalid File'),
+        translate(
+          'tools:pdfToExcel.dynamic.abef904a42',
+          'Please upload a PDF file.'
+        )
+      );
       return;
     }
 

@@ -1,3 +1,14 @@
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
+
 import {
   PDFDocument,
   StandardFonts,
@@ -639,7 +650,10 @@ function renderField(field: FormField): void {
     );
 
     // Show selected option or first option or placeholder
-    let displayText = 'Select...';
+    let displayText = translate(
+      'tools:formCreator.selectPlaceholder',
+      'Select...'
+    );
     if (
       field.defaultValue &&
       field.options &&
@@ -686,7 +700,10 @@ function renderField(field: FormField): void {
       // Empty state
       const optEl = document.createElement('div');
       optEl.className = 'px-1 w-full text-black italic';
-      optEl.textContent = 'Item 1';
+      optEl.textContent = translate(
+        'tools:formCreator.dynamic.cbb0fa41b2',
+        'Item 1'
+      );
       contentEl.appendChild(optEl);
     }
   } else if (field.type === 'button') {
@@ -697,7 +714,8 @@ function renderField(field: FormField): void {
       '#e5e7eb'
     );
     contentEl.style.color = field.textColor || '#000000';
-    contentEl.textContent = field.label || 'Button';
+    contentEl.textContent =
+      field.label || translate('tools:formCreator.defaultButton', 'Button');
   } else if (field.type === 'signature') {
     contentEl.className =
       'w-full h-full flex items-center justify-center text-gray-400';
@@ -1359,7 +1377,7 @@ function showProperties(field: FormField): void {
       ${specificProps}
       <div>
         <label class="block text-xs font-semibold text-gray-300 mb-1">Tooltip / Help Text</label>
-        <input type="text" id="propTooltip" value="${escapeHtml(field.tooltip)}" placeholder="Description for screen readers" class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+        <input type="text" id="propTooltip" value="${escapeHtml(field.tooltip)}" placeholder="${translate('tools:formCreator.tooltipPlaceholder', 'Description for screen readers')}" class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500">
       </div>
       <div class="flex items-center">
         <input type="checkbox" id="propRequired" ${field.required ? 'checked' : ''} class="mr-2">
@@ -1407,7 +1425,10 @@ function showProperties(field: FormField): void {
 
   const validateName = (newName: string): boolean => {
     if (!newName) {
-      nameError.textContent = 'Field name cannot be empty';
+      nameError.textContent = translate(
+        'tools:formCreator.dynamic.6abf499dba',
+        'Field name cannot be empty'
+      );
       nameError.classList.remove('hidden');
       propName.classList.add('border-red-500');
       return false;
@@ -1425,7 +1446,11 @@ function showProperties(field: FormField): void {
     const isDuplicateInPdf = existingFieldNames.has(newName);
 
     if (isDuplicateInFields || isDuplicateInPdf) {
-      nameError.textContent = `Field name "${newName}" already exists in this ${isDuplicateInPdf ? 'PDF' : 'form'}. Please try using a unique name.`;
+      nameError.textContent = translate(
+        'tools:formCreator.dynamic.d005f52806',
+        `Field name "${newName}" already exists in this ${isDuplicateInPdf ? 'PDF' : 'form'}. Please try using a unique name.`,
+        { value0: newName, value1: isDuplicateInPdf ? 'PDF' : 'form' }
+      );
       nameError.classList.remove('hidden');
       propName.classList.add('border-red-500');
       return false;
@@ -1815,7 +1840,10 @@ function showProperties(field: FormField): void {
         const contentEl = fieldWrapper.querySelector(
           '.field-content'
         ) as HTMLElement;
-        if (contentEl) contentEl.textContent = field.label || 'Button';
+        if (contentEl)
+          contentEl.textContent =
+            field.label ||
+            translate('tools:formCreator.defaultButton', 'Button');
       }
     });
 
@@ -2140,8 +2168,12 @@ downloadBtn.addEventListener('click', async () => {
       .map((name) => `"${name}"`)
       .join(', ');
     showModal(
-      'Field Name Conflict',
-      `The following field names already exist in the uploaded PDF: ${conflictList}. Please rename these fields before downloading.`,
+      translate('tools:formCreator.dynamic.f486de300f', 'Field Name Conflict'),
+      translate(
+        'tools:formCreator.dynamic.ece17e24e4',
+        `The following field names already exist in the uploaded PDF: ${conflictList}. Please rename these fields before downloading.`,
+        { value0: conflictList }
+      ),
       'error'
     );
     return;
@@ -2150,8 +2182,15 @@ downloadBtn.addEventListener('click', async () => {
   if (duplicates.length > 0) {
     const duplicateList = duplicates.map((name) => `"${name}"`).join(', ');
     showModal(
-      'Duplicate Field Names',
-      `The following field names are used more than once: ${duplicateList}. Please rename these fields to use unique names before downloading.`,
+      translate(
+        'tools:formCreator.dynamic.a577a19cd6',
+        'Duplicate Field Names'
+      ),
+      translate(
+        'tools:formCreator.dynamic.7253f09d38',
+        `The following field names are used more than once: ${duplicateList}. Please rename these fields to use unique names before downloading.`,
+        { value0: duplicateList }
+      ),
       'error'
     );
     return;
@@ -2707,8 +2746,11 @@ downloadBtn.addEventListener('click', async () => {
     });
     downloadFile(blob, uploadedFileName || 'document.pdf');
     showModal(
-      'Success',
-      'Your PDF has been downloaded successfully.',
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:formCreator.dynamic.56f9bd1ca6',
+        'Your PDF has been downloaded successfully.'
+      ),
       'info',
       () => {
         resetToInitial();
@@ -2733,13 +2775,24 @@ downloadBtn.addEventListener('click', async () => {
         console.log(`Adding to existing radio group: ${fieldName}`);
       } else {
         showModal(
-          'Duplicate Field Name',
-          `A field named "${fieldName}" already exists. Please rename this field to use a unique name before downloading.`,
+          translate(
+            'tools:formCreator.dynamic.300198123f',
+            'Duplicate Field Name'
+          ),
+          translate(
+            'tools:formCreator.dynamic.736b20157d',
+            `A field named "${fieldName}" already exists. Please rename this field to use a unique name before downloading.`,
+            { value0: fieldName }
+          ),
           'error'
         );
       }
     } else {
-      showModal('Error', 'Error generating PDF: ' + errorMessage, 'error');
+      showModal(
+        translate('alert.error', 'Error'),
+        'Error generating PDF: ' + errorMessage,
+        'error'
+      );
     }
   }
 });
@@ -2909,7 +2962,11 @@ async function renderCanvas(): Promise<void> {
 }
 
 function updatePageNavigation(): void {
-  pageIndicator.textContent = `Page ${currentPageIndex + 1} of ${pages.length}`;
+  pageIndicator.textContent = translate(
+    'tools:formCreator.dynamic.605d78d3b5',
+    `Page ${currentPageIndex + 1} of ${pages.length}`,
+    { value0: currentPageIndex + 1, value1: pages.length }
+  );
   prevPageBtn.disabled = currentPageIndex === 0;
   nextPageBtn.disabled = currentPageIndex === pages.length - 1;
 }
@@ -3069,8 +3126,11 @@ async function handlePdfUpload(file: File) {
   } catch (error) {
     console.error('Error loading PDF:', error);
     showModal(
-      'Error',
-      'Error loading PDF file. Please try again with a valid PDF.',
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:formCreator.dynamic.4b5dca4049',
+        'Error loading PDF file. Please try again with a valid PDF.'
+      ),
       'error'
     );
   }

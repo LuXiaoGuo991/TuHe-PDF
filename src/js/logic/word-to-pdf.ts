@@ -1,3 +1,14 @@
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
+
 // NOTE: This is a work in progress and does not work correctly as of yet
 import DOMPurify from 'dompurify';
 import { showLoader, hideLoader, showAlert } from '../ui.js';
@@ -7,11 +18,19 @@ import { state } from '../state.js';
 export async function wordToPdf() {
   const file = state.files[0];
   if (!file) {
-    showAlert('No File', 'Please upload a .docx file first.');
+    showAlert(
+      translate('tools:wordToPdf.dynamic.d6c3ffcaae', 'No File'),
+      translate(
+        'tools:wordToPdf.dynamic.e6ffaaa90c',
+        'Please upload a .docx file first.'
+      )
+    );
     return;
   }
 
-  showLoader('Preparing preview...');
+  showLoader(
+    translate('tools:wordToPdf.dynamic.df5707067f', 'Preparing preview...')
+  );
 
   try {
     const mammothOptions = {
@@ -46,13 +65,16 @@ export async function wordToPdf() {
     if (!document.getElementById(STYLE_ID)) {
       const styleEl = document.createElement('style');
       styleEl.id = STYLE_ID;
-      styleEl.textContent = `
+      styleEl.textContent = translate(
+        'tools:wordToPdf.dynamic.2729eb14bf',
+        `
         #preview-content { font-family: 'Times New Roman', Times, serif; font-size: 12pt; line-height: 1.5; color: black; }
         #preview-content table { border-collapse: collapse; width: 100%; }
         #preview-content td, #preview-content th { border: 1px solid #dddddd; text-align: left; padding: 8px; }
         #preview-content img { max-width: 100%; height: auto; }
         #preview-content a { color: #0000ee; text-decoration: underline; }
-      `;
+      `
+      );
       document.head.appendChild(styleEl);
     }
     previewContent.innerHTML = DOMPurify.sanitize(html);
@@ -75,7 +97,12 @@ export async function wordToPdf() {
     hideLoader();
 
     const downloadHandler = async () => {
-      showLoader('Generating High-Quality PDF...');
+      showLoader(
+        translate(
+          'tools:wordToPdf.dynamic.5e47f85e0d',
+          'Generating High-Quality PDF...'
+        )
+      );
 
       // @ts-expect-error TS(2339) FIXME: Property 'jspdf' does not exist on type 'Window & ... Remove this comment to see the full error message
       const { jsPDF } = window.jspdf;
@@ -153,8 +180,8 @@ export async function wordToPdf() {
     console.error(e);
     hideLoader();
     showAlert(
-      'Preview Error',
-      `Could not generate a preview. The file may be corrupt or contain unsupported features. Error: ${e.message}`
+      translate('tools:wordToPdf.dynamic.80685ef3be', 'Preview Error'),
+      translate('alert.processFailed', 'Processing failed. Please try again.')
     );
   }
 }

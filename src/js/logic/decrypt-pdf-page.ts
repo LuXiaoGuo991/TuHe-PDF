@@ -1,3 +1,14 @@
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
+
 import { showAlert } from '../ui.js';
 import {
   downloadFile,
@@ -100,7 +111,13 @@ function handleFileSelect(files: FileList | null) {
 
 async function decryptPdf() {
   if (pageState.files.length === 0) {
-    showAlert('No File', 'Please upload at least one PDF file.');
+    showAlert(
+      translate('tools:decryptPdf.dynamic.cb76be345d', 'No File'),
+      translate(
+        'tools:decryptPdf.dynamic.8e6de480a6',
+        'Please upload at least one PDF file.'
+      )
+    );
     return;
   }
 
@@ -109,7 +126,13 @@ async function decryptPdf() {
   )?.value;
 
   if (!password) {
-    showAlert('Input Required', 'Please enter the PDF password.');
+    showAlert(
+      translate('tools:decryptPdf.dynamic.3d789ca3db', 'Input Required'),
+      translate(
+        'tools:decryptPdf.dynamic.deaa875f11',
+        'Please enter the PDF password.'
+      )
+    );
     return;
   }
 
@@ -118,22 +141,38 @@ async function decryptPdf() {
 
   try {
     if (loaderModal) loaderModal.classList.remove('hidden');
-    if (loaderText) loaderText.textContent = 'Initializing decryption...';
+    if (loaderText)
+      loaderText.textContent = translate(
+        'tools:decryptPdf.dynamic.63a056f300',
+        'Initializing decryption...'
+      );
 
     if (pageState.files.length === 1) {
       // Single file: decrypt and download directly
       const file = pageState.files[0];
-      if (loaderText) loaderText.textContent = 'Reading encrypted PDF...';
+      if (loaderText)
+        loaderText.textContent = translate(
+          'tools:decryptPdf.dynamic.fe448e8032',
+          'Reading encrypted PDF...'
+        );
       const fileBuffer = await readFileAsArrayBuffer(file);
       const uint8Array = new Uint8Array(fileBuffer as ArrayBuffer);
 
-      if (loaderText) loaderText.textContent = 'Decrypting PDF...';
+      if (loaderText)
+        loaderText.textContent = translate(
+          'tools:decryptPdf.dynamic.d223202ae7',
+          'Decrypting PDF...'
+        );
       const { bytes: decryptedBytes } = await decryptPdfBytes(
         uint8Array,
         password
       );
 
-      if (loaderText) loaderText.textContent = 'Preparing download...';
+      if (loaderText)
+        loaderText.textContent = translate(
+          'tools:decryptPdf.dynamic.3a6ce860d1',
+          'Preparing download...'
+        );
       const blob = new Blob([decryptedBytes.slice().buffer], {
         type: 'application/pdf',
       });
@@ -141,8 +180,11 @@ async function decryptPdf() {
 
       if (loaderModal) loaderModal.classList.add('hidden');
       showAlert(
-        'Success',
-        'PDF decrypted successfully! Your download has started.',
+        translate('alert.success', 'Success'),
+        translate(
+          'tools:decryptPdf.dynamic.3e79faab32',
+          'PDF decrypted successfully! Your download has started.'
+        ),
         'success',
         () => {
           resetState();
@@ -158,7 +200,11 @@ async function decryptPdf() {
         const file = pageState.files[i];
 
         if (loaderText)
-          loaderText.textContent = `Decrypting ${file.name} (${i + 1}/${pageState.files.length})...`;
+          loaderText.textContent = translate(
+            'tools:decryptPdf.dynamic.288f23f2a1',
+            `Decrypting ${file.name} (${i + 1}/${pageState.files.length})...`,
+            { value0: file.name, value1: i + 1, value2: pageState.files.length }
+          );
 
         try {
           const fileBuffer = await readFileAsArrayBuffer(file);
@@ -182,7 +228,11 @@ async function decryptPdf() {
         );
       }
 
-      if (loaderText) loaderText.textContent = 'Generating ZIP file...';
+      if (loaderText)
+        loaderText.textContent = translate(
+          'tools:decryptPdf.dynamic.9460f9932f',
+          'Generating ZIP file...'
+        );
       const zipBlob = await zip.generateAsync({ type: 'blob' });
       downloadFile(zipBlob, 'decrypted-pdfs.zip');
 
@@ -190,9 +240,14 @@ async function decryptPdf() {
       if (errorCount > 0) {
         alertMessage += ` ${errorCount} file(s) failed.`;
       }
-      showAlert('Processing Complete', alertMessage, 'success', () => {
-        resetState();
-      });
+      showAlert(
+        translate('tools:decryptPdf.dynamic.bbb58b90fb', 'Processing Complete'),
+        alertMessage,
+        'success',
+        () => {
+          resetState();
+        }
+      );
     }
   } catch (error: unknown) {
     console.error('Error during PDF decryption:', error);
@@ -200,18 +255,27 @@ async function decryptPdf() {
     const errorMessage = error instanceof Error ? error.message : '';
     if (errorMessage === 'INVALID_PASSWORD') {
       showAlert(
-        'Incorrect Password',
-        'The password you entered is incorrect. Please try again.'
+        translate('tools:decryptPdf.dynamic.270381bfec', 'Incorrect Password'),
+        translate(
+          'tools:decryptPdf.dynamic.845a342362',
+          'The password you entered is incorrect. Please try again.'
+        )
       );
     } else if (errorMessage.includes('password')) {
       showAlert(
-        'Password Error',
-        'Unable to decrypt the PDF with the provided password.'
+        translate('tools:decryptPdf.dynamic.be764ba645', 'Password Error'),
+        translate(
+          'tools:decryptPdf.dynamic.bf48d0a84a',
+          'Unable to decrypt the PDF with the provided password.'
+        )
       );
     } else {
       showAlert(
-        'Decryption Failed',
-        `An error occurred: ${errorMessage || 'The password you entered is wrong or the file is corrupted.'}`
+        translate('tools:decryptPdf.dynamic.b9a3b1421d', 'Decryption Failed'),
+        translate(
+          'tools:decryptPdf.processFailed',
+          'Decryption failed. Please try again.'
+        )
       );
     }
   } finally {

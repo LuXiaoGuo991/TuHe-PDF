@@ -1,3 +1,12 @@
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
+
 import { showLoader, hideLoader, showAlert } from '../ui.js';
 import {
   downloadFile,
@@ -46,7 +55,11 @@ const updateUI = () => {
 
       const metaSpan = document.createElement('div');
       metaSpan.className = 'text-xs text-gray-400';
-      metaSpan.textContent = `${formatBytes(file.size)} • ${t('common.loadingPageCount')}`; // Initial state
+      metaSpan.textContent = translate(
+        'tools:pdfToBmp.dynamic.25e694ba1c',
+        `${formatBytes(file.size)} • ${t('common.loadingPageCount')}`,
+        { value0: formatBytes(file.size), value1: t('common.loadingPageCount') }
+      ); // Initial state
 
       infoContainer.append(nameSpan, metaSpan);
 
@@ -69,7 +82,15 @@ const updateUI = () => {
           return getPDFDocument(buffer).promise;
         })
         .then((pdf) => {
-          metaSpan.textContent = `${formatBytes(file.size)} • ${pdf.numPages} ${pdf.numPages !== 1 ? t('common.pages') : t('common.page')}`;
+          metaSpan.textContent = translate(
+            'tools:pdfToBmp.dynamic.9f87fe7348',
+            `${formatBytes(file.size)} • ${pdf.numPages} ${pdf.numPages !== 1 ? t('common.pages') : t('common.page')}`,
+            {
+              value0: formatBytes(file.size),
+              value1: pdf.numPages,
+              value2: pdf.numPages !== 1 ? t('common.pages') : t('common.page'),
+            }
+          );
         })
         .catch((e) => {
           console.warn('Error loading PDF page count:', e);

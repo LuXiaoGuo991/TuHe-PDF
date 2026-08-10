@@ -1,4 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { createIcons, icons } from 'lucide';
 import { loadPyMuPDF } from '../utils/pymupdf-loader.js';
@@ -38,7 +48,11 @@ const updateUI = () => {
 
       const sizeSpan = document.createElement('span');
       sizeSpan.className = 'text-gray-400 text-xs ml-2';
-      sizeSpan.textContent = `(${formatBytes(file.size)})`;
+      sizeSpan.textContent = translate(
+        'tools:textToPdf.dynamic.8c9a7c9a67',
+        `(${formatBytes(file.size)})`,
+        { value0: formatBytes(file.size) }
+      );
 
       const removeBtn = document.createElement('button');
       removeBtn.className = 'ml-4 text-red-400 hover:text-red-300';
@@ -85,7 +99,13 @@ async function convert() {
     '#000000';
 
   if (currentMode === 'upload' && files.length === 0) {
-    showAlert('No Files', 'Please select at least one text file.');
+    showAlert(
+      translate('alert.noFiles', 'No Files'),
+      translate(
+        'tools:textToPdf.dynamic.331d64523c',
+        'Please select at least one text file.'
+      )
+    );
     return;
   }
 
@@ -94,12 +114,20 @@ async function convert() {
       'text-input'
     ) as HTMLTextAreaElement;
     if (!textInput.value.trim()) {
-      showAlert('No Text', 'Please enter some text to convert.');
+      showAlert(
+        translate('tools:textToPdf.dynamic.77f8701633', 'No Text'),
+        translate(
+          'tools:textToPdf.dynamic.1497f83234',
+          'Please enter some text to convert.'
+        )
+      );
       return;
     }
   }
 
-  showLoader('Loading engine...');
+  showLoader(
+    translate('tools:textToPdf.dynamic.28698eca46', 'Loading engine...')
+  );
 
   try {
     const pymupdf = await loadPyMuPDF();
@@ -118,7 +146,9 @@ async function convert() {
       textContent = textInput.value;
     }
 
-    showLoader('Creating PDF...');
+    showLoader(
+      translate('tools:textToPdf.dynamic.c08ee56ff6', 'Creating PDF...')
+    );
 
     const pdfBlob = await pymupdf.textToPdf(textContent, {
       fontSize,
@@ -131,8 +161,11 @@ async function convert() {
     downloadFile(pdfBlob, 'text_to_pdf.pdf');
 
     showAlert(
-      'Success',
-      'Text converted to PDF successfully!',
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:textToPdf.dynamic.8507dd5a0d',
+        'Text converted to PDF successfully!'
+      ),
       'success',
       () => {
         resetState();
@@ -141,8 +174,8 @@ async function convert() {
   } catch (e: unknown) {
     console.error('[TxtToPDF] Error:', e);
     showAlert(
-      'Error',
-      `Failed to convert text to PDF. ${e instanceof Error ? e.message : ''}`
+      translate('alert.error', 'Error'),
+      translate('alert.processFailed', 'Processing failed. Please try again.')
     );
   } finally {
     hideLoader();
@@ -223,8 +256,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (validFiles.length < newFiles.length) {
       showAlert(
-        'Invalid Files',
-        'Some files were skipped. Only text files are allowed.'
+        translate('tools:textToPdf.dynamic.abbb1a76aa', 'Invalid Files'),
+        translate(
+          'tools:textToPdf.dynamic.699294da89',
+          'Some files were skipped. Only text files are allowed.'
+        )
       );
     }
 

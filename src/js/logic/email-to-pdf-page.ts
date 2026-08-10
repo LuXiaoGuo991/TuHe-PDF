@@ -1,3 +1,14 @@
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
+
 import { showLoader, hideLoader, showAlert } from '../ui.js';
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { state } from '../state.js';
@@ -86,8 +97,12 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       if (state.files.length === 0) {
         showAlert(
-          'No Files',
-          `Please select at least one ${TOOL_NAME} file (.eml or .msg).`
+          translate('alert.noFiles', 'No Files'),
+          translate(
+            'tools:emailToPdf.dynamic.e2b1b6aa34',
+            `Please select at least one ${TOOL_NAME} file (.eml or .msg).`,
+            { value0: TOOL_NAME }
+          )
         );
         return;
       }
@@ -107,16 +122,29 @@ document.addEventListener('DOMContentLoaded', () => {
       const includeCcBcc = includeCcBccCheckbox?.checked ?? true;
       const includeAttachments = includeAttachmentsCheckbox?.checked ?? true;
 
-      showLoader('Loading PDF engine...');
+      showLoader(
+        translate(
+          'tools:emailToPdf.dynamic.0b58b429fa',
+          'Loading PDF engine...'
+        )
+      );
       const pymupdf = await loadPyMuPDF();
 
       if (state.files.length === 1) {
         const originalFile = state.files[0];
-        showLoader(`Parsing ${originalFile.name}...`);
+        showLoader(
+          translate(
+            'tools:emailToPdf.dynamic.bf0046c338',
+            `Parsing ${originalFile.name}...`,
+            { value0: originalFile.name }
+          )
+        );
 
         const email = await parseEmailFile(originalFile);
 
-        showLoader('Generating PDF...');
+        showLoader(
+          translate('tools:emailToPdf.dynamic.c34c969696', 'Generating PDF...')
+        );
         const htmlContent = renderEmailToHtml(email, {
           includeCcBcc,
           includeAttachments,
@@ -143,20 +171,36 @@ document.addEventListener('DOMContentLoaded', () => {
         hideLoader();
 
         showAlert(
-          'Conversion Complete',
-          `Successfully converted ${originalFile.name} to PDF.`,
+          translate(
+            'tools:emailToPdf.dynamic.1c842c2b35',
+            'Conversion Complete'
+          ),
+          translate(
+            'tools:emailToPdf.dynamic.1e59a9f4bf',
+            `Successfully converted ${originalFile.name} to PDF.`,
+            { value0: originalFile.name }
+          ),
           'success',
           () => resetState()
         );
       } else {
-        showLoader('Converting emails...');
+        showLoader(
+          translate(
+            'tools:emailToPdf.dynamic.678d5087c0',
+            'Converting emails...'
+          )
+        );
         const JSZip = (await import('jszip')).default;
         const zip = new JSZip();
 
         for (let i = 0; i < state.files.length; i++) {
           const file = state.files[i];
           showLoader(
-            `Converting ${i + 1}/${state.files.length}: ${file.name}...`
+            translate(
+              'tools:emailToPdf.dynamic.cd92d7b06d',
+              `Converting ${i + 1}/${state.files.length}: ${file.name}...`,
+              { value0: i + 1, value1: state.files.length, value2: file.name }
+            )
           );
 
           try {
@@ -196,8 +240,15 @@ document.addEventListener('DOMContentLoaded', () => {
         hideLoader();
 
         showAlert(
-          'Conversion Complete',
-          `Successfully converted ${state.files.length} ${TOOL_NAME} file(s) to PDF.`,
+          translate(
+            'tools:emailToPdf.dynamic.1c842c2b35',
+            'Conversion Complete'
+          ),
+          translate(
+            'tools:emailToPdf.dynamic.21867b84d8',
+            `Successfully converted ${state.files.length} ${TOOL_NAME} file(s) to PDF.`,
+            { value0: state.files.length, value1: TOOL_NAME }
+          ),
           'success',
           () => resetState()
         );
@@ -206,8 +257,8 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error(`[${TOOL_NAME}2PDF] ERROR:`, e);
       hideLoader();
       showAlert(
-        'Error',
-        `An error occurred during conversion. Error: ${e instanceof Error ? e.message : String(e)}`
+        translate('alert.error', 'Error'),
+        translate('alert.processFailed', 'Processing failed. Please try again.')
       );
     }
   };

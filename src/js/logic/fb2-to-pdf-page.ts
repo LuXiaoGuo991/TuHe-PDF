@@ -1,4 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { state } from '../state.js';
 import { createIcons, icons } from 'lucide';
@@ -83,16 +93,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const convertToPdf = async () => {
     try {
       if (state.files.length === 0) {
-        showAlert('No Files', `Please select at least one ${TOOL_NAME} file.`);
+        showAlert(
+          translate('alert.noFiles', 'No Files'),
+          translate(
+            'tools:fb2ToPdf.dynamic.36e0761e1c',
+            `Please select at least one ${TOOL_NAME} file.`,
+            { value0: TOOL_NAME }
+          )
+        );
         return;
       }
 
-      showLoader('Loading engine...');
+      showLoader(
+        translate('tools:fb2ToPdf.dynamic.fa537f2cfc', 'Loading engine...')
+      );
       const pymupdf = await loadPyMuPDF();
 
       if (state.files.length === 1) {
         const originalFile = state.files[0];
-        showLoader(`Converting ${originalFile.name}...`);
+        showLoader(
+          translate(
+            'tools:fb2ToPdf.dynamic.ae2a0e93af',
+            `Converting ${originalFile.name}...`,
+            { value0: originalFile.name }
+          )
+        );
 
         const pdfBlob = await pymupdf.convertToPdf(originalFile, {
           filetype: FILETYPE,
@@ -103,20 +128,30 @@ document.addEventListener('DOMContentLoaded', () => {
         hideLoader();
 
         showAlert(
-          'Conversion Complete',
-          `Successfully converted ${originalFile.name} to PDF.`,
+          translate('tools:fb2ToPdf.dynamic.d561d14791', 'Conversion Complete'),
+          translate(
+            'tools:fb2ToPdf.dynamic.02e192036d',
+            `Successfully converted ${originalFile.name} to PDF.`,
+            { value0: originalFile.name }
+          ),
           'success',
           () => resetState()
         );
       } else {
-        showLoader('Converting files...');
+        showLoader(
+          translate('tools:fb2ToPdf.dynamic.f3982fc6f0', 'Converting files...')
+        );
         const JSZip = (await import('jszip')).default;
         const zip = new JSZip();
 
         for (let i = 0; i < state.files.length; i++) {
           const file = state.files[i];
           showLoader(
-            `Converting ${i + 1}/${state.files.length}: ${file.name}...`
+            translate(
+              'tools:fb2ToPdf.dynamic.f7df6b470c',
+              `Converting ${i + 1}/${state.files.length}: ${file.name}...`,
+              { value0: i + 1, value1: state.files.length, value2: file.name }
+            )
           );
 
           const pdfBlob = await pymupdf.convertToPdf(file, {
@@ -133,8 +168,12 @@ document.addEventListener('DOMContentLoaded', () => {
         hideLoader();
 
         showAlert(
-          'Conversion Complete',
-          `Successfully converted ${state.files.length} ${TOOL_NAME} file(s) to PDF.`,
+          translate('tools:fb2ToPdf.dynamic.d561d14791', 'Conversion Complete'),
+          translate(
+            'tools:fb2ToPdf.dynamic.2740ed96cc',
+            `Successfully converted ${state.files.length} ${TOOL_NAME} file(s) to PDF.`,
+            { value0: state.files.length, value1: TOOL_NAME }
+          ),
           'success',
           () => resetState()
         );
@@ -143,8 +182,8 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error(`[${TOOL_NAME}2PDF] ERROR:`, e);
       hideLoader();
       showAlert(
-        'Error',
-        `An error occurred during conversion. Error: ${e instanceof Error ? e.message : String(e)}`
+        translate('alert.error', 'Error'),
+        translate('alert.processFailed', 'Processing failed. Please try again.')
       );
     }
   };

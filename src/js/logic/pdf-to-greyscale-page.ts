@@ -10,6 +10,15 @@ import { PDFDocument } from 'pdf-lib';
 import { applyGreyscale } from '../utils/image-effects.js';
 import * as pdfjsLib from 'pdfjs-dist';
 import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { loadPdfWithPasswordPrompt } from '../utils/password-prompt.js';
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
@@ -46,7 +55,11 @@ const updateUI = () => {
 
       const metaSpan = document.createElement('div');
       metaSpan.className = 'text-xs text-gray-400';
-      metaSpan.textContent = `${formatBytes(file.size)} • ${t('common.loadingPageCount')}`; // Initial state
+      metaSpan.textContent = translate(
+        'tools:pdfToGreyscale.dynamic.6c08c2bcda',
+        `${formatBytes(file.size)} • ${t('common.loadingPageCount')}`,
+        { value0: formatBytes(file.size), value1: t('common.loadingPageCount') }
+      ); // Initial state
 
       infoContainer.append(nameSpan, metaSpan);
 
@@ -68,7 +81,15 @@ const updateUI = () => {
           return getPDFDocument(buffer).promise;
         })
         .then((pdf) => {
-          metaSpan.textContent = `${formatBytes(file.size)} • ${pdf.numPages} ${pdf.numPages !== 1 ? t('common.pages') : t('common.page')}`;
+          metaSpan.textContent = translate(
+            'tools:pdfToGreyscale.dynamic.1aa9a280e2',
+            `${formatBytes(file.size)} • ${pdf.numPages} ${pdf.numPages !== 1 ? t('common.pages') : t('common.page')}`,
+            {
+              value0: formatBytes(file.size),
+              value1: pdf.numPages,
+              value2: pdf.numPages !== 1 ? t('common.pages') : t('common.page'),
+            }
+          );
         })
         .catch((e) => {
           console.warn('Error loading PDF page count:', e);
@@ -92,13 +113,24 @@ const resetState = () => {
 
 async function convert() {
   if (files.length === 0) {
-    showAlert('No File', 'Please upload a PDF file first.');
+    showAlert(
+      translate('tools:pdfToGreyscale.dynamic.47c2241964', 'No File'),
+      translate(
+        'tools:pdfToGreyscale.dynamic.4a35f197d6',
+        'Please upload a PDF file first.'
+      )
+    );
     return;
   }
   try {
     const result = await loadPdfWithPasswordPrompt(files[0], files, 0);
     if (!result) return;
-    showLoader('Converting to greyscale...');
+    showLoader(
+      translate(
+        'tools:pdfToGreyscale.dynamic.029c0cd7cc',
+        'Converting to greyscale...'
+      )
+    );
     const { pdf: pdfjsDoc } = result;
     const newPdfDoc = await PDFDocument.create();
 
@@ -145,8 +177,11 @@ async function convert() {
       files[0]?.name || 'document.pdf'
     );
     showAlert(
-      'Success',
-      'PDF converted to greyscale successfully!',
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:pdfToGreyscale.dynamic.2969af6c0d',
+        'PDF converted to greyscale successfully!'
+      ),
       'success',
       () => {
         resetState();
@@ -155,8 +190,11 @@ async function convert() {
   } catch (e) {
     console.error(e);
     showAlert(
-      'Error',
-      'Failed to convert PDF to greyscale. The file might be corrupted.'
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:pdfToGreyscale.dynamic.cd8601b331',
+        'Failed to convert PDF to greyscale. The file might be corrupted.'
+      )
     );
   } finally {
     hideLoader();
@@ -182,7 +220,13 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     if (validFiles.length === 0) {
-      showAlert('Invalid File', 'Please upload a PDF file.');
+      showAlert(
+        translate('alert.invalidFile', 'Invalid File'),
+        translate(
+          'tools:pdfToGreyscale.dynamic.a8d626a999',
+          'Please upload a PDF file.'
+        )
+      );
       return;
     }
 

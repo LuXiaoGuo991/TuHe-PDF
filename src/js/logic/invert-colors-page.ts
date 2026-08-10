@@ -1,4 +1,14 @@
 import { createIcons, icons } from 'lucide';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { showAlert, showLoader, hideLoader } from '../ui.js';
 import { downloadFile, formatBytes, getPDFDocument } from '../utils/helpers.js';
 import { PDFDocument as PDFLibDocument } from 'pdf-lib';
@@ -63,13 +73,19 @@ function handleFileUpload(e: Event) {
 async function handleFiles(files: FileList) {
   const file = files[0];
   if (!file || file.type !== 'application/pdf') {
-    showAlert('Invalid File', 'Please upload a valid PDF file.');
+    showAlert(
+      translate('alert.invalidFile', 'Invalid File'),
+      translate(
+        'tools:invertColors.dynamic.68cde6dc8c',
+        'Please upload a valid PDF file.'
+      )
+    );
     return;
   }
   try {
     const result = await loadPdfWithPasswordPrompt(file);
     if (!result) return;
-    showLoader('Loading PDF...');
+    showLoader(translate('fileHandler.loadingPdf', 'Loading PDF...'));
     result.pdf.destroy();
     pageState.pdfDoc = await loadPdfDocument(result.bytes);
     pageState.file = result.file;
@@ -77,7 +93,13 @@ async function handleFiles(files: FileList) {
     document.getElementById('options-panel')?.classList.remove('hidden');
   } catch (error) {
     console.error(error);
-    showAlert('Error', 'Failed to load PDF file.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:invertColors.dynamic.9cf793b9aa',
+        'Failed to load PDF file.'
+      )
+    );
   } finally {
     hideLoader();
   }
@@ -97,7 +119,14 @@ function updateFileDisplay() {
   nameSpan.textContent = pageState.file.name;
   const metaSpan = document.createElement('div');
   metaSpan.className = 'text-xs text-gray-400';
-  metaSpan.textContent = `${formatBytes(pageState.file.size)} • ${pageState.pdfDoc.getPageCount()} pages`;
+  metaSpan.textContent = translate(
+    'tools:invertColors.dynamic.25238f70eb',
+    `${formatBytes(pageState.file.size)} • ${pageState.pdfDoc.getPageCount()} pages`,
+    {
+      value0: formatBytes(pageState.file.size),
+      value1: pageState.pdfDoc.getPageCount(),
+    }
+  );
   infoContainer.append(nameSpan, metaSpan);
   const removeBtn = document.createElement('button');
   removeBtn.className = 'ml-4 text-red-400 hover:text-red-300 flex-shrink-0';
@@ -120,17 +149,34 @@ function resetState() {
 
 async function invertColors() {
   if (!pageState.pdfDoc || !pageState.file) {
-    showAlert('Error', 'Please upload a PDF file first.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:invertColors.dynamic.03ab4b9cd0',
+        'Please upload a PDF file first.'
+      )
+    );
     return;
   }
-  showLoader('Inverting PDF colors...');
+  showLoader(
+    translate(
+      'tools:invertColors.dynamic.2ba1c0a28f',
+      'Inverting PDF colors...'
+    )
+  );
   try {
     const newPdfDoc = await PDFLibDocument.create();
     const pdfBytes = await pageState.pdfDoc.save();
     const pdfjsDoc = await getPDFDocument({ data: pdfBytes }).promise;
 
     for (let i = 1; i <= pdfjsDoc.numPages; i++) {
-      showLoader(`Processing page ${i} of ${pdfjsDoc.numPages}...`);
+      showLoader(
+        translate(
+          'tools:invertColors.dynamic.8883ccb83e',
+          `Processing page ${i} of ${pdfjsDoc.numPages}...`,
+          { value0: i, value1: pdfjsDoc.numPages }
+        )
+      );
       const page = await pdfjsDoc.getPage(i);
       const viewport = page.getViewport({ scale: 1.5 });
       const canvas = document.createElement('canvas');
@@ -166,12 +212,26 @@ async function invertColors() {
       new Blob([new Uint8Array(newPdfBytes)], { type: 'application/pdf' }),
       pageState.file?.name || 'document.pdf'
     );
-    showAlert('Success', 'Colors inverted successfully!', 'success', () => {
-      resetState();
-    });
+    showAlert(
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:invertColors.dynamic.74f7d5dc50',
+        'Colors inverted successfully!'
+      ),
+      'success',
+      () => {
+        resetState();
+      }
+    );
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'Could not invert PDF colors.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:invertColors.dynamic.64d62973ef',
+        'Could not invert PDF colors.'
+      )
+    );
   } finally {
     hideLoader();
   }

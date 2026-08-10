@@ -1,5 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
 import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import {
   downloadFile,
   readFileAsArrayBuffer,
@@ -57,7 +66,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const metaSpan = document.createElement('div');
         metaSpan.className = 'text-xs text-gray-400';
-        metaSpan.textContent = `${formatBytes(file.size)} • ${t('common.loadingPageCount')}`;
+        metaSpan.textContent = translate(
+          'tools:pdfToPdfa.dynamic.1ebf7b22d2',
+          `${formatBytes(file.size)} • ${t('common.loadingPageCount')}`,
+          {
+            value0: formatBytes(file.size),
+            value1: t('common.loadingPageCount'),
+          }
+        );
 
         infoContainer.append(nameSpan, metaSpan);
 
@@ -76,10 +92,18 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
           const arrayBuffer = await readFileAsArrayBuffer(file);
           const pdfDoc = await getPDFDocument({ data: arrayBuffer }).promise;
-          metaSpan.textContent = `${formatBytes(file.size)} • ${pdfDoc.numPages} pages`;
+          metaSpan.textContent = translate(
+            'tools:pdfToPdfa.dynamic.7fdcb51569',
+            `${formatBytes(file.size)} • ${pdfDoc.numPages} pages`,
+            { value0: formatBytes(file.size), value1: pdfDoc.numPages }
+          );
         } catch (error) {
           console.error('Error loading PDF:', error);
-          metaSpan.textContent = `${formatBytes(file.size)} • Could not load page count`;
+          metaSpan.textContent = translate(
+            'tools:pdfToPdfa.dynamic.5c1931ff9b',
+            `${formatBytes(file.size)} • Could not load page count`,
+            { value0: formatBytes(file.size) }
+          );
         }
       }
 
@@ -109,7 +133,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     try {
       if (state.files.length === 0) {
-        showAlert('No Files', 'Please select at least one PDF file.');
+        showAlert(
+          translate('alert.noFiles', 'No Files'),
+          translate(
+            'tools:pdfToPdfa.dynamic.b4d3f1eaca',
+            'Please select at least one PDF file.'
+          )
+        );
         return;
       }
 
@@ -131,7 +161,12 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
           }
 
-          showLoader('Pre-flattening PDF...');
+          showLoader(
+            translate(
+              'tools:pdfToPdfa.dynamic.86822cd801',
+              'Pre-flattening PDF...'
+            )
+          );
           const pymupdf = await loadPyMuPDF();
 
           // Rasterize PDF to images and back to PDF (300 DPI for quality)
@@ -148,7 +183,12 @@ document.addEventListener('DOMContentLoaded', () => {
           });
         }
 
-        showLoader('Initializing Ghostscript...');
+        showLoader(
+          translate(
+            'tools:pdfToPdfa.dynamic.7f598ce1b2',
+            'Initializing Ghostscript...'
+          )
+        );
 
         const convertedBlob = await convertFileToPdfA(
           fileToConvert,
@@ -163,13 +203,25 @@ document.addEventListener('DOMContentLoaded', () => {
         hideLoader();
 
         showAlert(
-          'Conversion Complete',
-          `Successfully converted ${originalFile.name} to ${level}.`,
+          translate(
+            'tools:pdfToPdfa.dynamic.9c1d9b0762',
+            'Conversion Complete'
+          ),
+          translate(
+            'tools:pdfToPdfa.dynamic.68390fdb3e',
+            `Successfully converted ${originalFile.name} to ${level}.`,
+            { value0: originalFile.name, value1: level }
+          ),
           'success',
           () => resetState()
         );
       } else {
-        showLoader('Converting multiple PDFs to PDF/A...');
+        showLoader(
+          translate(
+            'tools:pdfToPdfa.dynamic.7c0a96310b',
+            'Converting multiple PDFs to PDF/A...'
+          )
+        );
         const JSZip = (await import('jszip')).default;
         const zip = new JSZip();
         const usedNames = new Set<string>();
@@ -177,7 +229,11 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < state.files.length; i++) {
           const file = state.files[i];
           showLoader(
-            `Converting ${i + 1}/${state.files.length}: ${file.name}...`
+            translate(
+              'tools:pdfToPdfa.dynamic.1a64674925',
+              `Converting ${i + 1}/${state.files.length}: ${file.name}...`,
+              { value0: i + 1, value1: state.files.length, value2: file.name }
+            )
           );
 
           const convertedBlob = await convertFileToPdfA(file, level, (msg) =>
@@ -200,8 +256,15 @@ document.addEventListener('DOMContentLoaded', () => {
         hideLoader();
 
         showAlert(
-          'Conversion Complete',
-          `Successfully converted ${state.files.length} PDF(s) to ${level}.`,
+          translate(
+            'tools:pdfToPdfa.dynamic.9c1d9b0762',
+            'Conversion Complete'
+          ),
+          translate(
+            'tools:pdfToPdfa.dynamic.a35ab56af2',
+            `Successfully converted ${state.files.length} PDF(s) to ${level}.`,
+            { value0: state.files.length, value1: level }
+          ),
           'success',
           () => resetState()
         );
@@ -209,8 +272,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (e: unknown) {
       hideLoader();
       showAlert(
-        'Error',
-        `An error occurred during conversion. Error: ${e instanceof Error ? e.message : String(e)}`
+        translate('alert.error', 'Error'),
+        translate('alert.processFailed', 'Processing failed. Please try again.')
       );
     }
   };

@@ -1,4 +1,14 @@
 import { showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import {
   downloadFile,
   formatBytes,
@@ -93,7 +103,13 @@ function handleFileSelect(files: FileList | null) {
 
 async function encryptPdf() {
   if (!pageState.file) {
-    showAlert('No File', 'Please upload a PDF file first.');
+    showAlert(
+      translate('tools:encryptPdf.dynamic.dd9d84669b', 'No File'),
+      translate(
+        'tools:encryptPdf.dynamic.2c4bfd0f85',
+        'Please upload a PDF file first.'
+      )
+    );
     return;
   }
 
@@ -105,7 +121,13 @@ async function encryptPdf() {
       ?.value || '';
 
   if (!userPassword) {
-    showAlert('Input Required', 'Please enter a user password.');
+    showAlert(
+      translate('tools:encryptPdf.dynamic.bec4cf0d52', 'Input Required'),
+      translate(
+        'tools:encryptPdf.dynamic.cfc44e1b7f',
+        'Please enter a user password.'
+      )
+    );
     return;
   }
 
@@ -121,18 +143,29 @@ async function encryptPdf() {
 
   try {
     if (loaderModal) loaderModal.classList.remove('hidden');
-    if (loaderText) loaderText.textContent = 'Initializing encryption...';
+    if (loaderText)
+      loaderText.textContent = translate(
+        'tools:encryptPdf.dynamic.a90778fd81',
+        'Initializing encryption...'
+      );
 
     qpdf = await initializeQpdf();
 
-    if (loaderText) loaderText.textContent = 'Reading PDF...';
+    if (loaderText)
+      loaderText.textContent = translate(
+        'tools:encryptPdf.dynamic.3e80559bf0',
+        'Reading PDF...'
+      );
     const fileBuffer = await readFileAsArrayBuffer(pageState.file);
     const uint8Array = new Uint8Array(fileBuffer as ArrayBuffer);
 
     qpdf.FS.writeFile(inputPath, uint8Array);
 
     if (loaderText)
-      loaderText.textContent = 'Encrypting PDF with 256-bit AES...';
+      loaderText.textContent = translate(
+        'tools:encryptPdf.dynamic.99f5f30b9f',
+        'Encrypting PDF with 256-bit AES...'
+      );
 
     const args = [inputPath, '--encrypt', userPassword, ownerPassword, '256'];
 
@@ -163,7 +196,11 @@ async function encryptPdf() {
       );
     }
 
-    if (loaderText) loaderText.textContent = 'Preparing download...';
+    if (loaderText)
+      loaderText.textContent = translate(
+        'tools:encryptPdf.dynamic.73dd668652',
+        'Preparing download...'
+      );
     const outputFile = qpdf.FS.readFile(outputPath, { encoding: 'binary' });
 
     if (!outputFile || outputFile.length === 0) {
@@ -183,15 +220,20 @@ async function encryptPdf() {
         ' Note: Without a separate owner password, the PDF has no usage restrictions.';
     }
 
-    showAlert('Success', successMessage, 'success', () => {
-      resetState();
-    });
+    showAlert(
+      translate('alert.success', 'Success'),
+      successMessage,
+      'success',
+      () => {
+        resetState();
+      }
+    );
   } catch (error: unknown) {
     console.error('Error during PDF encryption:', error);
     if (loaderModal) loaderModal.classList.add('hidden');
     showAlert(
-      'Encryption Failed',
-      `An error occurred: ${error instanceof Error ? error.message : 'The PDF might be corrupted.'}`
+      translate('tools:encryptPdf.dynamic.1cc9a81e1a', 'Encryption Failed'),
+      translate('alert.processFailed', 'Processing failed. Please try again.')
     );
   } finally {
     try {

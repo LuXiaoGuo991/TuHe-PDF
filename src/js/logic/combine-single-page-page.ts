@@ -1,4 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import {
   downloadFile,
   formatBytes,
@@ -58,7 +68,11 @@ async function updateUI() {
 
     const metaSpan = document.createElement('div');
     metaSpan.className = 'text-xs text-gray-400';
-    metaSpan.textContent = `${formatBytes(pageState.file.size)} • Loading...`;
+    metaSpan.textContent = translate(
+      'tools:combineToSinglePage.dynamic.33c063c234',
+      `${formatBytes(pageState.file.size)} • Loading...`,
+      { value0: formatBytes(pageState.file.size) }
+    );
 
     infoContainer.append(nameSpan, metaSpan);
 
@@ -79,20 +93,30 @@ async function updateUI() {
         resetState();
         return;
       }
-      showLoader('Loading PDF...');
+      showLoader(translate('fileHandler.loadingPdf', 'Loading PDF...'));
       result.pdf.destroy();
       pageState.file = result.file;
       pageState.pdfDoc = await loadPdfDocument(result.bytes);
       hideLoader();
 
       const pageCount = pageState.pdfDoc.getPageCount();
-      metaSpan.textContent = `${formatBytes(pageState.file.size)} • ${pageCount} pages`;
+      metaSpan.textContent = translate(
+        'tools:combineToSinglePage.dynamic.4784218459',
+        `${formatBytes(pageState.file.size)} • ${pageCount} pages`,
+        { value0: formatBytes(pageState.file.size), value1: pageCount }
+      );
 
       if (toolOptions) toolOptions.classList.remove('hidden');
     } catch (error) {
       console.error('Error loading PDF:', error);
       hideLoader();
-      showAlert('Error', 'Failed to load PDF file.');
+      showAlert(
+        translate('alert.error', 'Error'),
+        translate(
+          'tools:combineToSinglePage.dynamic.e152772381',
+          'Failed to load PDF file.'
+        )
+      );
       resetState();
     }
   } else {
@@ -102,7 +126,13 @@ async function updateUI() {
 
 async function combineToSinglePage() {
   if (!pageState.pdfDoc || !pageState.file) {
-    showAlert('Error', 'Please upload a PDF first.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:combineToSinglePage.dynamic.4a9a6f9cee',
+        'Please upload a PDF first.'
+      )
+    );
     return;
   }
 
@@ -130,7 +160,12 @@ async function combineToSinglePage() {
   const backgroundColor = hexToRgb(backgroundColorHex);
   const separatorColor = hexToRgb(separatorColorHex);
 
-  showLoader('Combining pages...');
+  showLoader(
+    translate(
+      'tools:combineToSinglePage.dynamic.16e9c2d1d1',
+      'Combining pages...'
+    )
+  );
 
   try {
     const sourceDoc = pageState.pdfDoc;
@@ -178,7 +213,13 @@ async function combineToSinglePage() {
     let currentY = finalHeight;
 
     for (let i = 0; i < sourcePages.length; i++) {
-      showLoader(`Processing page ${i + 1} of ${sourcePages.length}...`);
+      showLoader(
+        translate(
+          'tools:combineToSinglePage.dynamic.acab7793cd',
+          `Processing page ${i + 1} of ${sourcePages.length}...`,
+          { value0: i + 1, value1: sourcePages.length }
+        )
+      );
       const sourcePage = sourcePages[i];
       const { width, height } = sourcePage.getSize();
 
@@ -249,8 +290,11 @@ async function combineToSinglePage() {
     );
 
     showAlert(
-      'Success',
-      'Pages combined successfully!',
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:combineToSinglePage.dynamic.ac9e59466a',
+        'Pages combined successfully!'
+      ),
       'success',
       function () {
         resetState();
@@ -258,7 +302,13 @@ async function combineToSinglePage() {
     );
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'An error occurred while combining pages.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:combineToSinglePage.dynamic.a0562d5e3c',
+        'An error occurred while combining pages.'
+      )
+    );
   } finally {
     hideLoader();
   }

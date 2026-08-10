@@ -1,4 +1,14 @@
 import { PDFDocument, PDFName } from 'pdf-lib';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { createIcons, icons } from 'lucide';
 import { loadPdfWithPasswordPrompt } from '../utils/password-prompt.js';
 import { loadPdfDocument } from '../utils/load-pdf-document.js';
@@ -101,14 +111,20 @@ function resetState() {
 // File handling
 async function handleFileUpload(file: File) {
   if (!file || file.type !== 'application/pdf') {
-    showAlert('Error', 'Please upload a valid PDF file.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:removeAnnotations.dynamic.b14673b883',
+        'Please upload a valid PDF file.'
+      )
+    );
     return;
   }
 
   try {
     const result = await loadPdfWithPasswordPrompt(file);
     if (!result) return;
-    showLoader('Loading PDF...');
+    showLoader(translate('fileHandler.loadingPdf', 'Loading PDF...'));
     result.pdf.destroy();
     pageState.pdfDoc = await loadPdfDocument(result.bytes);
     pageState.file = result.file;
@@ -116,7 +132,13 @@ async function handleFileUpload(file: File) {
     document.getElementById('options-panel')?.classList.remove('hidden');
   } catch (error) {
     console.error(error);
-    showAlert('Error', 'Failed to load PDF file.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:removeAnnotations.dynamic.2e1c623bdc',
+        'Failed to load PDF file.'
+      )
+    );
   } finally {
     hideLoader();
   }
@@ -125,11 +147,22 @@ async function handleFileUpload(file: File) {
 // Process function
 async function processRemoveAnnotations() {
   if (!pageState.pdfDoc) {
-    showAlert('Error', 'Please upload a PDF file first.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:removeAnnotations.dynamic.269b7169f3',
+        'Please upload a PDF file first.'
+      )
+    );
     return;
   }
 
-  showLoader('Removing annotations...');
+  showLoader(
+    translate(
+      'tools:removeAnnotations.dynamic.89b910e2a6',
+      'Removing annotations...'
+    )
+  );
   try {
     const pages = pageState.pdfDoc.getPages();
 
@@ -147,12 +180,26 @@ async function processRemoveAnnotations() {
       new Blob([new Uint8Array(newPdfBytes)], { type: 'application/pdf' }),
       pageState.file?.name || 'document.pdf'
     );
-    showAlert('Success', 'Annotations removed successfully!', 'success', () => {
-      resetState();
-    });
+    showAlert(
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:removeAnnotations.dynamic.7abc526444',
+        'Annotations removed successfully!'
+      ),
+      'success',
+      () => {
+        resetState();
+      }
+    );
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'Could not remove annotations.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:removeAnnotations.dynamic.880d584cbf',
+        'Could not remove annotations.'
+      )
+    );
   } finally {
     hideLoader();
   }

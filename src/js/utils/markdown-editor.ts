@@ -1,3 +1,14 @@
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
+
 import MarkdownIt from 'markdown-it';
 import DOMPurify from 'dompurify';
 import hljs from 'highlight.js/lib/core';
@@ -728,7 +739,11 @@ export class MarkdownEditor {
           console.error('Mermaid rendering error:', error);
           const errorDiv = document.createElement('div');
           errorDiv.className = 'mermaid-error';
-          errorDiv.textContent = `Mermaid Error: ${(error as Error).message}`;
+          errorDiv.textContent = translate(
+            'common.dynamic.4e708e8c7c',
+            `Mermaid Error: ${(error as Error).message}`,
+            { value0: (error as Error).message }
+          );
           pre.replaceWith(errorDiv);
         }
       }

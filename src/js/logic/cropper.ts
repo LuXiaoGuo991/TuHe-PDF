@@ -1,4 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import {
   downloadFile,
   readFileAsArrayBuffer,
@@ -58,7 +68,11 @@ function saveCurrentCrop() {
  */
 
 async function displayPageAsImage(num: number) {
-  showLoader(`Rendering Page ${num}...`);
+  showLoader(
+    translate('common.dynamic.3a9e4354a0', `Rendering Page ${num}...`, {
+      value0: num,
+    })
+  );
 
   try {
     const page = await cropperState.pdfDoc.getPage(num);
@@ -109,11 +123,17 @@ async function displayPageAsImage(num: number) {
       updatePageInfo();
       enableControls();
       hideLoader();
-      showAlert('Ready', 'Please select an area to crop.');
+      showAlert(
+        translate('common.dynamic.537ba3aa0a', 'Ready'),
+        translate('common.dynamic.c2f2dec95b', 'Please select an area to crop.')
+      );
     };
   } catch (error) {
     console.error('Error rendering page:', error);
-    showAlert('Error', 'Failed to render page.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate('common.dynamic.796ffe1dd0', 'Failed to render page.')
+    );
     hideLoader();
   }
 }
@@ -134,8 +154,14 @@ async function changePage(offset: number) {
 }
 
 function updatePageInfo() {
-  document.getElementById('page-info').textContent =
-    `Page ${cropperState.currentPageNum} of ${cropperState.pdfDoc.numPages}`;
+  document.getElementById('page-info').textContent = translate(
+    'common.dynamic.7e2d45a3d6',
+    `Page ${cropperState.currentPageNum} of ${cropperState.pdfDoc.numPages}`,
+    {
+      value0: cropperState.currentPageNum,
+      value1: cropperState.pdfDoc.numPages,
+    }
+  );
 }
 
 function enableControls() {
@@ -220,7 +246,13 @@ async function performFlatteningCrop(
 
   for (let i = 0; i < totalPages; i++) {
     const pageNum = i + 1;
-    showLoader(`Processing page ${pageNum} of ${totalPages}...`);
+    showLoader(
+      translate(
+        'common.dynamic.20cb9cd721',
+        `Processing page ${pageNum} of ${totalPages}...`,
+        { value0: pageNum, value1: totalPages }
+      )
+    );
 
     if (cropData[pageNum]) {
       const page = await cropperState.pdfDoc.getPage(pageNum);
@@ -304,7 +336,10 @@ export async function setupCropperTool() {
     await displayPageAsImage(cropperState.currentPageNum);
   } catch (error) {
     console.error('Error setting up cropper tool:', error);
-    showAlert('Error', 'Failed to load PDF for cropping.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate('common.dynamic.22ab0cbd34', 'Failed to load PDF for cropping.')
+    );
   }
 
   document
@@ -329,7 +364,13 @@ export async function setupCropperTool() {
     if (isApplyToAll) {
       const currentCrop = cropperState.pageCrops[cropperState.currentPageNum];
       if (!currentCrop) {
-        showAlert('No Crop Area', 'Please select an area to crop first.');
+        showAlert(
+          translate('common.dynamic.4579e17b6e', 'No Crop Area'),
+          translate(
+            'common.dynamic.a0661def9c',
+            'Please select an area to crop first.'
+          )
+        );
         return;
       }
       // Apply the active page's crop to all pages
@@ -349,13 +390,16 @@ export async function setupCropperTool() {
 
     if (Object.keys(finalCropData).length === 0) {
       showAlert(
-        'No Crop Area',
-        'Please select an area on at least one page to crop.'
+        translate('common.dynamic.4579e17b6e', 'No Crop Area'),
+        translate(
+          'common.dynamic.fbdd0158ba',
+          'Please select an area on at least one page to crop.'
+        )
       );
       return;
     }
 
-    showLoader('Applying crop...');
+    showLoader(translate('common.dynamic.90dcd4fd88', 'Applying crop...'));
 
     try {
       let finalPdfBytes;
@@ -377,10 +421,22 @@ export async function setupCropperTool() {
         new Blob([new Uint8Array(finalPdfBytes)], { type: 'application/pdf' }),
         fileName
       );
-      showAlert('Success', 'Crop complete! Your download has started.');
+      showAlert(
+        translate('alert.success', 'Success'),
+        translate(
+          'common.dynamic.e9d254fac7',
+          'Crop complete! Your download has started.'
+        )
+      );
     } catch (e) {
       console.error(e);
-      showAlert('Error', 'An error occurred during cropping.');
+      showAlert(
+        translate('alert.error', 'Error'),
+        translate(
+          'common.dynamic.aff1fc8187',
+          'An error occurred during cropping.'
+        )
+      );
     } finally {
       hideLoader();
     }

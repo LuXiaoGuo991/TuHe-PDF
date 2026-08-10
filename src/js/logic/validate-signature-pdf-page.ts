@@ -1,4 +1,14 @@
 import { createIcons, icons } from 'lucide';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { showAlert, showLoader, hideLoader } from '../ui.js';
 import { readFileAsArrayBuffer, formatBytes } from '../utils/helpers.js';
 import { validatePdfSignatures } from './validate-signature-pdf.js';
@@ -131,7 +141,13 @@ async function handlePdfFile(file: File): Promise<void> {
     file.type !== 'application/pdf' &&
     !file.name.toLowerCase().endsWith('.pdf')
   ) {
-    showAlert('Invalid File', 'Please select a PDF file.');
+    showAlert(
+      translate('alert.invalidFile', 'Invalid File'),
+      translate(
+        'tools:validateSignaturePdf.dynamic.ce9a858d22',
+        'Please select a PDF file.'
+      )
+    );
     return;
   }
 
@@ -198,8 +214,14 @@ async function handleCertFile(file: File): Promise<void> {
 
   if (!hasValidExtension) {
     showAlert(
-      'Invalid Certificate',
-      'Please select a .pem, .crt, .cer, or .der certificate file.'
+      translate(
+        'tools:validateSignaturePdf.dynamic.4cff9de413',
+        'Invalid Certificate'
+      ),
+      translate(
+        'tools:validateSignaturePdf.dynamic.934e0a255a',
+        'Please select a .pem, .crt, .cer, or .der certificate file.'
+      )
     );
     return;
   }
@@ -228,7 +250,16 @@ async function handleCertFile(file: File): Promise<void> {
     }
   } catch (error) {
     console.error('Error parsing certificate:', error);
-    showAlert('Invalid Certificate', 'Failed to parse the certificate file.');
+    showAlert(
+      translate(
+        'tools:validateSignaturePdf.dynamic.4cff9de413',
+        'Invalid Certificate'
+      ),
+      translate(
+        'tools:validateSignaturePdf.dynamic.dfa18c01c2',
+        'Failed to parse the certificate file.'
+      )
+    );
     resetCertState();
   }
 }
@@ -277,7 +308,12 @@ function updateCertDisplay(): void {
 async function validateSignatures(): Promise<void> {
   if (!state.pdfBytes) return;
 
-  showLoader('Analyzing signatures...');
+  showLoader(
+    translate(
+      'tools:validateSignaturePdf.dynamic.2f59e87d76',
+      'Analyzing signatures...'
+    )
+  );
 
   try {
     state.results = await validatePdfSignatures(
@@ -288,8 +324,11 @@ async function validateSignatures(): Promise<void> {
   } catch (error) {
     console.error('Validation error:', error);
     showAlert(
-      'Error',
-      'Failed to validate signatures. The file may be corrupted.'
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:validateSignaturePdf.dynamic.5ae8ade49f',
+        'Failed to validate signatures. The file may be corrupted.'
+      )
     );
   } finally {
     hideLoader();

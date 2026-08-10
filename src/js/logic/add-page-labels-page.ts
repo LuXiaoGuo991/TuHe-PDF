@@ -524,7 +524,10 @@ async function addPageLabels() {
             'tools:addPageLabels.processErrorMessage',
             'Could not add page labels.'
           );
-    showAlert(translate('common.error', 'Error'), message);
+    showAlert(
+      translate('common.error', 'Error'),
+      translate('alert.processFailed', 'Processing failed. Please try again.')
+    );
   } finally {
     if (cpdf && pdf) {
       try {

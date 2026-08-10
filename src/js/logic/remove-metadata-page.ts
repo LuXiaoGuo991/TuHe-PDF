@@ -1,4 +1,14 @@
 import { showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { PDFDocument, PDFName } from 'pdf-lib';
 import { icons, createIcons } from 'lucide';
@@ -132,14 +142,24 @@ function handleFileSelect(files: FileList | null) {
 
 async function removeMetadata() {
   if (!pageState.file) {
-    showAlert('No File', 'Please upload a PDF file first.');
+    showAlert(
+      translate('tools:removeMetadata.dynamic.9bb26fafb5', 'No File'),
+      translate(
+        'tools:removeMetadata.dynamic.293b45eafc',
+        'Please upload a PDF file first.'
+      )
+    );
     return;
   }
 
   const loaderModal = document.getElementById('loader-modal');
   const loaderText = document.getElementById('loader-text');
   if (loaderModal) loaderModal.classList.remove('hidden');
-  if (loaderText) loaderText.textContent = 'Removing all metadata...';
+  if (loaderText)
+    loaderText.textContent = translate(
+      'tools:removeMetadata.dynamic.f39a42f002',
+      'Removing all metadata...'
+    );
 
   try {
     if (loaderModal) loaderModal.classList.add('hidden');
@@ -149,7 +169,11 @@ async function removeMetadata() {
       return;
     }
     if (loaderModal) loaderModal.classList.remove('hidden');
-    if (loaderText) loaderText.textContent = 'Removing all metadata...';
+    if (loaderText)
+      loaderText.textContent = translate(
+        'tools:removeMetadata.dynamic.f39a42f002',
+        'Removing all metadata...'
+      );
     result.pdf.destroy();
     const pdfDoc = await loadPdfDocument(result.bytes);
 
@@ -160,12 +184,26 @@ async function removeMetadata() {
       new Blob([newPdfBytes as BlobPart], { type: 'application/pdf' }),
       pageState.file?.name || 'document.pdf'
     );
-    showAlert('Success', 'Metadata removed successfully!', 'success', () => {
-      resetState();
-    });
+    showAlert(
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:removeMetadata.dynamic.b02c7ffeb3',
+        'Metadata removed successfully!'
+      ),
+      'success',
+      () => {
+        resetState();
+      }
+    );
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'An error occurred while trying to remove metadata.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:removeMetadata.dynamic.63392e9cea',
+        'An error occurred while trying to remove metadata.'
+      )
+    );
   } finally {
     if (loaderModal) loaderModal.classList.add('hidden');
   }

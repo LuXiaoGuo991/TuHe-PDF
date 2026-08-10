@@ -153,13 +153,15 @@
             id="add-more-btn"
             class="btn bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-4 py-2 rounded-lg flex items-center gap-2"
           >
-            <i data-lucide="plus"></i> <span>Add More Files</span>
+            <i data-lucide="plus"></i>
+            <span data-i18n="upload.addMore">Add More Files</span>
           </button>
           <button
             id="clear-files-btn"
             class="btn bg-gray-700 hover:bg-gray-600 text-white font-semibold px-4 py-2 rounded-lg flex items-center gap-2"
           >
-            <i data-lucide="trash-2"></i> <span>Clear All</span>
+            <i data-lucide="trash-2"></i>
+            <span data-i18n="upload.clearAll">Clear All</span>
           </button>
         </div>
 
@@ -176,12 +178,27 @@
               id="deskew-threshold"
               class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-2.5 focus:ring-indigo-500 focus:border-indigo-500"
             >
-              <option value="0.1">0.1° (Very Sensitive)</option>
-              <option value="0.5" selected>0.5° (Default)</option>
-              <option value="1.0">1.0° (Normal)</option>
-              <option value="2.0">2.0° (Less Sensitive)</option>
+              <option value="0.1" data-i18n="tools:deskewPdf.auto.d1814f6a72">
+                0.1° (Very Sensitive)
+              </option>
+              <option
+                value="0.5"
+                selected
+                data-i18n="tools:deskewPdf.auto.4963c88af5"
+              >
+                0.5° (Default)
+              </option>
+              <option value="1.0" data-i18n="tools:deskewPdf.auto.2586fc2c0d">
+                1.0° (Normal)
+              </option>
+              <option value="2.0" data-i18n="tools:deskewPdf.auto.da3ab1d77f">
+                2.0° (Less Sensitive)
+              </option>
             </select>
-            <p class="text-xs text-gray-500 mt-1">
+            <p
+              class="text-xs text-gray-500 mt-1"
+              data-i18n="tools:deskewPdf.auto.bd8ec38413"
+            >
               Pages with skew below this threshold won't be corrected.
             </p>
           </div>
@@ -196,27 +213,56 @@
               id="deskew-dpi"
               class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-2.5 focus:ring-indigo-500 focus:border-indigo-500"
             >
-              <option value="100">100 (Fast)</option>
-              <option value="150" selected>150 (Default)</option>
-              <option value="200">200 (Better)</option>
-              <option value="300">300 (Best Quality)</option>
+              <option value="100" data-i18n="tools:deskewPdf.auto.9b5a66dc2f">
+                100 (Fast)
+              </option>
+              <option
+                value="150"
+                selected
+                data-i18n="tools:deskewPdf.auto.73964943e3"
+              >
+                150 (Default)
+              </option>
+              <option value="200" data-i18n="tools:deskewPdf.auto.eb1160a61f">
+                200 (Better)
+              </option>
+              <option value="300" data-i18n="tools:deskewPdf.auto.f2ae783be9">
+                300 (Best Quality)
+              </option>
             </select>
           </div>
 
-          <button id="process-btn" class="btn-gradient w-full mt-4">
+          <button
+            id="process-btn"
+            class="btn-gradient w-full mt-4"
+            data-i18n="tools:deskewPdf.name"
+          >
             Deskew PDF
           </button>
         </div>
 
         <div id="results-area" class="hidden mt-6 p-4 bg-gray-700 rounded-lg">
-          <h3 class="text-lg font-semibold text-white mb-3">Deskew Results</h3>
+          <h3
+            class="text-lg font-semibold text-white mb-3"
+            data-i18n="tools:deskewPdf.auto.da47ed36b0"
+          >
+            Deskew Results
+          </h3>
           <div class="grid grid-cols-2 gap-4 text-sm">
             <div>
-              <span class="text-gray-400">Total Pages:</span>
+              <span
+                class="text-gray-400"
+                data-i18n="tools:deskewPdf.auto.7acba5f21f"
+                >Total Pages:</span
+              >
               <span id="result-total" class="text-white ml-2">-</span>
             </div>
             <div>
-              <span class="text-gray-400">Pages Corrected:</span>
+              <span
+                class="text-gray-400"
+                data-i18n="tools:deskewPdf.auto.16d83c4d17"
+                >Pages Corrected:</span
+              >
               <span id="result-corrected" class="text-white ml-2">-</span>
             </div>
           </div>
@@ -233,7 +279,11 @@
         class="bg-gray-800 p-8 rounded-lg flex flex-col items-center gap-4 border border-gray-700 shadow-xl"
       >
         <div class="solid-spinner"></div>
-        <p id="loader-text" class="text-white text-lg font-medium">
+        <p
+          id="loader-text"
+          class="text-white text-lg font-medium"
+          data-i18n="loader.processing"
+        >
           Processing...
         </p>
       </div>
@@ -246,13 +296,18 @@
       <div
         class="bg-gray-800 rounded-lg shadow-xl p-6 max-w-sm w-full border border-gray-700"
       >
-        <h3 id="alert-title" class="text-xl font-bold text-white mb-2">
+        <h3
+          id="alert-title"
+          class="text-xl font-bold text-white mb-2"
+          data-i18n="alert.title"
+        >
           Alert
         </h3>
         <p id="alert-message" class="text-gray-300 mb-6"></p>
         <button
           id="alert-ok"
           class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
+          data-i18n="alert.ok"
         >
           OK
         </button>
@@ -274,8 +329,16 @@
             1
           </div>
           <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white mb-1">Upload PDF</h3>
-            <p class="text-gray-400">
+            <h3
+              class="text-lg font-semibold text-white mb-1"
+              data-i18n="tools:splitPdf.hiw1Title"
+            >
+              Upload PDF
+            </h3>
+            <p
+              class="text-gray-400"
+              data-i18n="tools:deskewPdf.auto.26ef16e69a"
+            >
               Select your scanned PDF with tilted pages
             </p>
           </div>
@@ -287,8 +350,18 @@
             2
           </div>
           <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white mb-1">Auto-Detect</h3>
-            <p class="text-gray-400">OpenCV analyzes and detects skew angles</p>
+            <h3
+              class="text-lg font-semibold text-white mb-1"
+              data-i18n="tools:deskewPdf.auto.518fc45218"
+            >
+              Auto-Detect
+            </h3>
+            <p
+              class="text-gray-400"
+              data-i18n="tools:deskewPdf.auto.d2da212c01"
+            >
+              OpenCV analyzes and detects skew angles
+            </p>
           </div>
         </div>
         <div class="flex items-start gap-4">
@@ -298,8 +371,18 @@
             3
           </div>
           <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white mb-1">Download</h3>
-            <p class="text-gray-400">Get your straightened PDF instantly</p>
+            <h3
+              class="text-lg font-semibold text-white mb-1"
+              data-i18n="howItWorks.step3Title"
+            >
+              Download
+            </h3>
+            <p
+              class="text-gray-400"
+              data-i18n="tools:deskewPdf.auto.9160ff9602"
+            >
+              Get your straightened PDF instantly
+            </p>
           </div>
         </div>
       </div>
@@ -317,36 +400,86 @@
           href="rasterize-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Rasterize PDF</h3>
-          <p class="text-gray-400 text-sm">Convert to image-based PDF</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:rasterizePdf.name"
+          >
+            Rasterize PDF
+          </h3>
+          <p
+            class="text-gray-400 text-sm"
+            data-i18n="tools:deskewPdf.auto.c80ddda7d0"
+          >
+            Convert to image-based PDF
+          </p>
         </a>
         <a
           href="compress-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Compress PDF</h3>
-          <p class="text-gray-400 text-sm">Reduce PDF file size</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:compressPdf.name"
+          >
+            Compress PDF
+          </h3>
+          <p
+            class="text-gray-400 text-sm"
+            data-i18n="tools:deskewPdf.auto.a6cc6ebc72"
+          >
+            Reduce PDF file size
+          </p>
         </a>
         <a
           href="repair-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Repair PDF</h3>
-          <p class="text-gray-400 text-sm">Fix corrupted PDF files</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:repairPdf.name"
+          >
+            Repair PDF
+          </h3>
+          <p
+            class="text-gray-400 text-sm"
+            data-i18n="tools:deskewPdf.auto.02a3e813d7"
+          >
+            Fix corrupted PDF files
+          </p>
         </a>
         <a
           href="rotate-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Rotate PDF</h3>
-          <p class="text-gray-400 text-sm">Rotate PDF pages</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:rotatePdf.name"
+          >
+            Rotate PDF
+          </h3>
+          <p
+            class="text-gray-400 text-sm"
+            data-i18n="tools:deskewPdf.auto.989dd4ea29"
+          >
+            Rotate PDF pages
+          </p>
         </a>
         <a
           href="ocr-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">OCR PDF</h3>
-          <p class="text-gray-400 text-sm">Make PDF searchable</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:ocrPdf.name"
+          >
+            OCR PDF
+          </h3>
+          <p
+            class="text-gray-400 text-sm"
+            data-i18n="tools:deskewPdf.auto.a154d77304"
+          >
+            Make PDF searchable
+          </p>
         </a>
       </div>
     </section>
@@ -366,7 +499,10 @@
             What is PDF deskewing?
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400">
+          <p
+            class="mt-3 text-gray-400"
+            data-i18n="tools:deskewPdf.auto.253e8cb914"
+          >
             Deskewing is the process of correcting tilted or rotated pages in
             scanned documents. When you scan a document, it's common for pages
             to be slightly skewed. This tool automatically detects and corrects
@@ -380,7 +516,10 @@
             How accurate is the skew detection?
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400">
+          <p
+            class="mt-3 text-gray-400"
+            data-i18n="tools:deskewPdf.auto.bcb7b013dd"
+          >
             Our tool uses OpenCV's advanced image processing algorithms to
             detect skew angles with high precision. It works best on documents
             with clear text content.
@@ -393,7 +532,10 @@
             Are my files private?
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400">
+          <p
+            class="mt-3 text-gray-400"
+            data-i18n="tools:deskewPdf.auto.9c649e3408"
+          >
             Yes! All processing happens entirely in your browser using
             WebAssembly. Your files never leave your device.
           </p>

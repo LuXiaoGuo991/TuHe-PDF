@@ -1,4 +1,14 @@
 import { createIcons, icons } from 'lucide';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { showAlert, showLoader, hideLoader } from '../ui.js';
 import {
   formatBytes,
@@ -80,7 +90,13 @@ async function handleFile(file: File) {
     file.type !== 'application/pdf' &&
     !file.name.toLowerCase().endsWith('.pdf')
   ) {
-    showAlert('Invalid File', 'Please select a PDF file.');
+    showAlert(
+      translate('alert.invalidFile', 'Invalid File'),
+      translate(
+        'tools:deletePages.dynamic.1cf45e725e',
+        'Please select a PDF file.'
+      )
+    );
     return;
   }
 
@@ -92,7 +108,7 @@ async function handleFile(file: File) {
       deleteState.file = null;
       return;
     }
-    showLoader('Loading PDF...');
+    showLoader(translate('fileHandler.loadingPdf', 'Loading PDF...'));
     deleteState.file = result.file;
     deleteState.pdfDoc = await loadPdfDocument(result.bytes);
     deleteState.pdfJsDoc = result.pdf;
@@ -106,7 +122,13 @@ async function handleFile(file: File) {
   } catch (error) {
     console.error('Error loading PDF:', error);
     hideLoader();
-    showAlert('Error', 'Failed to load PDF file.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:deletePages.dynamic.e3eece8191',
+        'Failed to load PDF file.'
+      )
+    );
   }
 }
 
@@ -128,7 +150,14 @@ function updateFileDisplay() {
 
   const metaSpan = document.createElement('div');
   metaSpan.className = 'text-xs text-gray-400';
-  metaSpan.textContent = `${formatBytes(deleteState.file.size)} • ${deleteState.totalPages} pages`;
+  metaSpan.textContent = translate(
+    'tools:deletePages.dynamic.0564a7c930',
+    `${formatBytes(deleteState.file.size)} • ${deleteState.totalPages} pages`,
+    {
+      value0: formatBytes(deleteState.file.size),
+      value1: deleteState.totalPages,
+    }
+  );
 
   infoContainer.append(nameSpan, metaSpan);
 
@@ -181,7 +210,11 @@ async function renderThumbnails() {
     const pageLabel = document.createElement('span');
     pageLabel.className =
       'absolute top-1 left-1 bg-gray-800 text-white text-xs px-1.5 py-0.5 rounded';
-    pageLabel.textContent = `${i}`;
+    pageLabel.textContent = translate(
+      'tools:deletePages.dynamic.8040cd3ecb',
+      `${i}`,
+      { value0: i }
+    );
 
     const deleteOverlay = document.createElement('div');
     deleteOverlay.className =
@@ -250,16 +283,30 @@ function updatePreview() {
 
 async function deletePages() {
   if (deleteState.pagesToDelete.size === 0) {
-    showAlert('No Pages', 'Please select pages to delete.');
+    showAlert(
+      translate('tools:deletePages.dynamic.36bb3c96b4', 'No Pages'),
+      translate(
+        'tools:deletePages.dynamic.dcec3d0552',
+        'Please select pages to delete.'
+      )
+    );
     return;
   }
 
   if (deleteState.pagesToDelete.size >= deleteState.totalPages) {
-    showAlert('Error', 'Cannot delete all pages.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:deletePages.dynamic.964f139a29',
+        'Cannot delete all pages.'
+      )
+    );
     return;
   }
 
-  showLoader('Deleting pages...');
+  showLoader(
+    translate('tools:deletePages.dynamic.eca34fbe2d', 'Deleting pages...')
+  );
 
   try {
     const srcBytes = await deleteState.pdfDoc.save();
@@ -276,15 +323,25 @@ async function deletePages() {
 
     hideLoader();
     showAlert(
-      'Success',
-      `Deleted ${deleteState.pagesToDelete.size} page(s) successfully!`,
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:deletePages.dynamic.08211bf16d',
+        `Deleted ${deleteState.pagesToDelete.size} page(s) successfully!`,
+        { value0: deleteState.pagesToDelete.size }
+      ),
       'success',
       () => resetState()
     );
   } catch (error) {
     console.error('Error deleting pages:', error);
     hideLoader();
-    showAlert('Error', 'Failed to delete pages.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:deletePages.dynamic.d6a8ff2d06',
+        'Failed to delete pages.'
+      )
+    );
   }
 }
 

@@ -1,4 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { downloadFile } from '../utils/helpers.js';
 import { state } from '../state.js';
 
@@ -8,7 +18,7 @@ import type { RedactionRect } from '@/types';
 const { rgb } = window.PDFLib;
 
 export async function redact(redactions: RedactionRect[], canvasScale: number) {
-  showLoader('Applying redactions...');
+  showLoader(translate('common.dynamic.11102f021f', 'Applying redactions...'));
   try {
     const pdfPages = state.pdfDoc.getPages();
     const conversionScale = 1 / canvasScale;
@@ -39,7 +49,10 @@ export async function redact(redactions: RedactionRect[], canvasScale: number) {
     );
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'Failed to apply redactions.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate('common.dynamic.50db715701', 'Failed to apply redactions.')
+    );
   } finally {
     hideLoader();
   }

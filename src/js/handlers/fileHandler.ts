@@ -29,6 +29,15 @@ import {
 } from '../config/pdf-tools.js';
 import * as pdfjsLib from 'pdfjs-dist';
 import { loadPdfDocument } from '../utils/load-pdf-document.js';
+import { t } from '../i18n/i18n';
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.mjs',
@@ -47,7 +56,7 @@ let imageSortableInstance: Sortable | null = null;
 const activeImageUrls = new Map<File, string>();
 
 async function handleSinglePdfUpload(toolId: string, file: File) {
-  showLoader('Loading PDF...');
+  showLoader(translate('fileHandler.loadingPdf', 'Loading PDF...'));
   try {
     if (toolId === 'form-filler') {
       hideLoader();
@@ -222,7 +231,12 @@ async function handleSinglePdfUpload(toolId: string, file: File) {
 
     if (toolId === 'view-metadata') {
       const resultsDiv = document.getElementById('metadata-results');
-      showLoader('Analyzing full PDF metadata...');
+      showLoader(
+        translate(
+          'fileHandler.analyzingMetadata',
+          'Analyzing full PDF metadata...'
+        )
+      );
 
       try {
         const pdfBytes = await readFileAsArrayBuffer(state.files[0]);
@@ -282,14 +296,16 @@ async function handleSinglePdfUpload(toolId: string, file: File) {
           }
         };
 
-        const infoSection = createSection('Info Dictionary');
+        const infoSection = createSection(
+          translate('fileHandler.infoDictionary', 'Info Dictionary')
+        );
         if (info && Object.keys(info).length > 0) {
           for (const key in info) {
             const value = (info as Record<string, unknown>)[key];
             let displayValue: string;
 
             if (value === null || typeof value === 'undefined') {
-              displayValue = '- Not Set -';
+              displayValue = translate('fileHandler.notSet', '- Not Set -');
             } else if (
               typeof value === 'object' &&
               'name' in (value as object) &&
@@ -314,21 +330,25 @@ async function handleSinglePdfUpload(toolId: string, file: File) {
             infoSection.ul.appendChild(createListItem(key, displayValue));
           }
         } else {
-          infoSection.ul.innerHTML = `<li><span class="text-gray-500 italic">- No Info Dictionary data found -</span></li>`;
+          infoSection.ul.innerHTML = `<li><span class="text-gray-500 italic">${translate('fileHandler.noInfoData', '- No Info Dictionary data found -')}</span></li>`;
         }
         resultsDiv.appendChild(infoSection.wrapper);
 
-        const fieldsSection = createSection('Interactive Form Fields');
+        const fieldsSection = createSection(
+          translate('fileHandler.formFields', 'Interactive Form Fields')
+        );
         if (fieldObjects && Object.keys(fieldObjects).length > 0) {
           for (const fieldName in fieldObjects) {
             const field = fieldObjects[fieldName][0] as Record<string, unknown>;
-            const value = field.fieldValue || '- Not Set -';
+            const value =
+              field.fieldValue ||
+              translate('fileHandler.notSet', '- Not Set -');
             fieldsSection.ul.appendChild(
               createListItem(fieldName, String(value))
             );
           }
         } else {
-          fieldsSection.ul.innerHTML = `<li><span class="text-gray-500 italic">- No interactive form fields found -</span></li>`;
+          fieldsSection.ul.innerHTML = `<li><span class="text-gray-500 italic">${translate('fileHandler.noFormFields', '- No interactive form fields found -')}</span></li>`;
         }
         resultsDiv.appendChild(fieldsSection.wrapper);
 
@@ -386,7 +406,7 @@ async function handleSinglePdfUpload(toolId: string, file: File) {
               continue;
             }
             if (key === 'rdf:Alt') {
-              key = '(alt container)';
+              key = translate('fileHandler.altContainer', '(alt container)');
             }
 
             if (
@@ -394,7 +414,11 @@ async function handleSinglePdfUpload(toolId: string, file: File) {
               elementChildren.length === 0
             ) {
               ulElement.appendChild(
-                createXmpListItem(key, '(Empty Resource)', indentLevel)
+                createXmpListItem(
+                  key,
+                  translate('fileHandler.emptyResource', '(Empty Resource)'),
+                  indentLevel
+                )
               );
               continue;
             }
@@ -416,7 +440,9 @@ async function handleSinglePdfUpload(toolId: string, file: File) {
           }
         };
 
-        const xmpSection = createSection('XMP Metadata');
+        const xmpSection = createSection(
+          translate('fileHandler.xmpMetadata', 'XMP Metadata')
+        );
         if (rawXmpString) {
           try {
             const parser = new DOMParser();
@@ -435,11 +461,11 @@ async function handleSinglePdfUpload(toolId: string, file: File) {
             }
 
             if (xmpSection.ul.children.length === 0) {
-              xmpSection.ul.innerHTML = `<li><span class="text-gray-500 italic">- No parseable XMP properties found -</span></li>`;
+              xmpSection.ul.innerHTML = `<li><span class="text-gray-500 italic">${translate('fileHandler.noXmpProperties', '- No parseable XMP properties found -')}</span></li>`;
             }
           } catch (xmlError) {
             console.error('Failed to parse XMP XML:', xmlError);
-            xmpSection.ul.innerHTML = `<li><span class="text-red-500 italic">- Error parsing XMP XML. Displaying raw. -</span></li>`;
+            xmpSection.ul.innerHTML = `<li><span class="text-red-500 italic">${translate('fileHandler.xmpParseFailed', '- Unable to parse XMP metadata. -')}</span></li>`;
             const pre = document.createElement('pre');
             pre.className =
               'text-xs text-gray-300 whitespace-pre-wrap break-all';
@@ -447,7 +473,7 @@ async function handleSinglePdfUpload(toolId: string, file: File) {
             xmpSection.ul.appendChild(pre);
           }
         } else {
-          xmpSection.ul.innerHTML = `<li><span class="text-gray-500 italic">- No XMP metadata found -</span></li>`;
+          xmpSection.ul.innerHTML = `<li><span class="text-gray-500 italic">${translate('fileHandler.noXmpMetadata', '- No XMP metadata found -')}</span></li>`;
         }
         resultsDiv.appendChild(xmpSection.wrapper);
 
@@ -455,8 +481,11 @@ async function handleSinglePdfUpload(toolId: string, file: File) {
       } catch (e) {
         console.error('Failed to view metadata or fields:', e);
         showAlert(
-          'Error',
-          'Could not fully analyze the PDF. It may be corrupted or have an unusual structure.'
+          translate('alert.error', 'Error'),
+          translate(
+            'fileHandler.metadataAnalyzeFailed',
+            'Could not fully analyze the PDF. It may be corrupted or have an unusual structure.'
+          )
         );
       } finally {
         hideLoader();
@@ -499,13 +528,19 @@ async function handleSinglePdfUpload(toolId: string, file: File) {
 
         const keyInput = document.createElement('input');
         keyInput.type = 'text';
-        keyInput.placeholder = 'Key (e.g., Department)';
+        keyInput.placeholder = translate(
+          'fileHandler.metadataKeyPlaceholder',
+          'Key (e.g., Department)'
+        );
         keyInput.className =
           'custom-meta-key w-full sm:w-1/3 bg-gray-800 border border-gray-600 text-white rounded-lg p-2';
 
         const valueInput = document.createElement('input');
         valueInput.type = 'text';
-        valueInput.placeholder = 'Value (e.g., Marketing)';
+        valueInput.placeholder = translate(
+          'fileHandler.metadataValuePlaceholder',
+          'Value (e.g., Marketing)'
+        );
         valueInput.className =
           'custom-meta-value w-full sm:flex-grow bg-gray-800 border border-gray-600 text-white rounded-lg p-2';
 
@@ -589,8 +624,11 @@ async function handleSinglePdfUpload(toolId: string, file: File) {
   } catch (e) {
     hideLoader();
     showAlert(
-      'Error',
-      'Could not load PDF. The file may be invalid, corrupted, or password-protected.'
+      translate('alert.error', 'Error'),
+      translate(
+        'fileHandler.loadFailed',
+        'Could not load PDF. The file may be invalid, corrupted, or password-protected.'
+      )
     );
     console.error(e);
   }
@@ -602,7 +640,9 @@ async function handleMultiFileUpload(toolId: string) {
     toolId === 'alternate-merge' ||
     toolId === 'reverse-pages'
   ) {
-    showLoader('Loading PDF documents...');
+    showLoader(
+      translate('fileHandler.loadingDocuments', 'Loading PDF documents...')
+    );
 
     const pdfFilesUnloaded: File[] = [];
 
@@ -661,7 +701,9 @@ async function handleMultiFileUpload(toolId: string) {
         return;
       }
 
-      showLoader('Loading PDF documents...');
+      showLoader(
+        translate('fileHandler.loadingDocuments', 'Loading PDF documents...')
+      );
     }
   }
 
@@ -852,8 +894,11 @@ export function setupFileInputHandler(toolId: string) {
 
       if (validFiles.length < newFiles.length) {
         showAlert(
-          'Invalid Files',
-          'Some files were skipped because they are not supported images.'
+          translate('fileHandler.invalidFilesTitle', 'Invalid Files'),
+          translate(
+            'fileHandler.unsupportedImages',
+            'Some files were skipped because they are not supported images.'
+          )
         );
       }
 

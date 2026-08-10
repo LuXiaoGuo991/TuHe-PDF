@@ -1,4 +1,14 @@
 import { showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { downloadFile, formatBytes, hexToRgb } from '../utils/helpers.js';
 import { fixPageSize as fixPageSizeCore } from '../utils/pdf-operations';
 import { loadPdfWithPasswordPrompt } from '../utils/password-prompt.js';
@@ -83,7 +93,13 @@ async function handleFileSelect(files: FileList | null) {
 
 async function fixPageSize() {
   if (!pageState.file) {
-    showAlert('No File', 'Please upload a PDF file first.');
+    showAlert(
+      translate('tools:fixPageSize.dynamic.4e7b720a89', 'No File'),
+      translate(
+        'tools:fixPageSize.dynamic.5682a8deba',
+        'Please upload a PDF file first.'
+      )
+    );
     return;
   }
 
@@ -105,7 +121,11 @@ async function fixPageSize() {
   const loaderModal = document.getElementById('loader-modal');
   const loaderText = document.getElementById('loader-text');
   if (loaderModal) loaderModal.classList.remove('hidden');
-  if (loaderText) loaderText.textContent = 'Standardizing pages...';
+  if (loaderText)
+    loaderText.textContent = translate(
+      'tools:fixPageSize.dynamic.c3a6d5d19c',
+      'Standardizing pages...'
+    );
 
   try {
     const customWidth =
@@ -138,8 +158,11 @@ async function fixPageSize() {
       pageState.file?.name || 'document.pdf'
     );
     showAlert(
-      'Success',
-      'Page sizes standardized successfully!',
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:fixPageSize.dynamic.626e3b2dab',
+        'Page sizes standardized successfully!'
+      ),
       'success',
       () => {
         resetState();
@@ -147,7 +170,13 @@ async function fixPageSize() {
     );
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'An error occurred while standardizing pages.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:fixPageSize.dynamic.52e02e9a8c',
+        'An error occurred while standardizing pages.'
+      )
+    );
   } finally {
     if (loaderModal) loaderModal.classList.add('hidden');
   }

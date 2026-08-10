@@ -1,3 +1,14 @@
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
+
 import {
   formatBytes,
   readFileAsArrayBuffer,
@@ -105,7 +116,10 @@ function updateFileList() {
   const deleteBtn = document.createElement('button');
   deleteBtn.className =
     'text-red-400 hover:text-red-300 p-2 flex-shrink-0 ml-2';
-  deleteBtn.title = 'Remove file';
+  deleteBtn.title = translate(
+    'tools:addStamps.dynamic.612ed3ad3b',
+    'Remove file'
+  );
   deleteBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
   deleteBtn.onclick = (e) => {
     e.stopPropagation();

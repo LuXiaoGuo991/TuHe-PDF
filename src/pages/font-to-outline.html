@@ -162,13 +162,15 @@
             id="add-more-btn"
             class="btn bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-4 py-2 rounded-lg flex items-center gap-2"
           >
-            <i data-lucide="plus"></i> <span>Add More Files</span>
+            <i data-lucide="plus"></i>
+            <span data-i18n="upload.addMore">Add More Files</span>
           </button>
           <button
             id="clear-files-btn"
             class="btn bg-gray-700 hover:bg-gray-600 text-white font-semibold px-4 py-2 rounded-lg flex items-center gap-2"
           >
-            <i data-lucide="trash-2"></i> <span>Clear All</span>
+            <i data-lucide="trash-2"></i>
+            <span data-i18n="upload.clearAll">Clear All</span>
           </button>
         </div>
 
@@ -176,21 +178,39 @@
 
         <div id="tool-options" class="hidden mt-6">
           <div class="p-4 bg-gray-900 rounded-lg border border-gray-700 mb-4">
-            <h3 class="text-sm font-semibold text-white mb-2">
+            <h3
+              class="text-sm font-semibold text-white mb-2"
+              data-i18n="tools:fontToOutline.auto.1a036f9ea6"
+            >
               What this tool does:
             </h3>
             <ul class="text-xs text-gray-400 space-y-1 list-disc list-inside">
-              <li>Converts all text to vector paths/curves</li>
-              <li>Eliminates font dependency issues</li>
-              <li>Ensures consistent rendering across all devices</li>
-              <li>Ideal for print-ready PDFs</li>
+              <li data-i18n="tools:fontToOutline.auto.548e9ac2aa">
+                Converts all text to vector paths/curves
+              </li>
+              <li data-i18n="tools:fontToOutline.auto.5acbe5c979">
+                Eliminates font dependency issues
+              </li>
+              <li data-i18n="tools:fontToOutline.auto.3a6d4fed99">
+                Ensures consistent rendering across all devices
+              </li>
+              <li data-i18n="tools:fontToOutline.auto.51ffebf638">
+                Ideal for print-ready PDFs
+              </li>
             </ul>
-            <p class="text-xs text-gray-500 mt-2">
+            <p
+              class="text-xs text-gray-500 mt-2"
+              data-i18n="tools:fontToOutline.auto.d01f22915e"
+            >
               Note: Text will no longer be selectable or searchable after
               conversion.
             </p>
           </div>
-          <button id="process-btn" class="btn-gradient w-full">
+          <button
+            id="process-btn"
+            class="btn-gradient w-full"
+            data-i18n="tools:fontToOutline.auto.7cb75feead"
+          >
             Convert to Outlines
           </button>
         </div>
@@ -205,7 +225,11 @@
         class="bg-gray-800 p-8 rounded-lg flex flex-col items-center gap-4 border border-gray-700 shadow-xl"
       >
         <div class="solid-spinner"></div>
-        <p id="loader-text" class="text-white text-lg font-medium">
+        <p
+          id="loader-text"
+          class="text-white text-lg font-medium"
+          data-i18n="loader.processing"
+        >
           Processing...
         </p>
       </div>
@@ -218,13 +242,18 @@
       <div
         class="bg-gray-800 rounded-lg shadow-xl p-6 max-w-sm w-full border border-gray-700"
       >
-        <h3 id="alert-title" class="text-xl font-bold text-white mb-2">
+        <h3
+          id="alert-title"
+          class="text-xl font-bold text-white mb-2"
+          data-i18n="alert.title"
+        >
           Alert
         </h3>
         <p id="alert-message" class="text-gray-300 mb-6"></p>
         <button
           id="alert-ok"
           class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
+          data-i18n="alert.ok"
         >
           OK
         </button>
@@ -246,8 +275,16 @@
             1
           </div>
           <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white mb-1">Upload PDF</h3>
-            <p class="text-gray-400">
+            <h3
+              class="text-lg font-semibold text-white mb-1"
+              data-i18n="tools:splitPdf.hiw1Title"
+            >
+              Upload PDF
+            </h3>
+            <p
+              class="text-gray-400"
+              data-i18n="tools:fontToOutline.auto.81f0a711f8"
+            >
               Select your PDF file with embedded fonts
             </p>
           </div>
@@ -259,8 +296,16 @@
             2
           </div>
           <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white mb-1">Convert</h3>
-            <p class="text-gray-400">
+            <h3
+              class="text-lg font-semibold text-white mb-1"
+              data-i18n="common.convert"
+            >
+              Convert
+            </h3>
+            <p
+              class="text-gray-400"
+              data-i18n="tools:fontToOutline.auto.53a0d0fee5"
+            >
               Ghostscript converts all fonts to vector paths
             </p>
           </div>
@@ -272,8 +317,18 @@
             3
           </div>
           <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white mb-1">Download</h3>
-            <p class="text-gray-400">Get your font-independent PDF instantly</p>
+            <h3
+              class="text-lg font-semibold text-white mb-1"
+              data-i18n="howItWorks.step3Title"
+            >
+              Download
+            </h3>
+            <p
+              class="text-gray-400"
+              data-i18n="tools:fontToOutline.auto.50533a1de1"
+            >
+              Get your font-independent PDF instantly
+            </p>
           </div>
         </div>
       </div>
@@ -291,36 +346,86 @@
           href="flatten-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Flatten PDF</h3>
-          <p class="text-gray-400 text-sm">Make forms non-editable</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:flattenPdf.name"
+          >
+            Flatten PDF
+          </h3>
+          <p
+            class="text-gray-400 text-sm"
+            data-i18n="tools:fontToOutline.auto.0e0f0be1f5"
+          >
+            Make forms non-editable
+          </p>
         </a>
         <a
           href="rasterize-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Rasterize PDF</h3>
-          <p class="text-gray-400 text-sm">Convert to image-based PDF</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:rasterizePdf.name"
+          >
+            Rasterize PDF
+          </h3>
+          <p
+            class="text-gray-400 text-sm"
+            data-i18n="tools:fontToOutline.auto.c80ddda7d0"
+          >
+            Convert to image-based PDF
+          </p>
         </a>
         <a
           href="compress-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Compress PDF</h3>
-          <p class="text-gray-400 text-sm">Reduce PDF file size</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:compressPdf.name"
+          >
+            Compress PDF
+          </h3>
+          <p
+            class="text-gray-400 text-sm"
+            data-i18n="tools:fontToOutline.auto.a6cc6ebc72"
+          >
+            Reduce PDF file size
+          </p>
         </a>
         <a
           href="pdf-to-pdfa.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">PDF to PDF/A</h3>
-          <p class="text-gray-400 text-sm">Convert for archiving</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:pdfToPdfa.name"
+          >
+            PDF to PDF/A
+          </h3>
+          <p
+            class="text-gray-400 text-sm"
+            data-i18n="tools:fontToOutline.auto.adfbd1a347"
+          >
+            Convert for archiving
+          </p>
         </a>
         <a
           href="repair-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Repair PDF</h3>
-          <p class="text-gray-400 text-sm">Fix corrupted PDF files</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:repairPdf.name"
+          >
+            Repair PDF
+          </h3>
+          <p
+            class="text-gray-400 text-sm"
+            data-i18n="tools:fontToOutline.auto.02a3e813d7"
+          >
+            Fix corrupted PDF files
+          </p>
         </a>
       </div>
     </section>
@@ -340,7 +445,10 @@
             What does "font to outline" mean?
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400">
+          <p
+            class="mt-3 text-gray-400"
+            data-i18n="tools:fontToOutline.auto.a26ee4f5a0"
+          >
             Converting fonts to outlines means transforming text characters from
             font-based representations into vector paths/curves. This ensures
             the PDF looks identical on any device, even if the original fonts
@@ -354,7 +462,10 @@
             When should I use this tool?
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400">
+          <p
+            class="mt-3 text-gray-400"
+            data-i18n="tools:fontToOutline.auto.1a4d97e7db"
+          >
             Use this tool when preparing PDFs for professional printing, sharing
             documents with special fonts, or when you need to ensure consistent
             appearance across different systems and devices.
@@ -367,7 +478,10 @@
             Will the text still be selectable?
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400">
+          <p
+            class="mt-3 text-gray-400"
+            data-i18n="tools:fontToOutline.auto.4d65f6e337"
+          >
             No. After conversion, text becomes vector graphics and is no longer
             selectable or searchable. If you need searchable text, consider
             using the OCR tool after conversion.
@@ -380,7 +494,10 @@
             Are my files private?
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400">
+          <p
+            class="mt-3 text-gray-400"
+            data-i18n="tools:fontToOutline.auto.9c649e3408"
+          >
             Yes! All processing happens entirely in your browser using
             WebAssembly. Your files never leave your device.
           </p>

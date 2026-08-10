@@ -1,4 +1,14 @@
 import { showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import {
   formatBytes,
   getStandardPageName,
@@ -138,7 +148,10 @@ function renderTable(unit: string) {
   const tableBody = document.getElementById('dimensions-table-body');
   if (!tableBody) return;
 
-  tableBody.textContent = '';
+  tableBody.textContent = translate(
+    'tools:pageDimensions.dynamic.f5deede4e1',
+    ''
+  );
 
   analyzedPagesData.forEach((pageData) => {
     const width = convertPoints(pageData.width, unit);
@@ -154,7 +167,11 @@ function renderTable(unit: string) {
 
     const dimensionsCell = document.createElement('td');
     dimensionsCell.className = 'px-4 py-3 text-gray-300';
-    dimensionsCell.textContent = `${width} x ${height} ${unit}`;
+    dimensionsCell.textContent = translate(
+      'tools:pageDimensions.dynamic.e6a574d0ee',
+      `${width} x ${height} ${unit}`,
+      { value0: width, value1: height, value2: unit }
+    );
 
     const sizeCell = document.createElement('td');
     sizeCell.className = 'px-4 py-3 text-gray-300';
@@ -174,7 +191,11 @@ function renderTable(unit: string) {
 
     const rotationCell = document.createElement('td');
     rotationCell.className = 'px-4 py-3 text-gray-300';
-    rotationCell.textContent = `${pageData.rotation}°`;
+    rotationCell.textContent = translate(
+      'tools:pageDimensions.dynamic.22472882ef',
+      `${pageData.rotation}°`,
+      { value0: pageData.rotation }
+    );
 
     row.append(
       pageNumCell,
@@ -351,7 +372,13 @@ async function handleFileSelect(files: FileList | null) {
         analyzeAndDisplayDimensions();
       } catch (e) {
         console.error('Error loading PDF:', e);
-        showAlert('Error', 'Failed to load PDF file.');
+        showAlert(
+          translate('alert.error', 'Error'),
+          translate(
+            'tools:pageDimensions.dynamic.5f1427aa40',
+            'Failed to load PDF file.'
+          )
+        );
       }
     }
   }

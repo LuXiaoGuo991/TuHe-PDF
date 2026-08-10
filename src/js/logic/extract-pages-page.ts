@@ -1,4 +1,14 @@
 import { createIcons, icons } from 'lucide';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { showAlert, showLoader, hideLoader } from '../ui.js';
 import {
   formatBytes,
@@ -85,7 +95,13 @@ async function handleFile(file: File) {
     file.type !== 'application/pdf' &&
     !file.name.toLowerCase().endsWith('.pdf')
   ) {
-    showAlert('Invalid File', 'Please select a PDF file.');
+    showAlert(
+      translate('alert.invalidFile', 'Invalid File'),
+      translate(
+        'tools:extractPages.dynamic.9e33c22c50',
+        'Please select a PDF file.'
+      )
+    );
     return;
   }
 
@@ -97,7 +113,7 @@ async function handleFile(file: File) {
       extractState.file = null;
       return;
     }
-    showLoader('Loading PDF...');
+    showLoader(translate('fileHandler.loadingPdf', 'Loading PDF...'));
     extractState.file = result.file;
     result.pdf.destroy();
     extractState.pdfDoc = await loadPdfDocument(result.bytes);
@@ -109,7 +125,13 @@ async function handleFile(file: File) {
   } catch (error) {
     console.error('Error loading PDF:', error);
     hideLoader();
-    showAlert('Error', 'Failed to load PDF file.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:extractPages.dynamic.6a04af93b9',
+        'Failed to load PDF file.'
+      )
+    );
   }
 }
 
@@ -131,7 +153,14 @@ function updateFileDisplay() {
 
   const metaSpan = document.createElement('div');
   metaSpan.className = 'text-xs text-gray-400';
-  metaSpan.textContent = `${formatBytes(extractState.file.size)} • ${extractState.totalPages} pages`;
+  metaSpan.textContent = translate(
+    'tools:extractPages.dynamic.56a397a4ca',
+    `${formatBytes(extractState.file.size)} • ${extractState.totalPages} pages`,
+    {
+      value0: formatBytes(extractState.file.size),
+      value1: extractState.totalPages,
+    }
+  );
 
   infoContainer.append(nameSpan, metaSpan);
 
@@ -162,7 +191,13 @@ async function extractPages() {
     'pages-to-extract'
   ) as HTMLInputElement;
   if (!pagesInput || !pagesInput.value.trim()) {
-    showAlert('No Pages', 'Please enter page numbers to extract.');
+    showAlert(
+      translate('tools:extractPages.dynamic.1aa78bee2c', 'No Pages'),
+      translate(
+        'tools:extractPages.dynamic.82c32efccc',
+        'Please enter page numbers to extract.'
+      )
+    );
     return;
   }
 
@@ -171,11 +206,19 @@ async function extractPages() {
     extractState.totalPages
   ).map((i) => i + 1);
   if (pagesToExtract.length === 0) {
-    showAlert('Invalid Pages', 'No valid page numbers found.');
+    showAlert(
+      translate('tools:extractPages.dynamic.8eaf742272', 'Invalid Pages'),
+      translate(
+        'tools:extractPages.dynamic.f2ad1b2d1f',
+        'No valid page numbers found.'
+      )
+    );
     return;
   }
 
-  showLoader('Extracting pages...');
+  showLoader(
+    translate('tools:extractPages.dynamic.5632ead150', 'Extracting pages...')
+  );
 
   try {
     const zip = new JSZip();
@@ -196,8 +239,12 @@ async function extractPages() {
 
     hideLoader();
     showAlert(
-      'Success',
-      `Extracted ${pagesToExtract.length} page(s) successfully!`,
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:extractPages.dynamic.54565c518f',
+        `Extracted ${pagesToExtract.length} page(s) successfully!`,
+        { value0: pagesToExtract.length }
+      ),
       'success',
       () => {
         resetState();
@@ -206,7 +253,13 @@ async function extractPages() {
   } catch (error) {
     console.error('Error extracting pages:', error);
     hideLoader();
-    showAlert('Error', 'Failed to extract pages.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:extractPages.dynamic.fa1284f132',
+        'Failed to extract pages.'
+      )
+    );
   }
 }
 

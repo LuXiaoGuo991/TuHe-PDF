@@ -1,3 +1,14 @@
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
+
 import { showAlert } from '../ui.js';
 import {
   downloadFile,
@@ -88,7 +99,13 @@ function handleFileSelect(files: FileList | null) {
 
 async function removeRestrictions() {
   if (!pageState.file) {
-    showAlert('No File', 'Please upload a PDF file first.');
+    showAlert(
+      translate('tools:removeRestrictions.dynamic.2de7e01738', 'No File'),
+      translate(
+        'tools:removeRestrictions.dynamic.9afe460e3d',
+        'Please upload a PDF file first.'
+      )
+    );
     return;
   }
 
@@ -105,17 +122,29 @@ async function removeRestrictions() {
 
   try {
     if (loaderModal) loaderModal.classList.remove('hidden');
-    if (loaderText) loaderText.textContent = 'Initializing...';
+    if (loaderText)
+      loaderText.textContent = translate(
+        'tools:removeRestrictions.dynamic.ae0f78ae39',
+        'Initializing...'
+      );
 
     qpdf = await initializeQpdf();
 
-    if (loaderText) loaderText.textContent = 'Reading PDF...';
+    if (loaderText)
+      loaderText.textContent = translate(
+        'tools:removeRestrictions.dynamic.a4f489ba51',
+        'Reading PDF...'
+      );
     const fileBuffer = await readFileAsArrayBuffer(pageState.file);
     const uint8Array = new Uint8Array(fileBuffer as ArrayBuffer);
 
     qpdf.FS.writeFile(inputPath, uint8Array);
 
-    if (loaderText) loaderText.textContent = 'Removing restrictions...';
+    if (loaderText)
+      loaderText.textContent = translate(
+        'tools:removeRestrictions.dynamic.0af8548308',
+        'Removing restrictions...'
+      );
 
     const args = [inputPath];
 
@@ -143,7 +172,11 @@ async function removeRestrictions() {
       );
     }
 
-    if (loaderText) loaderText.textContent = 'Preparing download...';
+    if (loaderText)
+      loaderText.textContent = translate(
+        'tools:removeRestrictions.dynamic.8f0ab838a0',
+        'Preparing download...'
+      );
     const outputFile = qpdf.FS.readFile(outputPath, { encoding: 'binary' });
 
     if (!outputFile || outputFile.length === 0) {
@@ -158,8 +191,11 @@ async function removeRestrictions() {
     if (loaderModal) loaderModal.classList.add('hidden');
 
     showAlert(
-      'Success',
-      'PDF restrictions removed successfully! The file is now fully editable and printable.',
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:removeRestrictions.dynamic.d7ab0131b2',
+        'PDF restrictions removed successfully! The file is now fully editable and printable.'
+      ),
       'success',
       () => {
         resetState();
@@ -169,8 +205,11 @@ async function removeRestrictions() {
     console.error('Error during restriction removal:', error);
     if (loaderModal) loaderModal.classList.add('hidden');
     showAlert(
-      'Operation Failed',
-      `An error occurred: ${error instanceof Error ? error.message : 'The PDF might be corrupted or password-protected.'}`
+      translate(
+        'tools:removeRestrictions.dynamic.3cbb1317ff',
+        'Operation Failed'
+      ),
+      translate('alert.processFailed', 'Processing failed. Please try again.')
     );
   } finally {
     try {

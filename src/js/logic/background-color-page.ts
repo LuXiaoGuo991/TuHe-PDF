@@ -1,4 +1,14 @@
 import { createIcons, icons } from 'lucide';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { showAlert, showLoader, hideLoader } from '../ui.js';
 import { downloadFile, hexToRgb, formatBytes } from '../utils/helpers.js';
 import { PDFDocument as PDFLibDocument, rgb } from 'pdf-lib';
@@ -56,13 +66,19 @@ function handleFileUpload(e: Event) {
 async function handleFiles(files: FileList) {
   const file = files[0];
   if (!file || file.type !== 'application/pdf') {
-    showAlert('Invalid File', 'Please upload a valid PDF file.');
+    showAlert(
+      translate('alert.invalidFile', 'Invalid File'),
+      translate(
+        'tools:backgroundColor.dynamic.b9cf61f80d',
+        'Please upload a valid PDF file.'
+      )
+    );
     return;
   }
   try {
     const result = await loadPdfWithPasswordPrompt(file);
     if (!result) return;
-    showLoader('Loading PDF...');
+    showLoader(translate('fileHandler.loadingPdf', 'Loading PDF...'));
     result.pdf.destroy();
     pageState.pdfDoc = await loadPdfDocument(result.bytes);
     pageState.file = result.file;
@@ -70,7 +86,13 @@ async function handleFiles(files: FileList) {
     document.getElementById('options-panel')?.classList.remove('hidden');
   } catch (error) {
     console.error(error);
-    showAlert('Error', 'Failed to load PDF file.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:backgroundColor.dynamic.f70d9e0d74',
+        'Failed to load PDF file.'
+      )
+    );
   } finally {
     hideLoader();
   }
@@ -90,7 +112,14 @@ function updateFileDisplay() {
   nameSpan.textContent = pageState.file.name;
   const metaSpan = document.createElement('div');
   metaSpan.className = 'text-xs text-gray-400';
-  metaSpan.textContent = `${formatBytes(pageState.file.size)} • ${pageState.pdfDoc.getPageCount()} pages`;
+  metaSpan.textContent = translate(
+    'tools:backgroundColor.dynamic.9a4711e8a0',
+    `${formatBytes(pageState.file.size)} • ${pageState.pdfDoc.getPageCount()} pages`,
+    {
+      value0: formatBytes(pageState.file.size),
+      value1: pageState.pdfDoc.getPageCount(),
+    }
+  );
   infoContainer.append(nameSpan, metaSpan);
   const removeBtn = document.createElement('button');
   removeBtn.className = 'ml-4 text-red-400 hover:text-red-300 flex-shrink-0';
@@ -113,14 +142,25 @@ function resetState() {
 
 async function changeBackgroundColor() {
   if (!pageState.pdfDoc) {
-    showAlert('Error', 'Please upload a PDF file first.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:backgroundColor.dynamic.20fb18bbc1',
+        'Please upload a PDF file first.'
+      )
+    );
     return;
   }
   const colorHex = (
     document.getElementById('background-color') as HTMLInputElement
   ).value;
   const color = hexToRgb(colorHex);
-  showLoader('Changing background color...');
+  showLoader(
+    translate(
+      'tools:backgroundColor.dynamic.526d3e3d75',
+      'Changing background color...'
+    )
+  );
   try {
     const newPdfDoc = await PDFLibDocument.create();
     for (let i = 0; i < pageState.pdfDoc.getPageCount(); i++) {
@@ -143,8 +183,11 @@ async function changeBackgroundColor() {
       pageState.file?.name || 'document.pdf'
     );
     showAlert(
-      'Success',
-      'Background color changed successfully!',
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:backgroundColor.dynamic.dfa29c075b',
+        'Background color changed successfully!'
+      ),
       'success',
       () => {
         resetState();
@@ -152,7 +195,13 @@ async function changeBackgroundColor() {
     );
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'Could not change the background color.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:backgroundColor.dynamic.8fc0565b63',
+        'Could not change the background color.'
+      )
+    );
   } finally {
     hideLoader();
   }

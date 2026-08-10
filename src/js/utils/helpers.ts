@@ -1,3 +1,14 @@
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
+
 import createModule from '@neslinesli93/qpdf-wasm';
 import type { QpdfInstanceExtended } from '@/types';
 import { showLoader, hideLoader, showAlert } from '../ui.js';
@@ -170,7 +181,9 @@ let qpdfInstance: QpdfInstanceExtended | null = null;
 export async function initializeQpdf(): Promise<QpdfInstanceExtended> {
   if (qpdfInstance) return qpdfInstance;
 
-  showLoader('Initializing PDF engine...');
+  showLoader(
+    translate('common.dynamic.fc9c0065db', 'Initializing PDF engine...')
+  );
   try {
     qpdfInstance = (await createModule({
       locateFile: () => import.meta.env.BASE_URL + 'qpdf.wasm',
@@ -178,8 +191,11 @@ export async function initializeQpdf(): Promise<QpdfInstanceExtended> {
   } catch (error) {
     console.error('Failed to initialize qpdf-wasm:', error);
     showAlert(
-      'Initialization Error',
-      'Could not load the PDF engine. Please refresh the page and try again.'
+      translate('common.dynamic.c73b34e569', 'Initialization Error'),
+      translate(
+        'common.dynamic.105f867cd3',
+        'Could not load the PDF engine. Please refresh the page and try again.'
+      )
     );
     throw error;
   } finally {

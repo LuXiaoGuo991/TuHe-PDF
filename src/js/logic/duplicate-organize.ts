@@ -1,4 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { downloadFile } from '../utils/helpers.js';
 import { state } from '../state.js';
 import { loadPdfWithPasswordPrompt } from '../utils/password-prompt.js';
@@ -81,8 +91,11 @@ function attachEventListeners(element: HTMLElement) {
       initializePageGridSortable();
     } else {
       showAlert(
-        'Cannot Delete',
-        'You cannot delete the last page of the document.'
+        translate('common.dynamic.1b233cd173', 'Cannot Delete'),
+        translate(
+          'common.dynamic.e5a34f7ac1',
+          'You cannot delete the last page of the document.'
+        )
       );
     }
   });
@@ -95,7 +108,9 @@ export async function renderDuplicateOrganizeThumbnails() {
   // Cleanup any previous lazy loading observers
   cleanupLazyRendering();
 
-  showLoader('Rendering page previews...');
+  showLoader(
+    translate('common.dynamic.44d04541b5', 'Rendering page previews...')
+  );
   const pdfData = await state.pdfDoc.save();
   hideLoader();
   const loadResult = await loadPdfWithPasswordPrompt(
@@ -104,10 +119,12 @@ export async function renderDuplicateOrganizeThumbnails() {
     0
   );
   if (!loadResult) return;
-  showLoader('Rendering page previews...');
+  showLoader(
+    translate('common.dynamic.44d04541b5', 'Rendering page previews...')
+  );
   const pdfjsDoc = loadResult.pdf;
 
-  grid.textContent = '';
+  grid.textContent = translate('common.dynamic.0e455bd98f', '');
 
   // Function to create wrapper element for each page
   const createWrapper = (canvas: HTMLCanvasElement, pageNumber: number) => {
@@ -137,7 +154,10 @@ export async function renderDuplicateOrganizeThumbnails() {
     const duplicateBtn = document.createElement('button');
     duplicateBtn.className =
       'duplicate-btn bg-green-600 hover:bg-green-700 text-white rounded-full w-8 h-8 flex items-center justify-center';
-    duplicateBtn.title = 'Duplicate Page';
+    duplicateBtn.title = translate(
+      'common.dynamic.c565bcea4a',
+      'Duplicate Page'
+    );
     const duplicateIcon = document.createElement('i');
     duplicateIcon.setAttribute('data-lucide', 'copy-plus');
     duplicateIcon.className = 'w-5 h-5';
@@ -146,7 +166,7 @@ export async function renderDuplicateOrganizeThumbnails() {
     const deleteBtn = document.createElement('button');
     deleteBtn.className =
       'delete-btn bg-red-600 hover:bg-red-700 text-white rounded-full w-8 h-8 flex items-center justify-center';
-    deleteBtn.title = 'Delete Page';
+    deleteBtn.title = translate('common.dynamic.5efb3e8ec6', 'Delete Page');
     const deleteIcon = document.createElement('i');
     deleteIcon.setAttribute('data-lucide', 'x-circle');
     deleteIcon.className = 'w-5 h-5';
@@ -167,7 +187,13 @@ export async function renderDuplicateOrganizeThumbnails() {
       useLazyLoading: true,
       lazyLoadMargin: '400px',
       onProgress: (current, total) => {
-        showLoader(`Rendering page previews: ${current}/${total}`);
+        showLoader(
+          translate(
+            'common.dynamic.b41206e984',
+            `Rendering page previews: ${current}/${total}`,
+            { value0: current, value1: total }
+          )
+        );
       },
       onBatchComplete: () => {
         createIcons({ icons });
@@ -177,14 +203,17 @@ export async function renderDuplicateOrganizeThumbnails() {
     initializePageGridSortable();
   } catch (error) {
     console.error('Error rendering thumbnails:', error);
-    showAlert('Error', 'Failed to render page previews');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate('common.dynamic.38e425eed8', 'Failed to render page previews')
+    );
   } finally {
     hideLoader();
   }
 }
 
 export async function processAndSave() {
-  showLoader('Building new PDF...');
+  showLoader(translate('common.dynamic.a8a342113d', 'Building new PDF...'));
   try {
     const grid = document.getElementById('page-grid');
     const finalPageElements = grid.querySelectorAll('.page-thumbnail');
@@ -199,7 +228,10 @@ export async function processAndSave() {
     console.log('Original PDF Page Count:', state.pdfDoc?.getPageCount());
 
     if (finalIndices.length === 0) {
-      showAlert('Error', 'No valid pages to save.');
+      showAlert(
+        translate('alert.error', 'Error'),
+        translate('common.dynamic.104fff0b03', 'No valid pages to save.')
+      );
       return;
     }
 
@@ -210,8 +242,11 @@ export async function processAndSave() {
     if (invalidIndices.length > 0) {
       console.error('Found invalid indices:', invalidIndices);
       showAlert(
-        'Error',
-        'Some pages could not be processed. Please try again.'
+        translate('alert.error', 'Error'),
+        translate(
+          'common.dynamic.12199c4a8b',
+          'Some pages could not be processed. Please try again.'
+        )
       );
       return;
     }
@@ -227,8 +262,11 @@ export async function processAndSave() {
   } catch (e) {
     console.error('Save error:', e);
     showAlert(
-      'Error',
-      'Failed to save the new PDF. Check console for details.'
+      translate('alert.error', 'Error'),
+      translate(
+        'common.dynamic.c36048581f',
+        'Failed to save the new PDF. Check console for details.'
+      )
     );
   } finally {
     hideLoader();

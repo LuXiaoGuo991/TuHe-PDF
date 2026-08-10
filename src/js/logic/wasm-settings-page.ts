@@ -160,9 +160,10 @@ async function initializePage() {
       );
     } else {
       updateStatus(packageName, false);
+      console.warn('[WasmSettings] Connection test failed:', result.error);
       showAlert(
         t('tools:wasmSettings.connectionFailedTitle'),
-        result.error || t('tools:wasmSettings.connectionFailedMessage')
+        t('tools:wasmSettings.connectionFailedMessage')
       );
     }
   }
@@ -215,11 +216,10 @@ async function initializePage() {
       );
     } catch (e: unknown) {
       hideLoader();
-      const errorMessage =
-        e instanceof Error ? e.message : t('common.unknownError');
+      console.error('[WasmSettings] Save failed:', e);
       showAlert(
         t('tools:wasmSettings.errorTitle'),
-        t('tools:wasmSettings.failedSave', { message: errorMessage })
+        t('tools:wasmSettings.saveFailedMessage')
       );
     }
   });

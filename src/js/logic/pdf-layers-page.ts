@@ -1,5 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
 import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import {
   downloadFile,
   escapeHtml,
@@ -75,7 +84,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const metaSpan = document.createElement('div');
       metaSpan.className = 'text-xs text-gray-400';
-      metaSpan.textContent = `${formatBytes(currentFile.size)} • ${t('common.loadingPageCount')}`;
+      metaSpan.textContent = translate(
+        'tools:pdfOcg.dynamic.1c578f88cb',
+        `${formatBytes(currentFile.size)} • ${t('common.loadingPageCount')}`,
+        {
+          value0: formatBytes(currentFile.size),
+          value1: t('common.loadingPageCount'),
+        }
+      );
 
       infoContainer.append(nameSpan, metaSpan);
 
@@ -93,10 +109,18 @@ document.addEventListener('DOMContentLoaded', () => {
       try {
         const arrayBuffer = await readFileAsArrayBuffer(currentFile);
         const pdfDoc = await getPDFDocument({ data: arrayBuffer }).promise;
-        metaSpan.textContent = `${formatBytes(currentFile.size)} • ${pdfDoc.numPages} pages`;
+        metaSpan.textContent = translate(
+          'tools:pdfOcg.dynamic.ebdf5cb44f',
+          `${formatBytes(currentFile.size)} • ${pdfDoc.numPages} pages`,
+          { value0: formatBytes(currentFile.size), value1: pdfDoc.numPages }
+        );
       } catch (error) {
         console.error('Error loading PDF:', error);
-        metaSpan.textContent = `${formatBytes(currentFile.size)} • Could not load page count`;
+        metaSpan.textContent = translate(
+          'tools:pdfOcg.dynamic.a3681b9fa8',
+          `${formatBytes(currentFile.size)} • Could not load page count`,
+          { value0: formatBytes(currentFile.size) }
+        );
       }
 
       createIcons({ icons });
@@ -241,7 +265,13 @@ document.addEventListener('DOMContentLoaded', () => {
           } catch (err) {
             console.error('Failed to set layer visibility:', err);
             target.checked = !isOn;
-            showAlert('Error', 'Failed to toggle layer visibility');
+            showAlert(
+              translate('alert.error', 'Error'),
+              translate(
+                'tools:pdfOcg.dynamic.1bcc36f306',
+                'Failed to toggle layer visibility'
+              )
+            );
           }
         });
       });
@@ -256,7 +286,10 @@ document.addEventListener('DOMContentLoaded', () => {
         );
 
         if (!layer) {
-          showAlert('Error', 'Layer not found');
+          showAlert(
+            translate('alert.error', 'Error'),
+            translate('tools:pdfOcg.dynamic.762efbb2e1', 'Layer not found')
+          );
           return;
         }
 
@@ -266,7 +299,13 @@ document.addEventListener('DOMContentLoaded', () => {
           renderLayers();
         } catch (err) {
           console.error('Failed to delete layer:', err);
-          showAlert('Error', 'Failed to delete layer');
+          showAlert(
+            translate('alert.error', 'Error'),
+            translate(
+              'tools:pdfOcg.dynamic.3173dfc13e',
+              'Failed to delete layer'
+            )
+          );
         }
       });
     });
@@ -312,7 +351,13 @@ document.addEventListener('DOMContentLoaded', () => {
           renderLayers();
         } catch (err) {
           console.error('Failed to add child layer:', err);
-          showAlert('Error', 'Failed to add child layer');
+          showAlert(
+            translate('alert.error', 'Error'),
+            translate(
+              'tools:pdfOcg.dynamic.73ae148bab',
+              'Failed to add child layer'
+            )
+          );
         }
       });
     });
@@ -320,20 +365,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const loadLayers = async () => {
     if (!currentFile) {
-      showAlert('No File', 'Please select a PDF file.');
+      showAlert(
+        translate('tools:pdfOcg.dynamic.e6cf4e340b', 'No File'),
+        translate(
+          'tools:pdfOcg.dynamic.3354cf3da1',
+          'Please select a PDF file.'
+        )
+      );
       return;
     }
 
     try {
-      showLoader('Loading engine...');
+      showLoader(
+        translate('tools:pdfOcg.dynamic.b99ff491de', 'Loading engine...')
+      );
       const pymupdf = await loadPyMuPDF();
 
-      showLoader(`Loading layers from ${currentFile.name}...`);
+      showLoader(
+        translate(
+          'tools:pdfOcg.dynamic.454a380e0d',
+          `Loading layers from ${currentFile.name}...`,
+          { value0: currentFile.name }
+        )
+      );
       currentDoc = await (
         pymupdf as { open: (file: File) => Promise<PyMuPDFDocument> }
       ).open(currentFile);
 
-      showLoader('Reading layer configuration...');
+      showLoader(
+        translate(
+          'tools:pdfOcg.dynamic.a6ea2beda2',
+          'Reading layer configuration...'
+        )
+      );
       const existingLayers = currentDoc.getLayerConfig();
 
       layersMap.clear();
@@ -367,8 +431,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error: unknown) {
       hideLoader();
       showAlert(
-        'Error',
-        error instanceof Error ? error.message : 'Failed to load PDF layers'
+        translate('alert.error', 'Error'),
+        translate('alert.processFailed', 'Processing failed. Please try again.')
       );
       console.error('Layers error:', error);
     }
@@ -385,7 +449,13 @@ document.addEventListener('DOMContentLoaded', () => {
       addLayerBtn.onclick = () => {
         const name = newLayerInput.value.trim();
         if (!name) {
-          showAlert('Invalid Name', 'Please enter a layer name');
+          showAlert(
+            translate('tools:pdfOcg.dynamic.421586fd8a', 'Invalid Name'),
+            translate(
+              'tools:pdfOcg.dynamic.6f5396866d',
+              'Please enter a layer name'
+            )
+          );
           return;
         }
 
@@ -408,9 +478,11 @@ document.addEventListener('DOMContentLoaded', () => {
           renderLayers();
         } catch (err: unknown) {
           showAlert(
-            'Error',
-            'Failed to add layer: ' +
-              (err instanceof Error ? err.message : String(err))
+            translate('alert.error', 'Error'),
+            translate(
+              'alert.processFailed',
+              'Processing failed. Please try again.'
+            )
           );
         }
       };
@@ -419,7 +491,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (saveLayersBtn) {
       saveLayersBtn.onclick = () => {
         try {
-          showLoader('Saving PDF with layer changes...');
+          showLoader(
+            translate(
+              'tools:pdfOcg.dynamic.4b469a48b4',
+              'Saving PDF with layer changes...'
+            )
+          );
           const pdfBytes = currentDoc.save();
           const blob = new Blob([new Uint8Array(pdfBytes)], {
             type: 'application/pdf',
@@ -427,13 +504,22 @@ document.addEventListener('DOMContentLoaded', () => {
           downloadFile(blob, currentFile!.name);
           hideLoader();
           resetState();
-          showAlert('Success', 'PDF with layer changes saved!', 'success');
+          showAlert(
+            translate('alert.success', 'Success'),
+            translate(
+              'tools:pdfOcg.dynamic.fc393bf7c9',
+              'PDF with layer changes saved!'
+            ),
+            'success'
+          );
         } catch (err: unknown) {
           hideLoader();
           showAlert(
-            'Error',
-            'Failed to save PDF: ' +
-              (err instanceof Error ? err.message : String(err))
+            translate('alert.error', 'Error'),
+            translate(
+              'alert.processFailed',
+              'Processing failed. Please try again.'
+            )
           );
         }
       };
@@ -453,7 +539,13 @@ document.addEventListener('DOMContentLoaded', () => {
         currentFile = result.file;
         updateUI();
       } else {
-        showAlert('Invalid File', 'Please select a PDF file.');
+        showAlert(
+          translate('alert.invalidFile', 'Invalid File'),
+          translate(
+            'tools:pdfOcg.dynamic.3354cf3da1',
+            'Please select a PDF file.'
+          )
+        );
       }
     }
   };

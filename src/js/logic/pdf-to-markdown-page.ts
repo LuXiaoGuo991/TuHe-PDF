@@ -1,5 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
 import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import {
   downloadFile,
   readFileAsArrayBuffer,
@@ -54,7 +63,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const metaSpan = document.createElement('div');
         metaSpan.className = 'text-xs text-gray-400';
-        metaSpan.textContent = `${formatBytes(file.size)} • ${t('common.loadingPageCount')}`;
+        metaSpan.textContent = translate(
+          'tools:pdfToMarkdown.dynamic.c22fc17c8e',
+          `${formatBytes(file.size)} • ${t('common.loadingPageCount')}`,
+          {
+            value0: formatBytes(file.size),
+            value1: t('common.loadingPageCount'),
+          }
+        );
 
         infoContainer.append(nameSpan, metaSpan);
 
@@ -73,9 +89,17 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
           const arrayBuffer = await readFileAsArrayBuffer(file);
           const pdfDoc = await getPDFDocument({ data: arrayBuffer }).promise;
-          metaSpan.textContent = `${formatBytes(file.size)} • ${pdfDoc.numPages} pages`;
+          metaSpan.textContent = translate(
+            'tools:pdfToMarkdown.dynamic.a91a90531d',
+            `${formatBytes(file.size)} • ${pdfDoc.numPages} pages`,
+            { value0: formatBytes(file.size), value1: pdfDoc.numPages }
+          );
         } catch {
-          metaSpan.textContent = `${formatBytes(file.size)} • Could not load page count`;
+          metaSpan.textContent = translate(
+            'tools:pdfToMarkdown.dynamic.36dc12cdf2',
+            `${formatBytes(file.size)} • Could not load page count`,
+            { value0: formatBytes(file.size) }
+          );
         }
       }
 
@@ -100,22 +124,41 @@ document.addEventListener('DOMContentLoaded', () => {
   const convert = async () => {
     try {
       if (state.files.length === 0) {
-        showAlert('No Files', 'Please select at least one PDF file.');
+        showAlert(
+          translate('alert.noFiles', 'No Files'),
+          translate(
+            'tools:pdfToMarkdown.dynamic.514702f7a2',
+            'Please select at least one PDF file.'
+          )
+        );
         return;
       }
 
-      showLoader('Loading PDF converter...');
+      showLoader(
+        translate(
+          'tools:pdfToMarkdown.dynamic.0beadcf720',
+          'Loading PDF converter...'
+        )
+      );
       const pymupdf = await loadPyMuPDF();
 
       const includeImages = includeImagesCheckbox?.checked ?? false;
 
       hideLoader();
       state.files = await batchDecryptIfNeeded(state.files);
-      showLoader('Converting...');
+      showLoader(
+        translate('tools:pdfToMarkdown.dynamic.9ab0c4bc34', 'Converting...')
+      );
 
       if (state.files.length === 1) {
         const file = state.files[0];
-        showLoader(`Converting ${file.name}...`);
+        showLoader(
+          translate(
+            'tools:pdfToMarkdown.dynamic.a1124f961b',
+            `Converting ${file.name}...`,
+            { value0: file.name }
+          )
+        );
 
         const markdown = await pymupdf.pdfToMarkdown(file, { includeImages });
         const outName = file.name.replace(/\.pdf$/i, '') + '.md';
@@ -125,8 +168,15 @@ document.addEventListener('DOMContentLoaded', () => {
         hideLoader();
 
         showAlert(
-          'Conversion Complete',
-          `Successfully converted ${file.name} to Markdown.`,
+          translate(
+            'tools:pdfToMarkdown.dynamic.794de0ca49',
+            'Conversion Complete'
+          ),
+          translate(
+            'tools:pdfToMarkdown.dynamic.c70ab352e3',
+            `Successfully converted ${file.name} to Markdown.`,
+            { value0: file.name }
+          ),
           'success',
           () => resetState()
         );
@@ -138,7 +188,11 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < state.files.length; i++) {
           const file = state.files[i];
           showLoader(
-            `Converting ${i + 1}/${state.files.length}: ${file.name}...`
+            translate(
+              'tools:pdfToMarkdown.dynamic.1556bdf597',
+              `Converting ${i + 1}/${state.files.length}: ${file.name}...`,
+              { value0: i + 1, value1: state.files.length, value2: file.name }
+            )
           );
 
           const markdown = await pymupdf.pdfToMarkdown(file, { includeImages });
@@ -147,15 +201,27 @@ document.addEventListener('DOMContentLoaded', () => {
           zip.file(zipEntryName, markdown);
         }
 
-        showLoader('Creating ZIP archive...');
+        showLoader(
+          translate(
+            'tools:pdfToMarkdown.dynamic.5178f580d6',
+            'Creating ZIP archive...'
+          )
+        );
         const zipBlob = await zip.generateAsync({ type: 'blob' });
 
         downloadFile(zipBlob, 'markdown-files.zip');
         hideLoader();
 
         showAlert(
-          'Conversion Complete',
-          `Successfully converted ${state.files.length} PDF(s) to Markdown.`,
+          translate(
+            'tools:pdfToMarkdown.dynamic.794de0ca49',
+            'Conversion Complete'
+          ),
+          translate(
+            'tools:pdfToMarkdown.dynamic.b6ada8ef5f',
+            `Successfully converted ${state.files.length} PDF(s) to Markdown.`,
+            { value0: state.files.length }
+          ),
           'success',
           () => resetState()
         );
@@ -163,8 +229,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (e: unknown) {
       hideLoader();
       showAlert(
-        'Error',
-        `An error occurred during conversion. Error: ${e instanceof Error ? e.message : String(e)}`
+        translate('alert.error', 'Error'),
+        translate('alert.processFailed', 'Processing failed. Please try again.')
       );
     }
   };

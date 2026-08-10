@@ -1,4 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { createIcons, icons } from 'lucide';
 import JSZip from 'jszip';
@@ -70,7 +80,13 @@ const resetState = () => {
 
 async function convert() {
   if (files.length === 0) {
-    showAlert('No Files', 'Please upload at least one PDF file.');
+    showAlert(
+      translate('alert.noFiles', 'No Files'),
+      translate(
+        'tools:pdfToSvg.dynamic.d03c2fba20',
+        'Please upload at least one PDF file.'
+      )
+    );
     return;
   }
 
@@ -80,7 +96,9 @@ async function convert() {
     return;
   }
 
-  showLoader('Loading Engine...');
+  showLoader(
+    translate('tools:pdfToSvg.dynamic.67967aa49b', 'Loading Engine...')
+  );
 
   try {
     // Load PyMuPDF dynamically if not already loaded
@@ -90,7 +108,9 @@ async function convert() {
 
     hideLoader();
     files = await batchDecryptIfNeeded(files);
-    showLoader('Converting to SVG...');
+    showLoader(
+      translate('tools:pdfToSvg.dynamic.733ccaa9fb', 'Converting to SVG...')
+    );
 
     const isSingleFile = files.length === 1;
 
@@ -100,31 +120,48 @@ async function convert() {
       const baseName = files[0].name.replace(/\.[^/.]+$/, '');
 
       if (pageCount === 1) {
-        showLoader('Converting to SVG...');
+        showLoader(
+          translate('tools:pdfToSvg.dynamic.733ccaa9fb', 'Converting to SVG...')
+        );
         const page = doc.getPage(0);
         const svgContent = page.toSvg();
         const svgBlob = new Blob([svgContent], { type: 'image/svg+xml' });
         downloadFile(svgBlob, `${baseName}.svg`);
         showAlert(
-          'Success',
-          'PDF converted to SVG successfully!',
+          translate('alert.success', 'Success'),
+          translate(
+            'tools:pdfToSvg.dynamic.2f5799382c',
+            'PDF converted to SVG successfully!'
+          ),
           'success',
           () => resetState()
         );
       } else {
         const zip = new JSZip();
         for (let i = 0; i < pageCount; i++) {
-          showLoader(`Converting page ${i + 1} of ${pageCount}...`);
+          showLoader(
+            translate(
+              'tools:pdfToSvg.dynamic.d44228a493',
+              `Converting page ${i + 1} of ${pageCount}...`,
+              { value0: i + 1, value1: pageCount }
+            )
+          );
           const page = doc.getPage(i);
           const svgContent = page.toSvg();
           zip.file(`page_${i + 1}.svg`, svgContent);
         }
-        showLoader('Creating ZIP file...');
+        showLoader(
+          translate('tools:pdfToSvg.dynamic.03241b7aa3', 'Creating ZIP file...')
+        );
         const zipBlob = await zip.generateAsync({ type: 'blob' });
         downloadFile(zipBlob, `${baseName}_svg.zip`);
         showAlert(
-          'Success',
-          `Converted ${pageCount} pages to SVG!`,
+          translate('alert.success', 'Success'),
+          translate(
+            'tools:pdfToSvg.dynamic.a2a5b261d2',
+            `Converted ${pageCount} pages to SVG!`,
+            { value0: pageCount }
+          ),
           'success',
           () => resetState()
         );
@@ -135,14 +172,29 @@ async function convert() {
 
       for (let f = 0; f < files.length; f++) {
         const file = files[f];
-        showLoader(`Processing file ${f + 1} of ${files.length}...`);
+        showLoader(
+          translate(
+            'tools:pdfToSvg.dynamic.58ae11ce3f',
+            `Processing file ${f + 1} of ${files.length}...`,
+            { value0: f + 1, value1: files.length }
+          )
+        );
         const doc = await pymupdf.open(file);
         const pageCount = doc.pageCount;
         const baseName = file.name.replace(/\.[^/.]+$/, '');
 
         for (let i = 0; i < pageCount; i++) {
           showLoader(
-            `File ${f + 1}/${files.length}: Page ${i + 1}/${pageCount}`
+            translate(
+              'tools:pdfToSvg.dynamic.8deeef3d8a',
+              `File ${f + 1}/${files.length}: Page ${i + 1}/${pageCount}`,
+              {
+                value0: f + 1,
+                value1: files.length,
+                value2: i + 1,
+                value3: pageCount,
+              }
+            )
           );
           const page = doc.getPage(i);
           const svgContent = page.toSvg();
@@ -155,12 +207,18 @@ async function convert() {
         }
       }
 
-      showLoader('Creating ZIP file...');
+      showLoader(
+        translate('tools:pdfToSvg.dynamic.03241b7aa3', 'Creating ZIP file...')
+      );
       const zipBlob = await zip.generateAsync({ type: 'blob' });
       downloadFile(zipBlob, 'pdf_to_svg.zip');
       showAlert(
-        'Success',
-        `Converted ${files.length} files (${totalPages} pages) to SVG!`,
+        translate('alert.success', 'Success'),
+        translate(
+          'tools:pdfToSvg.dynamic.98e4c4daf3',
+          `Converted ${files.length} files (${totalPages} pages) to SVG!`,
+          { value0: files.length, value1: totalPages }
+        ),
         'success',
         () => resetState()
       );
@@ -168,7 +226,14 @@ async function convert() {
   } catch (e) {
     console.error(e);
     const message = e instanceof Error ? e.message : 'Unknown error';
-    showAlert('Error', `Failed to convert PDF to SVG. ${message}`);
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:pdfToSvg.dynamic.6e3c2cd056',
+        `Failed to convert PDF to SVG. ${message}`,
+        { value0: message }
+      )
+    );
   } finally {
     hideLoader();
   }
@@ -195,7 +260,13 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     if (validFiles.length === 0) {
-      showAlert('Invalid Files', 'Please upload PDF files.');
+      showAlert(
+        translate('tools:pdfToSvg.dynamic.1d741530ab', 'Invalid Files'),
+        translate(
+          'tools:pdfToSvg.dynamic.de155d6aee',
+          'Please upload PDF files.'
+        )
+      );
       return;
     }
 

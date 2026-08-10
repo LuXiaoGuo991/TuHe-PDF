@@ -1,4 +1,14 @@
 import { createIcons, icons } from 'lucide';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { showAlert, showLoader, hideLoader } from '../ui.js';
 import {
   downloadFile,
@@ -94,8 +104,11 @@ function handleFiles(newFiles: FileList) {
 
   if (validFiles.length < newFiles.length) {
     showAlert(
-      'Invalid Files',
-      'Some files were skipped. Only PNG images are allowed.'
+      translate('tools:pngToPdf.dynamic.9531a0069c', 'Invalid Files'),
+      translate(
+        'tools:pngToPdf.dynamic.31345167f1',
+        'Some files were skipped. Only PNG images are allowed.'
+      )
     );
   }
 
@@ -137,7 +150,11 @@ function updateUI() {
 
       const sizeSpan = document.createElement('span');
       sizeSpan.className = 'flex-shrink-0 text-gray-400 text-xs';
-      sizeSpan.textContent = `(${formatBytes(file.size)})`;
+      sizeSpan.textContent = translate(
+        'tools:pngToPdf.dynamic.06ee098f08',
+        `(${formatBytes(file.size)})`,
+        { value0: formatBytes(file.size) }
+      );
 
       infoContainer.append(nameSpan, sizeSpan);
 
@@ -206,11 +223,19 @@ function sanitizeImageAsJpeg(imageBytes: Uint8Array | ArrayBuffer) {
 
 async function convertToPdf() {
   if (files.length === 0) {
-    showAlert('No Files', 'Please select at least one JPG file.');
+    showAlert(
+      translate('alert.noFiles', 'No Files'),
+      translate(
+        'tools:pngToPdf.dynamic.8d883dffcb',
+        'Please select at least one JPG file.'
+      )
+    );
     return;
   }
 
-  showLoader('Creating PDF from JPGs...');
+  showLoader(
+    translate('tools:pngToPdf.dynamic.8629368499', 'Creating PDF from JPGs...')
+  );
 
   try {
     const pdfDoc = await PDFLibDocument.create();
@@ -249,12 +274,23 @@ async function convertToPdf() {
       new Blob([new Uint8Array(pdfBytes)], { type: 'application/pdf' }),
       'from_jpgs.pdf'
     );
-    showAlert('Success', 'PDF created successfully!', 'success', () => {
-      resetState();
-    });
+    showAlert(
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:pngToPdf.dynamic.03d2a214ed',
+        'PDF created successfully!'
+      ),
+      'success',
+      () => {
+        resetState();
+      }
+    );
   } catch (e: unknown) {
     console.error(e);
-    showAlert('Conversion Error', e instanceof Error ? e.message : String(e));
+    showAlert(
+      translate('tools:pngToPdf.dynamic.840d3f5430', 'Conversion Error'),
+      translate('alert.processFailed', 'Processing failed. Please try again.')
+    );
   } finally {
     hideLoader();
   }

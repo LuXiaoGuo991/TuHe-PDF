@@ -1,4 +1,14 @@
 import { AlternateMergeState } from '@/types';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { showLoader, hideLoader, showAlert } from '../ui.js';
 import { downloadFile, formatBytes, getPDFDocument } from '../utils/helpers.js';
 import { createIcons, icons } from 'lucide';
@@ -50,7 +60,11 @@ async function updateUI() {
 
     const infoSpan = document.createElement('span');
     infoSpan.className = 'text-gray-200';
-    infoSpan.textContent = `${pageState.files.length} PDF files selected`;
+    infoSpan.textContent = translate(
+      'tools:alternateMerge.dynamic.4ed44782a4',
+      `${pageState.files.length} PDF files selected`,
+      { value0: pageState.files.length }
+    );
 
     const clearBtn = document.createElement('button');
     clearBtn.className = 'text-red-400 hover:text-red-300';
@@ -66,7 +80,12 @@ async function updateUI() {
     // Load PDFs and populate list
     hideLoader();
     pageState.files = await batchDecryptIfNeeded(pageState.files);
-    showLoader('Loading PDF files...');
+    showLoader(
+      translate(
+        'tools:alternateMerge.dynamic.ca820f834d',
+        'Loading PDF files...'
+      )
+    );
     fileList.innerHTML = '';
 
     try {
@@ -94,7 +113,11 @@ async function updateUI() {
 
         const metaSpan = document.createElement('span');
         metaSpan.className = 'text-sm text-gray-400 flex-shrink-0';
-        metaSpan.textContent = `${formatBytes(file.size)} • ${pageCount} pages`;
+        metaSpan.textContent = translate(
+          'tools:alternateMerge.dynamic.e8c65343b7',
+          `${formatBytes(file.size)} • ${pageCount} pages`,
+          { value0: formatBytes(file.size), value1: pageCount }
+        );
 
         infoDiv.append(nameSpan, metaSpan);
 
@@ -120,7 +143,13 @@ async function updateUI() {
     } catch (error) {
       console.error('Error loading PDFs:', error);
       hideLoader();
-      showAlert('Error', 'Failed to load one or more PDF files.');
+      showAlert(
+        translate('alert.error', 'Error'),
+        translate(
+          'tools:alternateMerge.dynamic.68e389ea42',
+          'Failed to load one or more PDF files.'
+        )
+      );
       resetState();
     }
   } else {
@@ -131,8 +160,11 @@ async function updateUI() {
 async function mixPages() {
   if (pageState.pdfBytes.size < 2) {
     showAlert(
-      'Not Enough Files',
-      'Please upload at least two PDF files to alternate and mix.'
+      translate('tools:alternateMerge.dynamic.7184f92fa6', 'Not Enough Files'),
+      translate(
+        'tools:alternateMerge.dynamic.3c851e26bd',
+        'Please upload at least two PDF files to alternate and mix.'
+      )
     );
     return;
   }
@@ -143,7 +175,12 @@ async function mixPages() {
     return;
   }
 
-  showLoader('Alternating and mixing pages...');
+  showLoader(
+    translate(
+      'tools:alternateMerge.dynamic.8d708e4e13',
+      'Alternating and mixing pages...'
+    )
+  );
 
   try {
     const fileList = document.getElementById('file-list');
@@ -169,7 +206,13 @@ async function mixPages() {
     }
 
     if (filesToMerge.length < 2) {
-      showAlert('Error', 'At least two valid PDFs are required.');
+      showAlert(
+        translate('alert.error', 'Error'),
+        translate(
+          'tools:alternateMerge.dynamic.c9aa0cf1a8',
+          'At least two valid PDFs are required.'
+        )
+      );
       hideLoader();
       return;
     }
@@ -186,8 +229,11 @@ async function mixPages() {
     });
     downloadFile(blob, 'alternated-mixed.pdf');
     showAlert(
-      'Success',
-      'PDFs have been mixed successfully!',
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:alternateMerge.dynamic.109c183332',
+        'PDFs have been mixed successfully!'
+      ),
       'success',
       function () {
         resetState();
@@ -200,7 +246,10 @@ async function mixPages() {
       e instanceof Error
         ? e.message
         : 'An error occurred while mixing the PDFs.';
-    showAlert('Error', message);
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate('alert.processFailed', 'Processing failed. Please try again.')
+    );
   }
 }
 

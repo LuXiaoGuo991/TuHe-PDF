@@ -1,4 +1,14 @@
 import { EditAttachmentState, AttachmentInfo } from '@/types';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { showLoader, hideLoader, showAlert } from '../ui.js';
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { createIcons, icons } from 'lucide';
@@ -66,8 +76,11 @@ worker.onmessage = function (e) {
     );
 
     showAlert(
-      'Success',
-      'Attachments updated successfully!',
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:editAttachments.dynamic.165ce95328',
+        'Attachments updated successfully!'
+      ),
       'success',
       function () {
         resetState();
@@ -75,14 +88,23 @@ worker.onmessage = function (e) {
     );
   } else if (data.status === 'error') {
     hideLoader();
-    showAlert('Error', data.message || 'Unknown error occurred.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate('alert.processFailed', 'Processing failed. Please try again.')
+    );
   }
 };
 
 worker.onerror = function (error) {
   hideLoader();
   console.error('Worker error:', error);
-  showAlert('Error', 'Worker error occurred. Check console for details.');
+  showAlert(
+    translate('alert.error', 'Error'),
+    translate(
+      'tools:editAttachments.dynamic.a74a16433e',
+      'Worker error occurred. Check console for details.'
+    )
+  );
 };
 
 function displayAttachments(attachments: AttachmentInfo[]) {
@@ -96,7 +118,10 @@ function displayAttachments(attachments: AttachmentInfo[]) {
   if (attachments.length === 0) {
     const noAttachments = document.createElement('p');
     noAttachments.className = 'text-gray-400 text-center py-4';
-    noAttachments.textContent = 'No attachments found in this PDF.';
+    noAttachments.textContent = translate(
+      'tools:editAttachments.dynamic.df05883ac6',
+      'No attachments found in this PDF.'
+    );
     attachmentsList.appendChild(noAttachments);
     return;
   }
@@ -108,7 +133,10 @@ function displayAttachments(attachments: AttachmentInfo[]) {
   const removeAllBtn = document.createElement('button');
   removeAllBtn.className =
     'bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded text-sm';
-  removeAllBtn.textContent = 'Remove All Attachments';
+  removeAllBtn.textContent = translate(
+    'tools:editAttachments.dynamic.73e3ef7c28',
+    'Remove All Attachments'
+  );
   removeAllBtn.onclick = function () {
     if (pageState.allAttachments.length === 0) return;
 
@@ -131,7 +159,10 @@ function displayAttachments(attachments: AttachmentInfo[]) {
           }
         }
       });
-      removeAllBtn.textContent = 'Remove All Attachments';
+      removeAllBtn.textContent = translate(
+        'tools:editAttachments.dynamic.73e3ef7c28',
+        'Remove All Attachments'
+      );
     } else {
       pageState.allAttachments.forEach(function (attachment) {
         pageState.attachmentsToRemove.add(attachment.index);
@@ -147,7 +178,10 @@ function displayAttachments(attachments: AttachmentInfo[]) {
           }
         }
       });
-      removeAllBtn.textContent = 'Deselect All';
+      removeAllBtn.textContent = translate(
+        'tools:editAttachments.dynamic.88aa4e1e76',
+        'Deselect All'
+      );
     }
   };
 
@@ -171,9 +205,16 @@ function displayAttachments(attachments: AttachmentInfo[]) {
     const levelSpan = document.createElement('span');
     levelSpan.className = 'text-gray-400 text-sm block';
     if (attachment.page === 0) {
-      levelSpan.textContent = 'Document-level attachment';
+      levelSpan.textContent = translate(
+        'tools:editAttachments.dynamic.9ee1e04045',
+        'Document-level attachment'
+      );
     } else {
-      levelSpan.textContent = `Page ${attachment.page} attachment`;
+      levelSpan.textContent = translate(
+        'tools:editAttachments.dynamic.03e33d2166',
+        `Page ${attachment.page} attachment`,
+        { value0: attachment.page }
+      );
     }
 
     infoDiv.append(nameSpan, levelSpan);
@@ -184,7 +225,10 @@ function displayAttachments(attachments: AttachmentInfo[]) {
     const removeBtn = document.createElement('button');
     removeBtn.className = `${pageState.attachmentsToRemove.has(attachment.index) ? 'bg-gray-600' : 'bg-red-600'} hover:bg-red-700 text-white px-3 py-1 rounded text-sm`;
     removeBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
-    removeBtn.title = 'Remove attachment';
+    removeBtn.title = translate(
+      'tools:editAttachments.dynamic.151df6b489',
+      'Remove attachment'
+    );
     removeBtn.onclick = function () {
       if (pageState.attachmentsToRemove.has(attachment.index)) {
         pageState.attachmentsToRemove.delete(attachment.index);
@@ -219,7 +263,12 @@ function displayAttachments(attachments: AttachmentInfo[]) {
 async function loadAttachments() {
   if (!pageState.file) return;
 
-  showLoader('Loading attachments...');
+  showLoader(
+    translate(
+      'tools:editAttachments.dynamic.389ecde49d',
+      'Loading attachments...'
+    )
+  );
 
   // Check if CPDF is configured
   if (!isCpdfAvailable()) {
@@ -242,22 +291,45 @@ async function loadAttachments() {
   } catch (error) {
     console.error('Error loading attachments:', error);
     hideLoader();
-    showAlert('Error', 'Failed to load attachments from PDF.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:editAttachments.dynamic.7697fda291',
+        'Failed to load attachments from PDF.'
+      )
+    );
   }
 }
 
 async function saveChanges() {
   if (!pageState.file) {
-    showAlert('Error', 'No PDF file loaded.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:editAttachments.dynamic.6e2a60b3e8',
+        'No PDF file loaded.'
+      )
+    );
     return;
   }
 
   if (pageState.attachmentsToRemove.size === 0) {
-    showAlert('No Changes', 'No attachments selected for removal.');
+    showAlert(
+      translate('tools:editAttachments.dynamic.3803b2ee79', 'No Changes'),
+      translate(
+        'tools:editAttachments.dynamic.4ad1c13b08',
+        'No attachments selected for removal.'
+      )
+    );
     return;
   }
 
-  showLoader('Processing attachments...');
+  showLoader(
+    translate(
+      'tools:editAttachments.dynamic.82a44295db',
+      'Processing attachments...'
+    )
+  );
 
   // Check if CPDF is configured (double check)
   if (!isCpdfAvailable()) {
@@ -281,7 +353,13 @@ async function saveChanges() {
   } catch (error) {
     console.error('Error editing attachments:', error);
     hideLoader();
-    showAlert('Error', 'Failed to edit attachments.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:editAttachments.dynamic.388ac9bb09',
+        'Failed to edit attachments.'
+      )
+    );
   }
 }
 

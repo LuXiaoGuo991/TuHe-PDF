@@ -1,4 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { state } from '../state.js';
 import { createIcons, icons } from 'lucide';
@@ -90,7 +100,13 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('[Word2PDF] Number of files:', state.files.length);
 
       if (state.files.length === 0) {
-        showAlert('No Files', 'Please select at least one Word document.');
+        showAlert(
+          translate('alert.noFiles', 'No Files'),
+          translate(
+            'tools:wordToPdf.dynamic.7e35823cb1',
+            'Please select at least one Word document.'
+          )
+        );
         hideLoader();
         return;
       }
@@ -106,7 +122,10 @@ document.addEventListener('DOMContentLoaded', () => {
           progress.percent + '%',
           progress.message
         );
-        showLoader(progress.message, progress.percent);
+        showLoader(
+          translate('loader.processing', 'Processing...'),
+          progress.percent
+        );
       });
       console.log('[Word2PDF] LibreOffice initialized successfully!');
 
@@ -114,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const originalFile = state.files[0];
         console.log('[Word2PDF] Converting single file:', originalFile.name);
 
-        showLoader('Processing...');
+        showLoader(translate('loader.processing', 'Processing...'));
 
         const pdfBlob = await converter.convertToPdf(originalFile);
         console.log('[Word2PDF] Conversion complete! PDF size:', pdfBlob.size);
@@ -128,8 +147,15 @@ document.addEventListener('DOMContentLoaded', () => {
         hideLoader();
 
         showAlert(
-          'Conversion Complete',
-          `Successfully converted ${originalFile.name} to PDF.`,
+          translate(
+            'tools:wordToPdf.dynamic.ce88334fff',
+            'Conversion Complete'
+          ),
+          translate(
+            'tools:wordToPdf.dynamic.59a8cc5e17',
+            `Successfully converted ${originalFile.name} to PDF.`,
+            { value0: originalFile.name }
+          ),
           'success',
           () => resetState()
         );
@@ -138,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
           '[Word2PDF] Converting multiple files:',
           state.files.length
         );
-        showLoader('Processing...');
+        showLoader(translate('loader.processing', 'Processing...'));
         const JSZip = (await import('jszip')).default;
         const zip = new JSZip();
         const usedNames = new Set<string>();
@@ -150,7 +176,11 @@ document.addEventListener('DOMContentLoaded', () => {
             file.name
           );
           showLoader(
-            `Converting ${i + 1}/${state.files.length}: ${file.name}...`
+            translate(
+              'tools:wordToPdf.dynamic.ac56a3e11b',
+              `Converting ${i + 1}/${state.files.length}: ${file.name}...`,
+              { value0: i + 1, value1: state.files.length, value2: file.name }
+            )
           );
 
           const pdfBlob = await converter.convertToPdf(file);
@@ -177,8 +207,15 @@ document.addEventListener('DOMContentLoaded', () => {
         hideLoader();
 
         showAlert(
-          'Conversion Complete',
-          `Successfully converted ${state.files.length} Word document(s) to PDF.`,
+          translate(
+            'tools:wordToPdf.dynamic.ce88334fff',
+            'Conversion Complete'
+          ),
+          translate(
+            'tools:wordToPdf.dynamic.c7656bfe50',
+            `Successfully converted ${state.files.length} Word document(s) to PDF.`,
+            { value0: state.files.length }
+          ),
           'success',
           () => resetState()
         );
@@ -191,8 +228,8 @@ document.addEventListener('DOMContentLoaded', () => {
       );
       hideLoader();
       showAlert(
-        'Error',
-        `An error occurred during conversion. Error: ${e instanceof Error ? e.message : String(e)}`
+        translate('alert.error', 'Error'),
+        translate('alert.processFailed', 'Processing failed. Please try again.')
       );
     }
   };
