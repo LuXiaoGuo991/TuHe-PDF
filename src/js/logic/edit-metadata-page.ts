@@ -1,4 +1,14 @@
 import { EditMetadataState } from '@/types';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { showLoader, hideLoader, showAlert } from '../ui.js';
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { createIcons, icons } from 'lucide';
@@ -70,14 +80,20 @@ function addCustomFieldRow(key: string = '', value: string = '') {
 
   const keyInput = document.createElement('input');
   keyInput.type = 'text';
-  keyInput.placeholder = 'Key (e.g., Department)';
+  keyInput.placeholder = translate(
+    'tools:editMetadata.dynamic.16ebbac701',
+    'Key (e.g., Department)'
+  );
   keyInput.value = key;
   keyInput.className =
     'custom-meta-key w-full bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 p-2.5';
 
   const valueInput = document.createElement('input');
   valueInput.type = 'text';
-  valueInput.placeholder = 'Value (e.g., Marketing)';
+  valueInput.placeholder = translate(
+    'tools:editMetadata.dynamic.41a32c1325',
+    'Value (e.g., Marketing)'
+  );
   valueInput.value = value;
   valueInput.className =
     'custom-meta-value w-full bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 p-2.5';
@@ -205,7 +221,11 @@ async function updateUI() {
 
     const metaSpan = document.createElement('div');
     metaSpan.className = 'text-xs text-gray-400';
-    metaSpan.textContent = `${formatBytes(pageState.file.size)} • Loading...`;
+    metaSpan.textContent = translate(
+      'tools:editMetadata.dynamic.c2b223c470',
+      `${formatBytes(pageState.file.size)} • Loading...`,
+      { value0: formatBytes(pageState.file.size) }
+    );
 
     infoContainer.append(nameSpan, metaSpan);
 
@@ -226,14 +246,18 @@ async function updateUI() {
         resetState();
         return;
       }
-      showLoader('Loading PDF...');
+      showLoader(translate('fileHandler.loadingPdf', 'Loading PDF...'));
       result.pdf.destroy();
       pageState.file = result.file;
       pageState.pdfDoc = await loadPdfDocument(result.bytes);
       hideLoader();
 
       const pageCount = pageState.pdfDoc.getPageCount();
-      metaSpan.textContent = `${formatBytes(pageState.file.size)} • ${pageCount} pages`;
+      metaSpan.textContent = translate(
+        'tools:editMetadata.dynamic.09ea229d4e',
+        `${formatBytes(pageState.file.size)} • ${pageCount} pages`,
+        { value0: formatBytes(pageState.file.size), value1: pageCount }
+      );
 
       populateMetadataFields();
 
@@ -241,7 +265,13 @@ async function updateUI() {
     } catch (error) {
       console.error('Error loading PDF:', error);
       hideLoader();
-      showAlert('Error', 'Failed to load PDF file.');
+      showAlert(
+        translate('alert.error', 'Error'),
+        translate(
+          'tools:editMetadata.dynamic.cd29753baa',
+          'Failed to load PDF file.'
+        )
+      );
       resetState();
     }
   } else {
@@ -251,11 +281,19 @@ async function updateUI() {
 
 async function saveMetadata() {
   if (!pageState.pdfDoc || !pageState.file) {
-    showAlert('Error', 'Please upload a PDF first.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:editMetadata.dynamic.fc64251da4',
+        'Please upload a PDF first.'
+      )
+    );
     return;
   }
 
-  showLoader('Updating metadata...');
+  showLoader(
+    translate('tools:editMetadata.dynamic.46bfd837f7', 'Updating metadata...')
+  );
 
   try {
     const titleInput = document.getElementById(
@@ -357,8 +395,11 @@ async function saveMetadata() {
     );
 
     showAlert(
-      'Success',
-      'Metadata updated successfully!',
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:editMetadata.dynamic.92398fb88e',
+        'Metadata updated successfully!'
+      ),
       'success',
       function () {
         resetState();
@@ -367,8 +408,11 @@ async function saveMetadata() {
   } catch (e) {
     console.error(e);
     showAlert(
-      'Error',
-      'Could not update metadata. Please check that date formats are correct.'
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:editMetadata.dynamic.5dac2867d4',
+        'Could not update metadata. Please check that date formats are correct.'
+      )
     );
   } finally {
     hideLoader();

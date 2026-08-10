@@ -11,6 +11,15 @@ import { applyColorAdjustments } from '../utils/image-effects.js';
 import * as pdfjsLib from 'pdfjs-dist';
 import type { AdjustColorsSettings } from '../types/adjust-colors-type.js';
 import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { loadPdfWithPasswordPrompt } from '../utils/password-prompt.js';
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
@@ -125,7 +134,11 @@ const updateUI = () => {
 
       const metaSpan = document.createElement('div');
       metaSpan.className = 'text-xs text-gray-400';
-      metaSpan.textContent = `${formatBytes(file.size)} • ${t('common.loadingPageCount')}`;
+      metaSpan.textContent = translate(
+        'tools:adjustColors.dynamic.6b0fedbc0a',
+        `${formatBytes(file.size)} • ${t('common.loadingPageCount')}`,
+        { value0: formatBytes(file.size), value1: t('common.loadingPageCount') }
+      );
 
       infoContainer.append(nameSpan, metaSpan);
 
@@ -148,7 +161,15 @@ const updateUI = () => {
           return getPDFDocument(buffer).promise;
         })
         .then((pdf: pdfjsLib.PDFDocumentProxy) => {
-          metaSpan.textContent = `${formatBytes(file.size)} • ${pdf.numPages} ${pdf.numPages !== 1 ? t('common.pages') : t('common.page')}`;
+          metaSpan.textContent = translate(
+            'tools:adjustColors.dynamic.3eb296a549',
+            `${formatBytes(file.size)} • ${pdf.numPages} ${pdf.numPages !== 1 ? t('common.pages') : t('common.page')}`,
+            {
+              value0: formatBytes(file.size),
+              value1: pdf.numPages,
+              value2: pdf.numPages !== 1 ? t('common.pages') : t('common.page'),
+            }
+          );
         })
         .catch(() => {
           metaSpan.textContent = formatBytes(file.size);
@@ -172,11 +193,22 @@ const resetState = () => {
 
 async function processAllPages(): Promise<void> {
   if (files.length === 0) {
-    showAlert('No File', 'Please upload a PDF file first.');
+    showAlert(
+      translate('tools:adjustColors.dynamic.c1d991c32d', 'No File'),
+      translate(
+        'tools:adjustColors.dynamic.728e3eb370',
+        'Please upload a PDF file first.'
+      )
+    );
     return;
   }
 
-  showLoader('Applying color adjustments...');
+  showLoader(
+    translate(
+      'tools:adjustColors.dynamic.2aa3719692',
+      'Applying color adjustments...'
+    )
+  );
 
   try {
     const settings = getSettings();
@@ -185,7 +217,13 @@ async function processAllPages(): Promise<void> {
     const newPdfDoc = await PDFDocument.create();
 
     for (let i = 1; i <= doc.numPages; i++) {
-      showLoader(`Processing page ${i} of ${doc.numPages}...`);
+      showLoader(
+        translate(
+          'tools:adjustColors.dynamic.f289e6333e',
+          `Processing page ${i} of ${doc.numPages}...`,
+          { value0: i, value1: doc.numPages }
+        )
+      );
 
       const page = await doc.getPage(i);
       const viewport = page.getViewport({ scale: 2.0 });
@@ -237,8 +275,11 @@ async function processAllPages(): Promise<void> {
       files[0]?.name || 'document.pdf'
     );
     showAlert(
-      'Success',
-      'Color adjustments applied successfully!',
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:adjustColors.dynamic.e3e1b023cc',
+        'Color adjustments applied successfully!'
+      ),
       'success',
       () => {
         resetState();
@@ -247,8 +288,11 @@ async function processAllPages(): Promise<void> {
   } catch (e) {
     console.error(e);
     showAlert(
-      'Error',
-      'Failed to apply color adjustments. The file might be corrupted.'
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:adjustColors.dynamic.92be44edf7',
+        'Failed to apply color adjustments. The file might be corrupted.'
+      )
     );
   } finally {
     hideLoader();
@@ -354,21 +398,35 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     if (validFiles.length === 0) {
-      showAlert('Invalid File', 'Please upload a PDF file.');
+      showAlert(
+        translate('alert.invalidFile', 'Invalid File'),
+        translate(
+          'tools:adjustColors.dynamic.c30273623f',
+          'Please upload a PDF file.'
+        )
+      );
       return;
     }
 
     try {
       const result = await loadPdfWithPasswordPrompt(validFiles[0]);
       if (!result) return;
-      showLoader('Loading preview...');
+      showLoader(
+        translate('tools:adjustColors.dynamic.307805124c', 'Loading preview...')
+      );
       files = [result.file];
       updateUI();
       pdfjsDoc = result.pdf;
       await renderPreview();
     } catch (e) {
       console.error(e);
-      showAlert('Error', 'Failed to load PDF for preview.');
+      showAlert(
+        translate('alert.error', 'Error'),
+        translate(
+          'tools:adjustColors.dynamic.a60905da92',
+          'Failed to load PDF for preview.'
+        )
+      );
     } finally {
       hideLoader();
     }

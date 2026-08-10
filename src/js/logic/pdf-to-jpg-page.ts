@@ -1,3 +1,12 @@
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
+
 import { showLoader, hideLoader, showAlert } from '../ui.js';
 import {
   downloadFile,
@@ -46,7 +55,11 @@ const updateUI = () => {
 
       const metaSpan = document.createElement('div');
       metaSpan.className = 'text-xs text-gray-400';
-      metaSpan.textContent = `${formatBytes(file.size)} • ${t('common.loadingPageCount')}`; // Initial state
+      metaSpan.textContent = translate(
+        'tools:pdfToJpg.dynamic.0b79ba5389',
+        `${formatBytes(file.size)} • ${t('common.loadingPageCount')}`,
+        { value0: formatBytes(file.size), value1: t('common.loadingPageCount') }
+      ); // Initial state
 
       infoContainer.append(nameSpan, metaSpan);
 
@@ -68,7 +81,15 @@ const updateUI = () => {
           return getPDFDocument(buffer).promise;
         })
         .then((pdf) => {
-          metaSpan.textContent = `${formatBytes(file.size)} • ${pdf.numPages} ${pdf.numPages !== 1 ? t('common.pages') : t('common.page')}`;
+          metaSpan.textContent = translate(
+            'tools:pdfToJpg.dynamic.67bab51c34',
+            `${formatBytes(file.size)} • ${pdf.numPages} ${pdf.numPages !== 1 ? t('common.pages') : t('common.page')}`,
+            {
+              value0: formatBytes(file.size),
+              value1: pdf.numPages,
+              value2: pdf.numPages !== 1 ? t('common.pages') : t('common.page'),
+            }
+          );
         })
         .catch((e) => {
           console.warn('Error loading PDF page count:', e);
@@ -92,7 +113,11 @@ const resetState = () => {
   ) as HTMLInputElement;
   const qualityValue = document.getElementById('jpg-quality-value');
   if (qualitySlider) qualitySlider.value = '0.9';
-  if (qualityValue) qualityValue.textContent = '90%';
+  if (qualityValue)
+    qualityValue.textContent = translate(
+      'tools:pdfToJpg.dynamic.71ef9ac6e1',
+      '90%'
+    );
   updateUI();
 };
 
@@ -189,7 +214,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (qualitySlider && qualityValue) {
     qualitySlider.addEventListener('input', () => {
-      qualityValue.textContent = `${Math.round(parseFloat(qualitySlider.value) * 100)}%`;
+      qualityValue.textContent = translate(
+        'tools:pdfToJpg.dynamic.36d422fdc3',
+        `${Math.round(parseFloat(qualitySlider.value) * 100)}%`,
+        { value0: Math.round(parseFloat(qualitySlider.value) * 100) }
+      );
     });
   }
 

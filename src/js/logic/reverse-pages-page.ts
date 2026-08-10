@@ -1,4 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { createIcons, icons } from 'lucide';
 import { PDFDocument as PDFLibDocument } from 'pdf-lib';
@@ -98,13 +108,24 @@ async function reverseSingleFile(file: File): Promise<Uint8Array> {
 
 async function reversePages() {
   if (reverseState.files.length === 0) {
-    showAlert('No Files', 'Please select one or more PDF files.');
+    showAlert(
+      translate('alert.noFiles', 'No Files'),
+      translate(
+        'tools:reversePages.dynamic.dbc8218413',
+        'Please select one or more PDF files.'
+      )
+    );
     return;
   }
 
   try {
     const decryptedFiles = await batchDecryptIfNeeded(reverseState.files);
-    showLoader('Reversing page order...');
+    showLoader(
+      translate(
+        'tools:reversePages.dynamic.7c4c0a8d59',
+        'Reversing page order...'
+      )
+    );
     reverseState.files = decryptedFiles;
 
     const validFiles = reverseState.files.filter(function (f) {
@@ -121,7 +142,13 @@ async function reversePages() {
 
     for (let j = 0; j < validFiles.length; j++) {
       const file = validFiles[j];
-      showLoader(`Reversing ${file.name} (${j + 1}/${validFiles.length})...`);
+      showLoader(
+        translate(
+          'tools:reversePages.dynamic.3efb65a545',
+          `Reversing ${file.name} (${j + 1}/${validFiles.length})...`,
+          { value0: file.name, value1: j + 1, value2: validFiles.length }
+        )
+      );
 
       const newPdfBytes = await reverseSingleFile(file);
       const zipEntryName = deduplicateFileName(file.name, usedNames);
@@ -141,8 +168,11 @@ async function reversePages() {
     }
 
     showAlert(
-      'Success',
-      'Pages have been reversed successfully!',
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:reversePages.dynamic.cd7bc3d29d',
+        'Pages have been reversed successfully!'
+      ),
       'success',
       function () {
         resetState();
@@ -151,8 +181,11 @@ async function reversePages() {
   } catch (e) {
     console.error(e);
     showAlert(
-      'Error',
-      'Could not reverse the PDF pages. Please check that your files are valid PDFs.'
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:reversePages.dynamic.5010f304ef',
+        'Could not reverse the PDF pages. Please check that your files are valid PDFs.'
+      )
     );
   } finally {
     hideLoader();

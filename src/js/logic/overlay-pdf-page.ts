@@ -1,3 +1,14 @@
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
+
 import { showAlert } from '../ui.js';
 import {
   downloadFile,
@@ -110,8 +121,11 @@ function isPdf(file: File): boolean {
 async function processOverlay() {
   if (!pageState.baseFile || !pageState.overlayFile) {
     showAlert(
-      'Missing Files',
-      'Please upload both a base PDF and an overlay/underlay PDF.'
+      translate('tools:pdfOverlay.dynamic.fc7bc22501', 'Missing Files'),
+      translate(
+        'tools:pdfOverlay.dynamic.e3f55281aa',
+        'Please upload both a base PDF and an overlay/underlay PDF.'
+      )
     );
     return;
   }
@@ -119,7 +133,11 @@ async function processOverlay() {
   const loaderModal = document.getElementById('loader-modal');
   const loaderText = document.getElementById('loader-text');
   if (loaderModal) loaderModal.classList.remove('hidden');
-  if (loaderText) loaderText.textContent = 'Initializing PDF engine...';
+  if (loaderText)
+    loaderText.textContent = translate(
+      'tools:pdfOverlay.dynamic.657cdd2847',
+      'Initializing PDF engine...'
+    );
 
   const inputPath = '/input_base.pdf';
   const overlayPath = '/input_overlay.pdf';
@@ -129,7 +147,11 @@ async function processOverlay() {
   try {
     qpdf = await initializeQpdf();
 
-    if (loaderText) loaderText.textContent = 'Reading files...';
+    if (loaderText)
+      loaderText.textContent = translate(
+        'tools:pdfOverlay.dynamic.2bbca695fc',
+        'Reading files...'
+      );
 
     const baseBuffer = await readFileAsArrayBuffer(pageState.baseFile);
     const overlayBuffer = await readFileAsArrayBuffer(pageState.overlayFile);
@@ -155,7 +177,11 @@ async function processOverlay() {
     const shouldRepeat = repeatCheckbox?.checked;
 
     if (loaderText)
-      loaderText.textContent = `Applying ${mode.replace('--', '')}...`;
+      loaderText.textContent = translate(
+        'tools:pdfOverlay.applying',
+        `Applying ${mode.replace('--', '')}...`,
+        { mode: mode.replace('--', '') }
+      );
 
     const args = [inputPath, mode, overlayPath];
 
@@ -183,8 +209,12 @@ async function processOverlay() {
     );
 
     showAlert(
-      'Success',
-      `PDF ${modeLabel} applied successfully.`,
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:pdfOverlay.dynamic.7fed9a675a',
+        `PDF ${modeLabel} applied successfully.`,
+        { value0: modeLabel }
+      ),
       'success',
       () => {
         resetState();
@@ -193,8 +223,11 @@ async function processOverlay() {
   } catch (error: unknown) {
     console.error('Overlay/underlay error:', error);
     showAlert(
-      'Processing Failed',
-      `An error occurred: ${error instanceof Error ? error.message : 'Unknown error'}.`
+      translate('tools:pdfOverlay.dynamic.1f995b4468', 'Processing Failed'),
+      translate(
+        'tools:pdfOverlay.processFailed',
+        'Overlay processing failed. Please try again.'
+      )
     );
   } finally {
     try {

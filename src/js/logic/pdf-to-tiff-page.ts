@@ -1,3 +1,12 @@
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
+
 import { showLoader, hideLoader, showAlert } from '../ui.js';
 import {
   downloadFile,
@@ -85,7 +94,11 @@ const updateUI = () => {
 
       const metaSpan = document.createElement('div');
       metaSpan.className = 'text-xs text-gray-400';
-      metaSpan.textContent = `${formatBytes(file.size)} • ${t('common.loadingPageCount')}`;
+      metaSpan.textContent = translate(
+        'tools:pdfToTiff.dynamic.7caf602278',
+        `${formatBytes(file.size)} • ${t('common.loadingPageCount')}`,
+        { value0: formatBytes(file.size), value1: t('common.loadingPageCount') }
+      );
 
       infoContainer.append(nameSpan, metaSpan);
 
@@ -106,7 +119,15 @@ const updateUI = () => {
           return getPDFDocument(buffer).promise;
         })
         .then((pdf) => {
-          metaSpan.textContent = `${formatBytes(file.size)} • ${pdf.numPages} ${pdf.numPages !== 1 ? t('common.pages') : t('common.page')}`;
+          metaSpan.textContent = translate(
+            'tools:pdfToTiff.dynamic.2d62cb9c86',
+            `${formatBytes(file.size)} • ${pdf.numPages} ${pdf.numPages !== 1 ? t('common.pages') : t('common.page')}`,
+            {
+              value0: formatBytes(file.size),
+              value1: pdf.numPages,
+              value2: pdf.numPages !== 1 ? t('common.pages') : t('common.page'),
+            }
+          );
         })
         .catch((e) => {
           console.warn('Error loading PDF page count:', e);
@@ -220,8 +241,11 @@ async function convert() {
     console.error('Failed to load wasm-vips:', e);
     hideLoader();
     showAlert(
-      'Error',
-      'Failed to load the image processor. Please ensure your browser supports SharedArrayBuffer (requires HTTPS or localhost).'
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:pdfToTiff.dynamic.c37ab99d32',
+        'Failed to load the image processor. Please ensure your browser supports SharedArrayBuffer (requires HTTPS or localhost).'
+      )
     );
     return;
   }

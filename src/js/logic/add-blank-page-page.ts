@@ -1,4 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { createIcons, icons } from 'lucide';
 import { PDFDocument as PDFLibDocument } from 'pdf-lib';
@@ -61,7 +71,11 @@ async function updateUI() {
 
     const metaSpan = document.createElement('div');
     metaSpan.className = 'text-xs text-gray-400';
-    metaSpan.textContent = `${formatBytes(pageState.file.size)} • Loading...`;
+    metaSpan.textContent = translate(
+      'tools:addBlankPage.dynamic.3194768496',
+      `${formatBytes(pageState.file.size)} • Loading...`,
+      { value0: formatBytes(pageState.file.size) }
+    );
 
     infoContainer.append(nameSpan, metaSpan);
 
@@ -83,17 +97,25 @@ async function updateUI() {
         resetState();
         return;
       }
-      showLoader('Loading PDF...');
+      showLoader(translate('fileHandler.loadingPdf', 'Loading PDF...'));
       pageState.file = result.file;
       pageState.pdfDoc = await loadPdfDocument(result.bytes);
       result.pdf.destroy();
       hideLoader();
 
       const pageCount = pageState.pdfDoc.getPageCount();
-      metaSpan.textContent = `${formatBytes(pageState.file.size)} • ${pageCount} pages`;
+      metaSpan.textContent = translate(
+        'tools:addBlankPage.dynamic.ceda244c1d',
+        `${formatBytes(pageState.file.size)} • ${pageCount} pages`,
+        { value0: formatBytes(pageState.file.size), value1: pageCount }
+      );
 
       if (pagePositionHint) {
-        pagePositionHint.textContent = `Enter 0 to insert at the beginning, or ${pageCount} to insert at the end.`;
+        pagePositionHint.textContent = translate(
+          'tools:addBlankPage.dynamic.6d8c3c7f1a',
+          `Enter 0 to insert at the beginning, or ${pageCount} to insert at the end.`,
+          { value0: pageCount }
+        );
       }
       if (pagePositionInput) {
         pagePositionInput.max = pageCount.toString();
@@ -103,7 +125,13 @@ async function updateUI() {
     } catch (error) {
       console.error('Error loading PDF:', error);
       hideLoader();
-      showAlert('Error', 'Failed to load PDF file.');
+      showAlert(
+        translate('alert.error', 'Error'),
+        translate(
+          'tools:addBlankPage.dynamic.b6aab8baeb',
+          'Failed to load PDF file.'
+        )
+      );
       resetState();
     }
   } else {
@@ -113,7 +141,13 @@ async function updateUI() {
 
 async function addBlankPages() {
   if (!pageState.pdfDoc || !pageState.file) {
-    showAlert('Error', 'Please upload a PDF first.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:addBlankPage.dynamic.c2c57c5f32',
+        'Please upload a PDF first.'
+      )
+    );
     return;
   }
 
@@ -130,22 +164,33 @@ async function addBlankPages() {
 
   if (isNaN(position) || position < 0 || position > totalPages) {
     showAlert(
-      'Invalid Input',
-      `Please enter a number between 0 and ${totalPages}.`
+      translate('tools:addBlankPage.dynamic.44bcb69846', 'Invalid Input'),
+      translate(
+        'tools:addBlankPage.dynamic.6234a20c60',
+        `Please enter a number between 0 and ${totalPages}.`,
+        { value0: totalPages }
+      )
     );
     return;
   }
 
   if (isNaN(insertCount) || insertCount < 1) {
     showAlert(
-      'Invalid Input',
-      'Please enter a valid number of pages (1 or more).'
+      translate('tools:addBlankPage.dynamic.44bcb69846', 'Invalid Input'),
+      translate(
+        'tools:addBlankPage.dynamic.e791afd3b7',
+        'Please enter a valid number of pages (1 or more).'
+      )
     );
     return;
   }
 
   showLoader(
-    `Adding ${insertCount} blank page${insertCount > 1 ? 's' : ''}...`
+    translate(
+      'tools:addBlankPage.dynamic.bae7d9dce8',
+      `Adding ${insertCount} blank page${insertCount > 1 ? 's' : ''}...`,
+      { value0: insertCount, value1: insertCount > 1 ? 's' : '' }
+    )
   );
 
   try {
@@ -184,8 +229,12 @@ async function addBlankPages() {
     );
 
     showAlert(
-      'Success',
-      `Added ${insertCount} blank page${insertCount > 1 ? 's' : ''} successfully!`,
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:addBlankPage.dynamic.7dffb09a71',
+        `Added ${insertCount} blank page${insertCount > 1 ? 's' : ''} successfully!`,
+        { value0: insertCount, value1: insertCount > 1 ? 's' : '' }
+      ),
       'success',
       function () {
         resetState();
@@ -194,8 +243,12 @@ async function addBlankPages() {
   } catch (e) {
     console.error(e);
     showAlert(
-      'Error',
-      `Could not add blank page${insertCount > 1 ? 's' : ''}.`
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:addBlankPage.dynamic.3f3a8dab5a',
+        `Could not add blank page${insertCount > 1 ? 's' : ''}.`,
+        { value0: insertCount > 1 ? 's' : '' }
+      )
     );
   } finally {
     hideLoader();

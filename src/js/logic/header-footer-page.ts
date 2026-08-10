@@ -1,4 +1,14 @@
 import { createIcons, icons } from 'lucide';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { showAlert, showLoader, hideLoader } from '../ui.js';
 import {
   downloadFile,
@@ -61,13 +71,19 @@ function handleFileUpload(e: Event) {
 async function handleFiles(files: FileList) {
   const file = files[0];
   if (!file || file.type !== 'application/pdf') {
-    showAlert('Invalid File', 'Please upload a valid PDF file.');
+    showAlert(
+      translate('alert.invalidFile', 'Invalid File'),
+      translate(
+        'tools:headerFooter.dynamic.cd24bc9f91',
+        'Please upload a valid PDF file.'
+      )
+    );
     return;
   }
   try {
     const result = await loadPdfWithPasswordPrompt(file);
     if (!result) return;
-    showLoader('Loading PDF...');
+    showLoader(translate('fileHandler.loadingPdf', 'Loading PDF...'));
 
     pageState.pdfDoc = await loadPdfDocument(result.bytes);
     pageState.file = result.file;
@@ -80,7 +96,13 @@ async function handleFiles(files: FileList) {
       totalPagesSpan.textContent = String(pageState.pdfDoc.getPageCount());
   } catch (error) {
     console.error(error);
-    showAlert('Error', 'Failed to load PDF file.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:headerFooter.dynamic.6ad0775d4d',
+        'Failed to load PDF file.'
+      )
+    );
   } finally {
     hideLoader();
   }
@@ -100,7 +122,14 @@ function updateFileDisplay() {
   nameSpan.textContent = pageState.file.name;
   const metaSpan = document.createElement('div');
   metaSpan.className = 'text-xs text-gray-400';
-  metaSpan.textContent = `${formatBytes(pageState.file.size)} • ${pageState.pdfDoc.getPageCount()} pages`;
+  metaSpan.textContent = translate(
+    'tools:headerFooter.dynamic.5a4117e257',
+    `${formatBytes(pageState.file.size)} • ${pageState.pdfDoc.getPageCount()} pages`,
+    {
+      value0: formatBytes(pageState.file.size),
+      value1: pageState.pdfDoc.getPageCount(),
+    }
+  );
   infoContainer.append(nameSpan, metaSpan);
   const removeBtn = document.createElement('button');
   removeBtn.className = 'ml-4 text-red-400 hover:text-red-300 flex-shrink-0';
@@ -123,10 +152,21 @@ function resetState() {
 
 async function addHeaderFooter() {
   if (!pageState.pdfDoc) {
-    showAlert('Error', 'Please upload a PDF file first.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:headerFooter.dynamic.04c0237095',
+        'Please upload a PDF file first.'
+      )
+    );
     return;
   }
-  showLoader('Adding header & footer...');
+  showLoader(
+    translate(
+      'tools:headerFooter.dynamic.5426558064',
+      'Adding header & footer...'
+    )
+  );
   try {
     const helveticaFont = await pageState.pdfDoc.embedFont(
       StandardFonts.Helvetica
@@ -245,8 +285,11 @@ async function addHeaderFooter() {
       pageState.file?.name || 'document.pdf'
     );
     showAlert(
-      'Success',
-      'Header & Footer added successfully!',
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:headerFooter.dynamic.0edfb3d28a',
+        'Header & Footer added successfully!'
+      ),
       'success',
       () => {
         resetState();
@@ -255,8 +298,8 @@ async function addHeaderFooter() {
   } catch (e: unknown) {
     console.error(e);
     showAlert(
-      'Error',
-      e instanceof Error ? e.message : 'Could not add header or footer.'
+      translate('alert.error', 'Error'),
+      translate('alert.processFailed', 'Processing failed. Please try again.')
     );
   } finally {
     hideLoader();

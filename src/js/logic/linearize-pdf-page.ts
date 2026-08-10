@@ -1,3 +1,14 @@
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
+
 import { showAlert } from '../ui.js';
 import {
   downloadFile,
@@ -99,7 +110,13 @@ async function linearizePdf() {
     (file: File) => file.type === 'application/pdf'
   );
   if (!pdfFiles || pdfFiles.length === 0) {
-    showAlert('No PDF Files', 'Please upload at least one PDF file.');
+    showAlert(
+      translate('tools:linearizePdf.dynamic.3fc2420257', 'No PDF Files'),
+      translate(
+        'tools:linearizePdf.dynamic.20e8c58c29',
+        'Please upload at least one PDF file.'
+      )
+    );
     return;
   }
 
@@ -107,7 +124,10 @@ async function linearizePdf() {
   const loaderText = document.getElementById('loader-text');
   if (loaderModal) loaderModal.classList.remove('hidden');
   if (loaderText)
-    loaderText.textContent = 'Optimizing PDFs for web view (linearizing)...';
+    loaderText.textContent = translate(
+      'tools:linearizePdf.dynamic.ede4d9529f',
+      'Optimizing PDFs for web view (linearizing)...'
+    );
 
   const zip = new JSZip();
   const usedNames = new Set<string>();
@@ -124,7 +144,11 @@ async function linearizePdf() {
       const outputPath = `/output_${i}.pdf`;
 
       if (loaderText)
-        loaderText.textContent = `Optimizing ${file.name} (${i + 1}/${pdfFiles.length})...`;
+        loaderText.textContent = translate(
+          'tools:linearizePdf.dynamic.c932412e1b',
+          `Optimizing ${file.name} (${i + 1}/${pdfFiles.length})...`,
+          { value0: file.name, value1: i + 1, value2: pdfFiles.length }
+        );
 
       try {
         const fileBuffer = await readFileAsArrayBuffer(file);
@@ -176,7 +200,11 @@ async function linearizePdf() {
       throw new Error('No PDF files could be linearized.');
     }
 
-    if (loaderText) loaderText.textContent = 'Generating ZIP file...';
+    if (loaderText)
+      loaderText.textContent = translate(
+        'tools:linearizePdf.dynamic.fa5568eaf0',
+        'Generating ZIP file...'
+      );
     const zipBlob = await zip.generateAsync({ type: 'blob' });
     downloadFile(zipBlob, 'linearized-pdfs.zip');
 
@@ -184,14 +212,22 @@ async function linearizePdf() {
     if (errorCount > 0) {
       alertMessage += ` ${errorCount} file(s) failed.`;
     }
-    showAlert('Processing Complete', alertMessage, 'success', () => {
-      resetState();
-    });
+    showAlert(
+      translate('tools:linearizePdf.dynamic.43fbc24099', 'Processing Complete'),
+      alertMessage,
+      'success',
+      () => {
+        resetState();
+      }
+    );
   } catch (error: unknown) {
     console.error('Linearization process error:', error);
     showAlert(
-      'Linearization Failed',
-      `An error occurred: ${error instanceof Error ? error.message : 'Unknown error'}.`
+      translate(
+        'tools:linearizePdf.dynamic.203623f104',
+        'Linearization Failed'
+      ),
+      translate('alert.processFailed', 'Processing failed. Please try again.')
     );
   } finally {
     if (loaderModal) loaderModal.classList.add('hidden');

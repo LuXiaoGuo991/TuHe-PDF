@@ -1,3 +1,14 @@
+import { t } from './i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
+
 import { showLoader, hideLoader, showAlert } from './ui.js';
 import { getPDFDocument } from './utils/helpers.js';
 import { state } from './state.js';
@@ -65,7 +76,11 @@ function calculateFitScale(page: PDFPageProxy) {
  */
 async function renderPage(num: number) {
   editorState.pageRendering = true;
-  showLoader(`Loading page ${num}...`);
+  showLoader(
+    translate('common.dynamic.6850b548a2', `Loading page ${num}...`, {
+      value0: num,
+    })
+  );
 
   try {
     const page = await editorState.pdf!.getPage(num);
@@ -95,7 +110,10 @@ async function renderPage(num: number) {
     redrawShapes();
   } catch (error) {
     console.error('Error rendering page:', error);
-    showAlert('Render Error', 'Could not display the page.');
+    showAlert(
+      translate('common.dynamic.e3d25c4962', 'Render Error'),
+      translate('common.dynamic.ce86f9b182', 'Could not display the page.')
+    );
   } finally {
     editorState.pageRendering = false;
     hideLoader();
@@ -221,7 +239,7 @@ export async function setupCanvasEditor(toolId: string) {
   editorState.currentPageNum = 1;
   editorState.scale = 'fit';
 
-  pageNav!.textContent = '';
+  pageNav!.textContent = translate('common.dynamic.0e455bd98f', '');
 
   const prevButton = document.createElement('button');
   prevButton.id = 'prev-page';
@@ -234,7 +252,7 @@ export async function setupCanvasEditor(toolId: string) {
 
   const currentPageDisplay = document.createElement('span');
   currentPageDisplay.id = 'current-page-display';
-  currentPageDisplay.textContent = '1';
+  currentPageDisplay.textContent = translate('common.dynamic.9d3feb79ee', '1');
 
   pageInfo.append(
     'Page ',
@@ -314,8 +332,11 @@ export async function setupCanvasEditor(toolId: string) {
       async () => {
         if (Object.keys(editorState.cropBoxes).length === 0) {
           showAlert(
-            'No Area Selected',
-            'Please draw a rectangle on at least one page to select the crop area.'
+            translate('common.dynamic.3d9f6f935a', 'No Area Selected'),
+            translate(
+              'common.dynamic.7fe72298ff',
+              'Please draw a rectangle on at least one page to select the crop area.'
+            )
           );
           return;
         }
@@ -326,8 +347,11 @@ export async function setupCanvasEditor(toolId: string) {
             : false;
         if (success) {
           showAlert(
-            'Success!',
-            'Your PDF has been cropped and the download has started.'
+            translate('common.dynamic.4e2acbf846', 'Success!'),
+            translate(
+              'common.dynamic.07bc61dbcf',
+              'Your PDF has been cropped and the download has started.'
+            )
           );
         }
       };

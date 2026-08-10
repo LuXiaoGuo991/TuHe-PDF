@@ -1,3 +1,14 @@
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
+
 import { PDFDocument, PDFName, PDFNumber, PDFHexString, PDFRef } from 'pdf-lib';
 import * as pdfjsLib from 'pdfjs-dist';
 import { PDFDocumentProxy, PageViewport } from 'pdfjs-dist';
@@ -727,7 +738,11 @@ document.addEventListener('DOMContentLoaded', () => {
       canvasWrapperEl.appendChild(coordTooltip);
     }
 
-    coordTooltip.textContent = `X: ${Math.round(x)}, Y: ${Math.round(y)} `;
+    coordTooltip.textContent = translate(
+      'tools:editBookmarks.dynamic.726081a2a6',
+      `X: ${Math.round(x)}, Y: ${Math.round(y)} `,
+      { value0: Math.round(x), value1: Math.round(y) }
+    );
     coordTooltip.style.left = e.clientX - rect.left + 15 + 'px';
     coordTooltip.style.top = e.clientY - rect.top + 15 + 'px';
   });
@@ -801,7 +816,11 @@ document.addEventListener('DOMContentLoaded', () => {
       canvasX + canvasRect.left - wrapperRect.left + 20 + 'px';
     coordDisplay.style.top =
       canvasY + canvasRect.top - wrapperRect.top - 30 + 'px';
-    coordDisplay.textContent = `X: ${Math.round(pdfX)}, Y: ${Math.round(pdfY)} `;
+    coordDisplay.textContent = translate(
+      'tools:editBookmarks.dynamic.726081a2a6',
+      `X: ${Math.round(pdfX)}, Y: ${Math.round(pdfY)} `,
+      { value0: Math.round(pdfX), value1: Math.round(pdfY) }
+    );
     canvasWrapperEl.appendChild(coordDisplay);
 
     currentPickingCallback(currentPage, pdfX, pdfY);
@@ -1392,7 +1411,11 @@ async function renderPage(
     ctx.restore();
   }
 
-  pageIndicator!.textContent = `Page ${num} / ${pdfJsDoc.numPages}`;
+  pageIndicator!.textContent = translate(
+    'tools:editBookmarks.dynamic.b0765ec34b',
+    `Page ${num} / ${pdfJsDoc.numPages}`,
+    { value0: num, value1: pdfJsDoc.numPages }
+  );
   if (gotoPageInput) gotoPageInput.value = String(num);
   currentPage = num;
   if (currentPageDisplay) currentPageDisplay.textContent = String(num);
@@ -1429,7 +1452,11 @@ gotoPageInput?.addEventListener('keypress', (e: KeyboardEvent) => {
 
 function updateZoomIndicator(): void {
   if (zoomIndicator) {
-    zoomIndicator.textContent = `${Math.round(currentZoom * 100)}%`;
+    zoomIndicator.textContent = translate(
+      'tools:editBookmarks.dynamic.b409ca64f8',
+      `${Math.round(currentZoom * 100)}%`,
+      { value0: Math.round(currentZoom * 100) }
+    );
   }
 }
 
@@ -1738,7 +1765,10 @@ function createNodeElement(node: BookmarkNode, level = 0): HTMLLIElement {
 
   const addChildBtn = document.createElement('button');
   addChildBtn.className = 'p-1 hover:bg-gray-200 rounded text-gray-700';
-  addChildBtn.title = 'Add child';
+  addChildBtn.title = translate(
+    'tools:editBookmarks.dynamic.01df70fb24',
+    'Add child'
+  );
   addChildBtn.innerHTML = '<i data-lucide="plus" class="w-4 h-4"></i>';
   addChildBtn.addEventListener('click', async (e: MouseEvent) => {
     e.stopPropagation();
@@ -1771,7 +1801,7 @@ function createNodeElement(node: BookmarkNode, level = 0): HTMLLIElement {
 
   const editBtn = document.createElement('button');
   editBtn.className = 'p-1 hover:bg-gray-200 rounded text-gray-700';
-  editBtn.title = 'Edit';
+  editBtn.title = translate('tools:editBookmarks.dynamic.4af82fdf15', 'Edit');
   editBtn.innerHTML = '<i data-lucide="edit-2" class="w-4 h-4"></i>';
   editBtn.addEventListener('click', async (e: MouseEvent) => {
     e.stopPropagation();
@@ -1849,7 +1879,10 @@ function createNodeElement(node: BookmarkNode, level = 0): HTMLLIElement {
 
   const deleteBtn = document.createElement('button');
   deleteBtn.className = 'p-1 hover:bg-gray-200 rounded text-red-600';
-  deleteBtn.title = 'Delete';
+  deleteBtn.title = translate(
+    'tools:editBookmarks.dynamic.80825a5a20',
+    'Delete'
+  );
   deleteBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
   deleteBtn.addEventListener('click', async (e: MouseEvent) => {
     e.stopPropagation();

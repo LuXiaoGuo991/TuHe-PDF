@@ -1,4 +1,14 @@
 import { createIcons, icons } from 'lucide';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { showAlert, showLoader, hideLoader } from '../ui.js';
 import { downloadFile, hexToRgb, formatBytes } from '../utils/helpers.js';
 import { StandardFonts, rgb } from 'pdf-lib';
@@ -176,21 +186,31 @@ function initSortable() {
 }
 
 async function handleFiles(fileList: FileList) {
-  showLoader('Loading PDFs...');
+  showLoader(
+    translate('tools:batesNumbering.dynamic.95189fa63d', 'Loading PDFs...')
+  );
   try {
     for (const file of Array.from(fileList)) {
       if (file.type !== 'application/pdf') continue;
       hideLoader();
       const result = await loadPdfWithPasswordPrompt(file);
       if (!result) continue;
-      showLoader('Loading PDFs...');
+      showLoader(
+        translate('tools:batesNumbering.dynamic.95189fa63d', 'Loading PDFs...')
+      );
       result.pdf.destroy();
       const pdfDoc = await loadPdfDocument(result.bytes);
       files.push({ file: result.file, pageCount: pdfDoc.getPageCount() });
     }
 
     if (files.length === 0) {
-      showAlert('Invalid File', 'Please upload valid PDF files.');
+      showAlert(
+        translate('alert.invalidFile', 'Invalid File'),
+        translate(
+          'tools:batesNumbering.dynamic.705817c3d7',
+          'Please upload valid PDF files.'
+        )
+      );
       return;
     }
 
@@ -200,7 +220,13 @@ async function handleFiles(fileList: FileList) {
     updatePreview();
   } catch (error) {
     console.error(error);
-    showAlert('Error', 'Failed to load one or more PDF files.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:batesNumbering.dynamic.c49b7cb420',
+        'Failed to load one or more PDF files.'
+      )
+    );
   } finally {
     hideLoader();
   }
@@ -237,7 +263,11 @@ function renderFileList() {
 
     const metaSpan = document.createElement('div');
     metaSpan.className = 'text-xs text-gray-400';
-    metaSpan.textContent = `${formatBytes(entry.file.size)} \u2022 ${entry.pageCount} pages`;
+    metaSpan.textContent = translate(
+      'tools:batesNumbering.dynamic.b9063ddbd2',
+      `${formatBytes(entry.file.size)} \u2022 ${entry.pageCount} pages`,
+      { value0: formatBytes(entry.file.size), value1: entry.pageCount }
+    );
 
     infoContainer.append(nameSpan, metaSpan);
     leftSection.append(dragHandle, infoContainer);
@@ -260,7 +290,15 @@ function renderFileList() {
 
   const summary = document.createElement('div');
   summary.className = 'text-xs text-gray-400 mt-1';
-  summary.textContent = `${files.length} file${files.length !== 1 ? 's' : ''} \u2022 ${totalPages} total pages`;
+  summary.textContent = translate(
+    'tools:batesNumbering.dynamic.c29f451ac2',
+    `${files.length} file${files.length !== 1 ? 's' : ''} \u2022 ${totalPages} total pages`,
+    {
+      value0: files.length,
+      value1: files.length !== 1 ? 's' : '',
+      value2: totalPages,
+    }
+  );
   fileListEl.appendChild(summary);
 }
 
@@ -436,11 +474,22 @@ function resetState() {
 
 async function applyBatesNumbers() {
   if (files.length === 0) {
-    showAlert('Error', 'Please upload at least one PDF file.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:batesNumbering.dynamic.41c258bb74',
+        'Please upload at least one PDF file.'
+      )
+    );
     return;
   }
 
-  showLoader('Applying Bates numbers...');
+  showLoader(
+    translate(
+      'tools:batesNumbering.dynamic.a13a077a7e',
+      'Applying Bates numbers...'
+    )
+  );
   try {
     const template = (
       document.getElementById('bates-template') as HTMLInputElement
@@ -538,8 +587,12 @@ async function applyBatesNumbers() {
     }
 
     showAlert(
-      'Success',
-      `Bates numbers applied successfully! (${batesStart} through ${batesCounter - 1})`,
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:batesNumbering.dynamic.c8fef9d144',
+        `Bates numbers applied successfully! (${batesStart} through ${batesCounter - 1})`,
+        { value0: batesStart, value1: batesCounter - 1 }
+      ),
       'success',
       () => {
         resetState();
@@ -547,7 +600,13 @@ async function applyBatesNumbers() {
     );
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'Failed to apply Bates numbers.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:batesNumbering.dynamic.deed158f16',
+        'Failed to apply Bates numbers.'
+      )
+    );
   } finally {
     hideLoader();
   }

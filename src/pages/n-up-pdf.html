@@ -160,16 +160,22 @@
         <div id="tool-options" class="hidden mt-6">
           <div class="p-3 bg-gray-900 rounded-lg border border-gray-700 mb-4">
             <p class="text-sm text-gray-300">
-              <strong class="text-white">How it works:</strong>
+              <strong class="text-white" data-i18n="howItWorks.hint"
+                >How it works:</strong
+              >
             </p>
             <ul
               class="list-disc list-inside text-xs text-gray-400 mt-1 space-y-1"
             >
-              <li>
+              <li data-i18n="tools:nUpPdf.auto.914719b7ed">
                 Choose how many pages to fit on each sheet (2, 4, 9, or 16).
               </li>
-              <li>Select output page size and orientation.</li>
-              <li>Optionally add margins and borders around each page.</li>
+              <li data-i18n="tools:nUpPdf.auto.ceacc66db0">
+                Select output page size and orientation.
+              </li>
+              <li data-i18n="tools:nUpPdf.auto.9cd626bb13">
+                Optionally add margins and borders around each page.
+              </li>
             </ul>
           </div>
 
@@ -200,9 +206,15 @@
                 id="output-page-size"
                 class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-2.5"
               >
-                <option value="Letter" selected>Letter (8.5" x 11")</option>
+                <option
+                  value="Letter"
+                  selected
+                  data-i18n="tools:nUpPdf.auto.39247fd16f"
+                >
+                  Letter (8.5" x 11")
+                </option>
                 <option value="A4">A4</option>
-                <option value="Legal">Legal</option>
+                <option value="Legal" data-i18n="footer.legal">Legal</option>
                 <option value="A3">A3</option>
               </select>
             </div>
@@ -219,9 +231,22 @@
                 id="output-orientation"
                 class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-2.5"
               >
-                <option value="auto" selected>Auto</option>
-                <option value="portrait">Portrait</option>
-                <option value="landscape">Landscape</option>
+                <option
+                  value="auto"
+                  selected
+                  data-i18n="tools:nUpPdf.auto.c614ba7c45"
+                >
+                  Auto
+                </option>
+                <option value="portrait" data-i18n="tools:pdfBooklet.portrait">
+                  Portrait
+                </option>
+                <option
+                  value="landscape"
+                  data-i18n="tools:pdfBooklet.landscape"
+                >
+                  Landscape
+                </option>
               </select>
             </div>
             <div class="flex items-end gap-4">
@@ -231,7 +256,11 @@
                   id="add-margins"
                   class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-600"
                 />
-                <span class="text-sm text-gray-300">Add Margins</span>
+                <span
+                  class="text-sm text-gray-300"
+                  data-i18n="tools:nUpPdf.auto.29b7284e1b"
+                  >Add Margins</span
+                >
               </label>
             </div>
           </div>
@@ -243,7 +272,11 @@
                 id="add-border"
                 class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-600"
               />
-              <span class="text-sm text-gray-300">Add Border</span>
+              <span
+                class="text-sm text-gray-300"
+                data-i18n="tools:nUpPdf.auto.bf1a4d0ac4"
+                >Add Border</span
+              >
             </label>
             <div id="border-color-wrapper" class="hidden">
               <label
@@ -255,7 +288,11 @@
             </div>
           </div>
 
-          <button id="process-btn" class="btn-gradient w-full mt-4">
+          <button
+            id="process-btn"
+            class="btn-gradient w-full mt-4"
+            data-i18n="tools:nUpPdf.auto.ddf8c11aaa"
+          >
             Create N-Up PDF
           </button>
         </div>
@@ -302,6 +339,7 @@
         <button
           id="alert-ok"
           class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
+          data-i18n="alert.ok"
         >
           OK
         </button>
@@ -324,7 +362,12 @@
             1
           </div>
           <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white mb-1">Upload File</h3>
+            <h3
+              class="text-lg font-semibold text-white mb-1"
+              data-i18n="howItWorks.step1Title"
+            >
+              Upload File
+            </h3>
             <p class="text-gray-400" data-i18n="howItWorks.step1">
               Click or drag and drop your file to begin
             </p>
@@ -337,7 +380,12 @@
             2
           </div>
           <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white mb-1">Process</h3>
+            <h3
+              class="text-lg font-semibold text-white mb-1"
+              data-i18n="howItWorks.step2Title"
+            >
+              Process
+            </h3>
             <p class="text-gray-400" data-i18n="howItWorks.step2">
               Click the process button to start
             </p>
@@ -350,7 +398,12 @@
             3
           </div>
           <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white mb-1">Download</h3>
+            <h3
+              class="text-lg font-semibold text-white mb-1"
+              data-i18n="howItWorks.step3Title"
+            >
+              Download
+            </h3>
             <p class="text-gray-400" data-i18n="howItWorks.step3">
               Save your processed file instantly
             </p>
@@ -372,36 +425,74 @@
           href="merge-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Merge Pdf</h3>
-          <p class="text-gray-400 text-sm">Free online merge pdf tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:nUpPdf.auto.bb9dede377"
+          >
+            Merge Pdf
+          </h3>
+          <p class="text-gray-400 text-sm" data-i18n="tools:mergePdf.cardDesc">
+            Free online merge pdf tool
+          </p>
         </a>
         <a
           href="compress-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Compress Pdf</h3>
-          <p class="text-gray-400 text-sm">Free online compress pdf tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:nUpPdf.auto.ae395b2670"
+          >
+            Compress Pdf
+          </h3>
+          <p
+            class="text-gray-400 text-sm"
+            data-i18n="tools:compressPdf.cardDesc"
+          >
+            Free online compress pdf tool
+          </p>
         </a>
         <a
           href="split-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Split Pdf</h3>
-          <p class="text-gray-400 text-sm">Free online split pdf tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:nUpPdf.auto.0784d816a9"
+          >
+            Split Pdf
+          </h3>
+          <p class="text-gray-400 text-sm" data-i18n="tools:splitPdf.cardDesc">
+            Free online split pdf tool
+          </p>
         </a>
         <a
           href="edit-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Edit Pdf</h3>
-          <p class="text-gray-400 text-sm">Free online edit pdf tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:nUpPdf.auto.0a193ffe0a"
+          >
+            Edit Pdf
+          </h3>
+          <p class="text-gray-400 text-sm" data-i18n="tools:pdfEditor.cardDesc">
+            Free online edit pdf tool
+          </p>
         </a>
         <a
           href="rotate-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Rotate Pdf</h3>
-          <p class="text-gray-400 text-sm">Free online rotate pdf tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:nUpPdf.auto.ed40c6ff84"
+          >
+            Rotate Pdf
+          </h3>
+          <p class="text-gray-400 text-sm" data-i18n="tools:rotatePdf.cardDesc">
+            Free online rotate pdf tool
+          </p>
         </a>
       </div>
     </section>
@@ -422,7 +513,7 @@
             Is n up pdf really free?
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400">
+          <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq1a">
             Yes! BentoPDF is 100% free with no hidden fees, no signup required,
             and unlimited file processing.
           </p>
@@ -434,7 +525,7 @@
             Are my files private and secure?
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400">
+          <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq2a">
             Absolutely! All processing happens in your browser. Your files never
             leave your device, ensuring complete privacy.
           </p>
@@ -446,7 +537,7 @@
             Is there a file size limit?
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400">
+          <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq3a">
             No! Process files of any size, as many times as you want, completely
             free.
           </p>

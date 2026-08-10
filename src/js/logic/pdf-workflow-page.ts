@@ -1,4 +1,14 @@
 import { showAlert } from '@/js/ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { createWorkflowEditor, updateNodeDisplay } from '@/js/workflow/editor';
 import type { WorkflowEditor } from '@/js/workflow/editor';
 import { executeWorkflow } from '@/js/workflow/engine';
@@ -84,15 +94,24 @@ async function initializePage() {
   document.getElementById('run-btn')?.addEventListener('click', async () => {
     const allNodes = editor.getNodes() as BaseWorkflowNode[];
     if (allNodes.length === 0) {
-      showAlert('Error', 'Add at least one node to run the workflow.');
+      showAlert(
+        translate('alert.error', 'Error'),
+        translate(
+          'common.dynamic.c73d89e248',
+          'Add at least one node to run the workflow.'
+        )
+      );
       return;
     }
     const hasInput = allNodes.some((n) => n.category === 'Input');
     const hasOutput = allNodes.some((n) => n.category === 'Output');
     if (!hasInput || !hasOutput) {
       showAlert(
-        'Error',
-        'Your workflow needs at least one input node and one output node to run.'
+        translate('alert.error', 'Error'),
+        translate(
+          'common.dynamic.17165fa279',
+          'Your workflow needs at least one input node and one output node to run.'
+        )
       );
       return;
     }
@@ -107,10 +126,25 @@ async function initializePage() {
         const msg = progress.message || `Processing ${progress.nodeName}...`;
         if (statusText) statusText.textContent = msg;
       });
-      if (statusText) statusText.textContent = 'Workflow completed';
+      if (statusText)
+        statusText.textContent = translate(
+          'common.dynamic.9da02eb759',
+          'Workflow completed'
+        );
     } catch (err) {
-      if (statusText) statusText.textContent = 'Error during execution';
-      showAlert('Error', (err as Error).message);
+      console.error('[PdfWorkflow] Execution failed:', err);
+      if (statusText)
+        statusText.textContent = translate(
+          'tools:pdfWorkflow.errorDuringExecution',
+          'Error during execution'
+        );
+      showAlert(
+        translate('alert.error', 'Error'),
+        translate(
+          'tools:pdfWorkflow.executionFailed',
+          'Workflow execution failed. Please try again.'
+        )
+      );
     } finally {
       runBtn.disabled = false;
       runBtn.classList.remove('opacity-50', 'pointer-events-none');
@@ -121,7 +155,8 @@ async function initializePage() {
     await editor.clear();
     updateNodeCount();
     const statusText = document.getElementById('status-text');
-    if (statusText) statusText.textContent = 'Ready';
+    if (statusText)
+      statusText.textContent = translate('common.dynamic.537ba3aa0a', 'Ready');
     document.getElementById('settings-sidebar')?.classList.add('hidden');
   });
 
@@ -290,7 +325,12 @@ function updateNodeCount() {
   if (!workflowEditor) return;
   const count = workflowEditor.editor.getNodes().length;
   const el = document.getElementById('node-count');
-  if (el) el.textContent = `${count} node${count !== 1 ? 's' : ''}`;
+  if (el)
+    el.textContent = translate(
+      'common.dynamic.083b5e83a4',
+      `${count} node${count !== 1 ? 's' : ''}`,
+      { value0: count, value1: count !== 1 ? 's' : '' }
+    );
 }
 
 function showSaveTemplateModal(
@@ -320,18 +360,30 @@ function showSaveTemplateModal(
   const doSave = () => {
     const name = nameInput.value.trim();
     if (!name) {
-      errorEl.textContent = 'Please enter a name.';
+      errorEl.textContent = translate(
+        'common.dynamic.9181ca520d',
+        'Please enter a name.'
+      );
       errorEl.classList.remove('hidden');
       return;
     }
     if (templateNameExists(name)) {
-      errorEl.textContent = 'A template with this name already exists.';
+      errorEl.textContent = translate(
+        'common.dynamic.4db44d4a58',
+        'A template with this name already exists.'
+      );
       errorEl.classList.remove('hidden');
       return;
     }
     saveWorkflow(editor, area, name);
     cleanup();
-    showAlert('Saved', `Template "${name}" saved.`, 'success');
+    showAlert(
+      translate('common.dynamic.be0ce2cc7a', 'Saved'),
+      translate('common.dynamic.03e67a394e', `Template "${name}" saved.`, {
+        value0: name,
+      }),
+      'success'
+    );
   };
 
   const onKeydown = (e: KeyboardEvent) => {
@@ -381,15 +433,26 @@ function showLoadTemplateModal(
       const loadBtn = document.createElement('button');
       loadBtn.className =
         'bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-medium px-3 py-1.5 rounded-md transition-colors flex-shrink-0';
-      loadBtn.textContent = 'Load';
+      loadBtn.textContent = translate('common.dynamic.faec63c70c', 'Load');
       loadBtn.addEventListener('click', async () => {
         const loaded = await loadWorkflow(editor, area, name);
         cleanup();
         if (loaded) {
           updateNodeCount();
-          showAlert('Loaded', `Template "${name}" loaded.`, 'success');
+          showAlert(
+            translate('common.dynamic.3e37f1d2b7', 'Loaded'),
+            translate(
+              'common.dynamic.b770559d57',
+              `Template "${name}" loaded.`,
+              { value0: name }
+            ),
+            'success'
+          );
         } else {
-          showAlert('Error', 'Failed to load template.');
+          showAlert(
+            translate('alert.error', 'Error'),
+            translate('common.dynamic.ae55d40de3', 'Failed to load template.')
+          );
         }
       });
       row.appendChild(loadBtn);
@@ -675,7 +738,7 @@ function showNodeSettings(node: BaseWorkflowNode) {
 
     const label = document.createElement('label');
     label.className = 'block text-xs text-gray-400 mb-1';
-    label.textContent = 'PDF Files';
+    label.textContent = translate('common.dynamic.afadf7dd74', 'PDF Files');
     fileSection.appendChild(label);
 
     if (node.hasFile()) {
@@ -709,13 +772,24 @@ function showNodeSettings(node: BaseWorkflowNode) {
                 await node.addDecryptedFile(file, password);
               } catch {
                 showAlert(
-                  'Error',
-                  `Wrong password or failed to decrypt "${file.name}".`
+                  translate('alert.error', 'Error'),
+                  translate(
+                    'common.dynamic.a3b53812df',
+                    `Wrong password or failed to decrypt "${file.name}".`,
+                    { value0: file.name }
+                  )
                 );
               }
             }
           } else {
-            showAlert('Error', 'Failed to load PDF: ' + (err as Error).message);
+            console.error('[PdfWorkflow] PDF input failed:', err);
+            showAlert(
+              translate('alert.error', 'Error'),
+              translate(
+                'tools:pdfWorkflow.pdfLoadFailed',
+                'Failed to load PDF. Please try again.'
+              )
+            );
           }
         }
       }
@@ -734,13 +808,15 @@ function showNodeSettings(node: BaseWorkflowNode) {
 
     const label = document.createElement('label');
     label.className = 'block text-xs text-gray-400 mb-1';
-    label.textContent = 'Images';
+    label.textContent = translate('common.dynamic.2d588ecddd', 'Images');
     fileSection.appendChild(label);
 
     const formatHint = document.createElement('p');
     formatHint.className = 'text-[10px] text-gray-500 mb-2';
-    formatHint.textContent =
-      'Supported: JPG, PNG, BMP, GIF, TIFF, WebP, HEIC, PSD, SVG, PNM, PGM, PBM, PPM, PAM, JXR, JPX, JP2';
+    formatHint.textContent = translate(
+      'common.dynamic.0692b26df8',
+      'Supported: JPG, PNG, BMP, GIF, TIFF, WebP, HEIC, PSD, SVG, PNM, PGM, PBM, PPM, PAM, JXR, JPX, JP2'
+    );
     fileSection.appendChild(formatHint);
 
     if (node.hasFile()) {
@@ -769,7 +845,14 @@ function showNodeSettings(node: BaseWorkflowNode) {
         await node.addFiles(files);
         showNodeSettings(node);
       } catch (err) {
-        showAlert('Error', 'Failed to load images: ' + (err as Error).message);
+        console.error('[PdfWorkflow] Image input failed:', err);
+        showAlert(
+          translate('alert.error', 'Error'),
+          translate(
+            'tools:pdfWorkflow.imageLoadFailed',
+            'Failed to load images. Please try again.'
+          )
+        );
       }
     });
 
@@ -785,7 +868,10 @@ function showNodeSettings(node: BaseWorkflowNode) {
 
     const certLabel = document.createElement('label');
     certLabel.className = 'block text-xs text-gray-400 mb-1';
-    certLabel.textContent = 'Certificate (.pfx, .p12, .pem)';
+    certLabel.textContent = translate(
+      'common.dynamic.da110cd748',
+      'Certificate (.pfx, .p12, .pem)'
+    );
     certSection.appendChild(certLabel);
 
     if (node.hasCertFile()) {
@@ -803,7 +889,7 @@ function showNodeSettings(node: BaseWorkflowNode) {
       const removeBtn = document.createElement('button');
       removeBtn.className =
         'text-red-400 hover:text-red-300 text-xs flex-shrink-0';
-      removeBtn.textContent = 'Remove';
+      removeBtn.textContent = translate('common.dynamic.559f7af87a', 'Remove');
       removeBtn.addEventListener('click', () => {
         node.removeCert();
         showNodeSettings(node);
@@ -818,7 +904,10 @@ function showNodeSettings(node: BaseWorkflowNode) {
 
         const pwLabel = document.createElement('label');
         pwLabel.className = 'block text-xs text-gray-400 mb-1';
-        pwLabel.textContent = 'Certificate Password';
+        pwLabel.textContent = translate(
+          'common.dynamic.5373b3a229',
+          'Certificate Password'
+        );
         pwSection.appendChild(pwLabel);
 
         const pwRow = document.createElement('div');
@@ -826,14 +915,20 @@ function showNodeSettings(node: BaseWorkflowNode) {
 
         const pwInput = document.createElement('input');
         pwInput.type = 'password';
-        pwInput.placeholder = 'Enter password...';
+        pwInput.placeholder = translate(
+          'common.dynamic.f26bba9bdb',
+          'Enter password...'
+        );
         pwInput.className =
           'flex-1 bg-gray-700 border border-gray-600 text-white text-xs px-3 py-2 rounded-lg focus:outline-none focus:border-indigo-500';
 
         const unlockBtn = document.createElement('button');
         unlockBtn.className =
           'bg-indigo-600 hover:bg-indigo-500 text-white text-xs px-3 py-2 rounded-lg transition-colors flex-shrink-0';
-        unlockBtn.textContent = 'Unlock';
+        unlockBtn.textContent = translate(
+          'common.dynamic.3b93feeaca',
+          'Unlock'
+        );
 
         const statusMsg = document.createElement('div');
         statusMsg.className = 'text-xs mt-1 hidden';
@@ -841,15 +936,24 @@ function showNodeSettings(node: BaseWorkflowNode) {
         const doUnlock = async () => {
           const pw = pwInput.value;
           if (!pw) return;
-          unlockBtn.textContent = 'Unlocking...';
+          unlockBtn.textContent = translate(
+            'common.dynamic.f370a981e4',
+            'Unlocking...'
+          );
           unlockBtn.disabled = true;
           const success = await node.unlockCert(pw);
           if (success) {
             showNodeSettings(node);
           } else {
-            unlockBtn.textContent = 'Unlock';
+            unlockBtn.textContent = translate(
+              'common.dynamic.3b93feeaca',
+              'Unlock'
+            );
             unlockBtn.disabled = false;
-            statusMsg.textContent = 'Incorrect password';
+            statusMsg.textContent = translate(
+              'common.dynamic.ae7cf1e34f',
+              'Incorrect password'
+            );
             statusMsg.className = 'text-xs mt-1 text-red-400';
             statusMsg.classList.remove('hidden');
           }
@@ -866,7 +970,10 @@ function showNodeSettings(node: BaseWorkflowNode) {
       } else if (node.hasCert()) {
         const okMsg = document.createElement('div');
         okMsg.className = 'text-xs text-green-400 mb-2';
-        okMsg.textContent = 'Certificate unlocked';
+        okMsg.textContent = translate(
+          'common.dynamic.e190be9174',
+          'Certificate unlocked'
+        );
         certSection.appendChild(okMsg);
       }
     }
@@ -1096,7 +1203,14 @@ function showNodeSettings(node: BaseWorkflowNode) {
         await fileNode.addFiles(files);
         showNodeSettings(node);
       } catch (err) {
-        showAlert('Error', `Failed to load files: ${(err as Error).message}`);
+        console.error('[PdfWorkflow] File input failed:', err);
+        showAlert(
+          translate('alert.error', 'Error'),
+          translate(
+            'tools:pdfWorkflow.fileLoadFailed',
+            'Failed to load files. Please try again.'
+          )
+        );
       }
     });
 
@@ -1119,7 +1233,10 @@ function showNodeSettings(node: BaseWorkflowNode) {
   if (controlEntries.length === 0) {
     const empty = document.createElement('p');
     empty.className = 'text-xs text-gray-500';
-    empty.textContent = 'No configurable settings for this node.';
+    empty.textContent = translate(
+      'common.dynamic.5b84f0b598',
+      'No configurable settings for this node.'
+    );
     content.appendChild(empty);
     return;
   }
@@ -1348,7 +1465,10 @@ function showNodeSettings(node: BaseWorkflowNode) {
 
       const searchInput = document.createElement('input');
       searchInput.type = 'text';
-      searchInput.placeholder = 'Search languages...';
+      searchInput.placeholder = translate(
+        'common.dynamic.6e6cd59800',
+        'Search languages...'
+      );
       searchInput.className = inputClass;
       container.appendChild(searchInput);
 
@@ -1372,7 +1492,10 @@ function showNodeSettings(node: BaseWorkflowNode) {
           tag.textContent = opt.label;
           const removeBtn = document.createElement('button');
           removeBtn.type = 'button';
-          removeBtn.textContent = '\u00d7';
+          removeBtn.textContent = translate(
+            'common.dynamic.a759dd7bf6',
+            '\u00d7'
+          );
           removeBtn.className =
             'text-white/70 hover:text-white text-xs leading-none';
           removeBtn.addEventListener('click', () => {
@@ -1558,7 +1681,10 @@ function showNodeSettings(node: BaseWorkflowNode) {
     summary.className =
       'text-xs font-medium text-gray-400 cursor-pointer select-none flex items-center justify-between';
     const summaryText = document.createElement('span');
-    summaryText.textContent = 'Advanced Settings';
+    summaryText.textContent = translate(
+      'common.dynamic.b328ee239a',
+      'Advanced Settings'
+    );
     summary.appendChild(summaryText);
     const chevron = document.createElement('i');
     chevron.className =

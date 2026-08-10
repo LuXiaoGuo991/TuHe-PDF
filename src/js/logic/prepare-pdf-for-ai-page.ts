@@ -1,5 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
 import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import {
   downloadFile,
   readFileAsArrayBuffer,
@@ -52,7 +61,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const metaSpan = document.createElement('div');
         metaSpan.className = 'text-xs text-gray-400';
-        metaSpan.textContent = `${formatBytes(file.size)} • ${t('common.loadingPageCount')}`;
+        metaSpan.textContent = translate(
+          'tools:preparePdfForAi.dynamic.570fd297dc',
+          `${formatBytes(file.size)} • ${t('common.loadingPageCount')}`,
+          {
+            value0: formatBytes(file.size),
+            value1: t('common.loadingPageCount'),
+          }
+        );
 
         infoContainer.append(nameSpan, metaSpan);
 
@@ -71,10 +87,18 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
           const arrayBuffer = await readFileAsArrayBuffer(file);
           const pdfDoc = await getPDFDocument({ data: arrayBuffer }).promise;
-          metaSpan.textContent = `${formatBytes(file.size)} • ${pdfDoc.numPages} pages`;
+          metaSpan.textContent = translate(
+            'tools:preparePdfForAi.dynamic.a807df92a6',
+            `${formatBytes(file.size)} • ${pdfDoc.numPages} pages`,
+            { value0: formatBytes(file.size), value1: pdfDoc.numPages }
+          );
         } catch (error) {
           console.error('Error loading PDF:', error);
-          metaSpan.textContent = `${formatBytes(file.size)} • Could not load page count`;
+          metaSpan.textContent = translate(
+            'tools:preparePdfForAi.dynamic.e06864fb5a',
+            `${formatBytes(file.size)} • Could not load page count`,
+            { value0: formatBytes(file.size) }
+          );
         }
       }
 
@@ -99,16 +123,29 @@ document.addEventListener('DOMContentLoaded', () => {
   const extractForAI = async () => {
     try {
       if (state.files.length === 0) {
-        showAlert('No Files', 'Please select at least one PDF file.');
+        showAlert(
+          translate('alert.noFiles', 'No Files'),
+          translate(
+            'tools:preparePdfForAi.dynamic.c088c28b80',
+            'Please select at least one PDF file.'
+          )
+        );
         return;
       }
 
-      showLoader('Loading engine...');
+      showLoader(
+        translate(
+          'tools:preparePdfForAi.dynamic.af11d57398',
+          'Loading engine...'
+        )
+      );
       const pymupdf = await loadPyMuPDF();
 
       hideLoader();
       state.files = await batchDecryptIfNeeded(state.files);
-      showLoader('Extracting...');
+      showLoader(
+        translate('tools:preparePdfForAi.dynamic.10e7294ea2', 'Extracting...')
+      );
 
       const total = state.files.length;
       let completed = 0;
@@ -116,7 +153,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (total === 1) {
         const file = state.files[0];
-        showLoader(`Extracting ${file.name} for AI...`);
+        showLoader(
+          translate(
+            'tools:preparePdfForAi.dynamic.cd0eb912f2',
+            `Extracting ${file.name} for AI...`,
+            { value0: file.name }
+          )
+        );
 
         const llamaDocs = await (pymupdf as PyMuPDFInstance).pdfToLlamaIndex(
           file
@@ -130,8 +173,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         hideLoader();
         showAlert(
-          'Extraction Complete',
-          `Successfully extracted PDF for AI/LLM use.`,
+          translate(
+            'tools:preparePdfForAi.dynamic.68f4ee2e54',
+            'Extraction Complete'
+          ),
+          translate(
+            'tools:preparePdfForAi.dynamic.81666e637a',
+            `Successfully extracted PDF for AI/LLM use.`
+          ),
           'success',
           () => resetState()
         );
@@ -144,7 +193,11 @@ document.addEventListener('DOMContentLoaded', () => {
           try {
             const file = state.files[fi];
             showLoader(
-              `Extracting ${file.name} for AI (${completed + 1}/${total})...`
+              translate(
+                'tools:preparePdfForAi.dynamic.fdee42364e',
+                `Extracting ${file.name} for AI (${completed + 1}/${total})...`,
+                { value0: file.name, value1: completed + 1, value2: total }
+              )
             );
 
             const llamaDocs = await (
@@ -162,7 +215,12 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }
 
-        showLoader('Creating ZIP archive...');
+        showLoader(
+          translate(
+            'tools:preparePdfForAi.dynamic.0c98912c52',
+            'Creating ZIP archive...'
+          )
+        );
         const zipBlob = await zip.generateAsync({ type: 'blob' });
 
         downloadFile(zipBlob, 'pdf-for-ai.zip');
@@ -171,15 +229,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (failed === 0) {
           showAlert(
-            'Extraction Complete',
-            `Successfully extracted ${completed} PDF(s) for AI/LLM use.`,
+            translate(
+              'tools:preparePdfForAi.dynamic.68f4ee2e54',
+              'Extraction Complete'
+            ),
+            translate(
+              'tools:preparePdfForAi.dynamic.a1df979002',
+              `Successfully extracted ${completed} PDF(s) for AI/LLM use.`,
+              { value0: completed }
+            ),
             'success',
             () => resetState()
           );
         } else {
           showAlert(
-            'Extraction Partial',
-            `Extracted ${completed} PDF(s), failed ${failed}.`,
+            translate(
+              'tools:preparePdfForAi.dynamic.8a1f9370be',
+              'Extraction Partial'
+            ),
+            translate(
+              'tools:preparePdfForAi.dynamic.e38c16fa0d',
+              `Extracted ${completed} PDF(s), failed ${failed}.`,
+              { value0: completed, value1: failed }
+            ),
             'warning',
             () => resetState()
           );
@@ -188,8 +260,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (e: unknown) {
       hideLoader();
       showAlert(
-        'Error',
-        `An error occurred during extraction. Error: ${e instanceof Error ? e.message : String(e)}`
+        translate('alert.error', 'Error'),
+        translate('alert.processFailed', 'Processing failed. Please try again.')
       );
     }
   };

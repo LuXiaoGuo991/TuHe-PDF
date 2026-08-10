@@ -1,4 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { createIcons, icons } from 'lucide';
 import { PDFDocument as PDFLibDocument, degrees } from 'pdf-lib';
@@ -105,7 +115,11 @@ function createPageWrapper(
   const pageLabel = document.createElement('div');
   pageLabel.className =
     'absolute top-1 left-1 bg-black bg-opacity-60 text-white text-xs px-2 py-1 rounded';
-  pageLabel.textContent = `${pageNumber}`;
+  pageLabel.textContent = translate(
+    'tools:rotateCustom.dynamic.bbc1fbce78',
+    `${pageNumber}`,
+    { value0: pageNumber }
+  );
 
   container.appendChild(canvasWrapper);
   container.appendChild(pageLabel);
@@ -137,7 +151,10 @@ function createPageWrapper(
   const decrementBtn = document.createElement('button');
   decrementBtn.className =
     'w-8 h-8 flex items-center justify-center bg-gray-700 hover:bg-gray-600 text-white rounded border border-gray-600 text-sm';
-  decrementBtn.textContent = '-';
+  decrementBtn.textContent = translate(
+    'tools:rotateCustom.dynamic.03a27bd0ab',
+    '-'
+  );
   decrementBtn.onclick = function (e) {
     e.stopPropagation();
     const current = parseFloat(angleInput.value) || 0;
@@ -148,7 +165,10 @@ function createPageWrapper(
   const incrementBtn = document.createElement('button');
   incrementBtn.className =
     'w-8 h-8 flex items-center justify-center bg-gray-700 hover:bg-gray-600 text-white rounded border border-gray-600 text-sm';
-  incrementBtn.textContent = '+';
+  incrementBtn.textContent = translate(
+    'tools:rotateCustom.dynamic.fa49b7e42c',
+    '+'
+  );
   incrementBtn.onclick = function (e) {
     e.stopPropagation();
     const current = parseFloat(angleInput.value) || 0;
@@ -208,7 +228,11 @@ async function updateUI() {
 
     const metaSpan = document.createElement('div');
     metaSpan.className = 'text-xs text-gray-400';
-    metaSpan.textContent = `${formatBytes(pageState.file.size)} • Loading...`;
+    metaSpan.textContent = translate(
+      'tools:rotateCustom.dynamic.105a3c6f65',
+      `${formatBytes(pageState.file.size)} • Loading...`,
+      { value0: formatBytes(pageState.file.size) }
+    );
 
     infoContainer.append(nameSpan, metaSpan);
 
@@ -229,7 +253,7 @@ async function updateUI() {
         resetState();
         return;
       }
-      showLoader('Loading PDF...');
+      showLoader(translate('fileHandler.loadingPdf', 'Loading PDF...'));
 
       pageState.pdfDoc = await loadPdfDocument(result.bytes);
 
@@ -238,7 +262,11 @@ async function updateUI() {
       const pageCount = pageState.pdfDoc.getPageCount();
       pageState.rotations = new Array(pageCount).fill(0);
 
-      metaSpan.textContent = `${formatBytes(pageState.file.size)} • ${pageCount} pages`;
+      metaSpan.textContent = translate(
+        'tools:rotateCustom.dynamic.e23206ea31',
+        `${formatBytes(pageState.file.size)} • ${pageCount} pages`,
+        { value0: formatBytes(pageState.file.size), value1: pageCount }
+      );
 
       await renderThumbnails();
       hideLoader();
@@ -247,7 +275,13 @@ async function updateUI() {
     } catch (error) {
       console.error('Error loading PDF:', error);
       hideLoader();
-      showAlert('Error', 'Failed to load PDF file.');
+      showAlert(
+        translate('alert.error', 'Error'),
+        translate(
+          'tools:rotateCustom.dynamic.def23aea75',
+          'Failed to load PDF file.'
+        )
+      );
       resetState();
     }
   } else {
@@ -257,11 +291,19 @@ async function updateUI() {
 
 async function applyRotations() {
   if (!pageState.pdfDoc || !pageState.file) {
-    showAlert('Error', 'Please upload a PDF first.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:rotateCustom.dynamic.a1087d59d9',
+        'Please upload a PDF first.'
+      )
+    );
     return;
   }
 
-  showLoader('Applying rotations...');
+  showLoader(
+    translate('tools:rotateCustom.dynamic.95d19fd9c6', 'Applying rotations...')
+  );
 
   try {
     const pageCount = pageState.pdfDoc.getPageCount();
@@ -316,8 +358,11 @@ async function applyRotations() {
     );
 
     showAlert(
-      'Success',
-      'Rotations applied successfully!',
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:rotateCustom.dynamic.40d63a64d8',
+        'Rotations applied successfully!'
+      ),
       'success',
       function () {
         resetState();
@@ -325,7 +370,13 @@ async function applyRotations() {
     );
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'Could not apply rotations.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:rotateCustom.dynamic.92c058ad6e',
+        'Could not apply rotations.'
+      )
+    );
   } finally {
     hideLoader();
   }

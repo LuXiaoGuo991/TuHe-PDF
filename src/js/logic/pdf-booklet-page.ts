@@ -1,4 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { createIcons, icons } from 'lucide';
 import { PDFDocument as PDFLibDocument, degrees, PageSizes } from 'pdf-lib';
@@ -73,7 +83,11 @@ async function updateUI() {
 
     const metaSpan = document.createElement('div');
     metaSpan.className = 'text-xs text-gray-400';
-    metaSpan.textContent = `${formatBytes(pageState.file.size)} • Loading...`;
+    metaSpan.textContent = translate(
+      'tools:pdfBooklet.dynamic.4ceed58d26',
+      `${formatBytes(pageState.file.size)} • Loading...`,
+      { value0: formatBytes(pageState.file.size) }
+    );
 
     infoContainer.append(nameSpan, metaSpan);
 
@@ -94,7 +108,7 @@ async function updateUI() {
         resetState();
         return;
       }
-      showLoader('Loading PDF...');
+      showLoader(translate('fileHandler.loadingPdf', 'Loading PDF...'));
       pageState.file = result.file;
       pageState.pdfBytes = new Uint8Array(result.bytes);
       pageState.pdfjsDoc = result.pdf;
@@ -104,7 +118,11 @@ async function updateUI() {
       hideLoader();
 
       const pageCount = pageState.pdfDoc.getPageCount();
-      metaSpan.textContent = `${formatBytes(pageState.file.size)} • ${pageCount} pages`;
+      metaSpan.textContent = translate(
+        'tools:pdfBooklet.dynamic.efe8322c67',
+        `${formatBytes(pageState.file.size)} • ${pageCount} pages`,
+        { value0: formatBytes(pageState.file.size), value1: pageCount }
+      );
 
       if (toolOptions) toolOptions.classList.remove('hidden');
 
@@ -115,7 +133,13 @@ async function updateUI() {
     } catch (error) {
       console.error('Error loading PDF:', error);
       hideLoader();
-      showAlert('Error', 'Failed to load PDF file.');
+      showAlert(
+        translate('alert.error', 'Error'),
+        translate(
+          'tools:pdfBooklet.dynamic.a9ad50182d',
+          'Failed to load PDF file.'
+        )
+      );
       resetState();
     }
   } else {
@@ -173,7 +197,13 @@ function getSheetDimensions(isBookletMode: boolean): {
 
 async function generatePreview() {
   if (!pageState.pdfDoc || !pageState.pdfjsDoc) {
-    showAlert('Error', 'Please load a PDF first.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:pdfBooklet.dynamic.1a4b3ff662',
+        'Please load a PDF first.'
+      )
+    );
     return;
   }
 
@@ -422,11 +452,19 @@ function applyRotation(doc: PDFLibDocument, mode: string) {
 
 async function createBooklet() {
   if (!pageState.pdfBytes) {
-    showAlert('Error', 'Please load a PDF first.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:pdfBooklet.dynamic.1a4b3ff662',
+        'Please load a PDF first.'
+      )
+    );
     return;
   }
 
-  showLoader('Creating Booklet...');
+  showLoader(
+    translate('tools:pdfBooklet.dynamic.831fdc4675', 'Creating Booklet...')
+  );
 
   try {
     const sourceDoc = await loadPdfDocument(pageState.pdfBytes.slice());
@@ -530,8 +568,12 @@ async function createBooklet() {
     );
 
     showAlert(
-      'Success',
-      `Booklet created with ${numSheets} sheets!`,
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:pdfBooklet.dynamic.3ed8d885aa',
+        `Booklet created with ${numSheets} sheets!`,
+        { value0: numSheets }
+      ),
       'success',
       function () {
         resetState();
@@ -539,7 +581,13 @@ async function createBooklet() {
     );
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'An error occurred while creating the booklet.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:pdfBooklet.dynamic.ec899ed25c',
+        'An error occurred while creating the booklet.'
+      )
+    );
   } finally {
     hideLoader();
   }

@@ -1,3 +1,14 @@
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
+
 import { showLoader, hideLoader, showAlert } from '../ui.js';
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { state } from '../state.js';
@@ -89,8 +100,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const convert = async () => {
     if (state.files.length === 0) {
       showAlert(
-        'No Files',
-        `Please select at least one ${FILETYPE_NAME} file.`
+        translate('alert.noFiles', 'No Files'),
+        translate(
+          'tools:pagesToPdf.dynamic.6e2b64f357',
+          `Please select at least one ${FILETYPE_NAME} file.`,
+          { value0: FILETYPE_NAME }
+        )
       );
       return;
     }
@@ -98,14 +113,25 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const converter = getLibreOfficeConverter();
 
-      showLoader('Loading engine...');
+      showLoader(
+        translate('tools:pagesToPdf.dynamic.ef163b0d8e', 'Loading engine...')
+      );
       await converter.initialize((progress: LoadProgress) => {
-        showLoader(progress.message, progress.percent);
+        showLoader(
+          translate('loader.processing', 'Processing...'),
+          progress.percent
+        );
       });
 
       if (state.files.length === 1) {
         const file = state.files[0];
-        showLoader(`Converting ${file.name}...`);
+        showLoader(
+          translate(
+            'tools:pagesToPdf.dynamic.a8b3abcef2',
+            `Converting ${file.name}...`,
+            { value0: file.name }
+          )
+        );
         const pdfBlob = await converter.convertToPdf(file);
 
         const baseName = file.name.replace(/\.[^/.]+$/, '');
@@ -113,13 +139,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
         hideLoader();
         showAlert(
-          'Conversion Complete',
-          `Successfully converted ${file.name} to PDF.`,
+          translate(
+            'tools:pagesToPdf.dynamic.57e99a45b9',
+            'Conversion Complete'
+          ),
+          translate(
+            'tools:pagesToPdf.dynamic.00d97896d1',
+            `Successfully converted ${file.name} to PDF.`,
+            { value0: file.name }
+          ),
           'success',
           () => resetState()
         );
       } else {
-        showLoader('Converting multiple files...');
+        showLoader(
+          translate(
+            'tools:pagesToPdf.dynamic.804657211b',
+            'Converting multiple files...'
+          )
+        );
         const JSZip = (await import('jszip')).default;
         const zip = new JSZip();
         const usedNames = new Set<string>();
@@ -127,7 +165,11 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < state.files.length; i++) {
           const file = state.files[i];
           showLoader(
-            `Converting ${i + 1}/${state.files.length}: ${file.name}...`
+            translate(
+              'tools:pagesToPdf.dynamic.7e339a9f48',
+              `Converting ${i + 1}/${state.files.length}: ${file.name}...`,
+              { value0: i + 1, value1: state.files.length, value2: file.name }
+            )
           );
           const pdfBlob = await converter.convertToPdf(file);
 
@@ -144,8 +186,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         hideLoader();
         showAlert(
-          'Conversion Complete',
-          `Successfully converted ${state.files.length} files to PDF.`,
+          translate(
+            'tools:pagesToPdf.dynamic.57e99a45b9',
+            'Conversion Complete'
+          ),
+          translate(
+            'tools:pagesToPdf.dynamic.a6652ec16b',
+            `Successfully converted ${state.files.length} files to PDF.`,
+            { value0: state.files.length }
+          ),
           'success',
           () => resetState()
         );
@@ -154,8 +203,8 @@ document.addEventListener('DOMContentLoaded', () => {
       hideLoader();
       console.error(`[${FILETYPE_NAME}ToPDF] Error:`, e);
       showAlert(
-        'Error',
-        `An error occurred during conversion. Error: ${e instanceof Error ? e.message : String(e)}`
+        translate('alert.error', 'Error'),
+        translate('alert.processFailed', 'Processing failed. Please try again.')
       );
     }
   };

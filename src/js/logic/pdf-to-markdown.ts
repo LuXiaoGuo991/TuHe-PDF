@@ -1,3 +1,14 @@
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
+
 import { showLoader, hideLoader, showAlert } from '../ui.js';
 import {
   downloadFile,
@@ -7,7 +18,12 @@ import {
 import { state } from '../state.js';
 
 export async function pdfToMarkdown() {
-  showLoader('Converting to Markdown...');
+  showLoader(
+    translate(
+      'tools:pdfToMarkdown.dynamic.e98ede1f9b',
+      'Converting to Markdown...'
+    )
+  );
   try {
     const file = state.files[0];
     const arrayBuffer = await readFileAsArrayBuffer(file);
@@ -29,8 +45,11 @@ export async function pdfToMarkdown() {
   } catch (e) {
     console.error(e);
     showAlert(
-      'Conversion Error',
-      'Failed to convert PDF. It may be image-based or corrupted.'
+      translate('tools:pdfToMarkdown.dynamic.223165f5fd', 'Conversion Error'),
+      translate(
+        'tools:pdfToMarkdown.dynamic.9a68de9cfd',
+        'Failed to convert PDF. It may be image-based or corrupted.'
+      )
     );
   } finally {
     hideLoader();

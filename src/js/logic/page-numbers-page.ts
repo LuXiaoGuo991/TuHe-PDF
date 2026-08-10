@@ -1,4 +1,14 @@
 import { createIcons, icons } from 'lucide';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { showAlert, showLoader, hideLoader } from '../ui.js';
 import { downloadFile, hexToRgb, formatBytes } from '../utils/helpers.js';
 import { PDFDocument as PDFLibDocument } from 'pdf-lib';
@@ -81,14 +91,20 @@ function handleFileUpload(e: Event) {
 async function handleFiles(files: FileList) {
   const file = files[0];
   if (!file || file.type !== 'application/pdf') {
-    showAlert('Invalid File', 'Please upload a valid PDF file.');
+    showAlert(
+      translate('alert.invalidFile', 'Invalid File'),
+      translate(
+        'tools:pageNumbers.dynamic.26e6ad72a2',
+        'Please upload a valid PDF file.'
+      )
+    );
     return;
   }
 
   try {
     const result = await loadPdfWithPasswordPrompt(file);
     if (!result) return;
-    showLoader('Loading PDF...');
+    showLoader(translate('fileHandler.loadingPdf', 'Loading PDF...'));
 
     pageState.pdfDoc = await loadPdfDocument(result.bytes);
     pageState.file = result.file;
@@ -98,7 +114,13 @@ async function handleFiles(files: FileList) {
     document.getElementById('options-panel')?.classList.remove('hidden');
   } catch (error) {
     console.error(error);
-    showAlert('Error', 'Failed to load PDF file.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:pageNumbers.dynamic.1111bc148d',
+        'Failed to load PDF file.'
+      )
+    );
   } finally {
     hideLoader();
   }
@@ -122,7 +144,14 @@ function updateFileDisplay() {
 
   const metaSpan = document.createElement('div');
   metaSpan.className = 'text-xs text-gray-400';
-  metaSpan.textContent = `${formatBytes(pageState.file.size)} • ${pageState.pdfDoc.getPageCount()} pages`;
+  metaSpan.textContent = translate(
+    'tools:pageNumbers.dynamic.b20dee6fba',
+    `${formatBytes(pageState.file.size)} • ${pageState.pdfDoc.getPageCount()} pages`,
+    {
+      value0: formatBytes(pageState.file.size),
+      value1: pageState.pdfDoc.getPageCount(),
+    }
+  );
 
   infoContainer.append(nameSpan, metaSpan);
 
@@ -148,11 +177,19 @@ function resetState() {
 
 async function addPageNumbers() {
   if (!pageState.pdfDoc) {
-    showAlert('Error', 'Please upload a PDF file first.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:pageNumbers.dynamic.c1a36bf7c8',
+        'Please upload a PDF file first.'
+      )
+    );
     return;
   }
 
-  showLoader('Adding page numbers...');
+  showLoader(
+    translate('tools:pageNumbers.dynamic.2aae7ec78b', 'Adding page numbers...')
+  );
   try {
     const position = (document.getElementById('position') as HTMLSelectElement)
       .value as PageNumberPosition;
@@ -183,12 +220,26 @@ async function addPageNumbers() {
       }),
       pageState.file?.name || 'document.pdf'
     );
-    showAlert('Success', 'Page numbers added successfully!', 'success', () => {
-      resetState();
-    });
+    showAlert(
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:pageNumbers.dynamic.8616021b4d',
+        'Page numbers added successfully!'
+      ),
+      'success',
+      () => {
+        resetState();
+      }
+    );
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'Could not add page numbers.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:pageNumbers.dynamic.9f528540a0',
+        'Could not add page numbers.'
+      )
+    );
   } finally {
     hideLoader();
   }

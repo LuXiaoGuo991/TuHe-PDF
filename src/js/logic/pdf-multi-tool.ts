@@ -1,3 +1,12 @@
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
+
 import { createIcons, icons } from 'lucide';
 import { degrees, PDFDocument as PDFLibDocument, PDFPage } from 'pdf-lib';
 import * as pdfjsLib from 'pdfjs-dist';
@@ -514,7 +523,11 @@ async function loadPdfs(files: File[]) {
           console.log(`Repairing ${file.name}...`);
           const loadingText = document.getElementById('loading-text');
           if (loadingText)
-            loadingText.textContent = `Repairing ${file.name}...`;
+            loadingText.textContent = translate(
+              'tools:pdfMultiTool.dynamic.b05071e61a',
+              `Repairing ${file.name}...`,
+              { value0: file.name }
+            );
 
           const repairedData = await repairPdfFile(file);
           if (repairedData) {
@@ -595,7 +608,11 @@ async function loadPdfs(files: File[]) {
         console.error(`Failed to load PDF ${file.name}:`, e);
         showModal(
           t('multiTool.error'),
-          `${t('multiTool.failedToLoad')} ${file.name}.`,
+          translate(
+            'tools:pdfMultiTool.dynamic.81e221e4f3',
+            `${t('multiTool.failedToLoad')} ${file.name}.`,
+            { value0: t('multiTool.failedToLoad'), value1: file.name }
+          ),
           'error'
         );
       }
@@ -680,7 +697,11 @@ function createPageElement(
   // Page info
   const info = document.createElement('div');
   info.className = 'text-xs text-gray-400 text-center mb-2';
-  info.textContent = `${t('common.page')} ${index + 1}`;
+  info.textContent = translate(
+    'tools:pdfMultiTool.dynamic.258deea2b3',
+    `${t('common.page')} ${index + 1}`,
+    { value0: t('common.page'), value1: index + 1 }
+  );
 
   // Actions toolbar
   const actions = document.createElement('div');
@@ -1025,8 +1046,11 @@ async function handleInsertPdf(e: Event) {
   } catch (e) {
     console.error('Failed to insert PDF:', e);
     showModal(
-      'Error',
-      'Failed to insert PDF. The file may be corrupted.',
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:pdfMultiTool.dynamic.8a1a350b31',
+        'Failed to insert PDF. The file may be corrupted.'
+      ),
       'error'
     );
   }
@@ -1085,7 +1109,14 @@ function addBlankPage() {
 
 function bulkRotate(delta: number) {
   if (selectedPages.size === 0) {
-    showModal('No Selection', 'Please select pages to rotate.', 'info');
+    showModal(
+      translate('tools:pdfMultiTool.dynamic.fc8583604d', 'No Selection'),
+      translate(
+        'tools:pdfMultiTool.dynamic.27a85af05b',
+        'Please select pages to rotate.'
+      ),
+      'info'
+    );
     return;
   }
 
@@ -1117,7 +1148,14 @@ function bulkRotate(delta: number) {
 
 function bulkDelete() {
   if (selectedPages.size === 0) {
-    showModal('No Selection', 'Please select pages to delete.', 'info');
+    showModal(
+      translate('tools:pdfMultiTool.dynamic.fc8583604d', 'No Selection'),
+      translate(
+        'tools:pdfMultiTool.dynamic.e4fe6cdcca',
+        'Please select pages to delete.'
+      ),
+      'info'
+    );
     return;
   }
   const indices = Array.from(selectedPages).sort((a, b) => b - a);
@@ -1134,7 +1172,14 @@ function bulkDelete() {
 
 function bulkDuplicate() {
   if (selectedPages.size === 0) {
-    showModal('No Selection', 'Please select pages to duplicate.', 'info');
+    showModal(
+      translate('tools:pdfMultiTool.dynamic.fc8583604d', 'No Selection'),
+      translate(
+        'tools:pdfMultiTool.dynamic.30bdcf0382',
+        'Please select pages to duplicate.'
+      ),
+      'info'
+    );
     return;
   }
   const indices = Array.from(selectedPages).sort((a, b) => b - a);
@@ -1148,8 +1193,11 @@ function bulkDuplicate() {
 function bulkSplit() {
   if (selectedPages.size === 0) {
     showModal(
-      'No Selection',
-      'Please select pages to mark for splitting.',
+      translate('tools:pdfMultiTool.dynamic.fc8583604d', 'No Selection'),
+      translate(
+        'tools:pdfMultiTool.dynamic.be4757b79d',
+        'Please select pages to mark for splitting.'
+      ),
       'info'
     );
     return;
@@ -1167,7 +1215,14 @@ function bulkSplit() {
 
 async function downloadAll() {
   if (allPages.length === 0) {
-    showModal('No Pages', 'Please upload PDFs first.', 'info');
+    showModal(
+      translate('tools:pdfMultiTool.dynamic.81b6cfd8ca', 'No Pages'),
+      translate(
+        'tools:pdfMultiTool.dynamic.fd05d610d0',
+        'Please upload PDFs first.'
+      ),
+      'info'
+    );
     return;
   }
 
@@ -1277,13 +1332,24 @@ async function downloadSplitPdfs() {
     downloadFile(zipBlob, 'split-documents.zip');
 
     showModal(
-      'Success',
-      `Downloaded ${segments.length} PDF files in a ZIP archive.`,
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:pdfMultiTool.dynamic.0c4ed9311a',
+        `Downloaded ${segments.length} PDF files in a ZIP archive.`,
+        { value0: segments.length }
+      ),
       'success'
     );
   } catch (e) {
     console.error('Failed to create split PDFs:', e);
-    showModal('Error', 'Failed to create split PDFs.', 'error');
+    showModal(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:pdfMultiTool.dynamic.a39aa2fe0f',
+        'Failed to create split PDFs.'
+      ),
+      'error'
+    );
   } finally {
     hideLoading(); // Ensure loader is hidden if we used it (though showModal replaces it)
   }
@@ -1358,10 +1424,24 @@ async function downloadPagesAsPdf(indices: number[], filename: string) {
     });
 
     downloadFile(blob, filename);
-    showModal('Success', 'PDF downloaded successfully.', 'success');
+    showModal(
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:pdfMultiTool.dynamic.c217864925',
+        'PDF downloaded successfully.'
+      ),
+      'success'
+    );
   } catch (e) {
     console.error('Failed to create PDF:', e);
-    showModal('Error', 'Failed to create PDF.', 'error');
+    showModal(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:pdfMultiTool.dynamic.27b2039e92',
+        'Failed to create PDF.'
+      ),
+      'error'
+    );
   }
 }
 
@@ -1400,7 +1480,12 @@ function updatePageDisplay() {
       const info = card.querySelector(
         '.text-xs.text-gray-400.text-center.mb-2'
       );
-      if (info) info.textContent = `Page ${index + 1} `;
+      if (info)
+        info.textContent = translate(
+          'tools:pdfMultiTool.dynamic.1deb501f6b',
+          `Page ${index + 1} `,
+          { value0: index + 1 }
+        );
 
       // Update selection state
       const selectBtn = card.querySelector(
@@ -1508,7 +1593,11 @@ function updatePageNumbers() {
     // Update visible page number text
     const info = card.querySelector('.text-xs.text-gray-400.text-center.mb-2');
     if (info) {
-      info.textContent = `Page ${index + 1} `;
+      info.textContent = translate(
+        'tools:pdfMultiTool.dynamic.1deb501f6b',
+        `Page ${index + 1} `,
+        { value0: index + 1 }
+      );
     }
 
     // Re-attach event listeners for buttons

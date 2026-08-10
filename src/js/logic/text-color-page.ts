@@ -1,4 +1,14 @@
 import { createIcons, icons } from 'lucide';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { showAlert, showLoader, hideLoader } from '../ui.js';
 import {
   downloadFile,
@@ -68,13 +78,19 @@ function handleFileUpload(e: Event) {
 async function handleFiles(files: FileList) {
   const file = files[0];
   if (!file || file.type !== 'application/pdf') {
-    showAlert('Invalid File', 'Please upload a valid PDF file.');
+    showAlert(
+      translate('alert.invalidFile', 'Invalid File'),
+      translate(
+        'tools:changeTextColor.dynamic.0602b07098',
+        'Please upload a valid PDF file.'
+      )
+    );
     return;
   }
   try {
     const result = await loadPdfWithPasswordPrompt(file);
     if (!result) return;
-    showLoader('Loading PDF...');
+    showLoader(translate('fileHandler.loadingPdf', 'Loading PDF...'));
     result.pdf.destroy();
     pageState.pdfDoc = await loadPdfDocument(result.bytes);
     pageState.file = result.file;
@@ -82,7 +98,13 @@ async function handleFiles(files: FileList) {
     document.getElementById('options-panel')?.classList.remove('hidden');
   } catch (error) {
     console.error(error);
-    showAlert('Error', 'Failed to load PDF file.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:changeTextColor.dynamic.0e00f36bee',
+        'Failed to load PDF file.'
+      )
+    );
   } finally {
     hideLoader();
   }
@@ -102,7 +124,14 @@ function updateFileDisplay() {
   nameSpan.textContent = pageState.file.name;
   const metaSpan = document.createElement('div');
   metaSpan.className = 'text-xs text-gray-400';
-  metaSpan.textContent = `${formatBytes(pageState.file.size)} • ${pageState.pdfDoc.getPageCount()} pages`;
+  metaSpan.textContent = translate(
+    'tools:changeTextColor.dynamic.1b2ec4b858',
+    `${formatBytes(pageState.file.size)} • ${pageState.pdfDoc.getPageCount()} pages`,
+    {
+      value0: formatBytes(pageState.file.size),
+      value1: pageState.pdfDoc.getPageCount(),
+    }
+  );
   infoContainer.append(nameSpan, metaSpan);
   const removeBtn = document.createElement('button');
   removeBtn.className = 'ml-4 text-red-400 hover:text-red-300 flex-shrink-0';
@@ -125,7 +154,13 @@ function resetState() {
 
 async function changeTextColor() {
   if (!pageState.pdfDoc || !pageState.file) {
-    showAlert('Error', 'Please upload a PDF file first.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:changeTextColor.dynamic.8ad206dd8d',
+        'Please upload a PDF file first.'
+      )
+    );
     return;
   }
   const colorHex = (
@@ -133,7 +168,12 @@ async function changeTextColor() {
   ).value;
   const { r, g, b } = hexToRgb(colorHex);
   const darknessThreshold = 120;
-  showLoader('Changing text color...');
+  showLoader(
+    translate(
+      'tools:changeTextColor.dynamic.53e68d6a7d',
+      'Changing text color...'
+    )
+  );
   try {
     const newPdfDoc = await PDFLibDocument.create();
     const pdf = await getPDFDocument(
@@ -141,7 +181,13 @@ async function changeTextColor() {
     ).promise;
 
     for (let i = 1; i <= pdf.numPages; i++) {
-      showLoader(`Processing page ${i} of ${pdf.numPages}...`);
+      showLoader(
+        translate(
+          'tools:changeTextColor.dynamic.f5a92a1c7b',
+          `Processing page ${i} of ${pdf.numPages}...`,
+          { value0: i, value1: pdf.numPages }
+        )
+      );
       const page = await pdf.getPage(i);
       const viewport = page.getViewport({ scale: 2.0 });
       const canvas = document.createElement('canvas');
@@ -188,12 +234,26 @@ async function changeTextColor() {
       new Blob([new Uint8Array(newPdfBytes)], { type: 'application/pdf' }),
       pageState.file?.name || 'document.pdf'
     );
-    showAlert('Success', 'Text color changed successfully!', 'success', () => {
-      resetState();
-    });
+    showAlert(
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:changeTextColor.dynamic.cd18866f65',
+        'Text color changed successfully!'
+      ),
+      'success',
+      () => {
+        resetState();
+      }
+    );
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'Could not change text color.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:changeTextColor.dynamic.fca2960c93',
+        'Could not change text color.'
+      )
+    );
   } finally {
     hideLoader();
   }

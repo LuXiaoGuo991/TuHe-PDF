@@ -1,3 +1,14 @@
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
+
 import { showLoader, hideLoader, showAlert } from '../ui.js';
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { state } from '../state.js';
@@ -80,36 +91,61 @@ document.addEventListener('DOMContentLoaded', () => {
   const convert = async () => {
     if (state.files.length === 0) {
       showAlert(
-        'No Files',
-        `Please select at least one ${FILETYPE_NAME} file.`
+        translate('alert.noFiles', 'No Files'),
+        translate(
+          'tools:psdToPdf.dynamic.29f58a0131',
+          `Please select at least one ${FILETYPE_NAME} file.`,
+          { value0: FILETYPE_NAME }
+        )
       );
       return;
     }
     try {
-      showLoader('Loading engine...');
+      showLoader(
+        translate('tools:psdToPdf.dynamic.0a745921f6', 'Loading engine...')
+      );
       const mupdf = await ensurePyMuPDF();
 
       if (state.files.length === 1) {
         const file = state.files[0];
-        showLoader(`Converting ${file.name}...`);
+        showLoader(
+          translate(
+            'tools:psdToPdf.dynamic.c5e9e96303',
+            `Converting ${file.name}...`,
+            { value0: file.name }
+          )
+        );
         const pdfBlob = await mupdf.imageToPdf(file, { imageType: 'psd' });
         const baseName = file.name.replace(/\.[^/.]+$/, '');
         downloadFile(pdfBlob, `${baseName}.pdf`);
         hideLoader();
         showAlert(
-          'Conversion Complete',
-          `Successfully converted ${file.name} to PDF.`,
+          translate('tools:psdToPdf.dynamic.3205ff599a', 'Conversion Complete'),
+          translate(
+            'tools:psdToPdf.dynamic.ad9a65d45f',
+            `Successfully converted ${file.name} to PDF.`,
+            { value0: file.name }
+          ),
           'success',
           () => resetState()
         );
       } else {
-        showLoader('Converting multiple files...');
+        showLoader(
+          translate(
+            'tools:psdToPdf.dynamic.973c4e28c8',
+            'Converting multiple files...'
+          )
+        );
         const pdfBlob = await mupdf.imagesToPdf(state.files);
         downloadFile(pdfBlob, 'psd_to_pdf.pdf');
         hideLoader();
         showAlert(
-          'Conversion Complete',
-          `Successfully converted ${state.files.length} PSD files to a single PDF.`,
+          translate('tools:psdToPdf.dynamic.3205ff599a', 'Conversion Complete'),
+          translate(
+            'tools:psdToPdf.dynamic.84b1fe70ce',
+            `Successfully converted ${state.files.length} PSD files to a single PDF.`,
+            { value0: state.files.length }
+          ),
           'success',
           () => resetState()
         );
@@ -119,8 +155,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const message = err instanceof Error ? err.message : 'Unknown error';
       console.error(`[${FILETYPE_NAME}ToPDF] Error:`, err);
       showAlert(
-        'Error',
-        `An error occurred during conversion. Error: ${message}`
+        translate('alert.error', 'Error'),
+        translate(
+          'tools:psdToPdf.dynamic.e17dedd084',
+          `An error occurred during conversion. Error: ${message}`,
+          { value0: message }
+        )
       );
     }
   };

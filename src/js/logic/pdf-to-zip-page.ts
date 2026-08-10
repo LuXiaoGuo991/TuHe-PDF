@@ -1,4 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { createIcons, icons } from 'lucide';
 import JSZip from 'jszip';
@@ -77,11 +87,19 @@ function updateUI() {
 
 async function createZipArchive() {
   if (pageState.files.length === 0) {
-    showAlert('No Files', 'Please select PDF files to create a ZIP archive.');
+    showAlert(
+      translate('alert.noFiles', 'No Files'),
+      translate(
+        'tools:pdfsToZip.dynamic.a2a6eeec53',
+        'Please select PDF files to create a ZIP archive.'
+      )
+    );
     return;
   }
 
-  showLoader('Creating ZIP archive...');
+  showLoader(
+    translate('tools:pdfsToZip.dynamic.8b3c05ec36', 'Creating ZIP archive...')
+  );
 
   try {
     const zip = new JSZip();
@@ -89,20 +107,31 @@ async function createZipArchive() {
 
     for (let i = 0; i < pageState.files.length; i++) {
       const file = pageState.files[i];
-      showLoader(`Adding ${file.name} (${i + 1}/${pageState.files.length})...`);
+      showLoader(
+        translate(
+          'tools:pdfsToZip.dynamic.c0127af1aa',
+          `Adding ${file.name} (${i + 1}/${pageState.files.length})...`,
+          { value0: file.name, value1: i + 1, value2: pageState.files.length }
+        )
+      );
       const arrayBuffer = await file.arrayBuffer();
       const zipEntryName = deduplicateFileName(file.name, usedNames);
       zip.file(zipEntryName, arrayBuffer);
     }
 
-    showLoader('Generating ZIP file...');
+    showLoader(
+      translate('tools:pdfsToZip.dynamic.75da5af9dc', 'Generating ZIP file...')
+    );
     const zipBlob = await zip.generateAsync({ type: 'blob' });
 
     downloadFile(zipBlob, 'pdfs_archive.zip');
 
     showAlert(
-      'Success',
-      'ZIP archive created successfully!',
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:pdfsToZip.dynamic.28c5d104ac',
+        'ZIP archive created successfully!'
+      ),
       'success',
       function () {
         resetState();
@@ -110,7 +139,13 @@ async function createZipArchive() {
     );
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'Could not create ZIP archive.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:pdfsToZip.dynamic.98a757251e',
+        'Could not create ZIP archive.'
+      )
+    );
   } finally {
     hideLoader();
   }

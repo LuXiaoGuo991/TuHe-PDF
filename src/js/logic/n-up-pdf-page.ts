@@ -1,4 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { downloadFile, formatBytes, hexToRgb } from '../utils/helpers.js';
 import { createIcons, icons } from 'lucide';
 import { PDFDocument as PDFLibDocument, rgb, PageSizes } from 'pdf-lib';
@@ -51,7 +61,11 @@ async function updateUI() {
 
     const metaSpan = document.createElement('div');
     metaSpan.className = 'text-xs text-gray-400';
-    metaSpan.textContent = `${formatBytes(pageState.file.size)} • Loading...`;
+    metaSpan.textContent = translate(
+      'tools:nUpPdf.dynamic.a26647e4a0',
+      `${formatBytes(pageState.file.size)} • Loading...`,
+      { value0: formatBytes(pageState.file.size) }
+    );
 
     infoContainer.append(nameSpan, metaSpan);
 
@@ -72,20 +86,27 @@ async function updateUI() {
         resetState();
         return;
       }
-      showLoader('Loading PDF...');
+      showLoader(translate('fileHandler.loadingPdf', 'Loading PDF...'));
       result.pdf.destroy();
       pageState.file = result.file;
       pageState.pdfDoc = await loadPdfDocument(result.bytes);
       hideLoader();
 
       const pageCount = pageState.pdfDoc.getPageCount();
-      metaSpan.textContent = `${formatBytes(pageState.file.size)} • ${pageCount} pages`;
+      metaSpan.textContent = translate(
+        'tools:nUpPdf.dynamic.2190a71612',
+        `${formatBytes(pageState.file.size)} • ${pageCount} pages`,
+        { value0: formatBytes(pageState.file.size), value1: pageCount }
+      );
 
       if (toolOptions) toolOptions.classList.remove('hidden');
     } catch (error) {
       console.error('Error loading PDF:', error);
       hideLoader();
-      showAlert('Error', 'Failed to load PDF file.');
+      showAlert(
+        translate('alert.error', 'Error'),
+        translate('tools:nUpPdf.dynamic.b7290858ca', 'Failed to load PDF file.')
+      );
       resetState();
     }
   } else {
@@ -95,7 +116,10 @@ async function updateUI() {
 
 async function nUpTool() {
   if (!pageState.pdfDoc || !pageState.file) {
-    showAlert('Error', 'Please upload a PDF first.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate('tools:nUpPdf.dynamic.9707a627be', 'Please upload a PDF first.')
+    );
     return;
   }
 
@@ -117,7 +141,9 @@ async function nUpTool() {
     (document.getElementById('border-color') as HTMLInputElement).value
   );
 
-  showLoader('Creating N-Up PDF...');
+  showLoader(
+    translate('tools:nUpPdf.dynamic.de94d4ed8d', 'Creating N-Up PDF...')
+  );
 
   try {
     const sourceDoc = pageState.pdfDoc;
@@ -152,7 +178,13 @@ async function nUpTool() {
     const usableHeight = pageHeight - margin * 2;
 
     for (let i = 0; i < sourcePages.length; i += n) {
-      showLoader(`Processing sheet ${Math.floor(i / n) + 1}...`);
+      showLoader(
+        translate(
+          'tools:nUpPdf.dynamic.7eb9ff644c',
+          `Processing sheet ${Math.floor(i / n) + 1}...`,
+          { value0: Math.floor(i / n) + 1 }
+        )
+      );
       const chunk = sourcePages.slice(i, i + n);
       const outputPage = newDoc.addPage([pageWidth, pageHeight]);
 
@@ -206,8 +238,11 @@ async function nUpTool() {
     );
 
     showAlert(
-      'Success',
-      'N-Up PDF created successfully!',
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:nUpPdf.dynamic.e2d154b4b1',
+        'N-Up PDF created successfully!'
+      ),
       'success',
       function () {
         resetState();
@@ -215,7 +250,13 @@ async function nUpTool() {
     );
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'An error occurred while creating the N-Up PDF.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:nUpPdf.dynamic.7b9b581f7c',
+        'An error occurred while creating the N-Up PDF.'
+      )
+    );
   } finally {
     hideLoader();
   }

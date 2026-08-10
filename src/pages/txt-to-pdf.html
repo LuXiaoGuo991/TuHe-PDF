@@ -212,6 +212,7 @@
               rows="12"
               class="w-full bg-gray-900 border border-gray-600 text-gray-300 rounded-lg p-2.5 font-sans"
               placeholder="Start typing here..."
+              data-i18n-placeholder="tools:textToPdf.auto.c501f2d2c6"
             ></textarea>
           </div>
         </div>
@@ -229,10 +230,22 @@
               id="font-family"
               class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-2.5"
             >
-              <option value="helv" selected>Helvetica (Sans-serif)</option>
-              <option value="tiro">Tiro (Serif)</option>
-              <option value="cour">Courier (Monospace)</option>
-              <option value="times">Times (Serif)</option>
+              <option
+                value="helv"
+                selected
+                data-i18n="tools:textToPdf.auto.fa7dc604ca"
+              >
+                Helvetica (Sans-serif)
+              </option>
+              <option value="tiro" data-i18n="tools:textToPdf.auto.8b08d9a072">
+                Tiro (Serif)
+              </option>
+              <option value="cour" data-i18n="tools:textToPdf.auto.1e1e1f58c8">
+                Courier (Monospace)
+              </option>
+              <option value="times" data-i18n="tools:textToPdf.auto.732ccafb1a">
+                Times (Serif)
+              </option>
             </select>
           </div>
           <div>
@@ -311,10 +324,30 @@
                 <option value="C10">C10 (28 × 40 mm)</option>
               </optgroup>
               <optgroup label="North American">
-                <option value="Letter">Letter (8.5 × 11 in)</option>
-                <option value="Legal">Legal (8.5 × 14 in)</option>
-                <option value="Tabloid">Tabloid (11 × 17 in)</option>
-                <option value="Ledger">Ledger (17 × 11 in)</option>
+                <option
+                  value="Letter"
+                  data-i18n="tools:textToPdf.auto.759c558b3f"
+                >
+                  Letter (8.5 × 11 in)
+                </option>
+                <option
+                  value="Legal"
+                  data-i18n="tools:textToPdf.auto.3babc3a9d8"
+                >
+                  Legal (8.5 × 14 in)
+                </option>
+                <option
+                  value="Tabloid"
+                  data-i18n="tools:textToPdf.auto.16aff5ecd4"
+                >
+                  Tabloid (11 × 17 in)
+                </option>
+                <option
+                  value="Ledger"
+                  data-i18n="tools:textToPdf.auto.66b11520b9"
+                >
+                  Ledger (17 × 11 in)
+                </option>
                 <option value="11x17">11×17 (11 × 17 in)</option>
               </optgroup>
             </select>
@@ -401,7 +434,12 @@
             1
           </div>
           <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white mb-1">Upload File</h3>
+            <h3
+              class="text-lg font-semibold text-white mb-1"
+              data-i18n="howItWorks.step1Title"
+            >
+              Upload File
+            </h3>
             <p class="text-gray-400" data-i18n="howItWorks.step1">
               Click or drag and drop your file to begin
             </p>
@@ -414,7 +452,12 @@
             2
           </div>
           <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white mb-1">Process</h3>
+            <h3
+              class="text-lg font-semibold text-white mb-1"
+              data-i18n="howItWorks.step2Title"
+            >
+              Process
+            </h3>
             <p class="text-gray-400" data-i18n="howItWorks.step2">
               Click the process button to start
             </p>
@@ -427,7 +470,12 @@
             3
           </div>
           <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white mb-1">Download</h3>
+            <h3
+              class="text-lg font-semibold text-white mb-1"
+              data-i18n="howItWorks.step3Title"
+            >
+              Download
+            </h3>
             <p class="text-gray-400" data-i18n="howItWorks.step3">
               Save your processed file instantly
             </p>
@@ -449,36 +497,74 @@
           href="merge-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Merge Pdf</h3>
-          <p class="text-gray-400 text-sm">Free online merge pdf tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:textToPdf.auto.bb9dede377"
+          >
+            Merge Pdf
+          </h3>
+          <p class="text-gray-400 text-sm" data-i18n="tools:mergePdf.cardDesc">
+            Free online merge pdf tool
+          </p>
         </a>
         <a
           href="compress-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Compress Pdf</h3>
-          <p class="text-gray-400 text-sm">Free online compress pdf tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:textToPdf.auto.ae395b2670"
+          >
+            Compress Pdf
+          </h3>
+          <p
+            class="text-gray-400 text-sm"
+            data-i18n="tools:compressPdf.cardDesc"
+          >
+            Free online compress pdf tool
+          </p>
         </a>
         <a
           href="split-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Split Pdf</h3>
-          <p class="text-gray-400 text-sm">Free online split pdf tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:textToPdf.auto.0784d816a9"
+          >
+            Split Pdf
+          </h3>
+          <p class="text-gray-400 text-sm" data-i18n="tools:splitPdf.cardDesc">
+            Free online split pdf tool
+          </p>
         </a>
         <a
           href="edit-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Edit Pdf</h3>
-          <p class="text-gray-400 text-sm">Free online edit pdf tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:textToPdf.auto.0a193ffe0a"
+          >
+            Edit Pdf
+          </h3>
+          <p class="text-gray-400 text-sm" data-i18n="tools:pdfEditor.cardDesc">
+            Free online edit pdf tool
+          </p>
         </a>
         <a
           href="rotate-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Rotate Pdf</h3>
-          <p class="text-gray-400 text-sm">Free online rotate pdf tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:textToPdf.auto.ed40c6ff84"
+          >
+            Rotate Pdf
+          </h3>
+          <p class="text-gray-400 text-sm" data-i18n="tools:rotatePdf.cardDesc">
+            Free online rotate pdf tool
+          </p>
         </a>
       </div>
     </section>
@@ -499,7 +585,7 @@
             Is txt to pdf really free?
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400">
+          <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq1a">
             Yes! BentoPDF is 100% free with no hidden fees, no signup required,
             and unlimited file processing.
           </p>
@@ -511,7 +597,7 @@
             Are my files private and secure?
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400">
+          <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq2a">
             Absolutely! All processing happens in your browser. Your files never
             leave your device, ensuring complete privacy.
           </p>
@@ -523,7 +609,7 @@
             Is there a file size limit?
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400">
+          <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq3a">
             No! Process files of any size, as many times as you want, completely
             free.
           </p>

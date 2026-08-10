@@ -1,4 +1,14 @@
 import { AddAttachmentState } from '@/types';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { showLoader, hideLoader, showAlert } from '../ui.js';
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { createIcons, icons } from 'lucide';
@@ -71,8 +81,12 @@ worker.onmessage = function (e) {
     );
 
     showAlert(
-      'Success',
-      `${pageState.attachments.length} file(s) attached successfully.`,
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:addAttachments.dynamic.b699690e1e',
+        `${pageState.attachments.length} file(s) attached successfully.`,
+        { value0: pageState.attachments.length }
+      ),
       'success',
       function () {
         resetState();
@@ -80,14 +94,23 @@ worker.onmessage = function (e) {
     );
   } else if (data.status === 'error') {
     hideLoader();
-    showAlert('Error', data.message || 'Unknown error occurred.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate('alert.processFailed', 'Processing failed. Please try again.')
+    );
   }
 };
 
 worker.onerror = function (error) {
   hideLoader();
   console.error('Worker error:', error);
-  showAlert('Error', 'Worker error occurred. Check console for details.');
+  showAlert(
+    translate('alert.error', 'Error'),
+    translate(
+      'tools:addAttachments.dynamic.b76c5703b2',
+      'Worker error occurred. Check console for details.'
+    )
+  );
 };
 
 async function updateUI() {
@@ -112,7 +135,11 @@ async function updateUI() {
 
     const metaSpan = document.createElement('div');
     metaSpan.className = 'text-xs text-gray-400';
-    metaSpan.textContent = `${formatBytes(pageState.file.size)} • Loading...`;
+    metaSpan.textContent = translate(
+      'tools:addAttachments.dynamic.8413da039e',
+      `${formatBytes(pageState.file.size)} • Loading...`,
+      { value0: formatBytes(pageState.file.size) }
+    );
 
     infoContainer.append(nameSpan, metaSpan);
 
@@ -135,12 +162,16 @@ async function updateUI() {
       }
       result.pdf.destroy();
       pageState.file = result.file;
-      showLoader('Loading PDF...');
+      showLoader(translate('fileHandler.loadingPdf', 'Loading PDF...'));
 
       pageState.pdfDoc = await loadPdfDocument(result.bytes);
 
       const pageCount = pageState.pdfDoc.getPageCount();
-      metaSpan.textContent = `${formatBytes(pageState.file.size)} • ${pageCount} pages`;
+      metaSpan.textContent = translate(
+        'tools:addAttachments.dynamic.97300a736c',
+        `${formatBytes(pageState.file.size)} • ${pageCount} pages`,
+        { value0: formatBytes(pageState.file.size), value1: pageCount }
+      );
 
       const totalPagesSpan = document.getElementById('attachment-total-pages');
       if (totalPagesSpan) totalPagesSpan.textContent = pageCount.toString();
@@ -151,7 +182,13 @@ async function updateUI() {
     } catch (error) {
       console.error('Error loading PDF:', error);
       hideLoader();
-      showAlert('Error', 'Failed to load PDF file.');
+      showAlert(
+        translate('alert.error', 'Error'),
+        translate(
+          'tools:addAttachments.dynamic.5af4d6db9e',
+          'Failed to load PDF file.'
+        )
+      );
       resetState();
     }
   } else {
@@ -199,12 +236,24 @@ function updateAttachmentList() {
 
 async function addAttachments() {
   if (!pageState.file || !pageState.pdfDoc) {
-    showAlert('Error', 'Please upload a PDF first.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:addAttachments.dynamic.2a84f91d07',
+        'Please upload a PDF first.'
+      )
+    );
     return;
   }
 
   if (pageState.attachments.length === 0) {
-    showAlert('No Files', 'Please select at least one file to attach.');
+    showAlert(
+      translate('alert.noFiles', 'No Files'),
+      translate(
+        'tools:addAttachments.dynamic.9b8eee5d44',
+        'Please select at least one file to attach.'
+      )
+    );
     return;
   }
 
@@ -231,14 +280,22 @@ async function addAttachments() {
 
     if (!pageRange) {
       showAlert(
-        'Error',
-        'Please specify a page range for page-level attachments.'
+        translate('alert.error', 'Error'),
+        translate(
+          'tools:addAttachments.dynamic.17dfbec9d9',
+          'Please specify a page range for page-level attachments.'
+        )
       );
       return;
     }
   }
 
-  showLoader('Embedding files into PDF...');
+  showLoader(
+    translate(
+      'tools:addAttachments.dynamic.c42168707d',
+      'Embedding files into PDF...'
+    )
+  );
 
   try {
     const pdfBuffer = await pageState.file.arrayBuffer();
@@ -249,7 +306,15 @@ async function addAttachments() {
     for (let i = 0; i < pageState.attachments.length; i++) {
       const file = pageState.attachments[i];
       showLoader(
-        `Reading ${file.name} (${i + 1}/${pageState.attachments.length})...`
+        translate(
+          'tools:addAttachments.dynamic.086438607c',
+          `Reading ${file.name} (${i + 1}/${pageState.attachments.length})...`,
+          {
+            value0: file.name,
+            value1: i + 1,
+            value2: pageState.attachments.length,
+          }
+        )
       );
 
       const fileBuffer = await file.arrayBuffer();
@@ -257,7 +322,12 @@ async function addAttachments() {
       attachmentNames.push(file.name);
     }
 
-    showLoader('Attaching files to PDF...');
+    showLoader(
+      translate(
+        'tools:addAttachments.dynamic.f95aaa0707',
+        'Attaching files to PDF...'
+      )
+    );
 
     const message = {
       command: 'add-attachments',
@@ -275,8 +345,8 @@ async function addAttachments() {
     console.error('Error attaching files:', error);
     hideLoader();
     showAlert(
-      'Error',
-      `Failed to attach files: ${error instanceof Error ? error.message : 'Unknown error'}`
+      translate('alert.error', 'Error'),
+      translate('alert.processFailed', 'Processing failed. Please try again.')
     );
   }
 }

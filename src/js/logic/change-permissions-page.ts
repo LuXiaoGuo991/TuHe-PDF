@@ -1,4 +1,14 @@
 import { showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import {
   downloadFile,
   formatBytes,
@@ -98,7 +108,13 @@ function handleFileSelect(files: FileList | null) {
 
 async function changePermissions() {
   if (!pageState.file) {
-    showAlert('No File', 'Please upload a PDF file first.');
+    showAlert(
+      translate('tools:changePermissions.dynamic.a579977c69', 'No File'),
+      translate(
+        'tools:changePermissions.dynamic.d90ea623b2',
+        'Please upload a PDF file first.'
+      )
+    );
     return;
   }
 
@@ -114,8 +130,14 @@ async function changePermissions() {
 
   if (newUserPassword && !newOwnerPassword) {
     showAlert(
-      'Owner Password Required',
-      'An owner password is required when setting permissions'
+      translate(
+        'tools:changePermissions.dynamic.15c99d78f8',
+        'Owner Password Required'
+      ),
+      translate(
+        'tools:changePermissions.dynamic.ca3aae3930',
+        'An owner password is required when setting permissions'
+      )
     );
     return;
   }
@@ -129,16 +151,28 @@ async function changePermissions() {
 
   try {
     if (loaderModal) loaderModal.classList.remove('hidden');
-    if (loaderText) loaderText.textContent = 'Initializing...';
+    if (loaderText)
+      loaderText.textContent = translate(
+        'tools:changePermissions.dynamic.3ecc95c571',
+        'Initializing...'
+      );
 
     qpdf = await initializeQpdf();
 
-    if (loaderText) loaderText.textContent = 'Reading PDF...';
+    if (loaderText)
+      loaderText.textContent = translate(
+        'tools:changePermissions.dynamic.904ad87239',
+        'Reading PDF...'
+      );
     const fileBuffer = await readFileAsArrayBuffer(pageState.file);
     const uint8Array = new Uint8Array(fileBuffer as ArrayBuffer);
     qpdf.FS.writeFile(inputPath, uint8Array);
 
-    if (loaderText) loaderText.textContent = 'Processing PDF permissions...';
+    if (loaderText)
+      loaderText.textContent = translate(
+        'tools:changePermissions.dynamic.9b614938cd',
+        'Processing PDF permissions...'
+      );
 
     const args = [inputPath];
 
@@ -220,7 +254,11 @@ async function changePermissions() {
       });
     }
 
-    if (loaderText) loaderText.textContent = 'Preparing download...';
+    if (loaderText)
+      loaderText.textContent = translate(
+        'tools:changePermissions.dynamic.3bdcee134c',
+        'Preparing download...'
+      );
     const outputFile = qpdf.FS.readFile(outputPath, { encoding: 'binary' });
 
     if (!outputFile || outputFile.length === 0) {
@@ -240,9 +278,14 @@ async function changePermissions() {
         'PDF decrypted successfully! All encryption and restrictions removed.';
     }
 
-    showAlert('Success', successMessage, 'success', () => {
-      resetState();
-    });
+    showAlert(
+      translate('alert.success', 'Success'),
+      successMessage,
+      'success',
+      () => {
+        resetState();
+      }
+    );
   } catch (error: unknown) {
     console.error('Error during PDF permission change:', error);
     if (loaderModal) loaderModal.classList.add('hidden');
@@ -250,18 +293,41 @@ async function changePermissions() {
     const errorMessage = error instanceof Error ? error.message : '';
     if (errorMessage === 'INVALID_PASSWORD') {
       showAlert(
-        'Incorrect Password',
-        'The current password you entered is incorrect. Please try again.'
+        translate(
+          'tools:changePermissions.dynamic.ac687ab07d',
+          'Incorrect Password'
+        ),
+        translate(
+          'tools:changePermissions.dynamic.16dbd6faea',
+          'The current password you entered is incorrect. Please try again.'
+        )
       );
     } else if (errorMessage === 'PASSWORD_REQUIRED') {
       showAlert(
-        'Password Required',
-        'This PDF is password-protected. Please enter the current password to proceed.'
+        translate(
+          'tools:changePermissions.dynamic.bdfa229250',
+          'Password Required'
+        ),
+        translate(
+          'tools:changePermissions.dynamic.49601e3fe4',
+          'This PDF is password-protected. Please enter the current password to proceed.'
+        )
       );
     } else {
       showAlert(
-        'Processing Failed',
-        `An error occurred: ${errorMessage || 'The PDF might be corrupted or password protected.'}`
+        translate(
+          'tools:changePermissions.dynamic.58ff2bb05a',
+          'Processing Failed'
+        ),
+        translate(
+          'tools:changePermissions.dynamic.198736bd97',
+          `An error occurred: ${errorMessage || 'The PDF might be corrupted or password protected.'}`,
+          {
+            value0:
+              errorMessage ||
+              'The PDF might be corrupted or password protected.',
+          }
+        )
       );
     }
   } finally {

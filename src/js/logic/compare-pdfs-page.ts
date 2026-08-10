@@ -1,4 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.ts';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { loadPdfWithPasswordPrompt } from '../utils/password-prompt.js';
 import { icons, createIcons } from 'lucide';
 import * as pdfjsLib from 'pdfjs-dist';
@@ -266,11 +276,31 @@ function updateSummary() {
   if (panelLabel2) panelLabel2.textContent = documentNames.right;
 
   if (!comparison) {
-    if (addedCount) addedCount.textContent = '0';
-    if (removedCount) removedCount.textContent = '0';
-    if (modifiedCount) modifiedCount.textContent = '0';
-    if (movedCount) movedCount.textContent = '0';
-    if (styleChangedCount) styleChangedCount.textContent = '0';
+    if (addedCount)
+      addedCount.textContent = translate(
+        'tools:comparePdfs.dynamic.48db36bf56',
+        '0'
+      );
+    if (removedCount)
+      removedCount.textContent = translate(
+        'tools:comparePdfs.dynamic.48db36bf56',
+        '0'
+      );
+    if (modifiedCount)
+      modifiedCount.textContent = translate(
+        'tools:comparePdfs.dynamic.48db36bf56',
+        '0'
+      );
+    if (movedCount)
+      movedCount.textContent = translate(
+        'tools:comparePdfs.dynamic.48db36bf56',
+        '0'
+      );
+    if (styleChangedCount)
+      styleChangedCount.textContent = translate(
+        'tools:comparePdfs.dynamic.48db36bf56',
+        '0'
+      );
     updateCategoryPills(null);
     return;
   }
@@ -495,13 +525,23 @@ function syncComparePaneHeights() {
 async function buildPagePairs() {
   if (!pageState.pdfDoc1 || !pageState.pdfDoc2) return;
 
-  showLoader('Building page pairing model...', 0);
+  showLoader(
+    translate(
+      'tools:comparePdfs.dynamic.23dcc00f43',
+      'Building page pairing model...'
+    ),
+    0
+  );
 
   const leftSignatures = await extractDocumentSignatures(
     pageState.pdfDoc1,
     function (pageNumber, totalPages) {
       showLoader(
-        `Indexing PDF 1 page ${pageNumber} of ${totalPages}...`,
+        translate(
+          'tools:comparePdfs.dynamic.f0965742d4',
+          `Indexing PDF 1 page ${pageNumber} of ${totalPages}...`,
+          { value0: pageNumber, value1: totalPages }
+        ),
         (pageNumber / Math.max(totalPages * 2, 1)) * 100
       );
     }
@@ -510,7 +550,11 @@ async function buildPagePairs() {
     pageState.pdfDoc2,
     function (pageNumber, totalPages) {
       showLoader(
-        `Indexing PDF 2 page ${pageNumber} of ${totalPages}...`,
+        translate(
+          'tools:comparePdfs.dynamic.9e4f2ee2ef',
+          `Indexing PDF 2 page ${pageNumber} of ${totalPages}...`,
+          { value0: pageNumber, value1: totalPages }
+        ),
         50 + (pageNumber / Math.max(totalPages * 2, 1)) * 100
       );
     }
@@ -562,7 +606,11 @@ async function renderBothPages() {
   const gen = ++renderGeneration;
 
   showLoader(
-    `Loading comparison ${pageState.currentPage} of ${pageState.pagePairs.length}...`
+    translate(
+      'tools:comparePdfs.dynamic.f1300022a2',
+      `Loading comparison ${pageState.currentPage} of ${pageState.pagePairs.length}...`,
+      { value0: pageState.currentPage, value1: pageState.pagePairs.length }
+    )
   );
 
   const canvas1 = getElement<HTMLCanvasElement>(
@@ -714,7 +762,13 @@ async function handleFileInput(
 
   async function handleFile(file: File) {
     if (!file || file.type !== 'application/pdf') {
-      showAlert('Invalid File', 'Please select a valid PDF file.');
+      showAlert(
+        translate('alert.invalidFile', 'Invalid File'),
+        translate(
+          'tools:comparePdfs.dynamic.581b7fca90',
+          'Please select a valid PDF file.'
+        )
+      );
       return;
     }
 
@@ -748,7 +802,13 @@ async function handleFileInput(
       hideLoader();
       const result = await loadPdfWithPasswordPrompt(file);
       if (!result) return;
-      showLoader(`Loading ${result.file.name}...`);
+      showLoader(
+        translate(
+          'tools:comparePdfs.dynamic.5579495988',
+          `Loading ${result.file.name}...`,
+          { value0: result.file.name }
+        )
+      );
       pageState[docKey] = result.pdf;
       caches.pageModelCache.clear();
       caches.comparisonCache.clear();
@@ -768,8 +828,11 @@ async function handleFileInput(
       }
     } catch (e) {
       showAlert(
-        'Error',
-        'Could not load PDF. It may be corrupt or password-protected.'
+        translate('alert.error', 'Error'),
+        translate(
+          'tools:comparePdfs.dynamic.502938ceda',
+          'Could not load PDF. It may be corrupt or password-protected.'
+        )
       );
       console.error(e);
     } finally {
@@ -964,7 +1027,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function updateZoomDisplay() {
     if (zoomDisplay) {
-      zoomDisplay.textContent = `${Math.round(pageState.zoomLevel * 100)}%`;
+      zoomDisplay.textContent = translate(
+        'tools:comparePdfs.dynamic.580338dd56',
+        `${Math.round(pageState.zoomLevel * 100)}%`,
+        { value0: Math.round(pageState.zoomLevel * 100) }
+      );
     }
     if (zoomOutBtn) zoomOutBtn.disabled = pageState.zoomLevel <= ZOOM_MIN;
     if (zoomInBtn) zoomInBtn.disabled = pageState.zoomLevel >= ZOOM_MAX;
@@ -1162,7 +1229,12 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!mode || pageState.pagePairs.length === 0) return;
         exportDropdownMenu.classList.add('hidden');
         try {
-          showLoader('Preparing PDF export...');
+          showLoader(
+            translate(
+              'tools:comparePdfs.dynamic.085a187515',
+              'Preparing PDF export...'
+            )
+          );
           await exportComparePdf(
             mode,
             pageState.pdfDoc1,
@@ -1189,7 +1261,13 @@ document.addEventListener('DOMContentLoaded', function () {
           );
         } catch (e) {
           console.error('PDF export failed:', e);
-          showAlert('Export Error', 'Could not export comparison PDF.');
+          showAlert(
+            translate('tools:comparePdfs.dynamic.c7b2381edf', 'Export Error'),
+            translate(
+              'tools:comparePdfs.dynamic.90eba7afad',
+              'Could not export comparison PDF.'
+            )
+          );
         } finally {
           hideLoader();
         }

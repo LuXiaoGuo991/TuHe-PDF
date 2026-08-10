@@ -1,3 +1,12 @@
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
+
 import { createIcons, icons } from 'lucide';
 import { showAlert, showLoader, hideLoader } from '../ui.js';
 import {
@@ -285,7 +294,14 @@ async function updatePdfDisplay(): Promise<void> {
 
   const metaSpan = document.createElement('div');
   metaSpan.className = 'text-xs text-gray-400';
-  metaSpan.textContent = `${formatBytes(state.pdfFile.size)} • ${t('common.loadingPageCount')}`;
+  metaSpan.textContent = translate(
+    'tools:digitalSignPdf.dynamic.3775b9c3ce',
+    `${formatBytes(state.pdfFile.size)} • ${t('common.loadingPageCount')}`,
+    {
+      value0: formatBytes(state.pdfFile.size),
+      value1: t('common.loadingPageCount'),
+    }
+  );
 
   infoContainer.append(nameSpan, metaSpan);
 
@@ -317,7 +333,16 @@ async function updatePdfDisplay(): Promise<void> {
     state.pdfFile = result.file;
     state.pdfBytes = new Uint8Array(result.bytes);
     nameSpan.textContent = result.file.name;
-    metaSpan.textContent = `${formatBytes(result.file.size)} • ${t('tools:digitalSignPdf.pageCount', { count: result.pdf.numPages })}`;
+    metaSpan.textContent = translate(
+      'tools:digitalSignPdf.dynamic.3775b9c3ce',
+      `${formatBytes(result.file.size)} • ${t('tools:digitalSignPdf.pageCount', { count: result.pdf.numPages })}`,
+      {
+        value0: formatBytes(result.file.size),
+        value1: t('tools:digitalSignPdf.pageCount', {
+          count: result.pdf.numPages,
+        }),
+      }
+    );
     result.pdf.destroy();
   }
 }
@@ -602,7 +627,11 @@ function updateCertInfo(): void {
   }
   if (certValidity) {
     const formatDate = (date: Date) => date.toLocaleDateString();
-    certValidity.textContent = `${formatDate(info.validFrom)} - ${formatDate(info.validTo)}`;
+    certValidity.textContent = translate(
+      'tools:digitalSignPdf.dynamic.d265e37162',
+      `${formatDate(info.validFrom)} - ${formatDate(info.validTo)}`,
+      { value0: formatDate(info.validFrom), value1: formatDate(info.validTo) }
+    );
   }
 
   certInfo.classList.remove('hidden');

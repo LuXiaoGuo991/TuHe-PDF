@@ -1,4 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { state } from '../state.js';
 import { createIcons, icons } from 'lucide';
@@ -85,7 +95,13 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('[CSV2PDF] Number of files:', state.files.length);
 
       if (state.files.length === 0) {
-        showAlert('No Files', 'Please select at least one CSV file.');
+        showAlert(
+          translate('alert.noFiles', 'No Files'),
+          translate(
+            'tools:csvToPdf.dynamic.b3385b83d4',
+            'Please select at least one CSV file.'
+          )
+        );
         hideLoader();
         return;
       }
@@ -122,14 +138,23 @@ document.addEventListener('DOMContentLoaded', () => {
         hideLoader();
 
         showAlert(
-          'Conversion Complete',
-          `Successfully converted ${originalFile.name} to PDF.`,
+          translate('tools:csvToPdf.dynamic.fa39f272c6', 'Conversion Complete'),
+          translate(
+            'tools:csvToPdf.dynamic.f702b2d875',
+            `Successfully converted ${originalFile.name} to PDF.`,
+            { value0: originalFile.name }
+          ),
           'success',
           () => resetState()
         );
       } else {
         console.log('[CSV2PDF] Converting multiple files:', state.files.length);
-        showLoader('Preparing conversion...');
+        showLoader(
+          translate(
+            'tools:csvToPdf.dynamic.c7241436c3',
+            'Preparing conversion...'
+          )
+        );
         const JSZip = (await import('jszip')).default;
         const zip = new JSZip();
 
@@ -145,7 +170,15 @@ document.addEventListener('DOMContentLoaded', () => {
               const overallPercent =
                 (i / state.files.length) * 100 + percent / state.files.length;
               showLoader(
-                `Converting ${i + 1}/${state.files.length}: ${file.name}...`,
+                translate(
+                  'tools:csvToPdf.dynamic.0c0e61f0ae',
+                  `Converting ${i + 1}/${state.files.length}: ${file.name}...`,
+                  {
+                    value0: i + 1,
+                    value1: state.files.length,
+                    value2: file.name,
+                  }
+                ),
                 overallPercent
               );
             },
@@ -162,7 +195,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         console.log('[CSV2PDF] Generating ZIP file...');
-        showLoader('Creating ZIP archive...');
+        showLoader(
+          translate(
+            'tools:csvToPdf.dynamic.d6aa78370b',
+            'Creating ZIP archive...'
+          )
+        );
         const zipBlob = await zip.generateAsync({ type: 'blob' });
         console.log('[CSV2PDF] ZIP size:', zipBlob.size);
 
@@ -171,8 +209,12 @@ document.addEventListener('DOMContentLoaded', () => {
         hideLoader();
 
         showAlert(
-          'Conversion Complete',
-          `Successfully converted ${state.files.length} CSV file(s) to PDF.`,
+          translate('tools:csvToPdf.dynamic.fa39f272c6', 'Conversion Complete'),
+          translate(
+            'tools:csvToPdf.dynamic.a0e0d1ce53',
+            `Successfully converted ${state.files.length} CSV file(s) to PDF.`,
+            { value0: state.files.length }
+          ),
           'success',
           () => resetState()
         );
@@ -185,8 +227,8 @@ document.addEventListener('DOMContentLoaded', () => {
       );
       hideLoader();
       showAlert(
-        'Error',
-        `An error occurred during conversion. Error: ${e instanceof Error ? e.message : String(e)}`
+        translate('alert.error', 'Error'),
+        translate('alert.processFailed', 'Processing failed. Please try again.')
       );
     }
   };

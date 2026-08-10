@@ -1,6 +1,15 @@
 import { createIcons, icons } from 'lucide';
 import { showAlert, showLoader, hideLoader } from '../ui.js';
 import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import {
   readFileAsArrayBuffer,
   formatBytes,
@@ -114,7 +123,13 @@ async function handlePdfFile(file: File): Promise<void> {
     file.type !== 'application/pdf' &&
     !file.name.toLowerCase().endsWith('.pdf')
   ) {
-    showAlert('Invalid File', 'Please select a PDF file.');
+    showAlert(
+      translate('alert.invalidFile', 'Invalid File'),
+      translate(
+        'tools:timestampPdf.dynamic.a36f98a780',
+        'Please select a PDF file.'
+      )
+    );
     return;
   }
 
@@ -148,7 +163,11 @@ async function updatePdfDisplay(): Promise<void> {
 
   const metaSpan = document.createElement('div');
   metaSpan.className = 'text-xs text-gray-400';
-  metaSpan.textContent = `${formatBytes(state.pdfFile.size)} • Loading pages...`;
+  metaSpan.textContent = translate(
+    'tools:timestampPdf.dynamic.bdf9248f12',
+    `${formatBytes(state.pdfFile.size)} • Loading pages...`,
+    { value0: formatBytes(state.pdfFile.size) }
+  );
 
   infoContainer.append(nameSpan, metaSpan);
 
@@ -172,11 +191,19 @@ async function updatePdfDisplay(): Promise<void> {
       const pdfDoc = await getPDFDocument({
         data: state.pdfBytes.slice(),
       }).promise;
-      metaSpan.textContent = `${formatBytes(state.pdfFile.size)} • ${pdfDoc.numPages} pages`;
+      metaSpan.textContent = translate(
+        'tools:timestampPdf.dynamic.90c1cb027a',
+        `${formatBytes(state.pdfFile.size)} • ${pdfDoc.numPages} pages`,
+        { value0: formatBytes(state.pdfFile.size), value1: pdfDoc.numPages }
+      );
     }
   } catch (error) {
     console.error('Error loading PDF:', error);
-    metaSpan.textContent = `${formatBytes(state.pdfFile.size)}`;
+    metaSpan.textContent = translate(
+      'tools:timestampPdf.dynamic.15d57e864b',
+      `${formatBytes(state.pdfFile.size)}`,
+      { value0: formatBytes(state.pdfFile.size) }
+    );
   }
 }
 
@@ -210,14 +237,22 @@ function getTsaUrl(): string | null {
 
 async function processTimestamp(): Promise<void> {
   if (!state.pdfBytes || !state.pdfFile) {
-    showAlert('No File', 'Please upload a PDF file first.');
+    showAlert(
+      translate('tools:timestampPdf.dynamic.e237ddc696', 'No File'),
+      translate(
+        'tools:timestampPdf.dynamic.fab49a349d',
+        'Please upload a PDF file first.'
+      )
+    );
     return;
   }
 
   const tsaUrl = getTsaUrl();
   if (!tsaUrl) return;
 
-  showLoader('Applying timestamp...');
+  showLoader(
+    translate('tools:timestampPdf.dynamic.696cf328fe', 'Applying timestamp...')
+  );
 
   try {
     const timestampedBytes = await timestampPdf(state.pdfBytes, tsaUrl);
@@ -238,8 +273,12 @@ async function processTimestamp(): Promise<void> {
     console.error('Timestamp error:', error);
     const message = error instanceof Error ? error.message : 'Unknown error';
     showAlert(
-      'Timestamp Failed',
-      `Failed to timestamp PDF: ${message}\n\nPlease try a different TSA server or check your internet connection.`
+      translate('tools:timestampPdf.dynamic.04775422d6', 'Timestamp Failed'),
+      translate(
+        'tools:timestampPdf.dynamic.f75cc851aa',
+        `Failed to timestamp PDF: ${message}\n\nPlease try a different TSA server or check your internet connection.`,
+        { value0: message }
+      )
     );
   } finally {
     hideLoader();

@@ -177,6 +177,7 @@
               type="password"
               id="current-password"
               placeholder="Enter current password"
+              data-i18n-placeholder="tools:changePermissions.auto.149b393d2d"
               class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-2.5"
             />
           </div>
@@ -191,6 +192,7 @@
               type="password"
               id="new-user-password"
               placeholder="Password to open PDF"
+              data-i18n-placeholder="tools:changePermissions.auto.c7d03d6c95"
               class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-2.5"
             />
           </div>
@@ -206,18 +208,25 @@
               type="password"
               id="new-owner-password"
               placeholder="Password for permissions"
+              data-i18n-placeholder="tools:changePermissions.auto.35425172bd"
               required
               aria-required="true"
               class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-2.5"
             />
-            <p class="text-xs text-gray-500 mt-1">
+            <p
+              class="text-xs text-gray-500 mt-1"
+              data-i18n="tools:changePermissions.auto.02739e6de9"
+            >
               Required when setting permissions or a user password. Leave all
               fields empty to decrypt the PDF instead.
             </p>
           </div>
 
           <div class="p-4 bg-gray-900 rounded-lg border border-gray-700">
-            <h3 class="text-sm font-semibold text-white mb-3">
+            <h3
+              class="text-sm font-semibold text-white mb-3"
+              data-i18n="tools:changePermissions.auto.1b1a468304"
+            >
               Permissions (requires owner password)
             </h3>
             <div class="space-y-2">
@@ -228,7 +237,11 @@
                   checked
                   class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
                 />
-                <span class="text-sm text-gray-300">Allow Printing</span>
+                <span
+                  class="text-sm text-gray-300"
+                  data-i18n="tools:changePermissions.auto.81df9b370f"
+                  >Allow Printing</span
+                >
               </label>
               <label class="flex items-center gap-2 cursor-pointer">
                 <input
@@ -237,7 +250,11 @@
                   checked
                   class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
                 />
-                <span class="text-sm text-gray-300">Allow Copying Text</span>
+                <span
+                  class="text-sm text-gray-300"
+                  data-i18n="tools:changePermissions.auto.0f2e2fc819"
+                  >Allow Copying Text</span
+                >
               </label>
               <label class="flex items-center gap-2 cursor-pointer">
                 <input
@@ -246,7 +263,11 @@
                   checked
                   class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
                 />
-                <span class="text-sm text-gray-300">Allow Modifying</span>
+                <span
+                  class="text-sm text-gray-300"
+                  data-i18n="tools:changePermissions.auto.49da39ae9e"
+                  >Allow Modifying</span
+                >
               </label>
               <label class="flex items-center gap-2 cursor-pointer">
                 <input
@@ -255,7 +276,11 @@
                   checked
                   class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
                 />
-                <span class="text-sm text-gray-300">Allow Annotating</span>
+                <span
+                  class="text-sm text-gray-300"
+                  data-i18n="tools:changePermissions.auto.40ff5e3c8a"
+                  >Allow Annotating</span
+                >
               </label>
               <label class="flex items-center gap-2 cursor-pointer">
                 <input
@@ -264,7 +289,11 @@
                   checked
                   class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
                 />
-                <span class="text-sm text-gray-300">Allow Filling Forms</span>
+                <span
+                  class="text-sm text-gray-300"
+                  data-i18n="tools:changePermissions.auto.80bd3e27ec"
+                  >Allow Filling Forms</span
+                >
               </label>
               <label class="flex items-center gap-2 cursor-pointer">
                 <input
@@ -284,12 +313,20 @@
                   checked
                   class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
                 />
-                <span class="text-sm text-gray-300">Allow Page Extraction</span>
+                <span
+                  class="text-sm text-gray-300"
+                  data-i18n="tools:changePermissions.auto.3c857ede4f"
+                  >Allow Page Extraction</span
+                >
               </label>
             </div>
           </div>
 
-          <button id="process-btn" class="btn-gradient w-full">
+          <button
+            id="process-btn"
+            class="btn-gradient w-full"
+            data-i18n="tools:changePermissions.name"
+          >
             Change Permissions
           </button>
         </div>
@@ -336,6 +373,7 @@
         <button
           id="alert-ok"
           class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
+          data-i18n="alert.ok"
         >
           OK
         </button>
@@ -358,7 +396,12 @@
             1
           </div>
           <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white mb-1">Upload File</h3>
+            <h3
+              class="text-lg font-semibold text-white mb-1"
+              data-i18n="howItWorks.step1Title"
+            >
+              Upload File
+            </h3>
             <p class="text-gray-400" data-i18n="howItWorks.step1">
               Click or drag and drop your file to begin
             </p>
@@ -371,7 +414,12 @@
             2
           </div>
           <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white mb-1">Process</h3>
+            <h3
+              class="text-lg font-semibold text-white mb-1"
+              data-i18n="howItWorks.step2Title"
+            >
+              Process
+            </h3>
             <p class="text-gray-400" data-i18n="howItWorks.step2">
               Click the process button to start
             </p>
@@ -384,7 +432,12 @@
             3
           </div>
           <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white mb-1">Download</h3>
+            <h3
+              class="text-lg font-semibold text-white mb-1"
+              data-i18n="howItWorks.step3Title"
+            >
+              Download
+            </h3>
             <p class="text-gray-400" data-i18n="howItWorks.step3">
               Save your processed file instantly
             </p>
@@ -406,36 +459,74 @@
           href="merge-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Merge Pdf</h3>
-          <p class="text-gray-400 text-sm">Free online merge pdf tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:changePermissions.auto.bb9dede377"
+          >
+            Merge Pdf
+          </h3>
+          <p class="text-gray-400 text-sm" data-i18n="tools:mergePdf.cardDesc">
+            Free online merge pdf tool
+          </p>
         </a>
         <a
           href="compress-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Compress Pdf</h3>
-          <p class="text-gray-400 text-sm">Free online compress pdf tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:changePermissions.auto.ae395b2670"
+          >
+            Compress Pdf
+          </h3>
+          <p
+            class="text-gray-400 text-sm"
+            data-i18n="tools:compressPdf.cardDesc"
+          >
+            Free online compress pdf tool
+          </p>
         </a>
         <a
           href="split-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Split Pdf</h3>
-          <p class="text-gray-400 text-sm">Free online split pdf tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:changePermissions.auto.0784d816a9"
+          >
+            Split Pdf
+          </h3>
+          <p class="text-gray-400 text-sm" data-i18n="tools:splitPdf.cardDesc">
+            Free online split pdf tool
+          </p>
         </a>
         <a
           href="edit-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Edit Pdf</h3>
-          <p class="text-gray-400 text-sm">Free online edit pdf tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:changePermissions.auto.0a193ffe0a"
+          >
+            Edit Pdf
+          </h3>
+          <p class="text-gray-400 text-sm" data-i18n="tools:pdfEditor.cardDesc">
+            Free online edit pdf tool
+          </p>
         </a>
         <a
           href="rotate-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Rotate Pdf</h3>
-          <p class="text-gray-400 text-sm">Free online rotate pdf tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:changePermissions.auto.ed40c6ff84"
+          >
+            Rotate Pdf
+          </h3>
+          <p class="text-gray-400 text-sm" data-i18n="tools:rotatePdf.cardDesc">
+            Free online rotate pdf tool
+          </p>
         </a>
       </div>
     </section>
@@ -456,7 +547,7 @@
             Is change permissions really free?
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400">
+          <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq1a">
             Yes! BentoPDF is 100% free with no hidden fees, no signup required,
             and unlimited file processing.
           </p>
@@ -468,7 +559,7 @@
             Are my files private and secure?
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400">
+          <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq2a">
             Absolutely! All processing happens in your browser. Your files never
             leave your device, ensuring complete privacy.
           </p>
@@ -480,7 +571,7 @@
             Is there a file size limit?
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400">
+          <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq3a">
             No! Process files of any size, as many times as you want, completely
             free.
           </p>

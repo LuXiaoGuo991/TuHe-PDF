@@ -11,6 +11,15 @@ import { applyScannerEffect } from '../utils/image-effects.js';
 import * as pdfjsLib from 'pdfjs-dist';
 import type { ScanSettings } from '../types/scanner-effect-type.js';
 import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { loadPdfWithPasswordPrompt } from '../utils/password-prompt.js';
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
@@ -131,7 +140,11 @@ const updateUI = () => {
 
       const metaSpan = document.createElement('div');
       metaSpan.className = 'text-xs text-gray-400';
-      metaSpan.textContent = `${formatBytes(file.size)} • ${t('common.loadingPageCount')}`;
+      metaSpan.textContent = translate(
+        'tools:scannerEffect.dynamic.7e69040d7a',
+        `${formatBytes(file.size)} • ${t('common.loadingPageCount')}`,
+        { value0: formatBytes(file.size), value1: t('common.loadingPageCount') }
+      );
 
       infoContainer.append(nameSpan, metaSpan);
 
@@ -154,7 +167,15 @@ const updateUI = () => {
           return getPDFDocument(buffer).promise;
         })
         .then((pdf: pdfjsLib.PDFDocumentProxy) => {
-          metaSpan.textContent = `${formatBytes(file.size)} • ${pdf.numPages} ${pdf.numPages !== 1 ? t('common.pages') : t('common.page')}`;
+          metaSpan.textContent = translate(
+            'tools:scannerEffect.dynamic.758bbe8260',
+            `${formatBytes(file.size)} • ${pdf.numPages} ${pdf.numPages !== 1 ? t('common.pages') : t('common.page')}`,
+            {
+              value0: formatBytes(file.size),
+              value1: pdf.numPages,
+              value2: pdf.numPages !== 1 ? t('common.pages') : t('common.page'),
+            }
+          );
         })
         .catch(() => {
           metaSpan.textContent = formatBytes(file.size);
@@ -178,11 +199,22 @@ const resetState = () => {
 
 async function processAllPages(): Promise<void> {
   if (files.length === 0) {
-    showAlert('No File', 'Please upload a PDF file first.');
+    showAlert(
+      translate('tools:scannerEffect.dynamic.7bf2857a6a', 'No File'),
+      translate(
+        'tools:scannerEffect.dynamic.774b763d99',
+        'Please upload a PDF file first.'
+      )
+    );
     return;
   }
 
-  showLoader('Applying scanner effect...');
+  showLoader(
+    translate(
+      'tools:scannerEffect.dynamic.f3013a6f9a',
+      'Applying scanner effect...'
+    )
+  );
 
   try {
     const settings = getSettings();
@@ -192,7 +224,13 @@ async function processAllPages(): Promise<void> {
     const dpiScale = settings.resolution / 72;
 
     for (let i = 1; i <= doc.numPages; i++) {
-      showLoader(`Processing page ${i} of ${doc.numPages}...`);
+      showLoader(
+        translate(
+          'tools:scannerEffect.dynamic.260ba5b09a',
+          `Processing page ${i} of ${doc.numPages}...`,
+          { value0: i, value1: doc.numPages }
+        )
+      );
 
       const page = await doc.getPage(i);
       const viewport = page.getViewport({ scale: dpiScale });
@@ -260,8 +298,11 @@ async function processAllPages(): Promise<void> {
       files[0]?.name || 'document.pdf'
     );
     showAlert(
-      'Success',
-      'Scanner effect applied successfully!',
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:scannerEffect.dynamic.3b82b6cde5',
+        'Scanner effect applied successfully!'
+      ),
       'success',
       () => {
         resetState();
@@ -270,8 +311,11 @@ async function processAllPages(): Promise<void> {
   } catch (e) {
     console.error(e);
     showAlert(
-      'Error',
-      'Failed to apply scanner effect. The file might be corrupted.'
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:scannerEffect.dynamic.9e7466ea5e',
+        'Failed to apply scanner effect. The file might be corrupted.'
+      )
     );
   } finally {
     hideLoader();
@@ -399,21 +443,38 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     if (validFiles.length === 0) {
-      showAlert('Invalid File', 'Please upload a PDF file.');
+      showAlert(
+        translate('alert.invalidFile', 'Invalid File'),
+        translate(
+          'tools:scannerEffect.dynamic.41ae43a300',
+          'Please upload a PDF file.'
+        )
+      );
       return;
     }
 
     try {
       const result = await loadPdfWithPasswordPrompt(validFiles[0]);
       if (!result) return;
-      showLoader('Loading preview...');
+      showLoader(
+        translate(
+          'tools:scannerEffect.dynamic.97d54a425f',
+          'Loading preview...'
+        )
+      );
       files = [result.file];
       updateUI();
       pdfjsDoc = result.pdf;
       await renderPreview();
     } catch (e) {
       console.error(e);
-      showAlert('Error', 'Failed to load PDF for preview.');
+      showAlert(
+        translate('alert.error', 'Error'),
+        translate(
+          'tools:scannerEffect.dynamic.a539e67250',
+          'Failed to load PDF for preview.'
+        )
+      );
     } finally {
       hideLoader();
     }

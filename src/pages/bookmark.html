@@ -250,7 +250,11 @@
       >
         <div class="max-w-7xl mx-auto px-4 py-3">
           <div class="flex items-center justify-between flex-wrap gap-2">
-            <h1 class="text-xl font-bold text-white" id="filename-display">
+            <h1
+              class="text-xl font-bold text-white"
+              id="filename-display"
+              data-i18n="tools:editBookmarks.auto.8d1095d2b2"
+            >
               PDF Bookmark Editor
             </h1>
             <div class="flex gap-2 flex-wrap">
@@ -297,12 +301,14 @@
           <button
             id="show-viewer-btn"
             class="flex-1 py-3 text-sm font-medium bg-indigo-600 text-white"
+            data-i18n="tools:editBookmarks.auto.70941407a3"
           >
             PDF Viewer
           </button>
           <button
             id="show-bookmarks-btn"
             class="flex-1 py-3 text-sm font-medium text-gray-300 hover:text-white"
+            data-i18n="tools:editBookmarks.auto.ca3cddd25b"
           >
             Bookmarks
           </button>
@@ -361,6 +367,7 @@
                     id="zoom-out-btn"
                     class="px-3 py-2 bg-gray-100 hover:bg-gray-200 rounded text-sm"
                     title="Zoom Out"
+                    data-i18n-title="tools:editBookmarks.auto.87af1da361"
                   >
                     <i data-lucide="minus" class="w-5 h-5 text-blue-600"></i>
                   </button>
@@ -373,6 +380,7 @@
                     id="zoom-in-btn"
                     class="px-3 py-2 bg-gray-100 hover:bg-gray-200 rounded text-sm"
                     title="Zoom In"
+                    data-i18n-title="tools:editBookmarks.auto.e59ac86a75"
                   >
                     <i data-lucide="plus" class="w-5 h-5 text-blue-600"></i>
                   </button>
@@ -380,6 +388,8 @@
                     id="zoom-fit-btn"
                     class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded text-sm"
                     title="Fit to Width"
+                    data-i18n-title="tools:editBookmarks.fitToWidth"
+                    data-i18n="tools:editBookmarks.auto.dab564d809"
                   >
                     Fit
                   </button>
@@ -403,6 +413,7 @@
                   <button
                     id="cancel-picking-btn"
                     class="px-3 py-1 bg-red-500 hover:bg-red-600 text-white rounded text-xs"
+                    data-i18n="warning.cancel"
                   >
                     Cancel
                   </button>
@@ -428,7 +439,12 @@
             class="hidden lg:block w-full lg:w-[50%] flex-shrink-0"
           >
             <div class="bg-white rounded-lg shadow-lg p-4">
-              <h3 class="text-lg font-bold text-gray-800 mb-4">Bookmarks</h3>
+              <h3
+                class="text-lg font-bold text-gray-800 mb-4"
+                data-i18n="tools:editBookmarks.auto.ca3cddd25b"
+              >
+                Bookmarks
+              </h3>
 
               <div class="mb-4">
                 <div class="relative">
@@ -440,6 +456,7 @@
                     type="text"
                     id="search-bookmarks"
                     placeholder="Search bookmarks..."
+                    data-i18n-placeholder="tools:editBookmarks.auto.388a768157"
                     class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-700"
                   />
                 </div>
@@ -450,6 +467,7 @@
                   type="text"
                   id="bookmark-title"
                   placeholder="Bookmark title..."
+                  data-i18n-placeholder="tools:editBookmarks.auto.ae909813a0"
                   class="w-full px-3 py-2 border border-gray-300 rounded-lg mb-2 text-sm text-gray-700"
                 />
                 <button
@@ -507,24 +525,81 @@
                       id="batch-color-select"
                       class="text-xs p-2 border rounded"
                     >
-                      <option value="">Set Color...</option>
-                      <option value="null">None</option>
-                      <option value="red">Red</option>
-                      <option value="blue">Blue</option>
-                      <option value="green">Green</option>
-                      <option value="yellow">Yellow</option>
-                      <option value="purple">Purple</option>
+                      <option
+                        value=""
+                        data-i18n="tools:editBookmarks.auto.c1481b1490"
+                      >
+                        Set Color...
+                      </option>
+                      <option value="null" data-i18n="tools:ocrPdf.none">
+                        None
+                      </option>
+                      <option
+                        value="red"
+                        data-i18n="tools:editBookmarks.auto.cc9db3a795"
+                      >
+                        Red
+                      </option>
+                      <option
+                        value="blue"
+                        data-i18n="tools:editBookmarks.auto.7d44bc449c"
+                      >
+                        Blue
+                      </option>
+                      <option
+                        value="green"
+                        data-i18n="tools:editBookmarks.auto.933bf21afd"
+                      >
+                        Green
+                      </option>
+                      <option
+                        value="yellow"
+                        data-i18n="tools:editBookmarks.auto.3526f607bc"
+                      >
+                        Yellow
+                      </option>
+                      <option
+                        value="purple"
+                        data-i18n="tools:editBookmarks.auto.32576f4fed"
+                      >
+                        Purple
+                      </option>
                     </select>
 
                     <select
                       id="batch-style-select"
                       class="text-xs p-2 border rounded"
                     >
-                      <option value="">Set Style...</option>
-                      <option value="null">Normal</option>
-                      <option value="bold">Bold</option>
-                      <option value="italic">Italic</option>
-                      <option value="bold-italic">Bold & Italic</option>
+                      <option
+                        value=""
+                        data-i18n="tools:editBookmarks.auto.0b3eb86bd7"
+                      >
+                        Set Style...
+                      </option>
+                      <option
+                        value="null"
+                        data-i18n="tools:editBookmarks.auto.45e118d056"
+                      >
+                        Normal
+                      </option>
+                      <option
+                        value="bold"
+                        data-i18n="tools:editBookmarks.auto.19e07430ee"
+                      >
+                        Bold
+                      </option>
+                      <option
+                        value="italic"
+                        data-i18n="tools:editBookmarks.auto.1616e2e540"
+                      >
+                        Italic
+                      </option>
+                      <option
+                        value="bold-italic"
+                        data-i18n="tools:editBookmarks.auto.61f6c81dbc"
+                      >
+                        Bold & Italic
+                      </option>
                     </select>
 
                     <button
@@ -630,12 +705,14 @@
                 <button
                   id="download-btn"
                   class="w-full px-4 py-2 btn-gradient hover:shadow-xl text-white rounded font-medium !flex items-center justify-center gap-2 focus:ring-2 focus:ring-blue-400 transition duration-200"
+                  data-i18n="tools:editBookmarks.auto.5f197f4813"
                 >
                   Save PDF with Bookmarks
                 </button>
                 <button
                   id="extract-existing-btn"
                   class="w-full px-4 py-2 bg-gray-50 text-gray-800 border border-gray-200 rounded-xl font-medium flex items-center justify-center gap-2 shadow-sm hover:shadow-md transition duration-200"
+                  data-i18n="tools:editBookmarks.auto.800c985bb1"
                 >
                   Extract Existing Bookmarks
                 </button>
@@ -658,7 +735,11 @@
         class="bg-gray-800 p-8 rounded-lg flex flex-col items-center gap-4 border border-gray-700 shadow-xl"
       >
         <div class="solid-spinner"></div>
-        <p id="loader-text" class="text-white text-lg font-medium">
+        <p
+          id="loader-text"
+          class="text-white text-lg font-medium"
+          data-i18n="tools:addPageLabels.loadingPdf"
+        >
           Loading PDF...
         </p>
       </div>
@@ -745,36 +826,74 @@
           href="merge-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Merge Pdf</h3>
-          <p class="text-gray-400 text-sm">Free online merge pdf tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:editBookmarks.auto.bb9dede377"
+          >
+            Merge Pdf
+          </h3>
+          <p class="text-gray-400 text-sm" data-i18n="tools:mergePdf.cardDesc">
+            Free online merge pdf tool
+          </p>
         </a>
         <a
           href="compress-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Compress Pdf</h3>
-          <p class="text-gray-400 text-sm">Free online compress pdf tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:editBookmarks.auto.ae395b2670"
+          >
+            Compress Pdf
+          </h3>
+          <p
+            class="text-gray-400 text-sm"
+            data-i18n="tools:compressPdf.cardDesc"
+          >
+            Free online compress pdf tool
+          </p>
         </a>
         <a
           href="split-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Split Pdf</h3>
-          <p class="text-gray-400 text-sm">Free online split pdf tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:editBookmarks.auto.0784d816a9"
+          >
+            Split Pdf
+          </h3>
+          <p class="text-gray-400 text-sm" data-i18n="tools:splitPdf.cardDesc">
+            Free online split pdf tool
+          </p>
         </a>
         <a
           href="edit-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Edit Pdf</h3>
-          <p class="text-gray-400 text-sm">Free online edit pdf tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:editBookmarks.auto.0a193ffe0a"
+          >
+            Edit Pdf
+          </h3>
+          <p class="text-gray-400 text-sm" data-i18n="tools:pdfEditor.cardDesc">
+            Free online edit pdf tool
+          </p>
         </a>
         <a
           href="rotate-pdf.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Rotate Pdf</h3>
-          <p class="text-gray-400 text-sm">Free online rotate pdf tool</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:editBookmarks.auto.ed40c6ff84"
+          >
+            Rotate Pdf
+          </h3>
+          <p class="text-gray-400 text-sm" data-i18n="tools:rotatePdf.cardDesc">
+            Free online rotate pdf tool
+          </p>
         </a>
       </div>
     </section>
@@ -795,7 +914,7 @@
             Is bookmark really free?
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400">
+          <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq1a">
             Yes! BentoPDF is 100% free with no hidden fees, no signup required,
             and unlimited file processing.
           </p>
@@ -807,7 +926,7 @@
             Are my files private and secure?
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400">
+          <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq2a">
             Absolutely! All processing happens in your browser. Your files never
             leave your device, ensuring complete privacy.
           </p>
@@ -819,7 +938,7 @@
             Is there a file size limit?
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400">
+          <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq3a">
             No! Process files of any size, as many times as you want, completely
             free.
           </p>

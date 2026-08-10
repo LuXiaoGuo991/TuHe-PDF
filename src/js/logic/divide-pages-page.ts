@@ -1,4 +1,14 @@
 import { DividePagesState } from '@/types';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { showLoader, hideLoader, showAlert } from '../ui.js';
 import {
   downloadFile,
@@ -63,7 +73,11 @@ async function updateUI() {
 
     const metaSpan = document.createElement('div');
     metaSpan.className = 'text-xs text-gray-400';
-    metaSpan.textContent = `${formatBytes(pageState.file.size)} • Loading...`;
+    metaSpan.textContent = translate(
+      'tools:dividePages.dynamic.c90d4c14de',
+      `${formatBytes(pageState.file.size)} • Loading...`,
+      { value0: formatBytes(pageState.file.size) }
+    );
 
     infoContainer.append(nameSpan, metaSpan);
 
@@ -86,19 +100,32 @@ async function updateUI() {
       }
       result.pdf.destroy();
       pageState.file = result.file;
-      showLoader('Loading PDF...');
+      showLoader(translate('fileHandler.loadingPdf', 'Loading PDF...'));
 
       pageState.pdfDoc = await loadPdfDocument(result.bytes);
       pageState.totalPages = pageState.pdfDoc.getPageCount();
       hideLoader();
 
-      metaSpan.textContent = `${formatBytes(pageState.file.size)} • ${pageState.totalPages} pages`;
+      metaSpan.textContent = translate(
+        'tools:dividePages.dynamic.07ff7bec76',
+        `${formatBytes(pageState.file.size)} • ${pageState.totalPages} pages`,
+        {
+          value0: formatBytes(pageState.file.size),
+          value1: pageState.totalPages,
+        }
+      );
 
       if (toolOptions) toolOptions.classList.remove('hidden');
     } catch (error) {
       console.error('Error loading PDF:', error);
       hideLoader();
-      showAlert('Error', 'Failed to load PDF file.');
+      showAlert(
+        translate('alert.error', 'Error'),
+        translate(
+          'tools:dividePages.dynamic.6b2f10d8ba',
+          'Failed to load PDF file.'
+        )
+      );
       resetState();
     }
   } else {
@@ -108,7 +135,13 @@ async function updateUI() {
 
 async function dividePages() {
   if (!pageState.pdfDoc || !pageState.file) {
-    showAlert('Error', 'Please upload a PDF first.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:dividePages.dynamic.aae540a85c',
+        'Please upload a PDF first.'
+      )
+    );
     return;
   }
 
@@ -133,14 +166,19 @@ async function dividePages() {
 
     if (pagesToDivide.size === 0) {
       showAlert(
-        'Invalid Range',
-        'Please enter a valid page range (e.g., 1-5, 8, 11-13).'
+        translate('tools:dividePages.dynamic.6f90563f8c', 'Invalid Range'),
+        translate(
+          'tools:dividePages.dynamic.84292b3ef8',
+          'Please enter a valid page range (e.g., 1-5, 8, 11-13).'
+        )
       );
       return;
     }
   }
 
-  showLoader('Splitting PDF pages...');
+  showLoader(
+    translate('tools:dividePages.dynamic.c8de0c45db', 'Splitting PDF pages...')
+  );
 
   try {
     const newPdfDoc = await PDFLibDocument.create();
@@ -151,7 +189,13 @@ async function dividePages() {
       const originalPage = pages[i];
       const { width, height } = originalPage.getSize();
 
-      showLoader(`Processing page ${pageNum} of ${pages.length}...`);
+      showLoader(
+        translate(
+          'tools:dividePages.dynamic.570c1a0772',
+          `Processing page ${pageNum} of ${pages.length}...`,
+          { value0: pageNum, value1: pages.length }
+        )
+      );
 
       if (pagesToDivide.has(pageNum)) {
         const [page1] = await newPdfDoc.copyPages(pageState.pdfDoc, [i]);
@@ -183,8 +227,11 @@ async function dividePages() {
     );
 
     showAlert(
-      'Success',
-      'Pages have been divided successfully!',
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:dividePages.dynamic.60b2821ead',
+        'Pages have been divided successfully!'
+      ),
       'success',
       function () {
         resetState();
@@ -192,7 +239,13 @@ async function dividePages() {
     );
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'An error occurred while dividing the PDF.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:dividePages.dynamic.fe79190873',
+        'An error occurred while dividing the PDF.'
+      )
+    );
   } finally {
     hideLoader();
   }

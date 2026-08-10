@@ -1,3 +1,14 @@
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
+
 import * as pdfjsLib from 'pdfjs-dist';
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
@@ -80,7 +91,7 @@ export function createPlaceholder(
 
   const loadingText = document.createElement('span');
   loadingText.className = 'text-gray-500 text-xs';
-  loadingText.textContent = 'Loading...';
+  loadingText.textContent = translate('common.loading', 'Loading...');
 
   skeletonContainer.appendChild(loadingText);
   placeholder.appendChild(skeletonContainer);

@@ -1,3 +1,14 @@
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
+
 import { showLoader, hideLoader, showAlert } from '../ui.js';
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { state } from '../state.js';
@@ -80,8 +91,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const convert = async () => {
     if (state.files.length === 0) {
       showAlert(
-        'No Files',
-        `Please select at least one ${FILETYPE_NAME} file.`
+        translate('alert.noFiles', 'No Files'),
+        translate(
+          'tools:xmlToPdf.dynamic.75c05e3e4d',
+          `Please select at least one ${FILETYPE_NAME} file.`,
+          { value0: FILETYPE_NAME }
+        )
       );
       return;
     }
@@ -100,13 +115,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         hideLoader();
         showAlert(
-          'Conversion Complete',
-          `Successfully converted ${file.name} to PDF.`,
+          translate('tools:xmlToPdf.dynamic.ceb9948d46', 'Conversion Complete'),
+          translate(
+            'tools:xmlToPdf.dynamic.99ae92f70e',
+            `Successfully converted ${file.name} to PDF.`,
+            { value0: file.name }
+          ),
           'success',
           () => resetState()
         );
       } else {
-        showLoader('Converting multiple files...');
+        showLoader(
+          translate(
+            'tools:xmlToPdf.dynamic.57a112278a',
+            'Converting multiple files...'
+          )
+        );
         const JSZip = (await import('jszip')).default;
         const zip = new JSZip();
         const usedNames = new Set<string>();
@@ -116,7 +140,11 @@ document.addEventListener('DOMContentLoaded', () => {
           const pdfBlob = await convertXmlToPdf(file, {
             onProgress: (percent, message) => {
               showLoader(
-                `File ${i + 1}/${state.files.length}: ${message}`,
+                translate(
+                  'tools:xmlToPdf.dynamic.67b168273e',
+                  `File ${i + 1}/${state.files.length}: ${message}`,
+                  { value0: i + 1, value1: state.files.length, value2: message }
+                ),
                 percent
               );
             },
@@ -135,8 +163,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         hideLoader();
         showAlert(
-          'Conversion Complete',
-          `Successfully converted ${state.files.length} files to PDF.`,
+          translate('tools:xmlToPdf.dynamic.ceb9948d46', 'Conversion Complete'),
+          translate(
+            'tools:xmlToPdf.dynamic.fd9379fd86',
+            `Successfully converted ${state.files.length} files to PDF.`,
+            { value0: state.files.length }
+          ),
           'success',
           () => resetState()
         );
@@ -146,8 +178,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const message = err instanceof Error ? err.message : 'Unknown error';
       console.error(`[${FILETYPE_NAME}ToPDF] Error:`, err);
       showAlert(
-        'Error',
-        `An error occurred during conversion. Error: ${message}`
+        translate('alert.error', 'Error'),
+        translate(
+          'tools:xmlToPdf.dynamic.30944475eb',
+          `An error occurred during conversion. Error: ${message}`,
+          { value0: message }
+        )
       );
     }
   };

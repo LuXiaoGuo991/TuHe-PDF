@@ -1,4 +1,14 @@
 import { createIcons, icons } from 'lucide';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { showAlert, showLoader, hideLoader } from '../ui.js';
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { PDFDocument as PDFLibDocument } from 'pdf-lib';
@@ -90,8 +100,11 @@ function handleFiles(newFiles: FileList) {
 
   if (validFiles.length < newFiles.length) {
     showAlert(
-      'Invalid Files',
-      'Some files were skipped. Only SVG graphics are allowed.'
+      translate('tools:svgToPdf.dynamic.0aaa760603', 'Invalid Files'),
+      translate(
+        'tools:svgToPdf.dynamic.a991f2ba33',
+        'Some files were skipped. Only SVG graphics are allowed.'
+      )
     );
   }
 
@@ -133,7 +146,11 @@ function updateUI() {
 
       const sizeSpan = document.createElement('span');
       sizeSpan.className = 'flex-shrink-0 text-gray-400 text-xs';
-      sizeSpan.textContent = `(${formatBytes(file.size)})`;
+      sizeSpan.textContent = translate(
+        'tools:svgToPdf.dynamic.f71cb9d2cc',
+        `(${formatBytes(file.size)})`,
+        { value0: formatBytes(file.size) }
+      );
 
       infoContainer.append(nameSpan, sizeSpan);
 
@@ -207,11 +224,22 @@ function svgToPng(svgText: string): Promise<Uint8Array> {
 
 async function convertToPdf() {
   if (files.length === 0) {
-    showAlert('No Files', 'Please select at least one SVG file.');
+    showAlert(
+      translate('alert.noFiles', 'No Files'),
+      translate(
+        'tools:svgToPdf.dynamic.b1e501f07a',
+        'Please select at least one SVG file.'
+      )
+    );
     return;
   }
 
-  showLoader('Creating PDF from SVG files...');
+  showLoader(
+    translate(
+      'tools:svgToPdf.dynamic.22c5687245',
+      'Creating PDF from SVG files...'
+    )
+  );
 
   try {
     const pdfDoc = await PDFLibDocument.create();
@@ -254,12 +282,23 @@ async function convertToPdf() {
       new Blob([new Uint8Array(pdfBytes)], { type: 'application/pdf' }),
       'from_svgs.pdf'
     );
-    showAlert('Success', 'PDF created successfully!', 'success', () => {
-      resetState();
-    });
+    showAlert(
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:svgToPdf.dynamic.8e2c99e129',
+        'PDF created successfully!'
+      ),
+      'success',
+      () => {
+        resetState();
+      }
+    );
   } catch (e: unknown) {
     console.error(e);
-    showAlert('Conversion Error', e instanceof Error ? e.message : String(e));
+    showAlert(
+      translate('tools:svgToPdf.dynamic.3221b49d76', 'Conversion Error'),
+      translate('alert.processFailed', 'Processing failed. Please try again.')
+    );
   } finally {
     hideLoader();
   }

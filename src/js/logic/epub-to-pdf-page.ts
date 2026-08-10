@@ -1,4 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { state } from '../state.js';
 import { createIcons, icons } from 'lucide';
@@ -87,16 +97,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const convertToPdf = async () => {
     try {
       if (state.files.length === 0) {
-        showAlert('No Files', `Please select at least one ${TOOL_NAME} file.`);
+        showAlert(
+          translate('alert.noFiles', 'No Files'),
+          translate(
+            'tools:epubToPdf.dynamic.22b7b16873',
+            `Please select at least one ${TOOL_NAME} file.`,
+            { value0: TOOL_NAME }
+          )
+        );
         return;
       }
 
-      showLoader('Loading engine...');
+      showLoader(
+        translate('tools:epubToPdf.dynamic.0642d0fcdb', 'Loading engine...')
+      );
       const pymupdf = await loadPyMuPDF();
 
       if (state.files.length === 1) {
         const originalFile = state.files[0];
-        showLoader(`Converting ${originalFile.name}...`);
+        showLoader(
+          translate(
+            'tools:epubToPdf.dynamic.c6ebd08683',
+            `Converting ${originalFile.name}...`,
+            { value0: originalFile.name }
+          )
+        );
 
         const pdfBlob = await pymupdf.convertToPdf(originalFile, {
           filetype: FILETYPE,
@@ -107,20 +132,33 @@ document.addEventListener('DOMContentLoaded', () => {
         hideLoader();
 
         showAlert(
-          'Conversion Complete',
-          `Successfully converted ${originalFile.name} to PDF.`,
+          translate(
+            'tools:epubToPdf.dynamic.522ff47d9d',
+            'Conversion Complete'
+          ),
+          translate(
+            'tools:epubToPdf.dynamic.5c78b3ff7d',
+            `Successfully converted ${originalFile.name} to PDF.`,
+            { value0: originalFile.name }
+          ),
           'success',
           () => resetState()
         );
       } else {
-        showLoader('Converting files...');
+        showLoader(
+          translate('tools:epubToPdf.dynamic.c2a02efcc5', 'Converting files...')
+        );
         const JSZip = (await import('jszip')).default;
         const zip = new JSZip();
 
         for (let i = 0; i < state.files.length; i++) {
           const file = state.files[i];
           showLoader(
-            `Converting ${i + 1}/${state.files.length}: ${file.name}...`
+            translate(
+              'tools:epubToPdf.dynamic.74fb9d5189',
+              `Converting ${i + 1}/${state.files.length}: ${file.name}...`,
+              { value0: i + 1, value1: state.files.length, value2: file.name }
+            )
           );
 
           const pdfBlob = await pymupdf.convertToPdf(file, {
@@ -137,8 +175,15 @@ document.addEventListener('DOMContentLoaded', () => {
         hideLoader();
 
         showAlert(
-          'Conversion Complete',
-          `Successfully converted ${state.files.length} ${TOOL_NAME} file(s) to PDF.`,
+          translate(
+            'tools:epubToPdf.dynamic.522ff47d9d',
+            'Conversion Complete'
+          ),
+          translate(
+            'tools:epubToPdf.dynamic.4936db3a1c',
+            `Successfully converted ${state.files.length} ${TOOL_NAME} file(s) to PDF.`,
+            { value0: state.files.length, value1: TOOL_NAME }
+          ),
           'success',
           () => resetState()
         );
@@ -147,8 +192,8 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error(`[${TOOL_NAME}2PDF] ERROR:`, e);
       hideLoader();
       showAlert(
-        'Error',
-        `An error occurred during conversion. Error: ${e instanceof Error ? e.message : String(e)}`
+        translate('alert.error', 'Error'),
+        translate('alert.processFailed', 'Processing failed. Please try again.')
       );
     }
   };

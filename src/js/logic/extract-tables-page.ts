@@ -1,4 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { createIcons, icons } from 'lucide';
 import JSZip from 'jszip';
@@ -77,7 +87,13 @@ function tableToCsv(rows: (string | null)[][]): string {
 
 async function extract() {
   if (!file) {
-    showAlert('No File', 'Please upload a PDF file first.');
+    showAlert(
+      translate('tools:extractTables.dynamic.73433d0bfe', 'No File'),
+      translate(
+        'tools:extractTables.dynamic.823e9c0f13',
+        'Please upload a PDF file first.'
+      )
+    );
     return;
   }
 
@@ -90,7 +106,9 @@ async function extract() {
   });
 
   try {
-    showLoader('Loading Engine...');
+    showLoader(
+      translate('tools:extractTables.dynamic.79bc8aecb7', 'Loading Engine...')
+    );
     const pymupdf = await loadPyMuPDF();
 
     hideLoader();
@@ -99,7 +117,12 @@ async function extract() {
     pwResult.pdf.destroy();
     file = pwResult.file;
 
-    showLoader('Extracting tables...');
+    showLoader(
+      translate(
+        'tools:extractTables.dynamic.4e588c6fbf',
+        'Extracting tables...'
+      )
+    );
 
     const doc = await pymupdf.open(file);
     const pageCount = doc.pageCount;
@@ -117,7 +140,13 @@ async function extract() {
     const allTables: TableData[] = [];
 
     for (let i = 0; i < pageCount; i++) {
-      showLoader(`Scanning page ${i + 1} of ${pageCount}...`);
+      showLoader(
+        translate(
+          'tools:extractTables.dynamic.4e8aa3ff08',
+          `Scanning page ${i + 1} of ${pageCount}...`,
+          { value0: i + 1, value1: pageCount }
+        )
+      );
       const page = doc.getPage(i);
       const tables = page.findTables();
 
@@ -134,7 +163,13 @@ async function extract() {
     }
 
     if (allTables.length === 0) {
-      showAlert('No Tables Found', 'No tables were detected in this PDF.');
+      showAlert(
+        translate('tools:extractTables.dynamic.ffa0b5036c', 'No Tables Found'),
+        translate(
+          'tools:extractTables.dynamic.0425695ccd',
+          'No tables were detected in this PDF.'
+        )
+      );
       return;
     }
 
@@ -161,13 +196,21 @@ async function extract() {
       const blob = new Blob([content], { type: mimeType });
       downloadFile(blob, `${baseName}_table.${ext}`);
       showAlert(
-        'Success',
-        `Extracted 1 table successfully!`,
+        translate('alert.success', 'Success'),
+        translate(
+          'tools:extractTables.dynamic.bcf7770932',
+          `Extracted 1 table successfully!`
+        ),
         'success',
         resetState
       );
     } else {
-      showLoader('Creating ZIP file...');
+      showLoader(
+        translate(
+          'tools:extractTables.dynamic.e26185baed',
+          'Creating ZIP file...'
+        )
+      );
       const zip = new JSZip();
 
       allTables.forEach((table, idx) => {
@@ -192,8 +235,12 @@ async function extract() {
       const zipBlob = await zip.generateAsync({ type: 'blob' });
       downloadFile(zipBlob, `${baseName}_tables.zip`);
       showAlert(
-        'Success',
-        `Extracted ${allTables.length} tables successfully!`,
+        translate('alert.success', 'Success'),
+        translate(
+          'tools:extractTables.dynamic.06afde8883',
+          `Extracted ${allTables.length} tables successfully!`,
+          { value0: allTables.length }
+        ),
         'success',
         resetState
       );
@@ -201,7 +248,14 @@ async function extract() {
   } catch (e) {
     console.error(e);
     const message = e instanceof Error ? e.message : 'Unknown error';
-    showAlert('Error', `Failed to extract tables. ${message}`);
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:extractTables.dynamic.9d11f4df3a',
+        `Failed to extract tables. ${message}`,
+        { value0: message }
+      )
+    );
   } finally {
     hideLoader();
   }
@@ -226,7 +280,13 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     if (!validFile) {
-      showAlert('Invalid File', 'Please upload a PDF file.');
+      showAlert(
+        translate('alert.invalidFile', 'Invalid File'),
+        translate(
+          'tools:extractTables.dynamic.a9a4c9ebca',
+          'Please upload a PDF file.'
+        )
+      );
       return;
     }
 

@@ -1,4 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import {
   downloadFile,
   parsePageRanges,
@@ -45,14 +55,21 @@ function resetState() {
   if (processBtn) processBtn.disabled = true;
 
   const totalPages = document.getElementById('total-pages');
-  if (totalPages) totalPages.textContent = '0';
+  if (totalPages)
+    totalPages.textContent = translate('common.dynamic.d44e20976e', '0');
 }
 
 async function renderPosterizePreview(pageNum: number) {
   if (!pageState.pdfJsDoc) return;
 
   pageState.currentPage = pageNum;
-  showLoader(`Rendering preview for page ${pageNum}...`);
+  showLoader(
+    translate(
+      'common.dynamic.0cfdaff6c2',
+      `Rendering preview for page ${pageNum}...`,
+      { value0: pageNum }
+    )
+  );
 
   const canvas = document.getElementById(
     'posterize-preview-canvas'
@@ -163,11 +180,14 @@ function updatePreviewNav() {
 
 async function posterize() {
   if (!pageState.pdfJsDoc || !pageState.pdfBytes) {
-    showAlert('No File', 'Please upload a PDF file first.');
+    showAlert(
+      translate('common.dynamic.264a4a2641', 'No File'),
+      translate('common.dynamic.c752767294', 'Please upload a PDF file first.')
+    );
     return;
   }
 
-  showLoader('Posterizing PDF...');
+  showLoader(translate('common.dynamic.bd5a1e389d', 'Posterizing PDF...'));
 
   try {
     const rows =
@@ -313,10 +333,16 @@ async function posterize() {
       pageState.file?.name || 'document.pdf'
     );
 
-    showAlert('Success', 'Your PDF has been posterized.');
+    showAlert(
+      translate('alert.success', 'Success'),
+      translate('common.dynamic.0e13df4a7b', 'Your PDF has been posterized.')
+    );
   } catch (e) {
     console.error(e);
-    showAlert('Error', (e as Error).message || 'Could not posterize the PDF.');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate('alert.processFailed', 'Processing failed. Please try again.')
+    );
   } finally {
     hideLoader();
   }

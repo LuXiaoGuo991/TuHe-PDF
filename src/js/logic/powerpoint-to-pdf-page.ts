@@ -1,4 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { state } from '../state.js';
 import { createIcons, icons } from 'lucide';
@@ -87,7 +97,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const convertToPdf = async () => {
     try {
       if (state.files.length === 0) {
-        showAlert('No Files', 'Please select at least one PowerPoint file.');
+        showAlert(
+          translate('alert.noFiles', 'No Files'),
+          translate(
+            'tools:powerpointToPdf.dynamic.af1899e4e6',
+            'Please select at least one PowerPoint file.'
+          )
+        );
         hideLoader();
         return;
       }
@@ -96,13 +112,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Initialize LibreOffice if not already done
       await converter.initialize((progress: LoadProgress) => {
-        showLoader(progress.message, progress.percent);
+        showLoader(
+          translate('loader.processing', 'Processing...'),
+          progress.percent
+        );
       });
 
       if (state.files.length === 1) {
         const originalFile = state.files[0];
 
-        showLoader('Processing...');
+        showLoader(translate('loader.processing', 'Processing...'));
 
         const pdfBlob = await converter.convertToPdf(originalFile);
 
@@ -114,13 +133,20 @@ document.addEventListener('DOMContentLoaded', () => {
         hideLoader();
 
         showAlert(
-          'Conversion Complete',
-          `Successfully converted ${originalFile.name} to PDF.`,
+          translate(
+            'tools:powerpointToPdf.dynamic.f3b510faff',
+            'Conversion Complete'
+          ),
+          translate(
+            'tools:powerpointToPdf.dynamic.94609a8cae',
+            `Successfully converted ${originalFile.name} to PDF.`,
+            { value0: originalFile.name }
+          ),
           'success',
           () => resetState()
         );
       } else {
-        showLoader('Processing...');
+        showLoader(translate('loader.processing', 'Processing...'));
         const JSZip = (await import('jszip')).default;
         const zip = new JSZip();
         const usedNames = new Set<string>();
@@ -128,7 +154,11 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < state.files.length; i++) {
           const file = state.files[i];
           showLoader(
-            `Converting ${i + 1}/${state.files.length}: ${file.name}...`
+            translate(
+              'tools:powerpointToPdf.dynamic.ec950a4de2',
+              `Converting ${i + 1}/${state.files.length}: ${file.name}...`,
+              { value0: i + 1, value1: state.files.length, value2: file.name }
+            )
           );
 
           const pdfBlob = await converter.convertToPdf(file);
@@ -149,8 +179,15 @@ document.addEventListener('DOMContentLoaded', () => {
         hideLoader();
 
         showAlert(
-          'Conversion Complete',
-          `Successfully converted ${state.files.length} PowerPoint file(s) to PDF.`,
+          translate(
+            'tools:powerpointToPdf.dynamic.f3b510faff',
+            'Conversion Complete'
+          ),
+          translate(
+            'tools:powerpointToPdf.dynamic.d937ebcd47',
+            `Successfully converted ${state.files.length} PowerPoint file(s) to PDF.`,
+            { value0: state.files.length }
+          ),
           'success',
           () => resetState()
         );
@@ -158,8 +195,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (e: unknown) {
       hideLoader();
       showAlert(
-        'Error',
-        `An error occurred during conversion. Error: ${e instanceof Error ? e.message : String(e)}`
+        translate('alert.error', 'Error'),
+        translate('alert.processFailed', 'Processing failed. Please try again.')
       );
     }
   };

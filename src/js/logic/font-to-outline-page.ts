@@ -1,4 +1,14 @@
 import { showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { convertFileToOutlines } from '../utils/ghostscript-loader.js';
 import { isGhostscriptAvailable } from '../utils/ghostscript-dynamic-loader.js';
@@ -98,7 +108,13 @@ function handleFileSelect(files: FileList | null) {
 
 async function processFiles() {
   if (pageState.files.length === 0) {
-    showAlert('No Files', 'Please select at least one PDF file.');
+    showAlert(
+      translate('alert.noFiles', 'No Files'),
+      translate(
+        'tools:fontToOutline.dynamic.ff6a22c28e',
+        'Please select at least one PDF file.'
+      )
+    );
     return;
   }
 
@@ -117,7 +133,10 @@ async function processFiles() {
     if (pageState.files.length === 1) {
       if (loaderModal) loaderModal.classList.remove('hidden');
       if (loaderText)
-        loaderText.textContent = 'Converting fonts to outlines...';
+        loaderText.textContent = translate(
+          'tools:fontToOutline.dynamic.7db89a06ed',
+          'Converting fonts to outlines...'
+        );
 
       const file = pageState.files[0];
       const resultBlob = await convertFileToOutlines(file, (msg) => {
@@ -128,7 +147,11 @@ async function processFiles() {
       if (loaderModal) loaderModal.classList.add('hidden');
     } else {
       if (loaderModal) loaderModal.classList.remove('hidden');
-      if (loaderText) loaderText.textContent = 'Processing multiple PDFs...';
+      if (loaderText)
+        loaderText.textContent = translate(
+          'tools:fontToOutline.dynamic.b9e71d80df',
+          'Processing multiple PDFs...'
+        );
 
       const zip = new JSZip();
       const usedNames = new Set<string>();
@@ -137,7 +160,11 @@ async function processFiles() {
       for (let i = 0; i < pageState.files.length; i++) {
         const file = pageState.files[i];
         if (loaderText)
-          loaderText.textContent = `Processing ${i + 1}/${pageState.files.length}: ${file.name}...`;
+          loaderText.textContent = translate(
+            'tools:fontToOutline.dynamic.d4bf39f87d',
+            `Processing ${i + 1}/${pageState.files.length}: ${file.name}...`,
+            { value0: i + 1, value1: pageState.files.length, value2: file.name }
+          );
 
         try {
           const resultBlob = await convertFileToOutlines(file, () => {});
@@ -154,15 +181,25 @@ async function processFiles() {
         const zipBlob = await zip.generateAsync({ type: 'blob' });
         downloadFile(zipBlob, 'outlined_pdfs.zip');
         showAlert(
-          'Success',
-          `Processed ${processedCount} PDFs.`,
+          translate('alert.success', 'Success'),
+          translate(
+            'tools:fontToOutline.dynamic.759b439f61',
+            `Processed ${processedCount} PDFs.`,
+            { value0: processedCount }
+          ),
           'success',
           () => {
             resetState();
           }
         );
       } else {
-        showAlert('Error', 'No PDFs could be processed.');
+        showAlert(
+          translate('alert.error', 'Error'),
+          translate(
+            'tools:fontToOutline.dynamic.bc182f005b',
+            'No PDFs could be processed.'
+          )
+        );
       }
       if (loaderModal) loaderModal.classList.add('hidden');
     }
@@ -171,7 +208,10 @@ async function processFiles() {
     if (loaderModal) loaderModal.classList.add('hidden');
     const errorMessage =
       e instanceof Error ? e.message : 'An unexpected error occurred.';
-    showAlert('Error', errorMessage);
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate('alert.processFailed', 'Processing failed. Please try again.')
+    );
   }
 }
 

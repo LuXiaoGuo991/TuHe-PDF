@@ -26,7 +26,10 @@ for (const f of files) {
   const s = fs.readFileSync(f, 'utf8');
   const hasT = hasTranslateImport(s);
   if (hasT) translatedFileCount++;
-  const hits = s.match(pat) || [];
+  const executableSource = s
+    .replace(/\/\*[\s\S]*?\*\//g, '')
+    .replace(/^\s*\/\/.*$/gm, '');
+  const hits = executableSource.match(pat) || [];
   if (hits.length)
     perFile.push([f.split(path.sep).join('/'), hits.length, hasT]);
 }

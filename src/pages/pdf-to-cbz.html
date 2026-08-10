@@ -160,9 +160,15 @@
               id="cbz-format"
               class="w-full bg-gray-700 border border-gray-600 text-gray-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
             >
-              <option value="jpeg">JPEG</option>
-              <option value="png">PNG</option>
-              <option value="webp">WebP</option>
+              <option value="jpeg" data-i18n="tools:pdfToCbz.auto.a45885aac5">
+                JPEG
+              </option>
+              <option value="png" data-i18n="tools:pdfToCbz.auto.70fe60b7df">
+                PNG
+              </option>
+              <option value="webp" data-i18n="tools:pdfToCbz.auto.6fa39ac0c7">
+                WebP
+              </option>
             </select>
           </div>
 
@@ -284,6 +290,7 @@
                 id="cbz-title"
                 class="w-full bg-gray-700 border border-gray-600 text-gray-200 rounded-lg px-3 py-1.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                 placeholder="Auto-detected from filename"
+                data-i18n-placeholder="tools:pdfToCbz.auto.8c2951fccb"
               />
             </div>
             <div class="grid grid-cols-2 gap-3">
@@ -375,6 +382,7 @@
                 id="cbz-tags"
                 class="w-full bg-gray-700 border border-gray-600 text-gray-200 rounded-lg px-3 py-1.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                 placeholder="Action, Adventure, Sci-Fi"
+                data-i18n-placeholder="tools:pdfToCbz.auto.97d4fdb568"
               />
             </div>
             <div class="grid grid-cols-2 gap-3">
@@ -433,7 +441,11 @@
         class="bg-gray-800 p-8 rounded-lg flex flex-col items-center gap-4 border border-gray-700 shadow-xl"
       >
         <div class="solid-spinner"></div>
-        <p id="loader-text" class="text-white text-lg font-medium">
+        <p
+          id="loader-text"
+          class="text-white text-lg font-medium"
+          data-i18n="loader.processing"
+        >
           Processing...
         </p>
       </div>
@@ -457,6 +469,7 @@
         <button
           id="alert-ok"
           class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
+          data-i18n="alert.ok"
         >
           OK
         </button>
@@ -478,8 +491,13 @@
             1
           </div>
           <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white mb-1">Upload PDF</h3>
-            <p class="text-gray-400">
+            <h3
+              class="text-lg font-semibold text-white mb-1"
+              data-i18n="tools:splitPdf.hiw1Title"
+            >
+              Upload PDF
+            </h3>
+            <p class="text-gray-400" data-i18n="tools:pdfToCbz.auto.e0ac968345">
               Select the PDF you want to convert to a comic book archive
             </p>
           </div>
@@ -491,10 +509,13 @@
             2
           </div>
           <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white mb-1">
+            <h3
+              class="text-lg font-semibold text-white mb-1"
+              data-i18n="tools:pdfToCbz.auto.2613d80c87"
+            >
               Choose Settings
             </h3>
-            <p class="text-gray-400">
+            <p class="text-gray-400" data-i18n="tools:pdfToCbz.auto.dd048171e1">
               Pick image format, quality, and optional metadata
             </p>
           </div>
@@ -506,8 +527,13 @@
             3
           </div>
           <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white mb-1">Download CBZ</h3>
-            <p class="text-gray-400">
+            <h3
+              class="text-lg font-semibold text-white mb-1"
+              data-i18n="tools:pdfToCbz.auto.f7e912364d"
+            >
+              Download CBZ
+            </h3>
+            <p class="text-gray-400" data-i18n="tools:pdfToCbz.auto.3adeac813f">
               Get your .cbz file ready for any comic book reader
             </p>
           </div>
@@ -527,29 +553,69 @@
           href="pdf-to-jpg.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">PDF to JPG</h3>
-          <p class="text-gray-400 text-sm">Convert PDF pages to JPG images</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:pdfToJpg.name"
+          >
+            PDF to JPG
+          </h3>
+          <p
+            class="text-gray-400 text-sm"
+            data-i18n="tools:pdfToCbz.auto.7649792e5b"
+          >
+            Convert PDF pages to JPG images
+          </p>
         </a>
         <a
           href="pdf-to-png.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">PDF to PNG</h3>
-          <p class="text-gray-400 text-sm">Convert PDF pages to PNG images</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:pdfToPng.name"
+          >
+            PDF to PNG
+          </h3>
+          <p
+            class="text-gray-400 text-sm"
+            data-i18n="tools:pdfToCbz.auto.5e20d6c233"
+          >
+            Convert PDF pages to PNG images
+          </p>
         </a>
         <a
           href="pdf-to-tiff.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">PDF to TIFF</h3>
-          <p class="text-gray-400 text-sm">Convert PDF pages to TIFF images</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:pdfToTiff.name"
+          >
+            PDF to TIFF
+          </h3>
+          <p
+            class="text-gray-400 text-sm"
+            data-i18n="tools:pdfToCbz.auto.5f4f59edfd"
+          >
+            Convert PDF pages to TIFF images
+          </p>
         </a>
         <a
           href="extract-images.html"
           class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
         >
-          <h3 class="text-white font-semibold mb-1">Extract Images</h3>
-          <p class="text-gray-400 text-sm">Extract all images from a PDF</p>
+          <h3
+            class="text-white font-semibold mb-1"
+            data-i18n="tools:extractImages.name"
+          >
+            Extract Images
+          </h3>
+          <p
+            class="text-gray-400 text-sm"
+            data-i18n="tools:pdfToCbz.auto.ab60d41860"
+          >
+            Extract all images from a PDF
+          </p>
         </a>
       </div>
     </section>
@@ -569,7 +635,10 @@
             What is a CBZ file?
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400">
+          <p
+            class="mt-3 text-gray-400"
+            data-i18n="tools:pdfToCbz.auto.30cd757363"
+          >
             CBZ (Comic Book ZIP) is a popular format for digital comics and
             manga. It's simply a ZIP archive containing page images, supported
             by most comic book readers like Komga, Kavita, and CDisplayEx.
@@ -582,7 +651,10 @@
             Which image format should I use?
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400">
+          <p
+            class="mt-3 text-gray-400"
+            data-i18n="tools:pdfToCbz.auto.f8ce03e022"
+          >
             JPEG is best for color comics (smaller files). PNG is ideal for
             black-and-white manga (lossless quality). WebP offers the best
             compression but may not work in older readers.
@@ -595,7 +667,10 @@
             What is ComicInfo.xml?
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400">
+          <p
+            class="mt-3 text-gray-400"
+            data-i18n="tools:pdfToCbz.auto.b48f60aa47"
+          >
             ComicInfo.xml is a metadata file embedded in the CBZ that stores
             information like title, author, and reading direction. Comic library
             managers like Komga and Kavita use it to organize your collection.

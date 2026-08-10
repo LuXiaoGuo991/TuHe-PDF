@@ -1,3 +1,12 @@
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
+
 import { resetState } from './state.js';
 import { formatBytes, getPDFDocument } from './utils/helpers.js';
 import {
@@ -93,7 +102,11 @@ export const showLoader = (text = t('common.loading'), progress?: number) => {
         '.loader-progress-text'
       );
       if (progressText) {
-        progressText.textContent = `${Math.round(progress)}%`;
+        progressText.textContent = translate(
+          'common.dynamic.afc1792050',
+          `${Math.round(progress)}%`,
+          { value0: Math.round(progress) }
+        );
       }
       progressContainer.classList.remove('hidden');
     } else {
@@ -316,7 +329,7 @@ export const renderPageThumbnails = async (
       angleInput.className =
         'no-spinner w-full h-full bg-transparent text-white text-xs text-center focus:outline-none appearance-none m-0 p-0 border-none';
       angleInput.value = initialRotation.toString();
-      angleInput.placeholder = '0';
+      angleInput.placeholder = translate('common.dynamic.d44e20976e', '0');
 
       const incrementBtn = document.createElement('button');
       incrementBtn.className =
@@ -363,7 +376,7 @@ export const renderPageThumbnails = async (
       const rotateBtn = document.createElement('button');
       rotateBtn.className =
         'rotate-btn btn bg-gray-700 hover:bg-gray-600 p-1.5 rounded-md text-gray-200 transition-colors flex-shrink-0';
-      rotateBtn.title = 'Rotate +90°';
+      rotateBtn.title = translate('common.dynamic.b1c9a82c0a', 'Rotate +90°');
       rotateBtn.innerHTML = '<i data-lucide="rotate-cw" class="w-4 h-4"></i>';
       rotateBtn.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -422,7 +435,13 @@ export const renderPageThumbnails = async (
       useLazyLoading: true,
       lazyLoadMargin: '300px',
       onProgress: (current, total) => {
-        showLoader(`Rendering page previews: ${current}/${total}`);
+        showLoader(
+          translate(
+            'common.dynamic.b41206e984',
+            `Rendering page previews: ${current}/${total}`,
+            { value0: current, value1: total }
+          )
+        );
       },
       onBatchComplete: () => {
         createIcons({ icons });
@@ -457,7 +476,7 @@ export const renderPageThumbnails = async (
  * @param {File[]} files The array of file objects.
  */
 export const renderFileDisplay = (container: HTMLElement, files: File[]) => {
-  container.textContent = '';
+  container.textContent = translate('common.dynamic.0e455bd98f', '');
   if (files.length > 0) {
     files.forEach((file: File) => {
       const fileDiv = document.createElement('div');

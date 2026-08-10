@@ -1,3 +1,12 @@
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
+
 import { tesseractLanguages } from '../config/tesseract-languages.js';
 import { showAlert } from '../ui.js';
 import { downloadFile, formatBytes } from '../utils/helpers.js';
@@ -60,7 +69,8 @@ function resetState() {
   if (ocrResults) ocrResults.classList.add('hidden');
 
   const progressLog = document.getElementById('progress-log');
-  if (progressLog) progressLog.textContent = '';
+  if (progressLog)
+    progressLog.textContent = translate('tools:ocrPdf.dynamic.544984faf5', '');
 
   const progressBar = document.getElementById('progress-bar');
   if (progressBar) progressBar.style.width = '0%';
@@ -96,7 +106,7 @@ function updateLanguageAvailabilityNotice() {
   const configuredLanguages = resolveConfiguredTesseractAvailableLanguages();
   if (!configuredLanguages) {
     notice.classList.add('hidden');
-    notice.textContent = '';
+    notice.textContent = translate('tools:ocrPdf.dynamic.544984faf5', '');
     return;
   }
 
@@ -181,7 +191,10 @@ async function runOCR() {
   } catch (e) {
     console.error(e);
     if (e instanceof UnsupportedOcrLanguageError) {
-      showAlert(t('tools:ocrPdf.languageUnavailableTitle'), e.message);
+      showAlert(
+        t('tools:ocrPdf.languageUnavailableTitle'),
+        translate('alert.processFailed', 'Processing failed. Please try again.')
+      );
     } else {
       showAlert(
         t('tools:ocrPdf.ocrErrorTitle'),

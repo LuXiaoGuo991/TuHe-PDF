@@ -1,4 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { formatBytes, formatIsoDate } from '../utils/helpers.js';
 import { createIcons, icons } from 'lucide';
 import { ViewMetadataState } from '@/types';
@@ -166,7 +176,12 @@ async function displayMetadata() {
   try {
     const result = await loadPdfWithPasswordPrompt(pageState.file);
     if (!result) return;
-    showLoader('Analyzing full PDF metadata...');
+    showLoader(
+      translate(
+        'tools:viewMetadata.dynamic.674878efd6',
+        'Analyzing full PDF metadata...'
+      )
+    );
     const { pdf: pdfjsDoc, file: currentFile } = result;
     pageState.file = currentFile;
 
@@ -268,8 +283,11 @@ async function displayMetadata() {
   } catch (e) {
     console.error('Failed to view metadata or fields:', e);
     showAlert(
-      'Error',
-      'Could not fully analyze the PDF. It may be corrupted or have an unusual structure.'
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:viewMetadata.dynamic.f9436236fe',
+        'Could not fully analyze the PDF. It may be corrupted or have an unusual structure.'
+      )
     );
   } finally {
     hideLoader();
@@ -298,7 +316,11 @@ async function updateUI() {
 
     const metaSpan = document.createElement('div');
     metaSpan.className = 'text-xs text-gray-400';
-    metaSpan.textContent = `${formatBytes(pageState.file.size)}`;
+    metaSpan.textContent = translate(
+      'tools:viewMetadata.dynamic.89046c7aaa',
+      `${formatBytes(pageState.file.size)}`,
+      { value0: formatBytes(pageState.file.size) }
+    );
 
     infoContainer.append(nameSpan, metaSpan);
 
@@ -326,11 +348,23 @@ function copyMetadataAsJson() {
   navigator.clipboard
     .writeText(jsonString)
     .then(function () {
-      showAlert('Copied', 'Metadata copied to clipboard as JSON.');
+      showAlert(
+        translate('tools:viewMetadata.dynamic.b27348894d', 'Copied'),
+        translate(
+          'tools:viewMetadata.dynamic.af34c9a2c9',
+          'Metadata copied to clipboard as JSON.'
+        )
+      );
     })
     .catch(function (err) {
       console.error('Failed to copy:', err);
-      showAlert('Error', 'Failed to copy metadata to clipboard.');
+      showAlert(
+        translate('alert.error', 'Error'),
+        translate(
+          'tools:viewMetadata.dynamic.a1e781c308',
+          'Failed to copy metadata to clipboard.'
+        )
+      );
     });
 }
 

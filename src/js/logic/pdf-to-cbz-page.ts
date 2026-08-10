@@ -1,3 +1,12 @@
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
+
 import { showLoader, hideLoader, showAlert } from '../ui.js';
 import {
   downloadFile,
@@ -116,7 +125,11 @@ const updateUI = () => {
 
       const metaSpan = document.createElement('div');
       metaSpan.className = 'text-xs text-gray-400';
-      metaSpan.textContent = `${formatBytes(file.size)} • ${t('common.loadingPageCount')}`;
+      metaSpan.textContent = translate(
+        'tools:pdfToCbz.dynamic.dab1c2d482',
+        `${formatBytes(file.size)} • ${t('common.loadingPageCount')}`,
+        { value0: formatBytes(file.size), value1: t('common.loadingPageCount') }
+      );
 
       infoContainer.append(nameSpan, metaSpan);
 
@@ -135,7 +148,15 @@ const updateUI = () => {
       readFileAsArrayBuffer(file)
         .then((buffer) => getPDFDocument(buffer).promise)
         .then((pdf) => {
-          metaSpan.textContent = `${formatBytes(file.size)} • ${pdf.numPages} ${pdf.numPages !== 1 ? t('common.pages') : t('common.page')}`;
+          metaSpan.textContent = translate(
+            'tools:pdfToCbz.dynamic.982f70cf6e',
+            `${formatBytes(file.size)} • ${pdf.numPages} ${pdf.numPages !== 1 ? t('common.pages') : t('common.page')}`,
+            {
+              value0: formatBytes(file.size),
+              value1: pdf.numPages,
+              value2: pdf.numPages !== 1 ? t('common.pages') : t('common.page'),
+            }
+          );
         })
         .catch(() => {
           metaSpan.textContent = formatBytes(file.size);
@@ -324,13 +345,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (qualitySlider && qualityValue) {
     qualitySlider.addEventListener('input', () => {
-      qualityValue.textContent = `${qualitySlider.value}%`;
+      qualityValue.textContent = translate(
+        'tools:pdfToCbz.dynamic.c58c3fe79a',
+        `${qualitySlider.value}%`,
+        { value0: qualitySlider.value }
+      );
     });
   }
 
   if (scaleSlider && scaleValue) {
     scaleSlider.addEventListener('input', () => {
-      scaleValue.textContent = `${parseFloat(scaleSlider.value).toFixed(1)}x`;
+      scaleValue.textContent = translate(
+        'tools:pdfToCbz.dynamic.3e224c0f45',
+        `${parseFloat(scaleSlider.value).toFixed(1)}x`,
+        { value0: parseFloat(scaleSlider.value).toFixed(1) }
+      );
     });
   }
 

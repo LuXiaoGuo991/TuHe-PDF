@@ -1,4 +1,14 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import {
   downloadFile,
   formatBytes,
@@ -41,7 +51,11 @@ const updateUI = () => {
 
       const sizeSpan = document.createElement('span');
       sizeSpan.className = 'flex-shrink-0 text-gray-400 text-xs';
-      sizeSpan.textContent = `(${formatBytes(file.size)})`;
+      sizeSpan.textContent = translate(
+        'tools:tiffToPdf.dynamic.64f495d84c',
+        `(${formatBytes(file.size)})`,
+        { value0: formatBytes(file.size) }
+      );
 
       infoContainer.append(nameSpan, sizeSpan);
 
@@ -72,7 +86,13 @@ const resetState = () => {
 
 async function convert() {
   if (files.length === 0) {
-    showAlert('No Files', 'Please select at least one TIFF file.');
+    showAlert(
+      translate('alert.noFiles', 'No Files'),
+      translate(
+        'tools:tiffToPdf.dynamic.bcb176a1ed',
+        'Please select at least one TIFF file.'
+      )
+    );
     return;
   }
   const qualitySelect = document.getElementById(
@@ -87,7 +107,9 @@ async function convert() {
   const useJpeg = quality !== 'high';
   const jpegQuality = jpegQualityMap[quality] || 0.75;
 
-  showLoader('Converting TIFF to PDF...');
+  showLoader(
+    translate('tools:tiffToPdf.dynamic.17f3b48e45', 'Converting TIFF to PDF...')
+  );
   try {
     const pdfDoc = await PDFLibDocument.create();
     for (const file of files) {
@@ -145,14 +167,25 @@ async function convert() {
       new Blob([new Uint8Array(pdfBytes)], { type: 'application/pdf' }),
       'from_tiff.pdf'
     );
-    showAlert('Success', 'PDF created successfully!', 'success', () => {
-      resetState();
-    });
+    showAlert(
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:tiffToPdf.dynamic.67c9b92207',
+        'PDF created successfully!'
+      ),
+      'success',
+      () => {
+        resetState();
+      }
+    );
   } catch (e) {
     console.error(e);
     showAlert(
-      'Error',
-      'Failed to convert TIFF to PDF. One of the files may be invalid.'
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:tiffToPdf.dynamic.af648ea52a',
+        'Failed to convert TIFF to PDF. One of the files may be invalid.'
+      )
     );
   } finally {
     hideLoader();
@@ -184,8 +217,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (validFiles.length < newFiles.length) {
       showAlert(
-        'Invalid Files',
-        'Some files were skipped. Only TIFF files are allowed.'
+        translate('tools:tiffToPdf.dynamic.5e8d4238f0', 'Invalid Files'),
+        translate(
+          'tools:tiffToPdf.dynamic.f09c06a547',
+          'Some files were skipped. Only TIFF files are allowed.'
+        )
       );
     }
 

@@ -1,4 +1,14 @@
 import { loadPyMuPDF } from '../utils/pymupdf-loader.js';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import type { PyMuPDFInstance } from '@/types';
 import { batchDecryptIfNeeded } from '../utils/password-prompt.js';
 import { createIcons, icons } from 'lucide';
@@ -71,7 +81,10 @@ function updateFileDisplay(): void {
   fileControls.classList.remove('hidden');
   deskewOptions.classList.remove('hidden');
 
-  fileDisplayArea.textContent = '';
+  fileDisplayArea.textContent = translate(
+    'tools:deskewPdf.dynamic.9462cdd58a',
+    ''
+  );
   selectedFiles.forEach((file, index) => {
     const row = document.createElement('div');
     row.className =
@@ -90,7 +103,11 @@ function updateFileDisplay(): void {
 
     const sizeSpan = document.createElement('span');
     sizeSpan.className = 'text-gray-500 text-sm';
-    sizeSpan.textContent = `(${(file.size / 1024).toFixed(1)} KB)`;
+    sizeSpan.textContent = translate(
+      'tools:deskewPdf.dynamic.d5273db50d',
+      `(${(file.size / 1024).toFixed(1)} KB)`,
+      { value0: (file.size / 1024).toFixed(1) }
+    );
 
     info.append(fileIcon, nameSpan, sizeSpan);
 
@@ -154,7 +171,13 @@ function displayResults(result: DeskewResult): void {
 
 async function processDeskew(): Promise<void> {
   if (selectedFiles.length === 0) {
-    showAlert('No Files', 'Please select at least one PDF file.');
+    showAlert(
+      translate('alert.noFiles', 'No Files'),
+      translate(
+        'tools:deskewPdf.dynamic.92c18c8069',
+        'Please select at least one PDF file.'
+      )
+    );
     return;
   }
 
@@ -174,14 +197,22 @@ async function processDeskew(): Promise<void> {
 
   selectedFiles = await batchDecryptIfNeeded(selectedFiles);
 
-  showLoader('Initializing PyMuPDF...');
+  showLoader(
+    translate('tools:deskewPdf.dynamic.940e55b69e', 'Initializing PyMuPDF...')
+  );
 
   try {
     const pdf = await initPyMuPDF();
     await pdf.load();
 
     for (const file of selectedFiles) {
-      showLoader(`Deskewing ${file.name}...`);
+      showLoader(
+        translate(
+          'tools:deskewPdf.dynamic.e35d1ef53a',
+          `Deskewing ${file.name}...`,
+          { value0: file.name }
+        )
+      );
 
       const { pdf: resultPdf, result } = await pdf.deskewPdf(file, {
         threshold,
@@ -195,15 +226,23 @@ async function processDeskew(): Promise<void> {
 
     hideLoader();
     showAlert(
-      'Success',
-      `Deskewed ${selectedFiles.length} file(s). ${selectedFiles.length > 1 ? 'Downloads started for all files.' : ''}`
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:deskewPdf.dynamic.d1f2bb540e',
+        `Deskewed ${selectedFiles.length} file(s). ${selectedFiles.length > 1 ? 'Downloads started for all files.' : ''}`,
+        {
+          value0: selectedFiles.length,
+          value1:
+            selectedFiles.length > 1 ? 'Downloads started for all files.' : '',
+        }
+      )
     );
   } catch (error) {
     hideLoader();
     console.error('Deskew error:', error);
     showAlert(
-      'Error',
-      `Failed to deskew PDF: ${error instanceof Error ? error.message : 'Unknown error'}`
+      translate('alert.error', 'Error'),
+      translate('alert.processFailed', 'Processing failed. Please try again.')
     );
   }
 }

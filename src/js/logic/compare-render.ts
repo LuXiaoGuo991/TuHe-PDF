@@ -1,4 +1,14 @@
 import * as pdfjsLib from 'pdfjs-dist';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
 import type {
   ComparePageModel,
   ComparePagePair,
@@ -228,7 +238,11 @@ export async function renderPage(
     renderMissingPage(
       canvas,
       placeholderId,
-      `Page ${pageNum} does not exist in this PDF.`
+      translate(
+        'tools:comparePdfs.missingPage',
+        `Page ${pageNum} does not exist in this PDF.`,
+        { page: pageNum }
+      )
     );
     return { model: null, exists: false };
   }
@@ -280,12 +294,23 @@ export async function renderPage(
       );
       finalModel.pageNumber = pageNum;
     } else {
-      ctx.showLoader(`Running OCR on page ${pageNum}...`);
+      ctx.showLoader(
+        translate(
+          'tools:comparePdfs.ocrRunning',
+          `Running OCR on page ${pageNum}...`,
+          { page: pageNum }
+        )
+      );
       const ocrModel = await recognizePageCanvas(
         canvas,
         ctx.ocrLanguage,
         function (status, progress) {
-          ctx.showLoader(`OCR: ${status}`, progress * 100);
+          ctx.showLoader(
+            translate('tools:comparePdfs.ocrProgress', `OCR: ${status}`, {
+              status,
+            }),
+            progress * 100
+          );
         }
       );
       finalModel = {
@@ -324,7 +349,10 @@ export async function loadComparisonPage(
       renderMissingPage(
         renderTarget.canvas,
         renderTarget.placeholderId,
-        'No paired page for this side.'
+        translate(
+          'tools:comparePdfs.noPairedPage',
+          'No paired page for this side.'
+        )
       );
     }
     return { model: null, exists: false };

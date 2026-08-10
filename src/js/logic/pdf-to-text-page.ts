@@ -1,4 +1,14 @@
 import { createIcons, icons } from 'lucide';
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { showAlert, showLoader, hideLoader } from '../ui.js';
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { loadPyMuPDF } from '../utils/pymupdf-loader.js';
@@ -92,8 +102,11 @@ function handleFiles(newFiles: FileList) {
 
   if (validFiles.length < newFiles.length) {
     showAlert(
-      'Invalid Files',
-      'Some files were skipped. Only PDF files are allowed.'
+      translate('tools:pdfToText.dynamic.3003a34022', 'Invalid Files'),
+      translate(
+        'tools:pdfToText.dynamic.fad4a0bfb8',
+        'Some files were skipped. Only PDF files are allowed.'
+      )
     );
   }
 
@@ -135,7 +148,11 @@ function updateUI() {
 
       const sizeSpan = document.createElement('span');
       sizeSpan.className = 'flex-shrink-0 text-gray-400 text-xs';
-      sizeSpan.textContent = `(${formatBytes(file.size)})`;
+      sizeSpan.textContent = translate(
+        'tools:pdfToText.dynamic.2a17bf4990',
+        `(${formatBytes(file.size)})`,
+        { value0: formatBytes(file.size) }
+      );
 
       infoContainer.append(nameSpan, sizeSpan);
 
@@ -167,22 +184,38 @@ async function ensurePyMuPDF(): Promise<PyMuPDFInstance> {
 
 async function extractText() {
   if (files.length === 0) {
-    showAlert('No Files', 'Please select at least one PDF file.');
+    showAlert(
+      translate('alert.noFiles', 'No Files'),
+      translate(
+        'tools:pdfToText.dynamic.9b20a15e20',
+        'Please select at least one PDF file.'
+      )
+    );
     return;
   }
 
-  showLoader('Loading engine...');
+  showLoader(
+    translate('tools:pdfToText.dynamic.3cd2bcee0a', 'Loading engine...')
+  );
 
   try {
     const mupdf = await ensurePyMuPDF();
 
     hideLoader();
     files = await batchDecryptIfNeeded(files);
-    showLoader('Extracting text...');
+    showLoader(
+      translate('tools:pdfToText.dynamic.7f1788f372', 'Extracting text...')
+    );
 
     if (files.length === 1) {
       const file = files[0];
-      showLoader(`Extracting text from ${file.name}...`);
+      showLoader(
+        translate(
+          'tools:pdfToText.dynamic.f3aeb819f5',
+          `Extracting text from ${file.name}...`,
+          { value0: file.name }
+        )
+      );
 
       const fullText = await mupdf.pdfToText(file);
 
@@ -193,11 +226,24 @@ async function extractText() {
       downloadFile(textBlob, `${baseName}.txt`);
 
       hideLoader();
-      showAlert('Success', 'Text extracted successfully!', 'success', () => {
-        resetState();
-      });
+      showAlert(
+        translate('alert.success', 'Success'),
+        translate(
+          'tools:pdfToText.dynamic.c8c1d4f740',
+          'Text extracted successfully!'
+        ),
+        'success',
+        () => {
+          resetState();
+        }
+      );
     } else {
-      showLoader('Extracting text from multiple files...');
+      showLoader(
+        translate(
+          'tools:pdfToText.dynamic.7f3721e1f5',
+          'Extracting text from multiple files...'
+        )
+      );
 
       const JSZip = (await import('jszip')).default;
       const zip = new JSZip();
@@ -206,7 +252,11 @@ async function extractText() {
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
         showLoader(
-          `Extracting text from file ${i + 1}/${files.length}: ${file.name}...`
+          translate(
+            'tools:pdfToText.dynamic.53e9bab963',
+            `Extracting text from file ${i + 1}/${files.length}: ${file.name}...`,
+            { value0: i + 1, value1: files.length, value2: file.name }
+          )
         );
 
         const fullText = await mupdf.pdfToText(file);
@@ -221,8 +271,12 @@ async function extractText() {
 
       hideLoader();
       showAlert(
-        'Success',
-        `Extracted text from ${files.length} PDF files!`,
+        translate('alert.success', 'Success'),
+        translate(
+          'tools:pdfToText.dynamic.8389aa2a38',
+          `Extracted text from ${files.length} PDF files!`,
+          { value0: files.length }
+        ),
         'success',
         () => {
           resetState();
@@ -233,8 +287,8 @@ async function extractText() {
     console.error('[PDFToText]', e);
     hideLoader();
     showAlert(
-      'Extraction Error',
-      e instanceof Error ? e.message : 'Failed to extract text from PDF.'
+      translate('tools:pdfToText.dynamic.bd2ff6bec3', 'Extraction Error'),
+      translate('alert.processFailed', 'Processing failed. Please try again.')
     );
   }
 }
