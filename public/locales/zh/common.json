@@ -105,7 +105,8 @@
     "step2Title": "处理",
     "step2": "点击处理按钮开始",
     "step3Title": "下载",
-    "step3": "立即保存处理后的文件"
+    "step3": "立即保存处理后的文件",
+    "hint": "操作说明："
   },
   "relatedTools": {
     "title": "相关 PDF 工具"
@@ -115,7 +116,9 @@
   },
   "alert": {
     "title": "提示",
-    "ok": "确定"
+    "ok": "确定",
+    "error": "错误",
+    "success": "成功"
   },
   "preview": {
     "title": "文档预览",

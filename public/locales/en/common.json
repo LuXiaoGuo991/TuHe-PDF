@@ -105,7 +105,8 @@
     "step2Title": "Process",
     "step2": "Click the process button to start",
     "step3Title": "Download",
-    "step3": "Save your processed file instantly"
+    "step3": "Save your processed file instantly",
+    "hint": "How it works:"
   },
   "relatedTools": {
     "title": "Related PDF Tools"
@@ -115,7 +116,9 @@
   },
   "alert": {
     "title": "Alert",
-    "ok": "OK"
+    "ok": "OK",
+    "error": "Error",
+    "success": "Success"
   },
   "preview": {
     "title": "Document Preview",

@@ -1,6 +1,16 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
 import { downloadFile } from '../utils/helpers.js';
 import { state } from '../state.js';
+import { t } from '../i18n/index.js';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 import { batchDecryptIfNeeded } from '../utils/password-prompt.js';
 import {
   renderPagesProgressively,
@@ -168,12 +178,23 @@ async function renderPageMergeThumbnails() {
       fileNamePara.className =
         'text-xs text-gray-400 truncate w-full text-center';
       const fullTitle = displayName
-        ? `${displayName} (page ${pageNumber})`
-        : `Page ${pageNumber}`;
+        ? translate(
+            'tools:mergePdf.filePageTitle',
+            `${displayName} (page ${pageNumber})`,
+            {
+              name: displayName,
+              page: pageNumber,
+            }
+          )
+        : translate('tools:mergePdf.pageLabel', `Page ${pageNumber}`, {
+            page: pageNumber,
+          });
       fileNamePara.title = fullTitle;
       fileNamePara.textContent = displayName
         ? `${displayName.substring(0, 10)}... (p${pageNumber})`
-        : `Page ${pageNumber}`;
+        : translate('tools:mergePdf.pageLabel', `Page ${pageNumber}`, {
+            page: pageNumber,
+          });
 
       wrapper.append(imgContainer, fileNamePara);
       return wrapper;
@@ -203,7 +224,12 @@ async function renderPageMergeThumbnails() {
           lazyLoadMargin: '300px',
           onProgress: () => {
             currentPageNumber++;
-            showLoader(`Rendering page previews...`);
+            showLoader(
+              translate(
+                'tools:mergePdf.renderingPreviews',
+                'Rendering page previews...'
+              )
+            );
           },
           onBatchComplete: () => {
             createIcons({ icons });
@@ -220,7 +246,13 @@ async function renderPageMergeThumbnails() {
     initializePageThumbnailsSortable();
   } catch (error) {
     console.error('Error rendering page thumbnails:', error);
-    showAlert('Error', 'Failed to render page thumbnails');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:mergePdf.renderFailed',
+        'Failed to render page thumbnails'
+      )
+    );
   } finally {
     hideLoader();
     mergeState.isRendering = false;
@@ -286,7 +318,7 @@ export async function merge() {
     return;
   }
 
-  showLoader('Merging PDFs...');
+  showLoader(translate('tools:mergePdf.merging', 'Merging PDFs...'));
   try {
     const jobs: MergeJob[] = [];
     const filesToMerge: MergeFile[] = [];
@@ -373,7 +405,13 @@ export async function merge() {
     }
 
     if (jobs.length === 0) {
-      showAlert('Error', 'No files or pages selected to merge.');
+      showAlert(
+        translate('alert.error', 'Error'),
+        translate(
+          'tools:mergePdf.nothingSelected',
+          'No files or pages selected to merge.'
+        )
+      );
       hideLoader();
       return;
     }
@@ -409,8 +447,8 @@ export async function merge() {
         downloadFile(blob, 'merged.pdf');
         mergeState.mergeSuccess = true;
         showAlert(
-          'Success',
-          'PDFs merged successfully!',
+          translate('alert.success', 'Success'),
+          translate('tools:mergePdf.mergeSuccess', 'PDFs merged successfully!'),
           'success',
           async () => {
             await resetState();
@@ -418,20 +456,33 @@ export async function merge() {
         );
       } else {
         console.error('Worker merge error:', e.data.message);
-        showAlert('Error', e.data.message || 'Failed to merge PDFs.');
+        showAlert(
+          translate('alert.error', 'Error'),
+          e.data.message ||
+            translate('tools:mergePdf.mergeFailed', 'Failed to merge PDFs.')
+        );
       }
     };
 
     mergeWorker.onerror = (e) => {
       hideLoader();
       console.error('Worker error:', e);
-      showAlert('Error', 'An unexpected error occurred in the merge worker.');
+      showAlert(
+        translate('alert.error', 'Error'),
+        translate(
+          'tools:mergePdf.workerError',
+          'An unexpected error occurred in the merge worker.'
+        )
+      );
     };
   } catch (e) {
     console.error('Merge error:', e);
     showAlert(
-      'Error',
-      'Failed to merge PDFs. Please check that all files are valid and not password-protected.'
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:mergePdf.invalidFiles',
+        'Failed to merge PDFs. Please check that all files are valid and not password-protected.'
+      )
     );
     hideLoader();
   }
@@ -446,14 +497,18 @@ export async function refreshMergeUI() {
 
   const wasInPageMode = mergeState.activeMode === 'page';
 
-  showLoader('Loading PDF documents...');
+  showLoader(
+    translate('tools:mergePdf.loadingPdfs', 'Loading PDF documents...')
+  );
   try {
     mergeState.pdfDocs = {};
     mergeState.pdfBytes = {};
 
     hideLoader();
     state.files = await batchDecryptIfNeeded(state.files);
-    showLoader('Loading PDF documents...');
+    showLoader(
+      translate('tools:mergePdf.loadingPdfs', 'Loading PDF documents...')
+    );
 
     for (let i = 0; i < state.files.length; i++) {
       const file = state.files[i];
@@ -471,7 +526,13 @@ export async function refreshMergeUI() {
     }
   } catch (error) {
     console.error('Error loading PDFs:', error);
-    showAlert('Error', 'Failed to load one or more PDF files');
+    showAlert(
+      translate('alert.error', 'Error'),
+      translate(
+        'tools:mergePdf.loadFailed',
+        'Failed to load one or more PDF files'
+      )
+    );
     return;
   } finally {
     hideLoader();
@@ -522,14 +583,21 @@ export async function refreshMergeUI() {
     const label = document.createElement('label');
     label.htmlFor = `range-${safeFileName}`;
     label.className = 'text-xs text-gray-400';
-    label.textContent = `Pages (e.g., 1-3, 5) - Total: ${pageCount}`;
+    label.textContent = translate(
+      'tools:mergePdf.pagesRangeLabel',
+      `Pages (e.g., 1-3, 5) - Total: ${pageCount}`,
+      { total: pageCount }
+    );
 
     const input = document.createElement('input');
     input.type = 'text';
     input.id = `range-${safeFileName}`;
     input.className =
       'w-full bg-gray-800 border border-gray-600 text-white rounded-md p-2 text-sm mt-1 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors';
-    input.placeholder = 'Leave blank for all pages';
+    input.placeholder = translate(
+      'tools:mergePdf.rangePlaceholder',
+      'Leave blank for all pages'
+    );
 
     inputWrapper.append(label, input);
 
@@ -537,7 +605,7 @@ export async function refreshMergeUI() {
     deleteBtn.className =
       'text-red-400 hover:text-red-300 p-2 flex-shrink-0 self-end';
     deleteBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
-    deleteBtn.title = 'Remove file';
+    deleteBtn.title = translate('tools:mergePdf.removeFile', 'Remove file');
     deleteBtn.onclick = (e) => {
       e.stopPropagation();
       state.files = state.files.filter((_, i) => i !== index);
