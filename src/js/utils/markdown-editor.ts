@@ -360,7 +360,7 @@ export class MarkdownEditor {
                 <div class="theme-toggle-slider active" id="themeToggle"></div>
                 <i data-lucide="sun" width="16" height="16"></i>
               </div>
-              <button class="md-editor-btn md-editor-btn-secondary" id="mdSyncScroll" title="Toggle sync scroll">
+              <button class="md-editor-btn md-editor-btn-secondary" id="mdSyncScroll" data-i18n-title="markdownEditor.toggleSyncScroll" title="切换同步滚动">
                 <i data-lucide="git-compare"></i>
                 <span data-i18n="tools:markdownToPdf.btnSyncScroll">Sync Scroll</span>
               </button>

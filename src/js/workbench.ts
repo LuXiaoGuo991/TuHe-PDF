@@ -27,7 +27,7 @@ interface WorkbenchDeps {
   categories: WorkbenchCategory[];
   categoryTranslationKeys: Record<string, string>;
   toolTranslationKeys: Record<string, string>;
-  t: (key: string) => string;
+  t: (key: string, options?: Record<string, unknown>) => string;
   isToolDisabled: (id: string) => boolean;
 }
 
@@ -220,7 +220,7 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
       if (!emptyEl) {
         emptyEl = document.createElement('div');
         emptyEl.className = 'rail-empty';
-        emptyEl.textContent = '没有匹配的工具';
+        emptyEl.textContent = deps.t('workbench.noMatchingTools');
         railCategories.appendChild(emptyEl);
       }
     } else if (emptyEl) {
@@ -445,7 +445,7 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
       titleEl.textContent = title;
       messageEl.textContent = message;
       confirmBtn.textContent = confirmText;
-      cancelBtn.textContent = '取消';
+      cancelBtn.textContent = deps.t('common.cancel');
 
       const newCancel = cancelBtn.cloneNode(true) as HTMLElement;
       const newConfirm = confirmBtn.cloneNode(true) as HTMLElement;
@@ -490,9 +490,9 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
 
     if (isTabBusy(tab)) {
       const confirmed = await confirmDialog(
-        '关闭标签页',
-        `「${tab.title}」中还有已上传的文件或正在进行的任务，关闭后这些进度将丢失。确定要关闭吗？`,
-        '仍然关闭'
+        deps.t('workbench.closeTab'),
+        deps.t('workbench.closeTabMessage', { title: tab.title }),
+        deps.t('workbench.closeTabConfirm')
       );
       if (!confirmed) return;
     }
@@ -562,7 +562,7 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
 
     const loading = document.createElement('div');
     loading.className = 'wb-panel-loading';
-    loading.innerHTML = '<div class="solid-spinner"></div><p>正在加载…</p>';
+    loading.innerHTML = `<div class="solid-spinner"></div><p>${deps.t('common.loading')}</p>`;
 
     const iframe = document.createElement('iframe');
     iframe.src = href;

@@ -1,4 +1,5 @@
 import { t } from '../i18n/i18n';
+import i18next from 'i18next';
 
 const translate = (
   key: string,
@@ -39,7 +40,7 @@ export function getStandardPageName(width: number, height: number) {
       return name;
     }
   }
-  return 'Custom';
+  return translate('helpers.custom', '自定义');
 }
 
 export function convertPoints(points: number, unit: string) {
@@ -74,10 +75,10 @@ export function hexToRgb(hex: string): { r: number; g: number; b: number } {
 }
 
 export const formatBytes = (bytes: number, decimals = 1) => {
-  if (bytes === 0) return '0 Bytes';
+  if (bytes === 0) return '0 ' + translate('helpers.bytes', 'Bytes');
   const k = 1024;
   const dm = decimals < 0 ? 0 : decimals;
-  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+  const sizes = [translate('helpers.bytes', 'Bytes'), 'KB', 'MB', 'GB', 'TB'];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
   return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 };
@@ -216,7 +217,7 @@ export function initializeIcons(): void {
 
 export function formatStars(num: number) {
   if (num >= 1000) {
-    return (num / 1000).toFixed(1) + 'K';
+    return (num / 1000).toFixed(1) + translate('helpers.k', 'K');
   }
   return num.toLocaleString();
 }
@@ -410,60 +411,24 @@ export function sanitizeEmailHtml(html: string): string {
  */
 export function formatRawDate(raw: string): string {
   try {
-    const match = raw.match(
-      /([A-Za-z]{3}),\s+(\d{1,2})\s+([A-Za-z]{3})\s+(\d{4})\s+(\d{2}):(\d{2})(?::(\d{2}))?\s+([+-]\d{4})/
-    );
-
-    if (match) {
-      const [
-        ,
-        dayAbbr,
-        dom,
-        monthAbbr,
-        year,
-        hoursStr,
-        minsStr,
-        _secsStr,
-        timezone,
-      ] = match;
-
-      const days: Record<string, string> = {
-        Sun: 'Sunday',
-        Mon: 'Monday',
-        Tue: 'Tuesday',
-        Wed: 'Wednesday',
-        Thu: 'Thursday',
-        Fri: 'Friday',
-        Sat: 'Saturday',
-      };
-      const months: Record<string, string> = {
-        Jan: 'January',
-        Feb: 'February',
-        Mar: 'March',
-        Apr: 'April',
-        May: 'May',
-        Jun: 'June',
-        Jul: 'July',
-        Aug: 'August',
-        Sep: 'September',
-        Oct: 'October',
-        Nov: 'November',
-        Dec: 'December',
-      };
-
-      const fullDay = days[dayAbbr] || dayAbbr;
-      const fullMonth = months[monthAbbr] || monthAbbr;
-
-      let hours = parseInt(hoursStr, 10);
-      const ampm = hours >= 12 ? 'PM' : 'AM';
-      hours = hours % 12;
-      hours = hours ? hours : 12;
-      const tzSign = timezone.substring(0, 1);
-      const tzHours = timezone.substring(1, 3);
-      const tzMins = timezone.substring(3, 5);
-      const formattedTz = `UTC${tzSign}${tzHours}:${tzMins}`;
-
-      return `${fullDay}, ${fullMonth} ${dom}, ${year} at ${hours}:${minsStr} ${ampm} (${formattedTz})`;
+    const date = new Date(raw);
+    if (!isNaN(date.getTime())) {
+      const locale = i18next.language || 'zh-CN';
+      const tzMatch = raw.match(/([+-]\d{4})/);
+      const tz = tzMatch ? tzMatch[1] : '';
+      const formattedTz = tz
+        ? `UTC${tz.substring(0, 1)}${tz.substring(1, 3)}:${tz.substring(3, 5)}`
+        : '';
+      const dateStr = date.toLocaleString(locale, {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: false,
+      });
+      return formattedTz ? `${dateStr} (${formattedTz})` : dateStr;
     }
   } catch {
     console.error('Error parsing date string:', raw);

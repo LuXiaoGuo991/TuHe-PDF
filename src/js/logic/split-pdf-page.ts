@@ -180,7 +180,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Rendering page previews...'
               )
             );
-            throw new Error('No PDF document loaded');
+            throw new Error(
+              translate('tools:splitPdf.noPdfLoaded', 'No PDF document loaded')
+            );
           }
           result.pdf.destroy();
           state.files[0] = result.file;
@@ -192,7 +194,9 @@ document.addEventListener('DOMContentLoaded', () => {
             )
           );
         } else {
-          throw new Error('No PDF document loaded');
+          throw new Error(
+            translate('tools:splitPdf.noPdfLoaded', 'No PDF document loaded')
+          );
         }
       }
 
@@ -386,7 +390,13 @@ document.addEventListener('DOMContentLoaded', () => {
           const pageRangeInput = (
             document.getElementById('page-range') as HTMLInputElement
           ).value;
-          if (!pageRangeInput) throw new Error('Choose a valid page range.');
+          if (!pageRangeInput)
+            throw new Error(
+              translate(
+                'tools:splitPdf.invalidRange',
+                'Please enter a valid page range.'
+              )
+            );
 
           const { groups: rangeGroups, indices: rangeIndices } =
             parseRangeGroups(pageRangeInput, totalPages);
@@ -401,7 +411,12 @@ document.addEventListener('DOMContentLoaded', () => {
             'input[name="even-odd-choice"]:checked'
           ) as HTMLInputElement;
           if (!choiceElement)
-            throw new Error('Please select even or odd pages.');
+            throw new Error(
+              translate(
+                'tools:splitPdf.selectEvenOdd',
+                'Please select even or odd pages.'
+              )
+            );
           const choice = choiceElement.value === 'even' ? 'even' : 'odd';
           indicesToExtract = evenOddIndices(choice, totalPages);
           break;
@@ -451,7 +466,12 @@ document.addEventListener('DOMContentLoaded', () => {
           cpdf.deletePdf(pdf);
 
           if (splitPages.length === 0) {
-            throw new Error('No bookmarks found at the selected level.');
+            throw new Error(
+              translate(
+                'tools:splitPdf.noBookmarksFound',
+                'No bookmarks found at the selected level.'
+              )
+            );
           }
 
           const zip = new JSZip();

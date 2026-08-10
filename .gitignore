@@ -46,6 +46,9 @@ codeql-results.csv
 .seo-backup
 libreoffice-wasm-package
 
+# Source maps（仅调试用）
+*.mjs.map
+
 # WASM 引擎文件（体积过大，通过 npm 包本地部署）
 public/wasm/
 public/libreoffice-wasm/

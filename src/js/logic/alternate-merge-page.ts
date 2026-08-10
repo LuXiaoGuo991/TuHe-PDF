@@ -184,7 +184,13 @@ async function mixPages() {
 
   try {
     const fileList = document.getElementById('file-list');
-    if (!fileList) throw new Error('File list not found');
+    if (!fileList)
+      throw new Error(
+        translate(
+          'tools:alternateMerge.fileListNotFound',
+          'File list not found'
+        )
+      );
 
     const sortedFileNames = Array.from(fileList.children)
       .map(function (li) {
@@ -242,10 +248,6 @@ async function mixPages() {
   } catch (e) {
     hideLoader();
     console.error('Alternate Merge error:', e);
-    const message =
-      e instanceof Error
-        ? e.message
-        : 'An error occurred while mixing the PDFs.';
     showAlert(
       translate('alert.error', 'Error'),
       translate('alert.processFailed', 'Processing failed. Please try again.')

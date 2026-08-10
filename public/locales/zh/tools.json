@@ -146,6 +146,9 @@
     "nMinError": "N 至少为 1。",
     "noPagesSelected": "没有选择要分割的页面。",
     "noPdfLoaded": "未加载 PDF 文档。",
+    "invalidRange": "请输入有效的页码范围。",
+    "selectEvenOdd": "请选择奇数页或偶数页。",
+    "noBookmarksFound": "所选级别未找到书签。",
     "auto": {}
   },
   "compressPdf": {
@@ -1499,6 +1502,7 @@
     "subtitle": "通过交替每个 PDF 的页面来合并 PDF。保留书签。",
     "retainPageLabels": "保留每个文件的原始页面标签",
     "retainPageLabelsHint": "关闭（默认）：合并后的 PDF 使用自然页码 1–N。开启：保留每个文件的原始页面标签（可能产生重复标签）。",
+    "fileListNotFound": "未找到文件列表",
     "auto": {
       "4c7db09138": "相关 PDF 工具设置",
       "c5fca489f5": "相关 PDF 工具设置",
@@ -1555,6 +1559,7 @@
   "extractAttachments": {
     "name": "提取附件",
     "subtitle": "从 PDF 中提取所有嵌入的文件为 ZIP。",
+    "fileReadError": "读取文件出错：",
     "auto": {
       "bb9dede377": "相关 PDF 工具设置",
       "ae395b2670": "相关 PDF 工具设置",

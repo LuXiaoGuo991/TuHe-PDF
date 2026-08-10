@@ -146,6 +146,9 @@
     "nMinError": "N must be at least 1.",
     "noPagesSelected": "No pages were selected for splitting.",
     "noPdfLoaded": "No PDF document loaded.",
+    "invalidRange": "Please enter a valid page range.",
+    "selectEvenOdd": "Please select even or odd pages.",
+    "noBookmarksFound": "No bookmarks found at the selected level.",
     "auto": {}
   },
   "compressPdf": {
@@ -1499,6 +1502,7 @@
     "subtitle": "Merge PDFs by alternating pages from each PDF. Preserves Bookmarks.",
     "retainPageLabels": "Keep original page labels from each file",
     "retainPageLabelsHint": "Off (default): the merged PDF uses natural page numbering 1–N. On: each file's original page labels are preserved (may produce duplicate labels).",
+    "fileListNotFound": "File list not found",
     "auto": {
       "4c7db09138": "Files Order",
       "c5fca489f5": "Drag to reorder. Pages will be interleaved in this order.",
@@ -1555,6 +1559,7 @@
   "extractAttachments": {
     "name": "Extract Attachments",
     "subtitle": "Extract all embedded files from PDF(s) as a ZIP.",
+    "fileReadError": "Error reading files: ",
     "auto": {
       "bb9dede377": "Merge Pdf",
       "ae395b2670": "Compress Pdf",

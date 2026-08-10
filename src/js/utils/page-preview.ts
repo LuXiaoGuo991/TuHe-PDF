@@ -45,7 +45,7 @@ function getOrCreateModal(): HTMLElement {
       <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
     </button>
     <div id="preview-canvas-container" class="flex items-center justify-center max-w-[90vw] max-h-[85vh]">
-      <div id="preview-loading" class="text-white/60 text-sm">Loading...</div>
+      <div id="preview-loading" class="text-white/60 text-sm">${translate('common.loading', 'Loading...')}</div>
     </div>
     <div id="preview-page-info" class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-gray-900/80 text-white text-sm px-4 py-2 rounded-full backdrop-blur-sm"></div>
   `;
@@ -77,7 +77,7 @@ async function renderPreviewPage(pageNumber: number): Promise<void> {
   const prevBtn = modal.querySelector('#preview-prev') as HTMLElement;
   const nextBtn = modal.querySelector('#preview-next') as HTMLElement;
 
-  container.innerHTML = '<div class="text-white/60 text-sm">Loading...</div>';
+  container.innerHTML = `<div class="text-white/60 text-sm">${translate('common.loading', 'Loading...')}</div>`;
 
   pageInfo.textContent = translate(
     'common.dynamic.7e2d45a3d6',
