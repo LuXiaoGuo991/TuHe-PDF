@@ -507,7 +507,7 @@ const createFileInputHTML = (options: FileInputOptions = {}) => {
             <div class="flex flex-col items-center justify-center pt-5 pb-6">
                 <i data-lucide="upload-cloud" class="w-10 h-10 mb-3 text-gray-400"></i>
                 <p class="mb-2 text-sm text-gray-400"><span class="font-semibold">${t('upload.clickToSelect')}</span> ${t('upload.orDragAndDrop')}</p>
-                <p class="text-xs text-gray-500">${multiple ? t('upload.pdfOrImages') : 'A single PDF file'}</p>
+                <p class="text-xs text-gray-500">${multiple ? t('upload.pdfOrImages') : t('upload.singleFileHint')}</p>
                 <p class="text-xs text-gray-500">${t('upload.filesNeverLeave')}</p>
             </div>
             <input id="file-input" type="file" class="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer" ${multiple} accept="${acceptedFiles}">

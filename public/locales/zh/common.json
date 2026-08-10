@@ -96,7 +96,8 @@
       "svgGraphics": "SVG 图形",
       "tiffImages": "TIFF 图片",
       "webpImages": "WebP 图片"
-    }
+    },
+    "singleFileHint": "单个文件"
   },
   "howItWorks": {
     "title": "使用方法",
@@ -520,5 +521,29 @@
     "loadingDocuments": "正在加载 PDF 文档...",
     "invalidFilesTitle": "无效文件",
     "unsupportedImages": "部分文件已被跳过，因为它们不是受支持的图片。"
+  },
+  "formCreator": {
+    "invalidPageNumber": "请输入 1 到 {{max}} 之间的有效页码。",
+    "noFieldsAdded": "请至少添加一个字段后再下载。",
+    "noPagesAvailable": "未找到页面。请创建空白 PDF 或上传一个文件。",
+    "resetConfirm": "确定要重置吗？您所有的操作都将丢失。"
+  },
+  "emailToPdf": {
+    "unknownDate": "未知日期",
+    "attachments": "附件 ({{count}})"
+  },
+  "markdownEditor": {
+    "toggleSyncScroll": "切换同步滚动"
+  },
+  "helpers": {
+    "custom": "自定义",
+    "bytes": "字节",
+    "k": "K"
+  },
+  "workbench": {
+    "noMatchingTools": "没有匹配的工具",
+    "closeTab": "关闭标签页",
+    "closeTabMessage": "「{{title}}」中还有已上传的文件或正在进行的任务，关闭后这些进度将丢失。确定要关闭吗？",
+    "closeTabConfirm": "仍然关闭"
   }
 }

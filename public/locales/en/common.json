@@ -96,7 +96,8 @@
       "svgGraphics": "SVG Graphics",
       "tiffImages": "TIFF images",
       "webpImages": "WebP Images"
-    }
+    },
+    "singleFileHint": "A single file"
   },
   "howItWorks": {
     "title": "How It Works",
@@ -520,5 +521,29 @@
     "loadingDocuments": "Loading PDF documents...",
     "invalidFilesTitle": "Invalid Files",
     "unsupportedImages": "Some files were skipped because they are not supported images."
+  },
+  "formCreator": {
+    "invalidPageNumber": "Please enter a valid page number between 1 and {{max}}.",
+    "noFieldsAdded": "Please add at least one field before downloading.",
+    "noPagesAvailable": "No pages found. Please create a blank PDF or upload one.",
+    "resetConfirm": "Are you sure you want to reset? All your work will be lost."
+  },
+  "emailToPdf": {
+    "unknownDate": "Unknown Date",
+    "attachments": "Attachments ({{count}})"
+  },
+  "markdownEditor": {
+    "toggleSyncScroll": "Toggle sync scroll"
+  },
+  "helpers": {
+    "custom": "Custom",
+    "bytes": "Bytes",
+    "k": "K"
+  },
+  "workbench": {
+    "noMatchingTools": "No matching tools",
+    "closeTab": "Close Tab",
+    "closeTabMessage": "\"{{title}}\" has uploaded files or ongoing tasks. Closing will lose this progress. Are you sure?",
+    "closeTabConfirm": "Close Anyway"
   }
 }

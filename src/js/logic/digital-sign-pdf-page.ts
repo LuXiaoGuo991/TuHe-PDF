@@ -807,9 +807,12 @@ async function processSignature(): Promise<void> {
         t('tools:digitalSignPdf.chainFetchFailed')
       );
     } else {
+      console.error('Signing error detail:', errorMessage);
       showAlert(
         t('tools:digitalSignPdf.signingFailedTitle'),
-        t('tools:digitalSignPdf.failedToSignPdf', { message: errorMessage })
+        t('tools:digitalSignPdf.failedToSignPdf', {
+          message: t('alert.processFailed'),
+        })
       );
     }
   }

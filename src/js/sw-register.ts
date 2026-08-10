@@ -80,13 +80,9 @@ if (isDevelopment) {
                 newWorker.state === 'installed' &&
                 navigator.serviceWorker.controller
               ) {
-                console.log('[SW] New version available! Reload to update.');
+                console.log('[SW] 发现新版本！刷新页面以更新。');
 
-                if (
-                  confirm(
-                    'A new version of BentoPDF is available. Reload to update?'
-                  )
-                ) {
+                if (confirm('TuHe PDF 有新版本可用。是否刷新页面以更新？')) {
                   newWorker.postMessage({ type: 'SKIP_WAITING' });
                   window.location.reload();
                 }

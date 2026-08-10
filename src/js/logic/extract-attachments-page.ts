@@ -293,7 +293,13 @@ async function extractAttachments() {
   } catch (error) {
     console.error('Error reading files:', error);
     showStatus(
-      `Error reading files: ${error instanceof Error ? error.message : 'Unknown error occurred'}`,
+      translate(
+        'tools:extractAttachments.fileReadError',
+        'Error reading files. '
+      ) +
+        (error instanceof Error
+          ? error.message
+          : translate('common.unknownError', 'Unknown error occurred')),
       'error'
     );
 

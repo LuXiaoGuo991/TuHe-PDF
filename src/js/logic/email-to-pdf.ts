@@ -7,7 +7,17 @@ import {
   sanitizeEmailHtml,
   formatRawDate,
 } from '../utils/helpers.js';
+import { t } from '../i18n/i18n';
 import type { EmailAttachment, ParsedEmail, EmailRenderOptions } from '@/types';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
 
 type MsgReaderCtor = typeof MsgReaderDefault;
 const MsgReader: MsgReaderCtor =
@@ -243,18 +253,19 @@ export function renderEmailToHtml(
     processedHtml = `<pre style="white-space: pre-wrap; font-family: inherit; margin: 0;">${escapeHtml(email.textBody)}</pre>`;
   }
 
-  let dateStr = 'Unknown Date';
+  let dateStr = translate('emailToPdf.unknownDate', 'Unknown Date');
   if (email.rawDateString) {
     dateStr = formatRawDate(email.rawDateString);
   } else if (email.date && !isNaN(email.date.getTime())) {
-    dateStr = email.date.toLocaleString('en-US', {
+    const locale =
+      (typeof navigator !== 'undefined' && navigator.language) || 'zh-CN';
+    dateStr = email.date.toLocaleString(locale, {
       weekday: 'long',
       year: 'numeric',
       month: 'long',
       day: 'numeric',
       hour: 'numeric',
       minute: '2-digit',
-      hour12: true,
     });
   }
 
@@ -262,7 +273,7 @@ export function renderEmailToHtml(
     includeAttachments && email.attachments.length > 0
       ? `
     <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #cccccc;">
-      <p style="margin: 0 0 8px 0; font-size: 11px; color: #666; font-weight: 600;">Attachments (${email.attachments.length})</p>
+      <p style="margin: 0 0 8px 0; font-size: 11px; color: #666; font-weight: 600;">${translate('emailToPdf.attachments', 'Attachments', { count: email.attachments.length })}</p>
       <ul style="margin: 0; padding-left: 20px; font-size: 10px; color: #555;">
         ${email.attachments
           .map(

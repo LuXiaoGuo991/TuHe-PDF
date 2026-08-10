@@ -261,7 +261,13 @@ if (gotoPageBtn && gotoPageInput) {
       renderCanvas();
       updatePageNavigation();
     } else {
-      alert(`Please enter a valid page number between 1 and ${pages.length}`);
+      alert(
+        translate(
+          'formCreator.invalidPageNumber',
+          `请输入 1 到 ${pages.length} 之间的有效页码。`,
+          { max: pages.length }
+        )
+      );
     }
   });
 
@@ -2197,12 +2203,19 @@ downloadBtn.addEventListener('click', async () => {
   }
 
   if (fields.length === 0) {
-    alert('Please add at least one field before downloading.');
+    alert(
+      translate('formCreator.noFieldsAdded', '请至少添加一个字段后再下载。')
+    );
     return;
   }
 
   if (pages.length === 0) {
-    alert('No pages found. Please create a blank PDF or upload one.');
+    alert(
+      translate(
+        'formCreator.noPagesAvailable',
+        '未找到页面。请创建空白 PDF 或上传一个文件。'
+      )
+    );
     return;
   }
 
@@ -3157,7 +3170,12 @@ addPageBtn.addEventListener('click', () => {
 resetBtn.addEventListener('click', () => {
   if (fields.length > 0 || pages.length > 0) {
     if (
-      confirm('Are you sure you want to reset? All your work will be lost.')
+      confirm(
+        translate(
+          'formCreator.resetConfirm',
+          '确定要重置吗？您所有的操作都将丢失。'
+        )
+      )
     ) {
       resetToInitial();
     }
