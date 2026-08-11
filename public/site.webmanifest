@@ -1,7 +1,7 @@
 {
     "name": "TuHe PDF",
     "short_name": "TuHe PDF",
-    "description": "Free online PDF tools - Privacy-first PDF toolkit that works 100% in your browser",
+    "description": "TuHe PDF（图合）— 纯浏览器端 PDF 工作台，文件不出本机，免注册，无限制。合并、拆分、压缩、转换 PDF 全在浏览器完成。",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#262d3b",

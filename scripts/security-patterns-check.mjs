@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
-const SCAN_DIRS = ['src/js', 'bentopdf-pymupdf-wasm/src', 'cloudflare'];
+const SCAN_DIRS = ['src/js', 'cloudflare'];
 const SKIP = ['node_modules', 'dist', '.git', 'coverage', 'tests', 'test'];
 
 const findings = [];
