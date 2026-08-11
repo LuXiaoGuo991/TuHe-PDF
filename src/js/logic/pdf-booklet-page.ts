@@ -268,7 +268,7 @@ async function generatePreview() {
     }
   }
 
-  previewArea.innerHTML = `<p class="text-indigo-400 text-sm mb-4 text-center">${totalPages} pages → ${numSheets} output sheets</p>`;
+  previewArea.innerHTML = `<p class="text-indigo-400 text-sm mb-4 text-center">${translate('pdfBooklet.pageSheetSummary', `${totalPages} 页 → ${numSheets} 输出页`)}</p>`;
 
   for (let sheetIndex = 0; sheetIndex < numSheets; sheetIndex++) {
     const canvas = document.createElement('canvas');

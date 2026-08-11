@@ -170,7 +170,7 @@ class WasmProviderManager {
     }
     const host = hostnameOf(normalizedUrl);
     if (!host) {
-      throw new Error('Invalid URL');
+      throw new Error(translate('wasmProvider.invalidUrl', '无效的 URL'));
     }
     this.trustedHosts.add(host);
     this.config[packageName] = normalizedUrl;

@@ -37,7 +37,7 @@ export async function loadGsModule(): Promise<GhostscriptModule> {
   const gsJsUrl = `${normalizedUrl}gs.js`;
   const response = await fetch(gsJsUrl);
   if (!response.ok) {
-    throw new Error(`Failed to fetch gs.js: HTTP ${response.status}`);
+    throw new Error(`获取 gs.js 失败：HTTP ${response.status}`);
   }
   const jsText = await response.text();
   const blob = new Blob([jsText], { type: 'application/javascript' });
@@ -68,12 +68,10 @@ export async function convertToPdfA(
   onProgress?: (msg: string) => void
 ): Promise<Uint8Array> {
   if (!isWasmAvailable('ghostscript')) {
-    throw new Error(
-      'Ghostscript is not configured. Please configure it in WASM Settings.'
-    );
+    throw new Error('Ghostscript 未配置。请在 WASM 设置中进行配置。');
   }
 
-  onProgress?.('Loading Ghostscript...');
+  onProgress?.('加载 Ghostscript...');
 
   let gs: GhostscriptModule;
 
@@ -107,7 +105,7 @@ export async function convertToPdfA(
 
     if (!response.ok) {
       throw new Error(
-        `Failed to fetch ICC profile from ${iccUrl}: HTTP ${response.status}`
+        `获取 ICC 配置文件失败（${iccUrl}）：HTTP ${response.status}`
       );
     }
 
@@ -157,7 +155,7 @@ export async function convertToPdfA(
     );
   } catch (e) {
     console.error('[Ghostscript] Failed to setup PDF/A assets:', e);
-    throw new Error('Conversion failed: could not create PDF/A definition', {
+    throw new Error('转换失败：无法创建 PDF/A 定义', {
       cause: e,
     });
   }
@@ -199,7 +197,7 @@ export async function convertToPdfA(
     exitCode = gs.callMain(args);
   } catch (e) {
     console.error('[Ghostscript] Exception:', e);
-    throw new Error(`Ghostscript threw an exception: ${e}`, { cause: e });
+    throw new Error(`Ghostscript 发生异常：${e}`, { cause: e });
   }
 
   console.log('[Ghostscript] Exit code:', exitCode);
@@ -225,7 +223,7 @@ export async function convertToPdfA(
     } catch (e) {
       console.warn('[Ghostscript] Failed to clean up temp file:', e);
     }
-    throw new Error(`Ghostscript conversion failed with exit code ${exitCode}`);
+    throw new Error(`Ghostscript 转换失败，退出码 ${exitCode}`);
   }
 
   // Read output
@@ -236,7 +234,7 @@ export async function convertToPdfA(
     output = gs.FS.readFile(outputPath);
   } catch (e) {
     console.error('[Ghostscript] Failed to read output:', e);
-    throw new Error('Ghostscript did not produce output file', { cause: e });
+    throw new Error('Ghostscript 未生成输出文件', { cause: e });
   }
 
   // Cleanup
@@ -394,12 +392,10 @@ export async function convertFontsToOutlines(
   onProgress?: (msg: string) => void
 ): Promise<Uint8Array> {
   if (!isWasmAvailable('ghostscript')) {
-    throw new Error(
-      'Ghostscript is not configured. Please configure it in WASM Settings.'
-    );
+    throw new Error('Ghostscript 未配置。请在 WASM 设置中进行配置。');
   }
 
-  onProgress?.('Loading Ghostscript...');
+  onProgress?.('加载 Ghostscript...');
 
   let gs: GhostscriptModule;
 
@@ -438,7 +434,7 @@ export async function convertFontsToOutlines(
     } catch (e2) {
       console.warn('[Ghostscript] Failed to clean up temp file:', e2);
     }
-    throw new Error(`Ghostscript threw an exception: ${e}`, { cause: e });
+    throw new Error(`Ghostscript 发生异常：${e}`, { cause: e });
   }
 
   if (exitCode !== 0) {
@@ -452,14 +448,14 @@ export async function convertFontsToOutlines(
     } catch (e) {
       console.warn('[Ghostscript] Failed to clean up temp file:', e);
     }
-    throw new Error(`Ghostscript conversion failed with exit code ${exitCode}`);
+    throw new Error(`Ghostscript 转换失败，退出码 ${exitCode}`);
   }
 
   let output: Uint8Array;
   try {
     output = gs.FS.readFile(outputPath);
   } catch (e) {
-    throw new Error('Ghostscript did not produce output file', { cause: e });
+    throw new Error('Ghostscript 未生成输出文件', { cause: e });
   }
 
   try {

@@ -26,9 +26,7 @@ export async function isCpdfLoaded(): Promise<void> {
 
   const cpdfUrl = getCpdfUrl();
   if (!cpdfUrl) {
-    throw new Error(
-      'CoherentPDF is not configured. Please configure it in WASM Settings.'
-    );
+    throw new Error('CoherentPDF 未配置。请在 WASM 设置中进行配置。');
   }
 
   cpdfLoadPromise = new Promise((resolve, reject) => {
@@ -46,7 +44,7 @@ export async function isCpdfLoaded(): Promise<void> {
       resolve();
     };
     script.onerror = () => {
-      reject(new Error('Failed to load CoherentPDF library from: ' + cpdfUrl));
+      reject(new Error('无法加载 CoherentPDF 库：' + cpdfUrl));
     };
     document.head.appendChild(script);
   });

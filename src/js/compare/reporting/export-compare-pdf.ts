@@ -99,10 +99,10 @@ export async function exportComparePdf(
   }
 ) {
   if (!pdfDoc1 && !pdfDoc2) {
-    throw new Error('At least one PDF document is required for export.');
+    throw new Error('导出需要至少一个 PDF 文档。');
   }
   if (!pairs || pairs.length === 0) {
-    throw new Error('No page pairs to export.');
+    throw new Error('没有可导出的页面对。');
   }
 
   const outDoc = await PDFDocument.create();

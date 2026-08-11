@@ -19,17 +19,17 @@ export function parsePfxFile(
   const keyBagArray = keyBags[forge.pki.oids.pkcs8ShroudedKeyBag];
 
   if (!certBagArray || certBagArray.length === 0) {
-    throw new Error('No certificate found in PFX file');
+    throw new Error('PFX 文件中未找到证书');
   }
 
   if (!keyBagArray || keyBagArray.length === 0) {
-    throw new Error('No private key found in PFX file');
+    throw new Error('PFX 文件中未找到私钥');
   }
 
   const certificate = certBagArray[0].cert;
 
   if (!certificate) {
-    throw new Error('Failed to extract certificate from PFX file');
+    throw new Error('无法从 PFX 文件中提取证书');
   }
 
   return { p12Buffer: pfxBytes, password, certificate };
@@ -45,11 +45,11 @@ export function parsePemFiles(
   let privateKey: forge.pki.PrivateKey;
   if (keyPem.includes('ENCRYPTED')) {
     if (!keyPassword) {
-      throw new Error('Password required for encrypted private key');
+      throw new Error('加密私钥需要密码');
     }
     privateKey = forge.pki.decryptRsaPrivateKey(keyPem, keyPassword);
     if (!privateKey) {
-      throw new Error('Failed to decrypt private key');
+      throw new Error('私钥解密失败');
     }
   } else {
     privateKey = forge.pki.privateKeyFromPem(keyPem);
@@ -83,11 +83,11 @@ export function parseCombinedPem(
   );
 
   if (!certMatch) {
-    throw new Error('No certificate found in PEM file');
+    throw new Error('PEM 文件中未找到证书');
   }
 
   if (!keyMatch) {
-    throw new Error('No private key found in PEM file');
+    throw new Error('PEM 文件中未找到私钥');
   }
 
   return parsePemFiles(certMatch[0], keyMatch[0], password);
@@ -352,7 +352,7 @@ export async function timestampPdf(
 ): Promise<Uint8Array> {
   if (!isValidTsaRequestUrl(tsaUrl)) {
     throw new Error(
-      `Invalid TSA URL. The timestamp authority must be a valid http:// or https:// URL.`
+      `无效的 TSA URL。时间戳服务器必须是有效的 http:// 或 https:// URL。`
     );
   }
 
@@ -362,10 +362,9 @@ export async function timestampPdf(
 
   if (pageIsHttps && tsaIsHttp && !CORS_PROXY_URL) {
     throw new Error(
-      `This TSA endpoint uses HTTP (${tsaUrl}). The browser blocks insecure ` +
-        `requests from this HTTPS page. Either choose a TSA with an HTTPS ` +
-        `endpoint or configure VITE_CORS_PROXY_URL at build time so the ` +
-        `request can be relayed through your proxy.`
+      `此 TSA 端点使用 HTTP (${tsaUrl})。浏览器会阻止从此 HTTPS 页面发出的不安全请求。` +
+        `请选择使用 HTTPS 端点的 TSA，或在构建时配置 VITE_CORS_PROXY_URL，` +
+        `以便通过您的代理中继请求。`
     );
   }
 

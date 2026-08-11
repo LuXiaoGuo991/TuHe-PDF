@@ -262,7 +262,9 @@ async function changePermissions() {
     const outputFile = qpdf.FS.readFile(outputPath, { encoding: 'binary' });
 
     if (!outputFile || outputFile.length === 0) {
-      throw new Error('Processing resulted in an empty file.');
+      throw new Error(
+        translate('changePermissions.emptyResult', '处理结果为空文件。')
+      );
     }
 
     const blob = new Blob([new Uint8Array(outputFile)], {

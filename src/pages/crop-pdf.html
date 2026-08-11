@@ -184,7 +184,10 @@
             >
               <i data-lucide="chevron-left" class="w-5 h-5"></i>
             </button>
-            <span id="page-info" class="text-white font-medium px-2"
+            <span
+              id="page-info"
+              class="text-white font-medium px-2"
+              data-i18n="tools:cropPdf.pageInfo"
               >Page 1 of 1</span
             >
             <button
@@ -207,7 +210,9 @@
                 id="destructive-crop-toggle"
                 class="w-4 h-4 rounded text-indigo-600 bg-gray-700 border-gray-600 focus:ring-indigo-500"
               />
-              Flattening Crop (converts pages to images)
+              <span data-i18n="tools:cropPdf.flatteningCropLabel"
+                >Flattening Crop (converts pages to images)</span
+              >
             </label>
             <label
               class="flex items-center gap-2 text-sm font-medium text-gray-300 cursor-pointer"
@@ -217,7 +222,9 @@
                 id="apply-to-all-toggle"
                 class="w-4 h-4 rounded text-indigo-600 bg-gray-700 border-gray-600 focus:ring-indigo-500"
               />
-              Apply to all pages
+              <span data-i18n="tools:cropPdf.applyToAllPages"
+                >Apply to all pages</span
+              >
             </label>
           </div>
         </div>
@@ -271,7 +278,6 @@
         <h3
           id="alert-title"
           class="text-xl font-bold text-white mb-2"
-          data-i18n="alert.title"
           data-i18n="alert.title"
         >
           Alert
@@ -451,12 +457,12 @@
           <summary
             class="cursor-pointer font-semibold text-white flex items-center justify-between"
           >
-            <span data-i18n="tools:pdfEditor.faq1q"
+            <span data-i18n="tools:cropPdf.faq1q"
               >Is crop pdf really free?</span
             >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq1a">
+          <p class="mt-3 text-gray-400" data-i18n="tools:cropPdf.faq1a">
             Yes! TuHe PDF is 100% free with no hidden fees, no signup required,
             and unlimited file processing.
           </p>
@@ -465,10 +471,12 @@
           <summary
             class="cursor-pointer font-semibold text-white flex items-center justify-between"
           >
-            Are my files private and secure?
+            <span data-i18n="tools:cropPdf.faq2q"
+              >Are my files private and secure?</span
+            >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq2a">
+          <p class="mt-3 text-gray-400" data-i18n="tools:cropPdf.faq2a">
             Absolutely! All processing happens in your browser. Your files never
             leave your device, ensuring complete privacy.
           </p>
@@ -477,10 +485,12 @@
           <summary
             class="cursor-pointer font-semibold text-white flex items-center justify-between"
           >
-            Is there a file size limit?
+            <span data-i18n="tools:cropPdf.faq3q"
+              >Is there a file size limit?</span
+            >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq3a">
+          <p class="mt-3 text-gray-400" data-i18n="tools:cropPdf.faq3a">
             No! Process files of any size, as many times as you want, completely
             free.
           </p>

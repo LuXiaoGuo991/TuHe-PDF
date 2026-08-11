@@ -788,7 +788,7 @@
                   checked
                   class="w-3.5 h-3.5 rounded text-indigo-600 bg-gray-700 border-gray-600"
                 />
-                OCR
+                <span data-i18n="tools:comparePdfs.ocr">OCR</span>
               </label>
               <input
                 type="range"
@@ -811,7 +811,9 @@
                   checked
                   class="w-3.5 h-3.5 rounded text-indigo-600 bg-gray-700 border-gray-600"
                 />
-                Sync scroll
+                <span data-i18n="tools:comparePdfs.syncScroll"
+                  >Sync scroll</span
+                >
               </label>
               <label
                 class="flex items-center gap-1.5 text-xs text-gray-300 cursor-pointer"
@@ -822,7 +824,7 @@
                   checked
                   class="w-3.5 h-3.5 rounded text-indigo-600 bg-gray-700 border-gray-600"
                 />
-                OCR
+                <span data-i18n="tools:comparePdfs.ocr">OCR</span>
               </label>
             </div>
 
@@ -833,7 +835,7 @@
                 disabled
               >
                 <i data-lucide="upload" class="w-3.5 h-3.5"></i>
-                Export
+                <span data-i18n="tools:comparePdfs.export">Export</span>
                 <i data-lucide="chevron-down" class="w-3 h-3"></i>
               </button>
               <div
@@ -843,42 +845,54 @@
                 <div
                   class="px-3 py-1.5 text-[10px] font-semibold text-gray-400 uppercase tracking-wider"
                 >
-                  Export as PDF
+                  <span data-i18n="tools:comparePdfs.exportAsPdf"
+                    >Export as PDF</span
+                  >
                 </div>
                 <button
                   data-export-mode="overlay"
                   class="export-menu-item export-menu-item-overlay w-full px-3 py-2 text-sm text-left text-gray-200 hover:bg-gray-700 flex items-center gap-2 hidden"
                 >
                   <i data-lucide="layers" class="w-4 h-4 text-gray-400"></i>
-                  Overlay view
+                  <span data-i18n="tools:comparePdfs.overlayView"
+                    >Overlay view</span
+                  >
                 </button>
                 <button
                   data-export-mode="split"
                   class="export-menu-item export-menu-item-side w-full px-3 py-2 text-sm text-left text-gray-200 hover:bg-gray-700 flex items-center gap-2"
                 >
                   <i data-lucide="columns-2" class="w-4 h-4 text-gray-400"></i>
-                  Split view
+                  <span data-i18n="tools:comparePdfs.splitView"
+                    >Split view</span
+                  >
                 </button>
                 <button
                   data-export-mode="alternating"
                   class="export-menu-item export-menu-item-side w-full px-3 py-2 text-sm text-left text-gray-200 hover:bg-gray-700 flex items-center gap-2"
                 >
                   <i data-lucide="layers" class="w-4 h-4 text-gray-400"></i>
-                  Alternating
+                  <span data-i18n="tools:comparePdfs.alternating"
+                    >Alternating</span
+                  >
                 </button>
                 <button
                   data-export-mode="left"
                   class="export-menu-item export-menu-item-side w-full px-3 py-2 text-sm text-left text-gray-200 hover:bg-gray-700 flex items-center gap-2"
                 >
                   <i data-lucide="columns-2" class="w-4 h-4 text-gray-400"></i>
-                  Left Document
+                  <span data-i18n="tools:comparePdfs.leftDocument"
+                    >Left Document</span
+                  >
                 </button>
                 <button
                   data-export-mode="right"
                   class="export-menu-item export-menu-item-side w-full px-3 py-2 text-sm text-left text-gray-200 hover:bg-gray-700 flex items-center gap-2"
                 >
                   <i data-lucide="columns-2" class="w-4 h-4 text-gray-400"></i>
-                  Right Document
+                  <span data-i18n="tools:comparePdfs.rightDocument"
+                    >Right Document</span
+                  >
                 </button>
               </div>
             </div>
@@ -890,7 +904,11 @@
               class="compare-viewer-wrapper side-by-side-mode border border-slate-200 relative"
             >
               <div id="panel-1" class="compare-panel overflow-auto">
-                <div class="compare-panel-label" id="compare-panel-label-1">
+                <div
+                  class="compare-panel-label"
+                  id="compare-panel-label-1"
+                  data-i18n="tools:comparePdfs.original"
+                >
                   Original
                 </div>
                 <div class="compare-canvas-stage">
@@ -903,7 +921,11 @@
                 </div>
               </div>
               <div id="panel-2" class="compare-panel overflow-auto">
-                <div class="compare-panel-label" id="compare-panel-label-2">
+                <div
+                  class="compare-panel-label"
+                  id="compare-panel-label-2"
+                  data-i18n="tools:comparePdfs.modified"
+                >
                   Modified
                 </div>
                 <div class="compare-canvas-stage">
@@ -941,74 +963,105 @@
 
               <div class="compare-sidebar-filters">
                 <div class="compare-filter-group">
-                  <div class="compare-filter-label">Change Type</div>
+                  <div
+                    class="compare-filter-label"
+                    data-i18n="tools:comparePdfs.changeType"
+                  >
+                    Change Type
+                  </div>
                   <button id="filter-removed" class="compare-pill removed">
                     <span class="compare-change-dot removed"></span>
-                    <span id="summary-removed-count">0</span> Deleted
+                    <span id="summary-removed-count">0</span>
+                    <span data-i18n="tools:comparePdfs.deleted">Deleted</span>
                   </button>
                   <button id="filter-added" class="compare-pill added">
                     <span class="compare-change-dot added"></span>
-                    <span id="summary-added-count">0</span> Added
+                    <span id="summary-added-count">0</span>
+                    <span data-i18n="tools:comparePdfs.added">Added</span>
                   </button>
                   <button id="filter-modified" class="compare-pill modified">
                     <span class="compare-change-dot modified"></span>
-                    <span id="summary-modified-count">0</span> Modified
+                    <span id="summary-modified-count">0</span>
+                    <span data-i18n="tools:comparePdfs.modified">Modified</span>
                   </button>
                   <button id="filter-moved" class="compare-pill moved">
                     <span class="compare-change-dot moved"></span>
-                    <span id="summary-moved-count">0</span> Moved
+                    <span id="summary-moved-count">0</span>
+                    <span data-i18n="tools:comparePdfs.moved">Moved</span>
                   </button>
                   <button
                     id="filter-style-changed"
                     class="compare-pill style-changed"
                   >
                     <span class="compare-change-dot style-changed"></span>
-                    <span id="summary-style-changed-count">0</span> Style
+                    <span id="summary-style-changed-count">0</span>
+                    <span data-i18n="tools:comparePdfs.style">Style</span>
                   </button>
                 </div>
                 <div class="compare-filter-group">
-                  <div class="compare-filter-label">Content</div>
+                  <div
+                    class="compare-filter-label"
+                    data-i18n="tools:comparePdfs.content"
+                  >
+                    Content
+                  </div>
                   <button
                     id="category-text"
                     class="compare-pill category active"
                   >
-                    <span id="category-count-text">0</span> Text
+                    <span id="category-count-text">0</span>
+                    <span data-i18n="tools:comparePdfs.text">Text</span>
                   </button>
                   <button
                     id="category-image"
                     class="compare-pill category active"
                   >
-                    <span id="category-count-image">0</span> Images
+                    <span id="category-count-image">0</span>
+                    <span data-i18n="tools:comparePdfs.images">Images</span>
                   </button>
                   <button
                     id="category-header-footer"
                     class="compare-pill category active"
                   >
-                    <span id="category-count-header-footer">0</span> Headers
+                    <span id="category-count-header-footer">0</span>
+                    <span data-i18n="tools:comparePdfs.headers">Headers</span>
                   </button>
                   <button
                     id="category-annotation"
                     class="compare-pill category active"
                   >
-                    <span id="category-count-annotation">0</span> Annotations
+                    <span id="category-count-annotation">0</span>
+                    <span data-i18n="tools:comparePdfs.annotations"
+                      >Annotations</span
+                    >
                   </button>
                   <button
                     id="category-formatting"
                     class="compare-pill category active"
                   >
-                    <span id="category-count-formatting">0</span> Formatting
+                    <span id="category-count-formatting">0</span>
+                    <span data-i18n="tools:comparePdfs.formatting"
+                      >Formatting</span
+                    >
                   </button>
                   <button
                     id="category-background"
                     class="compare-pill category active"
                   >
-                    <span id="category-count-background">0</span> Backgrounds
+                    <span id="category-count-background">0</span>
+                    <span data-i18n="tools:comparePdfs.backgrounds"
+                      >Backgrounds</span
+                    >
                   </button>
                 </div>
               </div>
 
               <div class="compare-change-list">
-                <div id="change-list-empty" class="compare-change-empty">
+                <div
+                  id="change-list-empty"
+                  class="compare-change-empty"
+                  data-i18n="tools:comparePdfs.uploadTwoPdfs"
+                >
                   Upload two PDFs to see differences.
                 </div>
                 <div id="compare-change-list" class="hidden"></div>
@@ -1032,7 +1085,6 @@
           id="loader-text"
           class="text-white text-lg font-medium"
           data-i18n="loader.processing"
-          data-i18n="loader.processing"
         >
           Processing...
         </p>
@@ -1050,7 +1102,6 @@
         <h3
           id="alert-title"
           class="text-xl font-bold text-white mb-2"
-          data-i18n="alert.title"
           data-i18n="alert.title"
         >
           Alert
@@ -1230,12 +1281,12 @@
           <summary
             class="cursor-pointer font-semibold text-white flex items-center justify-between"
           >
-            <span data-i18n="tools:pdfEditor.faq1q"
+            <span data-i18n="tools:comparePdfs.faq1q"
               >Is compare pdfs really free?</span
             >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq1a">
+          <p class="mt-3 text-gray-400" data-i18n="tools:comparePdfs.faq1a">
             Yes! TuHe PDF is 100% free with no hidden fees, no signup required,
             and unlimited file processing.
           </p>
@@ -1244,10 +1295,12 @@
           <summary
             class="cursor-pointer font-semibold text-white flex items-center justify-between"
           >
-            Are my files private and secure?
+            <span data-i18n="tools:comparePdfs.faq2q"
+              >Are my files private and secure?</span
+            >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq2a">
+          <p class="mt-3 text-gray-400" data-i18n="tools:comparePdfs.faq2a">
             Absolutely! All processing happens in your browser. Your files never
             leave your device, ensuring complete privacy.
           </p>
@@ -1256,10 +1309,12 @@
           <summary
             class="cursor-pointer font-semibold text-white flex items-center justify-between"
           >
-            Is there a file size limit?
+            <span data-i18n="tools:comparePdfs.faq3q"
+              >Is there a file size limit?</span
+            >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq3a">
+          <p class="mt-3 text-gray-400" data-i18n="tools:comparePdfs.faq3a">
             No! Process files of any size, as many times as you want, completely
             free.
           </p>

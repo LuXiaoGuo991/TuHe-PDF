@@ -76,7 +76,7 @@ async function decryptWithCpdf(
     pdf = null;
 
     if (!(outputBytes instanceof Uint8Array) || outputBytes.length === 0) {
-      throw new Error('CoherentPDF produced an empty decrypted file.');
+      throw new Error('解密结果为空文件。');
     }
 
     return copyBytes(outputBytes);
@@ -102,13 +102,13 @@ async function decryptWithPyMuPDF(
     if (document.needsPass || document.isEncrypted) {
       const authenticated = document.authenticate(password);
       if (!authenticated) {
-        throw new Error('Invalid PDF password.');
+        throw new Error('PDF 密码无效。');
       }
     }
 
     const outputBytes = document.save();
     if (!(outputBytes instanceof Uint8Array) || outputBytes.length === 0) {
-      throw new Error('PyMuPDF produced an empty decrypted file.');
+      throw new Error('解密结果为空文件。');
     }
 
     return copyBytes(outputBytes);

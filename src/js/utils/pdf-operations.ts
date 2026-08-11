@@ -132,7 +132,7 @@ export async function deletePdfPages(
     }
   }
 
-  if (pagesToKeep.length === 0) throw new Error('Cannot delete all pages');
+  if (pagesToKeep.length === 0) throw new Error('无法删除所有页面');
 
   const newPdf = await PDFDocument.create();
   const copiedPages = await newPdf.copyPages(srcDoc, pagesToKeep);

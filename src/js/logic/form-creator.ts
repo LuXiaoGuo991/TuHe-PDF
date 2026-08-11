@@ -2286,10 +2286,7 @@ downloadBtn.addEventListener('click', async () => {
 
   if (fields.length === 0) {
     alert(
-      translate(
-        'tools:formCreator.noFieldsAdded',
-        '请至少添加一个字段后再下载。'
-      )
+      translate('formCreator.noFieldsAdded', '请至少添加一个字段后再下载。')
     );
     return;
   }

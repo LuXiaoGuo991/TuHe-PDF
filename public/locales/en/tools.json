@@ -173,6 +173,8 @@
     "customSettings": "Custom Settings",
     "customSettingsHint": "Fine-tune compression parameters:",
     "outputQuality": "Output Quality",
+    "qualityUnit": "1-100%",
+    "dpiUnit": "DPI",
     "resizeImagesTo": "Resize Images To",
     "onlyProcessAbove": "Only Process Above",
     "removeMetadata": "Remove metadata",
@@ -289,6 +291,8 @@
     "renderingPage": "Rendering Page {{page}}...",
     "renderFailed": "Failed to render page.",
     "pageInfo": "Page {{current}} of {{total}}",
+    "flatteningCropLabel": "Flattening Crop (converts pages to images)",
+    "applyToAllPages": "Apply to all pages",
     "noCropArea": "No Crop Area",
     "selectAreaFirst": "Please select an area to crop first.",
     "selectArea": "Please select an area on at least one page to crop.",
@@ -309,7 +313,13 @@
     "dynamic": {
       "8adda31c0e": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "Crop PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Crop PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is crop pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "extractPages": {
     "name": "Extract Pages",
@@ -335,7 +345,16 @@
       "6a04af93b9": "Failed to load PDF file.",
       "9e33c22c50": "Please select a PDF file."
     },
-    "pageTitle": "Extract Pages Online Free - PDF Tool | TuHe PDF"
+    "totalPagesLabel": "Total Pages:",
+    "pagesToExtractLabel": "Enter pages to extract (e.g., 2, 4-6, 9):",
+    "pagesToExtractPlaceholder": "e.g., 2, 4-6, 9",
+    "pageTitle": "Extract Pages Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is extract pages really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "duplicateOrganize": {
     "name": "Duplicate & Organize",
@@ -372,7 +391,13 @@
       "88f1f34594": "Please enter a page order.",
       "3ee3f4d734": "Invalid Order"
     },
-    "pageTitle": "Duplicate & Organize Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Duplicate & Organize Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is duplicate organize really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "deletePages": {
     "name": "Delete Pages",
@@ -398,7 +423,16 @@
       "e3eece8191": "Failed to load PDF file.",
       "1cf45e725e": "Please select a PDF file."
     },
-    "pageTitle": "Delete Pages Online Free - PDF Tool | TuHe PDF"
+    "totalPagesLabel": "Total Pages:",
+    "pagesToDeleteLabel": "Enter pages to delete (e.g., 2, 4-6, 9):",
+    "pagesToDeletePlaceholder": "e.g., 2, 4-6, 9",
+    "pageTitle": "Delete Pages Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is delete pages really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "editBookmarks": {
     "name": "Edit Bookmarks",
@@ -494,7 +528,13 @@
       "b0765ec34b": "Page {{value0}} / {{value1}}",
       "726081a2a6": "X: {{value0}}, Y: {{value1}} "
     },
-    "pageTitle": "Edit Bookmarks Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Edit Bookmarks Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is edit bookmarks really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "tableOfContents": {
     "name": "Table of Contents",
@@ -530,7 +570,13 @@
       "0a193ffe0a": "Edit Pdf",
       "ed40c6ff84": "Rotate Pdf"
     },
-    "pageTitle": "Table of Contents Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Table of Contents Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is table of contents really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "pageNumbers": {
     "name": "Page Numbers",
@@ -558,7 +604,13 @@
       "1111bc148d": "Failed to load PDF file.",
       "26e6ad72a2": "Please upload a valid PDF file."
     },
-    "pageTitle": "Page Numbers Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Page Numbers Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is page numbers really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "addPageLabels": {
     "name": "Add Page Labels",
@@ -689,6 +741,21 @@
     "name": "Add Watermark",
     "subtitle": "Stamp text or an image over your PDF pages.",
     "applyToAllPages": "Apply to all pages",
+    "preview": "Preview",
+    "dragToPosition": "Drag watermark to position",
+    "defaultText": "CONFIDENTIAL",
+    "pageRange": "Page Range",
+    "textLabel": "Text",
+    "fontSize": "Font Size",
+    "color": "Color",
+    "opacity": "Opacity:",
+    "angle": "Angle:",
+    "watermarkImage": "Watermark Image",
+    "scale": "Scale:",
+    "position": "Position",
+    "flattenWatermarkLabel": "Flatten watermark",
+    "faq2q": "Are my files private and secure?",
+    "faq3q": "Is there a file size limit?",
     "cardDesc": "Free online add watermark tool",
     "auto": {
       "1062570190": "Change File",
@@ -720,11 +787,26 @@
       "7180e53d65": "{{value0}} ({{value1}}, {{value2}} pages)",
       "616dc4c0fd": "Please upload a valid PDF file."
     },
-    "pageTitle": "Add Watermark Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Add Watermark Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is add watermark really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing."
   },
   "headerFooter": {
     "name": "Header & Footer",
     "subtitle": "Add text to the top and bottom of pages.",
+    "pageRangeOptional": "Page Range (optional)",
+    "pageRangePlaceholder": "e.g., 1-3, 5",
+    "totalPages": "Total pages:",
+    "fontSize": "Font Size",
+    "fontColor": "Font Color",
+    "headerLeft": "Header Left",
+    "headerCenter": "Header Center",
+    "headerRight": "Header Right",
+    "footerLeft": "Footer Left",
+    "footerCenter": "Footer Center",
+    "footerRight": "Footer Right",
+    "faq2q": "Are my files private and secure?",
+    "faq3q": "Is there a file size limit?",
     "auto": {
       "7c2dc2e6b3": "Formatting Options",
       "c2a8c3bc69": "Add Header & Footer",
@@ -742,7 +824,9 @@
       "6ad0775d4d": "Failed to load PDF file.",
       "cd24bc9f91": "Please upload a valid PDF file."
     },
-    "pageTitle": "Header & Footer Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Header & Footer Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is header footer really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing."
   },
   "invertColors": {
     "name": "Invert Colors",
@@ -765,7 +849,13 @@
       "9cf793b9aa": "Failed to load PDF file.",
       "68cde6dc8c": "Please upload a valid PDF file."
     },
-    "pageTitle": "Invert Colors Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Invert Colors Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is invert colors really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "scannerEffect": {
     "name": "Scanner Effect",
@@ -805,7 +895,13 @@
       "758bbe8260": "{{value0}} • {{value1}} {{value2}}",
       "7e69040d7a": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "Scanner Effect Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Scanner Effect Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is scanner effect really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "adjustColors": {
     "name": "Adjust Colors",
@@ -843,7 +939,13 @@
       "3eb296a549": "{{value0}} • {{value1}} {{value2}}",
       "6b0fedbc0a": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "Adjust Colors Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Adjust Colors Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is adjust colors really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "backgroundColor": {
     "name": "Background Color",
@@ -865,7 +967,13 @@
       "f70d9e0d74": "Failed to load PDF file.",
       "b9cf61f80d": "Please upload a valid PDF file."
     },
-    "pageTitle": "Background Color Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Background Color Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is background color really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "changeTextColor": {
     "name": "Change Text Color",
@@ -887,7 +995,13 @@
       "0e00f36bee": "Failed to load PDF file.",
       "0602b07098": "Please upload a valid PDF file."
     },
-    "pageTitle": "Change Text Color Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Change Text Color Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is change text color really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "addStamps": {
     "name": "Add Stamps",
@@ -911,7 +1025,13 @@
     "dynamic": {
       "612ed3ad3b": "Remove file"
     },
-    "pageTitle": "Add Stamps Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Add Stamps Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is add stamps really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "removeAnnotations": {
     "name": "Remove Annotations",
@@ -932,7 +1052,13 @@
       "2e1c623bdc": "Failed to load PDF file.",
       "b14673b883": "Please upload a valid PDF file."
     },
-    "pageTitle": "Remove Annotations Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Remove Annotations Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is remove annotations really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "pdfFormFiller": {
     "name": "PDF Form Filler",
@@ -961,13 +1087,41 @@
       "e4f9662450": "Remove file",
       "50ecff21e2": ""
     },
-    "pageTitle": "PDF Form Filler Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF Form Filler Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is pdf form filler really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "createPdfForm": {
     "name": "Create PDF Form",
     "subtitle": "Create fillable PDF forms with drag-and-drop text fields.",
     "orSeparator": "OR",
     "createBlankPdf": "Create Blank PDF",
+    "pageSizeLabel": "Page Size:",
+    "widthPts": "Width (pts)",
+    "heightPts": "Height (pts)",
+    "properties": "Properties",
+    "fieldCountSuffix": "field(s)",
+    "pageInfo": "Page {{current}} of {{total}}",
+    "goToLabel": "Go to:",
+    "goToBtn": "Go",
+    "gridLabel": "Grid:",
+    "fieldsLabel": "Fields:",
+    "gridVPlaceholder": "V",
+    "gridHPlaceholder": "H",
+    "tooltipTextField": "Text Field",
+    "tooltipCheckbox": "Checkbox",
+    "tooltipRadioButton": "Radio Button",
+    "tooltipDropdown": "Dropdown",
+    "tooltipOptionList": "Option List",
+    "tooltipButton": "Button",
+    "tooltipSignature": "Signature",
+    "tooltipDateField": "Date Field",
+    "tooltipImageField": "Image Field",
+    "tooltipBarcodeField": "Barcode Field",
     "auto": {
       "ea2efedcab": "Letter (8.5\" × 11\")",
       "5e4843a8b8": "Legal (8.5\" × 14\")",
@@ -994,9 +1148,18 @@
       "0a193ffe0a": "Edit Pdf",
       "ed40c6ff84": "Rotate Pdf",
       "bccc6f1f5c": "An error occurred.",
-      "605a6e91fb": "Toggle Grid"
+      "605a6e91fb": "Toggle Grid",
+      "a4": "A4 (210mm × 297mm)",
+      "a5": "A5 (148mm × 210mm)",
+      "a3": "A3 (297mm × 420mm)"
     },
-    "pageTitle": "Create PDF Form Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Create PDF Form Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is create pdf form really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "removeBlankPages": {
     "name": "Remove Blank Pages",
@@ -1027,11 +1190,18 @@
       "96820f89e0": "Please upload a valid PDF file.",
       "34d15e8ab1": "80"
     },
-    "pageTitle": "Remove Blank Pages Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Remove Blank Pages Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is remove blank pages really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "imageToPdf": {
     "name": "Images to PDF",
     "subtitle": "Convert JPG, PNG, BMP, GIF, TIFF, PNM, PGM, PBM, PPM, PAM, JXR, JPX, JP2, PSD, SVG, HEIC, WebP to PDF.",
+    "qualityLabel": "PDF Quality",
     "auto": {
       "d148e69606": "JPG, PNG, BMP, GIF, TIFF, PNM, PGM, PBM, PPM, PAM, JXR, JPX, JP2, PSD, SVG, HEIC, WebP",
       "bb9dede377": "Merge Pdf",
@@ -1051,7 +1221,13 @@
       "011eb5b704": "Some files were skipped. Only supported image formats are allowed.",
       "bfeaca68f4": "Invalid Files"
     },
-    "pageTitle": "Images to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Images to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is image to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "pngToPdf": {
     "name": "PNG to PDF",
@@ -1072,7 +1248,13 @@
       "31345167f1": "Some files were skipped. Only PNG images are allowed.",
       "9531a0069c": "Invalid Files"
     },
-    "pageTitle": "PNG to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PNG to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is png to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "webpToPdf": {
     "name": "WebP to PDF",
@@ -1093,7 +1275,13 @@
       "dac29db7dd": "Some files were skipped. Only WebP images are allowed.",
       "3c6e0f53ba": "Invalid Files"
     },
-    "pageTitle": "WebP to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "WebP to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is webp to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "svgToPdf": {
     "name": "SVG to PDF",
@@ -1114,7 +1302,13 @@
       "a991f2ba33": "Some files were skipped. Only SVG graphics are allowed.",
       "0aaa760603": "Invalid Files"
     },
-    "pageTitle": "SVG to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "SVG to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is svg to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "bmpToPdf": {
     "name": "BMP to PDF",
@@ -1135,7 +1329,13 @@
       "5f18ec5ebc": "Please select at least one BMP file.",
       "2baabe2097": "({{value0}})"
     },
-    "pageTitle": "BMP to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "BMP to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is bmp to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "heicToPdf": {
     "name": "HEIC to PDF",
@@ -1156,7 +1356,13 @@
       "5088e5e744": "Please select at least one HEIC file.",
       "37dc2dff42": "({{value0}})"
     },
-    "pageTitle": "HEIC to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "HEIC to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is heic to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "tiffToPdf": {
     "name": "TIFF to PDF",
@@ -1177,7 +1383,13 @@
       "bcb176a1ed": "Please select at least one TIFF file.",
       "64f495d84c": "({{value0}})"
     },
-    "pageTitle": "TIFF to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "TIFF to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is tiff to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "textToPdf": {
     "name": "Text to PDF",
@@ -1219,7 +1431,13 @@
       "331d64523c": "Please select at least one text file.",
       "8c9a7c9a67": "({{value0}})"
     },
-    "pageTitle": "Text to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Text to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is text to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "jsonToPdf": {
     "name": "JSON to PDF",
@@ -1246,7 +1464,13 @@
       "0a193ffe0a": "Edit Pdf",
       "ed40c6ff84": "Rotate Pdf"
     },
-    "pageTitle": "JSON to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "JSON to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is json to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "pdfToJpg": {
     "name": "PDF to JPG",
@@ -1321,7 +1545,13 @@
       "5866da68d4": "{{value0}} • {{value1}} {{value2}}",
       "dd75ee4288": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "PDF to PNG Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF to PNG Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is pdf to png really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "pdfToWebp": {
     "name": "PDF to WebP",
@@ -1352,7 +1582,13 @@
       "f68d703739": "{{value0}} • {{value1}} {{value2}}",
       "f9c3ea897f": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "PDF to WebP Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF to WebP Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is pdf to webp really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "pdfToBmp": {
     "name": "PDF to BMP",
@@ -1379,7 +1615,13 @@
       "9f87fe7348": "{{value0}} • {{value1}} {{value2}}",
       "25e694ba1c": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "PDF to BMP Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF to BMP Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is pdf to bmp really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "pdfToTiff": {
     "name": "PDF to TIFF",
@@ -1421,7 +1663,13 @@
       "2d62cb9c86": "{{value0}} • {{value1}} {{value2}}",
       "7caf602278": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "PDF to TIFF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF to TIFF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is pdf to tiff really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "pdfToCbz": {
     "name": "PDF to CBZ",
@@ -1500,7 +1748,13 @@
       "1aa9a280e2": "{{value0}} • {{value1}} {{value2}}",
       "6c08c2bcda": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "PDF to Greyscale Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF to Greyscale Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is pdf to greyscale really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "pdfToJson": {
     "name": "PDF to JSON",
@@ -1526,7 +1780,13 @@
       "0a193ffe0a": "Edit Pdf",
       "ed40c6ff84": "Rotate Pdf"
     },
-    "pageTitle": "PDF to JSON Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF to JSON Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is pdf to json really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "ocrPdf": {
     "name": "OCR PDF",
@@ -1591,7 +1851,13 @@
     "dynamic": {
       "544984faf5": ""
     },
-    "pageTitle": "OCR PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "OCR PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is ocr pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "alternateMerge": {
     "name": "Alternate & Mix Pages",
@@ -1620,7 +1886,13 @@
       "ca820f834d": "Loading PDF files...",
       "4ed44782a4": "{{value0}} PDF files selected"
     },
-    "pageTitle": "Alternate & Mix Pages Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Alternate & Mix Pages Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is alternate merge really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "addAttachments": {
     "name": "Add Attachments",
@@ -1652,7 +1924,13 @@
       "b76c5703b2": "Worker error occurred. Check console for details.",
       "b699690e1e": "{{value0}} file(s) attached successfully."
     },
-    "pageTitle": "Add Attachments Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Add Attachments Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is add attachments really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "extractAttachments": {
     "name": "Extract Attachments",
@@ -1672,7 +1950,13 @@
       "99348f2682": "No Attachments",
       "88c0a4ed05": "{{value0}} attachment(s) extracted successfully!"
     },
-    "pageTitle": "Extract Attachments Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Extract Attachments Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is extract attachments really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "editAttachments": {
     "name": "Edit Attachments",
@@ -1702,7 +1986,13 @@
       "a74a16433e": "Worker error occurred. Check console for details.",
       "165ce95328": "Attachments updated successfully!"
     },
-    "pageTitle": "Edit Attachments Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Edit Attachments Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is edit attachments really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "dividePages": {
     "name": "Divide Pages",
@@ -1734,7 +2024,13 @@
       "07ff7bec76": "{{value0}} • {{value1}} pages",
       "c90d4c14de": "{{value0}} • Loading..."
     },
-    "pageTitle": "Divide Pages Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Divide Pages Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is divide pages really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "addBlankPage": {
     "name": "Add Blank Page",
@@ -1764,7 +2060,13 @@
       "6d8c3c7f1a": "Enter 0 to insert at the beginning, or {{value0}} to insert at the end.",
       "ceda244c1d": "{{value0}} • {{value1}} pages"
     },
-    "pageTitle": "Add Blank Page Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Add Blank Page Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is add blank page really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "reversePages": {
     "name": "Reverse Pages",
@@ -1785,7 +2087,13 @@
       "7c4c0a8d59": "Reversing page order...",
       "dbc8218413": "Please select one or more PDF files."
     },
-    "pageTitle": "Reverse Pages Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Reverse Pages Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is reverse pages really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "rotatePdf": {
     "name": "Rotate PDF",
@@ -1809,7 +2117,15 @@
       "0e83e638d1": "{{value0}} • Loading...",
       "0932d34a73": "{{value0}}"
     },
-    "pageTitle": "Rotate PDF Online Free - PDF Tool | TuHe PDF"
+    "rotateLeft": "Left",
+    "rotateRight": "Right",
+    "pageTitle": "Rotate PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is rotate pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "rotateCustom": {
     "name": "Rotate by Custom Degrees",
@@ -1836,7 +2152,13 @@
       "03a27bd0ab": "-",
       "bbc1fbce78": "{{value0}}"
     },
-    "pageTitle": "Rotate by Custom Degrees Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Rotate by Custom Degrees Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is rotate custom really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "nUpPdf": {
     "name": "N-Up PDF",
@@ -1866,7 +2188,13 @@
       "2190a71612": "{{value0}} • {{value1}} pages",
       "a26647e4a0": "{{value0}} • Loading..."
     },
-    "pageTitle": "N-Up PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "N-Up PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is n up pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "combineToSinglePage": {
     "name": "Combine to Single Page",
@@ -1892,7 +2220,13 @@
       "4784218459": "{{value0}} • {{value1}} pages",
       "33c063c234": "{{value0}} • Loading..."
     },
-    "pageTitle": "Combine to Single Page Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Combine to Single Page Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is combine to single page really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "viewMetadata": {
     "name": "View Metadata",
@@ -1913,7 +2247,13 @@
       "f9436236fe": "Could not fully analyze the PDF. It may be corrupted or have an unusual structure.",
       "674878efd6": "Analyzing full PDF metadata..."
     },
-    "pageTitle": "View Metadata Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "View Metadata Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is view metadata really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "editMetadata": {
     "name": "Edit Metadata",
@@ -1939,7 +2279,13 @@
       "41a32c1325": "Value (e.g., Marketing)",
       "16ebbac701": "Key (e.g., Department)"
     },
-    "pageTitle": "Edit Metadata Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Edit Metadata Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is edit metadata really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "pdfsToZip": {
     "name": "PDFs to ZIP",
@@ -1962,7 +2308,13 @@
       "8b3c05ec36": "Creating ZIP archive...",
       "a2a6eeec53": "Please select PDF files to create a ZIP archive."
     },
-    "pageTitle": "PDFs to ZIP Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDFs to ZIP Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is pdfs to zip really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "comparePdfs": {
     "name": "Compare PDFs",
@@ -2029,6 +2381,22 @@
     "styleChangedFont": "Font: {{before}} → {{after}}",
     "styleChangedFontSize": "Font size: {{before}} → {{after}}",
     "textMoved": "Moved \"{{text}}\"",
+    "ocr": "OCR",
+    "overlayView": "Overlay view",
+    "changeType": "Change Type",
+    "moved": "Moved",
+    "style": "Style",
+    "content": "Content",
+    "text": "Text",
+    "images": "Images",
+    "headers": "Headers",
+    "annotations": "Annotations",
+    "formatting": "Formatting",
+    "backgrounds": "Backgrounds",
+    "faq2q": "Are my files private and secure?",
+    "faq3q": "Is there a file size limit?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free.",
     "auto": {
       "dab564d809": "Fit",
       "85174b7376": "All changes",
@@ -2059,7 +2427,9 @@
     "missingPage": "Page {{page}} does not exist in this PDF.",
     "ocrRunning": "Running OCR on page {{page}}...",
     "ocrProgress": "OCR: {{status}}",
-    "pageTitle": "Compare PDFs Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Compare PDFs Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is compare pdfs really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing."
   },
   "posterizePdf": {
     "name": "Posterize PDF",
@@ -2082,7 +2452,13 @@
       "0a193ffe0a": "Edit Pdf",
       "ed40c6ff84": "Rotate Pdf"
     },
-    "pageTitle": "Posterize PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Posterize PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is posterize pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "fixPageSize": {
     "name": "Fix Page Size",
@@ -2111,7 +2487,13 @@
       "5682a8deba": "Please upload a PDF file first.",
       "4e7b720a89": "No File"
     },
-    "pageTitle": "Fix Page Size Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Fix Page Size Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is fix page size really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "linearizePdf": {
     "name": "Linearize PDF",
@@ -2139,7 +2521,13 @@
       "20e8c58c29": "Please upload at least one PDF file.",
       "3fc2420257": "No PDF Files"
     },
-    "pageTitle": "Linearize PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Linearize PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is linearize pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "pageDimensions": {
     "name": "Page Dimensions",
@@ -2162,7 +2550,13 @@
       "e6a574d0ee": "{{value0}} x {{value1}} {{value2}}",
       "f5deede4e1": ""
     },
-    "pageTitle": "Page Dimensions Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Page Dimensions Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is page dimensions really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "removeRestrictions": {
     "name": "Remove Restrictions",
@@ -2193,7 +2587,13 @@
       "9afe460e3d": "Please upload a PDF file first.",
       "2de7e01738": "No File"
     },
-    "pageTitle": "Remove Restrictions Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Remove Restrictions Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is remove restrictions really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "repairPdf": {
     "name": "Repair PDF",
@@ -2217,7 +2617,13 @@
       "2fd1eb15f7": "Initializing repair engine...",
       "a8baf6f1f3": "Please select one or more PDF files."
     },
-    "pageTitle": "Repair PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Repair PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is repair pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "encryptPdf": {
     "name": "Encrypt PDF",
@@ -2238,6 +2644,8 @@
       "8d7e230034": "Enter password to open PDF",
       "61966b4d3c": "Enter password for permissions (optional)"
     },
+    "userPasswordLabel": "User Password (Required)",
+    "ownerPasswordLabel": "Owner Password (Optional)",
     "dynamic": {
       "f31490d96d": "An error occurred: {{value0}}",
       "1cc9a81e1a": "Encryption Failed",
@@ -2250,7 +2658,13 @@
       "2c4bfd0f85": "Please upload a PDF file first.",
       "dd9d84669b": "No File"
     },
-    "pageTitle": "Encrypt PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Encrypt PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is encrypt pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "sanitizePdf": {
     "name": "Sanitize PDF",
@@ -2280,7 +2694,13 @@
       "0f6dc18170": "No Changes",
       "2d61fe671a": "No PDF document loaded."
     },
-    "pageTitle": "Sanitize PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Sanitize PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is sanitize pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "decryptPdf": {
     "name": "Decrypt PDF",
@@ -2294,6 +2714,7 @@
       "ed40c6ff84": "Rotate Pdf",
       "34479e0409": "Enter the PDF password"
     },
+    "passwordLabel": "PDF Password",
     "dynamic": {
       "29b5a25d37": "An error occurred: {{value0}}",
       "b9a3b1421d": "Decryption Failed",
@@ -2315,7 +2736,13 @@
       "cb76be345d": "No File"
     },
     "processFailed": "Decryption failed. Please try again.",
-    "pageTitle": "Decrypt PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Decrypt PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is decrypt pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "flattenPdf": {
     "name": "Flatten PDF",
@@ -2341,7 +2768,13 @@
       "0b697fdcaa": "Flattening PDF...",
       "87d5747b51": "Please select at least one PDF file."
     },
-    "pageTitle": "Flatten PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Flatten PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is flatten pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "removeMetadata": {
     "name": "Remove Metadata",
@@ -2368,7 +2801,13 @@
       "293b45eafc": "Please upload a PDF file first.",
       "9bb26fafb5": "No File"
     },
-    "pageTitle": "Remove Metadata Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Remove Metadata Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is remove metadata really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "changePermissions": {
     "name": "Change Permissions",
@@ -2407,7 +2846,13 @@
       "d90ea623b2": "Please upload a PDF file first.",
       "a579977c69": "No File"
     },
-    "pageTitle": "Change Permissions Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Change Permissions Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is change permissions really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "odtToPdf": {
     "name": "ODT to PDF",
@@ -2429,7 +2874,13 @@
       "3521d690a3": "Successfully converted {{value0}} to PDF.",
       "c2f620d499": "Please select at least one ODT file."
     },
-    "pageTitle": "ODT to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "ODT to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is odt to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "csvToPdf": {
     "name": "CSV to PDF",
@@ -2453,7 +2904,13 @@
       "f702b2d875": "Successfully converted {{value0}} to PDF.",
       "b3385b83d4": "Please select at least one CSV file."
     },
-    "pageTitle": "CSV to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "CSV to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is csv to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "rtfToPdf": {
     "name": "RTF to PDF",
@@ -2476,7 +2933,13 @@
       "f98b741f34": "Successfully converted {{value0}} to PDF.",
       "0a05ab24e5": "Please select at least one RTF file."
     },
-    "pageTitle": "RTF to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "RTF to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is rtf to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "wordToPdf": {
     "name": "Word to PDF",
@@ -2545,7 +3008,13 @@
       "74fd7493ec": "Successfully converted {{value0}} to PDF.",
       "9d71f06b8f": "Please select at least one Excel file."
     },
-    "pageTitle": "Excel to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Excel to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is excel to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "powerpointToPdf": {
     "name": "PowerPoint to PDF",
@@ -2567,7 +3036,13 @@
       "94609a8cae": "Successfully converted {{value0}} to PDF.",
       "af1899e4e6": "Please select at least one PowerPoint file."
     },
-    "pageTitle": "PowerPoint to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PowerPoint to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is powerpoint to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "markdownToPdf": {
     "name": "Markdown to PDF",
@@ -2595,7 +3070,13 @@
       "0a193ffe0a": "Edit Pdf",
       "ed40c6ff84": "Rotate Pdf"
     },
-    "pageTitle": "Markdown to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Markdown to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is markdown to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "pdfBooklet": {
     "name": "PDF Booklet",
@@ -2645,7 +3126,13 @@
     "front": "Front",
     "back": "Back",
     "sheet": "Sheet",
-    "pageTitle": "PDF Booklet Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF Booklet Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is pdf booklet really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "xpsToPdf": {
     "name": "XPS to PDF",
@@ -2670,7 +3157,13 @@
       "791c680372": "Loading engine...",
       "7d896aa183": "Please select at least one {{value0}} file."
     },
-    "pageTitle": "XPS to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "XPS to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is xps to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "mobiToPdf": {
     "name": "MOBI to PDF",
@@ -2695,7 +3188,13 @@
       "74a5661b9d": "Loading engine...",
       "1a7abc7505": "Please select at least one {{value0}} file."
     },
-    "pageTitle": "MOBI to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "MOBI to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is mobi to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "epubToPdf": {
     "name": "EPUB to PDF",
@@ -2720,7 +3219,13 @@
       "0642d0fcdb": "Loading engine...",
       "22b7b16873": "Please select at least one {{value0}} file."
     },
-    "pageTitle": "EPUB to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "EPUB to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is epub to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "fb2ToPdf": {
     "name": "FB2 to PDF",
@@ -2745,7 +3250,13 @@
       "fa537f2cfc": "Loading engine...",
       "36e0761e1c": "Please select at least one {{value0}} file."
     },
-    "pageTitle": "FB2 to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "FB2 to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is fb2 to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "cbzToPdf": {
     "name": "CBZ to PDF",
@@ -2769,7 +3280,13 @@
       "657ec1680f": "Converting {{value0}}...",
       "3767ecf995": "Please select at least one {{value0}} file."
     },
-    "pageTitle": "CBZ to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "CBZ to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is cbz to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "wpdToPdf": {
     "name": "WPD to PDF",
@@ -2794,7 +3311,13 @@
       "899e0e00c9": "Loading engine...",
       "c05b666684": "Please select at least one {{value0}} file."
     },
-    "pageTitle": "WPD to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "WPD to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is wpd to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "wpsToPdf": {
     "name": "WPS to PDF",
@@ -2819,7 +3342,13 @@
       "839bb28344": "Loading engine...",
       "4af39b0805": "Please select at least one {{value0}} file."
     },
-    "pageTitle": "WPS to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "WPS to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is wps to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "xmlToPdf": {
     "name": "XML to PDF",
@@ -2842,7 +3371,13 @@
       "99ae92f70e": "Successfully converted {{value0}} to PDF.",
       "75c05e3e4d": "Please select at least one {{value0}} file."
     },
-    "pageTitle": "XML to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "XML to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is xml to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "pagesToPdf": {
     "name": "Pages to PDF",
@@ -2867,7 +3402,13 @@
       "ef163b0d8e": "Loading engine...",
       "6e2b64f357": "Please select at least one {{value0}} file."
     },
-    "pageTitle": "Pages to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Pages to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is pages to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "odgToPdf": {
     "name": "ODG to PDF",
@@ -2892,7 +3433,13 @@
       "245fd93b2b": "Loading engine...",
       "2a61c4b789": "Please select at least one {{value0}} file."
     },
-    "pageTitle": "ODG to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "ODG to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is odg to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "odsToPdf": {
     "name": "ODS to PDF",
@@ -2917,7 +3464,13 @@
       "4fb6de5f25": "Loading engine...",
       "d2f643f113": "Please select at least one {{value0}} file."
     },
-    "pageTitle": "ODS to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "ODS to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is ods to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "odpToPdf": {
     "name": "ODP to PDF",
@@ -2942,7 +3495,13 @@
       "bd598b8682": "Loading engine...",
       "3f9fd2f58f": "Please select at least one {{value0}} file."
     },
-    "pageTitle": "ODP to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "ODP to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is odp to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "pubToPdf": {
     "name": "PUB to PDF",
@@ -2967,7 +3526,13 @@
       "1d973bb300": "Loading engine...",
       "dbf215a4fb": "Please select at least one {{value0}} file."
     },
-    "pageTitle": "PUB to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PUB to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is pub to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "vsdToPdf": {
     "name": "VSD to PDF",
@@ -2992,7 +3557,13 @@
       "ecf9899daf": "Loading engine...",
       "582b0dbbdf": "Please select at least one {{value0}} file."
     },
-    "pageTitle": "VSD to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "VSD to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is vsd to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "psdToPdf": {
     "name": "PSD to PDF",
@@ -3016,7 +3587,13 @@
       "0a745921f6": "Loading engine...",
       "29f58a0131": "Please select at least one {{value0}} file."
     },
-    "pageTitle": "PSD to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PSD to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is psd to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "pdfToSvg": {
     "name": "PDF to SVG",
@@ -3044,7 +3621,13 @@
       "67967aa49b": "Loading Engine...",
       "d03c2fba20": "Please upload at least one PDF file."
     },
-    "pageTitle": "PDF to SVG Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF to SVG Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is pdf to svg really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "extractTables": {
     "name": "Extract PDF Tables",
@@ -3073,7 +3656,13 @@
       "823e9c0f13": "Please upload a PDF file first.",
       "73433d0bfe": "No File"
     },
-    "pageTitle": "Extract PDF Tables Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Extract PDF Tables Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is extract tables really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "pdfToCsv": {
     "name": "PDF to CSV",
@@ -3098,7 +3687,13 @@
       "ad03050928": "Please upload a PDF file first.",
       "69783ee8ef": "No File"
     },
-    "pageTitle": "PDF to CSV Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF to CSV Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is pdf to csv really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "pdfToExcel": {
     "name": "PDF to Excel",
@@ -3124,7 +3719,13 @@
       "2591070d22": "Please upload a PDF file first.",
       "59516df9fc": "No File"
     },
-    "pageTitle": "PDF to Excel Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF to Excel Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is pdf to excel really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "pdfToText": {
     "name": "PDF to Text",
@@ -3153,7 +3754,13 @@
       "fad4a0bfb8": "Some files were skipped. Only PDF files are allowed.",
       "3003a34022": "Invalid Files"
     },
-    "pageTitle": "PDF to Text Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF to Text Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is pdf to text really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "digitalSignPdf": {
     "name": "Digital Signature PDF",
@@ -3345,7 +3952,13 @@
       "0b58b429fa": "Loading PDF engine...",
       "e2b1b6aa34": "Please select at least one {{value0}} file (.eml or .msg)."
     },
-    "pageTitle": "Email to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Email to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is email to pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "fontToOutline": {
     "name": "Font to Outline",
@@ -3449,7 +4062,13 @@
       "bc5256a321": "{{value0}} • {{value1}} pages",
       "55c6560fcf": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "PDF to Word Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF to Word Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is pdf to word really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "extractImages": {
     "name": "Extract Images",
@@ -3477,7 +4096,13 @@
       "71adf08528": "{{value0}} • {{value1}} pages",
       "de57f04c3f": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "Extract Images Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Extract Images Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is extract images really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "pdfToMarkdown": {
     "name": "PDF to Markdown",
@@ -3508,7 +4133,13 @@
       "223165f5fd": "Conversion Error",
       "e98ede1f9b": "Converting to Markdown..."
     },
-    "pageTitle": "PDF to Markdown Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF to Markdown Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is pdf to markdown really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "preparePdfForAi": {
     "name": "Prepare PDF for AI",
@@ -3540,7 +4171,13 @@
       "a807df92a6": "{{value0}} • {{value1}} pages",
       "570fd297dc": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "Prepare PDF for AI Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Prepare PDF for AI Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is prepare pdf for ai really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "pdfOcg": {
     "name": "PDF OCG",
@@ -3577,7 +4214,13 @@
       "ebdf5cb44f": "{{value0}} • {{value1}} pages",
       "1c578f88cb": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "PDF OCG Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF OCG Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is pdf ocg really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "pdfToPdfa": {
     "name": "PDF to PDF/A",
@@ -3610,7 +4253,13 @@
       "7fdcb51569": "{{value0}} • {{value1}} pages",
       "1ebf7b22d2": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "PDF to PDF/A Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF to PDF/A Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is pdf to pdfa really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "rasterizePdf": {
     "name": "Rasterize PDF",
@@ -3646,7 +4295,13 @@
       "d3132c7fc8": "{{value0}} • {{value1}} pages",
       "5f28791b8c": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "Rasterize PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Rasterize PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is rasterize pdf really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2q": "Are my files private and secure?",
+    "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
+    "faq3q": "Is there a file size limit?",
+    "faq3a": "No! Process files of any size, as many times as you want, completely free."
   },
   "pdfWorkflow": {
     "name": "PDF Workflow Builder",

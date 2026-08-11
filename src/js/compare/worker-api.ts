@@ -28,7 +28,9 @@ function getWorker(): Worker | null {
       if (!p) return;
       pending.delete(id);
       if (type === 'error') {
-        p.reject(new Error((rest as { message: string }).message));
+        p.reject(
+          new Error((rest as { message: string }).message || 'Worker 返回错误')
+        );
       } else {
         p.resolve(rest);
       }
@@ -37,7 +39,7 @@ function getWorker(): Worker | null {
       worker?.terminate();
       worker = null;
       for (const [, p] of pending) {
-        p.reject(new Error('Worker crashed'));
+        p.reject(new Error('Worker 崩溃'));
       }
       pending.clear();
     };
@@ -49,7 +51,7 @@ function getWorker(): Worker | null {
 
 function postToWorker(msg: Record<string, unknown>): Promise<unknown> {
   const w = getWorker();
-  if (!w) return Promise.reject(new Error('No worker'));
+  if (!w) return Promise.reject(new Error('无可用 Worker'));
   const id = ++messageId;
   return new Promise((resolve, reject) => {
     pending.set(id, { resolve, reject });

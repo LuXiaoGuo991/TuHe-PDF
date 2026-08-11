@@ -23,7 +23,7 @@ function drawNormalized(
 ) {
   const context = targetCanvas.getContext('2d');
   if (!context) {
-    throw new Error('Could not create comparison canvas context.');
+    throw new Error('无法创建比较画布上下文。');
   }
 
   context.fillStyle = '#ffffff';
@@ -56,7 +56,7 @@ export function renderVisualDiff(
   const outputContext = outputCanvas.getContext('2d');
 
   if (!context1 || !context2 || !outputContext) {
-    throw new Error('Could not create visual diff context.');
+    throw new Error('无法创建可视化差异上下文。');
   }
 
   const image1 = context1.getImageData(0, 0, width, height);
@@ -87,7 +87,7 @@ export function renderVisualDiff(
   const overlayContext = overlayCanvas.getContext('2d');
 
   if (!overlayContext) {
-    throw new Error('Could not create visual diff overlay context.');
+    throw new Error('无法创建可视化差异叠加层上下文。');
   }
 
   overlayContext.putImageData(diffImage, 0, 0);

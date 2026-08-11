@@ -229,7 +229,7 @@ async function displayMetadata() {
         infoSection.ul.appendChild(createListItem(key, displayValue));
       }
     } else {
-      infoSection.ul.innerHTML = `<li><span class="text-gray-500 italic">${translate('common.viewMetadata.noInfoDict', '- No Info Dictionary data found -')}</span></li>`;
+      infoSection.ul.innerHTML = `<li><span class="text-gray-500 italic">${translate('viewMetadata.noInfoDict', '- No Info Dictionary data found -')}</span></li>`;
     }
     metadataDisplay.appendChild(infoSection.wrapper);
 
@@ -244,7 +244,7 @@ async function displayMetadata() {
         fieldsSection.ul.appendChild(createListItem(fieldName, String(value)));
       }
     } else {
-      fieldsSection.ul.innerHTML = `<li><span class="text-gray-500 italic">${translate('common.viewMetadata.noFormFields', '- No interactive form fields found -')}</span></li>`;
+      fieldsSection.ul.innerHTML = `<li><span class="text-gray-500 italic">${translate('viewMetadata.noFormFields', '- No interactive form fields found -')}</span></li>`;
     }
     metadataDisplay.appendChild(fieldsSection.wrapper);
 
@@ -265,18 +265,18 @@ async function displayMetadata() {
         }
 
         if (xmpSection.ul.children.length === 0) {
-          xmpSection.ul.innerHTML = `<li><span class="text-gray-500 italic">${translate('common.viewMetadata.noXmp', '- No parseable XMP properties found -')}</span></li>`;
+          xmpSection.ul.innerHTML = `<li><span class="text-gray-500 italic">${translate('viewMetadata.noXmp', '- No parseable XMP properties found -')}</span></li>`;
         }
       } catch (xmlError) {
         console.error('Failed to parse XMP XML:', xmlError);
-        xmpSection.ul.innerHTML = `<li><span class="text-red-500 italic">${translate('common.viewMetadata.xmpError', '- Error parsing XMP XML. Displaying raw.')}</span></li>`;
+        xmpSection.ul.innerHTML = `<li><span class="text-red-500 italic">${translate('viewMetadata.xmpError', '- Error parsing XMP XML. Displaying raw.')}</span></li>`;
         const pre = document.createElement('pre');
         pre.className = 'text-xs text-gray-300 whitespace-pre-wrap break-all';
         pre.textContent = rawXmpString;
         xmpSection.ul.appendChild(pre);
       }
     } else {
-      xmpSection.ul.innerHTML = `<li><span class="text-gray-500 italic">${translate('common.viewMetadata.noXmpData', '- No XMP metadata found -')}</span></li>`;
+      xmpSection.ul.innerHTML = `<li><span class="text-gray-500 italic">${translate('viewMetadata.noXmpData', '- No XMP metadata found -')}</span></li>`;
     }
     metadataDisplay.appendChild(xmpSection.wrapper);
 

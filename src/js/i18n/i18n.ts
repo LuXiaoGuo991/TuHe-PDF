@@ -89,6 +89,11 @@ export const getLanguageFromUrl = (): SupportedLanguage => {
         return lang as SupportedLanguage;
       }
 
+      // Map Hong Kong locale to Traditional Chinese
+      if (lang === 'zh-HK') {
+        return 'zh-TW';
+      }
+
       const primaryLang = lang.split('-')[0];
       if (supportedLanguages.includes(primaryLang as SupportedLanguage)) {
         return primaryLang as SupportedLanguage;
@@ -192,7 +197,7 @@ export const applyTranslations = (): void => {
     if (key) {
       const translation = t(key);
       if (translation && translation !== key) {
-        element.textContent = translation;
+        element.innerHTML = translation;
       }
     }
   });

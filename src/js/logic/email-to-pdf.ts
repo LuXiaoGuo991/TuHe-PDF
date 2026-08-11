@@ -43,7 +43,8 @@ export async function parseEmlFile(file: File): Promise<ParsedEmail> {
   const email = await parser.parse(arrayBuffer);
 
   const from =
-    formatAddress(email.from?.name, email.from?.address) || 'Unknown Sender';
+    formatAddress(email.from?.name, email.from?.address) ||
+    translate('emailToPdf.unknownSender', 'Unknown Sender');
 
   const to = (email.to || [])
     .map((addr) => formatAddress(addr.name, addr.address))
@@ -122,7 +123,7 @@ export async function parseEmlFile(file: File): Promise<ParsedEmail> {
   }
 
   return {
-    subject: email.subject || '(No Subject)',
+    subject: email.subject || translate('emailToPdf.noSubject', '(No Subject)'),
     from,
     to,
     cc,
@@ -141,7 +142,8 @@ export async function parseMsgFile(file: File): Promise<ParsedEmail> {
   const msgData = msgReader.getFileData();
 
   const from =
-    formatAddress(msgData.senderName, msgData.senderEmail) || 'Unknown Sender';
+    formatAddress(msgData.senderName, msgData.senderEmail) ||
+    translate('emailToPdf.unknownSender', 'Unknown Sender');
 
   const to: string[] = [];
   const cc: string[] = [];
@@ -194,7 +196,8 @@ export async function parseMsgFile(file: File): Promise<ParsedEmail> {
   }
 
   return {
-    subject: msgData.subject || '(No Subject)',
+    subject:
+      msgData.subject || translate('emailToPdf.noSubject', '(No Subject)'),
     from,
     to,
     cc,
@@ -344,6 +347,10 @@ export async function parseEmailFile(file: File): Promise<ParsedEmail> {
   } else if (ext === 'msg') {
     return parseMsgFile(file);
   } else {
-    throw new Error(`Unsupported file type: .${ext}`);
+    throw new Error(
+      translate('emailToPdf.unsupportedFileType', '不支持的文件类型') +
+        ': .' +
+        ext
+    );
   }
 }

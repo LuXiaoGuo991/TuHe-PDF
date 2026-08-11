@@ -29,9 +29,7 @@ export async function fetchWasmFile(
   const baseUrl = getWasmBaseUrl(packageName);
 
   if (!baseUrl) {
-    throw new Error(
-      `No URL configured for ${packageName}. Please configure it in WASM Settings.`
-    );
+    throw new Error(`未配置 ${packageName} 的 URL。请在 WASM 设置中进行配置。`);
   }
 
   const url = baseUrl + fileName;
@@ -39,7 +37,7 @@ export async function fetchWasmFile(
 
   const response = await fetch(url);
   if (!response.ok) {
-    throw new Error(`Failed to fetch ${fileName}: HTTP ${response.status}`);
+    throw new Error(`获取 ${fileName} 失败：HTTP ${response.status}`);
   }
   return response;
 }
