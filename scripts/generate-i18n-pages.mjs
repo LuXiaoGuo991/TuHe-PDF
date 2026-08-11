@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 
 const DIST_DIR = path.resolve(__dirname, '../dist');
 const LOCALES_DIR = path.resolve(__dirname, '../public/locales');
-const SITE_URL = (process.env.SITE_URL || 'https://www.bentopdf.com').replace(
+const SITE_URL = (process.env.SITE_URL || 'https://tuhe-pdf.com').replace(
   /\/+$/,
   ''
 );
@@ -62,7 +62,7 @@ function buildUrl(langPrefix, pagePath) {
   return parts.filter(Boolean).join('/').replace(/\/+$/, '') || SITE_URL;
 }
 
-const ORGANIZATION_LD_MARKER = 'data-bentopdf-organization';
+const ORGANIZATION_LD_MARKER = 'data-tuhe-pdf-organization';
 
 function injectOrganizationLd(document) {
   if (document.querySelector(`script[${ORGANIZATION_LD_MARKER}]`)) return;
@@ -80,15 +80,9 @@ function injectOrganizationLd(document) {
   const data = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'BentoPDF',
+    name: 'TuHe PDF',
     url: SITE_URL,
     logo: `${SITE_URL}/images/favicon.svg`,
-    sameAs: [
-      'https://github.com/alam00000/bentopdf',
-      'https://x.com/BentoPDF',
-      'https://www.linkedin.com/company/bentopdf/',
-      'https://www.instagram.com/thebentopdf/',
-    ],
   };
   const script = document.createElement('script');
   script.setAttribute('type', 'application/ld+json');
@@ -97,7 +91,7 @@ function injectOrganizationLd(document) {
   document.body.appendChild(script);
 }
 
-const BREADCRUMB_MARKER = 'data-bentopdf-breadcrumb';
+const BREADCRUMB_MARKER = 'data-tuhe-pdf-breadcrumb';
 
 function injectToolBreadcrumb(document, lang, toolName, toolUrl) {
   const h1 = document.querySelector('h1[data-i18n^="tools:"]');
@@ -114,7 +108,7 @@ function injectToolBreadcrumb(document, lang, toolName, toolUrl) {
   const homeLink = document.createElement('a');
   homeLink.href = homeUrl;
   homeLink.className = 'hover:text-indigo-300';
-  homeLink.textContent = 'BentoPDF';
+  homeLink.textContent = 'TuHe PDF';
 
   const sep = document.createElement('span');
   sep.setAttribute('aria-hidden', 'true');
@@ -139,7 +133,7 @@ function injectToolBreadcrumb(document, lang, toolName, toolUrl) {
       {
         '@type': 'ListItem',
         position: 1,
-        name: 'BentoPDF',
+        name: 'TuHe PDF',
         item: homeUrl,
       },
       {
@@ -192,7 +186,7 @@ function processFileForLanguage(
     title =
       tools[translationKey].pageTitle ||
       (tools[translationKey].name
-        ? `${tools[translationKey].name} - BentoPDF`
+        ? `${tools[translationKey].name} - TuHe PDF`
         : null);
     description = tools[translationKey].subtitle;
   }

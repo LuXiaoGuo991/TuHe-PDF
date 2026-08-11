@@ -202,7 +202,7 @@ function buildCorsProxyAllowedHosts(): Set<string> {
     'cdn.jsdelivr.net',
     'fonts.googleapis.com',
     'fonts.gstatic.com',
-    'bentopdf-cors-proxy.bentopdf.workers.dev',
+    'tuhe-pdf-cors-proxy.tuhe-pdf.workers.dev',
     'timestamp.digicert.com',
     'timestamp.sectigo.com',
     'ts.ssl.com',
