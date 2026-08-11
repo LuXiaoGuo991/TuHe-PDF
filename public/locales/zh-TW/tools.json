@@ -676,7 +676,7 @@
       "deed158f16": "操作失敗，請重試。",
       "c8fef9d144": "Bates 編號已成功應用！（{{value0}} 至 {{value1}}）",
       "a13a077a7e": "正在應用 Bates 編號...",
-      "41c258bb74": "請upload at least one PDF file.",
+      "41c258bb74": "請至少上傳一個 PDF 檔案。",
       "c29f451ac2": "{{value0}} file{{value1}} • {{value2}} total pages",
       "b9063ddbd2": "{{value0}} • {{value1}} pages",
       "c49b7cb420": "載入一個或多個 PDF 檔案失敗。",
@@ -788,14 +788,14 @@
       "bab0f3ae67": "調整設定",
       "892b92dcd8": "通過即時預覽自定義掃描效果",
       "cd020bad86": "立即儲存掃描效果的 PDF",
-      "7df28a4e05": "免費的線上greyscale tool工具",
-      "fc3df6590d": "免費的線上invert colors tool工具",
+      "7df28a4e05": "免費的線上灰階轉換工具",
+      "fc3df6590d": "免費的線上顏色反轉工具",
       "fe17a5bb0f": "編輯 PDF"
     },
     "dynamic": {
       "a539e67250": "載入 PDF 預覽失敗。",
       "97d54a425f": "正在載入預覽...",
-      "41ae43a300": "請upload a PDF file.",
+      "41ae43a300": "請上傳一個 PDF 檔案。",
       "9e7466ea5e": "操作失敗，請重試。",
       "3b82b6cde5": "掃描效果應用成功！",
       "260ba5b09a": "正在處理第 {{value0}}/{{value1}} 頁...",
@@ -824,8 +824,8 @@
       "5185d4cfaa": "點選或拖放您的 PDF 檔案以開始",
       "e61e46124c": "通過即時預覽微調顏色設定",
       "1dd8829f05": "立即儲存顏色調整後的 PDF",
-      "7df28a4e05": "免費的線上greyscale tool工具",
-      "fc3df6590d": "免費的線上invert colors tool工具",
+      "7df28a4e05": "免費的線上灰階轉換工具",
+      "fc3df6590d": "免費的線上顏色反轉工具",
       "89a12214ae": "使 PDF 看起來像掃描件",
       "8e56f3377f": "更改 PDF 背景",
       "0bac357f85": "更改 PDF 文本顏色"
@@ -833,7 +833,7 @@
     "dynamic": {
       "a60905da92": "載入 PDF 預覽失敗。",
       "307805124c": "正在載入預覽...",
-      "c30273623f": "請upload a PDF file.",
+      "c30273623f": "請上傳一個 PDF 檔案。",
       "92be44edf7": "操作失敗，請重試。",
       "e3e1b023cc": "顏色調整已應用成功！",
       "f289e6333e": "正在處理第 {{value0}}/{{value1}} 頁...",
@@ -951,8 +951,8 @@
     "dynamic": {
       "2043121e88": "下載",
       "b81319bcb7": "下載",
-      "9ac2d61ef5": "請use the Download button in the PDF viewer toolbar above.",
-      "6244f7f390": "請wait for the form to finish loading.",
+      "9ac2d61ef5": "請使用 PDF 檢視器工具欄上方的下載按鈕。",
+      "6244f7f390": "請等待表單載入完成。",
       "004d081dda": "檢視器未就緒",
       "b8ec08583a": "操作失敗，請重試。",
       "c8390ba95f": "正在載入 PDF 表單...",
@@ -1046,7 +1046,7 @@
       "f90007716a": "正在將圖片轉換為 PDF...",
       "c6b0ac6a2c": "正在載入轉換引擎...",
       "b387c08ee8": "正在處理中...",
-      "0e52b164d0": "請select at least one image file.",
+      "0e52b164d0": "請至少選擇一個圖片檔案。",
       "7cef803f5f": "({{value0}})",
       "011eb5b704": "部分檔案已被跳過。僅允許支援的圖片格式。",
       "bfeaca68f4": "檔案無效"
@@ -1067,7 +1067,7 @@
       "840d3f5430": "轉換錯誤",
       "03d2a214ed": "PDF 已建立成功！",
       "8629368499": "正在從 JPG 建立 PDF...",
-      "8d883dffcb": "請select at least one JPG file.",
+      "8d883dffcb": "請至少選擇一個 JPG 檔案。",
       "06ee098f08": "({{value0}})",
       "31345167f1": "部分檔案已被跳過。僅允許 PNG 圖片。",
       "9531a0069c": "檔案無效"
@@ -1088,7 +1088,7 @@
       "0391c45b8e": "轉換錯誤",
       "bc9ed2df69": "PDF 已建立成功！",
       "271986fc7a": "正在從 JPG 建立 PDF...",
-      "78ccdee22c": "請select at least one JPG file.",
+      "78ccdee22c": "請至少選擇一個 JPG 檔案。",
       "92f7b39102": "({{value0}})",
       "dac29db7dd": "部分檔案已被跳過。僅允許 WebP 圖片。",
       "3c6e0f53ba": "檔案無效"
@@ -1109,7 +1109,7 @@
       "3221b49d76": "轉換錯誤",
       "8e2c99e129": "PDF 已建立成功！",
       "22c5687245": "正在從 SVG 檔案建立 PDF...",
-      "b1e501f07a": "請select at least one SVG file.",
+      "b1e501f07a": "請至少選擇一個 SVG 檔案。",
       "f71cb9d2cc": "({{value0}})",
       "a991f2ba33": "部分檔案已被跳過。僅允許 SVG 圖形。",
       "0aaa760603": "檔案無效"
@@ -1132,7 +1132,7 @@
       "357b5c17a4": "操作失敗，請重試。",
       "1641d9aabe": "PDF 已建立成功！",
       "363556b52f": "正在將 BMP 轉換為 PDF...",
-      "5f18ec5ebc": "請select at least one BMP file.",
+      "5f18ec5ebc": "請至少選擇一個 BMP 檔案。",
       "2baabe2097": "({{value0}})"
     },
     "pageTitle": "BMP 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
@@ -1153,7 +1153,7 @@
       "b114f617f1": "操作失敗，請重試。",
       "14f5decb21": "PDF 已建立成功！",
       "858af38004": "正在將 HEIC 轉換為 PDF...",
-      "5088e5e744": "請select at least one HEIC file.",
+      "5088e5e744": "請至少選擇一個 HEIC 檔案。",
       "37dc2dff42": "({{value0}})"
     },
     "pageTitle": "HEIC 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
@@ -1174,7 +1174,7 @@
       "af648ea52a": "操作失敗，請重試。",
       "67c9b92207": "PDF 已建立成功！",
       "17f3b48e45": "正在將 TIFF 轉換為 PDF...",
-      "bcb176a1ed": "請select at least one TIFF file.",
+      "bcb176a1ed": "請至少選擇一個 TIFF 檔案。",
       "64f495d84c": "({{value0}})"
     },
     "pageTitle": "TIFF 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
@@ -1214,9 +1214,9 @@
       "8507dd5a0d": "文本已成功轉換為 PDF！",
       "c08ee56ff6": "正在建立 PDF...",
       "28698eca46": "正在載入轉換引擎...",
-      "1497f83234": "請enter some text to convert.",
+      "1497f83234": "請輸入要轉換的文字。",
       "77f8701633": "無文本",
-      "331d64523c": "請select at least one text file.",
+      "331d64523c": "請至少選擇一個文字檔案。",
       "8c9a7c9a67": "({{value0}})"
     },
     "pageTitle": "文本轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
@@ -1274,12 +1274,12 @@
       "46730049c1": "下載圖片",
       "b0a1e9675f": "單獨儲存 JPG 圖片或打包為 ZIP 存檔",
       "450e35275a": "PDF 轉 PNG",
-      "08490723f9": "免費的線上pdf to png tool工具",
+      "08490723f9": "免費的線上 PDF 轉 PNG 工具",
       "ae395b2670": "壓縮 PDF",
       "0784d816a9": "分割 PDF",
       "845fd08d7d": "PDF 轉 WebP",
-      "dcec9a996f": "免費的線上pdf to webp tool工具",
-      "1aca319598": "免費的線上extract images tool工具",
+      "dcec9a996f": "免費的線上 PDF 轉 WebP 工具",
+      "1aca319598": "免費的線上圖片提取工具",
       "ed7dea03db": "檔案",
       "d1d9286b84": "是的！您可以選擇轉換所有頁面或選擇特定頁面轉換為 JPG 圖片。",
       "dbe7c2d813": "是的，JPG 是一種壓縮格式。您可以控制質量級別 - 質量越高，壓縮越少，檔案越大。"
@@ -1456,7 +1456,7 @@
       "a45885aac5": "JPEG",
       "70fe60b7df": "PNG",
       "6fa39ac0c7": "WebP",
-      "e0ac968345": "選擇您要convert to a comic book archive的 PDF 檔案",
+      "e0ac968345": "選擇您要轉換為漫畫書存檔的 PDF 檔案",
       "2613d80c87": "選擇設定",
       "dd048171e1": "選擇圖片格式、質量和可選的後設資料",
       "f7e912364d": "下載 CBZ",
@@ -1491,7 +1491,7 @@
       "ed40c6ff84": "旋轉 PDF"
     },
     "dynamic": {
-      "a8d626a999": "請upload a PDF file.",
+      "a8d626a999": "請上傳一個 PDF 檔案。",
       "cd8601b331": "操作失敗，請重試。",
       "2969af6c0d": "PDF 已成功轉換為灰度！",
       "029c0cd7cc": "正在轉換為灰度...",
@@ -1613,7 +1613,7 @@
       "109c183332": "PDF 已成功交替混合！",
       "c9aa0cf1a8": "至少需要兩個有效的 PDF 檔案。",
       "8d708e4e13": "正在交替混合頁面...",
-      "3c851e26bd": "請upload at least two PDF files to alternate and mix.",
+      "3c851e26bd": "請至少上傳兩個 PDF 檔案以進行交替合併。",
       "7184f92fa6": "檔案不足",
       "68e389ea42": "載入一個或多個 PDF 檔案失敗。",
       "e8c65343b7": "{{value0}} • {{value1}} pages",
@@ -1643,8 +1643,8 @@
       "f95aaa0707": "正在將檔案附加到 PDF...",
       "086438607c": "正在處理中...",
       "c42168707d": "正在將檔案嵌入 PDF...",
-      "17dfbec9d9": "請specify a page range for page-level attachments.",
-      "9b8eee5d44": "請select at least one file to attach.",
+      "17dfbec9d9": "請指定頁面範圍以新增頁面級附件。",
+      "9b8eee5d44": "請至少選擇一個要附加的檔案。",
       "2a84f91d07": "請先上傳 PDF 檔案。",
       "5af4d6db9e": "載入 PDF 檔案失敗。",
       "97300a736c": "{{value0}} • {{value1}} pages",
@@ -1727,7 +1727,7 @@
       "60b2821ead": "頁面分割成功！",
       "570c1a0772": "正在處理第 {{value0}}/{{value1}} 頁...",
       "c8de0c45db": "正在分割 PDF 頁面...",
-      "84292b3ef8": "請enter a valid page range (e.g., 1-5, 8, 11-13).",
+      "84292b3ef8": "請輸入有效的頁面範圍（如 1-5, 8, 11-13）。",
       "6f90563f8c": "範圍無效",
       "aae540a85c": "請先上傳 PDF 檔案。",
       "6b2f10d8ba": "載入 PDF 檔案失敗。",
@@ -1756,9 +1756,9 @@
       "3f3a8dab5a": "操作失敗，請重試。",
       "7dffb09a71": "頁面",
       "bae7d9dce8": "正在新增 {{value0}} 個空白頁...",
-      "e791afd3b7": "請enter a valid number of pages (1 or more).",
+      "e791afd3b7": "請輸入有效的頁數（1 或更多）。",
       "44bcb69846": "輸入無效",
-      "6234a20c60": "請enter a number between 0 and {{value0}}.",
+      "6234a20c60": "請輸入 0 到 {{value0}} 之間的數字。",
       "c2c57c5f32": "請先上傳 PDF 檔案。",
       "b6aab8baeb": "載入 PDF 檔案失敗。",
       "6d8c3c7f1a": "輸入 0 插入到開頭，或 {{value0}} 插入到末尾。",
@@ -1783,7 +1783,7 @@
       "cd7bc3d29d": "頁面反轉成功！",
       "3efb65a545": "正在反轉 {{value0}}（{{value1}}/{{value2}}）...",
       "7c4c0a8d59": "頁面",
-      "dbc8218413": "請select one or more PDF files."
+      "dbc8218413": "請選擇一個或多個 PDF 檔案。"
     },
     "pageTitle": "反轉頁面 - 線上免費 PDF 工具 | TuHe PDF"
   },
@@ -1960,7 +1960,7 @@
       "75da5af9dc": "正在生成 ZIP 檔案...",
       "c0127af1aa": "正在新增 {{value0}}（{{value1}}/{{value2}}）...",
       "8b3c05ec36": "正在建立 ZIP 存檔...",
-      "a2a6eeec53": "請select PDF files to create a ZIP archive."
+      "a2a6eeec53": "請選擇 PDF files to create a ZIP archive."
     },
     "pageTitle": "PDF 轉 ZIP - 線上免費 PDF 工具 | TuHe PDF"
   },
@@ -2049,7 +2049,7 @@
       "580338dd56": "{{value0}}%",
       "502938ceda": "操作失敗，請重試。",
       "5579495988": "正在載入 {{value0}}...",
-      "581b7fca90": "請select a valid PDF file.",
+      "581b7fca90": "請選擇 a valid PDF file.",
       "f1300022a2": "正在載入對比 {{value0}}/{{value1}}...",
       "9e4f2ee2ef": "正在索引 PDF 2 第 {{value0}}/{{value1}} 頁...",
       "f0965742d4": "正在索引 PDF 1 第 {{value0}}/{{value1}} 頁...",
@@ -2136,7 +2136,7 @@
       "fa5568eaf0": "正在生成 ZIP 檔案...",
       "c932412e1b": "正在最佳化 {{value0}}（{{value1}}/{{value2}}）...",
       "ede4d9529f": "正在最佳化 PDF 以供網頁檢視（線性化）...",
-      "20e8c58c29": "請upload at least one PDF file.",
+      "20e8c58c29": "請上傳 at least one PDF file.",
       "3fc2420257": "沒有 PDF 檔案"
     },
     "pageTitle": "線性化 PDF - 線上免費 PDF 工具 | TuHe PDF"
@@ -2215,7 +2215,7 @@
       "bf0e2061e3": "修復失敗",
       "f63b91416a": "正在處理中...",
       "2fd1eb15f7": "正在初始化修復引擎...",
-      "a8baf6f1f3": "請select one or more PDF files."
+      "a8baf6f1f3": "請選擇 one or more PDF files."
     },
     "pageTitle": "修復 PDF - 線上免費 PDF 工具 | TuHe PDF"
   },
@@ -2245,7 +2245,7 @@
       "99f5f30b9f": "正在使用 256 位 AES 加密 PDF...",
       "3e80559bf0": "正在讀取 PDF...",
       "a90778fd81": "正在初始化加密...",
-      "cfc44e1b7f": "請enter a user password.",
+      "cfc44e1b7f": "請輸入 a user password.",
       "bec4cf0d52": "需要輸入",
       "2c4bfd0f85": "請先上傳一個 PDF 檔案。",
       "dd9d84669b": "無檔案"
@@ -2311,7 +2311,7 @@
       "63a056f300": "正在初始化解密...",
       "deaa875f11": "請輸入 PDF 密碼。",
       "3d789ca3db": "需要輸入",
-      "8e6de480a6": "請upload at least one PDF file.",
+      "8e6de480a6": "請上傳 at least one PDF file.",
       "cb76be345d": "無檔案"
     },
     "processFailed": "解密失敗，請重試。",
@@ -2339,7 +2339,7 @@
       "9fb9945ea7": "正在扁平化 {{value0}}/{{value1}}：{{value2}}...",
       "459e7aabf1": "正在扁平化多個 PDF...",
       "0b697fdcaa": "正在扁平化 PDF...",
-      "87d5747b51": "請select at least one PDF file."
+      "87d5747b51": "請選擇 at least one PDF file."
     },
     "pageTitle": "扁平化 PDF - 線上免費 PDF 工具 | TuHe PDF"
   },
@@ -2427,7 +2427,7 @@
       "50d48a9b28": "轉換完成",
       "f1311f9c1a": "正在轉換 {{value0}}/{{value1}}：{{value2}}...",
       "3521d690a3": "已成功將 {{value0}} 轉換為 PDF。",
-      "c2f620d499": "請select at least one ODT file."
+      "c2f620d499": "請選擇 at least one ODT file."
     },
     "pageTitle": "ODT 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
   },
@@ -2451,7 +2451,7 @@
       "0c0e61f0ae": "正在轉換 {{value0}}/{{value1}}：{{value2}}...",
       "c7241436c3": "正在處理中...",
       "f702b2d875": "已成功將 {{value0}} 轉換為 PDF。",
-      "b3385b83d4": "請select at least one CSV file."
+      "b3385b83d4": "請選擇 at least one CSV file."
     },
     "pageTitle": "CSV 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
   },
@@ -2474,7 +2474,7 @@
       "5d9752605c": "正在轉換 {{value0}}/{{value1}}：{{value2}}...",
       "edd7466655": "正在將多個 RTF 檔案轉換為 PDF...",
       "f98b741f34": "已成功將 {{value0}} 轉換為 PDF。",
-      "0a05ab24e5": "請select at least one RTF file."
+      "0a05ab24e5": "請選擇 at least one RTF file."
     },
     "pageTitle": "RTF 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
   },
@@ -2493,13 +2493,13 @@
       "d30b1693d5": "下載 PDF",
       "dc8cc35e96": "save PDF files - formatting perfectly preserved",
       "d584b36261": "PDF 轉 DOCX",
-      "0503bd898c": "免費的線上pdf to docx tool工具",
+      "0503bd898c": "免費的線上 PDF 轉 Word 工具",
       "6fdd55514f": "Excel 轉 PDF",
-      "e16d6513f6": "免費的線上excel to pdf tool工具",
+      "e16d6513f6": "免費的線上 Excel 轉 PDF 工具",
       "ec23f243bc": "PowerPoint 轉 PDF",
-      "31f26f8f66": "免費的線上powerpoint to pdf tool工具",
+      "31f26f8f66": "免費的線上 PPT 轉 PDF 工具",
       "1b0186270d": "文本轉 PDF",
-      "a75933f96a": "免費的線上txt to pdf tool工具",
+      "a75933f96a": "免費的線上文字轉 PDF 工具",
       "bb9dede377": "合併 PDF",
       "e69920c2ed": "是的！TuHe PDF 支援較舊的 .doc 和較新的 .docx Microsoft Word 格式。",
       "dad3667a18": "是的！字型、圖片、表格、頁首、頁尾和所有格式都將完全保留 Word 中的外觀。",
@@ -2511,13 +2511,13 @@
       "ce88334fff": "轉換完成",
       "ac56a3e11b": "正在轉換 {{value0}}/{{value1}}：{{value2}}...",
       "59a8cc5e17": "已成功將 {{value0}} 轉換為 PDF。",
-      "7e35823cb1": "請select at least one Word document.",
+      "7e35823cb1": "請選擇 at least one Word document.",
       "02029cec28": "操作失敗，請重試。",
       "80685ef3be": "操作失敗，請重試。",
       "5e47f85e0d": "正在生成高質量 PDF...",
       "2729eb14bf": "設定",
       "df5707067f": "正在處理中...",
-      "e6ffaaa90c": "請upload a .docx file first.",
+      "e6ffaaa90c": "請上傳 a .docx file first.",
       "d6c3ffcaae": "無檔案"
     },
     "pageTitle": "Word 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
@@ -2529,11 +2529,11 @@
     "convertButton": "轉換為 PDF",
     "auto": {
       "7800ff3767": "PDF 轉 Excel",
-      "fa3b5f9252": "免費的線上pdf to excel tool工具",
+      "fa3b5f9252": "免費的線上 PDF 轉 Excel 工具",
       "c91e040a8e": "Word 轉 PDF",
-      "e9491f0c3f": "免費的線上word to pdf tool工具",
+      "e9491f0c3f": "免費的線上 Word 轉 PDF 工具",
       "c859342798": "CSV 轉 PDF",
-      "198967abc6": "免費的線上csv to pdf tool工具",
+      "198967abc6": "免費的線上 CSV 轉 PDF 工具",
       "bb9dede377": "合併 PDF",
       "ae395b2670": "壓縮 PDF"
     },
@@ -2543,7 +2543,7 @@
       "520085103f": "轉換完成",
       "14b92e28b5": "正在轉換 {{value0}}/{{value1}}：{{value2}}...",
       "74fd7493ec": "已成功將 {{value0}} 轉換為 PDF。",
-      "9d71f06b8f": "請select at least one Excel file."
+      "9d71f06b8f": "請選擇 at least one Excel file."
     },
     "pageTitle": "Excel 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
   },
@@ -2565,7 +2565,7 @@
       "f3b510faff": "轉換完成",
       "ec950a4de2": "正在轉換 {{value0}}/{{value1}}：{{value2}}...",
       "94609a8cae": "已成功將 {{value0}} 轉換為 PDF。",
-      "af1899e4e6": "請select at least one PowerPoint file."
+      "af1899e4e6": "請選擇 at least one PowerPoint file."
     },
     "pageTitle": "PowerPoint 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
   },
@@ -2636,7 +2636,7 @@
       "ec899ed25c": "操作失敗，請重試。",
       "3ed8d885aa": "已建立包含 {{value0}} 張紙的小冊子！",
       "831fdc4675": "正在建立小冊子...",
-      "1a4b3ff662": "請load a PDF first.",
+      "1a4b3ff662": "請載入 a PDF first.",
       "a9ad50182d": "載入 PDF 檔案失敗。",
       "efe8322c67": "{{value0}} • {{value1}} pages",
       "4ceed58d26": "{{value0}} • 正在載入..."
@@ -2668,7 +2668,7 @@
       "75b9ac74b8": "已成功將 {{value0}} 轉換為 PDF。",
       "ba195f6b9f": "正在轉換 {{value0}}...",
       "791c680372": "正在載入轉換引擎...",
-      "7d896aa183": "請select at least one {{value0}} file."
+      "7d896aa183": "請選擇 at least one {{value0}} file."
     },
     "pageTitle": "XPS 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
   },
@@ -2693,7 +2693,7 @@
       "e4e504b5a7": "已成功將 {{value0}} 轉換為 PDF。",
       "b481d5a5b7": "正在轉換 {{value0}}...",
       "74a5661b9d": "正在載入轉換引擎...",
-      "1a7abc7505": "請select at least one {{value0}} file."
+      "1a7abc7505": "請選擇 at least one {{value0}} file."
     },
     "pageTitle": "MOBI 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
   },
@@ -2718,7 +2718,7 @@
       "5c78b3ff7d": "已成功將 {{value0}} 轉換為 PDF。",
       "c6ebd08683": "正在轉換 {{value0}}...",
       "0642d0fcdb": "正在載入轉換引擎...",
-      "22b7b16873": "請select at least one {{value0}} file."
+      "22b7b16873": "請選擇 at least one {{value0}} file."
     },
     "pageTitle": "EPUB 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
   },
@@ -2743,7 +2743,7 @@
       "02e192036d": "已成功將 {{value0}} 轉換為 PDF。",
       "ae2a0e93af": "正在轉換 {{value0}}...",
       "fa537f2cfc": "正在載入轉換引擎...",
-      "36e0761e1c": "請select at least one {{value0}} file."
+      "36e0761e1c": "請選擇 at least one {{value0}} file."
     },
     "pageTitle": "FB2 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
   },
@@ -2767,7 +2767,7 @@
       "c44c18c174": "正在轉換檔案...",
       "18d1e68f41": "已成功將 {{value0}} 轉換為 PDF。",
       "657ec1680f": "正在轉換 {{value0}}...",
-      "3767ecf995": "請select at least one {{value0}} file."
+      "3767ecf995": "請選擇 at least one {{value0}} file."
     },
     "pageTitle": "CBZ 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
   },
@@ -2792,7 +2792,7 @@
       "9074b76c6a": "已成功將 {{value0}} 轉換為 PDF。",
       "36762d3298": "正在轉換 {{value0}}...",
       "899e0e00c9": "正在載入轉換引擎...",
-      "c05b666684": "請select at least one {{value0}} file."
+      "c05b666684": "請選擇 at least one {{value0}} file."
     },
     "pageTitle": "WPD 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
   },
@@ -2817,7 +2817,7 @@
       "41793edcbd": "已成功將 {{value0}} 轉換為 PDF。",
       "87eac04e52": "正在轉換 {{value0}}...",
       "839bb28344": "正在載入轉換引擎...",
-      "4af39b0805": "請select at least one {{value0}} file."
+      "4af39b0805": "請選擇 at least one {{value0}} file."
     },
     "pageTitle": "WPS 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
   },
@@ -2840,7 +2840,7 @@
       "67b168273e": "檔案",
       "57a112278a": "正在轉換多個檔案...",
       "99ae92f70e": "已成功將 {{value0}} 轉換為 PDF。",
-      "75c05e3e4d": "請select at least one {{value0}} file."
+      "75c05e3e4d": "請選擇 at least one {{value0}} file."
     },
     "pageTitle": "XML 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
   },
@@ -2865,7 +2865,7 @@
       "00d97896d1": "已成功將 {{value0}} 轉換為 PDF。",
       "a8b3abcef2": "正在轉換 {{value0}}...",
       "ef163b0d8e": "正在載入轉換引擎...",
-      "6e2b64f357": "請select at least one {{value0}} file."
+      "6e2b64f357": "請選擇 at least one {{value0}} file."
     },
     "pageTitle": "Pages 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
   },
@@ -2890,7 +2890,7 @@
       "475c73b9d1": "已成功將 {{value0}} 轉換為 PDF。",
       "333a6ea118": "正在轉換 {{value0}}...",
       "245fd93b2b": "正在載入轉換引擎...",
-      "2a61c4b789": "請select at least one {{value0}} file."
+      "2a61c4b789": "請選擇 at least one {{value0}} file."
     },
     "pageTitle": "ODG 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
   },
@@ -2915,7 +2915,7 @@
       "77a1ff6cd4": "已成功將 {{value0}} 轉換為 PDF。",
       "4dd49077fa": "正在轉換 {{value0}}...",
       "4fb6de5f25": "正在載入轉換引擎...",
-      "d2f643f113": "請select at least one {{value0}} file."
+      "d2f643f113": "請選擇 at least one {{value0}} file."
     },
     "pageTitle": "ODS 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
   },
@@ -2940,7 +2940,7 @@
       "907967ce32": "已成功將 {{value0}} 轉換為 PDF。",
       "9ce08de74a": "正在轉換 {{value0}}...",
       "bd598b8682": "正在載入轉換引擎...",
-      "3f9fd2f58f": "請select at least one {{value0}} file."
+      "3f9fd2f58f": "請選擇 at least one {{value0}} file."
     },
     "pageTitle": "ODP 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
   },
@@ -2965,7 +2965,7 @@
       "b8f690887c": "已成功將 {{value0}} 轉換為 PDF。",
       "b0ddd3bf3e": "正在轉換 {{value0}}...",
       "1d973bb300": "正在載入轉換引擎...",
-      "dbf215a4fb": "請select at least one {{value0}} file."
+      "dbf215a4fb": "請選擇 at least one {{value0}} file."
     },
     "pageTitle": "PUB 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
   },
@@ -2990,7 +2990,7 @@
       "276b7bc549": "已成功將 {{value0}} 轉換為 PDF。",
       "63888e1e6e": "正在轉換 {{value0}}...",
       "ecf9899daf": "正在載入轉換引擎...",
-      "582b0dbbdf": "請select at least one {{value0}} file."
+      "582b0dbbdf": "請選擇 at least one {{value0}} file."
     },
     "pageTitle": "VSD 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
   },
@@ -3014,7 +3014,7 @@
       "ad9a65d45f": "已成功將 {{value0}} 轉換為 PDF。",
       "c5e9e96303": "正在轉換 {{value0}}...",
       "0a745921f6": "正在載入轉換引擎...",
-      "29f58a0131": "請select at least one {{value0}} file."
+      "29f58a0131": "請選擇 at least one {{value0}} file."
     },
     "pageTitle": "PSD 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
   },
@@ -3030,7 +3030,7 @@
       "ed40c6ff84": "旋轉 PDF"
     },
     "dynamic": {
-      "de155d6aee": "請upload PDF files.",
+      "de155d6aee": "請上傳 PDF files.",
       "1d741530ab": "檔案無效",
       "6e3c2cd056": "操作失敗，請重試。",
       "98e4c4daf3": "已將 {{value0}} 個檔案（{{value1}} 頁）轉換為 SVG！",
@@ -3042,7 +3042,7 @@
       "2f5799382c": "PDF 已成功轉換為 SVG！",
       "733ccaa9fb": "正在轉換為 SVG...",
       "67967aa49b": "正在載入引擎...",
-      "d03c2fba20": "請upload at least one PDF file."
+      "d03c2fba20": "請上傳 at least one PDF file."
     },
     "pageTitle": "PDF 轉 SVG - 線上免費 PDF 工具 | TuHe PDF"
   },
@@ -3060,7 +3060,7 @@
       "ed40c6ff84": "旋轉 PDF"
     },
     "dynamic": {
-      "a9a4c9ebca": "請upload a PDF file.",
+      "a9a4c9ebca": "請上傳 a PDF file.",
       "9d11f4df3a": "操作失敗，請重試。",
       "06afde8883": "成功提取了 {{value0}} 個表格！",
       "e26185baed": "正在建立 ZIP 檔案...",
@@ -3087,7 +3087,7 @@
       "ed40c6ff84": "旋轉 PDF"
     },
     "dynamic": {
-      "fa8ca0aeab": "請upload a PDF file.",
+      "fa8ca0aeab": "請上傳 a PDF file.",
       "f3154bcd1b": "操作失敗，請重試。",
       "2d3e7a570f": "PDF 已成功轉換為 CSV！",
       "cf3fa196da": "此 PDF 中未檢測到表格。",
@@ -3112,7 +3112,7 @@
       "ed40c6ff84": "旋轉 PDF"
     },
     "dynamic": {
-      "abef904a42": "請upload a PDF file.",
+      "abef904a42": "請上傳 a PDF file.",
       "7f193f2e33": "操作失敗，請重試。",
       "58ec90b001": "成功提取 {{value0}} 個表格到 Excel！",
       "7143676af8": "正在建立 Excel 檔案...",
@@ -3148,7 +3148,7 @@
       "f3aeb819f5": "正在從 {{value0}} 提取文本...",
       "7f1788f372": "正在提取文本...",
       "3cd2bcee0a": "正在載入轉換引擎...",
-      "9b20a15e20": "請select at least one PDF file.",
+      "9b20a15e20": "請選擇 at least one PDF file.",
       "2a17bf4990": "({{value0}})",
       "fad4a0bfb8": "部分檔案已被跳過。僅允許 PDF 檔案。",
       "3003a34022": "檔案無效"
@@ -3274,7 +3274,7 @@
       "2f59e87d76": "正在分析簽名...",
       "dfa18c01c2": "解析證書檔案失敗。",
       "4cff9de413": "證書無效",
-      "934e0a255a": "請select a .pem, .crt, .cer, or .der certificate file.",
+      "934e0a255a": "請選擇 a .pem, .crt, .cer, or .der certificate file.",
       "ce9a858d22": "請選擇一個 PDF 檔案。"
     }
   },
@@ -3343,7 +3343,7 @@
       "c34c969696": "正在生成 PDF...",
       "bf0046c338": "正在處理中...",
       "0b58b429fa": "正在載入 PDF 引擎...",
-      "e2b1b6aa34": "請select at least one {{value0}} file (.eml or .msg)."
+      "e2b1b6aa34": "請至少選擇一個郵件檔案（.eml 或 .msg）。"
     },
     "pageTitle": "郵件轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
   },
@@ -3377,7 +3377,7 @@
       "d4bf39f87d": "正在處理中...",
       "b9e71d80df": "正在處理中...",
       "7db89a06ed": "正在將字型轉為輪廓...",
-      "ff6a22c28e": "請select at least one PDF file."
+      "ff6a22c28e": "請選擇 at least one PDF file."
     },
     "pageTitle": "字型轉輪廓 - 線上免費 PDF 工具 | TuHe PDF"
   },
@@ -3415,7 +3415,7 @@
       "d1f2bb540e": "檔案",
       "e35d1ef53a": "正在校正 {{value0}}...",
       "940e55b69e": "正在初始化 PyMuPDF...",
-      "92c18c8069": "請select at least one PDF file.",
+      "92c18c8069": "請選擇 at least one PDF file.",
       "d5273db50d": "（{{value0}} KB）",
       "9462cdd58a": "設定"
     },
@@ -3427,11 +3427,11 @@
     "auto": {
       "6d4fcf7a04": "轉換為 DOCX",
       "c91e040a8e": "Word 轉 PDF",
-      "e9491f0c3f": "免費的線上word to pdf tool工具",
+      "e9491f0c3f": "免費的線上 Word 轉 PDF 工具",
       "b4210b54f6": "PDF 轉文本",
-      "5f75695a4d": "免費的線上pdf to text tool工具",
+      "5f75695a4d": "免費的線上 PDF 轉文字工具",
       "7800ff3767": "PDF 轉 Excel",
-      "fa3b5f9252": "免費的線上pdf to excel tool工具",
+      "fa3b5f9252": "免費的線上 PDF 轉 Excel 工具",
       "0a193ffe0a": "編輯 PDF"
     },
     "dynamic": {
@@ -3444,7 +3444,7 @@
       "63a03d2fbe": "正在轉換 {{value0}}...",
       "8d9c37f316": "轉換中...",
       "1292fc8a63": "正在載入 PDF 轉換器...",
-      "6d8a487c85": "請select at least one PDF file.",
+      "6d8a487c85": "請選擇 at least one PDF file.",
       "9ca476fb35": "{{value0}} • 無法載入頁數",
       "bc5256a321": "{{value0}} • {{value1}} pages",
       "55c6560fcf": "{{value0}} • {{value1}}"
@@ -3472,7 +3472,7 @@
       "815be584e9": "未找到圖片",
       "699a1ba99d": "正在從 {{value0}} 提取圖片...",
       "f496e0ee9b": "正在載入 PDF 處理器...",
-      "62200eb753": "請select at least one PDF file.",
+      "62200eb753": "請選擇 at least one PDF file.",
       "ffccc13590": "{{value0}} • 無法載入頁數",
       "71adf08528": "{{value0}} • {{value1}} pages",
       "de57f04c3f": "{{value0}} • {{value1}}"
@@ -3500,7 +3500,7 @@
       "a1124f961b": "正在轉換 {{value0}}...",
       "9ab0c4bc34": "轉換中...",
       "0beadcf720": "正在載入 PDF 轉換器...",
-      "514702f7a2": "請select at least one PDF file.",
+      "514702f7a2": "請選擇 at least one PDF file.",
       "36dc12cdf2": "{{value0}} • 無法載入頁數",
       "a91a90531d": "{{value0}} • {{value1}} pages",
       "c22fc17c8e": "{{value0}} • {{value1}}",
@@ -3535,7 +3535,7 @@
       "cd0eb912f2": "正在為 AI 提取 {{value0}}...",
       "10e7294ea2": "正在提取...",
       "af11d57398": "正在載入轉換引擎...",
-      "c088c28b80": "請select at least one PDF file.",
+      "c088c28b80": "請選擇 at least one PDF file.",
       "e06864fb5a": "{{value0}} • 無法載入頁數",
       "a807df92a6": "{{value0}} • {{value1}} pages",
       "570fd297dc": "{{value0}} • {{value1}}"
@@ -3563,7 +3563,7 @@
       "3354cf3da1": "請選擇一個 PDF 檔案。",
       "fc393bf7c9": "帶圖層更改的 PDF 已儲存！",
       "4b469a48b4": "正在儲存帶圖層更改的 PDF...",
-      "6f5396866d": "請enter a layer name",
+      "6f5396866d": "請輸入 a layer name",
       "421586fd8a": "名稱無效",
       "a6ea2beda2": "正在處理中...",
       "454a380e0d": "正在從 {{value0}} 載入圖層...",
@@ -3605,7 +3605,7 @@
       "68390fdb3e": "成功將 {{value0}} 轉換為 {{value1}}。",
       "7f598ce1b2": "正在初始化 Ghostscript...",
       "86822cd801": "正在預扁平化 PDF...",
-      "b4d3f1eaca": "請select at least one PDF file.",
+      "b4d3f1eaca": "請選擇 at least one PDF file.",
       "5c1931ff9b": "{{value0}} • 無法載入頁數",
       "7fdcb51569": "{{value0}} • {{value1}} pages",
       "1ebf7b22d2": "{{value0}} • {{value1}}"
@@ -3641,7 +3641,7 @@
       "81511ff0eb": "正在柵格化 {{value0}}...",
       "ba04be1c08": "正在柵格化...",
       "d87f270bce": "正在載入轉換引擎...",
-      "d68750cff1": "請select at least one PDF file.",
+      "d68750cff1": "請選擇 at least one PDF file.",
       "3750c60c73": "{{value0}} • 無法載入頁數",
       "d3132c7fc8": "{{value0}} • {{value1}} pages",
       "5f28791b8c": "{{value0}} • {{value1}}"
@@ -3991,7 +3991,7 @@
       "7fed9a675a": "PDF {{value0}} 應用成功。",
       "2bbca695fc": "正在讀取檔案...",
       "657cdd2847": "正在初始化 PDF 引擎...",
-      "e3f55281aa": "請upload both a base PDF and an overlay/underlay PDF.",
+      "e3f55281aa": "請上傳 both a base PDF and an overlay/underlay PDF.",
       "fc7bc22501": "缺少檔案"
     },
     "applying": "正在應用{{mode}}...",

@@ -1957,37 +1957,88 @@ function showProperties(field: FormField): void {
       const h = now.getHours() % 12 || 12;
       const HH = now.getHours().toString().padStart(2, '0');
       const MM = now.getMinutes().toString().padStart(2, '0');
-      const tt = now.getHours() >= 12 ? 'PM' : 'AM';
-      const monthNames = [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'Jun',
-        'Jul',
-        'Aug',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Dec',
-      ];
-      const monthNamesFull = [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December',
-      ];
+
+      // 使用 Intl.DateTimeFormat 获取本地化的月份名和上下午标记
+      const locale = (() => {
+        try {
+          const stored = localStorage.getItem('i18nextLng');
+          if (stored === 'zh-TW') return 'zh-TW';
+          if (stored === 'zh') return 'zh-CN';
+          if (stored) return stored;
+        } catch {
+          /* localStorage 不可用时忽略 */
+        }
+        return navigator.language || 'en';
+      })();
+
+      const getMonthNames = (style: 'short' | 'long'): string[] => {
+        try {
+          return Array.from({ length: 12 }, (_, i) => {
+            const date = new Date(2026, i, 1);
+            return new Intl.DateTimeFormat(locale, { month: style })
+              .format(date)
+              .replace(/月$/, ''); // 去掉中文后面的"月"字，保持和原格式码一致
+          });
+        } catch {
+          // Intl 不可用时的回退
+          return style === 'short'
+            ? [
+                'Jan',
+                'Feb',
+                'Mar',
+                'Apr',
+                'May',
+                'Jun',
+                'Jul',
+                'Aug',
+                'Sep',
+                'Oct',
+                'Nov',
+                'Dec',
+              ]
+            : [
+                'January',
+                'February',
+                'March',
+                'April',
+                'May',
+                'June',
+                'July',
+                'August',
+                'September',
+                'October',
+                'November',
+                'December',
+              ];
+        }
+      };
+
+      const getDayPeriod = (): string => {
+        try {
+          const hour = now.getHours();
+          // 使用 Intl.DateTimeFormat 获取本地化的上/下午标记
+          const formatted = new Intl.DateTimeFormat(locale, {
+            hour: 'numeric',
+            hour12: true,
+          }).format(now);
+          // 提取上/下午标记（中文："上午"/"下午"，英文："AM"/"PM" 等）
+          const digitMatch = formatted.match(/\d+/);
+          if (digitMatch) {
+            const parts = formatted.split(digitMatch[0]);
+            const period = parts[parts.length - 1]?.trim();
+            if (period) return period;
+          }
+          return hour >= 12 ? 'PM' : 'AM';
+        } catch {
+          return now.getHours() >= 12 ? 'PM' : 'AM';
+        }
+      };
+
+      const monthNames = getMonthNames('short');
+      const monthNamesFull = getMonthNames('long');
       const mmm = monthNames[now.getMonth()];
       const mmmm = monthNamesFull[now.getMonth()];
+      const tt = getDayPeriod();
 
       return format
         .replace(/mmmm/g, mmmm)
