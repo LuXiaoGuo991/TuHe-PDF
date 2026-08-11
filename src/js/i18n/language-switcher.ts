@@ -165,7 +165,7 @@ export const createLanguageSwitcher = (): HTMLElement => {
 
 export const injectLanguageSwitcher = (): void => {
   const simpleModeContainer = document.getElementById(
-    'simple-mode-language-switcher'
+    'simple-mode-lang-switcher'
   );
   if (simpleModeContainer) {
     const switcher = createLanguageSwitcher();
@@ -173,21 +173,7 @@ export const injectLanguageSwitcher = (): void => {
     return;
   }
 
-  const footer = document.querySelector('footer');
-  if (!footer) return;
-
-  const headings = footer.querySelectorAll('h3');
-  let followUsColumn: HTMLElement | null = null;
-
-  headings.forEach((h3) => {
-    if (
-      h3.textContent?.trim() === 'Follow Us' ||
-      h3.textContent?.trim() === 'Folgen Sie uns' ||
-      h3.textContent?.trim() === 'Theo dõi chúng tôi'
-    ) {
-      followUsColumn = h3.parentElement;
-    }
-  });
+  const followUsColumn = document.getElementById('footer-social-column');
 
   if (followUsColumn) {
     const socialIconsContainer = followUsColumn.querySelector('.space-x-4');

@@ -52,6 +52,14 @@ libreoffice-wasm-package
 # WASM 引擎文件（体积过大，通过 npm 包本地部署）
 public/wasm/
 public/libreoffice-wasm/
+!public/wasm/
+public/wasm/*
+!public/wasm/ocr/
+public/wasm/ocr/*
+!public/wasm/ocr/fonts/
+public/wasm/ocr/fonts/*
+!public/wasm/ocr/fonts/NotoSansCJKsc-Regular.otf
+!public/wasm/ocr/fonts/NotoSans-Regular.ttf
 
 # helm chart
 bentopdf-*.tgz

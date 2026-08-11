@@ -8,7 +8,15 @@ interface WasmProviderConfig {
 
 const STORAGE_KEY = 'tuhe-pdf:wasm-providers';
 
-const CDN_DEFAULTS: Record<WasmPackage, string> = {
+const LOCAL_DEFAULTS: Record<WasmPackage, string> = {
+  pymupdf: '/wasm/pymupdf/',
+  ghostscript: '/wasm/ghostscript/',
+  cpdf: '/wasm/cpdf/',
+};
+
+// Keep previously configured jsDelivr providers valid so existing users can
+// migrate without losing access. New production builds always use LOCAL_DEFAULTS.
+const LEGACY_CDN_DEFAULTS: Record<WasmPackage, string> = {
   pymupdf: 'https://cdn.jsdelivr.net/npm/@bentopdf/pymupdf-wasm@0.11.16/',
   ghostscript: 'https://cdn.jsdelivr.net/npm/@bentopdf/gs-wasm@0.1.1/assets/',
   cpdf: 'https://cdn.jsdelivr.net/npm/coherentpdf@2.5.5/dist/',
@@ -21,13 +29,13 @@ function envOrDefault(envVar: string | undefined, fallback: string): string {
 const ENV_DEFAULTS: Record<WasmPackage, string> = {
   pymupdf: envOrDefault(
     import.meta.env.VITE_WASM_PYMUPDF_URL,
-    CDN_DEFAULTS.pymupdf
+    LOCAL_DEFAULTS.pymupdf
   ),
   ghostscript: envOrDefault(
     import.meta.env.VITE_WASM_GS_URL,
-    CDN_DEFAULTS.ghostscript
+    LOCAL_DEFAULTS.ghostscript
   ),
-  cpdf: envOrDefault(import.meta.env.VITE_WASM_CPDF_URL, CDN_DEFAULTS.cpdf),
+  cpdf: envOrDefault(import.meta.env.VITE_WASM_CPDF_URL, LOCAL_DEFAULTS.cpdf),
 };
 
 function hostnameOf(url: string): string | null {
@@ -38,12 +46,16 @@ function hostnameOf(url: string): string | null {
   }
 }
 
+function isSameOriginPath(url: string): boolean {
+  return url.startsWith('/') && !url.startsWith('//');
+}
+
 function collectBuiltinTrustedHosts(): Set<string> {
   const hosts = new Set<string>();
   if (typeof location !== 'undefined' && location.hostname) {
     hosts.add(location.hostname);
   }
-  for (const url of Object.values(CDN_DEFAULTS)) {
+  for (const url of Object.values(LEGACY_CDN_DEFAULTS)) {
     const h = hostnameOf(url);
     if (h) hosts.add(h);
   }
@@ -66,6 +78,7 @@ class WasmProviderManager {
   }
 
   private isTrustedUrl(url: string): boolean {
+    if (isSameOriginPath(url)) return true;
     const host = hostnameOf(url);
     return !!host && this.trustedHosts.has(host);
   }
@@ -134,7 +147,16 @@ class WasmProviderManager {
   }
 
   setUrl(packageName: WasmPackage, url: string): void {
-    const normalizedUrl = url.endsWith('/') ? url : `${url}/`;
+    const candidateUrl = url.trim();
+    const normalizedUrl = candidateUrl.endsWith('/')
+      ? candidateUrl
+      : `${candidateUrl}/`;
+    if (isSameOriginPath(normalizedUrl)) {
+      this.config[packageName] = normalizedUrl;
+      this.validationCache.delete(packageName);
+      this.saveConfig();
+      return;
+    }
     const host = hostnameOf(normalizedUrl);
     if (!host) {
       throw new Error('Invalid URL');
@@ -174,25 +196,28 @@ class WasmProviderManager {
     packageName: WasmPackage,
     url?: string
   ): Promise<{ valid: boolean; error?: string }> {
-    const testUrl = url || this.config[packageName];
+    const testUrl =
+      url || this.config[packageName] || this.getEnvDefault(packageName);
     if (!testUrl) {
       return { valid: false, error: 'No URL configured' };
     }
 
-    try {
-      const parsedUrl = new URL(testUrl);
-      if (!['http:', 'https:'].includes(parsedUrl.protocol)) {
+    if (!isSameOriginPath(testUrl)) {
+      try {
+        const parsedUrl = new URL(testUrl);
+        if (!['http:', 'https:'].includes(parsedUrl.protocol)) {
+          return {
+            valid: false,
+            error: 'URL must start with /, http://, or https://',
+          };
+        }
+      } catch {
         return {
           valid: false,
-          error: 'URL must start with http:// or https://',
+          error:
+            'Invalid URL format. Please enter a same-origin path (e.g., /wasm/) or a valid https:// URL.',
         };
       }
-    } catch {
-      return {
-        valid: false,
-        error:
-          'Invalid URL format. Please enter a valid URL (e.g., https://example.com/wasm/)',
-      };
     }
 
     const normalizedUrl = testUrl.endsWith('/') ? testUrl : `${testUrl}/`;
