@@ -548,7 +548,7 @@ const init = async () => {
   }
 
   createIcons({ icons });
-  console.log('Please share our tool and share the love!');
+  console.log('💙 感谢使用 TuHe PDF！如果喜欢我们的工具，欢迎分享给更多人。');
 
   const githubStarsElements = [
     document.getElementById('github-stars-desktop'),

@@ -16,6 +16,7 @@ import {
 } from '../utils/helpers.js';
 import { loadPdfWithPasswordPrompt } from '../utils/password-prompt.js';
 import { t } from '../i18n/i18n';
+import i18next from 'i18next';
 import {
   signPdf,
   parsePfxFile,
@@ -626,7 +627,8 @@ function updateCertInfo(): void {
     certIssuer.textContent = info.issuer;
   }
   if (certValidity) {
-    const formatDate = (date: Date) => date.toLocaleDateString();
+    const locale = i18next.resolvedLanguage || i18next.language || 'zh-CN';
+    const formatDate = (date: Date) => date.toLocaleDateString(locale);
     certValidity.textContent = translate(
       'tools:digitalSignPdf.dynamic.d265e37162',
       `${formatDate(info.validFrom)} - ${formatDate(info.validTo)}`,
@@ -735,7 +737,8 @@ async function processSignature(): Promise<void> {
 
     if (!state.sigImageData && !sigText && state.certData) {
       const certInfo = getCertificateInfo(state.certData.certificate);
-      const date = new Date().toLocaleDateString();
+      const locale = i18next.resolvedLanguage || i18next.language || 'zh-CN';
+      const date = new Date().toLocaleDateString(locale);
       sigText = t('tools:digitalSignPdf.defaultSignatureText', {
         signer: certInfo.subject,
         date,

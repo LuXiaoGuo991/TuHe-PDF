@@ -166,7 +166,8 @@ export function formatIsoDate(isoDateString: string) {
     if (isNaN(date.getTime())) {
       return isoDateString; // Return original string if the date is invalid
     }
-    return date.toLocaleString();
+    const locale = i18next.resolvedLanguage || i18next.language || 'zh-CN';
+    return date.toLocaleString(locale);
   } catch (e) {
     console.error('Could not parse ISO date:', e);
     return isoDateString; // Return original string on any error
