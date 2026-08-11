@@ -170,6 +170,7 @@
               <label
                 for="meta-title"
                 class="block mb-2 text-sm font-medium text-gray-300"
+                data-i18n="tools:editMetadata.title"
                 >Title</label
               >
               <input
@@ -182,6 +183,7 @@
               <label
                 for="meta-author"
                 class="block mb-2 text-sm font-medium text-gray-300"
+                data-i18n="tools:editMetadata.author"
                 >Author</label
               >
               <input
@@ -194,6 +196,7 @@
               <label
                 for="meta-subject"
                 class="block mb-2 text-sm font-medium text-gray-300"
+                data-i18n="tools:editMetadata.subject"
                 >Subject</label
               >
               <input
@@ -206,6 +209,7 @@
               <label
                 for="meta-keywords"
                 class="block mb-2 text-sm font-medium text-gray-300"
+                data-i18n="tools:editMetadata.keywords"
                 >Keywords (comma-separated)</label
               >
               <input
@@ -218,6 +222,7 @@
               <label
                 for="meta-creator"
                 class="block mb-2 text-sm font-medium text-gray-300"
+                data-i18n="tools:editMetadata.creator"
                 >Creator</label
               >
               <input
@@ -230,6 +235,7 @@
               <label
                 for="meta-producer"
                 class="block mb-2 text-sm font-medium text-gray-300"
+                data-i18n="tools:editMetadata.producer"
                 >Producer</label
               >
               <input
@@ -243,6 +249,7 @@
                 <label
                   for="meta-creation-date"
                   class="block mb-2 text-sm font-medium text-gray-300"
+                  data-i18n="tools:editMetadata.creationDate"
                   >Creation Date</label
                 >
                 <input
@@ -255,6 +262,7 @@
                 <label
                   for="meta-mod-date"
                   class="block mb-2 text-sm font-medium text-gray-300"
+                  data-i18n="tools:editMetadata.modificationDate"
                   >Modification Date</label
                 >
                 <input
@@ -286,7 +294,10 @@
               type="button"
               class="flex items-center gap-2 mt-3 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg text-sm"
             >
-              <i data-lucide="plus" class="w-4 h-4"></i> Add Custom Field
+              <i data-lucide="plus" class="w-4 h-4"></i>
+              <span data-i18n="tools:editMetadata.addCustomField"
+                >Add Custom Field</span
+              >
             </button>
           </div>
 
@@ -526,10 +537,12 @@
           <summary
             class="cursor-pointer font-semibold text-white flex items-center justify-between"
           >
-            Are my files private and secure?
+            <span data-i18n="tools:editMetadata.faq2q"
+              >Are my files private and secure?</span
+            >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq2a">
+          <p class="mt-3 text-gray-400" data-i18n="tools:editMetadata.faq2a">
             Absolutely! All processing happens in your browser. Your files never
             leave your device, ensuring complete privacy.
           </p>
@@ -538,10 +551,12 @@
           <summary
             class="cursor-pointer font-semibold text-white flex items-center justify-between"
           >
-            Is there a file size limit?
+            <span data-i18n="tools:editMetadata.faq3q"
+              >Is there a file size limit?</span
+            >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq3a">
+          <p class="mt-3 text-gray-400" data-i18n="tools:editMetadata.faq3a">
             No! Process files of any size, as many times as you want, completely
             free.
           </p>
@@ -566,7 +581,7 @@
         "offers": {
           "@type": "Offer",
           "price": "0",
-          "priceCurrency": "USD"
+          "priceCurrency": "CNY"
         }
       }
     </script>

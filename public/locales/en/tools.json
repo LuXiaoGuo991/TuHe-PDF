@@ -520,6 +520,31 @@
     "resetConfirm": "Reset and go back to file uploader? All unsaved changes will be lost.",
     "deleteAllConfirm": "Delete all {{count}} bookmark(s)?",
     "fitToWidth": "Fit to Width",
+    "undo": "Undo",
+    "redo": "Redo",
+    "deleteAll": "Delete All",
+    "reset": "Reset",
+    "backToTools": "Back to Tools",
+    "pageIndicator": "Page 1 / 1",
+    "goTo": "Go to:",
+    "go": "Go",
+    "clickToSetDestination": "Click on the PDF to set bookmark destination",
+    "addToPage": "Add to Page",
+    "batchMode": "Batch Mode",
+    "selected": "selected",
+    "batchOperations": "Batch Operations",
+    "selectAll": "Select All",
+    "deselectAll": "Deselect All",
+    "deleteSelected": "Delete Selected",
+    "expandAll": "Expand All",
+    "collapseAll": "Collapse All",
+    "importBtn": "Import",
+    "importCsvBtn": "Import CSV",
+    "importJsonBtn": "Import JSON",
+    "exportBtn": "Export",
+    "exportCsvBtn": "Export CSV",
+    "exportJsonBtn": "Export JSON",
+    "noBookmarksYet": "No bookmarks yet. Add one above!",
     "dynamic": {
       "80825a5a20": "Delete",
       "4af82fdf15": "Edit",
@@ -676,6 +701,16 @@
   "batesNumbering": {
     "name": "Bates Numbering",
     "subtitle": "Add sequential Bates numbers across one or more PDF files.",
+    "selectStyle": "Select Style",
+    "customizeStyle": "Customize Style",
+    "preview": "Preview:",
+    "batesPadding": "Bates Padding",
+    "batesStartsFrom": "Bates Starts From",
+    "fileCounterStartsFrom": "File Counter Starts From",
+    "position": "Position",
+    "font": "Font",
+    "fontSize": "Font Size",
+    "color": "Color",
     "auto": {
       "86547d2bf5": "PDF files (multiple supported)",
       "fdbc696c14": "Exhibit 1 Case XYZ 000001 Page 1",
@@ -1997,6 +2032,8 @@
   "dividePages": {
     "name": "Divide Pages",
     "subtitle": "Divide pages horizontally or vertically.",
+    "pagesToDivide": "Pages to Divide",
+    "splitDirection": "Split Direction",
     "auto": {
       "80881ab494": "Vertical:",
       "3c39df6a87": "Horizontal:",
@@ -2163,6 +2200,9 @@
   "nUpPdf": {
     "name": "N-Up PDF",
     "subtitle": "Arrange multiple pages onto a single sheet.",
+    "pagesPerSheet": "Pages per Sheet",
+    "outputPageSize": "Output Page Size",
+    "borderColor": "Border Color",
     "auto": {
       "914719b7ed": "Choose how many pages to fit on each sheet (2, 4, 9, or 16).",
       "ceacc66db0": "Select output page size and orientation.",
@@ -2199,6 +2239,10 @@
   "combineToSinglePage": {
     "name": "Combine to Single Page",
     "subtitle": "Stitch all pages into one continuous scroll.",
+    "layoutDirection": "Layout Direction",
+    "spacing": "Spacing (pixels)",
+    "separatorThickness": "Separator Thickness",
+    "separatorColor": "Separator Color",
     "auto": {
       "d256eaa316": "Vertical (Top to Bottom)",
       "9ab26718ff": "Horizontal (Left to Right)",
@@ -2258,6 +2302,15 @@
   "editMetadata": {
     "name": "Edit Metadata",
     "subtitle": "Change the author, title, and other properties.",
+    "title": "Title",
+    "author": "Author",
+    "subject": "Subject",
+    "keywords": "Keywords (comma-separated)",
+    "creator": "Creator",
+    "producer": "Producer",
+    "creationDate": "Creation Date",
+    "modificationDate": "Modification Date",
+    "addCustomField": "Add Custom Field",
     "auto": {
       "143b179529": "Custom Fields",
       "c7a9dd0076": "Note: Custom fields are not supported by all PDF readers.",
@@ -2434,6 +2487,16 @@
   "posterizePdf": {
     "name": "Posterize PDF",
     "subtitle": "Split a large page into multiple smaller pages.",
+    "pagePreview": "Page Preview (",
+    "rows": "Rows",
+    "columns": "Columns",
+    "overlap": "Overlap (for assembly)",
+    "pageRange": "Page Range (optional)",
+    "totalPages": "Total pages:",
+    "pageSize": "Page Size",
+    "orientation": "Orientation",
+    "contentScaling": "Content Scaling",
+    "units": "Units",
     "auto": {
       "7679ffa238": "Grid Layout",
       "9e131de8f1": "Output Page Settings",
@@ -2463,6 +2526,13 @@
   "fixPageSize": {
     "name": "Fix Page Size",
     "subtitle": "Standardize all pages to a uniform size.",
+    "targetPageSize": "Target Page Size",
+    "width": "Width",
+    "height": "Height",
+    "units": "Units",
+    "orientation": "Orientation",
+    "contentScaling": "Content Scaling",
+    "marginColor": "Color for margins/padding",
     "auto": {
       "759c558b3f": "Letter (8.5 × 11 in)",
       "3babc3a9d8": "Legal (8.5 × 14 in)",
@@ -2532,6 +2602,13 @@
   "pageDimensions": {
     "name": "Page Dimensions",
     "subtitle": "Analyze page size, orientation, and units.",
+    "units": "Units:",
+    "pageNumber": "Page #",
+    "dimensions": "Dimensions",
+    "standardSize": "Standard Size",
+    "aspectRatio": "Aspect Ratio",
+    "area": "Area",
+    "rotation": "Rotation",
     "auto": {
       "f85f11d757": "Points (pt)",
       "e481ce72c8": "Inches (in)",
@@ -2812,6 +2889,10 @@
   "changePermissions": {
     "name": "Change Permissions",
     "subtitle": "Set or change user permissions on a PDF.",
+    "currentPassword": "Current Password (if encrypted)",
+    "newUserPassword": "New User Password",
+    "newOwnerPassword": "New Owner Password",
+    "allowDocumentAssembly": "Allow Document Assembly",
     "auto": {
       "02739e6de9": "Required when setting permissions or a user password. Leave all fields empty to decrypt the PDF instead.",
       "1b1a468304": "Permissions (requires owner password)",
@@ -3997,6 +4078,8 @@
   "deskewPdf": {
     "name": "Deskew PDF",
     "subtitle": "Automatically straighten tilted scanned pages using OpenCV.",
+    "skewThreshold": "Skew Threshold (degrees)",
+    "processingQuality": "Processing Quality (DPI)",
     "auto": {
       "d1814f6a72": "0.1° (Very Sensitive)",
       "4963c88af5": "0.5° (Default)",
@@ -4144,6 +4227,9 @@
   "preparePdfForAi": {
     "name": "Prepare PDF for AI",
     "subtitle": "Extract PDF content as LlamaIndex JSON for RAG/LLM pipelines.",
+    "textOption": "text - Extracted text content per page",
+    "metadataOption": "metadata - Page number, headings, and document info",
+    "extraInfoOption": "extra_info - Additional context for RAG systems",
     "auto": {
       "d3dd83dfd6": "Output Format:",
       "f1689180f8": "Each PDF will be extracted as a JSON file containing an array of LlamaIndex Document objects with:",
@@ -4264,6 +4350,9 @@
   "rasterizePdf": {
     "name": "Rasterize PDF",
     "subtitle": "Convert PDF to image-based PDF. Flatten layers and remove selectable text.",
+    "dpiResolution": "DPI (Resolution)",
+    "imageFormat": "Image Format",
+    "convertToGrayscale": "Convert to Grayscale",
     "auto": {
       "4c276f593d": "72 (Screen)",
       "73964943e3": "150 (Default)",

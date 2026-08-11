@@ -167,6 +167,7 @@
               <label
                 for="units-select"
                 class="text-sm font-medium text-gray-300"
+                data-i18n="tools:pageDimensions.units"
                 >Units:</label
               >
               <select
@@ -214,13 +215,45 @@
             <table class="w-full text-sm text-left">
               <thead class="text-xs uppercase bg-gray-900 text-gray-400">
                 <tr>
-                  <th class="px-4 py-3">Page #</th>
-                  <th class="px-4 py-3">Dimensions</th>
-                  <th class="px-4 py-3">Standard Size</th>
-                  <th class="px-4 py-3">Orientation</th>
-                  <th class="px-4 py-3">Aspect Ratio</th>
-                  <th class="px-4 py-3">Area</th>
-                  <th class="px-4 py-3">Rotation</th>
+                  <th
+                    class="px-4 py-3"
+                    data-i18n="tools:pageDimensions.pageNumber"
+                  >
+                    Page #
+                  </th>
+                  <th
+                    class="px-4 py-3"
+                    data-i18n="tools:pageDimensions.dimensions"
+                  >
+                    Dimensions
+                  </th>
+                  <th
+                    class="px-4 py-3"
+                    data-i18n="tools:pageDimensions.standardSize"
+                  >
+                    Standard Size
+                  </th>
+                  <th
+                    class="px-4 py-3"
+                    data-i18n="tools:pageDimensions.auto.d0fa5ce893"
+                  >
+                    Orientation
+                  </th>
+                  <th
+                    class="px-4 py-3"
+                    data-i18n="tools:pageDimensions.aspectRatio"
+                  >
+                    Aspect Ratio
+                  </th>
+                  <th class="px-4 py-3" data-i18n="tools:pageDimensions.area">
+                    Area
+                  </th>
+                  <th
+                    class="px-4 py-3"
+                    data-i18n="tools:pageDimensions.rotation"
+                  >
+                    Rotation
+                  </th>
                 </tr>
               </thead>
               <tbody
@@ -438,10 +471,12 @@
           <summary
             class="cursor-pointer font-semibold text-white flex items-center justify-between"
           >
-            Are my files private and secure?
+            <span data-i18n="tools:pageDimensions.faq2q"
+              >Are my files private and secure?</span
+            >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq2a">
+          <p class="mt-3 text-gray-400" data-i18n="tools:pageDimensions.faq2a">
             Absolutely! All processing happens in your browser. Your files never
             leave your device, ensuring complete privacy.
           </p>
@@ -450,10 +485,12 @@
           <summary
             class="cursor-pointer font-semibold text-white flex items-center justify-between"
           >
-            Is there a file size limit?
+            <span data-i18n="tools:pageDimensions.faq3q"
+              >Is there a file size limit?</span
+            >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq3a">
+          <p class="mt-3 text-gray-400" data-i18n="tools:pageDimensions.faq3a">
             No! Process files of any size, as many times as you want, completely
             free.
           </p>
@@ -479,7 +516,7 @@
         "offers": {
           "@type": "Offer",
           "price": "0",
-          "priceCurrency": "USD"
+          "priceCurrency": "CNY"
         }
       }
     </script>

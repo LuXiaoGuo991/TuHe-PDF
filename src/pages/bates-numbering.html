@@ -146,6 +146,7 @@
             <label
               for="style-preset"
               class="block mb-2 text-sm font-medium text-gray-300"
+              data-i18n="tools:batesNumbering.selectStyle"
               >Select Style</label
             >
             <select
@@ -268,6 +269,7 @@
             <label
               for="bates-template"
               class="block mb-2 text-sm font-medium text-gray-300"
+              data-i18n="tools:batesNumbering.customizeStyle"
               >Customize Style</label
             >
             <input
@@ -288,7 +290,12 @@
             id="preview-box"
             class="bg-gray-900 border border-gray-700 rounded-lg p-4 text-sm text-gray-300 font-mono"
           >
-            <div class="text-xs text-gray-500 mb-1">Preview:</div>
+            <div
+              class="text-xs text-gray-500 mb-1"
+              data-i18n="tools:batesNumbering.preview"
+            >
+              Preview:
+            </div>
             <div id="preview-content"></div>
           </div>
 
@@ -297,6 +304,7 @@
               <label
                 for="bates-padding"
                 class="block mb-2 text-sm font-medium text-gray-300"
+                data-i18n="tools:batesNumbering.batesPadding"
                 >Bates Padding</label
               >
               <select
@@ -341,6 +349,7 @@
               <label
                 for="position"
                 class="block mb-2 text-sm font-medium text-gray-300"
+                data-i18n="tools:batesNumbering.position"
                 >Position</label
               >
               <select
@@ -393,6 +402,7 @@
               <label
                 for="bates-start"
                 class="block mb-2 text-sm font-medium text-gray-300"
+                data-i18n="tools:batesNumbering.batesStartsFrom"
                 >Bates Starts From</label
               >
               <input
@@ -408,6 +418,7 @@
               <label
                 for="file-start"
                 class="block mb-2 text-sm font-medium text-gray-300"
+                data-i18n="tools:batesNumbering.fileCounterStartsFrom"
                 >File Counter Starts From</label
               >
               <input
@@ -425,6 +436,7 @@
               <label
                 for="font-family"
                 class="block mb-2 text-sm font-medium text-gray-300"
+                data-i18n="tools:batesNumbering.font"
                 >Font</label
               >
               <select
@@ -456,6 +468,7 @@
               <label
                 for="font-size"
                 class="block mb-2 text-sm font-medium text-gray-300"
+                data-i18n="tools:batesNumbering.fontSize"
                 >Font Size</label
               >
               <input
@@ -472,6 +485,7 @@
               <label
                 for="text-color"
                 class="block mb-2 text-sm font-medium text-gray-300"
+                data-i18n="tools:batesNumbering.color"
                 >Color</label
               >
               <input type="color" id="text-color" value="#000000" />
@@ -717,7 +731,9 @@
           <summary
             class="cursor-pointer font-semibold text-white flex items-center justify-between"
           >
-            What is Bates numbering?
+            <span data-i18n="tools:batesNumbering.faq1q"
+              >What is Bates numbering?</span
+            >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
           <p
@@ -733,7 +749,9 @@
           <summary
             class="cursor-pointer font-semibold text-white flex items-center justify-between"
           >
-            Can I number multiple files at once?
+            <span data-i18n="tools:batesNumbering.faq2q"
+              >Can I number multiple files at once?</span
+            >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
           <p
@@ -748,7 +766,9 @@
           <summary
             class="cursor-pointer font-semibold text-white flex items-center justify-between"
           >
-            Are my files secure?
+            <span data-i18n="tools:batesNumbering.faq3q"
+              >Are my files secure?</span
+            >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
           <p
@@ -776,7 +796,7 @@
         "name": "Bates Numbering - TuHe PDF",
         "applicationCategory": "PDF Tool",
         "operatingSystem": "Any - Web Browser",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CNY" }
       }
     </script>
   </body>

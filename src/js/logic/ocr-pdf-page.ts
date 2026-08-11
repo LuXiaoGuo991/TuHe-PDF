@@ -371,7 +371,8 @@ document.addEventListener('DOMContentLoaded', async function () {
 
   // Language search
   if (langSearch && langList) {
-    langSearch.addEventListener('input', function () {
+    langSearch.addEventListener('input', function (e: Event) {
+      if ((e as any).isComposing) return;
       const searchTerm = langSearch.value.toLowerCase();
       langList.querySelectorAll('label').forEach(function (label) {
         (label as HTMLElement).style.display = (

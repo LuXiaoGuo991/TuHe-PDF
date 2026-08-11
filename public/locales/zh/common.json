@@ -11,6 +11,10 @@
     "searchLanguage": "搜索语言…",
     "noLanguagesFound": "未找到语言"
   },
+  "homePage": "TuHe PDF 首页",
+  "logoAlt": "图合 PDF 标志",
+  "pageTitle": "TuHe PDF - 图合 · 浏览器端 PDF 工作台",
+  "pageDescription": "TuHe PDF（图合）- 纯浏览器端 PDF 工具台：合并、拆分、压缩、转换 PDF，文件不出本机，免注册，无限制。",
   "donation": {
     "message": "喜欢 TuHe PDF？帮助我们保持免费和开源！",
     "button": "捐赠"
@@ -605,7 +609,8 @@
     "quickTools": "常用工具",
     "homeSubtitle": "纯浏览器端的 PDF 工作台 · 合并、拆分、压缩、转换 · 文件全程不出本机",
     "homeHint": "从左侧卡片栏选择任意工具开始，工具会在右侧标签页中打开",
-    "searchPlaceholder": "搜索工具… (Ctrl+K)"
+    "searchPlaceholder": "搜索工具… (Ctrl+K)",
+    "toolRailAria": "工具卡片栏"
   },
   "viewMetadata": {
     "noInfoDict": "- 未找到 Info Dictionary 数据 -",
@@ -644,7 +649,8 @@
     "workbenchDesign": "工作台式设计",
     "workbenchDesignContent": "与「一个工具一个页面」的传统站点不同，TuHe PDF 采用工作台式布局：左侧是工具卡片栏，右侧是多标签工作区。你可以同时打开多个工具、在标签之间自由切换，像在桌面软件里一样处理文档。",
     "openSource": "开源基础",
-    "openSourceLicenseLink": "许可"
+    "openSourceLicenseLink": "许可",
+    "openSourceContent": "TuHe PDF 基于开源项目 BentoPDF 二次开发，遵循 AGPL-3.0 许可证。详见许可页面。"
   },
   "contactPage": {
     "heading": "联系我们",
@@ -739,7 +745,8 @@
     "section10Item4": "<strong>不退款政策：</strong> <strong class=\"text-red-400\">购买后任何情况下均不退款。</strong> 所有销售均为最终决定。完成购买即表示您确认已评估该软件（可在 GitHub 上免费获取）并对其功能感到满意。",
     "section10Item5": "<strong>第三方组件：</strong> 商业许可不授予以闭源方式使用 AGPL 许可的第三方组件（如 CPDF、PyMuPDF 和 Ghostscript）的权利。您必须遵守这些组件的 AGPL v3 条款，或从其各自的供应商处获取单独的商业许可。",
     "section10Item6": "<strong>无限使用：</strong> 该许可允许在您组织内的设备、服务器和用户机器上无限制地使用，没有按用户、按机器或按席位的限制。",
-    "section10Footer": "有关完整的许可详情，请访问我们的 <a href=\"licensing.html\" class=\"text-indigo-400 hover:underline\">许可页面</a>。"
+    "section10Footer": "有关完整的许可详情，请访问我们的 <a href=\"licensing.html\" class=\"text-indigo-400 hover:underline\">许可页面</a>。",
+    "upstreamContent": "TuHe PDF 基于 BentoPDF 二次开发，遵循 GNU AGPL-3.0 许可证。感谢上游作者与贡献者的工作。"
   },
   "ocrLanguage": {
     "eng": "英语",
@@ -844,5 +851,58 @@
     "uzb_cyrl": "乌兹别克语（西里尔字母）",
     "vie": "越南语",
     "yid": "意第绪语"
+  },
+  "validateSignature": {
+    "noSignatures": "未找到签名",
+    "noSignaturesDesc": "此 PDF 不包含任何数字签名。",
+    "signaturesFound": "{{count}} 个签名已找到",
+    "signaturesFound_plural": "{{count}} 个签名已找到",
+    "valid": "有效",
+    "trustVerification": "信任验证：{{trusted}}/{{total}} 个签名通过了自定义证书验证",
+    "unknown": "未知",
+    "trusted": "已信任",
+    "notInTrustChain": "不在信任链中",
+    "signatureNumber": "签名 {{index}}",
+    "fullCoverage": "完全覆盖",
+    "partialCoverage": "部分覆盖",
+    "signedBy": "签署人",
+    "issuer": "签发机构",
+    "signedOn": "签署时间",
+    "validFrom": "有效期开始",
+    "validUntil": "有效期结束",
+    "reason": "签署原因",
+    "location": "签署地点",
+    "technicalDetails": "技术详情",
+    "serialNumber": "序列号",
+    "digestAlgorithm": "摘要算法",
+    "signatureAlgorithm": "签名算法",
+    "error": "错误",
+    "status": {
+      "valid": "有效签名",
+      "unsupportedAlgorithm": "未验证 — 不支持的签名算法",
+      "modifiedAfterSigning": "无效 — 签名后被修改（部分覆盖）",
+      "cryptoFailed": "无效 — 加密验证失败",
+      "invalid": "无效签名",
+      "insecureDigest": "不安全的摘要算法（MD5 / SHA-1）",
+      "certExpired": "证书已过期",
+      "selfSigned": "自签名 — 签署人身份未验证",
+      "signatureIntact": "签名完整 — 签署人身份未验证"
+    }
+  },
+  "addWatermark": {
+    "enterText": "请输入水印文本。",
+    "selectImage": "请选择水印图片文件。",
+    "unsupportedImage": "不支持的图片格式。请使用 PNG 或 JPG 作为水印。"
+  },
+  "cbzToPdf": {
+    "canvasContextFailed": "无法获取画布上下文",
+    "convertPngFailed": "转换 PNG 失败",
+    "loadImageFailed": "加载图片失败",
+    "tooManyImages": "压缩包中图片过多",
+    "oversizedImage": "压缩包中包含过大的图片条目。",
+    "archiveTooLarge": "解压后压缩包过大。"
+  },
+  "bookmarkPdf": {
+    "previewText": "预览文本"
   }
 }

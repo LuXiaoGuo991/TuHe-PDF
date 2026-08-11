@@ -11,6 +11,10 @@
     "searchLanguage": "Search language…",
     "noLanguagesFound": "No languages found"
   },
+  "homePage": "TuHe PDF Home",
+  "logoAlt": "TuHe PDF Logo",
+  "pageTitle": "TuHe PDF - 图合 · Browser-Based PDF Workbench",
+  "pageDescription": "TuHe PDF (图合) - Pure browser-based PDF workbench: merge, split, compress, convert PDFs. Files never leave your device, no signup, no limits.",
   "donation": {
     "message": "Love TuHe PDF? Help us keep it free and open source!",
     "button": "Donate"
@@ -604,7 +608,8 @@
     "quickTools": "Common Tools",
     "homeSubtitle": "Browser-based PDF Workbench · Merge, Split, Compress, Convert · Your files never leave your device",
     "homeHint": "Select any tool from the sidebar to start — it will open in a tab on the right",
-    "searchPlaceholder": "Search tools… (Ctrl+K)"
+    "searchPlaceholder": "Search tools… (Ctrl+K)",
+    "toolRailAria": "Tool Sidebar"
   },
   "viewMetadata": {
     "noInfoDict": "- No Info Dictionary data found -",
@@ -643,7 +648,8 @@
     "workbenchDesign": "Workbench-Style Design",
     "workbenchDesignContent": "Unlike traditional sites with \"one tool per page\", TuHe PDF uses a workbench layout: a tool card sidebar on the left and a multi-tab workspace on the right. You can open multiple tools simultaneously and switch between tabs freely, just like working in desktop software.",
     "openSource": "Open Source Foundation",
-    "openSourceLicenseLink": "Licensing"
+    "openSourceLicenseLink": "Licensing",
+    "openSourceContent": "TuHe PDF is based on the open-source project BentoPDF, licensed under AGPL-3.0. See the licensing page."
   },
   "contactPage": {
     "heading": "Contact Us",
@@ -738,7 +744,8 @@
     "section10Item4": "<strong>No Refund Policy:</strong> <strong class=\"text-red-400\">No refunds will be issued under any circumstances after purchase.</strong> All sales are final. By completing your purchase, you confirm that you have evaluated the software (freely available on GitHub) and are satisfied with its capabilities.",
     "section10Item5": "<strong>Third-Party Components:</strong> The commercial license does not grant the right to use AGPL-licensed third-party components (such as CPDF, PyMuPDF, and Ghostscript) in a closed-source manner. You must either comply with the AGPL v3 terms for these components or obtain separate commercial licenses from their respective vendors.",
     "section10Item6": "<strong>Unlimited Use:</strong> The license permits unlimited use on devices, servers, and user machines within your organization, with no per-user, per-machine, or per-seat restrictions.",
-    "section10Footer": "For complete license details, please visit our <a href=\"licensing.html\" class=\"text-indigo-400 hover:underline\">Licensing page</a>."
+    "section10Footer": "For complete license details, please visit our <a href=\"licensing.html\" class=\"text-indigo-400 hover:underline\">Licensing page</a>.",
+    "upstreamContent": "TuHe PDF is based on BentoPDF, licensed under GNU AGPL-3.0. Thanks to the upstream authors and contributors."
   },
   "ocrLanguage": {
     "eng": "English",
@@ -843,5 +850,58 @@
     "uzb_cyrl": "Uzbek - Cyrillic",
     "vie": "Vietnamese",
     "yid": "Yiddish"
+  },
+  "validateSignature": {
+    "noSignatures": "No Signatures Found",
+    "noSignaturesDesc": "This PDF does not contain any digital signatures.",
+    "signaturesFound": "{{count}} signature found",
+    "signaturesFound_plural": "{{count}} signatures found",
+    "valid": "valid",
+    "trustVerification": "Trust verification: {{trusted}}/{{total}} signatures verified against custom certificate",
+    "unknown": "Unknown",
+    "trusted": "Trusted",
+    "notInTrustChain": "Not in trust chain",
+    "signatureNumber": "Signature {{index}}",
+    "fullCoverage": "Full Coverage",
+    "partialCoverage": "Partial Coverage",
+    "signedBy": "Signed By",
+    "issuer": "Issuer",
+    "signedOn": "Signed On",
+    "validFrom": "Valid From",
+    "validUntil": "Valid Until",
+    "reason": "Reason",
+    "location": "Location",
+    "technicalDetails": "Technical Details",
+    "serialNumber": "Serial Number",
+    "digestAlgorithm": "Digest Algorithm",
+    "signatureAlgorithm": "Signature Algorithm",
+    "error": "Error",
+    "status": {
+      "valid": "Valid Signature",
+      "unsupportedAlgorithm": "Unverified — Unsupported Signature Algorithm",
+      "modifiedAfterSigning": "Invalid — Modified After Signing (partial coverage)",
+      "cryptoFailed": "Invalid — Cryptographic Verification Failed",
+      "invalid": "Invalid Signature",
+      "insecureDigest": "Insecure Digest (MD5 / SHA-1)",
+      "certExpired": "Certificate Expired",
+      "selfSigned": "Self-Signed — Signer Identity Not Verified",
+      "signatureIntact": "Signature Intact — Signer Identity Not Verified"
+    }
+  },
+  "addWatermark": {
+    "enterText": "Please enter watermark text.",
+    "selectImage": "Please select a watermark image file.",
+    "unsupportedImage": "Unsupported image format. Please use PNG or JPG for watermark."
+  },
+  "cbzToPdf": {
+    "canvasContextFailed": "Failed to get canvas context",
+    "convertPngFailed": "Failed to convert PNG",
+    "loadImageFailed": "Failed to load image",
+    "tooManyImages": "Too many images in archive",
+    "oversizedImage": "Archive contains oversized image entry.",
+    "archiveTooLarge": "Archive too large after extraction."
+  },
+  "bookmarkPdf": {
+    "previewText": "Preview Text"
   }
 }

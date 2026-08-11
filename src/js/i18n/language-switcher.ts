@@ -112,7 +112,8 @@ export const createLanguageSwitcher = (): HTMLElement => {
   list.appendChild(emptyState);
   dropdown.appendChild(list);
 
-  const filterOptions = () => {
+  const filterOptions = (e?: Event) => {
+    if (e && (e as InputEvent).isComposing) return;
     const query = searchInput.value.trim().toLowerCase();
     let visible = 0;
     options.forEach((option) => {
