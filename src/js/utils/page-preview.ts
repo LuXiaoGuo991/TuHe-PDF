@@ -35,13 +35,13 @@ function getOrCreateModal(): HTMLElement {
   modal.className =
     'fixed inset-0 bg-black/80 backdrop-blur-sm z-[60] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-200';
   modal.innerHTML = `
-    <button id="preview-close" class="absolute top-4 right-4 text-white/70 hover:text-white z-10 transition-colors" title="Close (Esc)">
+    <button id="preview-close" class="absolute top-4 right-4 text-white/70 hover:text-white z-10 transition-colors" title="${translate('common.pagePreview.closeEsc', 'Close (Esc)')}">
       <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
     </button>
-    <button id="preview-prev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-2" title="Previous page">
+    <button id="preview-prev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-2" title="${translate('common.pagePreview.previousPage', 'Previous page')}">
       <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
     </button>
-    <button id="preview-next" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-2" title="Next page">
+    <button id="preview-next" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-2" title="${translate('common.pagePreview.nextPage', 'Next page')}">
       <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
     </button>
     <div id="preview-canvas-container" class="flex items-center justify-center max-w-[90vw] max-h-[85vh]">
@@ -111,8 +111,7 @@ async function renderPreviewPage(pageNumber: number): Promise<void> {
     state.currentPage = pageNumber;
   } catch (err) {
     console.error('Preview render error:', err);
-    container.innerHTML =
-      '<div class="text-red-400 text-sm">Failed to render page</div>';
+    container.innerHTML = `<div class="text-red-400 text-sm">${translate('common.pagePreview.failedToRender', 'Failed to render page')}</div>`;
   }
 }
 

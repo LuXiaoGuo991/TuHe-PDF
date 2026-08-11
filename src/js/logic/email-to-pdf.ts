@@ -8,6 +8,7 @@ import {
   formatRawDate,
 } from '../utils/helpers.js';
 import { t } from '../i18n/i18n';
+import i18next from 'i18next';
 import type { EmailAttachment, ParsedEmail, EmailRenderOptions } from '@/types';
 
 const translate = (
@@ -257,8 +258,7 @@ export function renderEmailToHtml(
   if (email.rawDateString) {
     dateStr = formatRawDate(email.rawDateString);
   } else if (email.date && !isNaN(email.date.getTime())) {
-    const locale =
-      (typeof navigator !== 'undefined' && navigator.language) || 'zh-CN';
+    const locale = i18next.language || 'zh';
     dateStr = email.date.toLocaleString(locale, {
       weekday: 'long',
       year: 'numeric',
@@ -291,14 +291,14 @@ export function renderEmailToHtml(
     if (email.cc.length > 0) {
       ccBccHtml += `
       <div style="margin-bottom: 8px;">
-        <span style="font-weight: 600; color: #666; margin-right: 8px;">CC:</span>
+        <span style="font-weight: 600; color: #666; margin-right: 8px;">${translate('emailToPdf.cc', 'CC')}:</span>
         <span style="color: #333;">${escapeHtml(email.cc.join(', '))}</span>
       </div>`;
     }
     if (email.bcc.length > 0) {
       ccBccHtml += `
       <div style="margin-bottom: 8px;">
-        <span style="font-weight: 600; color: #666; margin-right: 8px;">BCC:</span>
+        <span style="font-weight: 600; color: #666; margin-right: 8px;">${translate('emailToPdf.bcc', 'BCC')}:</span>
         <span style="color: #333;">${escapeHtml(email.bcc.join(', '))}</span>
       </div>`;
     }
@@ -309,21 +309,21 @@ export function renderEmailToHtml(
 <head>
   <meta charset="UTF-8">
 </head>
-<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 40px 20px; background: #fff;">
+<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 40px 20px; background: #fff;">
   <div style="border-bottom: 2px solid #999999; padding-bottom: 20px; margin-bottom: 30px;">
     <h1 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin: 0 0 12px 0;">${escapeHtml(email.subject)}</h1>
     <div style="font-size: 12px; color: #555;">
       <div style="margin-bottom: 8px;">
-        <span style="font-weight: 600; color: #666; margin-right: 8px;">From:</span>
+        <span style="font-weight: 600; color: #666; margin-right: 8px;">${translate('emailToPdf.from', 'From')}:</span>
         <span style="color: #333;">${escapeHtml(email.from)}</span>
       </div>
       <div style="margin-bottom: 8px;">
-        <span style="font-weight: 600; color: #666; margin-right: 8px;">To:</span>
-        <span style="color: #333;">${escapeHtml(email.to.join(', ') || 'Unknown')}</span>
+        <span style="font-weight: 600; color: #666; margin-right: 8px;">${translate('emailToPdf.to', 'To')}:</span>
+        <span style="color: #333;">${escapeHtml(email.to.join(', ') || translate('emailToPdf.unknown', 'Unknown'))}</span>
       </div>
       ${ccBccHtml}
       <div style="margin-bottom: 8px;">
-        <span style="font-weight: 600; color: #666; margin-right: 8px;">Date:</span>
+        <span style="font-weight: 600; color: #666; margin-right: 8px;">${translate('emailToPdf.date', 'Date')}:</span>
         <span style="color: #333;">${escapeHtml(dateStr)}</span>
       </div>
     </div>

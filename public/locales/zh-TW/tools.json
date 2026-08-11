@@ -14,19 +14,145 @@
   "pdfMultiTool": {
     "name": "PDF 多功能工具",
     "subtitle": "透過統一介面合併、分割、整理、刪除、旋轉、新增空白頁面、擷取及複製頁面。",
-    "pageTitle": "PDF 多功能工具 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF 多功能工具 Online Free - PDF Tool | TuHe PDF",
+    "workbenchTitle": "PDF 多功能工具（在线免费）- 编辑和整理 PDF",
+    "close": "关闭",
+    "dynamic": {
+      "1deb501f6b": "第 {{value0}} 页 ",
+      "27b2039e92": "创建 PDF 失败。",
+      "c217864925": "PDF 下载成功。",
+      "a39aa2fe0f": "创建分割后的 PDF 失败。",
+      "0c4ed9311a": "已将 {{value0}} 个 PDF 文件下载为 ZIP 存档。",
+      "fd05d610d0": "请先上传 PDF 文件。",
+      "81b6cfd8ca": "无页面",
+      "be4757b79d": "请选择要标记为分割点的页面。",
+      "fc8583604d": "未选择",
+      "30bdcf0382": "请选择要复制的页面。",
+      "e4fe6cdcca": "请选择要删除的页面。",
+      "27a85af05b": "请选择要旋转的页面。",
+      "8a1a350b31": "插入 PDF 失败。文件可能已损坏。",
+      "258deea2b3": "{{value0}} {{value1}}",
+      "81e221e4f3": "{{value0}} {{value1}}.",
+      "b05071e61a": "正在修复 {{value0}}..."
+    }
   },
   "mergePdf": {
     "name": "合併 PDF",
     "subtitle": "將多個 PDF 合併為一個檔案。保留書籤。",
     "retainPageLabels": "保留每個檔案的原始頁面標籤",
     "retainPageLabelsHint": "關閉（預設）：合併後的 PDF 使用自然頁碼 1–N。開啟：保留每個檔案的原始頁面標籤（可能產生重複的標籤）。",
-    "pageTitle": "合併 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "合併 PDF Online Free - PDF Tool | TuHe PDF",
+    "fileMode": "文件模式",
+    "pageMode": "页面模式",
+    "howFile1a": "点击并拖动",
+    "howFile1b": "图标即可调整文件顺序。",
+    "howFile2": "在每个文件的“页码”框中，可以指定范围（如“1-3, 5”），仅合并这些页面。",
+    "howFile3": "“页码”框留空则包含该文件的全部页面。",
+    "howPage1": "已上传 PDF 的所有页面都显示在下方。",
+    "howPage2": "只需拖放页面缩略图，即可按你想要的顺序排列新文件。",
+    "processBtn": "合并 PDF",
+    "hiw1Title": "上传 PDF",
+    "hiw1Desc": "选择或拖放你要合并的多个 PDF 文件",
+    "hiw2Title": "排列顺序",
+    "hiw2Desc": "上下拖动文件，按你希望的顺序排列",
+    "hiw3Title": "合并文件",
+    "hiw3Desc": "点击合并按钮，将所有 PDF 合并为一个文档",
+    "hiw4Title": "下载",
+    "hiw4Desc": "保存合并后的 PDF——所有页面按你选择的顺序组合",
+    "faq1q": "一次可以合并多少个 PDF？",
+    "faq1a": "没有限制！一次操作即可合并任意数量的 PDF 文件，对文件数量和总大小均无限制。",
+    "faq2q": "合并会降低 PDF 质量吗？",
+    "faq2a": "不会！TuHe PDF 在合并时会保留所有 PDF 的原始质量，文档保持清晰，无质量损失。",
+    "faq3q": "选择文件后可以重新排序吗？",
+    "faq3a": "可以！在点击合并按钮之前，拖放文件即可按任意顺序排列。",
+    "cardDesc": "免费在线 PDF 合并工具",
+    "renderingPreviews": "正在渲染页面预览...",
+    "renderFailed": "页面缩略图渲染失败",
+    "merging": "正在合并 PDF...",
+    "nothingSelected": "没有选择要合并的文件或页面。",
+    "mergeSuccess": "PDF 合并成功！",
+    "mergeFailed": "PDF 合并失败。",
+    "workerError": "合并 worker 发生意外错误。",
+    "invalidFiles": "PDF 合并失败。请检查所有文件是否有效且未加密。",
+    "loadingPdfs": "正在加载 PDF 文档...",
+    "loadFailed": "一个或多个 PDF 文件加载失败",
+    "pagesRangeLabel": "页码（如 1-3, 5）- 共 {{total}} 页",
+    "rangePlaceholder": "留空表示全部页面",
+    "removeFile": "移除文件",
+    "pageLabel": "第 {{page}} 页",
+    "filePageTitle": "{{name}}（第 {{page}} 页）",
+    "auto": {}
   },
   "splitPdf": {
     "name": "分割 PDF",
     "subtitle": "將指定範圍的頁面擷取為新的 PDF。",
-    "pageTitle": "分割 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "分割 PDF Online Free - PDF Tool | TuHe PDF",
+    "splitModeLabel": "分割方式",
+    "modeRange": "按页码范围提取（默认）",
+    "modeEvenOdd": "按奇偶页分割",
+    "modeAll": "将所有页分割为单独文件",
+    "modeVisual": "可视化选择页面",
+    "modeBookmarks": "按书签分割",
+    "modeNTimes": "按每 N 页分割",
+    "howRange1": "输入以逗号分隔的页码（如 2, 8, 14）。",
+    "howRange2": "用连字符输入页码范围（如 5-10）。",
+    "howRange3": "可组合使用以实现复杂选择（如 1-3, 7, 12-15）。",
+    "pageRangeLabel": "页码范围",
+    "pageRangePlaceholder": "例如 1-5, 8, 11-13",
+    "howEvenOdd1": "将所有偶数页（2、4、6……）或所有奇数页（1、3、5……）提取到新的 PDF 中。",
+    "evenPages": "偶数页",
+    "oddPages": "奇数页",
+    "howAll1": "PDF 的每一页都会保存为单独的 PDF 文件。",
+    "howAll2": "结果将以包含所有页面的 ZIP 文件形式下载。",
+    "howVisual1": "点击下方页面缩略图，选择要提取的页面。",
+    "howVisual2": "选中的页面会高亮显示。",
+    "howBookmarks1": "根据 PDF 的书签（大纲）进行拆分。",
+    "howBookmarks2": "选择要按哪一级书签拆分。",
+    "bookmarkLevel": "书签级别",
+    "levelAll": "所有级别",
+    "level0": "0 级（仅顶级）",
+    "level1": "1 级",
+    "level2": "2 级",
+    "level3": "3 级",
+    "howNTimes1": "将 PDF 分割为多个文件，每个文件包含 N 页。",
+    "pagesPerFile": "每个文件页数（N）",
+    "outputLabel": "输出方式",
+    "outputCombine": "合并为单个 PDF",
+    "outputSeparate": "每个范围一个 PDF",
+    "outputNote": "多个文件将打包为 ZIP 一起下载。",
+    "processBtn": "分割 PDF",
+    "hiw1Title": "上传 PDF",
+    "hiw1Desc": "选择要拆分或提取页面的 PDF 文件",
+    "hiw2Title": "选择分割方式",
+    "hiw2Desc": "选择特定页面、页码范围，或分割为单页",
+    "hiw3Title": "预览并选择",
+    "hiw3Desc": "查看页面缩略图，精确选择所需页面",
+    "hiw4Title": "分割并下载",
+    "hiw4Desc": "将提取的页面下载为单独的 PDF 或 ZIP 文件",
+    "faq1q": "可以提取指定的页码范围吗？",
+    "faq1a": "可以！你可以从 PDF 中提取任意指定页面或页码范围，精确选择所需页面或分割为单独文件。",
+    "faq2q": "分割后的 PDF 会损失质量吗？",
+    "faq2a": "不会！分割后的 PDF 与原始文档质量完全一致，不会发生压缩或质量损失。",
+    "faq3q": "可以一次分割多个 PDF 吗？",
+    "faq3a": "可以，支持批量处理多个 PDF，文档管理更高效。",
+    "cardDesc": "免费在线 PDF 分割工具",
+    "loadFailed": "PDF 文件加载失败。",
+    "renderingPreviews": "正在渲染页面预览...",
+    "renderingProgress": "正在渲染页面预览：{{current}}/{{total}}",
+    "renderFailed": "页面预览渲染失败。",
+    "splitting": "正在分割 PDF...",
+    "splitSuccess": "PDF 分割成功！",
+    "creatingZip": "正在创建 ZIP 文件...",
+    "splitFailed": "PDF 分割失败。请检查你的选择。",
+    "outputSeparatePerPage": "每页一个 PDF",
+    "nTimesWarning": "PDF 共 {{total}} 页，无法被 {{n}} 整除，最后一个 PDF 将包含 {{remainder}} 页。",
+    "nMinError": "N 至少为 1。",
+    "noPagesSelected": "没有选择要分割的页面。",
+    "noPdfLoaded": "未加载 PDF 文档。",
+    "invalidRange": "请输入有效的页码范围。",
+    "selectEvenOdd": "请选择奇数页或偶数页。",
+    "noBookmarksFound": "所选级别未找到书签。",
+    "auto": {}
   },
   "compressPdf": {
     "name": "壓縮 PDF",
@@ -53,43 +179,226 @@
     "subsetFonts": "精簡字型（移除未使用的字元）",
     "removeThumbnails": "移除嵌入的縮圖",
     "compressButton": "壓縮 PDF",
-    "pageTitle": "壓縮 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "壓縮 PDF Online Free - PDF Tool | TuHe PDF",
+    "hiw1Title": "上传 PDF",
+    "hiw1Desc": "点击或拖放一个或多个 PDF 文件",
+    "hiw2Title": "选择算法",
+    "hiw2Desc": "选择 Condense（推荐）或 Photon（适合图片较多的 PDF）",
+    "hiw3Title": "选择压缩级别",
+    "hiw3Desc": "可选轻度、均衡、强力或极限压缩",
+    "hiw4Title": "自定义并压缩",
+    "hiw4Desc": "可选启用灰度或自定义设置，然后开始压缩",
+    "hiw5Title": "下载",
+    "hiw5Desc": "保存压缩后的 PDF——最多可减小 90%",
+    "faq1q": "Condense 和 Photon 有什么区别？",
+    "faq1a": "Condense 移除冗余数据、优化图片并子集化字体，适合大多数 PDF；Photon 将页面转换为图片，适合图片较多或扫描件 PDF，但文本将无法选中。",
+    "faq2q": "应该选择哪个压缩级别？",
+    "faq2a": "推荐均衡模式，体积大幅减小且质量损失极小；轻度可最大程度保留质量，强力可获得更小文件，极限则为最大压缩率。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有限制！任意数量、任意大小的 PDF 都可以免费压缩。",
+    "cardDesc": "免费在线 PDF 压缩工具",
+    "photonRunning": "正在运行 Photon 压缩...",
+    "selectPdfs": "请至少选择一个 PDF 文件。",
+    "condenseRunning": "正在运行 Condense 压缩...",
+    "fallbackSuffix": "（因图像模式不受支持，未进行图像优化）",
+    "completeTitle": "压缩完成",
+    "completeMsg": "方式：{{method}}。文件大小从 {{original}} 降至 {{compressed}}（节省 {{percent}}%）。",
+    "finishedTitle": "压缩结束",
+    "finishedMsg": "方式：{{method}}。无法进一步减小文件大小。原始：{{original}}，现在：{{compressed}}。",
+    "compressingMultiple": "正在压缩多个 PDF...",
+    "compressingProgress": "正在压缩 {{current}}/{{total}}：{{name}}...",
+    "batchCompleteMsg": "已压缩 {{count}} 个 PDF。总大小从 {{original}} 降至 {{compressed}}（节省 {{percent}}%）。",
+    "batchFinishedMsg": "已压缩 {{count}} 个 PDF。总大小：{{compressed}}。",
+    "errorMsg": "压缩过程中发生错误，请重试。",
+    "auto": {}
   },
   "pdfEditor": {
     "name": "PDF 編輯器",
     "subtitle": "註解、螢光標註、塗黑、評論、新增圖形或圖片、搜尋與檢視 PDF。",
-    "pageTitle": "PDF 編輯器 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF 編輯器 Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "PDF 编辑真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用、无需注册，文件处理无限制。",
+    "faq2q": "我的文件隐私安全吗？",
+    "faq2a": "完全安全！所有处理都在你的浏览器中完成，文件不会离开你的设备，隐私得到充分保障。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！任意大小的文件都可以免费处理，次数不限。",
+    "cardDesc": "免费在线 PDF 编辑工具",
+    "invalidFileMsg": "请上传有效的 PDF 文件。",
+    "loadingEditor": "正在加载 PDF 编辑器...",
+    "downloadEdited": "下载编辑后的 PDF",
+    "downloadFailed": "下载编辑后的 PDF 失败。",
+    "loadFailed": "PDF 编辑器加载失败。",
+    "auto": {}
   },
   "jpgToPdf": {
     "name": "JPG 轉 PDF",
     "subtitle": "從一張或多張 JPG、JPEG 及 JPEG2000（JP2/JPX）圖片建立 PDF。",
-    "pageTitle": "JPG 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "JPG 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "qualityLabel": "PDF 质量",
+    "qualityHigh": "高质量（文件较大）",
+    "qualityMedium": "中等质量（均衡）",
+    "qualityLow": "低质量（文件较小）",
+    "qualityNote": "控制图片嵌入 PDF 时的压缩程度",
+    "processBtn": "转换为 PDF",
+    "faq1q": "JPG 转 PDF 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用、无需注册，文件处理无限制。",
+    "faq2q": "我的文件隐私安全吗？",
+    "faq2a": "完全安全！所有处理都在你的浏览器中完成，文件不会离开你的设备，隐私得到充分保障。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！任意大小的文件都可以免费处理，次数不限。",
+    "invalidFilesTitle": "无效文件",
+    "invalidFilesMsg": "部分文件已被跳过。仅支持 JPG、JPEG、JP2 和 JPX 文件。",
+    "noFilesMsg": "请至少选择一张 JPG 或 JPEG2000 图片。",
+    "loadingEngine": "正在加载引擎...",
+    "converting": "正在将图片转换为 PDF...",
+    "createSuccess": "PDF 创建成功！",
+    "conversionErrorTitle": "转换错误",
+    "convertFailed": "图片转换为 PDF 失败。",
+    "auto": {}
   },
   "signPdf": {
     "name": "簽署 PDF",
     "subtitle": "繪製、輸入或上傳您的簽名。",
-    "pageTitle": "簽署 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "簽署 PDF Online Free - PDF Tool | TuHe PDF",
+    "flattenLabel": "扁平化 PDF（使用下方保存按钮）",
+    "processBtn": "保存并下载已签署的 PDF",
+    "faq1q": "PDF 签署真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用、无需注册，文件处理无限制。",
+    "faq2q": "我的文件隐私安全吗？",
+    "faq2a": "完全安全！所有处理都在你的浏览器中完成，文件不会离开你的设备，隐私得到充分保障。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！任意大小的文件都可以免费处理，次数不限。",
+    "invalidFileMsg": "请选择 PDF 文件。",
+    "loadingViewer": "正在加载 PDF 查看器...",
+    "viewerNotReadyTitle": "查看器未就绪",
+    "viewerWaitMsg": "请等待 PDF 查看器加载完成。",
+    "viewerInitMsg": "PDF 查看器仍在初始化。",
+    "flattenSaving": "正在扁平化并保存 PDF...",
+    "saveSuccess": "已签署的 PDF 保存成功！",
+    "downloadSuccess": "已签署的 PDF 下载成功！",
+    "exportFailedTitle": "导出失败",
+    "exportFailedMsg": "无法导出已签署的 PDF，请重试。",
+    "auto": {}
   },
   "cropPdf": {
     "name": "裁切 PDF",
     "subtitle": "裁切 PDF 中每一頁的邊距。",
-    "pageTitle": "裁切 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "裁切 PDF Online Free - PDF Tool | TuHe PDF",
+    "invalidFile": "请选择 PDF 文件。",
+    "loadingPdf": "正在加载 PDF...",
+    "loadFailed": "PDF 文件加载失败。",
+    "renderingPage": "正在渲染第 {{page}} 页...",
+    "renderFailed": "页面渲染失败。",
+    "pageInfo": "第 {{current}} / {{total}} 页",
+    "noCropArea": "未选择裁剪区域",
+    "selectAreaFirst": "请先选择要裁剪的区域。",
+    "selectArea": "请至少在一页上选择要裁剪的区域。",
+    "applyingCrop": "正在应用裁剪...",
+    "cropComplete": "裁剪完成，下载已开始。",
+    "cropFailed": "裁剪时发生错误。",
+    "processingPage": "正在处理第 {{current}} / {{total}} 页...",
+    "auto": {
+      "396dcd0756": "裁剪并下载",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF",
+      "27e16676ef": "上一页",
+      "5e92f5f19e": "下一页"
+    },
+    "dynamic": {
+      "8adda31c0e": "{{value0}} • {{value1}}"
+    }
   },
   "extractPages": {
     "name": "擷取頁面",
     "subtitle": "將選取的頁面儲存為新的檔案。",
-    "pageTitle": "擷取頁面 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "擷取頁面 Online Free - PDF Tool | TuHe PDF",
+    "cardDesc": "免费在线提取页面工具",
+    "auto": {
+      "b0865d31ea": "提取并下载 ZIP",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "fa1284f132": "提取页面失败。",
+      "54565c518f": "已成功提取 {{value0}} 页！",
+      "5632ead150": "正在提取页面...",
+      "f2ad1b2d1f": "未找到有效的页码。",
+      "8eaf742272": "页面无效",
+      "82c32efccc": "请输入要提取的页码。",
+      "1aa78bee2c": "无页面",
+      "56a397a4ca": "{{value0}} • {{value1}} pages",
+      "6a04af93b9": "加载 PDF 文件失败。",
+      "9e33c22c50": "请选择一个 PDF 文件。"
+    }
   },
   "duplicateOrganize": {
     "name": "複製與組織",
     "subtitle": "複製、重新排序與刪除頁面。",
     "saveChanges": "儲存變更",
-    "pageTitle": "複製與組織 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "複製與組織 Online Free - PDF Tool | TuHe PDF",
+    "cardDesc": "免费在线 PDF 整理工具",
+    "auto": {
+      "f0e46c80c1": "应用排序",
+      "bb9dede377": "合并 PDF",
+      "0784d816a9": "分割 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "3523dee9d3": "保存更改失败。",
+      "6ba6c148c8": "PDF 整理成功！",
+      "671dda51b0": "没有有效页面可保存。",
+      "b7b2151528": "正在构建新 PDF...",
+      "93889c4f64": "删除页面",
+      "b1b2a7b600": "复制页面",
+      "1d7a59ce91": "您不能删除文档的最后一页。",
+      "520b80318a": "无法删除",
+      "d370ae8ed8": "{{value0}} • {{value1}} pages",
+      "e5afc36c9b": "加载 PDF 文件失败。",
+      "25286017ef": "请选择一个 PDF 文件。",
+      "5c34a0157f": "页面已重新排序。",
+      "473466e8f2": "指定的页面顺序不完整或包含无效的页码。请确保为每个原始页面提供新的位置。",
+      "06bf2457c8": "页面顺序无效",
+      "d6d71e1a8b": "请确保排序中的所有页码都是唯一的。",
+      "6e2937ad37": "页码重复",
+      "9fce12d6c1": "指定的页数（{{value0}}）与文档当前的页数（{{value1}}）不匹配。请提供所有页面的完整排序。",
+      "9188d43dd0": "页数不正确",
+      "f1ea100a4f": "请输入正数。",
+      "6ea125d343": "页码无效",
+      "88f1f34594": "请输入页面顺序。",
+      "3ee3f4d734": "顺序无效"
+    }
   },
   "deletePages": {
     "name": "刪除頁面",
     "subtitle": "移除您的文件中的特定頁面。",
-    "pageTitle": "刪除頁面 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "刪除頁面 Online Free - PDF Tool | TuHe PDF",
+    "cardDesc": "免费在线删除页面工具",
+    "auto": {
+      "4b23671761": "删除页面并下载",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "d6a8ff2d06": "删除页面失败。",
+      "08211bf16d": "已成功删除 {{value0}} 页！",
+      "eca34fbe2d": "正在删除页面...",
+      "964f139a29": "无法删除所有页面。",
+      "dcec3d0552": "请选择要删除的页面。",
+      "36bb3c96b4": "无页面",
+      "8040cd3ecb": "{{value0}}",
+      "0564a7c930": "{{value0}} • {{value1}} pages",
+      "e3eece8191": "加载 PDF 文件失败。",
+      "1cf45e725e": "请选择一个 PDF 文件。"
+    }
   },
   "editBookmarks": {
     "name": "編輯書籤",
@@ -101,7 +410,91 @@
     "uploadCsvAction": "點選上傳 CSV",
     "uploadJsonAction": "點選上傳 JSON",
     "orDragHere": "或拖曳至此",
-    "pageTitle": "編輯書籤 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "編輯書籤 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "8d1095d2b2": "PDF 书签编辑器",
+      "70941407a3": "PDF 查看器",
+      "ca3cddd25b": "书签",
+      "dab564d809": "适应",
+      "c1481b1490": "设置颜色...",
+      "cc9db3a795": "红色",
+      "7d44bc449c": "蓝色",
+      "933bf21afd": "绿色",
+      "3526f607bc": "黄色",
+      "32576f4fed": "紫色",
+      "0b3eb86bd7": "设置样式...",
+      "45e118d056": "常规",
+      "19e07430ee": "粗体",
+      "1616e2e540": "斜体",
+      "61f6c81dbc": "粗斜体",
+      "5f197f4813": "保存带书签的 PDF",
+      "800c985bb1": "提取现有书签",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF",
+      "87af1da361": "缩小",
+      "e59ac86a75": "放大",
+      "388a768157": "搜索书签...",
+      "ae909813a0": "书签标题..."
+    },
+    "confirm": "确认",
+    "addChildBookmark": "添加子书签",
+    "editBookmark": "编辑书签",
+    "title": "标题",
+    "enterBookmarkTitle": "输入书签标题",
+    "color": "颜色",
+    "colorNone": "无",
+    "colorRed": "红色",
+    "colorBlue": "蓝色",
+    "colorGreen": "绿色",
+    "colorYellow": "黄色",
+    "colorPurple": "紫色",
+    "colorCustom": "自定义...",
+    "style": "样式",
+    "styleNormal": "正常",
+    "styleBold": "粗体",
+    "styleItalic": "斜体",
+    "styleBoldItalic": "粗斜体",
+    "destination": "目标位置",
+    "preview": "预览",
+    "previewText": "预览文本",
+    "setCustomDestination": "设置自定义目标位置",
+    "page": "页面",
+    "zoom": "缩放(%)",
+    "inherit": "继承",
+    "fitPage": "适应页面",
+    "xPosition": "X 坐标",
+    "yPosition": "Y 坐标",
+    "clickToPickLocation": "点击 PDF 选取位置",
+    "clickToPickLocationHint": "点击上方按钮，然后在 PDF 上点击你希望书签跳转到的位置",
+    "info": "信息",
+    "noBookmarksToDelete": "没有可删除的书签。",
+    "csvLoaded": "CSV 已加载",
+    "csvLoadedMsg": "已从 CSV 加载 {{count}} 条书签。现在请上传 PDF。",
+    "jsonLoaded": "JSON 已加载",
+    "jsonLoadedMsg": "已从 JSON 加载书签。现在请上传 PDF。",
+    "invalidJsonFormat": "无效的 JSON 格式",
+    "pleaseEnterTitle": "请输入标题。",
+    "importedBookmarks": "已导入 {{count}} 条书签！",
+    "noBookmarksToExport": "没有可导出的书签！",
+    "bookmarksImportedJson": "已从 JSON 导入书签！",
+    "noExistingBookmarks": "此 PDF 中未找到现有书签。",
+    "pdfSavedSuccessfully": "PDF 保存成功！",
+    "errorSavingPdf": "保存 PDF 时出错。请查看控制台了解详情。",
+    "confirmAction": "确认操作",
+    "resetConfirm": "重置并返回文件上传页面？所有未保存的更改将丢失。",
+    "deleteAllConfirm": "删除全部 {{count}} 条书签？",
+    "fitToWidth": "适合宽度",
+    "dynamic": {
+      "80825a5a20": "设置",
+      "4af82fdf15": "设置",
+      "01df70fb24": "设置",
+      "b409ca64f8": "{{value0}}%",
+      "b0765ec34b": "页面",
+      "726081a2a6": "设置"
+    }
   },
   "tableOfContents": {
     "name": "目錄",
@@ -118,12 +511,54 @@
     "successGeneratedDownloadStarted": "目錄產生成功！下載已開始。",
     "workerErrorWithMessage": "錯誤：{{message}}",
     "workerErrorOccurred": "發生 Worker 錯誤。請查看主控台取得詳細資訊。",
-    "pageTitle": "目錄 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "目錄 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "5ada87ccce": "Times Roman",
+      "eeee58d9fc": "Times Bold",
+      "f2e4df62b8": "Times Italic",
+      "8fc4438a6f": "Times Bold Italic",
+      "82c4f4c48d": "Helvetica",
+      "7b6c0d5051": "Helvetica Bold",
+      "eeb42827a5": "Helvetica Oblique",
+      "a53910dd92": "Helvetica Bold Oblique",
+      "be0b0bab55": "Courier",
+      "6452f5bb7f": "Courier Bold",
+      "02971ba483": "Courier Oblique",
+      "7aa242cf61": "Courier Bold Oblique",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    }
   },
   "pageNumbers": {
     "name": "頁碼",
     "subtitle": "在您的文件中插入頁碼。",
-    "pageTitle": "頁碼 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "頁碼 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "5f27939446": "底部居中",
+      "922e100333": "左下",
+      "45c0e2551b": "右下",
+      "fc1405ade7": "顶部居中",
+      "589ad2aaca": "左上",
+      "d0fa5ce893": "右上",
+      "4e32f5fc54": "添加页码",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "9f528540a0": "操作失败，请重试。",
+      "8616021b4d": "页面",
+      "2aae7ec78b": "正在添加页码...",
+      "c1a36bf7c8": "请先上传一个 PDF 文件。",
+      "b20dee6fba": "{{value0}} • {{value1}} pages",
+      "1111bc148d": "加载 PDF 文件失败。",
+      "26e6ad72a2": "请上传一个有效的 PDF 文件。"
+    }
   },
   "addPageLabels": {
     "name": "新增頁面標籤",
@@ -183,28 +618,154 @@
       "UppercaseLetters": "大寫字母",
       "NoLabelPrefixOnly": "僅前綴，無編號"
     },
-    "pageTitle": "新增頁面標籤 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "新增頁面標籤 Online Free - PDF Tool | TuHe PDF",
+    "auto": {}
   },
   "batesNumbering": {
     "name": "Bates 編號",
     "subtitle": "在一個或多個 PDF 檔案中新增連續的 Bates 編號。",
-    "pageTitle": "Bates 編號 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Bates 編號 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "86547d2bf5": "PDF 文件（支持多个）",
+      "fdbc696c14": "证物 1 案件 XYZ 000001 第 1 页",
+      "874ac39d02": "证物 1 案件 XYZ 00001 第 1 页",
+      "b8f775564e": "页面",
+      "f31e67ca19": "页面",
+      "cca30d3a4c": "页面",
+      "97d7b1976f": "设置",
+      "e2f8aba40f": "设置",
+      "dad53672d2": "设置",
+      "e414540e50": "设置",
+      "e562b7ae50": "设置",
+      "5c96116147": "设置",
+      "8bb5ad9ab9": "设置",
+      "63e7125b25": "设置",
+      "15aaec8e63": "设置",
+      "085c5256e5": "设置",
+      "aaf8af8fa1": "设置",
+      "efbe72d06d": "页面",
+      "66c052210a": "设置",
+      "c88cc1389f": "设置",
+      "6e8785cccb": "设置",
+      "2196d30a84": "设置",
+      "cd9f04ae08": "设置",
+      "0290d5f22b": "设置",
+      "6900b082bf": "设置",
+      "85feb1fe2e": "设置",
+      "1d9fbf6bca": "设置",
+      "e8b0714201": "设置",
+      "8e0d9af15b": "设置",
+      "82c4f4c48d": "Helvetica",
+      "5843c57155": "设置",
+      "be0b0bab55": "Courier",
+      "86d578373a": "应用 Bates 编号",
+      "85a397f017": "上传文件",
+      "6ee17b4f2c": "设置",
+      "f42d06ab75": "页面",
+      "0bf8e42298": "设置",
+      "9f3f0f105f": "页面",
+      "bd7baa8910": "页面",
+      "c746838f0d": "watermark PDF documents",
+      "02577a621c": "设置",
+      "684e0fea3c": "整理 PDF",
+      "da8df80df7": "设置",
+      "2ea17b7486": "页面",
+      "eb282083cd": "上传文件",
+      "7dda5c0d61": "正在处理中..."
+    },
+    "dynamic": {
+      "deed158f16": "操作失败，请重试。",
+      "c8fef9d144": "设置",
+      "a13a077a7e": "正在应用 Bates 编号...",
+      "41c258bb74": "请upload at least one PDF file.",
+      "c29f451ac2": "{{value0}} file{{value1}} • {{value2}} total pages",
+      "b9063ddbd2": "{{value0}} • {{value1}} pages",
+      "c49b7cb420": "加载一个或多个 PDF 文件失败。",
+      "705817c3d7": "请上传有效的 PDF 文件。",
+      "95189fa63d": "正在加载 PDF..."
+    }
   },
   "addWatermark": {
     "name": "新增浮水印",
     "subtitle": "在您的 PDF 頁面上壓印文字或圖片。",
     "applyToAllPages": "套用至所有頁面",
-    "pageTitle": "新增浮水印 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "新增浮水印 Online Free - PDF Tool | TuHe PDF",
+    "cardDesc": "免费在线添加水印工具",
+    "auto": {
+      "1062570190": "更换文件",
+      "50e19fda0d": "图片",
+      "ca593330ee": "设置",
+      "589ad2aaca": "左上",
+      "cae0435c41": "顶部",
+      "d0fa5ce893": "右上",
+      "a2391118c8": "居中",
+      "922e100333": "左下",
+      "cce7f2f2f0": "底部",
+      "45c0e2551b": "右下",
+      "b0b29a0e17": "页面",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF",
+      "30dc22c2a2": "设置",
+      "84c9cc88e4": "设置"
+    },
+    "dynamic": {
+      "3201336b21": "设置",
+      "ccc968f57b": "正在扁平化第 {{value0}}/{{value1}} 页...",
+      "d24c2224a2": "正在添加水印...",
+      "1de34d3cec": "请先上传一个 PDF 文件。",
+      "12062dabd4": "{{value0}} • {{value1}} pages",
+      "90d503c4bc": "加载 PDF 文件失败。",
+      "7180e53d65": "{{value0}} ({{value1}}, {{value2}} pages)",
+      "616dc4c0fd": "请上传一个有效的 PDF 文件。"
+    }
   },
   "headerFooter": {
     "name": "頁首與頁尾",
     "subtitle": "在頁面的頂部與底部新增文字。",
-    "pageTitle": "頁首與頁尾 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "頁首與頁尾 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "7c2dc2e6b3": "设置",
+      "c2a8c3bc69": "添加页眉页脚",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "0edfb3d28a": "设置",
+      "5426558064": "正在添加页眉页脚...",
+      "04c0237095": "请先上传一个 PDF 文件。",
+      "5a4117e257": "{{value0}} • {{value1}} pages",
+      "6ad0775d4d": "加载 PDF 文件失败。",
+      "cd24bc9f91": "请上传一个有效的 PDF 文件。"
+    }
   },
   "invertColors": {
     "name": "反轉顏色",
     "subtitle": "為您的 PDF 建立深色模式版本。",
-    "pageTitle": "反轉顏色 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "反轉顏色 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "0667a3e07a": "设置",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "64d62973ef": "操作失败，请重试。",
+      "74f7d5dc50": "设置",
+      "8883ccb83e": "正在处理第 {{value0}}/{{value1}} 页...",
+      "2ba1c0a28f": "正在反转 PDF 颜色...",
+      "03ab4b9cd0": "请先上传一个 PDF 文件。",
+      "25238f70eb": "{{value0}} • {{value1}} pages",
+      "9cf793b9aa": "加载 PDF 文件失败。",
+      "68cde6dc8c": "请上传一个有效的 PDF 文件。"
+    }
   },
   "scannerEffect": {
     "name": "掃描效果",
@@ -222,7 +783,29 @@
     "yellowish": "泛黃",
     "resolution": "解析度",
     "processButton": "套用掃描效果",
-    "pageTitle": "掃描效果 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "掃描效果 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "5185d4cfaa": "点击或拖放您的 PDF 文件以开始",
+      "bab0f3ae67": "调整设置",
+      "892b92dcd8": "设置",
+      "cd020bad86": "设置",
+      "7df28a4e05": "免费的在线greyscale tool工具",
+      "fc3df6590d": "免费的在线invert colors tool工具",
+      "fe17a5bb0f": "编辑 PDF"
+    },
+    "dynamic": {
+      "a539e67250": "加载 PDF 预览失败。",
+      "97d54a425f": "正在加载预览...",
+      "41ae43a300": "请upload a PDF file.",
+      "9e7466ea5e": "操作失败，请重试。",
+      "3b82b6cde5": "设置",
+      "260ba5b09a": "正在处理第 {{value0}}/{{value1}} 页...",
+      "f3013a6f9a": "正在应用扫描效果...",
+      "774b763d99": "请先上传一个 PDF 文件。",
+      "7bf2857a6a": "无文件",
+      "758bbe8260": "{{value0}} • {{value1}} {{value2}}",
+      "7e69040d7a": "{{value0}} • {{value1}}"
+    }
   },
   "adjustColors": {
     "name": "調整顏色",
@@ -237,17 +820,74 @@
     "gamma": "伽瑪值",
     "sepia": "復古色",
     "processButton": "套用顏色調整",
-    "pageTitle": "調整顏色 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "調整顏色 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "5185d4cfaa": "点击或拖放您的 PDF 文件以开始",
+      "e61e46124c": "设置",
+      "1dd8829f05": "设置",
+      "7df28a4e05": "免费的在线greyscale tool工具",
+      "fc3df6590d": "免费的在线invert colors tool工具",
+      "89a12214ae": "设置",
+      "8e56f3377f": "设置",
+      "0bac357f85": "设置"
+    },
+    "dynamic": {
+      "a60905da92": "加载 PDF 预览失败。",
+      "307805124c": "正在加载预览...",
+      "c30273623f": "请upload a PDF file.",
+      "92be44edf7": "操作失败，请重试。",
+      "e3e1b023cc": "设置",
+      "f289e6333e": "正在处理第 {{value0}}/{{value1}} 页...",
+      "2aa3719692": "正在应用颜色调整...",
+      "728e3eb370": "请先上传一个 PDF 文件。",
+      "c1d991c32d": "无文件",
+      "3eb296a549": "{{value0}} • {{value1}} {{value2}}",
+      "6b0fedbc0a": "{{value0}} • {{value1}}"
+    }
   },
   "backgroundColor": {
     "name": "背景顏色",
     "subtitle": "更改您的 PDF 的背景顏色。",
-    "pageTitle": "背景顏色 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "背景顏色 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb1c84aa80": "更改背景颜色",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "8fc0565b63": "操作失败，请重试。",
+      "dfa29c075b": "设置",
+      "526d3e3d75": "正在更改背景颜色...",
+      "20fb18bbc1": "请先上传一个 PDF 文件。",
+      "9a4711e8a0": "{{value0}} • {{value1}} pages",
+      "f70d9e0d74": "加载 PDF 文件失败。",
+      "b9cf61f80d": "请上传一个有效的 PDF 文件。"
+    }
   },
   "changeTextColor": {
     "name": "更改文字顏色",
     "subtitle": "更改您的 PDF 中的文字顏色。",
-    "pageTitle": "更改文字顏色 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "更改文字顏色 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "fca2960c93": "操作失败，请重试。",
+      "cd18866f65": "设置",
+      "f5a92a1c7b": "正在处理第 {{value0}}/{{value1}} 页...",
+      "53e68d6a7d": "正在更改文本颜色...",
+      "8ad206dd8d": "请先上传一个 PDF 文件。",
+      "1b2ec4b858": "{{value0}} • {{value1}} pages",
+      "0e00f36bee": "加载 PDF 文件失败。",
+      "0602b07098": "请上传一个有效的 PDF 文件。"
+    }
   },
   "addStamps": {
     "name": "新增印章",
@@ -256,12 +896,43 @@
     "usernamePlaceholder": "輸入您的名稱（印章用）",
     "usernameHint": "該名稱會出現在您建立的印章上。",
     "saveButton": "儲存蓋章 PDF",
-    "pageTitle": "新增印章 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "新增印章 Online Free - PDF Tool | TuHe PDF",
+    "viewerNotReady": "查看器未就绪。请上传 PDF 并等待加载完成。",
+    "couldNotAccessExporter": "无法访问盖章 PDF 导出器。请使用查看器工具栏中的「导出 → PDF」按钮作为备选方案。",
+    "couldNotExportStamped": "无法导出盖章 PDF。请使用查看器工具栏中的「导出 → PDF」按钮作为备选方案。",
+    "auto": {
+      "9ef4283c26": "印章编辑器",
+      "b4ec78de54": "设置",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "612ed3ad3b": "移除文件"
+    }
   },
   "removeAnnotations": {
     "name": "移除註解",
     "subtitle": "移除留言、螢光標註與連結。",
-    "pageTitle": "移除註解 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "移除註解 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "5a534832e1": "设置",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "880d584cbf": "操作失败，请重试。",
+      "7abc526444": "设置",
+      "89b910e2a6": "设置",
+      "269b7169f3": "请先上传一个 PDF 文件。",
+      "2e1c623bdc": "加载 PDF 文件失败。",
+      "b14673b883": "请上传一个有效的 PDF 文件。"
+    }
   },
   "pdfFormFiller": {
     "name": "PDF 表單填寫器",
@@ -269,55 +940,244 @@
     "uploadHint": "上傳含有表單欄位的 PDF。在下方的檢視器中直接填寫，然後點選按鈕儲存並下載填寫好的表單。也支援 XFA 表單。",
     "xfaNoteTitle": "關於 XFA 表單的說明：",
     "xfaNoteDescription": "XFA（XML Forms Architecture）是一種舊版格式，僅 TuHe PDF 和 Firefox 等部分 PDF 檢視器支援。如果您在其他軟體中開啟 XFA PDF，看到空白頁面或沒有表單欄位，則表示該檢視器不支援 XFA。要正確檢視和填寫 XFA 表單，請使用 Firefox 或 TuHe PDF 的表單填寫器。",
-    "pageTitle": "PDF 表單填寫器 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF 表單填寫器 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "f366a13291": "保存并下载已填写表单",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "2043121e88": "下载",
+      "b81319bcb7": "下载",
+      "9ac2d61ef5": "请use the Download button in the PDF viewer toolbar above.",
+      "6244f7f390": "请wait for the form to finish loading.",
+      "004d081dda": "设置",
+      "b8ec08583a": "操作失败，请重试。",
+      "c8390ba95f": "正在加载 PDF 表单...",
+      "f6179b879d": "加载 PDF 文件失败。",
+      "ffef0959f2": "请上传一个有效的 PDF 文件。",
+      "e4f9662450": "移除文件",
+      "50ecff21e2": "设置"
+    }
   },
   "createPdfForm": {
     "name": "建立 PDF 表單",
     "subtitle": "透過拖放文字框建立可填寫的 PDF 表單。",
     "orSeparator": "或",
     "createBlankPdf": "建立空白 PDF",
-    "pageTitle": "建立 PDF 表單 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "建立 PDF 表單 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "ea2efedcab": "设置",
+      "5e4843a8b8": "设置",
+      "0fd10bc20a": "设置",
+      "081ae3fdc4": "设置",
+      "9c22cd7194": "设置",
+      "1d581357bc": "开始创建",
+      "06f714b328": "设置",
+      "84a5be2540": "设置",
+      "7fef54167c": "添加页面",
+      "1d66c3d075": "复选框",
+      "b11bf19e3f": "单选框",
+      "fc2d12b944": "下拉框",
+      "a1fffaaafb": "列表",
+      "794145f030": "按钮",
+      "2f32be1dc7": "签名",
+      "eb9a4bc1c0": "日期",
+      "50e19fda0d": "图片",
+      "8e54dc5331": "条形码",
+      "fd37c215ff": "下载 PDF 表单",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF",
+      "bccc6f1f5c": "操作失败，请重试。",
+      "605a6e91fb": "切换网格"
+    }
   },
   "removeBlankPages": {
     "name": "移除空白頁面",
     "subtitle": "自動偵測並刪除空白頁面。",
     "sensitivityHint": "數值越高，判定條件越嚴格，只會偵測完全空白的頁面；數值越低，則允許頁面包含少量內容。",
-    "pageTitle": "移除空白頁面 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "移除空白頁面 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "4dfebfa6fa": "检测空白页",
+      "39d804bb8d": "检测到的空白页",
+      "9c2895adcc": "删除选中的空白页",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "5b1965e07d": "操作失败，请重试。",
+      "5da9c11a95": "页面",
+      "13bcc97569": "页面",
+      "de578e3bf9": "设置",
+      "bf7c34b082": "信息",
+      "f55d42e22e": "请先上传 PDF 文件。",
+      "7803f683cb": "页面",
+      "b44f05496c": "操作失败，请重试。",
+      "33a372a610": "设置",
+      "cf7c265e27": "正在检测空白页...",
+      "2405929a27": "加载 PDF 文件失败。",
+      "96820f89e0": "请上传一个有效的 PDF 文件。",
+      "34d15e8ab1": "设置"
+    }
   },
   "imageToPdf": {
     "name": "圖片轉 PDF",
     "subtitle": "將 JPG、PNG、BMP、GIF、TIFF、PNM、PGM、PBM、PPM、PAM、JXR、JPX、JP2、PSD、SVG、HEIC、WebP 轉換為 PDF。",
-    "pageTitle": "圖片轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "圖片轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "d148e69606": "设置",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "1da1ea7fe4": "转换错误",
+      "73b1f127c0": "PDF 已创建成功！",
+      "f90007716a": "正在将图片转换为 PDF...",
+      "c6b0ac6a2c": "正在加载转换引擎...",
+      "b387c08ee8": "正在处理中...",
+      "0e52b164d0": "请select at least one image file.",
+      "7cef803f5f": "({{value0}})",
+      "011eb5b704": "设置",
+      "bfeaca68f4": "文件无效"
+    }
   },
   "pngToPdf": {
     "name": "PNG 轉 PDF",
     "subtitle": "從一張或多張 PNG 圖片建立 PDF。",
-    "pageTitle": "PNG 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PNG 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "840d3f5430": "转换错误",
+      "03d2a214ed": "PDF 已创建成功！",
+      "8629368499": "正在从 JPG 创建 PDF...",
+      "8d883dffcb": "请select at least one JPG file.",
+      "06ee098f08": "({{value0}})",
+      "31345167f1": "设置",
+      "9531a0069c": "文件无效"
+    }
   },
   "webpToPdf": {
     "name": "WebP 轉 PDF",
     "subtitle": "從一張或多張 WebP 圖片建立 PDF。",
-    "pageTitle": "WebP 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "WebP 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "0391c45b8e": "转换错误",
+      "bc9ed2df69": "PDF 已创建成功！",
+      "271986fc7a": "正在从 JPG 创建 PDF...",
+      "78ccdee22c": "请select at least one JPG file.",
+      "92f7b39102": "({{value0}})",
+      "dac29db7dd": "设置",
+      "3c6e0f53ba": "文件无效"
+    }
   },
   "svgToPdf": {
     "name": "SVG 轉 PDF",
     "subtitle": "從一張或多張 SVG 圖片建立 PDF。",
-    "pageTitle": "SVG 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "SVG 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "3221b49d76": "转换错误",
+      "8e2c99e129": "PDF 已创建成功！",
+      "22c5687245": "正在从 SVG 文件创建 PDF...",
+      "b1e501f07a": "请select at least one SVG file.",
+      "f71cb9d2cc": "({{value0}})",
+      "a991f2ba33": "设置",
+      "0aaa760603": "文件无效"
+    }
   },
   "bmpToPdf": {
     "name": "BMP 轉 PDF",
     "subtitle": "從一張或多張 BMP 圖片建立 PDF。",
-    "pageTitle": "BMP 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "BMP 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "2e2f5eaf1e": "设置",
+      "5ae7611bcf": "文件无效",
+      "357b5c17a4": "操作失败，请重试。",
+      "1641d9aabe": "PDF 已创建成功！",
+      "363556b52f": "正在将 BMP 转换为 PDF...",
+      "5f18ec5ebc": "请select at least one BMP file.",
+      "2baabe2097": "({{value0}})"
+    }
   },
   "heicToPdf": {
     "name": "HEIC 轉 PDF",
     "subtitle": "從一張或多張 HEIC 圖片建立 PDF。",
-    "pageTitle": "HEIC 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "HEIC 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "a042ab46bb": "设置",
+      "d48f8cda5c": "文件无效",
+      "b114f617f1": "操作失败，请重试。",
+      "14f5decb21": "PDF 已创建成功！",
+      "858af38004": "正在将 HEIC 转换为 PDF...",
+      "5088e5e744": "请select at least one HEIC file.",
+      "37dc2dff42": "({{value0}})"
+    }
   },
   "tiffToPdf": {
     "name": "TIFF 轉 PDF",
     "subtitle": "從一張或多張 TIFF 圖片建立 PDF。",
-    "pageTitle": "TIFF 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "TIFF 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "f09c06a547": "设置",
+      "5e8d4238f0": "文件无效",
+      "af648ea52a": "操作失败，请重试。",
+      "67c9b92207": "PDF 已创建成功！",
+      "17f3b48e45": "正在将 TIFF 转换为 PDF...",
+      "bcb176a1ed": "请select at least one TIFF file.",
+      "64f495d84c": "({{value0}})"
+    }
   },
   "textToPdf": {
     "name": "文字轉 PDF",
@@ -331,7 +1191,35 @@
     "pageSize": "頁面大小",
     "rtlAutoDetectNote": "自動偵測 RTL 語言（阿拉伯語、烏爾都語、波斯語等）並相應調整文字方向。",
     "createButton": "建立 PDF",
-    "pageTitle": "文字轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "文字轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "fa7dc604ca": "设置",
+      "8b08d9a072": "设置",
+      "1e1e1f58c8": "设置",
+      "732ccafb1a": "设置",
+      "759c558b3f": "设置",
+      "3babc3a9d8": "设置",
+      "16aff5ecd4": "设置",
+      "66b11520b9": "设置",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF",
+      "c501f2d2c6": "设置"
+    },
+    "dynamic": {
+      "699294da89": "设置",
+      "abbb1a76aa": "文件无效",
+      "b9efcb382b": "操作失败，请重试。",
+      "8507dd5a0d": "设置",
+      "c08ee56ff6": "正在创建 PDF...",
+      "28698eca46": "正在加载转换引擎...",
+      "1497f83234": "请enter some text to convert.",
+      "77f8701633": "无文本",
+      "331d64523c": "请select at least one text file.",
+      "8c9a7c9a67": "({{value0}})"
+    }
   },
   "jsonToPdf": {
     "name": "JSON 轉 PDF",
@@ -351,7 +1239,14 @@
       "workerError": "Worker 錯誤：{{message}}",
       "getStarted": "選擇 JSON 檔案以開始"
     },
-    "pageTitle": "JSON 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "JSON 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    }
   },
   "pdfToJpg": {
     "name": "PDF 轉 JPG",
@@ -369,7 +1264,33 @@
     "loader": {
       "converting": "正在轉換為 JPG..."
     },
-    "pageTitle": "PDF 轉 JPG Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF 轉 JPG Online Free - PDF Tool | TuHe PDF",
+    "cardDesc": "免费在线 PDF 转 JPG 工具",
+    "auto": {
+      "99282aa8d4": "选择您要转换为图片的 PDF 文件",
+      "97c2e18363": "选择质量",
+      "730d7fb0ef": "设置",
+      "1c1f676435": "选择页面",
+      "49f7808ae9": "设置",
+      "46730049c1": "下载图片",
+      "b0a1e9675f": "设置",
+      "450e35275a": "PDF 转 PNG",
+      "08490723f9": "免费的在线pdf to png tool工具",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "845fd08d7d": "PDF 转 WebP",
+      "dcec9a996f": "免费的在线pdf to webp tool工具",
+      "1aca319598": "免费的在线extract images tool工具",
+      "ed7dea03db": "文件",
+      "d1d9286b84": "设置",
+      "dbe7c2d813": "设置"
+    },
+    "dynamic": {
+      "36d422fdc3": "{{value0}}%",
+      "71ef9ac6e1": "设置",
+      "67bab51c34": "{{value0}} • {{value1}} {{value2}}",
+      "0b79ba5389": "{{value0}} • {{value1}}"
+    }
   },
   "pdfToPng": {
     "name": "PDF 轉 PNG",
@@ -387,7 +1308,20 @@
     "loader": {
       "converting": "正在轉換為 PNG..."
     },
-    "pageTitle": "PDF 轉 PNG Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF 轉 PNG Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "da975953a6": "设置",
+      "8c487e8a5e": "设置",
+      "5866da68d4": "{{value0}} • {{value1}} {{value2}}",
+      "dd75ee4288": "{{value0}} • {{value1}}"
+    }
   },
   "pdfToWebp": {
     "name": "PDF 轉 WebP",
@@ -405,7 +1339,20 @@
     "loader": {
       "converting": "正在轉換為 WebP..."
     },
-    "pageTitle": "PDF 轉 WebP Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF 轉 WebP Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "d019d14719": "{{value0}}%",
+      "5ac64b1153": "设置",
+      "f68d703739": "{{value0}} • {{value1}} {{value2}}",
+      "f9c3ea897f": "{{value0}} • {{value1}}"
+    }
   },
   "pdfToBmp": {
     "name": "PDF 轉 BMP",
@@ -421,7 +1368,18 @@
     "loader": {
       "converting": "正在轉換為 BMP..."
     },
-    "pageTitle": "PDF 轉 BMP Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF 轉 BMP Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "9f87fe7348": "{{value0}} • {{value1}} {{value2}}",
+      "25e694ba1c": "{{value0}} • {{value1}}"
+    }
   },
   "pdfToTiff": {
     "name": "PDF 轉 TIFF",
@@ -442,7 +1400,28 @@
       "conversionSuccess": "PDF 已成功轉換為 TIFF！",
       "conversionError": "無法將 PDF 轉換為 TIFF。檔案可能已損壞。"
     },
-    "pageTitle": "PDF 轉 TIFF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF 轉 TIFF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "786b211bd4": "设置",
+      "bcf697dca9": "设置",
+      "8c5ef95e67": "设置",
+      "d96f72b8a2": "设置",
+      "5655e65ce9": "设置",
+      "7684d1b63b": "设置",
+      "1e96ffbeed": "设置",
+      "f918478213": "设置",
+      "70847adf1c": "设置",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "c37ab99d32": "操作失败，请重试。",
+      "2d62cb9c86": "{{value0}} • {{value1}} {{value2}}",
+      "7caf602278": "{{value0}} • {{value1}}"
+    }
   },
   "pdfToCbz": {
     "name": "PDF 轉 CBZ",
@@ -473,12 +1452,55 @@
       "conversionSuccess": "PDF 已成功轉換為 CBZ！",
       "conversionError": "無法將 PDF 轉換為 CBZ。檔案可能已損壞。"
     },
-    "pageTitle": "PDF 轉 CBZ Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF 轉 CBZ Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "a45885aac5": "JPEG",
+      "70fe60b7df": "PNG",
+      "6fa39ac0c7": "WebP",
+      "e0ac968345": "选择您要convert to a comic book archive的 PDF 文件",
+      "2613d80c87": "选择设置",
+      "dd048171e1": "设置",
+      "f7e912364d": "下载 CBZ",
+      "3adeac813f": "文件",
+      "7649792e5b": "将 PDF pages to jpg images",
+      "5e20d6c233": "将 PDF pages to png images",
+      "5f4f59edfd": "将 PDF pages to tiff images",
+      "ab60d41860": "设置",
+      "30cd757363": "页面",
+      "f8ce03e022": "设置",
+      "b48f60aa47": "正在处理中...",
+      "8c2951fccb": "设置",
+      "97d4fdb568": "设置"
+    },
+    "dynamic": {
+      "3e224c0f45": "设置",
+      "c58c3fe79a": "{{value0}}%",
+      "982f70cf6e": "{{value0}} • {{value1}} {{value2}}",
+      "dab1c2d482": "{{value0}} • {{value1}}"
+    }
   },
   "pdfToGreyscale": {
     "name": "PDF 轉灰階",
     "subtitle": "將所有顏色轉換為黑白。",
-    "pageTitle": "PDF 轉灰階 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF 轉灰階 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "91581128c3": "转换为灰度",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "a8d626a999": "请upload a PDF file.",
+      "cd8601b331": "操作失败，请重试。",
+      "2969af6c0d": "设置",
+      "029c0cd7cc": "正在转换为灰度...",
+      "4a35f197d6": "请先上传一个 PDF 文件。",
+      "47c2241964": "无文件",
+      "1aa9a280e2": "{{value0}} • {{value1}} {{value2}}",
+      "6c08c2bcda": "{{value0}} • {{value1}}"
+    }
   },
   "pdfToJson": {
     "name": "PDF 轉 JSON",
@@ -497,7 +1519,14 @@
       "workerError": "Worker 錯誤：{{message}}",
       "getStarted": "選擇 PDF 檔案以開始"
     },
-    "pageTitle": "PDF 轉 JSON Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF 轉 JSON Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    }
   },
   "ocrPdf": {
     "name": "PDF 文字辨識 (OCR)",
@@ -552,79 +1581,388 @@
     "characterFilteringDescription": "使用白名單過濾不需要的字元，以提高特定文件類型（發票、表單等）的準確性。",
     "multiLanguageSupportLabel": "多語言支援：",
     "multiLanguageSupportDescription": "為包含混合語言內容的文件選擇多種語言。",
-    "pageTitle": "PDF 文字辨識 (OCR) Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF 文字辨識 (OCR) Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "544984faf5": "设置"
+    }
   },
   "alternateMerge": {
     "name": "交錯混合頁面",
     "subtitle": "將每個 PDF 的頁面交錯合併。保留書籤。",
     "retainPageLabels": "保留每個檔案的原始頁面標籤",
     "retainPageLabelsHint": "關閉（預設）：合併後的 PDF 使用自然頁碼 1–N。開啟：保留每個檔案的原始頁面標籤（可能產生重複的標籤）。",
-    "pageTitle": "交錯混合頁面 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "交錯混合頁面 Online Free - PDF Tool | TuHe PDF",
+    "fileListNotFound": "未找到文件列表",
+    "auto": {
+      "4c7db09138": "文件顺序",
+      "c5fca489f5": "设置",
+      "809767c381": "混合页面",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "109c183332": "设置",
+      "c9aa0cf1a8": "设置",
+      "8d708e4e13": "正在交替混合页面...",
+      "3c851e26bd": "请upload at least two PDF files to alternate and mix.",
+      "7184f92fa6": "文件不足",
+      "68e389ea42": "加载一个或多个 PDF 文件失败。",
+      "e8c65343b7": "{{value0}} • {{value1}} pages",
+      "ca820f834d": "正在加载 PDF 文件...",
+      "4ed44782a4": "设置"
+    }
   },
   "addAttachments": {
     "name": "新增附件",
     "subtitle": "嵌入一個或多個檔案至您的 PDF 中。",
-    "pageTitle": "新增附件 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "新增附件 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "e8cb193e4b": "选择要附加的文件",
+      "6db1c59993": "点击或拖放文件以附加",
+      "479b61ff56": "任意文件类型",
+      "f9dca904bf": "附件级别",
+      "978be941ab": "文档级别",
+      "4c355531b8": "页面级别",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "347981572d": "操作失败，请重试。",
+      "f95aaa0707": "正在将文件附加到 PDF...",
+      "086438607c": "正在处理中...",
+      "c42168707d": "正在将文件嵌入 PDF...",
+      "17dfbec9d9": "请specify a page range for page-level attachments.",
+      "9b8eee5d44": "请select at least one file to attach.",
+      "2a84f91d07": "请先上传 PDF 文件。",
+      "5af4d6db9e": "加载 PDF 文件失败。",
+      "97300a736c": "{{value0}} • {{value1}} pages",
+      "8413da039e": "{{value0}} • 正在加载...",
+      "b76c5703b2": "Worker 发生错误。请检查控制台了解详情。",
+      "b699690e1e": "文件"
+    }
   },
   "extractAttachments": {
     "name": "擷取附件",
     "subtitle": "將 PDF 中所有嵌入的檔案擷取並封裝為 ZIP。",
-    "pageTitle": "擷取附件 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "擷取附件 Online Free - PDF Tool | TuHe PDF",
+    "fileReadError": "读取文件出错：",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "95feba5a59": "正在读取文件...",
+      "200c6b856a": "文件",
+      "8b078d8f78": "文件",
+      "99348f2682": "无附件",
+      "88c0a4ed05": "设置"
+    }
   },
   "editAttachments": {
     "name": "編輯附件",
     "subtitle": "檢視或移除您的 PDF 中的附件。",
-    "pageTitle": "編輯附件 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "編輯附件 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "6771ade6e8": "设置",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "388ac9bb09": "编辑附件失败。",
+      "82a44295db": "正在处理中...",
+      "4ad1c13b08": "设置",
+      "3803b2ee79": "无更改",
+      "6e2a60b3e8": "文件",
+      "7697fda291": "从 PDF 加载附件失败。",
+      "389ecde49d": "正在加载附件...",
+      "151df6b489": "设置",
+      "03e33d2166": "页面",
+      "9ee1e04045": "设置",
+      "88aa4e1e76": "取消全选",
+      "73e3ef7c28": "设置",
+      "df05883ac6": "设置",
+      "a74a16433e": "Worker 发生错误。请检查控制台了解详情。",
+      "165ce95328": "设置"
+    }
   },
   "dividePages": {
     "name": "分割頁面",
     "subtitle": "垂直或水平分割頁面。",
-    "pageTitle": "分割頁面 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "分割頁面 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "80881ab494": "垂直：",
+      "3c39df6a87": "水平：",
+      "12b45ef0ca": "设置",
+      "5542eb31c0": "设置",
+      "3acf595250": "页面",
+      "6a06fadc46": "设置",
+      "96399f8204": "设置",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF",
+      "f2359095f1": "设置"
+    },
+    "dynamic": {
+      "fe79190873": "操作失败，请重试。",
+      "60b2821ead": "设置",
+      "570c1a0772": "正在处理第 {{value0}}/{{value1}} 页...",
+      "c8de0c45db": "设置",
+      "84292b3ef8": "请enter a valid page range (e.g., 1-5, 8, 11-13).",
+      "6f90563f8c": "范围无效",
+      "aae540a85c": "请先上传 PDF 文件。",
+      "6b2f10d8ba": "加载 PDF 文件失败。",
+      "07ff7bec76": "{{value0}} • {{value1}} pages",
+      "c90d4c14de": "{{value0}} • 正在加载..."
+    }
   },
   "addBlankPage": {
     "name": "新增空白頁面",
     "subtitle": "在您的 PDF 中的任一位置插入空白頁面。",
-    "pageTitle": "新增空白頁面 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "新增空白頁面 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "19bcf761ef": "设置",
+      "517a547bfc": "页面",
+      "3cd3ecbfbe": "页面",
+      "f68bd2e058": "设置",
+      "b75cdcccde": "添加空白页",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "3194768496": "{{value0}} • 正在加载...",
+      "3f3a8dab5a": "操作失败，请重试。",
+      "7dffb09a71": "页面",
+      "bae7d9dce8": "正在添加 {{value0}} 个空白页...",
+      "e791afd3b7": "请enter a valid number of pages (1 or more).",
+      "44bcb69846": "输入无效",
+      "6234a20c60": "请enter a number between 0 and {{value0}}.",
+      "c2c57c5f32": "请先上传 PDF 文件。",
+      "b6aab8baeb": "加载 PDF 文件失败。",
+      "6d8c3c7f1a": "设置",
+      "ceda244c1d": "{{value0}} • {{value1}} pages"
+    }
   },
   "reversePages": {
     "name": "反轉頁面",
     "subtitle": "反轉您的文件中所有頁面的順序。",
-    "pageTitle": "反轉頁面 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "反轉頁面 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "61a95548fc": "设置",
+      "f8fa83c60e": "上传文件",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "5010f304ef": "操作失败，请重试。",
+      "cd7bc3d29d": "设置",
+      "3efb65a545": "设置",
+      "7c4c0a8d59": "页面",
+      "dbc8218413": "请select one or more PDF files."
+    }
   },
   "rotatePdf": {
     "name": "旋轉 PDF",
     "subtitle": "以 90 度為單位旋轉頁面。",
-    "pageTitle": "旋轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "旋轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "cardDesc": "免费在线 PDF 旋转工具",
+    "auto": {
+      "494f6a389c": "批量操作",
+      "6bd2206e8e": "应用旋转",
+      "bb9dede377": "合并 PDF",
+      "0784d816a9": "分割 PDF",
+      "4ed7502998": "整理 PDF",
+      "ae395b2670": "压缩 PDF"
+    },
+    "dynamic": {
+      "39dc26ce53": "无法应用旋转。",
+      "9da1d8b293": "旋转已应用成功！",
+      "5e8504b844": "正在应用旋转...",
+      "0b9d19a4ff": "请先上传 PDF 文件。",
+      "dd3b66aa78": "加载 PDF 文件失败。",
+      "2e699f5dc4": "{{value0}} • {{value1}} pages",
+      "0e83e638d1": "{{value0}} • 正在加载...",
+      "0932d34a73": "{{value0}}"
+    }
   },
   "rotateCustom": {
     "name": "自訂角度旋轉",
     "subtitle": "以任意自訂角度旋轉頁面。",
-    "pageTitle": "自訂角度旋轉 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "自訂角度旋轉 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "a9dd5d11a8": "批量旋转",
+      "44a04c3d23": "应用到全部",
+      "6bd2206e8e": "应用旋转",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "92c058ad6e": "无法应用旋转。",
+      "40d63a64d8": "旋转已应用成功！",
+      "95d19fd9c6": "正在应用旋转...",
+      "a1087d59d9": "请先上传 PDF 文件。",
+      "def23aea75": "加载 PDF 文件失败。",
+      "e23206ea31": "{{value0}} • {{value1}} pages",
+      "105a3c6f65": "{{value0}} • 正在加载...",
+      "fa49b7e42c": "设置",
+      "03a27bd0ab": "设置",
+      "bbc1fbce78": "{{value0}}"
+    }
   },
   "nUpPdf": {
     "name": "多頁併一頁 (N-Up)",
     "subtitle": "將多個頁面排列在單張紙上。",
-    "pageTitle": "多頁併一頁 (N-Up) Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "多頁併一頁 (N-Up) Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "914719b7ed": "设置",
+      "ceacc66db0": "页面",
+      "9cd626bb13": "页面",
+      "39247fd16f": "设置",
+      "c614ba7c45": "设置",
+      "29b7284e1b": "设置",
+      "bf1a4d0ac4": "设置",
+      "ddf8c11aaa": "创建 N-Up PDF",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "7b9b581f7c": "操作失败，请重试。",
+      "e2d154b4b1": "设置",
+      "7eb9ff644c": "正在处理中...",
+      "de94d4ed8d": "正在创建 N-Up PDF...",
+      "9707a627be": "请先上传 PDF 文件。",
+      "b7290858ca": "加载 PDF 文件失败。",
+      "2190a71612": "{{value0}} • {{value1}} pages",
+      "a26647e4a0": "{{value0}} • 正在加载..."
+    }
   },
   "combineToSinglePage": {
     "name": "合併為單一頁面",
     "subtitle": "將所有頁面縫合為一個連續的捲動頁面。",
-    "pageTitle": "合併為單一頁面 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "合併為單一頁面 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "d256eaa316": "设置",
+      "9ab26718ff": "设置",
+      "3de3ef168e": "设置",
+      "70f768f968": "设置",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "a0562d5e3c": "操作失败，请重试。",
+      "ac9e59466a": "设置",
+      "acab7793cd": "正在处理第 {{value0}}/{{value1}} 页...",
+      "16e9c2d1d1": "正在合并页面...",
+      "4a9a6f9cee": "请先上传 PDF 文件。",
+      "e152772381": "加载 PDF 文件失败。",
+      "4784218459": "{{value0}} • {{value1}} pages",
+      "33c063c234": "{{value0}} • 正在加载..."
+    }
   },
   "viewMetadata": {
     "name": "檢視中繼資料",
     "subtitle": "檢查 PDF 中的隱藏屬性。",
-    "pageTitle": "檢視中繼資料 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "檢視中繼資料 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "95ff7aea01": "文档元数据",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "a1e781c308": "复制元数据到剪贴板失败。",
+      "af34c9a2c9": "设置",
+      "b27348894d": "设置",
+      "89046c7aaa": "{{value0}}",
+      "f9436236fe": "操作失败，请重试。",
+      "674878efd6": "正在分析完整 PDF 元数据..."
+    }
   },
   "editMetadata": {
     "name": "編輯中繼資料",
     "subtitle": "更改作者、標題和其他屬性。",
-    "pageTitle": "編輯中繼資料 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "編輯中繼資料 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "143b179529": "自定义字段",
+      "c7a9dd0076": "设置",
+      "a031f9bf48": "保存元数据",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "5dac2867d4": "操作失败，请重试。",
+      "92398fb88e": "设置",
+      "46bfd837f7": "设置",
+      "fc64251da4": "请先上传 PDF 文件。",
+      "cd29753baa": "加载 PDF 文件失败。",
+      "09ea229d4e": "{{value0}} • {{value1}} pages",
+      "c2b223c470": "{{value0}} • 正在加载...",
+      "41a32c1325": "设置",
+      "16ebbac701": "设置"
+    }
   },
   "pdfsToZip": {
     "name": "PDF 轉 ZIP",
     "subtitle": "將多個 PDF 檔案打包為 ZIP 壓縮檔。",
-    "pageTitle": "PDF 轉 ZIP Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF 轉 ZIP Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "68e8a1dac5": "设置",
+      "149fbb3d62": "文件",
+      "da67bba418": "创建 ZIP 存档",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "98a757251e": "操作失败，请重试。",
+      "28c5d104ac": "设置",
+      "75da5af9dc": "正在生成 ZIP 文件...",
+      "c0127af1aa": "正在添加 {{value0}}（{{value1}}/{{value2}}）...",
+      "8b3c05ec36": "正在创建 ZIP 存档...",
+      "a2a6eeec53": "请select PDF files to create a ZIP archive."
+    }
   },
   "comparePdfs": {
     "name": "比較 PDF",
@@ -669,109 +2007,545 @@
     "invalidFile": "無效檔案",
     "invalidFileMsg": "請選擇有效的 PDF 檔案。",
     "loadError": "無法載入 PDF。檔案可能已損毀或受密碼保護。",
-    "pageTitle": "比較 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "比較 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "dab564d809": "适应",
+      "85174b7376": "设置",
+      "f90072a74b": "设置",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF",
+      "a4ae4b24a1": "设置",
+      "4fc05f2763": "设置"
+    },
+    "resetZoom": "重置缩放以适合页面",
+    "dynamic": {
+      "90eba7afad": "操作失败，请重试。",
+      "c7b2381edf": "操作失败，请重试。",
+      "085a187515": "正在处理中...",
+      "580338dd56": "{{value0}}%",
+      "502938ceda": "操作失败，请重试。",
+      "5579495988": "正在加载 {{value0}}...",
+      "581b7fca90": "请select a valid PDF file.",
+      "f1300022a2": "正在加载对比 {{value0}}/{{value1}}...",
+      "9e4f2ee2ef": "正在索引 PDF 2 第 {{value0}}/{{value1}} 页...",
+      "f0965742d4": "正在索引 PDF 1 第 {{value0}}/{{value1}} 页...",
+      "23dcc00f43": "正在构建页面配对模型...",
+      "48db36bf56": "设置"
+    },
+    "missingPage": "此 PDF 中不存在第 {{page}} 页。",
+    "ocrRunning": "正在对第 {{page}} 页执行 OCR...",
+    "ocrProgress": "OCR：{{status}}"
   },
   "posterizePdf": {
     "name": "海報化 PDF",
     "subtitle": "將大頁面分割為多個較小的頁面。",
-    "pageTitle": "海報化 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "海報化 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "7679ffa238": "网格布局",
+      "9e131de8f1": "输出页面设置",
+      "ee14050617": "Letter",
+      "9f43e41fc3": "设置",
+      "a73a2ceee0": "高级选项",
+      "dab564d809": "适应",
+      "12141b2c5c": "保留所有内容，可能添加边距。",
+      "08cdd179a5": "填充（裁剪）",
+      "aac2cce0de": "填满页面，可能裁剪内容。",
+      "4b2a6a3149": "设置",
+      "79a0469d56": "英寸",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    }
   },
   "fixPageSize": {
     "name": "統一頁面尺寸",
     "subtitle": "將所有頁面標準化為統一尺寸。",
-    "pageTitle": "統一頁面尺寸 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "統一頁面尺寸 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "759c558b3f": "设置",
+      "3babc3a9d8": "设置",
+      "16aff5ecd4": "设置",
+      "79a0469d56": "英寸",
+      "72e8317d35": "设置",
+      "b1b2fcea15": "设置",
+      "dab564d809": "适应",
+      "12141b2c5c": "保留所有内容，可能添加边距。",
+      "08cdd179a5": "填充（裁剪）",
+      "aac2cce0de": "填满页面，可能裁剪内容。",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "52e02e9a8c": "操作失败，请重试。",
+      "626e3b2dab": "页面",
+      "c3a6d5d19c": "设置",
+      "5682a8deba": "请先上传一个 PDF 文件。",
+      "4e7b720a89": "无文件"
+    }
   },
   "linearizePdf": {
     "name": "線性化 PDF",
     "subtitle": "最佳化 PDF 以利快速網頁檢視。",
-    "pageTitle": "線性化 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "線性化 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "7e0fcbd5c2": "设置",
+      "a00dde403e": "设置",
+      "0044cfe2ad": "正在处理中...",
+      "513423df71": "设置",
+      "5c47630345": "设置",
+      "c7ec8d6df7": "线性化 PDF",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "8e4a96bd32": "发生错误：{{value0}}。",
+      "203623f104": "设置",
+      "43fbc24099": "处理完成",
+      "fa5568eaf0": "正在生成 ZIP 文件...",
+      "c932412e1b": "正在优化 {{value0}}（{{value1}}/{{value2}}）...",
+      "ede4d9529f": "正在优化 PDF 以供网页查看（线性化）...",
+      "20e8c58c29": "请upload at least one PDF file.",
+      "3fc2420257": "没有 PDF 文件"
+    }
   },
   "pageDimensions": {
     "name": "頁面尺寸",
     "subtitle": "分析頁面大小、方向和單位。",
-    "pageTitle": "頁面尺寸 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "頁面尺寸 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "f85f11d757": "设置",
+      "e481ce72c8": "设置",
+      "95b9952cb9": "设置",
+      "696fa982c6": "设置",
+      "1feee0e744": "导出为 CSV",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "5f1427aa40": "加载 PDF 文件失败。",
+      "22472882ef": "设置",
+      "e6a574d0ee": "设置",
+      "f5deede4e1": "设置"
+    }
   },
   "removeRestrictions": {
     "name": "移除限制",
     "subtitle": "移除與數位簽署的 PDF 檔案相關的密碼保護與安全限制。",
-    "pageTitle": "移除限制 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "移除限制 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "6855a5d3d6": "设置",
+      "54946c42b8": "将被移除的内容：",
+      "5828c61e88": "密码保护",
+      "517dc8d373": "设置",
+      "e68b29c85c": "设置",
+      "bff3561bc2": "设置",
+      "69abc3e19b": "设置",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF",
+      "ded8109b8c": "设置"
+    },
+    "dynamic": {
+      "5057f6c5ea": "发生错误：{{value0}}",
+      "3cbb1317ff": "操作失败",
+      "d7ab0131b2": "文件",
+      "8f0ab838a0": "正在准备下载...",
+      "0af8548308": "设置",
+      "a4f489ba51": "正在读取 PDF...",
+      "ae0f78ae39": "正在初始化...",
+      "9afe460e3d": "请先上传一个 PDF 文件。",
+      "2de7e01738": "无文件"
+    }
   },
   "repairPdf": {
     "name": "修復 PDF",
     "subtitle": "從受損的 PDF 檔案中復原資料。",
-    "pageTitle": "修復 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "修復 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "eeab60e5f2": "操作失败，请重试。",
+      "f76dce6e24": "设置",
+      "911ea8455c": "正在创建 ZIP 存档...",
+      "1830bb6dfe": "文件",
+      "5d6875a66c": "设置",
+      "b2d8ad7247": "操作失败，请重试。",
+      "bf0e2061e3": "设置",
+      "f63b91416a": "正在处理中...",
+      "2fd1eb15f7": "正在初始化修复引擎...",
+      "a8baf6f1f3": "请select one or more PDF files."
+    }
   },
   "encryptPdf": {
     "name": "加密 PDF",
     "subtitle": "透過新增密碼為您的 PDF 上鎖。",
-    "pageTitle": "加密 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "加密 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "1b0820eb8c": "设置",
+      "35e1d5e333": "设置",
+      "6267033691": "设置",
+      "221953fbbc": "设置",
+      "7a39efa86c": "设置",
+      "340ec7907d": "设置",
+      "0b2d8f92d3": "设置",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF",
+      "8d7e230034": "设置",
+      "61966b4d3c": "设置"
+    },
+    "dynamic": {
+      "f31490d96d": "发生错误：{{value0}}",
+      "1cc9a81e1a": "设置",
+      "73dd668652": "正在准备下载...",
+      "99f5f30b9f": "正在使用 256 位 AES 加密 PDF...",
+      "3e80559bf0": "正在读取 PDF...",
+      "a90778fd81": "正在初始化加密...",
+      "cfc44e1b7f": "请enter a user password.",
+      "bec4cf0d52": "需要输入",
+      "2c4bfd0f85": "请先上传一个 PDF 文件。",
+      "dd9d84669b": "无文件"
+    }
   },
   "sanitizePdf": {
     "name": "清理 PDF",
     "subtitle": "移除中繼資料、註解、腳本與其他資料。",
-    "pageTitle": "清理 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "清理 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "da33eea02d": "设置",
+      "92f9400df2": "设置",
+      "a8834458bc": "设置",
+      "7100ada048": "设置",
+      "a545503ba9": "设置",
+      "125bcce5b7": "设置",
+      "8b7fae8f13": "设置",
+      "60c4b9bc07": "设置",
+      "bc02a47141": "设置",
+      "d1e643c470": "正在处理中...",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "dbfaa60a88": "操作失败，请重试。",
+      "9851b480b3": "设置",
+      "3e222526c4": "设置",
+      "00e694f932": "设置",
+      "0f6dc18170": "无更改",
+      "2d61fe671a": "设置"
+    }
   },
   "decryptPdf": {
     "name": "解密 PDF",
     "subtitle": "透過移除密碼保護解鎖 PDF。",
-    "pageTitle": "解密 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "解密 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "e397e30897": "设置",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF",
+      "34479e0409": "设置"
+    },
+    "dynamic": {
+      "29b5a25d37": "发生错误：{{value0}}",
+      "b9a3b1421d": "设置",
+      "bf48d0a84a": "操作失败，请重试。",
+      "be764ba645": "密码错误",
+      "845a342362": "操作失败，请重试。",
+      "270381bfec": "密码错误",
+      "bbb58b90fb": "处理完成",
+      "9460f9932f": "正在生成 ZIP 文件...",
+      "288f23f2a1": "正在解密 {{value0}}（{{value1}}/{{value2}}）...",
+      "3e79faab32": "下载",
+      "3a6ce860d1": "正在准备下载...",
+      "d223202ae7": "正在解密 PDF...",
+      "fe448e8032": "正在读取加密 PDF...",
+      "63a056f300": "正在初始化解密...",
+      "deaa875f11": "请输入 PDF 密码。",
+      "3d789ca3db": "需要输入",
+      "8e6de480a6": "请upload at least one PDF file.",
+      "cb76be345d": "无文件"
+    },
+    "processFailed": "解密失败，请重试。"
   },
   "flattenPdf": {
     "name": "平面化 PDF",
     "subtitle": "使表單欄位和註解不可編輯。",
-    "pageTitle": "平面化 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "平面化 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "6e7855ae56": "设置",
+      "1a77e5bb41": "设置",
+      "9b9b4c4f72": "设置",
+      "f2d1ad980a": "设置",
+      "e2b4463991": "设置",
+      "e9634cd3fd": "扁平化 PDF",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "a5f428bdae": "没有可处理的 PDF。",
+      "2fc31d0d1f": "已处理 {{value0}} 个 PDF。",
+      "9fb9945ea7": "正在扁平化 {{value0}}/{{value1}}：{{value2}}...",
+      "459e7aabf1": "正在扁平化多个 PDF...",
+      "0b697fdcaa": "正在扁平化 PDF...",
+      "87d5747b51": "请select at least one PDF file."
+    }
   },
   "removeMetadata": {
     "name": "移除中繼資料",
     "subtitle": "除去您的 PDF 中的隱藏資料。",
-    "pageTitle": "移除中繼資料 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "移除中繼資料 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "54946c42b8": "将被移除的内容：",
+      "40d215a663": "设置",
+      "2d679f42f6": "设置",
+      "de60328327": "设置",
+      "eb80b7f01c": "设置",
+      "d02066cb8c": "设置",
+      "5506a43e27": "设置",
+      "addde70e9e": "删除所有元数据",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "63392e9cea": "操作失败，请重试。",
+      "b02c7ffeb3": "设置",
+      "f39a42f002": "设置",
+      "293b45eafc": "请先上传一个 PDF 文件。",
+      "9bb26fafb5": "无文件"
+    }
   },
   "changePermissions": {
     "name": "變更權限",
     "subtitle": "設定或變更 PDF 上的使用者權限。",
-    "pageTitle": "變更權限 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "變更權限 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "02739e6de9": "设置",
+      "1b1a468304": "设置",
+      "81df9b370f": "设置",
+      "0f2e2fc819": "设置",
+      "49da39ae9e": "设置",
+      "40ff5e3c8a": "设置",
+      "80bd3e27ec": "设置",
+      "3c857ede4f": "页面",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF",
+      "149b393d2d": "设置",
+      "c7d03d6c95": "设置",
+      "35425172bd": "设置"
+    },
+    "dynamic": {
+      "198736bd97": "发生错误：{{value0}}",
+      "58ff2bb05a": "处理失败",
+      "49601e3fe4": "设置",
+      "bdfa229250": "设置",
+      "16dbd6faea": "操作失败，请重试。",
+      "ac687ab07d": "密码错误",
+      "3bdcee134c": "正在准备下载...",
+      "9b614938cd": "正在处理中...",
+      "904ad87239": "正在读取 PDF...",
+      "3ecc95c571": "正在初始化...",
+      "ca3aae3930": "设置",
+      "15c99d78f8": "需要所有者密码",
+      "d90ea623b2": "请先上传一个 PDF 文件。",
+      "a579977c69": "无文件"
+    }
   },
   "odtToPdf": {
     "name": "ODT 轉 PDF",
     "subtitle": "將 OpenDocument 文字檔案轉換為 PDF 格式。支援多個檔案。",
     "acceptedFormats": "ODT 檔案",
     "convertButton": "轉換為 PDF",
-    "pageTitle": "ODT 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "ODT 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "f583343c23": "转换过程中发生错误。错误信息：{{value0}}",
+      "1e8451666b": "文件",
+      "50d48a9b28": "转换完成",
+      "f1311f9c1a": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
+      "3521d690a3": "已成功将 {{value0}} 转换为 PDF。",
+      "c2f620d499": "请select at least one ODT file."
+    }
   },
   "csvToPdf": {
     "name": "CSV 轉 PDF",
     "subtitle": "將 CSV 試算表檔案轉換為 PDF 格式。支援多個檔案。",
     "acceptedFormats": "CSV 檔案",
     "convertButton": "轉換為 PDF",
-    "pageTitle": "CSV 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "CSV 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "28b06609d0": "转换过程中发生错误。错误信息：{{value0}}",
+      "a0e0d1ce53": "文件",
+      "fa39f272c6": "转换完成",
+      "d6aa78370b": "正在创建 ZIP 存档...",
+      "0c0e61f0ae": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
+      "c7241436c3": "正在处理中...",
+      "f702b2d875": "已成功将 {{value0}} 转换为 PDF。",
+      "b3385b83d4": "请select at least one CSV file."
+    }
   },
   "rtfToPdf": {
     "name": "RTF 轉 PDF",
     "subtitle": "將 RTF 格式文件轉換為 PDF。支援多個檔案。",
     "acceptedFormats": "RTF 檔案",
     "convertButton": "轉換為 PDF",
-    "pageTitle": "RTF 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "RTF 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "66a33e38eb": "转换过程中发生错误。错误信息：{{value0}}",
+      "8ac0551c44": "文件",
+      "735b2a4f0d": "转换完成",
+      "5d9752605c": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
+      "edd7466655": "正在将多个 RTF 文件转换为 PDF...",
+      "f98b741f34": "已成功将 {{value0}} 转换为 PDF。",
+      "0a05ab24e5": "请select at least one RTF file."
+    }
   },
   "wordToPdf": {
     "name": "Word 轉 PDF",
     "subtitle": "將 Word 文件（DOCX、DOC、ODT、RTF）轉換為 PDF 格式。支援多個檔案。",
     "acceptedFormats": "DOCX、DOC、ODT、RTF 檔案",
     "convertButton": "轉換為 PDF",
-    "pageTitle": "Word 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Word 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "03decb2650": "上传 Word 文件",
+      "2530d3bf3f": "设置",
+      "6a453166f0": "自动转换",
+      "158d7f01d7": "正在处理中...",
+      "7707856c8b": "预览结果",
+      "8fcd6f5335": "设置",
+      "d30b1693d5": "下载 PDF",
+      "dc8cc35e96": "save PDF files - formatting perfectly preserved",
+      "d584b36261": "设置",
+      "0503bd898c": "免费的在线pdf to docx tool工具",
+      "6fdd55514f": "Excel 转 PDF",
+      "e16d6513f6": "免费的在线excel to pdf tool工具",
+      "ec23f243bc": "PowerPoint 转 PDF",
+      "31f26f8f66": "免费的在线powerpoint to pdf tool工具",
+      "1b0186270d": "设置",
+      "a75933f96a": "免费的在线txt to pdf tool工具",
+      "bb9dede377": "合并 PDF",
+      "e69920c2ed": "设置",
+      "dad3667a18": "设置",
+      "3911ed666d": "正在处理中..."
+    },
+    "dynamic": {
+      "4716974d31": "转换过程中发生错误。错误信息：{{value0}}",
+      "c7656bfe50": "设置",
+      "ce88334fff": "转换完成",
+      "ac56a3e11b": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
+      "59a8cc5e17": "已成功将 {{value0}} 转换为 PDF。",
+      "7e35823cb1": "请select at least one Word document.",
+      "02029cec28": "操作失败，请重试。",
+      "80685ef3be": "操作失败，请重试。",
+      "5e47f85e0d": "正在生成高质量 PDF...",
+      "2729eb14bf": "设置",
+      "df5707067f": "正在处理中...",
+      "e6ffaaa90c": "请upload a .docx file first.",
+      "d6c3ffcaae": "无文件"
+    }
   },
   "excelToPdf": {
     "name": "Excel 轉 PDF",
     "subtitle": "將 Excel 試算表（XLSX、XLS、ODS、CSV）轉換為 PDF 格式。支援多個檔案。",
     "acceptedFormats": "XLSX、XLS、ODS、CSV 檔案",
     "convertButton": "轉換為 PDF",
-    "pageTitle": "Excel 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Excel 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "7800ff3767": "PDF 转 Excel",
+      "fa3b5f9252": "免费的在线pdf to excel tool工具",
+      "c91e040a8e": "Word 转 PDF",
+      "e9491f0c3f": "免费的在线word to pdf tool工具",
+      "c859342798": "CSV 转 PDF",
+      "198967abc6": "免费的在线csv to pdf tool工具",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF"
+    },
+    "dynamic": {
+      "449960744c": "转换过程中发生错误。错误信息：{{value0}}",
+      "e4f52d3a24": "文件",
+      "520085103f": "转换完成",
+      "14b92e28b5": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
+      "74fd7493ec": "已成功将 {{value0}} 转换为 PDF。",
+      "9d71f06b8f": "请select at least one Excel file."
+    }
   },
   "powerpointToPdf": {
     "name": "PowerPoint 轉 PDF",
     "subtitle": "將 PowerPoint 簡報（PPTX、PPT、ODP）轉換為 PDF 格式。支援多個檔案。",
     "acceptedFormats": "PPTX、PPT、ODP 檔案",
     "convertButton": "轉換為 PDF",
-    "pageTitle": "PowerPoint 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PowerPoint 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "67f0bc730f": "转换过程中发生错误。错误信息：{{value0}}",
+      "d937ebcd47": "文件",
+      "f3b510faff": "转换完成",
+      "ec950a4de2": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
+      "94609a8cae": "已成功将 {{value0}} 转换为 PDF。",
+      "af1899e4e6": "请select at least one PowerPoint file."
+    }
   },
   "markdownToPdf": {
     "name": "Markdown 轉 PDF",
@@ -792,7 +2566,14 @@
     "optBreaks": "將換行轉換為 <br>",
     "optLinkify": "自動將 URL 轉換為連結",
     "optTypographer": "排版器（智慧引號等）",
-    "pageTitle": "Markdown 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Markdown 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    }
   },
   "pdfBooklet": {
     "name": "PDF 小手冊",
@@ -809,132 +2590,515 @@
     "createBooklet": "建立小手冊",
     "processing": "處理中...",
     "pageCount": "必要時，系統會將頁數補齊為 4 的倍數。",
-    "pageTitle": "PDF 小手冊 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF 小手冊 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "2fb62d225d": "不旋转",
+      "7f99cebedf": "设置",
+      "0e3e98f297": "设置",
+      "97b5e9055e": "设置",
+      "ea2efedcab": "设置",
+      "5e4843a8b8": "设置",
+      "0fd10bc20a": "设置",
+      "45263ea4d5": "设置",
+      "28940475fc": "设置",
+      "a401a03725": "设置",
+      "48ee1388be": "设置",
+      "cd9afe793a": "设置",
+      "547558705a": "上传文件",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "ec899ed25c": "操作失败，请重试。",
+      "3ed8d885aa": "设置",
+      "831fdc4675": "正在创建小册子...",
+      "1a4b3ff662": "请load a PDF first.",
+      "a9ad50182d": "加载 PDF 文件失败。",
+      "efe8322c67": "{{value0}} • {{value1}} pages",
+      "4ceed58d26": "{{value0}} • 正在加载..."
+    }
   },
   "xpsToPdf": {
     "name": "XPS 轉 PDF",
     "subtitle": "將 XPS/OXPS 文件轉換為 PDF 格式。支援多個檔案。",
     "acceptedFormats": "XPS、OXPS 檔案",
     "convertButton": "轉換為 PDF",
-    "pageTitle": "XPS 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "XPS 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "81a9b98533": "转换过程中发生错误。错误信息：{{value0}}",
+      "9c0951bc36": "已成功将 {{value0}} 个 {{value1}} 文件转换为 PDF。",
+      "3c6c3601a5": "转换完成",
+      "726bc61755": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
+      "236aadb8c0": "正在转换文件...",
+      "75b9ac74b8": "已成功将 {{value0}} 转换为 PDF。",
+      "ba195f6b9f": "正在转换 {{value0}}...",
+      "791c680372": "正在加载转换引擎...",
+      "7d896aa183": "请select at least one {{value0}} file."
+    }
   },
   "mobiToPdf": {
     "name": "MOBI 轉 PDF",
     "subtitle": "將 MOBI 電子書轉換為 PDF 格式。支援多個檔案。",
     "acceptedFormats": "MOBI 檔案",
     "convertButton": "轉換為 PDF",
-    "pageTitle": "MOBI 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "MOBI 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "9d7ec39061": "转换过程中发生错误。错误信息：{{value0}}",
+      "4573138841": "已成功将 {{value0}} 个 {{value1}} 文件转换为 PDF。",
+      "70fec1ae16": "转换完成",
+      "ac5faa91a9": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
+      "3417a1bcd8": "正在转换文件...",
+      "e4e504b5a7": "已成功将 {{value0}} 转换为 PDF。",
+      "b481d5a5b7": "正在转换 {{value0}}...",
+      "74a5661b9d": "正在加载转换引擎...",
+      "1a7abc7505": "请select at least one {{value0}} file."
+    }
   },
   "epubToPdf": {
     "name": "EPUB 轉 PDF",
     "subtitle": "將 EPUB 電子書轉換為 PDF 格式。支援多個檔案。",
     "acceptedFormats": "EPUB 檔案",
     "convertButton": "轉換為 PDF",
-    "pageTitle": "EPUB 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "EPUB 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "104b6e9a6e": "转换过程中发生错误。错误信息：{{value0}}",
+      "4936db3a1c": "已成功将 {{value0}} 个 {{value1}} 文件转换为 PDF。",
+      "522ff47d9d": "转换完成",
+      "74fb9d5189": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
+      "c2a02efcc5": "正在转换文件...",
+      "5c78b3ff7d": "已成功将 {{value0}} 转换为 PDF。",
+      "c6ebd08683": "正在转换 {{value0}}...",
+      "0642d0fcdb": "正在加载转换引擎...",
+      "22b7b16873": "请select at least one {{value0}} file."
+    }
   },
   "fb2ToPdf": {
     "name": "FB2 轉 PDF",
     "subtitle": "將 FictionBook（FB2）電子書轉換為 PDF 格式。支援多個檔案。",
     "acceptedFormats": "FB2 檔案",
     "convertButton": "轉換為 PDF",
-    "pageTitle": "FB2 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "FB2 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "7e68fa571d": "转换过程中发生错误。错误信息：{{value0}}",
+      "2740ed96cc": "已成功将 {{value0}} 个 {{value1}} 文件转换为 PDF。",
+      "d561d14791": "转换完成",
+      "f7df6b470c": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
+      "f3982fc6f0": "正在转换文件...",
+      "02e192036d": "已成功将 {{value0}} 转换为 PDF。",
+      "ae2a0e93af": "正在转换 {{value0}}...",
+      "fa537f2cfc": "正在加载转换引擎...",
+      "36e0761e1c": "请select at least one {{value0}} file."
+    }
   },
   "cbzToPdf": {
     "name": "CBZ 轉 PDF",
     "subtitle": "將漫畫封存檔（CBZ/CBR）轉換為 PDF 格式。支援多個檔案。",
     "acceptedFormats": "CBZ、CBR 檔案",
     "convertButton": "轉換為 PDF",
-    "pageTitle": "CBZ 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "CBZ 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "c122d39b80": "转换过程中发生错误。错误信息：{{value0}}",
+      "b27d08a94c": "已成功将 {{value0}} 个 {{value1}} 文件转换为 PDF。",
+      "054f2e545b": "转换完成",
+      "a9844d18c8": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
+      "c44c18c174": "正在转换文件...",
+      "18d1e68f41": "已成功将 {{value0}} 转换为 PDF。",
+      "657ec1680f": "正在转换 {{value0}}...",
+      "3767ecf995": "请select at least one {{value0}} file."
+    }
   },
   "wpdToPdf": {
     "name": "WPD 轉 PDF",
     "subtitle": "將 WordPerfect 文件（WPD）轉換為 PDF 格式。支援多個檔案。",
     "acceptedFormats": "WPD 檔案",
     "convertButton": "轉換為 PDF",
-    "pageTitle": "WPD 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "WPD 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "7c3c17880d": "转换过程中发生错误。错误信息：{{value0}}",
+      "4452ac5793": "已成功将 {{value0}} 个文件转换为 PDF。",
+      "0b68d9570d": "转换完成",
+      "7c9cb61fd7": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
+      "3a4cd8b1ef": "正在转换多个文件...",
+      "9074b76c6a": "已成功将 {{value0}} 转换为 PDF。",
+      "36762d3298": "正在转换 {{value0}}...",
+      "899e0e00c9": "正在加载转换引擎...",
+      "c05b666684": "请select at least one {{value0}} file."
+    }
   },
   "wpsToPdf": {
     "name": "WPS 轉 PDF",
     "subtitle": "將 WPS Office 文件轉換為 PDF 格式。支援多個檔案。",
     "acceptedFormats": "WPS 檔案",
     "convertButton": "轉換為 PDF",
-    "pageTitle": "WPS 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "WPS 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "f49e7b07f5": "转换过程中发生错误。错误信息：{{value0}}",
+      "5c94ad6bce": "已成功将 {{value0}} 个文件转换为 PDF。",
+      "97bc687412": "转换完成",
+      "8852f46764": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
+      "037a6acbeb": "正在转换多个文件...",
+      "41793edcbd": "已成功将 {{value0}} 转换为 PDF。",
+      "87eac04e52": "正在转换 {{value0}}...",
+      "839bb28344": "正在加载转换引擎...",
+      "4af39b0805": "请select at least one {{value0}} file."
+    }
   },
   "xmlToPdf": {
     "name": "XML 轉 PDF",
     "subtitle": "將 XML 文件轉換為 PDF 格式。支援多個檔案。",
     "acceptedFormats": "XML 檔案",
     "convertButton": "轉換為 PDF",
-    "pageTitle": "XML 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "XML 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "30944475eb": "转换过程中发生错误。错误信息：{{value0}}",
+      "fd9379fd86": "已成功将 {{value0}} 个文件转换为 PDF。",
+      "ceb9948d46": "转换完成",
+      "67b168273e": "文件",
+      "57a112278a": "正在转换多个文件...",
+      "99ae92f70e": "已成功将 {{value0}} 转换为 PDF。",
+      "75c05e3e4d": "请select at least one {{value0}} file."
+    }
   },
   "pagesToPdf": {
     "name": "Pages 轉 PDF",
     "subtitle": "將 Apple Pages 文件轉換為 PDF 格式。支援多個檔案。",
     "acceptedFormats": "Pages 檔案",
     "convertButton": "轉換為 PDF",
-    "pageTitle": "Pages 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Pages 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "de2ca1608a": "转换过程中发生错误。错误信息：{{value0}}",
+      "a6652ec16b": "已成功将 {{value0}} 个文件转换为 PDF。",
+      "57e99a45b9": "转换完成",
+      "7e339a9f48": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
+      "804657211b": "正在转换多个文件...",
+      "00d97896d1": "已成功将 {{value0}} 转换为 PDF。",
+      "a8b3abcef2": "正在转换 {{value0}}...",
+      "ef163b0d8e": "正在加载转换引擎...",
+      "6e2b64f357": "请select at least one {{value0}} file."
+    }
   },
   "odgToPdf": {
     "name": "ODG 轉 PDF",
     "subtitle": "將 OpenDocument Graphics（ODG）檔案轉換為 PDF 格式。支援多個檔案。",
     "acceptedFormats": "ODG 檔案",
     "convertButton": "轉換為 PDF",
-    "pageTitle": "ODG 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "ODG 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "20c203b8e3": "转换过程中发生错误。错误信息：{{value0}}",
+      "a3b70b6e1d": "已成功将 {{value0}} 个文件转换为 PDF。",
+      "34b6ede781": "转换完成",
+      "f8300101f6": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
+      "218c91e363": "正在转换多个文件...",
+      "475c73b9d1": "已成功将 {{value0}} 转换为 PDF。",
+      "333a6ea118": "正在转换 {{value0}}...",
+      "245fd93b2b": "正在加载转换引擎...",
+      "2a61c4b789": "请select at least one {{value0}} file."
+    }
   },
   "odsToPdf": {
     "name": "ODS 轉 PDF",
     "subtitle": "將 OpenDocument 試算表（ODS）檔案轉換為 PDF 格式。支援多個檔案。",
     "acceptedFormats": "ODS 檔案",
     "convertButton": "轉換為 PDF",
-    "pageTitle": "ODS 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "ODS 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "db4e24f563": "转换过程中发生错误。错误信息：{{value0}}",
+      "965300d792": "已成功将 {{value0}} 个文件转换为 PDF。",
+      "a6fda8c5bb": "转换完成",
+      "f6da621f2c": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
+      "d228b70c8d": "正在转换多个文件...",
+      "77a1ff6cd4": "已成功将 {{value0}} 转换为 PDF。",
+      "4dd49077fa": "正在转换 {{value0}}...",
+      "4fb6de5f25": "正在加载转换引擎...",
+      "d2f643f113": "请select at least one {{value0}} file."
+    }
   },
   "odpToPdf": {
     "name": "ODP 轉 PDF",
     "subtitle": "將 OpenDocument 簡報（ODP）檔案轉換為 PDF 格式。支援多個檔案。",
     "acceptedFormats": "ODP 檔案",
     "convertButton": "轉換為 PDF",
-    "pageTitle": "ODP 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "ODP 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "04b6f5ec3b": "转换过程中发生错误。错误信息：{{value0}}",
+      "e8192ceb3b": "已成功将 {{value0}} 个文件转换为 PDF。",
+      "2db4b50edb": "转换完成",
+      "a9468949b5": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
+      "c1341d5885": "正在转换多个文件...",
+      "907967ce32": "已成功将 {{value0}} 转换为 PDF。",
+      "9ce08de74a": "正在转换 {{value0}}...",
+      "bd598b8682": "正在加载转换引擎...",
+      "3f9fd2f58f": "请select at least one {{value0}} file."
+    }
   },
   "pubToPdf": {
     "name": "PUB 轉 PDF",
     "subtitle": "將 Microsoft Publisher（PUB）檔案轉換為 PDF 格式。支援多個檔案。",
     "acceptedFormats": "PUB 檔案",
     "convertButton": "轉換為 PDF",
-    "pageTitle": "PUB 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PUB 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "b1f64053ff": "转换过程中发生错误。错误信息：{{value0}}",
+      "9df6f453cf": "已成功将 {{value0}} 个文件转换为 PDF。",
+      "3f2b4785cf": "转换完成",
+      "d616d0cd6d": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
+      "d60ace324c": "正在转换多个文件...",
+      "b8f690887c": "已成功将 {{value0}} 转换为 PDF。",
+      "b0ddd3bf3e": "正在转换 {{value0}}...",
+      "1d973bb300": "正在加载转换引擎...",
+      "dbf215a4fb": "请select at least one {{value0}} file."
+    }
   },
   "vsdToPdf": {
     "name": "VSD 轉 PDF",
     "subtitle": "將 Microsoft Visio（VSD、VSDX）檔案轉換為 PDF 格式。支援多個檔案。",
     "acceptedFormats": "VSD、VSDX 檔案",
     "convertButton": "轉換為 PDF",
-    "pageTitle": "VSD 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "VSD 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "10309ee8b8": "转换过程中发生错误。错误信息：{{value0}}",
+      "e33f180378": "已成功将 {{value0}} 个文件转换为 PDF。",
+      "bfcf821388": "转换完成",
+      "55e5fa7b9e": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
+      "e08c16ff74": "正在转换多个文件...",
+      "276b7bc549": "已成功将 {{value0}} 转换为 PDF。",
+      "63888e1e6e": "正在转换 {{value0}}...",
+      "ecf9899daf": "正在加载转换引擎...",
+      "582b0dbbdf": "请select at least one {{value0}} file."
+    }
   },
   "psdToPdf": {
     "name": "PSD 轉 PDF",
     "subtitle": "將 Adobe Photoshop（PSD）檔案轉換為 PDF 格式。支援多個檔案。",
     "acceptedFormats": "PSD 檔案",
     "convertButton": "轉換為 PDF",
-    "pageTitle": "PSD 轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PSD 轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "e17dedd084": "转换过程中发生错误。错误信息：{{value0}}",
+      "84b1fe70ce": "设置",
+      "3205ff599a": "转换完成",
+      "973c4e28c8": "正在转换多个文件...",
+      "ad9a65d45f": "已成功将 {{value0}} 转换为 PDF。",
+      "c5e9e96303": "正在转换 {{value0}}...",
+      "0a745921f6": "正在加载转换引擎...",
+      "29f58a0131": "请select at least one {{value0}} file."
+    }
   },
   "pdfToSvg": {
     "name": "PDF 轉 SVG",
     "subtitle": "將 PDF 檔案的每一頁轉換為可縮放向量圖形（SVG），在任何尺寸下都能保持完美品質。",
-    "pageTitle": "PDF 轉 SVG Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF 轉 SVG Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "9b7ab83d0f": "转换为 SVG",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "de155d6aee": "请upload PDF files.",
+      "1d741530ab": "文件无效",
+      "6e3c2cd056": "操作失败，请重试。",
+      "98e4c4daf3": "设置",
+      "03241b7aa3": "正在创建 ZIP 文件...",
+      "8deeef3d8a": "页面",
+      "58ae11ce3f": "正在处理中...",
+      "a2a5b261d2": "设置",
+      "d44228a493": "正在转换第 {{value0}}/{{value1}} 页...",
+      "2f5799382c": "设置",
+      "733ccaa9fb": "正在转换为 SVG...",
+      "67967aa49b": "正在加载引擎...",
+      "d03c2fba20": "请upload at least one PDF file."
+    }
   },
   "extractTables": {
     "name": "擷取 PDF 表格",
     "subtitle": "從 PDF 檔案擷取表格，並匯出為 CSV、JSON 或 Markdown。",
-    "pageTitle": "擷取 PDF 表格 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "擷取 PDF 表格 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "3281188351": "设置",
+      "031a4e76f0": "设置",
+      "90ab658c06": "提取表格",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "a9a4c9ebca": "请upload a PDF file.",
+      "9d11f4df3a": "操作失败，请重试。",
+      "06afde8883": "设置",
+      "e26185baed": "正在创建 ZIP 文件...",
+      "bcf7770932": "设置",
+      "0425695ccd": "此 PDF 中未检测到表格。",
+      "ffa0b5036c": "未找到表格",
+      "4e8aa3ff08": "正在扫描第 {{value0}}/{{value1}} 页...",
+      "4e588c6fbf": "正在提取表格...",
+      "79bc8aecb7": "正在加载引擎...",
+      "823e9c0f13": "请先上传一个 PDF 文件。",
+      "73433d0bfe": "无文件"
+    }
   },
   "pdfToCsv": {
     "name": "PDF 轉 CSV",
     "subtitle": "從 PDF 擷取表格並轉換為 CSV 格式。",
-    "pageTitle": "PDF 轉 CSV Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF 轉 CSV Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "b957d38692": "转换为 CSV",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "fa8ca0aeab": "请upload a PDF file.",
+      "f3154bcd1b": "操作失败，请重试。",
+      "2d3e7a570f": "设置",
+      "cf3fa196da": "此 PDF 中未检测到表格。",
+      "b9789e2c14": "未找到表格",
+      "851ba63d4f": "正在扫描第 {{value0}}/{{value1}} 页...",
+      "b2a33c3624": "正在提取表格...",
+      "267db28b36": "正在加载引擎...",
+      "ad03050928": "请先上传一个 PDF 文件。",
+      "69783ee8ef": "无文件"
+    }
   },
   "pdfToExcel": {
     "name": "PDF 轉 Excel",
     "subtitle": "從 PDF 擷取表格並轉換為 Excel（XLSX）格式。",
-    "pageTitle": "PDF 轉 Excel Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF 轉 Excel Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "1b584106c1": "转换为 Excel",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "abef904a42": "请upload a PDF file.",
+      "7f193f2e33": "操作失败，请重试。",
+      "58ec90b001": "设置",
+      "7143676af8": "正在创建 Excel 文件...",
+      "f7048f7844": "此 PDF 中未检测到表格。",
+      "d682b77e95": "未找到表格",
+      "dede460ecd": "正在扫描第 {{value0}}/{{value1}} 页...",
+      "63dc1ff1bb": "正在提取表格...",
+      "9c4cf6ec2b": "正在加载引擎...",
+      "2591070d22": "请先上传一个 PDF 文件。",
+      "59516df9fc": "无文件"
+    }
   },
   "pdfToText": {
     "name": "PDF 轉文字",
@@ -942,7 +3106,28 @@
     "noteLabel": "注意：",
     "noteText": "此工具僅適用於數位建立的 PDF。對於掃描文件或基於圖片的 PDF，請改用我們的 OCR PDF 工具。",
     "convertButton": "擷取文字",
-    "pageTitle": "PDF 轉文字 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF 轉文字 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "bd2ff6bec3": "操作失败，请重试。",
+      "8389aa2a38": "设置",
+      "53e9bab963": "正在从文件 {{value0}}/{{value1}} 提取文本：{{value2}}...",
+      "7f3721e1f5": "正在从多个文件提取文本...",
+      "c8c1d4f740": "设置",
+      "f3aeb819f5": "正在从 {{value0}} 提取文本...",
+      "7f1788f372": "正在提取文本...",
+      "3cd2bcee0a": "正在加载转换引擎...",
+      "9b20a15e20": "请select at least one PDF file.",
+      "2a17bf4990": "({{value0}})",
+      "fad4a0bfb8": "设置",
+      "3003a34022": "文件无效"
+    }
   },
   "digitalSignPdf": {
     "name": "為 PDF 加上數位簽章",
@@ -1028,12 +3213,44 @@
     "applySignature": "套用數位簽章",
     "successMessage": "PDF 簽署成功！簽章可在任何 PDF 閱讀器中驗證。",
     "internetRequiredTitle": "需要網路連線",
-    "internetRequiredDescription": "簽署時可能需要從憑證授權中心的伺服器取得憑證鏈資訊，以驗證簽章。"
+    "internetRequiredDescription": "簽署時可能需要從憑證授權中心的伺服器取得憑證鏈資訊，以驗證簽章。",
+    "auto": {},
+    "dynamic": {
+      "d265e37162": "设置",
+      "3775b9c3ce": "{{value0}} • {{value1}}"
+    }
   },
   "validateSignaturePdf": {
     "name": "驗證 PDF 數位簽章",
     "pageTitle": "驗證 PDF 數位簽章－驗證數位簽章 | TuHe PDF",
-    "subtitle": "驗證 PDF 檔案中的數位簽章。檢查憑證有效性、查看簽署者詳細資料並確認文件完整性。所有處理都在瀏覽器中進行。"
+    "subtitle": "驗證 PDF 檔案中的數位簽章。檢查憑證有效性、查看簽署者詳細資料並確認文件完整性。所有處理都在瀏覽器中進行。",
+    "auto": {
+      "4205553299": "设置",
+      "669c25442e": "文件",
+      "fb82dce5a5": "上传文件",
+      "cb52b69ce2": "上传文件",
+      "5515cecbd8": "upload PDF",
+      "c0481911b9": "文件",
+      "1224313bb3": "设置",
+      "1118722b1e": "设置",
+      "730ace573c": "设置",
+      "bec47e5e06": "设置",
+      "fcf771a47b": "数字签名",
+      "3743e5ffa0": "设置",
+      "a390b2f206": "设置",
+      "023a377cc0": "设置",
+      "1d96bf7498": "设置",
+      "6a2b4465ca": "设置",
+      "63c5883377": "正在处理中..."
+    },
+    "dynamic": {
+      "5ae8ade49f": "操作失败，请重试。",
+      "2f59e87d76": "正在分析签名...",
+      "dfa18c01c2": "解析证书文件失败。",
+      "4cff9de413": "证书无效",
+      "934e0a255a": "请select a .pem, .crt, .cer, or .der certificate file.",
+      "ce9a858d22": "请选择一个 PDF 文件。"
+    }
   },
   "timestampPdf": {
     "name": "PDF 時間戳記",
@@ -1042,59 +3259,368 @@
     "tsaSectionTitle": "時間戳記伺服器（TSA）",
     "selectTsa": "選擇 TSA 伺服器",
     "applyTimestamp": "套用時間戳記",
-    "successMessage": "PDF 時間戳記新增成功！時間戳記可在任何 PDF 閱讀器中驗證。"
+    "successMessage": "PDF 時間戳記新增成功！時間戳記可在任何 PDF 閱讀器中驗證。",
+    "auto": {
+      "bf9bc0c472": "设置",
+      "f431115754": "设置",
+      "8763b90ca8": "设置",
+      "3c0dae3c70": "设置",
+      "5215980529": "下载",
+      "c71dbd5d31": "下载",
+      "fcf771a47b": "数字签名",
+      "114a8d8958": "设置",
+      "0f07855beb": "验证签名",
+      "c38a47c616": "设置",
+      "e97f784fcc": "正在处理中...",
+      "3691aa32b8": "设置",
+      "c909f24756": "设置",
+      "0302dba565": "设置"
+    },
+    "dynamic": {
+      "f75cc851aa": "操作失败，请重试。",
+      "04775422d6": "设置",
+      "696cf328fe": "正在应用时间戳...",
+      "fab49a349d": "请先上传一个 PDF 文件。",
+      "e237ddc696": "无文件",
+      "15d57e864b": "{{value0}}",
+      "90c1cb027a": "{{value0}} • {{value1}} pages",
+      "bdf9248f12": "正在处理中...",
+      "a36f98a780": "请选择一个 PDF 文件。"
+    }
   },
   "emailToPdf": {
     "name": "電子郵件轉 PDF",
     "subtitle": "將電子郵件檔案（EML、MSG）轉換為 PDF 格式。支援 Outlook 匯出和標準電子郵件格式。",
     "acceptedFormats": "EML、MSG 檔案",
     "convertButton": "轉換為 PDF",
-    "pageTitle": "電子郵件轉 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "電子郵件轉 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "85d03fc690": "转换选项",
+      "ee14050617": "Letter",
+      "663f1895a4": "上传电子邮件文件",
+      "a38c1a4b63": "文件",
+      "1f22ff8294": "设置",
+      "21f1cf5699": "文件",
+      "2f4e232e46": "设置",
+      "d43e38ba8b": "设置",
+      "fe17a5bb0f": "编辑 PDF",
+      "d3ff2e8cb2": "设置",
+      "b741abdfda": "正在处理中...",
+      "2af4ca1612": "设置"
+    },
+    "dynamic": {
+      "39559b0498": "转换过程中发生错误。错误信息：{{value0}}",
+      "21867b84d8": "已成功将 {{value0}} 个 {{value1}} 文件转换为 PDF。",
+      "1c842c2b35": "转换完成",
+      "cd92d7b06d": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
+      "678d5087c0": "正在转换邮件...",
+      "1e59a9f4bf": "已成功将 {{value0}} 转换为 PDF。",
+      "c34c969696": "正在生成 PDF...",
+      "bf0046c338": "正在处理中...",
+      "0b58b429fa": "正在加载 PDF 引擎...",
+      "e2b1b6aa34": "请select at least one {{value0}} file (.eml or .msg)."
+    }
   },
   "fontToOutline": {
     "name": "字型轉外框",
     "subtitle": "將所有字型轉換為向量外框，確保在所有裝置上呈現一致。",
-    "pageTitle": "字型轉外框 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "字型轉外框 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "1a036f9ea6": "设置",
+      "548e9ac2aa": "设置",
+      "5acbe5c979": "设置",
+      "3a6d4fed99": "正在处理中...",
+      "51ffebf638": "设置",
+      "d01f22915e": "设置",
+      "7cb75feead": "转换为轮廓",
+      "81f0a711f8": "select PDF file with embedded fonts",
+      "53a0d0fee5": "设置",
+      "50533a1de1": "设置",
+      "0e0f0be1f5": "设置",
+      "c80ddda7d0": "转换为图片型 PDF",
+      "a6cc6ebc72": "减小 PDF 文件大小",
+      "adfbd1a347": "设置",
+      "02a3e813d7": "修复损坏的 PDF 文件",
+      "a26ee4f5a0": "正在处理中...",
+      "1a4d97e7db": "正在处理中...",
+      "4d65f6e337": "设置",
+      "9c649e3408": "是的！所有处理完全在您的浏览器中使用 WebAssembly 完成。您的文件不会离开设备。"
+    },
+    "dynamic": {
+      "bc182f005b": "没有可处理的 PDF。",
+      "759b439f61": "已处理 {{value0}} 个 PDF。",
+      "d4bf39f87d": "正在处理中...",
+      "b9e71d80df": "正在处理中...",
+      "7db89a06ed": "正在将字体转为轮廓...",
+      "ff6a22c28e": "请select at least one PDF file."
+    }
   },
   "deskewPdf": {
     "name": "PDF 歪斜修正",
     "subtitle": "使用 OpenCV 自動調正傾斜的掃描頁面。",
-    "pageTitle": "PDF 歪斜修正 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF 歪斜修正 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "d1814f6a72": "设置",
+      "4963c88af5": "设置",
+      "2586fc2c0d": "设置",
+      "da3ab1d77f": "设置",
+      "bd8ec38413": "设置",
+      "9b5a66dc2f": "设置",
+      "73964943e3": "150（默认）",
+      "eb1160a61f": "设置",
+      "f2ae783be9": "设置",
+      "da47ed36b0": "设置",
+      "7acba5f21f": "设置",
+      "16d83c4d17": "设置",
+      "26ef16e69a": "设置",
+      "518fc45218": "设置",
+      "d2da212c01": "设置",
+      "9160ff9602": "设置",
+      "c80ddda7d0": "转换为图片型 PDF",
+      "a6cc6ebc72": "减小 PDF 文件大小",
+      "02a3e813d7": "修复损坏的 PDF 文件",
+      "989dd4ea29": "设置",
+      "a154d77304": "设置",
+      "253e8cb914": "设置",
+      "bcb7b013dd": "正在处理中...",
+      "9c649e3408": "是的！所有处理完全在您的浏览器中使用 WebAssembly 完成。您的文件不会离开设备。"
+    },
+    "dynamic": {
+      "506e305bcf": "操作失败，请重试。",
+      "d1f2bb540e": "文件",
+      "e35d1ef53a": "正在校正 {{value0}}...",
+      "940e55b69e": "正在初始化 PyMuPDF...",
+      "92c18c8069": "请select at least one PDF file.",
+      "d5273db50d": "设置",
+      "9462cdd58a": "设置"
+    }
   },
   "pdfToWord": {
     "name": "PDF 轉 Word",
     "subtitle": "將 PDF 檔案轉換為可編輯的 Word 文件。",
-    "pageTitle": "PDF 轉 Word Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF 轉 Word Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "6d4fcf7a04": "转换为 DOCX",
+      "c91e040a8e": "Word 转 PDF",
+      "e9491f0c3f": "免费的在线word to pdf tool工具",
+      "b4210b54f6": "PDF 转文本",
+      "5f75695a4d": "免费的在线pdf to text tool工具",
+      "7800ff3767": "PDF 转 Excel",
+      "fa3b5f9252": "免费的在线pdf to excel tool工具",
+      "0a193ffe0a": "编辑 PDF"
+    },
+    "dynamic": {
+      "91c47d8ed2": "转换过程中发生错误。错误信息：{{value0}}",
+      "7a04401188": "设置",
+      "f3dfa823b1": "转换完成",
+      "20a5ae49d7": "正在创建 ZIP 存档...",
+      "08e374b418": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
+      "f42045b8cd": "设置",
+      "63a03d2fbe": "正在转换 {{value0}}...",
+      "8d9c37f316": "正在转换...",
+      "1292fc8a63": "正在加载 PDF 转换器...",
+      "6d8a487c85": "请select at least one PDF file.",
+      "9ca476fb35": "{{value0}} • 无法加载页数",
+      "bc5256a321": "{{value0}} • {{value1}} pages",
+      "55c6560fcf": "{{value0}} • {{value1}}"
+    }
   },
   "extractImages": {
     "name": "擷取圖片",
     "subtitle": "從 PDF 檔案中擷取所有嵌入的圖片。",
-    "pageTitle": "擷取圖片 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "擷取圖片 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "28dbbb96be": "已提取图片",
+      "5cb33b0e74": "全部下载（ZIP）",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "4c5a231a14": "正在创建 ZIP 存档...",
+      "0dd88a4111": "提取过程中发生错误。错误信息：{{value0}}",
+      "21a0109112": "设置",
+      "580169c9a7": "提取完成",
+      "7dc9d0c8cc": "设置",
+      "815be584e9": "未找到图片",
+      "699a1ba99d": "正在从 {{value0}} 提取图片...",
+      "f496e0ee9b": "正在加载 PDF 处理器...",
+      "62200eb753": "请select at least one PDF file.",
+      "ffccc13590": "{{value0}} • 无法加载页数",
+      "71adf08528": "{{value0}} • {{value1}} pages",
+      "de57f04c3f": "{{value0}} • {{value1}}"
+    }
   },
   "pdfToMarkdown": {
     "name": "PDF 轉 Markdown",
     "subtitle": "將 PDF 文字和表格轉換為 Markdown 格式。",
-    "pageTitle": "PDF 轉 Markdown Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF 轉 Markdown Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "d0e1f8d4bf": "转换为 Markdown",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "21ac0a03e2": "转换过程中发生错误。错误信息：{{value0}}",
+      "b6ada8ef5f": "设置",
+      "794de0ca49": "转换完成",
+      "5178f580d6": "正在创建 ZIP 存档...",
+      "1556bdf597": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
+      "c70ab352e3": "设置",
+      "a1124f961b": "正在转换 {{value0}}...",
+      "9ab0c4bc34": "正在转换...",
+      "0beadcf720": "正在加载 PDF 转换器...",
+      "514702f7a2": "请select at least one PDF file.",
+      "36dc12cdf2": "{{value0}} • 无法加载页数",
+      "a91a90531d": "{{value0}} • {{value1}} pages",
+      "c22fc17c8e": "{{value0}} • {{value1}}",
+      "9a68de9cfd": "操作失败，请重试。",
+      "223165f5fd": "转换错误",
+      "e98ede1f9b": "正在转换为 Markdown..."
+    }
   },
   "preparePdfForAi": {
     "name": "為 AI 準備 PDF",
     "subtitle": "將 PDF 內容擷取為 LlamaIndex JSON，用於 RAG/LLM 管線。",
-    "pageTitle": "為 AI 準備 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "為 AI 準備 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "d3dd83dfd6": "输出格式：",
+      "f1689180f8": "文件",
+      "1937b24369": "提取供 AI 使用",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "e7858b22ed": "提取过程中发生错误。错误信息：{{value0}}",
+      "e38c16fa0d": "设置",
+      "8a1f9370be": "设置",
+      "a1df979002": "设置",
+      "68f4ee2e54": "提取完成",
+      "0c98912c52": "正在创建 ZIP 存档...",
+      "fdee42364e": "正在为 AI 提取 {{value0}}（{{value1}}/{{value2}}）...",
+      "81666e637a": "设置",
+      "cd0eb912f2": "正在为 AI 提取 {{value0}}...",
+      "10e7294ea2": "正在提取...",
+      "af11d57398": "正在加载转换引擎...",
+      "c088c28b80": "请select at least one PDF file.",
+      "e06864fb5a": "{{value0}} • 无法加载页数",
+      "a807df92a6": "{{value0}} • {{value1}} pages",
+      "570fd297dc": "{{value0}} • {{value1}}"
+    }
   },
   "pdfOcg": {
     "name": "PDF 圖層（OCG）",
     "subtitle": "檢視、切換、新增和刪除 PDF 中的 OCG 圖層。",
-    "pageTitle": "PDF 圖層（OCG） Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF 圖層（OCG） Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "039e54acff": "加载图层",
+      "a39ef9a1e1": "添加图层",
+      "57058a23f6": "正在加载图层...",
+      "0c7a76f393": "下载修改后的 PDF",
+      "a111d5c383": "设置",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF",
+      "37b8c9abce": "设置",
+      "d4beb764b8": "图层名称"
+    },
+    "dynamic": {
+      "3354cf3da1": "请选择一个 PDF 文件。",
+      "fc393bf7c9": "设置",
+      "4b469a48b4": "设置",
+      "6f5396866d": "请enter a layer name",
+      "421586fd8a": "名称无效",
+      "a6ea2beda2": "正在处理中...",
+      "454a380e0d": "正在从 {{value0}} 加载图层...",
+      "b99ff491de": "正在加载转换引擎...",
+      "e6cf4e340b": "无文件",
+      "73ae148bab": "操作失败，请重试。",
+      "3173dfc13e": "操作失败，请重试。",
+      "762efbb2e1": "设置",
+      "1bcc36f306": "操作失败，请重试。",
+      "a3681b9fa8": "{{value0}} • 无法加载页数",
+      "ebdf5cb44f": "{{value0}} • {{value1}} pages",
+      "1c578f88cb": "{{value0}} • {{value1}}"
+    }
   },
   "pdfToPdfa": {
     "name": "PDF 轉 PDF/A",
     "subtitle": "將 PDF 轉換為 PDF/A 格式以進行長期歸檔。",
-    "pageTitle": "PDF 轉 PDF/A Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF 轉 PDF/A Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "94500c0b77": "设置",
+      "708ba4d448": "设置",
+      "f8504f4422": "设置",
+      "8616379b2a": "设置",
+      "e4699893d4": "设置",
+      "01d8abb362": "转换为 PDF/A",
+      "bee506ba25": "正在转换...",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "d107a9b16c": "转换过程中发生错误。错误信息：{{value0}}",
+      "a35ab56af2": "设置",
+      "9c1d9b0762": "转换完成",
+      "1a64674925": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
+      "7c0a96310b": "正在将多个 PDF 转换为 PDF/A...",
+      "68390fdb3e": "设置",
+      "7f598ce1b2": "正在初始化 Ghostscript...",
+      "86822cd801": "设置",
+      "b4d3f1eaca": "请select at least one PDF file.",
+      "5c1931ff9b": "{{value0}} • 无法加载页数",
+      "7fdcb51569": "{{value0}} • {{value1}} pages",
+      "1ebf7b22d2": "{{value0}} • {{value1}}"
+    }
   },
   "rasterizePdf": {
     "name": "光柵化 PDF",
     "subtitle": "將 PDF 轉換為基於影像的 PDF。展平圖層並移除可選取的文字。",
-    "pageTitle": "光柵化 PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "光柵化 PDF Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "4c276f593d": "设置",
+      "73964943e3": "150（默认）",
+      "de843a1ccb": "设置",
+      "086eceb1ee": "设置",
+      "cd120f43cc": "设置",
+      "2a3202f9fd": "设置",
+      "f883714d8b": "文件",
+      "bb9dede377": "合并 PDF",
+      "ae395b2670": "压缩 PDF",
+      "0784d816a9": "分割 PDF",
+      "0a193ffe0a": "编辑 PDF",
+      "ed40c6ff84": "旋转 PDF"
+    },
+    "dynamic": {
+      "6cbf4cb50e": "操作失败，请重试。",
+      "2959c9c375": "设置",
+      "578a9e9e78": "设置",
+      "6b16ccd5f0": "设置",
+      "7fffdf48a8": "设置",
+      "8b8aebca3a": "正在创建 ZIP 存档...",
+      "024098c071": "设置",
+      "29b590fbec": "设置",
+      "81511ff0eb": "设置",
+      "ba04be1c08": "设置",
+      "d87f270bce": "正在加载转换引擎...",
+      "d68750cff1": "请select at least one PDF file.",
+      "3750c60c73": "{{value0}} • 无法加载页数",
+      "d3132c7fc8": "{{value0}} • {{value1}} pages",
+      "5f28791b8c": "{{value0}} • {{value1}}"
+    }
   },
   "pdfWorkflow": {
     "name": "PDF 工作流程建構器",
@@ -1194,7 +3720,13 @@
       "storageQuotaExceeded": "儲存工作流程失敗：超出儲存配額。請嘗試刪除舊範本。",
       "failedToImport": "匯入工作流程失敗：{{message}}"
     },
-    "pageTitle": "PDF 工作流程建構器 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF 工作流程建構器 Online Free - PDF Tool | TuHe PDF",
+    "nodeCount": "{{count}} 个节点",
+    "incorrectPassword": "密码错误",
+    "executionFailed": "工作流执行失败，请重试。",
+    "pdfLoadFailed": "PDF 加载失败，请重试。",
+    "imageLoadFailed": "图片加载失败，请重试。",
+    "fileLoadFailed": "文件加载失败，请重试。"
   },
   "wasmSettings": {
     "title": "進階功能設定",
@@ -1234,7 +3766,14 @@
     "resetWithDefaults": "已清除自訂覆寫。預先設定的預設值已啟用。",
     "resetNoDefaults": "所有設定和快取模組均已清除。",
     "licenseTitle": "授權條款：",
-    "licenseDescription": "外部模組（PyMuPDF、Ghostscript、CoherentPDF）根據 AGPL-3.0 或類似的 copyleft 授權條款授權。設定及使用這些模組即表示您同意各自的授權條款。TuHe PDF 與任何遵循預期介面的 Ghostscript WASM 和 PyMuPDF WASM 實作相容。"
+    "licenseDescription": "外部模組（PyMuPDF、Ghostscript、CoherentPDF）根據 AGPL-3.0 或類似的 copyleft 授權條款授權。設定及使用這些模組即表示您同意各自的授權條款。TuHe PDF 與任何遵循預期介面的 Ghostscript WASM 和 PyMuPDF WASM 實作相容。",
+    "pymupdfName": "PyMuPDF",
+    "ghostscriptName": "Ghostscript",
+    "cpdfName": "CoherentPDF",
+    "pymupdfUrlPlaceholder": "https://your-cdn.com/pymupdf-wasm/",
+    "ghostscriptUrlPlaceholder": "https://your-cdn.com/ghostscript-wasm/",
+    "cpdfUrlPlaceholder": "https://your-cdn.com/cpdf/",
+    "saveFailedMessage": "配置保存失败，请重试。"
   },
   "pdfOverlay": {
     "name": "PDF 疊加",
@@ -1262,6 +3801,43 @@
     "faqSinglePageAnswer": "可以！啟用重複使用功能後，疊加 PDF 的頁面會在所有基礎頁面上重複套用。單頁浮水印會套用至每一頁。",
     "faqPrivacyQuestion": "我的檔案是否私密安全？",
     "faqPrivacyAnswer": "當然！所有處理都在您的瀏覽器中進行。您的檔案永遠不會離開您的裝置，確保完全隱私。",
-    "pageTitle": "PDF 疊加 Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF 疊加 Online Free - PDF Tool | TuHe PDF",
+    "auto": {
+      "ff66d47ae5": "设置"
+    },
+    "dynamic": {
+      "1436fe7ce3": "发生错误：{{value0}}。",
+      "1f995b4468": "处理失败",
+      "7fed9a675a": "设置",
+      "2bbca695fc": "正在读取文件...",
+      "657cdd2847": "正在初始化 PDF 引擎...",
+      "e3f55281aa": "请upload both a base PDF and an overlay/underlay PDF.",
+      "fc7bc22501": "缺少文件"
+    },
+    "applying": "正在应用{{mode}}...",
+    "processFailed": "叠加处理失败，请重试。"
+  },
+  "formCreator": {
+    "dynamic": {
+      "4b5dca4049": "操作失败，请重试。",
+      "605d78d3b5": "页面",
+      "736b20157d": "设置",
+      "300198123f": "字段名重复",
+      "56f9bd1ca6": "设置",
+      "7253f09d38": "设置",
+      "a577a19cd6": "字段名重复",
+      "ece17e24e4": "设置",
+      "f486de300f": "设置",
+      "d005f52806": "设置",
+      "6abf499dba": "设置",
+      "cbb0fa41b2": "设置"
+    },
+    "selectPlaceholder": "请选择...",
+    "defaultButton": "按钮",
+    "tooltipPlaceholder": "供屏幕阅读器使用的说明",
+    "defaultDateFormat": "yyyy/mm/dd",
+    "clickToUploadImage": "点击上传图片",
+    "invalidData": "无效数据",
+    "barcode": "条形码"
   }
 }

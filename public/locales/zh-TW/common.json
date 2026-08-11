@@ -383,5 +383,104 @@
     "heading": "此工具已被停用",
     "message": "此工具在您的部署環境中無法使用。請聯絡管理員以取得更多資訊。",
     "backHome": "回到首頁"
+  },
+  "pagePreview": {
+    "closeEsc": "关闭（Esc）",
+    "previousPage": "上一页",
+    "nextPage": "下一页",
+    "failedToRender": "页面渲染失败"
+  },
+  "pdfLayers": {
+    "noLayersTitle": "此 PDF 没有图层（OCG）。",
+    "noLayersHint": "添加一个新图层以开始使用！",
+    "defaultLayerName": "图层 {{number}}",
+    "addChildLayer": "添加子图层",
+    "deleteLayer": "删除图层"
+  },
+  "passwordPrompt": {
+    "required": "需要密码",
+    "enterPassword": "输入密码",
+    "skip": "跳过",
+    "unlock": "解锁",
+    "enterEach": "输入每个加密文件的密码",
+    "useSame": "所有文件使用相同密码",
+    "passwordForAll": "所有文件的密码",
+    "skipAll": "全部跳过",
+    "unlockAll": "全部解锁",
+    "enterRequired": "请输入密码",
+    "validating": "正在验证...",
+    "incorrect": "密码错误，请重试。",
+    "decrypting": "正在解密...",
+    "decryptFailed": "解密失败。请改用“解密 PDF”工具。",
+    "filesNeedPassword": "{{count}} 个文件需要密码",
+    "password": "密码",
+    "skipFile": "跳过此文件",
+    "skipRemaining": "跳过剩余文件",
+    "unlockRemaining": "解锁剩余文件（{{count}}）",
+    "includeFile": "包含此文件",
+    "enterForFile": "请输入 {{name}} 的密码或跳过它",
+    "validatingFile": "正在验证 {{current}} / {{total}}：{{name}}",
+    "decryptingFile": "正在解密 {{current}} / {{total}}：{{name}}",
+    "wrongForFiles": "以下文件密码错误：{{names}}",
+    "retryFailed": "重试失败项"
+  },
+  "fileHandler": {
+    "loadingPdf": "正在加载 PDF...",
+    "analyzingMetadata": "正在分析完整 PDF 元数据...",
+    "infoDictionary": "信息字典",
+    "notSet": "- 未设置 -",
+    "noInfoData": "- 未找到信息字典数据 -",
+    "formFields": "交互式表单字段",
+    "noFormFields": "- 未找到交互式表单字段 -",
+    "altContainer": "（替代容器）",
+    "emptyResource": "（空资源）",
+    "xmpMetadata": "XMP 元数据",
+    "noXmpProperties": "- 未找到可解析的 XMP 属性 -",
+    "xmpParseFailed": "- 无法解析 XMP 元数据。-",
+    "noXmpMetadata": "- 未找到 XMP 元数据 -",
+    "metadataAnalyzeFailed": "无法完整分析 PDF。文件可能已损坏或具有异常结构。",
+    "metadataKeyPlaceholder": "键（例如：部门）",
+    "metadataValuePlaceholder": "值（例如：市场部）",
+    "loadFailed": "无法加载 PDF。文件可能无效、已损坏或受密码保护。",
+    "loadingDocuments": "正在加载 PDF 文档...",
+    "invalidFilesTitle": "无效文件",
+    "unsupportedImages": "部分文件已被跳过，因为它们不是受支持的图片。"
+  },
+  "formCreator": {
+    "invalidPageNumber": "请输入 1 到 {{max}} 之间的有效页码。",
+    "noFieldsAdded": "请至少添加一个字段后再下载。",
+    "noPagesAvailable": "未找到页面。请创建空白 PDF 或上传一个文件。",
+    "resetConfirm": "确定要重置吗？您所有的操作都将丢失。"
+  },
+  "emailToPdf": {
+    "unknownDate": "未知日期",
+    "attachments": "附件 ({{count}})",
+    "cc": "抄送",
+    "bcc": "密送",
+    "from": "发件人",
+    "to": "收件人",
+    "unknown": "未知",
+    "date": "日期"
+  },
+  "markdownEditor": {
+    "toggleSyncScroll": "切换同步滚动"
+  },
+  "helpers": {
+    "custom": "自定义",
+    "bytes": "字节",
+    "k": "K"
+  },
+  "workbench": {
+    "noMatchingTools": "没有匹配的工具",
+    "closeTab": "关闭标签页",
+    "closeTabMessage": "「{{title}}」中还有已上传的文件或正在进行的任务，关闭后这些进度将丢失。确定要关闭吗？",
+    "closeTabConfirm": "仍然关闭"
+  },
+  "viewMetadata": {
+    "noInfoDict": "- 未找到 Info Dictionary 数据 -",
+    "noFormFields": "- 未找到交互式表单字段 -",
+    "noXmp": "- 未找到可解析的 XMP 属性 -",
+    "xmpError": "- XMP XML 解析错误，显示原始数据。",
+    "noXmpData": "- 未找到 XMP 元数据"
   }
 }

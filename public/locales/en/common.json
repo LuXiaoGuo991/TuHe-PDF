@@ -371,7 +371,29 @@
       "e3d25c4962": "Render Error",
       "6850b548a2": "Loading page {{value0}}...",
       "4e708e8c7c": "Mermaid Error: {{value0}}"
+    },
+    "workflow": {
+      "status": {
+        "running": "Running...",
+        "complete": "Complete",
+        "failed": "Failed",
+        "connected": "Connected",
+        "notConnected": "Not connected"
+      }
     }
+  },
+  "pagePreview": {
+    "closeEsc": "Close (Esc)",
+    "previousPage": "Previous page",
+    "nextPage": "Next page",
+    "failedToRender": "Failed to render page"
+  },
+  "pdfLayers": {
+    "noLayersTitle": "This PDF has no layers (OCG).",
+    "noLayersHint": "Add a new layer to get started!",
+    "defaultLayerName": "Layer {{number}}",
+    "addChildLayer": "Add child layer",
+    "deleteLayer": "Delete layer"
   },
   "about": {
     "hero": {
@@ -535,7 +557,13 @@
   },
   "emailToPdf": {
     "unknownDate": "Unknown Date",
-    "attachments": "Attachments ({{count}})"
+    "attachments": "Attachments ({{count}})",
+    "cc": "CC",
+    "bcc": "BCC",
+    "from": "From",
+    "to": "To",
+    "unknown": "Unknown",
+    "date": "Date"
   },
   "markdownEditor": {
     "toggleSyncScroll": "Toggle sync scroll"
@@ -557,5 +585,15 @@
     "noXmp": "- No parseable XMP properties found -",
     "xmpError": "- Error parsing XMP XML. Displaying raw.",
     "noXmpData": "- No XMP metadata found"
+  },
+  "wasmProvider": {
+    "advancedFeatureRequired": "Advanced Feature Required",
+    "externalModuleNeeded": "External processing module needed",
+    "featureRequires": "This feature requires <strong>{{name}}</strong> to be configured.",
+    "featuresEnabled": "Features enabled by this module:",
+    "moreFeatures": "+ {{count}} more...",
+    "agplNotice": "This module is licensed under AGPL-3.0. By configuring it, you agree to its license terms.",
+    "cancel": "Cancel",
+    "configure": "Configure"
   }
 }

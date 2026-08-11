@@ -400,7 +400,11 @@ async function generatePreview() {
           ctx.font = '10px sans-serif';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
-          ctx.fillText('(blank)', x + slotWidth / 2, y + slotHeight / 2);
+          ctx.fillText(
+            translate('tools:pdfBooklet.blank', '(blank)'),
+            x + slotWidth / 2,
+            y + slotHeight / 2
+          );
         }
       }
     }
@@ -409,12 +413,19 @@ async function generatePreview() {
     ctx.font = 'bold 10px sans-serif';
     ctx.textAlign = 'right';
     ctx.textBaseline = 'top';
-    const sideLabel = isBookletMode ? (isFront ? 'Front' : 'Back') : '';
-    ctx.fillText(
-      `Sheet ${Math.floor(sheetIndex / (isBookletMode ? 2 : 1)) + 1} ${sideLabel}`,
-      canvasWidth - 6,
-      4
-    );
+    const sheetWord = translate('tools:pdfBooklet.sheet', 'Sheet');
+    if (isBookletMode) {
+      const sideLabel = isFront
+        ? translate('tools:pdfBooklet.front', 'Front')
+        : translate('tools:pdfBooklet.back', 'Back');
+      ctx.fillText(
+        `${sheetWord} ${Math.floor(sheetIndex / 2) + 1} ${sideLabel}`,
+        canvasWidth - 6,
+        4
+      );
+    } else {
+      ctx.fillText(`${sheetWord} ${sheetIndex + 1}`, canvasWidth - 6, 4);
+    }
 
     previewArea.appendChild(canvas);
   }

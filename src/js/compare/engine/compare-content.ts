@@ -6,6 +6,16 @@ import type {
   CompareRectangle,
   CompareTextChange,
 } from '../types.ts';
+import { t } from '../../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 
 const HEADER_FOOTER_ZONE = 0.12;
 
@@ -59,7 +69,7 @@ export function diffAnnotations(
         id: `annotation-removed-${idx++}`,
         type: 'removed',
         category: 'annotation',
-        description: formatAnnotationDescription('Removed', ann),
+        description: formatAnnotationDescription('removed', ann),
         beforeText: ann.contents || ann.title || '',
         afterText: '',
         beforeRects: [ann.rect],
@@ -74,7 +84,7 @@ export function diffAnnotations(
         id: `annotation-added-${idx++}`,
         type: 'added',
         category: 'annotation',
-        description: formatAnnotationDescription('Added', ann),
+        description: formatAnnotationDescription('added', ann),
         beforeText: '',
         afterText: ann.contents || ann.title || '',
         beforeRects: [],
@@ -95,15 +105,27 @@ function shouldCompareAnnotation(annotation: CompareAnnotation): boolean {
 }
 
 function formatAnnotationDescription(
-  action: 'Added' | 'Removed',
+  action: 'added' | 'removed',
   annotation: CompareAnnotation
 ): string {
   const label = annotation.contents || annotation.title;
+  const actionText =
+    action === 'added'
+      ? translate('tools:comparePdfs.changeAdded', 'Added')
+      : translate('tools:comparePdfs.changeDeleted', 'Deleted');
   if (!label) {
-    return `${action} ${annotation.subtype} annotation`;
+    return translate(
+      'tools:comparePdfs.annotationAction',
+      `${actionText} ${annotation.subtype} annotation`,
+      { action: actionText, subtype: annotation.subtype }
+    );
   }
 
-  return `${action} ${annotation.subtype} annotation: "${label}"`;
+  return translate(
+    'tools:comparePdfs.annotationActionWithLabel',
+    `${actionText} ${annotation.subtype} annotation: "${label}"`,
+    { action: actionText, subtype: annotation.subtype, label }
+  );
 }
 
 function annotationKey(ann: CompareAnnotation): string {
@@ -130,7 +152,16 @@ export function diffImages(
           id: `image-modified-${idx++}`,
           type: 'modified',
           category: 'image',
-          description: `Image resized from ${bImg.width}×${bImg.height} to ${match.width}×${match.height}`,
+          description: translate(
+            'tools:comparePdfs.imageResized',
+            `Image resized from ${bImg.width}×${bImg.height} to ${match.width}×${match.height}`,
+            {
+              beforeWidth: bImg.width,
+              beforeHeight: bImg.height,
+              afterWidth: match.width,
+              afterHeight: match.height,
+            }
+          ),
           beforeText: `${bImg.width}×${bImg.height}`,
           afterText: `${match.width}×${match.height}`,
           beforeRects: [bImg.rect],
@@ -142,7 +173,11 @@ export function diffImages(
         id: `image-removed-${idx++}`,
         type: 'removed',
         category: 'image',
-        description: `Removed image (${bImg.width}×${bImg.height})`,
+        description: translate(
+          'tools:comparePdfs.imageRemoved',
+          `Removed image (${bImg.width}×${bImg.height})`,
+          { width: bImg.width, height: bImg.height }
+        ),
         beforeText: '',
         afterText: '',
         beforeRects: [bImg.rect],
@@ -157,7 +192,11 @@ export function diffImages(
         id: `image-added-${idx++}`,
         type: 'added',
         category: 'image',
-        description: `Added image (${aImg.width}×${aImg.height})`,
+        description: translate(
+          'tools:comparePdfs.imageAdded',
+          `Added image (${aImg.width}×${aImg.height})`,
+          { width: aImg.width, height: aImg.height }
+        ),
         beforeText: '',
         afterText: '',
         beforeRects: [],
@@ -207,7 +246,10 @@ export function detectBackgroundChanges(
         id: `background-changed-${baseId}`,
         type: 'modified',
         category: 'background',
-        description: 'Page background or layout changed',
+        description: translate(
+          'tools:comparePdfs.backgroundChanged',
+          'Page background or layout changed'
+        ),
         beforeText: '',
         afterText: '',
         beforeRects: [

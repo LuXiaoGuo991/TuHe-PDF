@@ -423,8 +423,14 @@ function renderChangeList() {
   if (!comparison || visibleChanges.length === 0) {
     emptyState.textContent =
       comparison?.status === 'match'
-        ? 'No differences detected on this page.'
-        : 'No changes match the current filter.';
+        ? translate(
+            'tools:comparePdfs.noDifferences',
+            'No differences detected on this page.'
+          )
+        : translate(
+            'tools:comparePdfs.noMatchingChanges',
+            'No changes match the current filter.'
+          );
     emptyState.classList.remove('hidden');
     list.classList.add('hidden');
     prevChangeBtn.disabled = true;
@@ -437,13 +443,19 @@ function renderChangeList() {
   list.classList.remove('hidden');
 
   const typeLabels: Record<string, string> = {
-    added: 'Added',
-    removed: 'Deleted',
-    modified: 'Modified',
-    moved: 'Moved',
-    'style-changed': 'Style Changed',
-    'page-added': 'Page Added',
-    'page-removed': 'Page Removed',
+    added: translate('tools:comparePdfs.changeAdded', 'Added'),
+    removed: translate('tools:comparePdfs.changeDeleted', 'Deleted'),
+    modified: translate('tools:comparePdfs.changeModified', 'Modified'),
+    moved: translate('tools:comparePdfs.changeMoved', 'Moved'),
+    'style-changed': translate(
+      'tools:comparePdfs.changeStyleChanged',
+      'Style Changed'
+    ),
+    'page-added': translate('tools:comparePdfs.changePageAdded', 'Page Added'),
+    'page-removed': translate(
+      'tools:comparePdfs.changePageRemoved',
+      'Page Removed'
+    ),
   };
 
   const grouped = new Map<

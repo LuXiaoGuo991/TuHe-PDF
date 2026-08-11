@@ -99,6 +99,7 @@ async function proxyRequest(request, env, sourceBaseUrl, subpath, origin) {
     return new Response(
       JSON.stringify({
         error: 'Source not configured',
+        errorZh: '来源未配置',
         message: 'This WASM module source URL has not been configured.',
       }),
       {
@@ -121,6 +122,7 @@ async function proxyRequest(request, env, sourceBaseUrl, subpath, origin) {
     return new Response(
       JSON.stringify({
         error: 'Forbidden file type',
+        errorZh: '禁止的文件类型',
         message: 'Only WASM-related file types are allowed.',
       }),
       {
@@ -150,6 +152,7 @@ async function proxyRequest(request, env, sourceBaseUrl, subpath, origin) {
         return new Response(
           JSON.stringify({
             error: 'Failed to fetch resource',
+            errorZh: '获取资源失败',
             status: response.status,
             statusText: response.statusText,
             targetUrl: targetUrl,
@@ -172,6 +175,7 @@ async function proxyRequest(request, env, sourceBaseUrl, subpath, origin) {
         return new Response(
           JSON.stringify({
             error: 'File too large',
+            errorZh: '文件过大',
             message: `File exceeds maximum size of ${MAX_FILE_SIZE_BYTES / 1024 / 1024}MB`,
           }),
           {
@@ -211,6 +215,7 @@ async function proxyRequest(request, env, sourceBaseUrl, subpath, origin) {
     return new Response(
       JSON.stringify({
         error: 'Proxy error',
+        errorZh: '代理错误',
         message: error.message,
       }),
       {
@@ -238,6 +243,7 @@ export default {
       return new Response(
         JSON.stringify({
           error: 'Forbidden',
+          errorZh: '禁止访问',
           message:
             'Origin not allowed. Add your domain to ALLOWED_ORIGINS if self-hosting.',
         }),
@@ -275,6 +281,7 @@ export default {
         return new Response(
           JSON.stringify({
             error: 'Rate limit exceeded',
+            errorZh: '超出速率限制',
             message: `Maximum ${RATE_LIMIT_MAX_REQUESTS} requests per minute.`,
           }),
           {
@@ -342,6 +349,7 @@ export default {
     return new Response(
       JSON.stringify({
         error: 'Not Found',
+        errorZh: '未找到',
         message: 'Use /pymupdf/*, /gs/*, or /cpdf/* endpoints',
       }),
       {

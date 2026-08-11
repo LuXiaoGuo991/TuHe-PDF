@@ -123,7 +123,13 @@ async function initializePage() {
 
     try {
       await executeWorkflow(editor, engine, area, (progress) => {
-        const msg = progress.message || `Processing ${progress.nodeName}...`;
+        const msg =
+          progress.message ||
+          translate(
+            'tools:pdfWorkflow.processingNode',
+            `Processing ${progress.nodeName}...`,
+            { value0: progress.nodeName }
+          );
         if (statusText) statusText.textContent = msg;
       });
       if (statusText)
@@ -751,7 +757,9 @@ function showNodeSettings(node: BaseWorkflowNode) {
     const uploadBtn = document.createElement('button');
     uploadBtn.className =
       'w-full bg-gray-700 hover:bg-gray-600 text-white text-xs px-3 py-2 rounded-lg transition-colors';
-    uploadBtn.textContent = node.hasFile() ? 'Add More Files' : 'Upload PDFs';
+    uploadBtn.textContent = node.hasFile()
+      ? translate('tools:pdfWorkflow.addMoreFiles', 'Add More Files')
+      : translate('tools:pdfWorkflow.uploadPdfs', 'Upload PDFs');
 
     const fileInput = document.createElement('input');
     fileInput.type = 'file';
@@ -830,8 +838,8 @@ function showNodeSettings(node: BaseWorkflowNode) {
     uploadBtn.className =
       'w-full bg-gray-700 hover:bg-gray-600 text-white text-xs px-3 py-2 rounded-lg transition-colors';
     uploadBtn.textContent = node.hasFile()
-      ? 'Add More Images'
-      : 'Upload Images';
+      ? translate('tools:pdfWorkflow.addMoreImages', 'Add More Images')
+      : translate('tools:pdfWorkflow.uploadImages', 'Upload Images');
 
     const fileInput = document.createElement('input');
     fileInput.type = 'file';
@@ -982,8 +990,8 @@ function showNodeSettings(node: BaseWorkflowNode) {
     uploadBtn.className =
       'w-full bg-gray-700 hover:bg-gray-600 text-white text-xs px-3 py-2 rounded-lg transition-colors';
     uploadBtn.textContent = node.hasCertFile()
-      ? 'Change Certificate'
-      : 'Upload Certificate';
+      ? translate('tools:pdfWorkflow.changeCertificate', 'Change Certificate')
+      : translate('tools:pdfWorkflow.uploadCertificate', 'Upload Certificate');
 
     const certInput = document.createElement('input');
     certInput.type = 'file';
@@ -1160,6 +1168,65 @@ function showNodeSettings(node: BaseWorkflowNode) {
     },
   ];
 
+  const fileLabelI18nKeys: Record<string, string> = {
+    'Word Documents': 'tools:pdfWorkflow.fileLabels.wordDocsLabel',
+    Spreadsheets: 'tools:pdfWorkflow.fileLabels.spreadsheetsLabel',
+    Presentations: 'tools:pdfWorkflow.fileLabels.presentationsLabel',
+    'Text Files': 'tools:pdfWorkflow.fileLabels.textFilesLabel',
+    'SVG Files': 'tools:pdfWorkflow.fileLabels.svgFilesLabel',
+    'EPUB Files': 'tools:pdfWorkflow.fileLabels.epubFilesLabel',
+    'Email Files': 'tools:pdfWorkflow.fileLabels.emailFilesLabel',
+    'XPS Files': 'tools:pdfWorkflow.fileLabels.xpsFilesLabel',
+    'MOBI Files': 'tools:pdfWorkflow.fileLabels.mobiFilesLabel',
+    'FB2 Files': 'tools:pdfWorkflow.fileLabels.fb2FilesLabel',
+    'Comic Archives': 'tools:pdfWorkflow.fileLabels.comicArchivesLabel',
+    'Markdown Files': 'tools:pdfWorkflow.fileLabels.markdownFilesLabel',
+    'JSON Files': 'tools:pdfWorkflow.fileLabels.jsonFilesLabel',
+    'XML Files': 'tools:pdfWorkflow.fileLabels.xmlFilesLabel',
+    'WordPerfect Files': 'tools:pdfWorkflow.fileLabels.wordPerfectFilesLabel',
+    'WPS Files': 'tools:pdfWorkflow.fileLabels.wpsFilesLabel',
+    'Pages Files': 'tools:pdfWorkflow.fileLabels.pagesFilesLabel',
+    'ODG Files': 'tools:pdfWorkflow.fileLabels.odgFilesLabel',
+    'Publisher Files': 'tools:pdfWorkflow.fileLabels.publisherFilesLabel',
+    'Visio Files': 'tools:pdfWorkflow.fileLabels.visioFilesLabel',
+  };
+
+  const fileHintI18nKeys: Record<string, string> = {
+    'Supported: DOC, DOCX, ODT, RTF':
+      'tools:pdfWorkflow.fileLabels.wordDocsHint',
+    'Supported: XLSX, XLS, ODS, CSV':
+      'tools:pdfWorkflow.fileLabels.spreadsheetsHint',
+    'Supported: PPT, PPTX, ODP':
+      'tools:pdfWorkflow.fileLabels.presentationsHint',
+    'Supported: EML, MSG': 'tools:pdfWorkflow.fileLabels.emailHint',
+    'Supported: XPS, OXPS': 'tools:pdfWorkflow.fileLabels.xpsHint',
+    'Supported: CBZ, CBR': 'tools:pdfWorkflow.fileLabels.comicsHint',
+    'Supported: VSD, VSDX': 'tools:pdfWorkflow.fileLabels.visioHint',
+  };
+
+  const fileBtnLabelI18nKeys: Record<string, string> = {
+    Documents: 'tools:pdfWorkflow.fileLabels.documentsBtnLabel',
+    Spreadsheets: 'tools:pdfWorkflow.fileLabels.spreadsheetsBtnLabel',
+    Presentations: 'tools:pdfWorkflow.fileLabels.presentationsBtnLabel',
+    'Text Files': 'tools:pdfWorkflow.fileLabels.textFilesBtnLabel',
+    'SVG Files': 'tools:pdfWorkflow.fileLabels.svgFilesBtnLabel',
+    'EPUB Files': 'tools:pdfWorkflow.fileLabels.epubFilesBtnLabel',
+    'Email Files': 'tools:pdfWorkflow.fileLabels.emailFilesBtnLabel',
+    'XPS Files': 'tools:pdfWorkflow.fileLabels.xpsFilesBtnLabel',
+    'MOBI Files': 'tools:pdfWorkflow.fileLabels.mobiFilesBtnLabel',
+    'FB2 Files': 'tools:pdfWorkflow.fileLabels.fb2FilesBtnLabel',
+    Comics: 'tools:pdfWorkflow.fileLabels.comicsBtnLabel',
+    'Markdown Files': 'tools:pdfWorkflow.fileLabels.markdownFilesBtnLabel',
+    'JSON Files': 'tools:pdfWorkflow.fileLabels.jsonFilesBtnLabel',
+    'XML Files': 'tools:pdfWorkflow.fileLabels.xmlFilesBtnLabel',
+    'WPD Files': 'tools:pdfWorkflow.fileLabels.wpdFilesBtnLabel',
+    'WPS Files': 'tools:pdfWorkflow.fileLabels.wpsFilesBtnLabel',
+    'Pages Files': 'tools:pdfWorkflow.fileLabels.pagesFilesBtnLabel',
+    'ODG Files': 'tools:pdfWorkflow.fileLabels.odgFilesBtnLabel',
+    'PUB Files': 'tools:pdfWorkflow.fileLabels.pubFilesBtnLabel',
+    'Visio Files': 'tools:pdfWorkflow.fileLabels.visioFilesBtnLabel',
+  };
+
   const fileInputConfig = fileInputConfigs.find((c) => node instanceof c.cls);
   if (fileInputConfig) {
     const fileNode = node as InstanceType<typeof fileInputConfig.cls>;
@@ -1167,13 +1234,19 @@ function showNodeSettings(node: BaseWorkflowNode) {
 
     const label = document.createElement('label');
     label.className = 'block text-xs text-gray-400 mb-1';
-    label.textContent = fileInputConfig.label;
+    const labelKey = fileLabelI18nKeys[fileInputConfig.label];
+    label.textContent = labelKey
+      ? translate(labelKey, fileInputConfig.label)
+      : fileInputConfig.label;
     fileSection.appendChild(label);
 
     if (fileInputConfig.hint) {
       const hint = document.createElement('p');
       hint.className = 'text-[10px] text-gray-500 mb-2';
-      hint.textContent = fileInputConfig.hint;
+      const hintKey = fileHintI18nKeys[fileInputConfig.hint];
+      hint.textContent = hintKey
+        ? translate(hintKey, fileInputConfig.hint)
+        : fileInputConfig.hint;
       fileSection.appendChild(hint);
     }
 
@@ -1187,9 +1260,21 @@ function showNodeSettings(node: BaseWorkflowNode) {
     const uploadBtn = document.createElement('button');
     uploadBtn.className =
       'w-full bg-gray-700 hover:bg-gray-600 text-white text-xs px-3 py-2 rounded-lg transition-colors';
+    const btnLabelKey = fileBtnLabelI18nKeys[fileInputConfig.btnLabel];
+    const translatedBtnLabel = btnLabelKey
+      ? translate(btnLabelKey, fileInputConfig.btnLabel)
+      : fileInputConfig.btnLabel;
     uploadBtn.textContent = fileNode.hasFile()
-      ? `Add More ${fileInputConfig.btnLabel}`
-      : `Upload ${fileInputConfig.btnLabel}`;
+      ? translate(
+          'tools:pdfWorkflow.addMoreBtnLabel',
+          `Add More ${fileInputConfig.btnLabel}`,
+          { value0: translatedBtnLabel }
+        )
+      : translate(
+          'tools:pdfWorkflow.uploadBtnLabel',
+          `Upload ${fileInputConfig.btnLabel}`,
+          { value0: translatedBtnLabel }
+        );
 
     const fileInput = document.createElement('input');
     fileInput.type = 'file';
@@ -1428,6 +1513,17 @@ function showNodeSettings(node: BaseWorkflowNode) {
       "Off (default): natural 1–N numbering. On: each file's original page labels are preserved (may produce duplicate labels).",
   };
 
+  const hintI18nKeys: Record<string, string> = {
+    pages: 'tools:pdfWorkflow.pageRangeHint',
+    whitelist: 'tools:pdfWorkflow.whitelistHint',
+    afterPage: 'tools:pdfWorkflow.afterPageHint',
+    x0: 'tools:pdfWorkflow.x0Hint',
+    y0: 'tools:pdfWorkflow.y0Hint',
+    x1: 'tools:pdfWorkflow.x1Hint',
+    y1: 'tools:pdfWorkflow.y1Hint',
+    retainPageLabels: 'tools:pdfWorkflow.retainPageLabelsHint',
+  };
+
   const inputClass =
     'w-full bg-gray-900 border border-gray-600 text-white rounded-md px-2 py-1.5 text-xs focus:border-indigo-500 focus:outline-none';
 
@@ -1635,7 +1731,10 @@ function showNodeSettings(node: BaseWorkflowNode) {
     if (controlHints[key]) {
       const hint = document.createElement('p');
       hint.className = 'text-[10px] text-gray-500 mt-1';
-      hint.textContent = controlHints[key];
+      const hintKey = hintI18nKeys[key];
+      hint.textContent = hintKey
+        ? translate(hintKey, controlHints[key])
+        : controlHints[key];
       wrapper.appendChild(hint);
     }
 
@@ -1706,9 +1805,101 @@ function showNodeSettings(node: BaseWorkflowNode) {
   }
 }
 
+const controlLabelKeys: Record<string, string> = {
+  pages: 'tools:pdfWorkflow.controlLabels.pages',
+  whitelist: 'tools:pdfWorkflow.controlLabels.whitelist',
+  afterPage: 'tools:pdfWorkflow.controlLabels.afterPage',
+  x0: 'tools:pdfWorkflow.controlLabels.x0',
+  y0: 'tools:pdfWorkflow.controlLabels.y0',
+  x1: 'tools:pdfWorkflow.controlLabels.x1',
+  y1: 'tools:pdfWorkflow.controlLabels.y1',
+  retainPageLabels: 'tools:pdfWorkflow.controlLabels.retainPageLabels',
+  password: 'tools:pdfWorkflow.controlLabels.password',
+  ownerPassword: 'tools:pdfWorkflow.controlLabels.ownerPassword',
+  userPassword: 'tools:pdfWorkflow.controlLabels.userPassword',
+  format: 'tools:pdfWorkflow.controlLabels.format',
+  position: 'tools:pdfWorkflow.controlLabels.position',
+  orientation: 'tools:pdfWorkflow.controlLabels.orientation',
+  pageSize: 'tools:pdfWorkflow.controlLabels.pageSize',
+  targetSize: 'tools:pdfWorkflow.controlLabels.targetSize',
+  fontFamily: 'tools:pdfWorkflow.controlLabels.fontFamily',
+  numberFormat: 'tools:pdfWorkflow.controlLabels.numberFormat',
+  angle: 'tools:pdfWorkflow.controlLabels.angle',
+  resolution: 'tools:pdfWorkflow.controlLabels.resolution',
+  language: 'tools:pdfWorkflow.controlLabels.language',
+  gridMode: 'tools:pdfWorkflow.controlLabels.gridMode',
+  scalingMode: 'tools:pdfWorkflow.controlLabels.scalingMode',
+  compressionLevel: 'tools:pdfWorkflow.controlLabels.compressionLevel',
+  processingDpi: 'tools:pdfWorkflow.controlLabels.processingDpi',
+  imageFormat: 'tools:pdfWorkflow.controlLabels.imageFormat',
+  rasterizeDpi: 'tools:pdfWorkflow.controlLabels.rasterizeDpi',
+  horizontalGap: 'tools:pdfWorkflow.controlLabels.horizontalGap',
+  verticalGap: 'tools:pdfWorkflow.controlLabels.verticalGap',
+  title: 'tools:pdfWorkflow.controlLabels.title',
+  author: 'tools:pdfWorkflow.controlLabels.author',
+  subject: 'tools:pdfWorkflow.controlLabels.subject',
+  keywords: 'tools:pdfWorkflow.controlLabels.keywords',
+  creator: 'tools:pdfWorkflow.controlLabels.creator',
+  producer: 'tools:pdfWorkflow.controlLabels.producer',
+  watermarkText: 'tools:pdfWorkflow.controlLabels.watermarkText',
+  watermarkImage: 'tools:pdfWorkflow.controlLabels.watermarkImage',
+  opacity: 'tools:pdfWorkflow.controlLabels.opacity',
+  rotation: 'tools:pdfWorkflow.controlLabels.rotation',
+  scale: 'tools:pdfWorkflow.controlLabels.scale',
+  margin: 'tools:pdfWorkflow.controlLabels.margin',
+  stampText: 'tools:pdfWorkflow.controlLabels.stampText',
+  customWidth: 'tools:pdfWorkflow.controlLabels.customWidth',
+  customHeight: 'tools:pdfWorkflow.controlLabels.customHeight',
+  borderWidth: 'tools:pdfWorkflow.controlLabels.borderWidth',
+  borderColor: 'tools:pdfWorkflow.controlLabels.borderColor',
+  backgroundColor: 'tools:pdfWorkflow.controlLabels.backgroundColor',
+  fontColor: 'tools:pdfWorkflow.controlLabels.fontColor',
+  fontSize: 'tools:pdfWorkflow.controlLabels.fontSize',
+  color: 'tools:pdfWorkflow.controlLabels.color',
+  fillColor: 'tools:pdfWorkflow.controlLabels.fillColor',
+  separatorColor: 'tools:pdfWorkflow.controlLabels.separatorColor',
+  overlay: 'tools:pdfWorkflow.controlLabels.overlay',
+  qFactor: 'tools:pdfWorkflow.controlLabels.qFactor',
+  skewThreshold: 'tools:pdfWorkflow.controlLabels.skewThreshold',
+  grayscale: 'tools:pdfWorkflow.controlLabels.grayscale',
+  border: 'tools:pdfWorkflow.controlLabels.border',
+  margins: 'tools:pdfWorkflow.controlLabels.margins',
+  separator: 'tools:pdfWorkflow.controlLabels.separator',
+  sepia: 'tools:pdfWorkflow.controlLabels.sepia',
+  includeCcBcc: 'tools:pdfWorkflow.controlLabels.includeCcBcc',
+  includeAttachments: 'tools:pdfWorkflow.controlLabels.includeAttachments',
+  binarize: 'tools:pdfWorkflow.controlLabels.binarize',
+  preFlatten: 'tools:pdfWorkflow.controlLabels.preFlatten',
+  flattenForms: 'tools:pdfWorkflow.controlLabels.flattenForms',
+  removeMetadata: 'tools:pdfWorkflow.controlLabels.removeMetadata',
+  removeAnnotations: 'tools:pdfWorkflow.controlLabels.removeAnnotations',
+  removeJavascript: 'tools:pdfWorkflow.controlLabels.removeJavascript',
+  removeEmbeddedFiles: 'tools:pdfWorkflow.controlLabels.removeEmbeddedFiles',
+  removeLayers: 'tools:pdfWorkflow.controlLabels.removeLayers',
+  removeLinks: 'tools:pdfWorkflow.controlLabels.removeLinks',
+  removeStructureTree: 'tools:pdfWorkflow.controlLabels.removeStructureTree',
+  removeMarkInfo: 'tools:pdfWorkflow.controlLabels.removeMarkInfo',
+  removeFonts: 'tools:pdfWorkflow.controlLabels.removeFonts',
+  subsetFonts: 'tools:pdfWorkflow.controlLabels.subsetFonts',
+  convertToGrayscale: 'tools:pdfWorkflow.controlLabels.convertToGrayscale',
+  removeThumbnails: 'tools:pdfWorkflow.controlLabels.removeThumbnails',
+  redactMode: 'tools:pdfWorkflow.controlLabels.redactMode',
+  direction: 'tools:pdfWorkflow.controlLabels.direction',
+  pagesPerSheet: 'tools:pdfWorkflow.controlLabels.pagesPerSheet',
+  customUnits: 'tools:pdfWorkflow.controlLabels.customUnits',
+  blankPosition: 'tools:pdfWorkflow.controlLabels.blankPosition',
+  paperSize: 'tools:pdfWorkflow.controlLabels.paperSize',
+  level: 'tools:pdfWorkflow.controlLabels.level',
+  algorithm: 'tools:pdfWorkflow.controlLabels.algorithm',
+  text: 'tools:pdfWorkflow.controlLabels.text',
+  replacement: 'tools:pdfWorkflow.controlLabels.replacement',
+};
+
 function formatLabel(key: string): string {
-  return key
+  const english = key
     .replace(/([A-Z])/g, ' $1')
     .replace(/^./, (c) => c.toUpperCase())
     .trim();
+  const i18nKey = controlLabelKeys[key];
+  return i18nKey ? translate(i18nKey, english) : english;
 }

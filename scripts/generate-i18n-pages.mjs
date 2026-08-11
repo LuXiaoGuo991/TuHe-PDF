@@ -150,7 +150,14 @@ function injectToolBreadcrumb(document, lang, toolName, toolUrl) {
   const homeUrl = buildUrl(lang === 'en' ? '' : lang, '');
 
   const nav = document.createElement('nav');
-  nav.setAttribute('aria-label', 'Breadcrumb');
+  nav.setAttribute(
+    'aria-label',
+    lang === 'zh' || lang === 'zh-TW'
+      ? '面包屑导航'
+      : lang === 'ja'
+        ? 'パンくずリスト'
+        : 'Breadcrumb'
+  );
   nav.setAttribute(BREADCRUMB_MARKER, '');
   nav.className = 'text-sm text-gray-400 mb-4';
 
@@ -355,6 +362,9 @@ function updateEnglishFile(filePath, originalContent, translations) {
   const filenameNoExt = path.basename(filePath, '.html');
   const dom = new JSDOM(originalContent);
   const document = dom.window.document;
+
+  document.documentElement.lang = 'en';
+  document.documentElement.dir = 'ltr';
 
   document
     .querySelectorAll('link[rel="alternate"][hreflang]')

@@ -1,3 +1,14 @@
+import { t } from '../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const value = t(key, options);
+  return value && value !== key ? value : fallback;
+};
+
 export type WasmPackage = 'pymupdf' | 'ghostscript' | 'cpdf';
 
 interface WasmProviderConfig {
@@ -395,17 +406,17 @@ export function showWasmRequiredDialog(
           </svg>
         </div>
         <div>
-          <h3 class="text-lg font-semibold text-white">Advanced Feature Required</h3>
-          <p class="text-sm text-gray-400">External processing module needed</p>
+          <h3 class="text-lg font-semibold text-white">${translate('wasmProvider.advancedFeatureRequired', 'Advanced Feature Required')}</h3>
+          <p class="text-sm text-gray-400">${translate('wasmProvider.externalModuleNeeded', 'External processing module needed')}</p>
         </div>
       </div>
 
       <p class="text-gray-300 mb-4">
-        This feature requires <strong class="text-white">${displayName}</strong> to be configured.
+        ${translate('wasmProvider.featureRequires', `This feature requires <strong class="text-white">${displayName}</strong> to be configured.`, { name: displayName })}
       </p>
 
       <div class="bg-gray-700/50 rounded-lg p-4 mb-4">
-        <p class="text-sm text-gray-400 mb-2">Features enabled by this module:</p>
+        <p class="text-sm text-gray-400 mb-2">${translate('wasmProvider.featuresEnabled', 'Features enabled by this module:')}</p>
         <ul class="text-sm text-gray-300 space-y-1">
           ${features
             .slice(0, 4)
@@ -414,21 +425,21 @@ export function showWasmRequiredDialog(
                 `<li class="flex items-center gap-2"><span class="text-green-400">✓</span> ${f}</li>`
             )
             .join('')}
-          ${features.length > 4 ? `<li class="text-gray-500">+ ${features.length - 4} more...</li>` : ''}
+          ${features.length > 4 ? `<li class="text-gray-500">${translate('wasmProvider.moreFeatures', `+ ${features.length - 4} more...`, { count: features.length - 4 })}</li>` : ''}
         </ul>
       </div>
 
       <p class="text-xs text-gray-500 mb-4">
-        This module is licensed under AGPL-3.0. By configuring it, you agree to its license terms.
+        ${translate('wasmProvider.agplNotice', 'This module is licensed under AGPL-3.0. By configuring it, you agree to its license terms.')}
       </p>
     </div>
 
     <div class="border-t border-gray-700 p-4 flex gap-3">
       <button id="wasm-modal-cancel" class="flex-1 px-4 py-2.5 rounded-lg bg-gray-700 text-gray-300 hover:bg-gray-600 transition-colors font-medium">
-        Cancel
+        ${translate('wasmProvider.cancel', 'Cancel')}
       </button>
       <button id="wasm-modal-configure" class="flex-1 px-4 py-2.5 rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 text-white hover:from-blue-500 hover:to-blue-400 transition-all font-medium">
-        Configure
+        ${translate('wasmProvider.configure', 'Configure')}
       </button>
     </div>
   `;

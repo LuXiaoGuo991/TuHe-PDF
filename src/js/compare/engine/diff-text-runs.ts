@@ -14,6 +14,16 @@ import {
   segmentCJKText,
 } from './text-normalization.ts';
 import { COMPARE_GEOMETRY } from '../config.ts';
+import { t } from '../../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 
 interface WordToken {
   word: string;
@@ -174,7 +184,11 @@ function createWordChange(
       id,
       type,
       category: 'text',
-      description: `Replaced "${beforeText}" with "${afterText}"`,
+      description: translate(
+        'tools:comparePdfs.textReplaced',
+        `Replaced "${beforeText}" with "${afterText}"`,
+        { before: beforeText, after: afterText }
+      ),
       beforeText,
       afterText,
       beforeRects,
@@ -185,7 +199,11 @@ function createWordChange(
       id,
       type,
       category: 'text',
-      description: `Removed "${beforeText}"`,
+      description: translate(
+        'tools:comparePdfs.textRemoved',
+        `Removed "${beforeText}"`,
+        { text: beforeText }
+      ),
       beforeText,
       afterText: '',
       beforeRects,
@@ -196,7 +214,11 @@ function createWordChange(
       id,
       type,
       category: 'text',
-      description: `Added "${afterText}"`,
+      description: translate(
+        'tools:comparePdfs.textAdded',
+        `Added "${afterText}"`,
+        { text: afterText }
+      ),
       beforeText: '',
       afterText,
       beforeRects: [],
@@ -383,11 +405,28 @@ function detectStyleChanges(
     const allBeforeRects = groupFrags.flatMap((f) => f.beforeRects);
     const allAfterRects = groupFrags.flatMap((f) => f.afterRects);
 
-    let desc = `Style changed (${groupFrags.length} regions)`;
+    let desc = translate(
+      'tools:comparePdfs.styleChanged',
+      `Style changed (${groupFrags.length} regions)`,
+      { count: groupFrags.length }
+    );
     const details: string[] = [];
-    if (bFont !== aFont) details.push(`Font: ${bFont} → ${aFont}`);
+    if (bFont !== aFont)
+      details.push(
+        translate(
+          'tools:comparePdfs.styleChangedFont',
+          `Font: ${bFont} → ${aFont}`,
+          { before: bFont, after: aFont }
+        )
+      );
     if (bSize && aSize && Math.abs(bSize - aSize) > 0.5)
-      details.push(`Font size: ${bSize} → ${aSize}`);
+      details.push(
+        translate(
+          'tools:comparePdfs.styleChangedFontSize',
+          `Font size: ${bSize} → ${aSize}`,
+          { before: String(bSize), after: String(aSize) }
+        )
+      );
     if (details.length) desc += '\n' + details.map((d) => `• ${d}`).join('\n');
 
     changes.push({
@@ -457,7 +496,11 @@ function detectMovedText(changes: CompareTextChange[]) {
         id: `moved-${changes.length}`,
         type: 'moved',
         category: 'text',
-        description: `Moved "${rem.beforeText.slice(0, 80)}"`,
+        description: translate(
+          'tools:comparePdfs.textMoved',
+          `Moved "${rem.beforeText.slice(0, 80)}"`,
+          { text: rem.beforeText.slice(0, 80) }
+        ),
         beforeText: rem.beforeText,
         afterText: bestMatch.afterText,
         beforeRects: rem.beforeRects,
