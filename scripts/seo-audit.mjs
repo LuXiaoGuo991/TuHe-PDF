@@ -1,16 +1,13 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { SITE_URL } from './site-config.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const DIST_DIR = path.resolve(__dirname, '../dist');
 const LOCALES_DIR = path.resolve(__dirname, '../public/locales');
-const SITE_URL = (process.env.SITE_URL || 'https://tuhe-pdf.com').replace(
-  /\/+$/,
-  ''
-);
 const HOST = new URL(SITE_URL).hostname;
 
 const NOINDEX_ALLOWLIST = new Set(['404.html', 'wasm-settings.html']);

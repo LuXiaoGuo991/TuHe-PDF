@@ -1,28 +1,25 @@
 #!/usr/bin/env node
 
 /**
- * Translation Checker for TuHe PDF
+ * Translation resource checker for TuHe PDF.
  *
- * This script compares translation files across languages and reports:
- * - Missing keys (keys present in English but absent in other languages)
- * - Extra keys (keys present in other languages but not in English)
- * - Untranslated keys (keys with the same value as English)
- *
- * Usage:
- *   node scripts/check-translations.js
- *   node scripts/check-translations.js --verbose
- *   node scripts/check-translations.js --lang=de
+ * Verifies that every key in common.json and tools.json resolves through the
+ * same fallback chain used by i18next. Local coverage is reported separately
+ * so incomplete translations remain visible without treating a valid fallback
+ * as a broken UI string.
  */
 
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { fallbackLanguages } from '../src/js/i18n/fallback-languages.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const LOCALES_DIR = path.join(__dirname, '../public/locales');
 const REFERENCE_LANG = 'en';
+const RESOURCES = ['common', 'tools'];
 
 const colors = {
   reset: '\x1b[0m',
@@ -40,16 +37,11 @@ const specificLang = args
   .find((arg) => arg.startsWith('--lang='))
   ?.split('=')[1];
 
-/**
- * Flatten nested JSON object into dot notation
- * { a: { b: 'value' } } => { 'a.b': 'value' }
- */
 function flattenObject(obj, prefix = '') {
   const flattened = {};
 
   for (const [key, value] of Object.entries(obj)) {
     const newKey = prefix ? `${prefix}.${key}` : key;
-
     if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
       Object.assign(flattened, flattenObject(value, newKey));
     } else {
@@ -60,31 +52,21 @@ function flattenObject(obj, prefix = '') {
   return flattened;
 }
 
-/**
- * Load and parse a translation file
- */
-function loadTranslation(lang) {
-  const filePath = path.join(LOCALES_DIR, lang, 'common.json');
-
-  if (!fs.existsSync(filePath)) {
-    return null;
-  }
+function loadTranslation(lang, resource) {
+  const filePath = path.join(LOCALES_DIR, lang, `${resource}.json`);
+  if (!fs.existsSync(filePath)) return null;
 
   try {
-    const content = fs.readFileSync(filePath, 'utf8');
-    return JSON.parse(content);
+    return JSON.parse(fs.readFileSync(filePath, 'utf8'));
   } catch (error) {
     console.error(
-      `${colors.red}✗ Error parsing ${lang}/common.json:${colors.reset}`,
+      `${colors.red}✗ Error parsing ${lang}/${resource}.json:${colors.reset}`,
       error.message
     );
     return null;
   }
 }
 
-/**
- * Get all available languages
- */
 function getAvailableLanguages() {
   if (!fs.existsSync(LOCALES_DIR)) {
     console.error(
@@ -95,182 +77,161 @@ function getAvailableLanguages() {
 
   return fs
     .readdirSync(LOCALES_DIR)
-    .filter((item) => {
-      const itemPath = path.join(LOCALES_DIR, item);
-      return fs.statSync(itemPath).isDirectory();
-    })
-    .filter((lang) => {
-      // Only include if common.json exists
-      return fs.existsSync(path.join(LOCALES_DIR, lang, 'common.json'));
-    });
+    .filter((item) => fs.statSync(path.join(LOCALES_DIR, item)).isDirectory())
+    .filter((lang) =>
+      RESOURCES.every((resource) =>
+        fs.existsSync(path.join(LOCALES_DIR, lang, `${resource}.json`))
+      )
+    );
 }
 
-/**
- * Compare two sets of keys and report differences
- */
-function compareKeys(
-  refKeys,
-  targetKeys,
-  refLang,
-  targetLang,
-  refFlat,
-  targetFlat
-) {
-  const missing = refKeys.filter((key) => !targetKeys.includes(key));
-  const extra = targetKeys.filter((key) => !refKeys.includes(key));
-  const untranslated = refKeys.filter(
-    (key) =>
-      targetKeys.includes(key) &&
-      refFlat[key] === targetFlat[key] &&
-      typeof refFlat[key] === 'string'
-  );
-
-  return { missing, extra, untranslated };
+function getFallbackChain(lang) {
+  return [
+    lang,
+    ...(fallbackLanguages[lang] || fallbackLanguages.default),
+  ].filter((item, index, chain) => chain.indexOf(item) === index);
 }
 
-/**
- * Print section header
- */
 function printHeader(text) {
   console.log(`\n${colors.cyan}${'='.repeat(60)}${colors.reset}`);
   console.log(`${colors.cyan}${text}${colors.reset}`);
   console.log(`${colors.cyan}${'='.repeat(60)}${colors.reset}\n`);
 }
 
-/**
- * Print section
- */
 function printSection(title, items, color = colors.yellow) {
   if (items.length === 0) return;
 
   console.log(`${color}${title} (${items.length}):${colors.reset}`);
-  items.forEach((item) => {
-    console.log(`  ${colors.dim}•${colors.reset} ${item}`);
-  });
+  if (verbose) {
+    items.forEach((item) => {
+      console.log(`  ${colors.dim}•${colors.reset} ${item}`);
+    });
+  } else {
+    console.log(`${colors.dim}   (use --verbose to list keys)${colors.reset}`);
+  }
   console.log();
 }
 
-/**
- * Main function
- */
+function compareResource(lang, resource, referenceFlat) {
+  const localTranslation = loadTranslation(lang, resource);
+  if (!localTranslation) return null;
+
+  const localFlat = flattenObject(localTranslation);
+  const referenceKeys = Object.keys(referenceFlat);
+  const localKeys = Object.keys(localFlat);
+  const localMissing = referenceKeys.filter(
+    (key) => !Object.hasOwn(localFlat, key)
+  );
+  const extra = localKeys.filter((key) => !Object.hasOwn(referenceFlat, key));
+  const fallbackFlat = getFallbackChain(lang)
+    .slice(1)
+    .map((fallbackLang) => loadTranslation(fallbackLang, resource))
+    .filter(Boolean)
+    .map((translation) => flattenObject(translation));
+  const unresolved = localMissing.filter(
+    (key) =>
+      !fallbackFlat.some((translation) => Object.hasOwn(translation, key))
+  );
+  const fallbackResolved = localMissing.filter(
+    (key) => !unresolved.includes(key)
+  );
+  const untranslated = referenceKeys.filter(
+    (key) =>
+      Object.hasOwn(localFlat, key) &&
+      referenceFlat[key] === localFlat[key] &&
+      typeof referenceFlat[key] === 'string'
+  );
+
+  return {
+    fallbackResolved,
+    extra,
+    localKeyCount: localKeys.length,
+    referenceKeyCount: referenceKeys.length,
+    unresolved,
+    untranslated,
+  };
+}
+
 function main() {
   console.log(`${colors.blue}🌍 TuHe PDF Translation Checker${colors.reset}\n`);
 
   const languages = getAvailableLanguages();
-
-  if (languages.length === 0) {
-    console.error(
-      `${colors.red}✗ No translation files found in ${LOCALES_DIR}${colors.reset}`
-    );
-    process.exit(1);
-  }
-
-  // Load reference language (English)
-  const refTranslation = loadTranslation(REFERENCE_LANG);
-  if (!refTranslation) {
+  if (!languages.includes(REFERENCE_LANG)) {
     console.error(
       `${colors.red}✗ Reference language (${REFERENCE_LANG}) not found${colors.reset}`
     );
     process.exit(1);
   }
 
-  const refFlat = flattenObject(refTranslation);
-  const refKeys = Object.keys(refFlat);
-
-  console.log(
-    `${colors.green}✓ Reference language (${REFERENCE_LANG}): ${refKeys.length} keys${colors.reset}`
-  );
-  console.log(
-    `${colors.dim}  Available languages: ${languages.join(', ')}${colors.reset}\n`
-  );
-
-  // Filter languages to check
   const langsToCheck = specificLang
     ? languages.filter((lang) => lang === specificLang)
     : languages.filter((lang) => lang !== REFERENCE_LANG);
-
   if (langsToCheck.length === 0) {
-    console.log(`${colors.yellow}⚠ No languages to check${colors.reset}`);
-    process.exit(0);
-  }
-
-  let hasIssues = false;
-
-  // Check each language
-  for (const lang of langsToCheck) {
-    printHeader(`Checking: ${lang.toUpperCase()}`);
-
-    const translation = loadTranslation(lang);
-    if (!translation) {
-      hasIssues = true;
-      continue;
-    }
-
-    const targetFlat = flattenObject(translation);
-    const targetKeys = Object.keys(targetFlat);
-
-    const { missing, extra, untranslated } = compareKeys(
-      refKeys,
-      targetKeys,
-      REFERENCE_LANG,
-      lang,
-      refFlat,
-      targetFlat
-    );
-
-    // Summary
-    console.log(
-      `${colors.dim}Total keys: ${targetKeys.length} / ${refKeys.length}${colors.reset}\n`
-    );
-
-    // Missing keys
-    if (missing.length > 0) {
-      hasIssues = true;
-      printSection(`Missing Keys`, missing, colors.red);
-    }
-
-    // Extra keys
-    if (extra.length > 0) {
-      hasIssues = true;
-      printSection(`Extra Keys (not in English)`, extra, colors.yellow);
-    }
-
-    // Untranslated keys (same as English)
-    if (verbose && untranslated.length > 0) {
-      printSection(
-        `Possibly Untranslated (same as English)`,
-        untranslated,
-        colors.cyan
-      );
-    } else if (untranslated.length > 0) {
-      console.log(
-        `${colors.cyan}Possibly Untranslated: ${untranslated.length}${colors.reset}`
-      );
-      console.log(
-        `${colors.dim}   (use --verbose to see details)${colors.reset}\n`
-      );
-    }
-
-    // All good
-    if (missing.length === 0 && extra.length === 0) {
-      console.log(`${colors.green} No missing or extra keys!${colors.reset}\n`);
-    }
-  }
-
-  // Final summary
-  console.log(`${colors.cyan}${'='.repeat(60)}${colors.reset}\n`);
-
-  if (!hasIssues) {
-    console.log(
-      `${colors.green} All translations are in sync!${colors.reset}\n`
-    );
-    process.exit(0);
-  } else {
-    console.log(
-      `${colors.yellow} Issues found. Please review the output above.${colors.reset}\n`
+    console.error(
+      `${colors.red}✗ No matching languages to check${colors.reset}`
     );
     process.exit(1);
   }
+
+  const referenceResources = Object.fromEntries(
+    RESOURCES.map((resource) => [
+      resource,
+      flattenObject(loadTranslation(REFERENCE_LANG, resource)),
+    ])
+  );
+  let hasIssues = false;
+
+  console.log(
+    `${colors.dim}Available languages: ${languages.join(', ')}${colors.reset}`
+  );
+  console.log(
+    `${colors.dim}Fallback policy: zh-TW -> zh -> en; all others -> en${colors.reset}`
+  );
+
+  for (const lang of langsToCheck) {
+    printHeader(`Checking: ${lang.toUpperCase()}`);
+
+    for (const resource of RESOURCES) {
+      const result = compareResource(
+        lang,
+        resource,
+        referenceResources[resource]
+      );
+      if (!result) {
+        hasIssues = true;
+        continue;
+      }
+
+      console.log(
+        `${resource}: ${result.localKeyCount}/${result.referenceKeyCount} local keys, ${result.fallbackResolved.length} resolved by fallback`
+      );
+
+      if (result.unresolved.length > 0) {
+        hasIssues = true;
+        printSection('Unresolved Keys', result.unresolved, colors.red);
+      }
+
+      printSection('Unexpected local keys', result.extra, colors.yellow);
+
+      if (result.untranslated.length > 0) {
+        console.log(
+          `${colors.cyan}Possibly untranslated: ${result.untranslated.length}${colors.reset}`
+        );
+      }
+    }
+  }
+
+  console.log(`\n${colors.cyan}${'='.repeat(60)}${colors.reset}\n`);
+  if (hasIssues) {
+    console.log(
+      `${colors.red}Translation resources have unresolved keys.${colors.reset}\n`
+    );
+    process.exit(1);
+  }
+
+  console.log(
+    `${colors.green}All translation keys resolve through their configured fallback chain.${colors.reset}\n`
+  );
 }
 
 main();

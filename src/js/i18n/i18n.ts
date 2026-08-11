@@ -1,5 +1,6 @@
 import i18next from 'i18next';
 import HttpBackend from 'i18next-http-backend';
+import { fallbackLanguages } from './fallback-languages.js';
 
 // Supported languages
 export const supportedLanguages = [
@@ -114,7 +115,7 @@ export const initI18n = async (): Promise<typeof i18next> => {
 
   await i18next.use(HttpBackend).init({
     lng: currentLang,
-    fallbackLng: 'en',
+    fallbackLng: fallbackLanguages,
     supportedLngs: supportedLanguages as unknown as string[],
     ns: ['common', 'tools'],
     defaultNS: 'common',

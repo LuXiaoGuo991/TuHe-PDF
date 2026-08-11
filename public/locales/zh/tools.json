@@ -2956,7 +2956,6 @@
     "noteLabel": "注意：",
     "noteText": "此工具仅适用于数字创建的 PDF。对于扫描文档或基于图像的 PDF，请改用我们的 OCR PDF 工具。",
     "convertButton": "提取文本",
-    "note": "此工具仅适用于数字创建的 PDF。对于扫描文档或基于图像的 PDF，请使用我们的 OCR PDF 工具。",
     "auto": {
       "bb9dede377": "相关 PDF 工具设置",
       "ae395b2670": "相关 PDF 工具设置",

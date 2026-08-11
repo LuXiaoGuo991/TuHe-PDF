@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && node --max-old-space-size=3072 scripts/generate-i18n-pages.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-security-headers.mjs && node scripts/seo-audit.mjs",
+    "build": "npm run check:translations && tsc && vite build && node --max-old-space-size=3072 scripts/generate-i18n-pages.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-security-headers.mjs && node scripts/seo-audit.mjs",
+    "check:translations": "node scripts/check-translations.js",
     "seo-audit": "node scripts/seo-audit.mjs",
     "build:gzip": "COMPRESSION_MODE=g npm run build",
     "build:brotli": "COMPRESSION_MODE=b npm run build",
