@@ -214,6 +214,7 @@ async function initializePage() {
   toolboxBackdrop?.addEventListener('click', closeToolbox);
 
   document.getElementById('node-search')?.addEventListener('input', (e) => {
+    if ((e as any).isComposing) return;
     const query = (e.target as HTMLInputElement).value.toLowerCase();
     const items = document.querySelectorAll<HTMLElement>('.toolbox-node-item');
     const categories =
@@ -1639,7 +1640,8 @@ function showNodeSettings(node: BaseWorkflowNode) {
         }
       }
 
-      searchInput.addEventListener('input', () => {
+      searchInput.addEventListener('input', (e: Event) => {
+        if ((e as any).isComposing) return;
         renderList(searchInput.value);
       });
 

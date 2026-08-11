@@ -439,7 +439,8 @@ const init = async () => {
       'hidden grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 col-span-full';
     dom.toolGrid.insertBefore(searchResultsContainer, dom.toolGrid.firstChild);
 
-    searchBar.addEventListener('input', () => {
+    searchBar.addEventListener('input', (e: Event) => {
+      if ((e as any).isComposing) return;
       // @ts-expect-error TS(2339) FIXME: Property 'value' does not exist on type 'HTMLEleme... Remove this comment to see the full error message
       const searchTerm = searchBar.value.toLowerCase().trim();
 
@@ -771,6 +772,7 @@ const init = async () => {
 
   if (dom.shortcutSearch) {
     dom.shortcutSearch.addEventListener('input', (e) => {
+      if ((e as any).isComposing) return;
       const term = (e.target as HTMLInputElement).value.toLowerCase();
       const sections = dom.shortcutsList.querySelectorAll('.category-section');
 

@@ -41,7 +41,7 @@ interface TabEntry {
 }
 
 const RAIL_EXPANDED_KEY = 'tuhe.rail.expanded';
-const BASE_TITLE = 'TuHe PDF - 图合 · 浏览器端 PDF 工作台';
+const BASE_TITLE_FALLBACK = 'TuHe PDF - 图合 · 浏览器端 PDF 工作台';
 
 export const initWorkbench = (deps: WorkbenchDeps): void => {
   const rail = document.getElementById('tool-rail');
@@ -228,7 +228,8 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
     }
   };
 
-  searchInput?.addEventListener('input', () => {
+  searchInput?.addEventListener('input', (e: Event) => {
+    if ((e as any).isComposing) return;
     filterRail(searchInput.value);
   });
 
@@ -290,7 +291,10 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
       entry.tabEl.classList.remove('wb-tab-active');
       entry.panelEl.classList.remove('wb-panel-active');
     });
-    document.title = BASE_TITLE;
+    document.title =
+      deps.t('pageTitle') !== 'pageTitle'
+        ? deps.t('pageTitle')
+        : BASE_TITLE_FALLBACK;
     highlightActiveCard(null);
   };
 
@@ -365,7 +369,10 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
     if (tabs.size === 0) {
       activeTabId = null;
       setHomeVisible(true);
-      document.title = BASE_TITLE;
+      document.title =
+        deps.t('pageTitle') !== 'pageTitle'
+          ? deps.t('pageTitle')
+          : BASE_TITLE_FALLBACK;
       highlightActiveCard(null);
     }
   };

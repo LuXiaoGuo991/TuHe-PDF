@@ -71,16 +71,25 @@ function parsePdfDate(pdfDate: string | unknown): string {
     return String(pdfDate || '');
   }
   try {
-    const year = pdfDate.substring(2, 6);
-    const month = pdfDate.substring(6, 8);
-    const day = pdfDate.substring(8, 10);
-    const hour = pdfDate.substring(10, 12);
-    const minute = pdfDate.substring(12, 14);
-    const second = pdfDate.substring(14, 16);
+    const match = pdfDate.match(
+      /^D:(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})([+-]\d{2})?'(\d{2})'?/
+    );
+    if (!match) {
+      const year = pdfDate.substring(2, 6);
+      const month = pdfDate.substring(6, 8);
+      const day = pdfDate.substring(8, 10);
+      const hour = pdfDate.substring(10, 12);
+      const minute = pdfDate.substring(12, 14);
+      const second = pdfDate.substring(14, 16);
+      const locale = i18next.resolvedLanguage || i18next.language || 'zh-CN';
+      return new Date(
+        `${year}-${month}-${day}T${hour}:${minute}:${second}Z`
+      ).toLocaleString(locale);
+    }
+    const [, y, m, d, hh, mm, ss, tzOffset, tzMin] = match;
     const locale = i18next.resolvedLanguage || i18next.language || 'zh-CN';
-    return new Date(
-      `${year}-${month}-${day}T${hour}:${minute}:${second}Z`
-    ).toLocaleString(locale);
+    const dateStr = `${y}-${m}-${d}T${hh}:${mm}:${ss}${tzOffset ? tzOffset + ':' + (tzMin || '00') : ''}`;
+    return new Date(dateStr).toLocaleString(locale);
   } catch {
     return pdfDate;
   }

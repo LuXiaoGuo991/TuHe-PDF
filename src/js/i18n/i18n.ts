@@ -197,17 +197,35 @@ export const applyTranslations = (): void => {
     if (key) {
       const translation = t(key);
       if (translation && translation !== key) {
-        element.innerHTML = translation;
+        // Preserve child elements (e.g. icons) by only updating text nodes;
+        // for elements with no children, use textContent to avoid XSS.
+        if (element.children.length > 0) {
+          for (const node of element.childNodes) {
+            if (node.nodeType === Node.TEXT_NODE) {
+              node.textContent = translation;
+              break;
+            }
+          }
+        } else {
+          element.textContent = translation;
+        }
       }
     }
   });
 
   document.querySelectorAll('[data-i18n-placeholder]').forEach((element) => {
     const key = element.getAttribute('data-i18n-placeholder');
-    if (key && element instanceof HTMLInputElement) {
+    if (key) {
       const translation = t(key);
       if (translation && translation !== key) {
-        element.placeholder = translation;
+        if (
+          element instanceof HTMLInputElement ||
+          element instanceof HTMLTextAreaElement
+        ) {
+          (element as HTMLInputElement).placeholder = translation;
+        } else {
+          (element as HTMLElement).setAttribute('placeholder', translation);
+        }
       }
     }
   });
@@ -218,6 +236,36 @@ export const applyTranslations = (): void => {
       const translation = t(key);
       if (translation && translation !== key) {
         (element as HTMLElement).title = translation;
+      }
+    }
+  });
+
+  document.querySelectorAll('[data-i18n-alt]').forEach((element) => {
+    const key = element.getAttribute('data-i18n-alt');
+    if (key) {
+      const translation = t(key);
+      if (translation && translation !== key) {
+        (element as HTMLImageElement).alt = translation;
+      }
+    }
+  });
+
+  document.querySelectorAll('[data-i18n-aria]').forEach((element) => {
+    const key = element.getAttribute('data-i18n-aria');
+    if (key) {
+      const translation = t(key);
+      if (translation && translation !== key) {
+        (element as HTMLElement).setAttribute('aria-label', translation);
+      }
+    }
+  });
+
+  document.querySelectorAll('[data-i18n-content]').forEach((element) => {
+    const key = element.getAttribute('data-i18n-content');
+    if (key) {
+      const translation = t(key);
+      if (translation && translation !== key) {
+        element.setAttribute('content', translation);
       }
     }
   });

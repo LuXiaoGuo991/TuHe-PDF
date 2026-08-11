@@ -184,6 +184,7 @@
               <label
                 for="pages-per-sheet"
                 class="block mb-2 text-sm font-medium text-gray-300"
+                data-i18n="tools:nUpPdf.pagesPerSheet"
                 >Pages per Sheet</label
               >
               <select
@@ -200,6 +201,7 @@
               <label
                 for="output-page-size"
                 class="block mb-2 text-sm font-medium text-gray-300"
+                data-i18n="tools:nUpPdf.outputPageSize"
                 >Output Page Size</label
               >
               <select
@@ -282,6 +284,7 @@
               <label
                 for="border-color"
                 class="block mb-2 text-sm font-medium text-gray-300"
+                data-i18n="tools:nUpPdf.borderColor"
                 >Border Color</label
               >
               <input type="color" id="border-color" value="#000000" />
@@ -522,10 +525,12 @@
           <summary
             class="cursor-pointer font-semibold text-white flex items-center justify-between"
           >
-            Are my files private and secure?
+            <span data-i18n="tools:nUpPdf.faq2q"
+              >Are my files private and secure?</span
+            >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq2a">
+          <p class="mt-3 text-gray-400" data-i18n="tools:nUpPdf.faq2a">
             Absolutely! All processing happens in your browser. Your files never
             leave your device, ensuring complete privacy.
           </p>
@@ -534,10 +539,12 @@
           <summary
             class="cursor-pointer font-semibold text-white flex items-center justify-between"
           >
-            Is there a file size limit?
+            <span data-i18n="tools:nUpPdf.faq3q"
+              >Is there a file size limit?</span
+            >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq3a">
+          <p class="mt-3 text-gray-400" data-i18n="tools:nUpPdf.faq3a">
             No! Process files of any size, as many times as you want, completely
             free.
           </p>
@@ -562,7 +569,7 @@
         "offers": {
           "@type": "Offer",
           "price": "0",
-          "priceCurrency": "USD"
+          "priceCurrency": "CNY"
         }
       }
     </script>

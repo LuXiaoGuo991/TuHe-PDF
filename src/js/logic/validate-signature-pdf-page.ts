@@ -1,5 +1,6 @@
 import { createIcons, icons } from 'lucide';
 import { t } from '../i18n/i18n';
+import i18next from 'i18next';
 
 const translate = (
   key: string,
@@ -348,8 +349,8 @@ function displayResults(): void {
     resultsContainer.innerHTML = `
             <div class="bg-gray-700 rounded-lg p-6 text-center border border-gray-600">
                 <i data-lucide="file-x" class="w-12 h-12 mx-auto mb-4 text-gray-400"></i>
-                <h3 class="text-lg font-semibold text-white mb-2">No Signatures Found</h3>
-                <p class="text-gray-400">This PDF does not contain any digital signatures.</p>
+                <h3 class="text-lg font-semibold text-white mb-2">${translate('validateSignature.noSignatures', 'No Signatures Found')}</h3>
+                <p class="text-gray-400">${translate('validateSignature.noSignaturesDesc', 'This PDF does not contain any digital signatures.')}</p>
             </div>
         `;
     createIcons({ icons });
@@ -367,12 +368,18 @@ function displayResults(): void {
     ? state.results.filter((r) => r.isTrusted).length
     : 0;
 
+  const sigFoundText = translate(
+    'validateSignature.signaturesFound',
+    `${state.results.length} signature${state.results.length > 1 ? 's' : ''} found`,
+    { count: state.results.length }
+  );
+  const validLabel = translate('validateSignature.valid', 'valid');
+
   let summaryHtml = `
         <p class="text-gray-300">
-            <span class="font-semibold text-white">${state.results.length}</span> 
-            signature${state.results.length > 1 ? 's' : ''} found
+            ${sigFoundText}
             <span class="text-gray-500">•</span>
-            <span class="${validCount === state.results.length ? 'text-green-400' : 'text-yellow-400'}">${validCount} valid</span>
+            <span class="${validCount === state.results.length ? 'text-green-400' : 'text-yellow-400'}">${validCount} ${validLabel}</span>
         </p>
     `;
 
@@ -380,7 +387,11 @@ function displayResults(): void {
     summaryHtml += `
             <p class="text-xs text-gray-400 mt-1">
                 <i data-lucide="shield-check" class="inline w-3 h-3 mr-1"></i>
-                Trust verification: ${trustVerified}/${state.results.length} signatures verified against custom certificate
+                ${translate(
+                  'validateSignature.trustVerification',
+                  `Trust verification: ${trustVerified}/${state.results.length} signatures verified against custom certificate`,
+                  { trusted: trustVerified, total: state.results.length }
+                )}
             </p>
         `;
   }
@@ -405,64 +416,144 @@ function createSignatureCard(
 
   let statusColor = 'text-green-400';
   let statusIcon = 'check-circle';
-  let statusText = 'Valid Signature';
+  let statusText = translate(
+    'validateSignature.status.valid',
+    'Valid Signature'
+  );
 
   if (!result.isValid) {
     if (result.cryptoVerificationStatus === 'unsupported') {
       statusColor = 'text-yellow-400';
       statusIcon = 'alert-triangle';
-      statusText = 'Unverified — Unsupported Signature Algorithm';
+      statusText = translate(
+        'validateSignature.status.unsupportedAlgorithm',
+        'Unverified — Unsupported Signature Algorithm'
+      );
     } else if (
       result.cryptoVerified === true &&
       result.coverageStatus === 'partial'
     ) {
       statusColor = 'text-red-400';
       statusIcon = 'x-circle';
-      statusText = 'Invalid — Modified After Signing (partial coverage)';
+      statusText = translate(
+        'validateSignature.status.modifiedAfterSigning',
+        'Invalid — Modified After Signing (partial coverage)'
+      );
     } else {
       statusColor = 'text-red-400';
       statusIcon = 'x-circle';
       statusText =
         result.cryptoVerified === false
-          ? 'Invalid — Cryptographic Verification Failed'
-          : 'Invalid Signature';
+          ? translate(
+              'validateSignature.status.cryptoFailed',
+              'Invalid — Cryptographic Verification Failed'
+            )
+          : translate('validateSignature.status.invalid', 'Invalid Signature');
     }
   } else if (result.usesInsecureDigest) {
     statusColor = 'text-red-400';
     statusIcon = 'x-circle';
-    statusText = 'Insecure Digest (MD5 / SHA-1)';
+    statusText = translate(
+      'validateSignature.status.insecureDigest',
+      'Insecure Digest (MD5 / SHA-1)'
+    );
   } else if (result.isExpired) {
     statusColor = 'text-yellow-400';
     statusIcon = 'alert-triangle';
-    statusText = 'Certificate Expired';
+    statusText = translate(
+      'validateSignature.status.certExpired',
+      'Certificate Expired'
+    );
   } else if (!result.isTrusted) {
     statusColor = 'text-yellow-400';
     statusIcon = 'alert-triangle';
     statusText = result.isSelfSigned
-      ? 'Self-Signed — Signer Identity Not Verified'
-      : 'Signature Intact — Signer Identity Not Verified';
+      ? translate(
+          'validateSignature.status.selfSigned',
+          'Self-Signed — Signer Identity Not Verified'
+        )
+      : translate(
+          'validateSignature.status.signatureIntact',
+          'Signature Intact — Signer Identity Not Verified'
+        );
   }
 
   const formatDate = (date: Date) => {
-    if (!date || date.getTime() === 0) return 'Unknown';
-    return date.toLocaleDateString(undefined, {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-    });
+    if (!date || date.getTime() === 0)
+      return translate('validateSignature.unknown', 'Unknown');
+    return date.toLocaleDateString(
+      i18next.resolvedLanguage || i18next.language,
+      {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+      }
+    );
   };
+
+  const trustedLabel = translate('validateSignature.trusted', 'Trusted');
+  const notTrustedLabel = translate(
+    'validateSignature.notInTrustChain',
+    'Not in trust chain'
+  );
 
   let trustBadge = '';
   if (state.trustedCert) {
     if (result.isTrusted) {
-      trustBadge =
-        '<span class="text-xs bg-green-900 text-green-300 px-2 py-1 rounded ml-2"><i data-lucide="shield-check" class="inline w-3 h-3 mr-1"></i>Trusted</span>';
+      trustBadge = `<span class="text-xs bg-green-900 text-green-300 px-2 py-1 rounded ml-2"><i data-lucide="shield-check" class="inline w-3 h-3 mr-1"></i>${trustedLabel}</span>`;
     } else {
-      trustBadge =
-        '<span class="text-xs bg-gray-600 text-gray-300 px-2 py-1 rounded ml-2"><i data-lucide="shield-x" class="inline w-3 h-3 mr-1"></i>Not in trust chain</span>';
+      trustBadge = `<span class="text-xs bg-gray-600 text-gray-300 px-2 py-1 rounded ml-2"><i data-lucide="shield-x" class="inline w-3 h-3 mr-1"></i>${notTrustedLabel}</span>`;
     }
+  }
+
+  const signatureLabel = translate(
+    'validateSignature.signatureNumber',
+    'Signature {{index}}',
+    { index: index + 1 }
+  );
+  const fullCovLabel = translate(
+    'validateSignature.fullCoverage',
+    'Full Coverage'
+  );
+  const partialCovLabel = translate(
+    'validateSignature.partialCoverage',
+    'Partial Coverage'
+  );
+  const signedByLabel = translate('validateSignature.signedBy', 'Signed By');
+  const issuerLabel = translate('validateSignature.issuer', 'Issuer');
+  const signedOnLabel = translate('validateSignature.signedOn', 'Signed On');
+  const validFromLabel = translate('validateSignature.validFrom', 'Valid From');
+  const validUntilLabel = translate(
+    'validateSignature.validUntil',
+    'Valid Until'
+  );
+  const reasonLabel = translate('validateSignature.reason', 'Reason');
+  const locationLabel = translate('validateSignature.location', 'Location');
+  const techDetailsLabel = translate(
+    'validateSignature.technicalDetails',
+    'Technical Details'
+  );
+  const serialNumLabel = translate(
+    'validateSignature.serialNumber',
+    'Serial Number'
+  );
+  const digestAlgLabel = translate(
+    'validateSignature.digestAlgorithm',
+    'Digest Algorithm'
+  );
+  const sigAlgLabel = translate(
+    'validateSignature.signatureAlgorithm',
+    'Signature Algorithm'
+  );
+  const errorLabel = translate('validateSignature.error', 'Error');
+
+  let coverageBadge = '';
+  if (result.coverageStatus === 'full') {
+    coverageBadge = `<span class="text-xs bg-green-900 text-green-300 px-2 py-1 rounded">${fullCovLabel}</span>`;
+  } else if (result.coverageStatus === 'partial') {
+    coverageBadge = `<span class="text-xs bg-yellow-900 text-yellow-300 px-2 py-1 rounded">${partialCovLabel}</span>`;
   }
 
   card.innerHTML = `
@@ -470,31 +561,25 @@ function createSignatureCard(
             <div class="flex items-center gap-3">
                 <i data-lucide="${statusIcon}" class="w-6 h-6 ${statusColor}"></i>
                 <div>
-                    <h3 class="font-semibold text-white">Signature ${index + 1}</h3>
+                    <h3 class="font-semibold text-white">${signatureLabel}</h3>
                     <p class="text-sm ${statusColor}">${statusText}</p>
                 </div>
             </div>
             <div class="flex items-center">
-                ${
-                  result.coverageStatus === 'full'
-                    ? '<span class="text-xs bg-green-900 text-green-300 px-2 py-1 rounded">Full Coverage</span>'
-                    : result.coverageStatus === 'partial'
-                      ? '<span class="text-xs bg-yellow-900 text-yellow-300 px-2 py-1 rounded">Partial Coverage</span>'
-                      : ''
-                }${trustBadge}
+                ${coverageBadge}${trustBadge}
             </div>
         </div>
 
         <div class="space-y-3 text-sm">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <p class="text-gray-400">Signed By</p>
+                    <p class="text-gray-400">${signedByLabel}</p>
                     <p class="text-white font-medium">${escapeHtml(result.signerName)}</p>
                     ${result.signerOrg ? `<p class="text-gray-400 text-xs">${escapeHtml(result.signerOrg)}</p>` : ''}
                     ${result.signerEmail ? `<p class="text-gray-400 text-xs">${escapeHtml(result.signerEmail)}</p>` : ''}
                 </div>
                 <div>
-                    <p class="text-gray-400">Issuer</p>
+                    <p class="text-gray-400">${issuerLabel}</p>
                     <p class="text-white font-medium">${escapeHtml(result.issuer)}</p>
                     ${result.issuerOrg ? `<p class="text-gray-400 text-xs">${escapeHtml(result.issuerOrg)}</p>` : ''}
                 </div>
@@ -504,7 +589,7 @@ function createSignatureCard(
               result.signatureDate
                 ? `
                 <div>
-                    <p class="text-gray-400">Signed On</p>
+                    <p class="text-gray-400">${signedOnLabel}</p>
                     <p class="text-white">${formatDate(result.signatureDate)}</p>
                 </div>
             `
@@ -513,11 +598,11 @@ function createSignatureCard(
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <p class="text-gray-400">Valid From</p>
+                    <p class="text-gray-400">${validFromLabel}</p>
                     <p class="text-white">${formatDate(result.validFrom)}</p>
                 </div>
                 <div>
-                    <p class="text-gray-400">Valid Until</p>
+                    <p class="text-gray-400">${validUntilLabel}</p>
                     <p class="${result.isExpired ? 'text-red-400' : 'text-white'}">${formatDate(result.validTo)}</p>
                 </div>
             </div>
@@ -526,7 +611,7 @@ function createSignatureCard(
               result.reason
                 ? `
                 <div>
-                    <p class="text-gray-400">Reason</p>
+                    <p class="text-gray-400">${reasonLabel}</p>
                     <p class="text-white">${escapeHtml(result.reason)}</p>
                 </div>
             `
@@ -537,7 +622,7 @@ function createSignatureCard(
               result.location
                 ? `
                 <div>
-                    <p class="text-gray-400">Location</p>
+                    <p class="text-gray-400">${locationLabel}</p>
                     <p class="text-white">${escapeHtml(result.location)}</p>
                 </div>
             `
@@ -546,13 +631,13 @@ function createSignatureCard(
 
             <details class="mt-2">
                 <summary class="cursor-pointer text-indigo-400 hover:text-indigo-300 text-sm">
-                    Technical Details
+                    ${techDetailsLabel}
                 </summary>
                 <div class="mt-2 p-3 bg-gray-800 rounded text-xs space-y-1">
-                    <p><span class="text-gray-400">Serial Number:</span> <span class="text-gray-300 font-mono">${escapeHtml(result.serialNumber)}</span></p>
-                    <p><span class="text-gray-400">Digest Algorithm:</span> <span class="text-gray-300">${escapeHtml(result.algorithms.digest)}</span></p>
-                    <p><span class="text-gray-400">Signature Algorithm:</span> <span class="text-gray-300">${escapeHtml(result.algorithms.signature)}</span></p>
-                    ${result.errorMessage ? `<p class="text-red-400">Error: ${escapeHtml(result.errorMessage)}</p>` : ''}
+                    <p><span class="text-gray-400">${serialNumLabel}:</span> <span class="text-gray-300 font-mono">${escapeHtml(result.serialNumber)}</span></p>
+                    <p><span class="text-gray-400">${digestAlgLabel}:</span> <span class="text-gray-300">${escapeHtml(result.algorithms.digest)}</span></p>
+                    <p><span class="text-gray-400">${sigAlgLabel}:</span> <span class="text-gray-300">${escapeHtml(result.algorithms.signature)}</span></p>
+                    ${result.errorMessage ? `<p class="text-red-400">${errorLabel}: ${escapeHtml(result.errorMessage)}</p>` : ''}
                     ${result.unsupportedAlgorithmReason ? `<p class="text-yellow-300">${escapeHtml(result.unsupportedAlgorithmReason)}</p>` : ''}
                 </div>
             </details>

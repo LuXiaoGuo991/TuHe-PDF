@@ -1191,7 +1191,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   if (searchInput) {
-    searchInput.addEventListener('input', function () {
+    searchInput.addEventListener('input', function (e: Event) {
+      if ((e as any).isComposing) return;
       pageState.changeSearchQuery = searchInput.value;
       pageState.activeChangeIndex = 0;
       renderComparisonUI();

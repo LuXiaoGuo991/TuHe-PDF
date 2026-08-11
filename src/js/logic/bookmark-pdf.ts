@@ -1508,6 +1508,7 @@ zoomFitBtn?.addEventListener('click', async () => {
 updateZoomIndicator();
 
 searchInput?.addEventListener('input', (e: Event) => {
+  if ((e as any).isComposing) return;
   const target = e.target as HTMLInputElement;
   searchQuery = target.value.toLowerCase();
   renderBookmarkTree();

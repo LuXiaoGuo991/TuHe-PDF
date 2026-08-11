@@ -18,11 +18,16 @@
     </script>
 
     <!-- Primary Meta Tags -->
-    <title>TuHe PDF - 图合 · 浏览器端 PDF 工作台</title>
-    <meta name="title" content="TuHe PDF - 图合 · 浏览器端 PDF 工作台" />
+    <title data-i18n="pageTitle">TuHe PDF - 图合 · 浏览器端 PDF 工作台</title>
+    <meta
+      name="title"
+      content="TuHe PDF - 图合 · 浏览器端 PDF 工作台"
+      data-i18n-content="pageTitle"
+    />
     <meta
       name="description"
       content="TuHe PDF（图合）- 纯浏览器端 PDF 工具台：合并、拆分、压缩、转换 PDF，文件不出本机，免注册，无限制。"
+      data-i18n-content="pageDescription"
     />
 
     <!-- Mobile Web App -->
@@ -66,10 +71,12 @@
         class="wb-topbar-brand"
         type="button"
         title="TuHe PDF 首页"
+        data-i18n-title="homePage"
       >
         <img
           src="{{baseUrl}}{{#if brandLogo}}{{brandLogo}}{{else}}images/favicon-no-bg.svg{{/if}}"
           alt="图合 PDF 标志"
+          data-i18n-alt="logoAlt"
         />
         <span class="wb-topbar-brand-name">TuHe PDF</span>
         <span class="wb-topbar-version">v{{appVersion}}</span>
@@ -112,14 +119,18 @@
 
     <div id="workbench">
       <!-- ===== 左侧卡片栏 ===== -->
-      <aside id="tool-rail" aria-label="工具卡片栏">
+      <aside
+        id="tool-rail"
+        aria-label="工具卡片栏"
+        data-i18n-aria="workbench.toolRailAria"
+      >
         <div class="rail-top">
           <div class="rail-search-wrap">
             <i data-lucide="search"></i>
             <input
               type="text"
               id="rail-search-input"
-              data-i18n-placeholder="tools.searchPlaceholder"
+              data-i18n-placeholder="workbench.searchPlaceholder"
               placeholder="搜索工具… (Ctrl+K)"
               autocomplete="off"
             />
@@ -131,6 +142,7 @@
             title="展开 / 收起卡片栏"
             aria-label="展开或收起卡片栏"
             data-i18n-title="workbench.toggleRail"
+            data-i18n-aria="workbench.toggleRail"
           >
             <i data-lucide="panel-left-open" class="w-4 h-4"></i>
           </button>
@@ -162,6 +174,7 @@
                 <img
                   src="{{baseUrl}}{{#if brandLogo}}{{brandLogo}}{{else}}images/favicon-no-bg.svg{{/if}}"
                   alt="图合 PDF"
+                  data-i18n-alt="logoAlt"
                 />
               </div>
               <h1 class="tuhe-title">
@@ -223,6 +236,7 @@
       type="button"
       aria-label="打开工具卡片栏"
       data-i18n-title="workbench.openToolRail"
+      data-i18n-aria="workbench.openToolRail"
     >
       <i data-lucide="layout-grid" class="w-5 h-5"></i>
     </button>
