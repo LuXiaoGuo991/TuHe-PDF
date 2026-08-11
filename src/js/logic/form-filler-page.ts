@@ -18,7 +18,7 @@ let viewerReady = false;
 let currentFile: File | null = null;
 
 // UI helpers
-function showLoader(message: string = 'Processing...') {
+function showLoader(message: string = '处理中...') {
   const loader = document.getElementById('loader-modal');
   const loaderText = document.getElementById('loader-text');
   if (loader) loader.classList.remove('hidden');

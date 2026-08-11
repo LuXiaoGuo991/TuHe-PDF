@@ -34,7 +34,7 @@ const pageState: {
   pageThumbnails: new Map(),
 };
 
-function showLoader(msg = 'Processing...') {
+function showLoader(msg = '处理中...') {
   document.getElementById('loader-modal')?.classList.remove('hidden');
   const txt = document.getElementById('loader-text');
   if (txt) txt.textContent = msg;
