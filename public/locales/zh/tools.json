@@ -676,7 +676,7 @@
       "deed158f16": "操作失败，请重试。",
       "c8fef9d144": "Bates 编号已成功应用！（{{value0}} 至 {{value1}}）",
       "a13a077a7e": "正在应用 Bates 编号...",
-      "41c258bb74": "请upload at least one PDF file.",
+      "41c258bb74": "请至少上传一个 PDF 文件。",
       "c29f451ac2": "{{value0}} file{{value1}} • {{value2}} total pages",
       "b9063ddbd2": "{{value0}} • {{value1}} pages",
       "c49b7cb420": "加载一个或多个 PDF 文件失败。",
@@ -788,14 +788,14 @@
       "bab0f3ae67": "调整设置",
       "892b92dcd8": "通过实时预览自定义扫描效果",
       "cd020bad86": "立即保存扫描效果的 PDF",
-      "7df28a4e05": "免费的在线greyscale tool工具",
-      "fc3df6590d": "免费的在线invert colors tool工具",
+      "7df28a4e05": "免费的在线灰度转换工具",
+      "fc3df6590d": "免费的在线颜色反转工具",
       "fe17a5bb0f": "编辑 PDF"
     },
     "dynamic": {
       "a539e67250": "加载 PDF 预览失败。",
       "97d54a425f": "正在加载预览...",
-      "41ae43a300": "请upload a PDF file.",
+      "41ae43a300": "请上传一个 PDF 文件。",
       "9e7466ea5e": "操作失败，请重试。",
       "3b82b6cde5": "扫描效果应用成功！",
       "260ba5b09a": "正在处理第 {{value0}}/{{value1}} 页...",
@@ -824,8 +824,8 @@
       "5185d4cfaa": "点击或拖放您的 PDF 文件以开始",
       "e61e46124c": "通过实时预览微调颜色设置",
       "1dd8829f05": "立即保存颜色调整后的 PDF",
-      "7df28a4e05": "免费的在线greyscale tool工具",
-      "fc3df6590d": "免费的在线invert colors tool工具",
+      "7df28a4e05": "免费的在线灰度转换工具",
+      "fc3df6590d": "免费的在线颜色反转工具",
       "89a12214ae": "使 PDF 看起来像扫描件",
       "8e56f3377f": "更改 PDF 背景",
       "0bac357f85": "更改 PDF 文本颜色"
@@ -833,7 +833,7 @@
     "dynamic": {
       "a60905da92": "加载 PDF 预览失败。",
       "307805124c": "正在加载预览...",
-      "c30273623f": "请upload a PDF file.",
+      "c30273623f": "请上传 a PDF file.",
       "92be44edf7": "操作失败，请重试。",
       "e3e1b023cc": "颜色调整已应用成功！",
       "f289e6333e": "正在处理第 {{value0}}/{{value1}} 页...",
@@ -951,8 +951,8 @@
     "dynamic": {
       "2043121e88": "下载",
       "b81319bcb7": "下载",
-      "9ac2d61ef5": "请use the Download button in the PDF viewer toolbar above.",
-      "6244f7f390": "请wait for the form to finish loading.",
+      "9ac2d61ef5": "请使用 PDF 查看器工具栏上方的下载按钮。",
+      "6244f7f390": "请等待表单加载完成。",
       "004d081dda": "查看器未就绪",
       "b8ec08583a": "操作失败，请重试。",
       "c8390ba95f": "正在加载 PDF 表单...",
@@ -1046,7 +1046,7 @@
       "f90007716a": "正在将图片转换为 PDF...",
       "c6b0ac6a2c": "正在加载转换引擎...",
       "b387c08ee8": "正在处理中...",
-      "0e52b164d0": "请select at least one image file.",
+      "0e52b164d0": "请至少选择一个图片文件。",
       "7cef803f5f": "({{value0}})",
       "011eb5b704": "部分文件已被跳过。仅允许支持的图片格式。",
       "bfeaca68f4": "文件无效"
@@ -1067,7 +1067,7 @@
       "840d3f5430": "转换错误",
       "03d2a214ed": "PDF 已创建成功！",
       "8629368499": "正在从 JPG 创建 PDF...",
-      "8d883dffcb": "请select at least one JPG file.",
+      "8d883dffcb": "请至少选择一个 JPG 文件。",
       "06ee098f08": "({{value0}})",
       "31345167f1": "部分文件已被跳过。仅允许 PNG 图片。",
       "9531a0069c": "文件无效"
@@ -1088,7 +1088,7 @@
       "0391c45b8e": "转换错误",
       "bc9ed2df69": "PDF 已创建成功！",
       "271986fc7a": "正在从 JPG 创建 PDF...",
-      "78ccdee22c": "请select at least one JPG file.",
+      "78ccdee22c": "请至少选择一个 JPG 文件。",
       "92f7b39102": "({{value0}})",
       "dac29db7dd": "部分文件已被跳过。仅允许 WebP 图片。",
       "3c6e0f53ba": "文件无效"
@@ -1109,7 +1109,7 @@
       "3221b49d76": "转换错误",
       "8e2c99e129": "PDF 已创建成功！",
       "22c5687245": "正在从 SVG 文件创建 PDF...",
-      "b1e501f07a": "请select at least one SVG file.",
+      "b1e501f07a": "请至少选择一个 SVG 文件。",
       "f71cb9d2cc": "({{value0}})",
       "a991f2ba33": "部分文件已被跳过。仅允许 SVG 图形。",
       "0aaa760603": "文件无效"
@@ -1132,7 +1132,7 @@
       "357b5c17a4": "操作失败，请重试。",
       "1641d9aabe": "PDF 已创建成功！",
       "363556b52f": "正在将 BMP 转换为 PDF...",
-      "5f18ec5ebc": "请select at least one BMP file.",
+      "5f18ec5ebc": "请至少选择一个 BMP 文件。",
       "2baabe2097": "({{value0}})"
     },
     "pageTitle": "BMP 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
@@ -1153,7 +1153,7 @@
       "b114f617f1": "操作失败，请重试。",
       "14f5decb21": "PDF 已创建成功！",
       "858af38004": "正在将 HEIC 转换为 PDF...",
-      "5088e5e744": "请select at least one HEIC file.",
+      "5088e5e744": "请至少选择一个 HEIC 文件。",
       "37dc2dff42": "({{value0}})"
     },
     "pageTitle": "HEIC 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
@@ -1174,7 +1174,7 @@
       "af648ea52a": "操作失败，请重试。",
       "67c9b92207": "PDF 已创建成功！",
       "17f3b48e45": "正在将 TIFF 转换为 PDF...",
-      "bcb176a1ed": "请select at least one TIFF file.",
+      "bcb176a1ed": "请至少选择一个 TIFF 文件。",
       "64f495d84c": "({{value0}})"
     },
     "pageTitle": "TIFF 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
@@ -1214,9 +1214,9 @@
       "8507dd5a0d": "文本已成功转换为 PDF！",
       "c08ee56ff6": "正在创建 PDF...",
       "28698eca46": "正在加载转换引擎...",
-      "1497f83234": "请enter some text to convert.",
+      "1497f83234": "请输入要转换的文本。",
       "77f8701633": "无文本",
-      "331d64523c": "请select at least one text file.",
+      "331d64523c": "请至少选择一个文本文件。",
       "8c9a7c9a67": "({{value0}})"
     },
     "pageTitle": "文本转 PDF - 在线免费 PDF 工具 | TuHe PDF"
@@ -1274,12 +1274,12 @@
       "46730049c1": "下载图片",
       "b0a1e9675f": "单独保存 JPG 图片或打包为 ZIP 存档",
       "450e35275a": "PDF 转 PNG",
-      "08490723f9": "免费的在线pdf to png tool工具",
+      "08490723f9": "免费的在线 PDF 转 PNG 工具",
       "ae395b2670": "压缩 PDF",
       "0784d816a9": "分割 PDF",
       "845fd08d7d": "PDF 转 WebP",
-      "dcec9a996f": "免费的在线pdf to webp tool工具",
-      "1aca319598": "免费的在线extract images tool工具",
+      "dcec9a996f": "免费的在线 PDF 转 WebP 工具",
+      "1aca319598": "免费的在线图片提取工具",
       "ed7dea03db": "文件",
       "d1d9286b84": "是的！您可以选择转换所有页面或选择特定页面转换为 JPG 图片。",
       "dbe7c2d813": "是的，JPG 是一种压缩格式。您可以控制质量级别 - 质量越高，压缩越少，文件越大。"
@@ -1456,7 +1456,7 @@
       "a45885aac5": "JPEG",
       "70fe60b7df": "PNG",
       "6fa39ac0c7": "WebP",
-      "e0ac968345": "选择您要convert to a comic book archive的 PDF 文件",
+      "e0ac968345": "选择您要转换为漫画书存档的 PDF 文件",
       "2613d80c87": "选择设置",
       "dd048171e1": "选择图片格式、质量和可选的元数据",
       "f7e912364d": "下载 CBZ",
@@ -1491,7 +1491,7 @@
       "ed40c6ff84": "旋转 PDF"
     },
     "dynamic": {
-      "a8d626a999": "请upload a PDF file.",
+      "a8d626a999": "请上传一个 PDF 文件。",
       "cd8601b331": "操作失败，请重试。",
       "2969af6c0d": "PDF 已成功转换为灰度！",
       "029c0cd7cc": "正在转换为灰度...",
@@ -1613,7 +1613,7 @@
       "109c183332": "PDF 已成功交替混合！",
       "c9aa0cf1a8": "至少需要两个有效的 PDF 文件。",
       "8d708e4e13": "正在交替混合页面...",
-      "3c851e26bd": "请upload at least two PDF files to alternate and mix.",
+      "3c851e26bd": "请至少上传两个 PDF 文件以进行交替合并。",
       "7184f92fa6": "文件不足",
       "68e389ea42": "加载一个或多个 PDF 文件失败。",
       "e8c65343b7": "{{value0}} • {{value1}} pages",
@@ -1643,8 +1643,8 @@
       "f95aaa0707": "正在将文件附加到 PDF...",
       "086438607c": "正在处理中...",
       "c42168707d": "正在将文件嵌入 PDF...",
-      "17dfbec9d9": "请specify a page range for page-level attachments.",
-      "9b8eee5d44": "请select at least one file to attach.",
+      "17dfbec9d9": "请指定页面范围以添加页面级附件。",
+      "9b8eee5d44": "请至少选择一个要附加的文件。",
       "2a84f91d07": "请先上传 PDF 文件。",
       "5af4d6db9e": "加载 PDF 文件失败。",
       "97300a736c": "{{value0}} • {{value1}} pages",
@@ -1727,7 +1727,7 @@
       "60b2821ead": "页面分割成功！",
       "570c1a0772": "正在处理第 {{value0}}/{{value1}} 页...",
       "c8de0c45db": "正在分割 PDF 页面...",
-      "84292b3ef8": "请enter a valid page range (e.g., 1-5, 8, 11-13).",
+      "84292b3ef8": "请输入有效的页码范围（如 1-5, 8, 11-13）。",
       "6f90563f8c": "范围无效",
       "aae540a85c": "请先上传 PDF 文件。",
       "6b2f10d8ba": "加载 PDF 文件失败。",
@@ -1756,9 +1756,9 @@
       "3f3a8dab5a": "操作失败，请重试。",
       "7dffb09a71": "页面",
       "bae7d9dce8": "正在添加 {{value0}} 个空白页...",
-      "e791afd3b7": "请enter a valid number of pages (1 or more).",
+      "e791afd3b7": "请输入有效的页数（1 或更多）。",
       "44bcb69846": "输入无效",
-      "6234a20c60": "请enter a number between 0 and {{value0}}.",
+      "6234a20c60": "请输入 0 到 {{value0}} 之间的数字。",
       "c2c57c5f32": "请先上传 PDF 文件。",
       "b6aab8baeb": "加载 PDF 文件失败。",
       "6d8c3c7f1a": "输入 0 插入到开头，或 {{value0}} 插入到末尾。",
@@ -1783,7 +1783,7 @@
       "cd7bc3d29d": "页面反转成功！",
       "3efb65a545": "正在反转 {{value0}}（{{value1}}/{{value2}}）...",
       "7c4c0a8d59": "页面",
-      "dbc8218413": "请select one or more PDF files."
+      "dbc8218413": "请选择一个或多个 PDF 文件。"
     },
     "pageTitle": "反转页面 - 在线免费 PDF 工具 | TuHe PDF"
   },
@@ -1960,7 +1960,7 @@
       "75da5af9dc": "正在生成 ZIP 文件...",
       "c0127af1aa": "正在添加 {{value0}}（{{value1}}/{{value2}}）...",
       "8b3c05ec36": "正在创建 ZIP 存档...",
-      "a2a6eeec53": "请select PDF files to create a ZIP archive."
+      "a2a6eeec53": "请选择 PDF files to create a ZIP archive."
     },
     "pageTitle": "PDF 转 ZIP - 在线免费 PDF 工具 | TuHe PDF"
   },
@@ -2049,7 +2049,7 @@
       "580338dd56": "{{value0}}%",
       "502938ceda": "操作失败，请重试。",
       "5579495988": "正在加载 {{value0}}...",
-      "581b7fca90": "请select a valid PDF file.",
+      "581b7fca90": "请选择 a valid PDF file.",
       "f1300022a2": "正在加载对比 {{value0}}/{{value1}}...",
       "9e4f2ee2ef": "正在索引 PDF 2 第 {{value0}}/{{value1}} 页...",
       "f0965742d4": "正在索引 PDF 1 第 {{value0}}/{{value1}} 页...",
@@ -2136,7 +2136,7 @@
       "fa5568eaf0": "正在生成 ZIP 文件...",
       "c932412e1b": "正在优化 {{value0}}（{{value1}}/{{value2}}）...",
       "ede4d9529f": "正在优化 PDF 以供网页查看（线性化）...",
-      "20e8c58c29": "请upload at least one PDF file.",
+      "20e8c58c29": "请上传 at least one PDF file.",
       "3fc2420257": "没有 PDF 文件"
     },
     "pageTitle": "线性化 PDF - 在线免费 PDF 工具 | TuHe PDF"
@@ -2215,7 +2215,7 @@
       "bf0e2061e3": "修复失败",
       "f63b91416a": "正在处理中...",
       "2fd1eb15f7": "正在初始化修复引擎...",
-      "a8baf6f1f3": "请select one or more PDF files."
+      "a8baf6f1f3": "请选择 one or more PDF files."
     },
     "pageTitle": "修复 PDF - 在线免费 PDF 工具 | TuHe PDF"
   },
@@ -2245,7 +2245,7 @@
       "99f5f30b9f": "正在使用 256 位 AES 加密 PDF...",
       "3e80559bf0": "正在读取 PDF...",
       "a90778fd81": "正在初始化加密...",
-      "cfc44e1b7f": "请enter a user password.",
+      "cfc44e1b7f": "请输入 a user password.",
       "bec4cf0d52": "需要输入",
       "2c4bfd0f85": "请先上传一个 PDF 文件。",
       "dd9d84669b": "无文件"
@@ -2311,7 +2311,7 @@
       "63a056f300": "正在初始化解密...",
       "deaa875f11": "请输入 PDF 密码。",
       "3d789ca3db": "需要输入",
-      "8e6de480a6": "请upload at least one PDF file.",
+      "8e6de480a6": "请上传 at least one PDF file.",
       "cb76be345d": "无文件"
     },
     "processFailed": "解密失败，请重试。",
@@ -2339,7 +2339,7 @@
       "9fb9945ea7": "正在扁平化 {{value0}}/{{value1}}：{{value2}}...",
       "459e7aabf1": "正在扁平化多个 PDF...",
       "0b697fdcaa": "正在扁平化 PDF...",
-      "87d5747b51": "请select at least one PDF file."
+      "87d5747b51": "请选择 at least one PDF file."
     },
     "pageTitle": "扁平化 PDF - 在线免费 PDF 工具 | TuHe PDF"
   },
@@ -2427,7 +2427,7 @@
       "50d48a9b28": "转换完成",
       "f1311f9c1a": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
       "3521d690a3": "已成功将 {{value0}} 转换为 PDF。",
-      "c2f620d499": "请select at least one ODT file."
+      "c2f620d499": "请选择 at least one ODT file."
     },
     "pageTitle": "ODT 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
   },
@@ -2451,7 +2451,7 @@
       "0c0e61f0ae": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
       "c7241436c3": "正在处理中...",
       "f702b2d875": "已成功将 {{value0}} 转换为 PDF。",
-      "b3385b83d4": "请select at least one CSV file."
+      "b3385b83d4": "请选择 at least one CSV file."
     },
     "pageTitle": "CSV 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
   },
@@ -2474,7 +2474,7 @@
       "5d9752605c": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
       "edd7466655": "正在将多个 RTF 文件转换为 PDF...",
       "f98b741f34": "已成功将 {{value0}} 转换为 PDF。",
-      "0a05ab24e5": "请select at least one RTF file."
+      "0a05ab24e5": "请选择 at least one RTF file."
     },
     "pageTitle": "RTF 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
   },
@@ -2493,13 +2493,13 @@
       "d30b1693d5": "下载 PDF",
       "dc8cc35e96": "save PDF files - formatting perfectly preserved",
       "d584b36261": "PDF 转 DOCX",
-      "0503bd898c": "免费的在线pdf to docx tool工具",
+      "0503bd898c": "免费的在线 PDF 转 Word 工具",
       "6fdd55514f": "Excel 转 PDF",
-      "e16d6513f6": "免费的在线excel to pdf tool工具",
+      "e16d6513f6": "免费的在线 Excel 转 PDF 工具",
       "ec23f243bc": "PowerPoint 转 PDF",
-      "31f26f8f66": "免费的在线powerpoint to pdf tool工具",
+      "31f26f8f66": "免费的在线 PPT 转 PDF 工具",
       "1b0186270d": "文本转 PDF",
-      "a75933f96a": "免费的在线txt to pdf tool工具",
+      "a75933f96a": "免费的在线文本转 PDF 工具",
       "bb9dede377": "合并 PDF",
       "e69920c2ed": "是的！TuHe PDF 支持较旧的 .doc 和较新的 .docx Microsoft Word 格式。",
       "dad3667a18": "是的！字体、图片、表格、页眉、页脚和所有格式都将完全保留 Word 中的外观。",
@@ -2511,13 +2511,13 @@
       "ce88334fff": "转换完成",
       "ac56a3e11b": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
       "59a8cc5e17": "已成功将 {{value0}} 转换为 PDF。",
-      "7e35823cb1": "请select at least one Word document.",
+      "7e35823cb1": "请选择 at least one Word document.",
       "02029cec28": "操作失败，请重试。",
       "80685ef3be": "操作失败，请重试。",
       "5e47f85e0d": "正在生成高质量 PDF...",
       "2729eb14bf": "设置",
       "df5707067f": "正在处理中...",
-      "e6ffaaa90c": "请upload a .docx file first.",
+      "e6ffaaa90c": "请上传 a .docx file first.",
       "d6c3ffcaae": "无文件"
     },
     "pageTitle": "Word 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
@@ -2529,11 +2529,11 @@
     "convertButton": "转换为 PDF",
     "auto": {
       "7800ff3767": "PDF 转 Excel",
-      "fa3b5f9252": "免费的在线pdf to excel tool工具",
+      "fa3b5f9252": "免费的在线 PDF 转 Excel 工具",
       "c91e040a8e": "Word 转 PDF",
-      "e9491f0c3f": "免费的在线word to pdf tool工具",
+      "e9491f0c3f": "免费的在线 Word 转 PDF 工具",
       "c859342798": "CSV 转 PDF",
-      "198967abc6": "免费的在线csv to pdf tool工具",
+      "198967abc6": "免费的在线 CSV 转 PDF 工具",
       "bb9dede377": "合并 PDF",
       "ae395b2670": "压缩 PDF"
     },
@@ -2543,7 +2543,7 @@
       "520085103f": "转换完成",
       "14b92e28b5": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
       "74fd7493ec": "已成功将 {{value0}} 转换为 PDF。",
-      "9d71f06b8f": "请select at least one Excel file."
+      "9d71f06b8f": "请选择 at least one Excel file."
     },
     "pageTitle": "Excel 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
   },
@@ -2565,7 +2565,7 @@
       "f3b510faff": "转换完成",
       "ec950a4de2": "正在转换 {{value0}}/{{value1}}：{{value2}}...",
       "94609a8cae": "已成功将 {{value0}} 转换为 PDF。",
-      "af1899e4e6": "请select at least one PowerPoint file."
+      "af1899e4e6": "请选择 at least one PowerPoint file."
     },
     "pageTitle": "PowerPoint 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
   },
@@ -2636,7 +2636,7 @@
       "ec899ed25c": "操作失败，请重试。",
       "3ed8d885aa": "已创建包含 {{value0}} 张纸的小册子！",
       "831fdc4675": "正在创建小册子...",
-      "1a4b3ff662": "请load a PDF first.",
+      "1a4b3ff662": "请先加载一个 PDF 文件。",
       "a9ad50182d": "加载 PDF 文件失败。",
       "efe8322c67": "{{value0}} • {{value1}} pages",
       "4ceed58d26": "{{value0}} • 正在加载..."
@@ -2668,7 +2668,7 @@
       "75b9ac74b8": "已成功将 {{value0}} 转换为 PDF。",
       "ba195f6b9f": "正在转换 {{value0}}...",
       "791c680372": "正在加载转换引擎...",
-      "7d896aa183": "请select at least one {{value0}} file."
+      "7d896aa183": "请选择 at least one {{value0}} file."
     },
     "pageTitle": "XPS 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
   },
@@ -2693,7 +2693,7 @@
       "e4e504b5a7": "已成功将 {{value0}} 转换为 PDF。",
       "b481d5a5b7": "正在转换 {{value0}}...",
       "74a5661b9d": "正在加载转换引擎...",
-      "1a7abc7505": "请select at least one {{value0}} file."
+      "1a7abc7505": "请选择 at least one {{value0}} file."
     },
     "pageTitle": "MOBI 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
   },
@@ -2718,7 +2718,7 @@
       "5c78b3ff7d": "已成功将 {{value0}} 转换为 PDF。",
       "c6ebd08683": "正在转换 {{value0}}...",
       "0642d0fcdb": "正在加载转换引擎...",
-      "22b7b16873": "请select at least one {{value0}} file."
+      "22b7b16873": "请选择 at least one {{value0}} file."
     },
     "pageTitle": "EPUB 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
   },
@@ -2743,7 +2743,7 @@
       "02e192036d": "已成功将 {{value0}} 转换为 PDF。",
       "ae2a0e93af": "正在转换 {{value0}}...",
       "fa537f2cfc": "正在加载转换引擎...",
-      "36e0761e1c": "请select at least one {{value0}} file."
+      "36e0761e1c": "请选择 at least one {{value0}} file."
     },
     "pageTitle": "FB2 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
   },
@@ -2767,7 +2767,7 @@
       "c44c18c174": "正在转换文件...",
       "18d1e68f41": "已成功将 {{value0}} 转换为 PDF。",
       "657ec1680f": "正在转换 {{value0}}...",
-      "3767ecf995": "请select at least one {{value0}} file."
+      "3767ecf995": "请选择 at least one {{value0}} file."
     },
     "pageTitle": "CBZ 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
   },
@@ -2792,7 +2792,7 @@
       "9074b76c6a": "已成功将 {{value0}} 转换为 PDF。",
       "36762d3298": "正在转换 {{value0}}...",
       "899e0e00c9": "正在加载转换引擎...",
-      "c05b666684": "请select at least one {{value0}} file."
+      "c05b666684": "请选择 at least one {{value0}} file."
     },
     "pageTitle": "WPD 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
   },
@@ -2817,7 +2817,7 @@
       "41793edcbd": "已成功将 {{value0}} 转换为 PDF。",
       "87eac04e52": "正在转换 {{value0}}...",
       "839bb28344": "正在加载转换引擎...",
-      "4af39b0805": "请select at least one {{value0}} file."
+      "4af39b0805": "请选择 at least one {{value0}} file."
     },
     "pageTitle": "WPS 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
   },
@@ -2840,7 +2840,7 @@
       "67b168273e": "文件",
       "57a112278a": "正在转换多个文件...",
       "99ae92f70e": "已成功将 {{value0}} 转换为 PDF。",
-      "75c05e3e4d": "请select at least one {{value0}} file."
+      "75c05e3e4d": "请选择 at least one {{value0}} file."
     },
     "pageTitle": "XML 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
   },
@@ -2865,7 +2865,7 @@
       "00d97896d1": "已成功将 {{value0}} 转换为 PDF。",
       "a8b3abcef2": "正在转换 {{value0}}...",
       "ef163b0d8e": "正在加载转换引擎...",
-      "6e2b64f357": "请select at least one {{value0}} file."
+      "6e2b64f357": "请选择 at least one {{value0}} file."
     },
     "pageTitle": "Pages 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
   },
@@ -2890,7 +2890,7 @@
       "475c73b9d1": "已成功将 {{value0}} 转换为 PDF。",
       "333a6ea118": "正在转换 {{value0}}...",
       "245fd93b2b": "正在加载转换引擎...",
-      "2a61c4b789": "请select at least one {{value0}} file."
+      "2a61c4b789": "请选择 at least one {{value0}} file."
     },
     "pageTitle": "ODG 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
   },
@@ -2915,7 +2915,7 @@
       "77a1ff6cd4": "已成功将 {{value0}} 转换为 PDF。",
       "4dd49077fa": "正在转换 {{value0}}...",
       "4fb6de5f25": "正在加载转换引擎...",
-      "d2f643f113": "请select at least one {{value0}} file."
+      "d2f643f113": "请选择 at least one {{value0}} file."
     },
     "pageTitle": "ODS 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
   },
@@ -2940,7 +2940,7 @@
       "907967ce32": "已成功将 {{value0}} 转换为 PDF。",
       "9ce08de74a": "正在转换 {{value0}}...",
       "bd598b8682": "正在加载转换引擎...",
-      "3f9fd2f58f": "请select at least one {{value0}} file."
+      "3f9fd2f58f": "请选择 at least one {{value0}} file."
     },
     "pageTitle": "ODP 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
   },
@@ -2965,7 +2965,7 @@
       "b8f690887c": "已成功将 {{value0}} 转换为 PDF。",
       "b0ddd3bf3e": "正在转换 {{value0}}...",
       "1d973bb300": "正在加载转换引擎...",
-      "dbf215a4fb": "请select at least one {{value0}} file."
+      "dbf215a4fb": "请选择 at least one {{value0}} file."
     },
     "pageTitle": "PUB 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
   },
@@ -2990,7 +2990,7 @@
       "276b7bc549": "已成功将 {{value0}} 转换为 PDF。",
       "63888e1e6e": "正在转换 {{value0}}...",
       "ecf9899daf": "正在加载转换引擎...",
-      "582b0dbbdf": "请select at least one {{value0}} file."
+      "582b0dbbdf": "请选择 at least one {{value0}} file."
     },
     "pageTitle": "VSD 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
   },
@@ -3014,7 +3014,7 @@
       "ad9a65d45f": "已成功将 {{value0}} 转换为 PDF。",
       "c5e9e96303": "正在转换 {{value0}}...",
       "0a745921f6": "正在加载转换引擎...",
-      "29f58a0131": "请select at least one {{value0}} file."
+      "29f58a0131": "请选择 at least one {{value0}} file."
     },
     "pageTitle": "PSD 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
   },
@@ -3030,7 +3030,7 @@
       "ed40c6ff84": "旋转 PDF"
     },
     "dynamic": {
-      "de155d6aee": "请upload PDF files.",
+      "de155d6aee": "请上传 PDF files.",
       "1d741530ab": "文件无效",
       "6e3c2cd056": "操作失败，请重试。",
       "98e4c4daf3": "已将 {{value0}} 个文件（{{value1}} 页）转换为 SVG！",
@@ -3042,7 +3042,7 @@
       "2f5799382c": "PDF 已成功转换为 SVG！",
       "733ccaa9fb": "正在转换为 SVG...",
       "67967aa49b": "正在加载引擎...",
-      "d03c2fba20": "请upload at least one PDF file."
+      "d03c2fba20": "请上传 at least one PDF file."
     },
     "pageTitle": "PDF 转 SVG - 在线免费 PDF 工具 | TuHe PDF"
   },
@@ -3060,7 +3060,7 @@
       "ed40c6ff84": "旋转 PDF"
     },
     "dynamic": {
-      "a9a4c9ebca": "请upload a PDF file.",
+      "a9a4c9ebca": "请上传 a PDF file.",
       "9d11f4df3a": "操作失败，请重试。",
       "06afde8883": "成功提取了 {{value0}} 个表格！",
       "e26185baed": "正在创建 ZIP 文件...",
@@ -3087,7 +3087,7 @@
       "ed40c6ff84": "旋转 PDF"
     },
     "dynamic": {
-      "fa8ca0aeab": "请upload a PDF file.",
+      "fa8ca0aeab": "请上传 a PDF file.",
       "f3154bcd1b": "操作失败，请重试。",
       "2d3e7a570f": "PDF 已成功转换为 CSV！",
       "cf3fa196da": "此 PDF 中未检测到表格。",
@@ -3112,7 +3112,7 @@
       "ed40c6ff84": "旋转 PDF"
     },
     "dynamic": {
-      "abef904a42": "请upload a PDF file.",
+      "abef904a42": "请上传 a PDF file.",
       "7f193f2e33": "操作失败，请重试。",
       "58ec90b001": "成功提取 {{value0}} 个表格到 Excel！",
       "7143676af8": "正在创建 Excel 文件...",
@@ -3148,7 +3148,7 @@
       "f3aeb819f5": "正在从 {{value0}} 提取文本...",
       "7f1788f372": "正在提取文本...",
       "3cd2bcee0a": "正在加载转换引擎...",
-      "9b20a15e20": "请select at least one PDF file.",
+      "9b20a15e20": "请选择 at least one PDF file.",
       "2a17bf4990": "({{value0}})",
       "fad4a0bfb8": "部分文件已被跳过。仅允许 PDF 文件。",
       "3003a34022": "文件无效"
@@ -3274,7 +3274,7 @@
       "2f59e87d76": "正在分析签名...",
       "dfa18c01c2": "解析证书文件失败。",
       "4cff9de413": "证书无效",
-      "934e0a255a": "请select a .pem, .crt, .cer, or .der certificate file.",
+      "934e0a255a": "请选择 a .pem, .crt, .cer, or .der certificate file.",
       "ce9a858d22": "请选择一个 PDF 文件。"
     }
   },
@@ -3343,7 +3343,7 @@
       "c34c969696": "正在生成 PDF...",
       "bf0046c338": "正在处理中...",
       "0b58b429fa": "正在加载 PDF 引擎...",
-      "e2b1b6aa34": "请select at least one {{value0}} file (.eml or .msg)."
+      "e2b1b6aa34": "请至少选择一个邮件文件（.eml 或 .msg）。"
     },
     "pageTitle": "邮件转 PDF - 在线免费 PDF 工具 | TuHe PDF"
   },
@@ -3377,7 +3377,7 @@
       "d4bf39f87d": "正在处理中...",
       "b9e71d80df": "正在处理中...",
       "7db89a06ed": "正在将字体转为轮廓...",
-      "ff6a22c28e": "请select at least one PDF file."
+      "ff6a22c28e": "请选择 at least one PDF file."
     },
     "pageTitle": "字体转轮廓 - 在线免费 PDF 工具 | TuHe PDF"
   },
@@ -3415,7 +3415,7 @@
       "d1f2bb540e": "文件",
       "e35d1ef53a": "正在校正 {{value0}}...",
       "940e55b69e": "正在初始化 PyMuPDF...",
-      "92c18c8069": "请select at least one PDF file.",
+      "92c18c8069": "请选择 at least one PDF file.",
       "d5273db50d": "（{{value0}} KB）",
       "9462cdd58a": "设置"
     },
@@ -3427,11 +3427,11 @@
     "auto": {
       "6d4fcf7a04": "转换为 DOCX",
       "c91e040a8e": "Word 转 PDF",
-      "e9491f0c3f": "免费的在线word to pdf tool工具",
+      "e9491f0c3f": "免费的在线 Word 转 PDF 工具",
       "b4210b54f6": "PDF 转文本",
-      "5f75695a4d": "免费的在线pdf to text tool工具",
+      "5f75695a4d": "免费的在线 PDF 转文本工具",
       "7800ff3767": "PDF 转 Excel",
-      "fa3b5f9252": "免费的在线pdf to excel tool工具",
+      "fa3b5f9252": "免费的在线 PDF 转 Excel 工具",
       "0a193ffe0a": "编辑 PDF"
     },
     "dynamic": {
@@ -3444,7 +3444,7 @@
       "63a03d2fbe": "正在转换 {{value0}}...",
       "8d9c37f316": "转换中...",
       "1292fc8a63": "正在加载 PDF 转换器...",
-      "6d8a487c85": "请select at least one PDF file.",
+      "6d8a487c85": "请选择 at least one PDF file.",
       "9ca476fb35": "{{value0}} • 无法加载页数",
       "bc5256a321": "{{value0}} • {{value1}} pages",
       "55c6560fcf": "{{value0}} • {{value1}}"
@@ -3472,7 +3472,7 @@
       "815be584e9": "未找到图片",
       "699a1ba99d": "正在从 {{value0}} 提取图片...",
       "f496e0ee9b": "正在加载 PDF 处理器...",
-      "62200eb753": "请select at least one PDF file.",
+      "62200eb753": "请选择 at least one PDF file.",
       "ffccc13590": "{{value0}} • 无法加载页数",
       "71adf08528": "{{value0}} • {{value1}} pages",
       "de57f04c3f": "{{value0}} • {{value1}}"
@@ -3500,7 +3500,7 @@
       "a1124f961b": "正在转换 {{value0}}...",
       "9ab0c4bc34": "转换中...",
       "0beadcf720": "正在加载 PDF 转换器...",
-      "514702f7a2": "请select at least one PDF file.",
+      "514702f7a2": "请选择 at least one PDF file.",
       "36dc12cdf2": "{{value0}} • 无法加载页数",
       "a91a90531d": "{{value0}} • {{value1}} pages",
       "c22fc17c8e": "{{value0}} • {{value1}}",
@@ -3535,7 +3535,7 @@
       "cd0eb912f2": "正在为 AI 提取 {{value0}}...",
       "10e7294ea2": "正在提取...",
       "af11d57398": "正在加载转换引擎...",
-      "c088c28b80": "请select at least one PDF file.",
+      "c088c28b80": "请选择 at least one PDF file.",
       "e06864fb5a": "{{value0}} • 无法加载页数",
       "a807df92a6": "{{value0}} • {{value1}} pages",
       "570fd297dc": "{{value0}} • {{value1}}"
@@ -3563,7 +3563,7 @@
       "3354cf3da1": "请选择一个 PDF 文件。",
       "fc393bf7c9": "带图层更改的 PDF 已保存！",
       "4b469a48b4": "正在保存带图层更改的 PDF...",
-      "6f5396866d": "请enter a layer name",
+      "6f5396866d": "请输入 a layer name",
       "421586fd8a": "名称无效",
       "a6ea2beda2": "正在处理中...",
       "454a380e0d": "正在从 {{value0}} 加载图层...",
@@ -3605,7 +3605,7 @@
       "68390fdb3e": "成功将 {{value0}} 转换为 {{value1}}。",
       "7f598ce1b2": "正在初始化 Ghostscript...",
       "86822cd801": "正在预扁平化 PDF...",
-      "b4d3f1eaca": "请select at least one PDF file.",
+      "b4d3f1eaca": "请选择 at least one PDF file.",
       "5c1931ff9b": "{{value0}} • 无法加载页数",
       "7fdcb51569": "{{value0}} • {{value1}} pages",
       "1ebf7b22d2": "{{value0}} • {{value1}}"
@@ -3641,7 +3641,7 @@
       "81511ff0eb": "正在栅格化 {{value0}}...",
       "ba04be1c08": "正在栅格化...",
       "d87f270bce": "正在加载转换引擎...",
-      "d68750cff1": "请select at least one PDF file.",
+      "d68750cff1": "请选择 at least one PDF file.",
       "3750c60c73": "{{value0}} • 无法加载页数",
       "d3132c7fc8": "{{value0}} • {{value1}} pages",
       "5f28791b8c": "{{value0}} • {{value1}}"
@@ -3991,7 +3991,7 @@
       "7fed9a675a": "PDF {{value0}} 应用成功。",
       "2bbca695fc": "正在读取文件...",
       "657cdd2847": "正在初始化 PDF 引擎...",
-      "e3f55281aa": "请upload both a base PDF and an overlay/underlay PDF.",
+      "e3f55281aa": "请上传 both a base PDF and an overlay/underlay PDF.",
       "fc7bc22501": "缺少文件"
     },
     "applying": "正在应用{{mode}}...",

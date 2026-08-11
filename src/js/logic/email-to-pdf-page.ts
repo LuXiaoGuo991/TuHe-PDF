@@ -17,7 +17,10 @@ import { parseEmailFile, renderEmailToHtml } from './email-to-pdf.js';
 import { loadPyMuPDF } from '../utils/pymupdf-loader.js';
 
 const EXTENSIONS = ['.eml', '.msg'];
-const TOOL_NAME = 'Email';
+const TOOL_NAME =
+  t('tools:emailToPdf.name') !== 'tools:emailToPdf.name'
+    ? t('tools:emailToPdf.name')
+    : 'Email';
 
 document.addEventListener('DOMContentLoaded', () => {
   const fileInput = document.getElementById('file-input') as HTMLInputElement;
