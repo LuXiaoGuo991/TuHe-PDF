@@ -739,7 +739,7 @@ function renderField(field: FormField): void {
       field,
       '#ffffff'
     );
-    contentEl.innerHTML = `<div class="flex items-center gap-2 px-2"><i data-lucide="calendar" class="w-4 h-4"></i><span class="text-sm date-format-text">${escapeHtml(field.dateFormat || 'mm/dd/yyyy')}</span></div>`;
+    contentEl.innerHTML = `<div class="flex items-center gap-2 px-2"><i data-lucide="calendar" class="w-4 h-4"></i><span class="text-sm date-format-text">${escapeHtml(field.dateFormat || translate('formCreator.defaultDateFormat', 'yyyy/mm/dd'))}</span></div>`;
     setTimeout(() => (window as LucideWindow).lucide?.createIcons(), 0);
   } else if (field.type === 'image') {
     contentEl.className =
@@ -748,7 +748,7 @@ function renderField(field: FormField): void {
       field,
       '#f3f4f6'
     );
-    contentEl.innerHTML = `<div class="flex flex-col items-center text-center p-1"><i data-lucide="image" class="w-6 h-6 mb-1"></i><span class="text-[10px] leading-tight">${escapeHtml(field.label || 'Click to Upload Image')}</span></div>`;
+    contentEl.innerHTML = `<div class="flex flex-col items-center text-center p-1"><i data-lucide="image" class="w-6 h-6 mb-1"></i><span class="text-[10px] leading-tight">${escapeHtml(field.label || translate('formCreator.clickToUploadImage', 'Click to Upload Image'))}</span></div>`;
     setTimeout(() => (window as LucideWindow).lucide?.createIcons(), 0);
   } else if (field.type === 'barcode') {
     contentEl.className = 'w-full h-full flex items-center justify-center';
@@ -777,11 +777,11 @@ function renderField(field: FormField): void {
           String(field.name).replace(/[\r\n]+/g, ' '),
           error
         );
-        contentEl.innerHTML = `<div class="flex flex-col items-center text-center p-1 text-gray-400"><i data-lucide="qr-code" class="w-6 h-6 mb-1"></i><span class="text-[10px] leading-tight">Invalid data</span></div>`;
+        contentEl.innerHTML = `<div class="flex flex-col items-center text-center p-1 text-gray-400"><i data-lucide="qr-code" class="w-6 h-6 mb-1"></i><span class="text-[10px] leading-tight">${translate('formCreator.invalidData', 'Invalid data')}</span></div>`;
         setTimeout(() => (window as LucideWindow).lucide?.createIcons(), 0);
       }
     } else {
-      contentEl.innerHTML = `<div class="flex flex-col items-center text-center p-1 text-gray-400"><i data-lucide="qr-code" class="w-6 h-6 mb-1"></i><span class="text-[10px] leading-tight">Barcode</span></div>`;
+      contentEl.innerHTML = `<div class="flex flex-col items-center text-center p-1 text-gray-400"><i data-lucide="qr-code" class="w-6 h-6 mb-1"></i><span class="text-[10px] leading-tight">${translate('formCreator.barcode', 'Barcode')}</span></div>`;
       setTimeout(() => (window as LucideWindow).lucide?.createIcons(), 0);
     }
   }

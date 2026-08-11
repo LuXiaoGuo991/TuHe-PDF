@@ -277,21 +277,21 @@ placeholder="${escapeHTML(field.placeholder || '')}" />
         <div class="flex items-center gap-2">
           <label class="flex items-center gap-1 text-xs">
             <input type="checkbox" id="modal-use-destination" class="w-4 h-4" ${hasDestination ? 'checked' : ''}>
-              <span class="text-gray-700">Set custom destination</span>
+              <span class="text-gray-700">${translate('editBookmarks.setCustomDestination', 'Set custom destination')}</span>
                 </label>
                 </div>
                 <div id="destination-controls" class="${hasDestination ? '' : 'hidden'} space-y-2">
                   <div class="grid grid-cols-2 gap-2">
                     <div>
-                    <label class="text-xs text-gray-600">Page</label>
+                    <label class="text-xs text-gray-600">${translate('editBookmarks.page', 'Page')}</label>
                       <input type="number" id="modal-dest-page" min="1" max="${escapeHTML(String(field.maxPages || 1))}" value="${escapeHTML(String(defaultValues.destPage || field.page || 1))}"
 class="w-full px-2 py-1 border border-gray-300 rounded text-sm text-gray-900" step="1" />
   </div>
   <div>
-  <label class="text-xs text-gray-600">Zoom(%)</label>
+  <label class="text-xs text-gray-600">${translate('editBookmarks.zoom', 'Zoom(%)')}</label>
     <select id="modal-dest-zoom" class="w-full px-2 py-1 border border-gray-300 rounded text-sm text-gray-900">
-      <option value="">Inherit</option>
-        <option value="0">Fit Page</option>
+      <option value="">${translate('editBookmarks.inherit', 'Inherit')}</option>
+        <option value="0">${translate('editBookmarks.fitPage', 'Fit Page')}</option>
           <option value="50">50%</option>
             <option value="75">75%</option>
               <option value="100">100%</option>
@@ -303,20 +303,20 @@ class="w-full px-2 py-1 border border-gray-300 rounded text-sm text-gray-900" st
                       </div>
                       <div class="grid grid-cols-2 gap-2">
                         <div>
-                        <label class="text-xs text-gray-600">X Position</label>
+                        <label class="text-xs text-gray-600">${translate('editBookmarks.xPosition', 'X Position')}</label>
                           <input type="number" id="modal-dest-x" value="0" step="10"
 class="w-full px-2 py-1 border border-gray-300 rounded text-sm text-gray-900" />
   </div>
   <div>
-  <label class="text-xs text-gray-600">Y Position</label>
+  <label class="text-xs text-gray-600">${translate('editBookmarks.yPosition', 'Y Position')}</label>
     <input type="number" id="modal-dest-y" value="0" step="10"
 class="w-full px-2 py-1 border border-gray-300 rounded text-sm text-gray-900" />
   </div>
   </div>
   <button id="modal-pick-destination" class="w-full px-3 py-2 btn-gradient text-white rounded text-xs !flex items-center justify-center gap-1">
-    <i data-lucide="crosshair" class="w-3 h-3"></i> Click on PDF to Pick Location
+    <i data-lucide="crosshair" class="w-3 h-3"></i> ${translate('editBookmarks.clickToPickLocation', 'Click on PDF to Pick Location')}
       </button>
-      <p class="text-xs text-gray-500 italic">Click the button above, then click on the PDF where you want the bookmark to jump to</p>
+      <p class="text-xs text-gray-500 italic">${translate('editBookmarks.clickToPickLocationHint', 'Click the button above, then click on the PDF where you want the bookmark to jump to')}</p>
         </div>
         </div>
         </div>
@@ -326,7 +326,7 @@ class="w-full px-2 py-1 border border-gray-300 rounded text-sm text-gray-900" />
         <div class="mb-4">
           <label class="block text-sm font-medium text-gray-700 mb-2">${escapeHTML(field.label)}</label>
             <div id="modal-preview" class="style-preview bg-gray-50">
-              <span id="preview-text" style="font-size: 16px;">Preview Text</span>
+              <span id="preview-text" style="font-size: 16px;">${translate('editBookmarks.previewText', 'Preview Text')}</span>
                 </div>
                 </div>
                   `;
@@ -342,8 +342,8 @@ class="w-full px-2 py-1 border border-gray-300 rounded text-sm text-gray-900" />
                       ${fieldsHTML}
 </div>
   <div class="flex gap-2 justify-end">
-    <button id="modal-cancel" class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 text-gray-700">Cancel</button>
-      <button id="modal-confirm" class="px-4 py-2 rounded btn-gradient text-white">Confirm</button>
+    <button id="modal-cancel" class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 text-gray-700">${translate('common.cancel', 'Cancel')}</button>
+      <button id="modal-confirm" class="px-4 py-2 rounded btn-gradient text-white">${translate('editBookmarks.confirm', 'Confirm')}</button>
         </div>
         </div>
           `;
@@ -848,11 +848,11 @@ function showConfirmModal(message: string): Promise<boolean> {
 
     modal.innerHTML = `
   <div class="p-6">
-    <h3 class="text-xl font-bold text-gray-800 mb-4">Confirm Action</h3>
+    <h3 class="text-xl font-bold text-gray-800 mb-4">${translate('editBookmarks.confirmAction', 'Confirm Action')}</h3>
       <p class="text-gray-600 mb-6">${escapeHTML(message)}</p>
         <div class="flex gap-2 justify-end">
-          <button id="modal-cancel" class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 text-gray-700">Cancel</button>
-            <button id="modal-confirm" class="px-4 py-2 rounded btn-gradient text-white">Confirm</button>
+          <button id="modal-cancel" class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 text-gray-700">${translate('common.cancel', 'Cancel')}</button>
+            <button id="modal-confirm" class="px-4 py-2 rounded btn-gradient text-white">${translate('editBookmarks.confirm', 'Confirm')}</button>
               </div>
               </div>
                 `;
@@ -904,7 +904,7 @@ function showAlertModal(title: string, message: string): Promise<boolean> {
                 <h3 class="text-xl font-bold text-gray-800 mb-4">${escapeHTML(title)}</h3>
                   <p class="text-gray-600 mb-6">${escapeHTML(message)}</p>
                     <div class="flex justify-end">
-                      <button id="modal-ok" class="px-4 py-2 rounded btn-gradient text-white">OK</button>
+                      <button id="modal-ok" class="px-4 py-2 rounded btn-gradient text-white">${translate('common.ok', 'OK')}</button>
                         </div>
                         </div>
                           `;
@@ -1028,7 +1028,10 @@ redoBtn?.addEventListener('click', redo);
 
 resetBtn?.addEventListener('click', async () => {
   const confirmed = await showConfirmModal(
-    'Reset and go back to file uploader? All unsaved changes will be lost.'
+    translate(
+      'editBookmarks.resetConfirm',
+      'Reset and go back to file uploader? All unsaved changes will be lost.'
+    )
   );
   if (confirmed) {
     resetToUploader();
@@ -1037,12 +1040,19 @@ resetBtn?.addEventListener('click', async () => {
 
 deleteAllBtn?.addEventListener('click', async () => {
   if (bookmarkTree.length === 0) {
-    await showAlertModal('Info', 'No bookmarks to delete.');
+    await showAlertModal(
+      translate('editBookmarks.info', 'Info'),
+      translate('editBookmarks.noBookmarksToDelete', 'No bookmarks to delete.')
+    );
     return;
   }
 
   const confirmed = await showConfirmModal(
-    `Delete all ${bookmarkTree.length} bookmark(s) ? `
+    translate(
+      'editBookmarks.deleteAllConfirm',
+      'Delete all {{count}} bookmark(s)?',
+      { count: bookmarkTree.length }
+    )
   );
   if (confirmed) {
     bookmarkTree = [];
@@ -1315,8 +1325,12 @@ csvInput?.addEventListener('change', async (e: Event) => {
   csvBookmarks = parseCSV(text);
 
   await showAlertModal(
-    'CSV Loaded',
-    `Loaded ${csvBookmarks.length} bookmarks from CSV. Now upload your PDF.`
+    translate('editBookmarks.csvLoaded', 'CSV Loaded'),
+    translate(
+      'editBookmarks.csvLoadedMsg',
+      'Loaded {{count}} bookmarks from CSV. Now upload your PDF.',
+      { count: csvBookmarks.length }
+    )
   );
 });
 
@@ -1329,11 +1343,17 @@ jsonInput?.addEventListener('change', async (e: Event) => {
   try {
     jsonBookmarks = JSON.parse(text);
     await showAlertModal(
-      'JSON Loaded',
-      'Loaded bookmarks from JSON. Now upload your PDF.'
+      translate('editBookmarks.jsonLoaded', 'JSON Loaded'),
+      translate(
+        'editBookmarks.jsonLoadedMsg',
+        'Loaded bookmarks from JSON. Now upload your PDF.'
+      )
     );
   } catch {
-    await showAlertModal('Error', 'Invalid JSON format');
+    await showAlertModal(
+      translate('common.error', 'Error'),
+      translate('editBookmarks.invalidJsonFormat', 'Invalid JSON format')
+    );
   }
 });
 
@@ -1772,14 +1792,20 @@ function createNodeElement(node: BookmarkNode, level = 0): HTMLLIElement {
   addChildBtn.innerHTML = '<i data-lucide="plus" class="w-4 h-4"></i>';
   addChildBtn.addEventListener('click', async (e: MouseEvent) => {
     e.stopPropagation();
-    const result = await showInputModal('Add Child Bookmark', [
-      {
-        type: 'text',
-        name: 'title',
-        label: 'Title',
-        placeholder: 'Enter bookmark title',
-      },
-    ]);
+    const result = await showInputModal(
+      translate('editBookmarks.addChildBookmark', 'Add Child Bookmark'),
+      [
+        {
+          type: 'text',
+          name: 'title',
+          label: translate('editBookmarks.title', 'Title'),
+          placeholder: translate(
+            'editBookmarks.enterBookmarkTitle',
+            'Enter bookmark title'
+          ),
+        },
+      ]
+    );
     if (result && result.title) {
       node.children.push({
         id: Date.now() + Math.random(),
@@ -1806,47 +1832,83 @@ function createNodeElement(node: BookmarkNode, level = 0): HTMLLIElement {
   editBtn.addEventListener('click', async (e: MouseEvent) => {
     e.stopPropagation();
     const result = await showInputModal(
-      'Edit Bookmark',
+      translate('editBookmarks.editBookmark', 'Edit Bookmark'),
       [
         {
           type: 'text',
           name: 'title',
-          label: 'Title',
-          placeholder: 'Enter bookmark title',
+          label: translate('editBookmarks.title', 'Title'),
+          placeholder: translate(
+            'editBookmarks.enterBookmarkTitle',
+            'Enter bookmark title'
+          ),
         },
         {
           type: 'select',
           name: 'color',
-          label: 'Color',
+          label: translate('editBookmarks.color', 'Color'),
           options: [
-            { value: '', label: 'None' },
-            { value: 'red', label: 'Red' },
-            { value: 'blue', label: 'Blue' },
-            { value: 'green', label: 'Green' },
-            { value: 'yellow', label: 'Yellow' },
-            { value: 'purple', label: 'Purple' },
-            { value: 'custom', label: 'Custom...' },
+            { value: '', label: translate('editBookmarks.colorNone', 'None') },
+            { value: 'red', label: translate('editBookmarks.colorRed', 'Red') },
+            {
+              value: 'blue',
+              label: translate('editBookmarks.colorBlue', 'Blue'),
+            },
+            {
+              value: 'green',
+              label: translate('editBookmarks.colorGreen', 'Green'),
+            },
+            {
+              value: 'yellow',
+              label: translate('editBookmarks.colorYellow', 'Yellow'),
+            },
+            {
+              value: 'purple',
+              label: translate('editBookmarks.colorPurple', 'Purple'),
+            },
+            {
+              value: 'custom',
+              label: translate('editBookmarks.colorCustom', 'Custom...'),
+            },
           ],
         },
         {
           type: 'select',
           name: 'style',
-          label: 'Style',
+          label: translate('editBookmarks.style', 'Style'),
           options: [
-            { value: '', label: 'Normal' },
-            { value: 'bold', label: 'Bold' },
-            { value: 'italic', label: 'Italic' },
-            { value: 'bold-italic', label: 'Bold & Italic' },
+            {
+              value: '',
+              label: translate('editBookmarks.styleNormal', 'Normal'),
+            },
+            {
+              value: 'bold',
+              label: translate('editBookmarks.styleBold', 'Bold'),
+            },
+            {
+              value: 'italic',
+              label: translate('editBookmarks.styleItalic', 'Italic'),
+            },
+            {
+              value: 'bold-italic',
+              label: translate(
+                'editBookmarks.styleBoldItalic',
+                'Bold & Italic'
+              ),
+            },
           ],
         },
         {
           type: 'destination',
           name: 'destination',
-          label: 'Destination',
+          label: translate('editBookmarks.destination', 'Destination'),
           page: node.page,
           maxPages: pdfJsDoc ? pdfJsDoc.numPages : 1,
         },
-        { type: 'preview', label: 'Preview' },
+        {
+          type: 'preview',
+          label: translate('editBookmarks.preview', 'Preview'),
+        },
       ],
       {
         title: node.title,
@@ -1920,7 +1982,10 @@ function createNodeElement(node: BookmarkNode, level = 0): HTMLLIElement {
 addTopLevelBtn?.addEventListener('click', async () => {
   const title = titleInput?.value.trim();
   if (!title) {
-    await showAlertModal('Error', 'Please enter a title.');
+    await showAlertModal(
+      translate('common.error', 'Error'),
+      translate('editBookmarks.pleaseEnterTitle', 'Please enter a title.')
+    );
     return;
   }
 
@@ -1966,7 +2031,14 @@ csvImportHidden?.addEventListener('change', async (e: Event) => {
     bookmarkTree = imported;
     saveState();
     renderBookmarkTree();
-    await showAlertModal('Success', `Imported ${imported.length} bookmarks!`);
+    await showAlertModal(
+      translate('common.success', 'Success'),
+      translate(
+        'editBookmarks.importedBookmarks',
+        'Imported {{count}} bookmarks!',
+        { count: imported.length }
+      )
+    );
   }
 
   if (csvImportHidden) csvImportHidden.value = '';
@@ -1976,7 +2048,10 @@ exportCsvBtn?.addEventListener('click', () => {
   exportDropdown?.classList.add('hidden');
 
   if (bookmarkTree.length === 0) {
-    showAlertModal('Error', 'No bookmarks to export!');
+    showAlertModal(
+      translate('common.error', 'Error'),
+      translate('editBookmarks.noBookmarksToExport', 'No bookmarks to export!')
+    );
     return;
   }
 
@@ -2082,9 +2157,18 @@ jsonImportHidden?.addEventListener('change', async (e: Event) => {
     bookmarkTree = imported;
     saveState();
     renderBookmarkTree();
-    await showAlertModal('Success', 'Bookmarks imported from JSON!');
+    await showAlertModal(
+      translate('common.success', 'Success'),
+      translate(
+        'editBookmarks.bookmarksImportedJson',
+        'Bookmarks imported from JSON!'
+      )
+    );
   } catch {
-    await showAlertModal('Error', 'Invalid JSON format');
+    await showAlertModal(
+      translate('common.error', 'Error'),
+      translate('editBookmarks.invalidJsonFormat', 'Invalid JSON format')
+    );
   }
 
   if (jsonImportHidden) jsonImportHidden.value = '';
@@ -2094,7 +2178,10 @@ exportJsonBtn?.addEventListener('click', () => {
   exportDropdown?.classList.add('hidden');
 
   if (bookmarkTree.length === 0) {
-    showAlertModal('Error', 'No bookmarks to export!');
+    showAlertModal(
+      translate('common.error', 'Error'),
+      translate('editBookmarks.noBookmarksToExport', 'No bookmarks to export!')
+    );
     return;
   }
 
@@ -2117,7 +2204,13 @@ extractExistingBtn?.addEventListener('click', async () => {
       renderBookmarkTree();
     }
   } else {
-    await showAlertModal('Info', 'No existing bookmarks found in this PDF.');
+    await showAlertModal(
+      translate('editBookmarks.info', 'Info'),
+      translate(
+        'editBookmarks.noExistingBookmarks',
+        'No existing bookmarks found in this PDF.'
+      )
+    );
   }
 });
 
@@ -2377,7 +2470,10 @@ downloadBtn?.addEventListener('click', async () => {
     });
     downloadFile(blob, `${originalFileName}.pdf`);
 
-    await showAlertModal('Success', 'PDF saved successfully!');
+    await showAlertModal(
+      translate('common.success', 'Success'),
+      translate('editBookmarks.pdfSavedSuccessfully', 'PDF saved successfully!')
+    );
 
     setTimeout(() => {
       resetToUploader();
@@ -2385,8 +2481,11 @@ downloadBtn?.addEventListener('click', async () => {
   } catch (err) {
     console.error(err);
     await showAlertModal(
-      'Error',
-      'Error saving PDF. Check console for details.'
+      translate('common.error', 'Error'),
+      translate(
+        'editBookmarks.errorSavingPdf',
+        'Error saving PDF. Check console for details.'
+      )
     );
   }
 });
