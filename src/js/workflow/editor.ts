@@ -11,6 +11,12 @@ import type { DataflowEngineScheme } from 'rete-engine';
 import { LitElement, html } from 'lit';
 import type { BaseWorkflowNode } from './nodes/base-node';
 import phosphorCSS from '@phosphor-icons/web/regular?inline';
+import { t } from '../i18n/i18n';
+
+const translate = (key: string, fallback: string) => {
+  const value = t(key);
+  return value && value !== key ? value : fallback;
+};
 
 // Shared stylesheet for Phosphor icons (font-face already loaded globally, strip it)
 const phosphorSheet = new CSSStyleSheet();
@@ -36,14 +42,28 @@ const categoryColors: Record<string, string> = {
 
 function getStatusInfo(status: string, connected: boolean) {
   if (status === 'running')
-    return { color: '#eab308', label: 'Running...', animate: true };
+    return {
+      color: '#eab308',
+      label: translate('common.workflow.status.running', 'Running...'),
+      animate: true,
+    };
   if (status === 'completed')
-    return { color: '#22c55e', label: 'Complete', animate: false };
+    return {
+      color: '#22c55e',
+      label: translate('common.workflow.status.complete', 'Complete'),
+      animate: false,
+    };
   if (status === 'error')
-    return { color: '#ef4444', label: 'Failed', animate: false };
+    return {
+      color: '#ef4444',
+      label: translate('common.workflow.status.failed', 'Failed'),
+      animate: false,
+    };
   return {
     color: connected ? '#22c55e' : '#6b7280',
-    label: connected ? 'Connected' : 'Not connected',
+    label: connected
+      ? translate('common.workflow.status.connected', 'Connected')
+      : translate('common.workflow.status.notConnected', 'Not connected'),
     animate: false,
   };
 }
@@ -133,7 +153,10 @@ class WorkflowNodeElement extends LitElement {
             <span
               data-wf="label"
               style="font-size: 10px; color: #6b7280; font-weight: 500; flex: 1;"
-              >Not connected</span
+              >${translate(
+                'common.workflow.status.notConnected',
+                'Not connected'
+              )}</span
             >
             <span
               data-wf-delete="${node.id}"

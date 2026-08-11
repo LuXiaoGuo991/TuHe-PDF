@@ -223,6 +223,7 @@ export default {
       return new Response(
         JSON.stringify({
           error: 'Forbidden',
+          errorZh: '禁止访问',
           message: 'This proxy only accepts requests from allowed origins',
         }),
         {
@@ -247,6 +248,7 @@ export default {
       return new Response(
         JSON.stringify({
           error: 'Missing url parameter',
+          errorZh: '缺少 url 参数',
           usage: 'GET /?url=<certificate_url> or POST /?url=<tsa_url>',
         }),
         {
@@ -269,6 +271,7 @@ export default {
         return new Response(
           JSON.stringify({
             error: 'Disallowed TSA host',
+            errorZh: '不允许的 TSA 主机',
             message: `Only known RFC 3161 TSA hosts are accepted: ${[...ALLOWED_TSA_HOSTS].join(', ')}`,
           }),
           {
@@ -284,6 +287,7 @@ export default {
       return new Response(
         JSON.stringify({
           error: 'Invalid or disallowed URL',
+          errorZh: '无效或不允许的 URL',
           message:
             'Only certificate-related URLs are allowed (*.crt, *.cer, *.pem, /certs/, /ocsp, /crl)',
         }),
@@ -305,6 +309,7 @@ export default {
         return new Response(
           JSON.stringify({
             error: 'Missing authentication parameters',
+            errorZh: '缺少认证参数',
             message:
               'Request must include timestamp (t) and signature (sig) parameters',
           }),
@@ -328,6 +333,7 @@ export default {
         return new Response(
           JSON.stringify({
             error: 'Request expired or invalid timestamp',
+            errorZh: '请求已过期或时间戳无效',
             message: 'Timestamp must be within 5 minutes of current time',
           }),
           {
@@ -351,6 +357,7 @@ export default {
         return new Response(
           JSON.stringify({
             error: 'Invalid signature',
+            errorZh: '签名无效',
             message: 'Request signature verification failed',
           }),
           {
@@ -389,6 +396,7 @@ export default {
         return new Response(
           JSON.stringify({
             error: 'Rate limit exceeded',
+            errorZh: '超出速率限制',
             message: `Maximum ${RATE_LIMIT_MAX_REQUESTS} requests per minute. Please try again later.`,
             retryAfter: Math.ceil(
               (recentRequests[0] + RATE_LIMIT_WINDOW_MS - now) / 1000
@@ -431,6 +439,7 @@ export default {
       return new Response(
         JSON.stringify({
           error: 'Forbidden destination',
+          errorZh: '禁止的目标地址',
           message: 'The requested host is not permitted',
         }),
         {
@@ -464,6 +473,7 @@ export default {
         return new Response(
           JSON.stringify({
             error: 'Redirect blocked',
+            errorZh: '重定向被阻止',
             message: 'Upstream redirects are not allowed',
           }),
           {
@@ -480,6 +490,7 @@ export default {
         return new Response(
           JSON.stringify({
             error: 'Failed to fetch certificate',
+            errorZh: '获取证书失败',
             status: response.status,
           }),
           {
@@ -501,6 +512,7 @@ export default {
         return new Response(
           JSON.stringify({
             error: 'File too large',
+            errorZh: '文件过大',
             message: `Certificate file exceeds maximum size of ${MAX_FILE_SIZE_BYTES / 1024}KB`,
           }),
           {
@@ -527,6 +539,7 @@ export default {
           return new Response(
             JSON.stringify({
               error: 'File too large',
+              errorZh: '文件过大',
               message: `Certificate file exceeds maximum size of ${MAX_FILE_SIZE_BYTES / 1024}KB`,
             }),
             {
@@ -566,6 +579,7 @@ export default {
       return new Response(
         JSON.stringify({
           error: 'Proxy error',
+          errorZh: '代理错误',
           message: 'Failed to fetch the requested certificate',
         }),
         {

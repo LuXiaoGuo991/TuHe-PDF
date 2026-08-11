@@ -166,7 +166,7 @@ export function formatIsoDate(isoDateString: string) {
     if (isNaN(date.getTime())) {
       return isoDateString; // Return original string if the date is invalid
     }
-    const locale = i18next.resolvedLanguage || i18next.language || 'zh-CN';
+    const locale = i18next.resolvedLanguage || i18next.language || 'zh';
     return date.toLocaleString(locale);
   } catch (e) {
     console.error('Could not parse ISO date:', e);
@@ -220,7 +220,7 @@ export function formatStars(num: number) {
   if (num >= 1000) {
     return (num / 1000).toFixed(1) + translate('helpers.k', 'K');
   }
-  return num.toLocaleString();
+  return num.toLocaleString(i18next.language);
 }
 
 /**
@@ -505,7 +505,7 @@ export function formatRawDate(raw: string): string {
     return raw;
   }
 
-  const locale = i18next.resolvedLanguage || i18next.language || 'zh-CN';
+  const locale = i18next.resolvedLanguage || i18next.language || 'zh';
   const dateStr = new Intl.DateTimeFormat(locale, {
     timeZone: 'UTC',
     weekday: 'long',

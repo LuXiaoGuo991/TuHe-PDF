@@ -11,6 +11,16 @@ import {
   diffImages,
   buildCategorySummary,
 } from './compare-content.ts';
+import { t } from '../../i18n/i18n';
+
+const translate = (
+  key: string,
+  fallback: string,
+  options?: Record<string, unknown>
+) => {
+  const translation = t(key, options);
+  return translation && translation !== key ? translation : fallback;
+};
 
 const EMPTY_CATEGORY_SUMMARY: CompareCategorySummary = {
   text: 0,
@@ -54,7 +64,11 @@ function comparePageModelsCore(
           id: 'page-removed',
           type: 'page-removed',
           category: 'text',
-          description: `Page ${leftPage.pageNumber} exists only in the first PDF.`,
+          description: translate(
+            'tools:comparePdfs.pageOnlyInFirst',
+            `Page ${leftPage.pageNumber} exists only in the first PDF.`,
+            { page: leftPage.pageNumber }
+          ),
           beforeText: leftPage.plainText.slice(0, 200),
           afterText: '',
           beforeRects: [],
@@ -78,7 +92,11 @@ function comparePageModelsCore(
           id: 'page-added',
           type: 'page-added',
           category: 'text',
-          description: `Page ${rightPage.pageNumber} exists only in the second PDF.`,
+          description: translate(
+            'tools:comparePdfs.pageOnlyInSecond',
+            `Page ${rightPage.pageNumber} exists only in the second PDF.`,
+            { page: rightPage.pageNumber }
+          ),
           beforeText: '',
           afterText: rightPage.plainText.slice(0, 200),
           beforeRects: [],

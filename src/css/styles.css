@@ -18,7 +18,9 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-sans:
+    'DM Sans', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', ui-sans-serif,
+    system-ui, sans-serif;
   --font-dancing: 'Dancing Script', cursive;
   --font-vibes: 'Great Vibes', cursive;
   --font-kalam: 'Kalam', cursive;
@@ -34,22 +36,13 @@
   }
 }
 
-@theme {
-  --font-sans: 'DM Sans', ui-sans-serif, system-ui;
-  --font-dancing: 'Dancing Script', cursive;
-  --font-vibes: 'Great Vibes', cursive;
-  --font-kalam: 'Kalam', cursive;
-  --font-lato: 'Lato', sans-serif;
-  --font-merriweather: 'Merriweather', serif;
-  --font-cedarville: 'Cedarville Cursive', cursive;
-}
-
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family:
+    'DM Sans', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
   background-color: #111827;
   color: #d1d5db;
 }
@@ -1631,4 +1624,15 @@ body:has(#workbench) {
 #mobile-rail-btn:hover {
   transform: scale(1.06);
   background: #4f46e5;
+}
+
+/* Chinese locale: reset Latin-oriented letter-spacing on CJK text */
+:lang(zh) .rail-category-header,
+:lang(zh-TW) .rail-category-header {
+  letter-spacing: normal;
+}
+
+:lang(zh) .tuhe-quick-title,
+:lang(zh-TW) .tuhe-quick-title {
+  letter-spacing: normal;
 }

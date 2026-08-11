@@ -1125,7 +1125,7 @@ function showProperties(field: FormField): void {
             <input type="number" id="propMaxLength" value="${field.maxLength}" min="0" ${field.combCells > 0 ? 'disabled' : ''} class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500 disabled:opacity-50">
         </div>
         <div>
-            <label class="block text-xs font-semibold text-gray-300 mb-1">Divide into boxes (0 to disable)</label>
+            <label class="block text-xs font-semibold text-gray-300 mb-1">${translate('tools:formCreator.divideIntoBoxes', 'Divide into boxes (0 to disable)')}</label>
             <input type="number" id="propComb" value="${field.combCells}" min="0" class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500">
         </div>
         <div>
@@ -1204,10 +1204,10 @@ function showProperties(field: FormField): void {
             <label class="block text-xs font-semibold text-gray-300 mb-1">Action</label>
             <select id="propAction" class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500">
                 <option value="none" ${field.action === 'none' ? 'selected' : ''}>None</option>
-                <option value="reset" ${field.action === 'reset' ? 'selected' : ''}>Reset Form</option>
+                <option value="reset" ${field.action === 'reset' ? 'selected' : ''}>${translate('tools:formCreator.resetForm', 'Reset Form')}</option>
                 <option value="print" ${field.action === 'print' ? 'selected' : ''}>Print Form</option>
-                <option value="url" ${field.action === 'url' ? 'selected' : ''}>Open URL</option>
-                <option value="js" ${field.action === 'js' ? 'selected' : ''}>Run Javascript</option>
+                <option value="url" ${field.action === 'url' ? 'selected' : ''}>${translate('tools:formCreator.openUrl', 'Open URL')}</option>
+                <option value="js" ${field.action === 'js' ? 'selected' : ''}>${translate('tools:formCreator.runJavascript', 'Run Javascript')}</option>
                 <option value="showHide" ${field.action === 'showHide' ? 'selected' : ''}>Show/Hide Field</option>
             </select>
         </div>
@@ -1223,7 +1223,7 @@ function showProperties(field: FormField): void {
             <div class="mb-2">
                 <label class="block text-xs font-semibold text-gray-300 mb-1">Target Field</label>
                 <select id="propTargetField" class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500">
-                    <option value="">Select a field...</option>
+                    <option value="">${translate('tools:formCreator.selectField', 'Select a field...')}</option>
                     ${fields
                       .filter((f) => f.id !== field.id)
                       .map(
@@ -1294,16 +1294,16 @@ function showProperties(field: FormField): void {
         </div>
         <div id="customFormatContainer" class="${isCustom ? '' : 'hidden'} mt-2">
             <label class="block text-xs font-semibold text-gray-300 mb-1">Custom Format</label>
-            <input type="text" id="propCustomFormat" value="${isCustom ? escapeHtml(field.dateFormat ?? '') : ''}" placeholder="e.g. dd/mm/yyyy HH:MM:ss" class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+            <input type="text" id="propCustomFormat" value="${isCustom ? escapeHtml(field.dateFormat ?? '') : ''}" placeholder="${translate('tools:formCreator.dateFormatPlaceholder', 'e.g. dd/mm/yyyy HH:MM:ss')}" class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500">
         </div>
         <div class="mt-3 p-2 bg-gray-700 rounded">
-            <span class="text-xs text-gray-400">Example of current format:</span>
+            <span class="text-xs text-gray-400">${translate('tools:formCreator.exampleOfCurrentFormat', 'Example of current format:')}</span>
             <span id="dateFormatExample" class="text-sm text-white font-medium ml-2"></span>
         </div>
         <div class="bg-blue-900/30 border border-blue-700/50 rounded p-2 mt-2">
             <p class="text-xs text-blue-200">
                 <i data-lucide="info" class="w-4 h-4 flex-shrink-0 mt-0.5"></i>
-                <span><strong>Browser Note:</strong> Firefox and Chrome may show their native date picker format during selection. The correct format will apply when you finish entering the date.</span>
+                <span>${translate('tools:formCreator.browserDateNote', 'Browser Note: Firefox and Chrome may show their native date picker format during selection. The correct format will apply when you finish entering the date.')}</span>
             </p>
         </div>
         `;
@@ -1375,7 +1375,7 @@ function showProperties(field: FormField): void {
             )
             .join('')}
         </select>
-        <p class="text-xs text-gray-400 mt-1">Select to add this button to an existing group</p>
+        <p class="text-xs text-gray-400 mt-1">${translate('tools:formCreator.selectToAddToGroup', 'Select to add this button to an existing group')}</p>
       </div>
       `
           : ''
@@ -2079,10 +2079,25 @@ function showProperties(field: FormField): void {
       pdf417: 'Any text, URL, or data',
     };
 
+    const barcodeHintKeys: Record<string, string> = {
+      qrcode: 'tools:formCreator.barcodeHintGeneric',
+      code128: 'tools:formCreator.barcodeHintCode128',
+      code39: 'tools:formCreator.barcodeHintCode39',
+      ean13: 'tools:formCreator.barcodeHintEan13',
+      upca: 'tools:formCreator.barcodeHintUpca',
+      datamatrix: 'tools:formCreator.barcodeHintGeneric',
+      pdf417: 'tools:formCreator.barcodeHintGeneric',
+    };
+
+    const getBarcodeHint = (format: string) =>
+      translate(
+        barcodeHintKeys[format] || '',
+        barcodeFormatHints[format] || ''
+      );
+
     const hintEl = document.getElementById('barcodeFormatHint');
     if (hintEl)
-      hintEl.textContent =
-        barcodeFormatHints[field.barcodeFormat || 'qrcode'] || '';
+      hintEl.textContent = getBarcodeHint(field.barcodeFormat || 'qrcode');
 
     if (propBarcodeFormat) {
       propBarcodeFormat.addEventListener('change', (e) => {
@@ -2090,7 +2105,7 @@ function showProperties(field: FormField): void {
         field.barcodeFormat = newFormat;
         field.barcodeValue = barcodeSampleValues[newFormat] || 'hello';
         if (propBarcodeValue) propBarcodeValue.value = field.barcodeValue;
-        if (hintEl) hintEl.textContent = barcodeFormatHints[newFormat] || '';
+        if (hintEl) hintEl.textContent = getBarcodeHint(newFormat);
         renderField(field);
       });
     }
@@ -2107,7 +2122,12 @@ function showProperties(field: FormField): void {
 // Hide properties panel
 function hideProperties(): void {
   propertiesPanel.innerHTML =
-    '<p class="text-gray-500 text-sm">Select a field to edit properties</p>';
+    '<p class="text-gray-500 text-sm">' +
+    translate(
+      'tools:formCreator.selectFieldToEdit',
+      'Select a field to edit properties'
+    ) +
+    '</p>';
 }
 
 // Delete field
@@ -2865,7 +2885,12 @@ function resetToInitial(): void {
   canvas.innerHTML = '';
 
   propertiesPanel.innerHTML =
-    '<p class="text-gray-500 text-sm">Select a field to edit properties</p>';
+    '<p class="text-gray-500 text-sm">' +
+    translate(
+      'tools:formCreator.selectFieldToEdit',
+      'Select a field to edit properties'
+    ) +
+    '</p>';
 
   updateFieldCount();
 
