@@ -315,7 +315,10 @@ if (saveStampedBtn) {
   saveStampedBtn.addEventListener('click', () => {
     if (!viewerIframe) {
       alert(
-        'Viewer not ready. Please upload a PDF and wait for it to finish loading.'
+        translate(
+          'addStamps.viewerNotReady',
+          'Viewer not ready. Please upload a PDF and wait for it to finish loading.'
+        )
       );
       return;
     }
@@ -352,12 +355,18 @@ if (saveStampedBtn) {
       }
 
       alert(
-        'Could not access the stamped-PDF exporter. Please use the Export → PDF button in the viewer toolbar as a fallback.'
+        translate(
+          'addStamps.couldNotAccessExporter',
+          'Could not access the stamped-PDF exporter. Please use the Export → PDF button in the viewer toolbar as a fallback.'
+        )
       );
     } catch (e) {
       console.error('Failed to trigger stamped PDF export:', e);
       alert(
-        'Could not export the stamped PDF. Please use the Export → PDF button in the viewer toolbar as a fallback.'
+        translate(
+          'addStamps.couldNotExportStamped',
+          'Could not export the stamped PDF. Please use the Export → PDF button in the viewer toolbar as a fallback.'
+        )
       );
     }
   });
