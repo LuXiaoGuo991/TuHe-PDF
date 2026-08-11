@@ -1,12 +1,12 @@
 # TuHe PDF Robots.txt
-# https://tuhe-pdf.com
+# https://www.tuhepdf.cn
 
 # Allow all crawlers
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://tuhe-pdf.com/sitemap.xml
+Sitemap: https://www.tuhepdf.cn/sitemap.xml
 
 # Disallow internal/system paths
 Disallow: /api/

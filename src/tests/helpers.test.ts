@@ -4,6 +4,7 @@ import {
   convertPoints,
   hexToRgb,
   formatBytes,
+  formatRawDate,
   parsePageRanges,
 } from '../js/utils/helpers';
 
@@ -33,8 +34,8 @@ describe('helpers', () => {
       expect(getStandardPageName(595.5, 841.9)).toBe('A4');
     });
 
-    it('should return Custom for non-standard sizes', () => {
-      expect(getStandardPageName(600, 800)).toBe('Custom');
+    it('should return the Chinese fallback for non-standard sizes', () => {
+      expect(getStandardPageName(600, 800)).toBe('自定义');
     });
   });
 
@@ -140,6 +141,21 @@ describe('helpers', () => {
 
     it('should handle decimal values', () => {
       expect(formatBytes(1536)).toBe('1.5 KB');
+    });
+  });
+
+  describe('formatRawDate', () => {
+    it('preserves the source wall-clock time and numeric timezone offset', () => {
+      const formatted = formatRawDate('Sun, 8 Jan 2017 20:37:44 +0200');
+
+      expect(formatted).toContain('20:37');
+      expect(formatted).toContain('UTC+02:00');
+    });
+
+    it('returns unrecognized dates unchanged', () => {
+      expect(formatRawDate('not an RFC 2822 date')).toBe(
+        'not an RFC 2822 date'
+      );
     });
   });
 

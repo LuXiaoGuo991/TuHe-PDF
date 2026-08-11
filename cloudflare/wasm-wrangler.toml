@@ -25,11 +25,11 @@ compatibility_date = "2024-01-01"
 # Set these as secrets in the Cloudflare dashboard or via wrangler:
 #
 # PYMUPDF_SOURCE: Base URL to PyMuPDF WASM files
-#   Example: https://cdn.jsdelivr.net/npm/@tuhe-pdf/pymupdf-wasm/assets
+#   Example: https://cdn.jsdelivr.net/npm/@bentopdf/pymupdf-wasm@0.11.16/
 #            https://your-bucket.r2.cloudflarestorage.com/pymupdf
 #
 # GS_SOURCE: Base URL to Ghostscript WASM files
-#   Example: https://cdn.jsdelivr.net/npm/@tuhe-pdf/gs-wasm/assets
+#   Example: https://cdn.jsdelivr.net/npm/@bentopdf/gs-wasm@0.1.1/assets/
 #            https://your-bucket.r2.cloudflarestorage.com/gs
 #
 # CPDF_SOURCE: Base URL to CoherentPDF files
@@ -40,9 +40,9 @@ compatibility_date = "2024-01-01"
 # USAGE FROM TuHe PDF
 # =============================================================================
 # In TuHe PDF's WASM Settings page, configure URLs like:
-#   PyMuPDF: https://wasm.tuhe-pdf.com/pymupdf/
-#   Ghostscript: https://wasm.tuhe-pdf.com/gs/
-#   CoherentPDF: https://wasm.tuhe-pdf.com/cpdf/
+#   PyMuPDF: https://wasm.tuhepdf.cn/pymupdf/
+#   Ghostscript: https://wasm.tuhepdf.cn/gs/
+#   CoherentPDF: https://wasm.tuhepdf.cn/cpdf/
 
 # =============================================================================
 # RATE LIMITING (Optional but recommended)
@@ -63,7 +63,7 @@ id = "b88e030b308941118cd484e3fcb3ae49"
 # =============================================================================
 # CUSTOM DOMAIN (Optional)
 # =============================================================================
-# If you want a custom domain like wasm.tuhe-pdf.com:
+# If you want a custom domain like wasm.tuhepdf.cn:
 # routes = [
-#   { pattern = "wasm.tuhe-pdf.com/*", zone_name = "tuhe-pdf.com" }
+#   { pattern = "wasm.tuhepdf.cn/*", zone_name = "tuhepdf.cn" }
 # ]

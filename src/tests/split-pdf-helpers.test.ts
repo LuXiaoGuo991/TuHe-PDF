@@ -16,8 +16,6 @@ import {
   extractPagesWithQpdf,
 } from '@/js/utils/split-pdf-helpers';
 
-const FIXTURES = path.resolve(__dirname, './fixtures');
-
 describe('split-pdf-helpers (pure planning)', () => {
   describe('parseRangeGroups', () => {
     it('parses a single page into one group', () => {
@@ -232,6 +230,63 @@ describe('extractPagesWithQpdf (error handling, stubbed)', () => {
 describe('split modes end-to-end with real qpdf', () => {
   let qpdf: QpdfInstanceExtended;
 
+  function buildPdf(objects: string[]): Uint8Array {
+    const encoder = new TextEncoder();
+    let pdf = '%PDF-1.7\n';
+    const offsets = [0];
+
+    for (const [index, object] of objects.entries()) {
+      offsets.push(encoder.encode(pdf).length);
+      pdf += `${index + 1} 0 obj\n${object}\nendobj\n`;
+    }
+
+    const xrefOffset = encoder.encode(pdf).length;
+    pdf += `xref\n0 ${objects.length + 1}\n0000000000 65535 f \n`;
+    pdf += offsets
+      .slice(1)
+      .map((offset) => `${String(offset).padStart(10, '0')} 00000 n \n`)
+      .join('');
+    pdf += `trailer\n<< /Size ${objects.length + 1} /Root 1 0 R >>\n`;
+    pdf += `startxref\n${xrefOffset}\n%%EOF\n`;
+    return new Uint8Array(encoder.encode(pdf));
+  }
+
+  function stream(contents: string, dictionary = ''): string {
+    return `<< ${dictionary} /Length ${new TextEncoder().encode(contents).length} >>\nstream\n${contents}endstream`;
+  }
+
+  function makeSharedResourcesPdf(): Uint8Array {
+    const formContents = 'q 1 0 0 1 0 0 cm Q\n'.repeat(15000);
+    return buildPdf([
+      '<< /Type /Catalog /Pages 2 0 R >>',
+      '<< /Type /Pages /Kids [3 0 R 4 0 R 5 0 R] /Count 3 /Resources 6 0 R >>',
+      '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 100 100] /Contents 10 0 R >>',
+      '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 100 100] /Contents 11 0 R >>',
+      '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 100 100] /Contents 12 0 R >>',
+      '<< /XObject << /X0 7 0 R /X1 8 0 R /X2 9 0 R >> >>',
+      stream(formContents, '/Type /XObject /Subtype /Form /BBox [0 0 10 10]'),
+      stream(formContents, '/Type /XObject /Subtype /Form /BBox [0 0 10 10]'),
+      stream(formContents, '/Type /XObject /Subtype /Form /BBox [0 0 10 10]'),
+      stream('q /X0 Do Q\n'),
+      stream('q /X1 Do Q\n'),
+      stream('q /X2 Do Q\n'),
+    ]);
+  }
+
+  function makeBookmarkedPdf(): Uint8Array {
+    return buildPdf([
+      '<< /Type /Catalog /Pages 2 0 R /Outlines 8 0 R /PageMode /UseOutlines >>',
+      '<< /Type /Pages /Kids [3 0 R 4 0 R 5 0 R] /Count 3 >>',
+      '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 100 100] /Contents 6 0 R >>',
+      '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 100 100] /Contents 6 0 R >>',
+      '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 100 100] /Contents 6 0 R >>',
+      stream(''),
+      '<< /Producer (TuHe PDF test fixture) >>',
+      '<< /Type /Outlines /First 9 0 R /Last 9 0 R /Count 1 >>',
+      '<< /Title (Chapter 1) /Parent 8 0 R /Dest [3 0 R /Fit] >>',
+    ]);
+  }
+
   async function makePdf(pageCount: number): Promise<Uint8Array> {
     const doc = await PDFDocument.create();
     for (let i = 0; i < pageCount; i++) doc.addPage([100 + i, 200]);
@@ -332,9 +387,7 @@ describe('split modes end-to-end with real qpdf', () => {
   });
 
   it('fixes resource bloat: a single-page extract is far smaller than pdf-lib copyPages', async () => {
-    const src = new Uint8Array(
-      fs.readFileSync(path.join(FIXTURES, 'shared-resources.pdf'))
-    );
+    const src = makeSharedResourcesPdf();
 
     const srcDoc = await PDFDocument.load(src);
     const plDoc = await PDFDocument.create();
@@ -347,9 +400,7 @@ describe('split modes end-to-end with real qpdf', () => {
   });
 
   it('preserves the document outline that pdf-lib copyPages drops', async () => {
-    const src = new Uint8Array(
-      fs.readFileSync(path.join(FIXTURES, 'bookmarked.pdf'))
-    );
+    const src = makeBookmarkedPdf();
 
     const srcDoc = await PDFDocument.load(src);
     const plDoc = await PDFDocument.create();

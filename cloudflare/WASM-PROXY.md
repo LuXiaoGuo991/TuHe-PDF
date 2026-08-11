@@ -29,7 +29,7 @@ npx wrangler secret put CPDF_SOURCE -c wasm-wrangler.toml
 **推荐源 URL：**
 
 - PYMUPDF_SOURCE: `https://cdn.jsdelivr.net/npm/@bentopdf/pymupdf-wasm@0.11.16/`
-- GS_SOURCE: `https://cdn.jsdelivr.net/npm/@bentopdf/gs-wasm/assets/`
+- GS_SOURCE: `https://cdn.jsdelivr.net/npm/@bentopdf/gs-wasm@0.1.1/assets/`
 - CPDF_SOURCE: `https://cdn.jsdelivr.net/npm/coherentpdf/dist/`
 
 ### 3. 配置 TuHe PDF

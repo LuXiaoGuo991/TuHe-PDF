@@ -385,7 +385,7 @@
     "philosophy": {
       "label": "Our Core Philosophy",
       "title": "Privacy First. Always.",
-      "description": "In an era where data is a commodity, we take a different approach. All processing for Bentopdf tools happens locally in your browser. This means your files never touch our servers, we never see your documents, and we don't track what you do. Your documents remain completely and unequivocally private. It's not just a feature; it's our foundation."
+      "description": "In an era where data is a commodity, we take a different approach. All processing for TuHe PDF tools happens locally in your browser. This means your files never touch our servers, we never see your documents, and we don't track what you do. Your documents remain completely and unequivocally private. It's not just a feature; it's our foundation."
     },
     "whyBentopdf": {
       "title": "Why",
@@ -408,7 +408,7 @@
     },
     "cta": {
       "title": "Ready to get started?",
-      "description": "Join thousands of users who trust Bentopdf for their daily document needs. Experience the difference that privacy and performance can make.",
+      "description": "Join thousands of users who trust TuHe PDF for their daily document needs. Experience the difference that privacy and performance can make.",
       "button": "Explore All Tools"
     }
   },

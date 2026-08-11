@@ -403,37 +403,120 @@ export function sanitizeEmailHtml(html: string): string {
   return sanitized;
 }
 
+const RFC_2822_MONTHS: Record<string, number> = {
+  jan: 0,
+  feb: 1,
+  mar: 2,
+  apr: 3,
+  may: 4,
+  jun: 5,
+  jul: 6,
+  aug: 7,
+  sep: 8,
+  oct: 9,
+  nov: 10,
+  dec: 11,
+};
+
+function parseDecimalField(
+  value: string,
+  minimumLength: number,
+  maximumLength: number
+): number | undefined {
+  if (value.length < minimumLength || value.length > maximumLength) {
+    return undefined;
+  }
+
+  let parsed = 0;
+  for (const character of value) {
+    const code = character.charCodeAt(0);
+    if (code < 48 || code > 57) return undefined;
+    parsed = parsed * 10 + code - 48;
+  }
+  return parsed;
+}
+
+function isRfc2822Offset(offset: string): boolean {
+  if (offset === 'UT' || offset === 'UTC' || offset === 'GMT') return true;
+  if (offset.length !== 5 || (offset[0] !== '+' && offset[0] !== '-')) {
+    return false;
+  }
+
+  const hours = parseDecimalField(offset.slice(1, 3), 2, 2);
+  const minutes = parseDecimalField(offset.slice(3, 5), 2, 2);
+  return (
+    hours !== undefined && minutes !== undefined && hours <= 23 && minutes <= 59
+  );
+}
+
+function formatRfc2822Offset(offset: string): string {
+  if (/^[+-]\d{4}$/.test(offset)) {
+    return `UTC${offset.slice(0, 1)}${offset.slice(1, 3)}:${offset.slice(3, 5)}`;
+  }
+  return 'UTC';
+}
+
 /**
- * Formats a raw RFC 2822 date string into a nicer human-readable format,
- * while preserving the original timezone and time.
- * Example input: "Sun, 8 Jan 2017 20:37:44 +0200"
- * Example output: "Sunday, January 8, 2017 at 8:37 PM (+0200)"
+ * Formats a raw RFC 2822 date string while preserving its wall-clock time and
+ * source offset. Date parsing normally converts the value to the viewer's
+ * timezone, which would make the displayed time disagree with the offset.
  */
 export function formatRawDate(raw: string): string {
-  try {
-    const date = new Date(raw);
-    if (!isNaN(date.getTime())) {
-      const locale = i18next.language || 'zh-CN';
-      const tzMatch = raw.match(/([+-]\d{4})/);
-      const tz = tzMatch ? tzMatch[1] : '';
-      const formattedTz = tz
-        ? `UTC${tz.substring(0, 1)}${tz.substring(1, 3)}:${tz.substring(3, 5)}`
-        : '';
-      const dateStr = date.toLocaleString(locale, {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: '2-digit',
-        hour12: false,
-      });
-      return formattedTz ? `${dateStr} (${formattedTz})` : dateStr;
-    }
-  } catch {
-    console.error('Error parsing date string:', raw);
+  const tokens = raw.trim().replaceAll('\t', ' ').split(' ').filter(Boolean);
+  const startIndex =
+    tokens[0]?.length === 4 && tokens[0].charAt(3) === ',' ? 1 : 0;
+  const dateTokens = tokens.slice(startIndex);
+  if (dateTokens.length !== 5) return raw;
+
+  const [dayText, monthText, yearText, timeText, tz] = dateTokens;
+  const timeTokens = timeText.split(':');
+  if (timeTokens.length !== 2 && timeTokens.length !== 3) return raw;
+
+  const day = parseDecimalField(dayText, 1, 2);
+  const year = parseDecimalField(yearText, 4, 4);
+  const hour = parseDecimalField(timeTokens[0], 2, 2);
+  const minute = parseDecimalField(timeTokens[1], 2, 2);
+  const second =
+    timeTokens.length === 3 ? parseDecimalField(timeTokens[2], 2, 2) : 0;
+  const month = RFC_2822_MONTHS[monthText.toLowerCase()];
+  if (
+    day === undefined ||
+    year === undefined ||
+    hour === undefined ||
+    minute === undefined ||
+    second === undefined ||
+    month === undefined ||
+    !isRfc2822Offset(tz)
+  ) {
+    return raw;
   }
-  return raw;
+
+  const date = new Date(Date.UTC(year, month, day, hour, minute, second));
+
+  if (
+    date.getUTCFullYear() !== year ||
+    date.getUTCMonth() !== month ||
+    date.getUTCDate() !== day ||
+    date.getUTCHours() !== hour ||
+    date.getUTCMinutes() !== minute ||
+    date.getUTCSeconds() !== second
+  ) {
+    return raw;
+  }
+
+  const locale = i18next.resolvedLanguage || i18next.language || 'zh-CN';
+  const dateStr = new Intl.DateTimeFormat(locale, {
+    timeZone: 'UTC',
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: false,
+  }).format(date);
+
+  return `${dateStr} (${formatRfc2822Offset(tz)})`;
 }
 
 /**
