@@ -3,155 +3,164 @@
     "home": "首頁",
     "about": "關於我們",
     "contact": "聯絡我們",
-    "licensing": "產品授權",
+    "licensing": "許可",
     "allTools": "所有工具",
-    "docs": "說明文件",
+    "docs": "檔案",
     "openMainMenu": "開啟主選單",
     "language": "語言",
     "searchLanguage": "搜尋語言…",
-    "noLanguagesFound": "找不到語言"
+    "noLanguagesFound": "未找到語言"
   },
   "donation": {
-    "message": "喜歡 TuHe PDF 嗎？請協助我們繼續免費提供 TuHe PDF，並維持原始碼開放！",
-    "button": "贊助"
+    "message": "喜歡 TuHe PDF？幫助我們保持免費和開源！",
+    "button": "捐贈"
   },
   "hero": {
     "title": "專為隱私打造的",
     "pdfToolkit": "PDF 工具箱",
     "builtForPrivacy": " ",
-    "noSignups": "免註冊",
+    "noSignups": "無需註冊",
     "unlimitedUse": "無限使用",
     "worksOffline": "離線可用",
-    "startUsing": "立刻開始使用"
+    "startUsing": "立即開始"
   },
   "usedBy": {
-    "title": "被下列公司及其員工採用"
+    "title": "被眾多公司和個人信賴，包括"
   },
   "features": {
-    "title": "為何您該選擇",
-    "bentoPdf": "TuHe PDF？",
+    "title": "為什麼選擇",
+    "bentoPdf": "TuHe PDF?",
     "noSignup": {
-      "title": "免註冊",
-      "description": "立即可用，無需帳號或電子郵件。"
+      "title": "無需註冊",
+      "description": "即刻開始，無需賬戶或電子郵件。"
     },
     "noUploads": {
-      "title": "免上傳",
-      "description": "完全在本機處理，您的檔案絕不離開您的裝置。"
+      "title": "無需上傳",
+      "description": "100% 客戶端處理，您的檔案從未離開您的裝置。"
     },
     "foreverFree": {
-      "title": "永遠免費",
-      "description": "所有工具免費使用，沒有試用期，也沒有付費牆。"
+      "title": "永久免費",
+      "description": "所有工具免費，無試用期，無付費牆。"
     },
     "noLimits": {
-      "title": "無使用限制",
-      "description": "隨心所欲地使用，沒有任何隱藏限制。"
+      "title": "無限制",
+      "description": "隨心使用，無任何隱形限制。"
     },
     "batchProcessing": {
       "title": "批次處理",
-      "description": "可同時處理多個 PDF 檔案，無數量限制。"
+      "description": "一次處理無限數量的 PDF 檔案。"
     },
     "lightningFast": {
       "title": "極速處理",
-      "description": "瞬間處理 PDF，無需任何等待或延遲。"
+      "description": "瞬間處理 PDF, 無需等待。"
     }
   },
   "tools": {
-    "title": "立即開始使用",
-    "toolsLabel": "PDF 工具",
-    "subtitle": "點選任意工具即可開啟檔案上傳器",
-    "searchPlaceholder": "搜尋工具（例如「分割」或「整理」…）",
-    "backToTools": "回到工具清單",
+    "title": "開始使用",
+    "toolsLabel": "工具",
+    "subtitle": "點選工具以開啟檔案上傳",
+    "searchPlaceholder": "搜尋工具 (例如 '合併', '分割'...)",
+    "backToTools": "返回工具列表",
     "firstLoadNotice": "首次載入需要一點時間，因為我們正在下載轉換引擎。之後所有載入將即時完成。"
   },
   "upload": {
-    "clickToSelect": "點選以選擇檔案",
-    "orDragAndDrop": "或將檔案拖曳至此處",
+    "clickToSelect": "點選選擇檔案",
+    "orDragAndDrop": "或將檔案拖放到此處",
     "pdfOrImages": "PDF 或圖片",
-    "filesNeverLeave": "您的檔案絕不會離開您的裝置。",
+    "filesNeverLeave": "您的檔案從未離開您的裝置。",
     "addMore": "新增更多檔案",
-    "clearAll": "清除全部",
+    "clearAll": "清空所有",
     "clearFiles": "清除檔案",
     "hints": {
-      "singlePdf": "單一 PDF 檔案",
+      "singlePdf": "單個 PDF 檔案",
       "pdfFile": "PDF 檔案",
       "multiplePdfs2": "多個 PDF 檔案（至少 2 個）",
       "bmpImages": "BMP 圖片",
       "oneOrMorePdfs": "一個或多個 PDF 檔案",
-      "pdfDocuments": "PDF 文件",
+      "pdfDocuments": "PDF 檔案",
       "oneOrMoreCsv": "一個或多個 CSV 檔案",
       "multiplePdfsSupported": "支援多個 PDF 檔案",
-      "singleOrMultiplePdfs": "支援單一或多個 PDF 檔案",
-      "singlePdfFile": "單一 PDF 檔案",
-      "pdfWithForms": "含有表單欄位的 PDF 檔案",
+      "singleOrMultiplePdfs": "支援單個或多個 PDF 檔案",
+      "singlePdfFile": "單個 PDF 檔案",
+      "pdfWithForms": "帶有表單欄位的 PDF 檔案",
       "heicImages": "HEIC/HEIF 圖片",
       "jpgImages": "JPG、JPEG、JP2、JPX 圖片",
       "pdfsOrImages": "PDF 或圖片",
       "oneOrMoreOdt": "一個或多個 ODT 檔案",
-      "singlePdfOnly": "僅限單一 PDF 檔案",
+      "singlePdfOnly": "僅限單個 PDF 檔案",
       "pdfFiles": "PDF 檔案",
       "multiplePdfs": "多個 PDF 檔案",
       "pngImages": "PNG 圖片",
       "pdfFilesOneOrMore": "PDF 檔案（一個或多個）",
       "oneOrMoreRtf": "一個或多個 RTF 檔案",
-      "svgGraphics": "SVG 向量圖形",
+      "svgGraphics": "SVG 圖形",
       "tiffImages": "TIFF 圖片",
       "webpImages": "WebP 圖片"
-    }
+    },
+    "singleFileHint": "單個檔案"
   },
   "howItWorks": {
-    "title": "使用方式",
+    "title": "使用方法",
     "step1Title": "上傳檔案",
-    "step1": "點選或拖曳檔案至此處以開始",
-    "step2Title": "開始處理",
-    "step2": "點選處理按鈕以開始",
-    "step3Title": "下載檔案",
-    "step3": "立即儲存處理後的檔案"
+    "step1": "點選或拖放您的檔案到此處",
+    "step2Title": "處理",
+    "step2": "點選處理按鈕開始",
+    "step3Title": "下載",
+    "step3": "立即儲存處理後的檔案",
+    "hint": "操作說明："
   },
   "relatedTools": {
     "title": "相關 PDF 工具"
   },
   "loader": {
-    "processing": "正在處理…"
+    "processing": "處理中..."
   },
   "alert": {
     "title": "提示",
-    "ok": "確定"
+    "ok": "確定",
+    "error": "錯誤",
+    "success": "成功",
+    "processFailed": "處理失敗，請重試。",
+    "noFiles": "未選擇檔案",
+    "invalidFile": "無效檔案",
+    "message": "這是一條提示資訊。"
   },
   "preview": {
-    "title": "文件預覽",
-    "downloadAsPdf": "下載為 PDF",
-    "close": "關閉"
+    "title": "檔案預覽",
+    "downloadAsPdf": "下載 PDF",
+    "close": "關閉",
+    "download": "下載為 PDF"
   },
   "settings": {
     "title": "設定",
     "shortcuts": "快捷鍵",
     "preferences": "偏好設定",
-    "displayPreferences": "顯示偏好設定",
-    "searchShortcuts": "搜尋快捷鍵…",
-    "shortcutsInfo": "請按住按鍵組合以設定快捷鍵。系統會自動儲存變更。",
-    "shortcutsWarning": "⚠️ 請避免使用瀏覽器常見的快捷鍵（如 Cmd/Ctrl+W、Cmd/Ctrl+T、Cmd/Ctrl+N 等），以免無法正常運作。",
+    "displayPreferences": "顯示設定",
+    "searchShortcuts": "搜尋快捷鍵...",
+    "shortcutsInfo": "按下並按住按鍵以設定快捷鍵。更改將自動儲存。",
+    "shortcutsWarning": "⚠️ 避免使用通用的瀏覽器快捷鍵 (Cmd/Ctrl+W, Cmd/Ctrl+T, Cmd/Ctrl+N 等)，因為它們可能無法穩定工作。",
     "import": "匯入",
     "export": "匯出",
-    "resetToDefaults": "還原為預設值",
+    "resetToDefaults": "恢復預設",
     "fullWidthMode": "全寬模式",
-    "fullWidthDescription": "使用全螢幕寬度而非置中容器顯示所有工具",
-    "compactMode": "精簡模式",
-    "compactModeDescription": "以精簡清單取代卡片顯示工具",
+    "fullWidthDescription": "使用全屏寬度展示所有工具，而非居中顯示",
+    "compactMode": "緊湊模式",
+    "compactModeDescription": "以緊湊列表而非卡片顯示工具",
     "advancedSettings": "進階設定",
-    "advancedSettingsDescription": "設定外部處理模組（PyMuPDF、Ghostscript、CoherentPDF）",
-    "settingsAutoSaved": "系統會自動儲存設定",
-    "clickToSet": "點選以設定",
-    "pressKeys": "請按下按鍵…",
+    "advancedSettingsDescription": "配置外部處理模組（PyMuPDF、Ghostscript、CoherentPDF）",
+    "settingsAutoSaved": "設定已自動儲存",
+    "clickToSet": "點選設定",
+    "pressKeys": "按下按鍵...",
     "warnings": {
       "alreadyInUse": "快捷鍵已被使用",
-      "assignedTo": "已指定至：",
-      "chooseDifferent": "請選擇其他快捷鍵組合。",
-      "reserved": "系統保留快捷鍵警告",
+      "assignedTo": "已分配給：",
+      "chooseDifferent": "請選擇其他快捷鍵。",
+      "reserved": "保留快捷鍵警告",
       "commonlyUsed": "通常用於：",
-      "unreliable": "此快捷鍵可能與系統或瀏覽器行為衝突，或無法穩定運作。",
+      "unreliable": "此快捷鍵可能無法穩定工作，或與瀏覽器/系統快捷鍵衝突。",
       "useAnyway": "仍要使用嗎？",
-      "resetTitle": "重設快捷鍵",
-      "resetMessage": "確定要將所有快捷鍵還原為預設值嗎？<br><br>此操作無法復原。",
+      "resetTitle": "重置快捷鍵",
+      "resetMessage": "確定要將所有快捷鍵重置為預設值嗎？<br><br>此操作無法撤銷。",
       "importSuccessTitle": "匯入成功",
       "importSuccessMessage": "快捷鍵匯入成功！",
       "importFailTitle": "匯入失敗",
@@ -164,22 +173,22 @@
     "proceed": "繼續"
   },
   "compliance": {
-    "title": "您的資料絕不會離開您的裝置",
-    "weKeep": "我們透過遵循全球安全標準，",
-    "yourInfoSafe": "確保您的資訊安全",
-    "byFollowingStandards": "。",
-    "processingLocal": "所有處理過程都在您的裝置上進行。",
+    "title": "您的資料從未離開您的裝置",
+    "weKeep": "我們會保持",
+    "yourInfoSafe": "您的資訊安全",
+    "byFollowingStandards": "，遵循全球安全標準。",
+    "processingLocal": "所有處理都在您的裝置上本地進行。",
     "gdpr": {
-      "title": "符合 GDPR 規範",
-      "description": "保護歐盟境內個人的個人資料與隱私。"
+      "title": "GDPR 合規",
+      "description": "保護歐盟境內個人的個人資料和隱私。"
     },
     "ccpa": {
-      "title": "符合 CCPA 規範",
-      "description": "賦予加州居民對其個人資料如何被蒐集、使用及分享的權利。"
+      "title": "CCPA 合規",
+      "description": "賦予加州居民對其個人資訊的收集、使用和共享的權利。"
     },
     "hipaa": {
-      "title": "符合 HIPAA 規範",
-      "description": "制定處理美國醫療保健系統中敏感健康資訊的安全規範。"
+      "title": "HIPAA 合規",
+      "description": "制定美國醫療系統中處理敏感健康資訊的保障措施。"
     }
   },
   "faq": {
@@ -187,74 +196,77 @@
     "questions": "問題",
     "sectionTitle": "常見問題",
     "isFree": {
-      "question": "TuHe PDF 真的是免費的嗎？",
-      "answer": "是的，完全免費。TuHe PDF 上的所有工具皆為 100% 免費使用，並且沒有檔案大小或數量限制、無需註冊，也沒有任何浮水印。我們相信每個人都應該享有簡單且強大的免費 PDF 工具。"
+      "question": "TuHe PDF 真的免費嗎？",
+      "answer": "是的，完全免費。TuHe PDF 上的所有工具均可 100% 免費使用，沒有檔案限制，無需註冊，也沒有水印。我們相信每個人都應該能夠使用簡單、強大的 PDF 工具，而無需通過付費牆。"
     },
     "areFilesSecure": {
-      "question": "我的檔案安全嗎？它們是在哪裡進行處理的？",
-      "answer": "檔案會受到妥善保護，因為它們絕不會離開電腦。所有處理都直接在網頁瀏覽器中執行，也就是在本機處理。我們絕不會將檔案上傳到任何伺服器，因此文件內容能完全保密，並始終由您掌控。"
+      "question": "我的檔案安全嗎？它們在哪裡處理？",
+      "answer": "您的檔案非常安全，因為它們從未離開您的電腦。所有處理都直接在您的網路瀏覽器（客戶端）中進行。我們從不將您的檔案上傳到伺服器，因此您可以對檔案保持完全的隱私和控制。"
     },
     "platforms": {
-      "question": "我能在 Mac、Windows 和行動裝置上使用嗎？",
-      "answer": "當然可以！TuHe PDF 完全在瀏覽器中執行，因此可用於任何具備現代網頁瀏覽器的作業系統，包括 Windows、macOS、Linux、iOS 與 Android。"
+      "question": "它適用於 Mac、Windows 和手機嗎？",
+      "answer": "是的！由於 TuHe PDF 完全在您的瀏覽器中執行，因此它適用於任何帶有現代網路瀏覽器的作業系統，包括 Windows、macOS、Linux、iOS 和 Android。"
     },
     "gdprCompliant": {
-      "question": "TuHe PDF 符合 GDPR 規範嗎？",
-      "answer": "是的。TuHe PDF 完全符合 GDPR 規範。由於所有檔案處理都在您的瀏覽器本機進行，且我們絕不蒐集或傳送您的檔案到任何伺服器，我們完全無法存取您的資料。這確保您的文件永遠處於您的掌控之中。"
+      "question": "TuHe PDF 符合 GDPR 嗎？",
+      "answer": "是的。TuHe PDF 完全符合 GDPR。由於所有檔案處理都在您的瀏覽器中本地進行，並且我們從不收集或將您的檔案傳輸到任何伺服器，因此我們無法訪問您的資料。這確保您始終掌控您的檔案。"
     },
     "dataStorage": {
-      "question": "你們會儲存或追蹤我的檔案嗎？",
-      "answer": "不會。我們絕不儲存、追蹤或記錄您的檔案。您在 TuHe PDF 進行的所有操作皆在瀏覽器記憶體中完成，關閉網頁後便會立即消失。沒有上傳、沒有歷史紀錄，也完全不經手任何伺服器。"
+      "question": "你們會儲存或跟蹤我的任何檔案嗎？",
+      "answer": "不。我們從不儲存、跟蹤或記錄您的檔案。您在 TuHe PDF 上所做的所有操作都在您的瀏覽器記憶體中進行，並在您關閉頁面後消失。沒有上傳，沒有歷史記錄，也沒有涉及伺服器。"
     },
     "different": {
       "question": "TuHe PDF 與其他 PDF 工具有何不同？",
-      "answer": "大多數 PDF 工具都會將檔案上傳到伺服器進行處理，而 TuHe PDF 絕不會這麼做。我們採用安全且先進的網頁技術，直接在瀏覽器中處理檔案，因此處理速度更快、隱私保護更完善，也更令人安心。"
+      "answer": "大多數 PDF 工具將您的檔案上傳到伺服器進行處理。TuHe PDF 從不這樣做。我們使用安全、現代的網路技術直接在您的瀏覽器中處理您的檔案。這意味著更快的效能、更強的隱私和完全的安心。"
     },
     "browserBased": {
-      "question": "瀏覽器端（本機）處理如何確保我的安全？",
-      "answer": "透過完全在您的瀏覽器內運作，TuHe PDF 可確保您的檔案絕不離開您的裝置。這徹底消除了伺服器遭駭、資料外洩與未授權存取的風險。您的檔案永遠只屬於您自己。"
+      "question": "基於瀏覽器的處理如何保護我的安全？",
+      "answer": "通過完全在您的瀏覽器內部執行，TuHe PDF 確保您的檔案從未離開您的裝置。這消除了伺服器駭客攻擊、資料洩露或未經授權訪問的風險。您的檔案始終屬於您。"
     },
     "analytics": {
-      "question": "TuHe PDF 會使用 Cookie 或網站分析工具追蹤我嗎？",
-      "answer": "我們非常重視您的隱私。TuHe PDF 不會追蹤任何個人資料。我們僅使用 Simple Analytics 來統計匿名造訪次數。這代表我們只會知道有多少使用者造訪過我們的網站，但永遠不會知道您是誰。Simple Analytics 完全符合 GDPR 規範並尊重您的隱私權。"
-    }
+      "question": "你們使用 Cookie 或分析來跟蹤我嗎？",
+      "answer": "我們關心您的隱私。TuHe PDF 不會跟蹤個人資訊。我們僅使用 Simple Analytics 檢視匿名訪問計數。這意味著我們可以知道有多少使用者訪問我們的網站，但我們永遠不知道您是誰。Simple Analytics 完全符合 GDPR 並尊重您的隱私。"
+    },
+    "privateSecure": "我的檔案安全私密嗎？",
+    "sizeLimit": "有檔案大小限制嗎？"
   },
   "testimonials": {
-    "title": "看看我們的",
+    "title": "我們的",
     "users": "使用者",
-    "say": "怎麼說"
+    "say": "評價"
   },
   "support": {
-    "title": "喜歡我的作品嗎？",
-    "description": "TuHe PDF 是一個出於熱情開發的專案，為每個人提供一個免費、注重隱私且強大的 PDF 工具組。如果有幫上您的忙，請考慮支援它的開發。每杯咖啡都意義重大！",
-    "buyMeCoffee": "買杯咖啡給我"
+    "title": "喜歡這個專案？",
+    "description": "TuHe PDF 是一個充滿激情的專案，旨在為每個人提供免費、私密且強大的 PDF 工具箱。如果您覺得它有用，請考慮支援它的開發。每一杯咖啡都是莫大的支援！",
+    "buyMeCoffee": "請我喝杯咖啡"
   },
   "footer": {
-    "copyright": "© 2026 TuHe PDF，版權所有。",
+    "copyright": "© 2026 TuHe PDF. 保留所有權利。",
     "version": "版本",
     "company": "公司",
     "aboutUs": "關於我們",
     "faqLink": "常見問題",
     "contactUs": "聯絡我們",
-    "legal": "法律聲明",
+    "legal": "法律",
     "termsAndConditions": "服務條款",
-    "privacyPolicy": "隱私權政策",
-    "followUs": "追蹤我們"
+    "privacyPolicy": "隱私政策",
+    "advancedSettings": "進階設定",
+    "followUs": "關注我們"
   },
   "merge": {
     "title": "合併 PDF",
-    "description": "合併整個檔案，或選取特定頁面合併為新文件。",
+    "description": "合併整個檔案，或選擇特定頁面合併到新檔案中。",
     "fileMode": "檔案模式",
     "pageMode": "頁面模式",
     "howItWorks": "使用說明：",
     "fileModeInstructions": [
-      "拖曳圖示以調整檔案順序。",
-      "在每個檔案的「頁數」輸入框中，您可以指定要合併的特定頁面範圍（例如「1-3, 5」）。",
-      "留空則會包含該檔案的所有頁面。"
+      "點選並拖動圖示以更改檔案的順序。",
+      "在每個檔案的 '頁碼' 框中，您可以指定範圍（例如 '1-3, 5'）以僅合併這些頁面。",
+      "將 '頁碼' 框留空以包含該檔案的所有頁面。"
     ],
     "pageModeInstructions": [
-      "下方顯示您上傳的 PDF 檔案中的所有頁面。",
-      "拖曳個別頁面縮圖到指定位置，即可自由調整新檔案的頁面順序。"
+      "您上傳的 PDF 的所有頁面顯示在下方。",
+      "只需拖放單個頁面縮圖，即可為您新檔案對頁面進行排序。"
     ],
     "mergePdfs": "合併 PDF"
   },
@@ -269,218 +281,443 @@
     "edit": "編輯",
     "add": "新增",
     "remove": "移除",
-    "loading": "載入中…",
-    "loadingPageCount": "正在載入頁面…",
+    "loading": "載入中...",
+    "loadingPageCount": "正在載入頁面...",
     "error": "錯誤",
     "success": "成功",
     "file": "檔案",
     "files": "檔案",
     "close": "關閉",
     "convert": "轉換",
-    "unknownError": "未知錯誤"
+    "unknownError": "未知錯誤",
+    "filePages": "共 {{count}} 頁",
+    "ok": "確定",
+    "dynamic": {
+      "b328ee239a": "進階設定",
+      "a759dd7bf6": "×",
+      "6e6cd59800": "搜尋語言...",
+      "5b84f0b598": "此節點沒有可配置的設定。",
+      "505638e0bc": "載入檔案失敗：{{value0}}",
+      "e190be9174": "證書已解鎖",
+      "ae7cf1e34f": "密碼錯誤",
+      "3b93feeaca": "解鎖",
+      "f370a981e4": "正在解鎖...",
+      "f26bba9bdb": "輸入密碼...",
+      "5373b3a229": "證書密碼",
+      "559f7af87a": "移除",
+      "da110cd748": "證書（.pfx、.p12、.pem）",
+      "0692b26df8": "支援格式：JPG、PNG、BMP、GIF、TIFF、WebP、HEIC、PSD、SVG、PNM、PGM、PBM、PPM、PAM、JXR、JPX、JP2",
+      "2d588ecddd": "圖片",
+      "a3b53812df": "密碼錯誤或無法解密\"{{value0}}\"。",
+      "afadf7dd74": "PDF 檔案",
+      "ae55d40de3": "載入模板失敗。",
+      "b770559d57": "模板\"{{value0}}\"已載入。",
+      "3e37f1d2b7": "已載入",
+      "faec63c70c": "載入",
+      "03e67a394e": "設定",
+      "be0ce2cc7a": "已儲存",
+      "4db44d4a58": "該名稱的模板已存在。",
+      "9181ca520d": "請輸入名稱。",
+      "083b5e83a4": "{{value0}} 個節點{{value1}}",
+      "537ba3aa0a": "就緒",
+      "b972f7368b": "執行過程中出錯",
+      "9da02eb759": "工作流已完成",
+      "17165fa279": "您的工作流至少需要一個輸入節點和一個輸出節點才能執行。",
+      "c73d89e248": "請至少新增一個節點以執行工作流。",
+      "0e455bd98f": "",
+      "b41206e984": "正在渲染頁面預覽：{{value0}}/{{value1}}",
+      "b1c9a82c0a": "旋轉 +90°",
+      "d44e20976e": "0",
+      "afc1792050": "{{value0}}%",
+      "105f867cd3": "無法載入 PDF 引擎。請重新整理頁面後重試。",
+      "c73b34e569": "初始化錯誤",
+      "fc9c0065db": "正在初始化 PDF 引擎...",
+      "aff4164a23": "預覽",
+      "7e2d45a3d6": "第 {{value0}} / {{value1}} 頁",
+      "aff1fc8187": "裁剪過程中發生錯誤。",
+      "e9d254fac7": "裁剪完成！下載已開始。",
+      "90dcd4fd88": "正在應用裁剪...",
+      "fbdd0158ba": "請select an area on at least one page to crop.",
+      "4579e17b6e": "未選擇裁剪區域",
+      "a0661def9c": "請select an area to crop first.",
+      "22ab0cbd34": "無法載入 PDF 以進行裁剪。",
+      "20cb9cd721": "正在處理第 {{value0}}/{{value1}} 頁...",
+      "796ffe1dd0": "頁面渲染失敗。",
+      "c2f2dec95b": "請select an area to crop.",
+      "3a9e4354a0": "正在渲染第 {{value0}} 頁...",
+      "c36048581f": "儲存新 PDF 失敗。請檢查控制台瞭解詳情。",
+      "12199c4a8b": "部分頁面無法處理。請重試。",
+      "104fff0b03": "沒有有效頁面可儲存。",
+      "a8a342113d": "正在構建新 PDF...",
+      "38e425eed8": "渲染頁面預覽失敗",
+      "5efb3e8ec6": "刪除頁面",
+      "c565bcea4a": "複製頁面",
+      "44d04541b5": "正在渲染頁面預覽...",
+      "e5a34f7ac1": "您不能刪除檔案的最後一頁。",
+      "1b233cd173": "無法刪除",
+      "0e13df4a7b": "您的 PDF 已分塊。",
+      "bd5a1e389d": "正在分塊 PDF...",
+      "c752767294": "請先上傳一個 PDF 檔案。",
+      "264a4a2641": "無檔案",
+      "0cfdaff6c2": "正在渲染第 {{value0}} 頁的預覽...",
+      "50db715701": "應用遮蔽失敗。",
+      "11102f021f": "正在應用遮蔽...",
+      "07bc61dbcf": "PDF 已裁剪，下載已開始。",
+      "4e2acbf846": "成功！",
+      "7fe72298ff": "請draw a rectangle on at least one page to select the crop area.",
+      "3d9f6f935a": "未選擇區域",
+      "9d3feb79ee": "1",
+      "ce86f9b182": "無法顯示該頁面。",
+      "e3d25c4962": "渲染錯誤",
+      "6850b548a2": "正在載入第 {{value0}} 頁...",
+      "4e708e8c7c": "Mermaid 錯誤：{{value0}}",
+      "03e67e394e": "模板 \"{{value0}}\" 已儲存。"
+    },
+    "workflow": {
+      "status": {
+        "running": "執行中...",
+        "complete": "完成",
+        "failed": "失敗",
+        "connected": "已連線",
+        "notConnected": "未連線"
+      }
+    }
+  },
+  "pagePreview": {
+    "closeEsc": "關閉（Esc）",
+    "previousPage": "上一頁",
+    "nextPage": "下一頁",
+    "failedToRender": "頁面渲染失敗"
+  },
+  "pdfLayers": {
+    "noLayersTitle": "此 PDF 沒有圖層（OCG）。",
+    "noLayersHint": "新增一個新圖層以開始使用！",
+    "defaultLayerName": "圖層 {{number}}",
+    "addChildLayer": "新增子圖層",
+    "deleteLayer": "刪除圖層"
   },
   "about": {
     "hero": {
-      "title": "我們相信 PDF 工具應該",
-      "subtitle": "快速、私密且免費。",
+      "title": "我們相信 PDF 工具應該是",
+      "subtitle": "快速、私密且免費的。",
       "noCompromises": "絕不妥協。"
     },
     "mission": {
       "title": "我們的使命",
-      "description": "在尊重您的隱私且完全不收費的同時，提供最全面的 PDF 工具箱。我們相信人人都應該能隨時隨地、不受限制地使用必備的文件工具。"
+      "description": "提供最全面的 PDF 工具箱，尊重您的隱私，且永不收費。我們相信基本的檔案工具應該對所有人、在任何地方都觸手可及，沒有任何障礙。"
     },
     "philosophy": {
       "label": "我們的核心理念",
-      "title": "隱私至上，始終如一。",
-      "description": "在個人資料被商品化的時代，我們採取截然不同的做法。所有 TuHe PDF 工具的處理流程皆在您的瀏覽器本機完成。這代表您的檔案絕不會觸及我們的伺服器，我們無法查看您的文件內容，更不會追蹤您的行為。您的文件將始終保持絕對的私密性。這不僅是一項功能，更是我們的立身之本。"
+      "title": "隱私至上。始終如一。",
+      "description": "在資料被商品化的時代，我們採取不同的方式。TuHe PDF 工具的所有處理都在您的瀏覽器本地進行。這意味著您的檔案從未接觸我們的伺服器，我們從不檢視您的檔案，也不跟蹤您的操作。您的檔案保持絕對的私密性。這不僅是一項功能；這是我們的基石。"
     },
     "whyBentopdf": {
-      "title": "為何選擇",
+      "title": "為什麼選擇",
       "speed": {
-        "title": "極速處理",
-        "description": "無需等待檔案上傳與下載至伺服器。透過在您的瀏覽器中使用 WebAssembly 等現代網頁技術來處理檔案，我們得以提供所有工具無與倫比的處理速度。"
+        "title": "為速度而生",
+        "description": "無需等待上傳或從伺服器下載。通過使用 WebAssembly 等現代網路技術直接在您的瀏覽器中處理檔案，我們為所有工具提供了無與倫比的速度。"
       },
       "free": {
         "title": "完全免費",
-        "description": "沒有試用期、訂閱制、隱藏費用，也不會將「進階」功能封鎖在付費牆後。我們相信強大的 PDF 工具應該是每個人都能享有的公共設施，而非營利手段。"
+        "description": "無試用，無訂閱，無隱藏費用，也沒有被鎖定的 '高階' 功能。我們相信強大的 PDF 工具應該是一種公共設施，而不是盈利中心。"
       },
       "noAccount": {
-        "title": "無需註冊帳號",
-        "description": "立即開始使用任何工具。我們不需要您的電子郵件、密碼或任何個人資料。您的工作流程應當匿名且順暢無阻。"
+        "title": "無需賬戶",
+        "description": "立即開始使用任何工具。我們不需要您的電子郵件、密碼或任何個人資訊。您的工作流程應該是無摩擦且匿名的。"
       },
       "openSource": {
-        "title": "開放原始碼精神",
-        "description": "以透明度為核心打造。我們採用了如 PDF-lib 和 PDF.js 等優秀的開放原始碼函式庫，並深信社群驅動的力量能讓強大的工具造福每一個人。"
+        "title": "開源精神",
+        "description": "以透明度為核心構建。我們利用了像 PDF-lib 和 PDF.js 這樣優秀的開源庫，並相信社群驅動的力量能使強大的工具惠及每一個人。"
       }
     },
     "cta": {
       "title": "準備好開始了嗎？",
-      "description": "加入成千上萬信任 TuHe PDF 的使用者行列，用它來處理日常文件需求。親自體驗隱私與效能所帶來的全新感受。",
+      "description": "加入成千上萬信任 TuHe PDF 滿足日常檔案需求的使用者。體驗隱私和效能帶來的不同。",
       "button": "探索所有工具"
     }
   },
   "contact": {
     "title": "聯絡我們",
-    "subtitle": "我們非常樂意收到您的訊息。無論您有任何問題、意見或功能需求，都歡迎隨時與我們聯絡。",
-    "email": "您也可以直接透過電子郵件與我們聯絡："
+    "subtitle": "我們很樂意聽到您的聲音。無論您有問題、反饋還是功能請求，請隨時聯絡我們。",
+    "email": "您可以直接通過電子郵件聯絡我們："
   },
   "licensing": {
-    "title": "產品授權",
-    "subtitle": "選擇符合您需求的授權方式。"
+    "title": "許可適用",
+    "subtitle": "選擇適合您需求的許可。"
   },
   "multiTool": {
     "uploadPdfs": "上傳 PDF",
     "upload": "上傳",
-    "addBlankPage": "新增空白頁面",
-    "edit": "編輯：",
-    "undo": "復原",
+    "addBlankPage": "新增空白頁",
+    "edit": "編輯:",
+    "undo": "撤銷",
     "redo": "重做",
-    "reset": "重設",
-    "selection": "選取：",
+    "reset": "重置",
+    "selection": "選擇:",
     "selectAll": "全選",
     "deselectAll": "取消全選",
-    "rotate": "旋轉：",
+    "rotate": "旋轉:",
     "rotateLeft": "向左",
     "rotateRight": "向右",
-    "transform": "轉換：",
+    "transform": "變換:",
     "duplicate": "複製",
-    "split": "分割",
-    "clear": "清除：",
+    "split": "拆分",
+    "clear": "清除:",
     "delete": "刪除",
-    "download": "下載：",
-    "downloadSelected": "下載選取的頁面",
+    "download": "下載:",
+    "downloadSelected": "下載選中",
     "exportPdf": "匯出 PDF",
-    "uploadPdfFiles": "選取 PDF 或圖片檔案",
-    "dragAndDrop": "拖曳 PDF 或圖片檔案至此，或點選以選取",
-    "selectFiles": "選取檔案",
-    "dropToAdd": "拖曳 PDF 或圖片檔案至此以新增",
-    "convertingImages": "正在將圖片轉換為 PDF…",
+    "uploadPdfFiles": "選擇 PDF 或圖片檔案",
+    "dragAndDrop": "將 PDF 或圖片檔案拖放到此處，或點選選擇",
+    "selectFiles": "選擇檔案",
+    "dropToAdd": "拖放 PDF 或圖片檔案以新增",
+    "convertingImages": "正在將圖片轉換為 PDF...",
     "failedToConvertImages": "圖片轉換為 PDF 失敗。",
-    "renderingPages": "正在產生頁面預覽…",
+    "renderingPages": "正在渲染頁面...",
     "actions": {
       "duplicatePage": "複製此頁",
       "deletePage": "刪除此頁",
       "insertPdf": "在此頁後插入 PDF",
-      "toggleSplit": "切換此頁後的分割標記"
+      "toggleSplit": "在此頁後切換拆分"
     },
     "pleaseWait": "請稍候",
-    "pagesRendering": "正在產生頁面預覽，請稍候…",
-    "noPagesSelected": "未選取任何頁面",
-    "selectOnePage": "請至少選取一個頁面以開始下載。",
+    "pagesRendering": "頁面正在渲染中，請稍候...",
+    "noPagesSelected": "未選擇頁面",
+    "selectOnePage": "請至少選擇一頁以進行下載。",
     "noPages": "沒有頁面",
-    "noPagesToExport": "無可匯出的頁面。",
-    "renderingTitle": "正在產生頁面預覽",
-    "errorRendering": "無法產生頁面預覽縮圖",
+    "noPagesToExport": "沒有可匯出的頁面。",
+    "renderingTitle": "正在渲染頁面預覽",
+    "errorRendering": "渲染頁面縮圖失敗",
     "error": "錯誤",
     "failedToLoad": "載入失敗"
   },
   "simpleMode": {
     "title": "PDF 工具",
-    "subtitle": "選取工具以開始使用"
+    "subtitle": "選擇一個工具開始使用"
   },
   "disabledTool": {
-    "title": "工具無法使用",
+    "title": "工具不可用",
     "heading": "此工具已被停用",
-    "message": "此工具在您的部署環境中無法使用。請聯絡管理員以取得更多資訊。",
-    "backHome": "回到首頁"
-  },
-  "pagePreview": {
-    "closeEsc": "关闭（Esc）",
-    "previousPage": "上一页",
-    "nextPage": "下一页",
-    "failedToRender": "页面渲染失败"
-  },
-  "pdfLayers": {
-    "noLayersTitle": "此 PDF 没有图层（OCG）。",
-    "noLayersHint": "添加一个新图层以开始使用！",
-    "defaultLayerName": "图层 {{number}}",
-    "addChildLayer": "添加子图层",
-    "deleteLayer": "删除图层"
+    "message": "此工具在您的部署環境中不可用。請聯絡管理員以獲取更多資訊。",
+    "backHome": "返回首頁"
   },
   "passwordPrompt": {
-    "required": "需要密码",
-    "enterPassword": "输入密码",
-    "skip": "跳过",
-    "unlock": "解锁",
-    "enterEach": "输入每个加密文件的密码",
-    "useSame": "所有文件使用相同密码",
-    "passwordForAll": "所有文件的密码",
-    "skipAll": "全部跳过",
-    "unlockAll": "全部解锁",
-    "enterRequired": "请输入密码",
-    "validating": "正在验证...",
-    "incorrect": "密码错误，请重试。",
+    "required": "需要密碼",
+    "enterPassword": "輸入密碼",
+    "skip": "跳過",
+    "unlock": "解鎖",
+    "enterEach": "輸入每個加密檔案的密碼",
+    "useSame": "所有檔案使用相同密碼",
+    "passwordForAll": "所有檔案的密碼",
+    "skipAll": "全部跳過",
+    "unlockAll": "全部解鎖",
+    "enterRequired": "請輸入密碼",
+    "validating": "正在驗證...",
+    "incorrect": "密碼錯誤，請重試。",
     "decrypting": "正在解密...",
-    "decryptFailed": "解密失败。请改用“解密 PDF”工具。",
-    "filesNeedPassword": "{{count}} 个文件需要密码",
-    "password": "密码",
-    "skipFile": "跳过此文件",
-    "skipRemaining": "跳过剩余文件",
-    "unlockRemaining": "解锁剩余文件（{{count}}）",
-    "includeFile": "包含此文件",
-    "enterForFile": "请输入 {{name}} 的密码或跳过它",
-    "validatingFile": "正在验证 {{current}} / {{total}}：{{name}}",
+    "decryptFailed": "解密失敗。請改用“解密 PDF”工具。",
+    "filesNeedPassword": "{{count}} 個檔案需要密碼",
+    "password": "密碼",
+    "skipFile": "跳過此檔案",
+    "skipRemaining": "跳過剩餘檔案",
+    "unlockRemaining": "解鎖剩餘檔案（{{count}}）",
+    "includeFile": "包含此檔案",
+    "enterForFile": "請輸入 {{name}} 的密碼或跳過它",
+    "validatingFile": "正在驗證 {{current}} / {{total}}：{{name}}",
     "decryptingFile": "正在解密 {{current}} / {{total}}：{{name}}",
-    "wrongForFiles": "以下文件密码错误：{{names}}",
-    "retryFailed": "重试失败项"
+    "wrongForFiles": "以下檔案密碼錯誤：{{names}}",
+    "retryFailed": "重試失敗項"
   },
   "fileHandler": {
-    "loadingPdf": "正在加载 PDF...",
-    "analyzingMetadata": "正在分析完整 PDF 元数据...",
-    "infoDictionary": "信息字典",
-    "notSet": "- 未设置 -",
-    "noInfoData": "- 未找到信息字典数据 -",
-    "formFields": "交互式表单字段",
-    "noFormFields": "- 未找到交互式表单字段 -",
+    "loadingPdf": "正在載入 PDF...",
+    "analyzingMetadata": "正在分析完整 PDF 後設資料...",
+    "infoDictionary": "資訊字典",
+    "notSet": "- 未設定 -",
+    "noInfoData": "- 未找到資訊字典資料 -",
+    "formFields": "互動式表單欄位",
+    "noFormFields": "- 未找到互動式表單欄位 -",
     "altContainer": "（替代容器）",
-    "emptyResource": "（空资源）",
-    "xmpMetadata": "XMP 元数据",
-    "noXmpProperties": "- 未找到可解析的 XMP 属性 -",
-    "xmpParseFailed": "- 无法解析 XMP 元数据。-",
-    "noXmpMetadata": "- 未找到 XMP 元数据 -",
-    "metadataAnalyzeFailed": "无法完整分析 PDF。文件可能已损坏或具有异常结构。",
-    "metadataKeyPlaceholder": "键（例如：部门）",
-    "metadataValuePlaceholder": "值（例如：市场部）",
-    "loadFailed": "无法加载 PDF。文件可能无效、已损坏或受密码保护。",
-    "loadingDocuments": "正在加载 PDF 文档...",
-    "invalidFilesTitle": "无效文件",
-    "unsupportedImages": "部分文件已被跳过，因为它们不是受支持的图片。"
+    "emptyResource": "（空資源）",
+    "xmpMetadata": "XMP 後設資料",
+    "noXmpProperties": "- 未找到可解析的 XMP 屬性 -",
+    "xmpParseFailed": "- 無法解析 XMP 後設資料。-",
+    "noXmpMetadata": "- 未找到 XMP 後設資料 -",
+    "metadataAnalyzeFailed": "無法完整分析 PDF。檔案可能已損壞或具有異常結構。",
+    "metadataKeyPlaceholder": "鍵（例如：部門）",
+    "metadataValuePlaceholder": "值（例如：市場部）",
+    "loadFailed": "無法載入 PDF。檔案可能無效、已損壞或受密碼保護。",
+    "loadingDocuments": "正在載入 PDF 檔案...",
+    "invalidFilesTitle": "無效檔案",
+    "unsupportedImages": "部分檔案已被跳過，因為它們不是受支援的圖片。"
   },
   "formCreator": {
-    "invalidPageNumber": "请输入 1 到 {{max}} 之间的有效页码。",
-    "noFieldsAdded": "请至少添加一个字段后再下载。",
-    "noPagesAvailable": "未找到页面。请创建空白 PDF 或上传一个文件。",
-    "resetConfirm": "确定要重置吗？您所有的操作都将丢失。"
+    "invalidPageNumber": "請輸入 1 到 {{max}} 之間的有效頁碼。",
+    "noFieldsAdded": "請至少新增一個欄位後再下載。",
+    "noPagesAvailable": "未找到頁面。請建立空白 PDF 或上傳一個檔案。",
+    "resetConfirm": "確定要重置嗎？您所有的操作都將丟失。"
   },
   "emailToPdf": {
     "unknownDate": "未知日期",
     "attachments": "附件 ({{count}})",
     "cc": "抄送",
     "bcc": "密送",
-    "from": "发件人",
+    "from": "發件人",
     "to": "收件人",
     "unknown": "未知",
     "date": "日期"
   },
   "markdownEditor": {
-    "toggleSyncScroll": "切换同步滚动"
+    "toggleSyncScroll": "切換同步滾動"
   },
   "helpers": {
-    "custom": "自定义",
-    "bytes": "字节",
+    "custom": "自定義",
+    "bytes": "位元組",
     "k": "K"
   },
   "workbench": {
-    "noMatchingTools": "没有匹配的工具",
-    "closeTab": "关闭标签页",
-    "closeTabMessage": "「{{title}}」中还有已上传的文件或正在进行的任务，关闭后这些进度将丢失。确定要关闭吗？",
-    "closeTabConfirm": "仍然关闭"
+    "noMatchingTools": "沒有匹配的工具",
+    "closeTab": "關閉標籤頁",
+    "closeTabMessage": "「{{title}}」中還有已上傳的檔案或正在進行的任務，關閉後這些進度將丟失。確定要關閉嗎？",
+    "closeTabConfirm": "仍然關閉",
+    "toggleRail": "展開 / 收起卡片欄",
+    "openToolRail": "開啟工具卡片欄",
+    "quickTools": "常用工具",
+    "homeSubtitle": "純瀏覽器端的 PDF 工作臺 · 合併、拆分、壓縮、轉換 · 檔案全程不出本機",
+    "homeHint": "從左側卡片欄選擇任意工具開始，工具會在右側標籤頁中開啟",
+    "searchPlaceholder": "搜尋工具… (Ctrl+K)"
   },
   "viewMetadata": {
-    "noInfoDict": "- 未找到 Info Dictionary 数据 -",
-    "noFormFields": "- 未找到交互式表单字段 -",
-    "noXmp": "- 未找到可解析的 XMP 属性 -",
-    "xmpError": "- XMP XML 解析错误，显示原始数据。",
-    "noXmpData": "- 未找到 XMP 元数据"
+    "noInfoDict": "- 未找到 Info Dictionary 資料 -",
+    "noFormFields": "- 未找到互動式表單欄位 -",
+    "noXmp": "- 未找到可解析的 XMP 屬性 -",
+    "xmpError": "- XMP XML 解析錯誤，顯示原始資料。",
+    "noXmpData": "- 未找到 XMP 後設資料"
+  },
+  "wasmProvider": {
+    "advancedFeatureRequired": "需要高階功能",
+    "externalModuleNeeded": "需要外部處理模組",
+    "featureRequires": "此功能需要配置 <strong>{{name}}</strong>。",
+    "featuresEnabled": "此模組啟用的功能：",
+    "moreFeatures": "+ 還有 {{count}} 項...",
+    "agplNotice": "此模組基於 AGPL-3.0 許可證。配置即表示您同意其許可條款。",
+    "cancel": "取消",
+    "configure": "配置"
+  },
+  "notFound": {
+    "heading": "頁面未找到",
+    "description": "哎呀！您要找的頁面似乎走丟了。不過別擔心，我們的 PDF 工具還在這裡等您。",
+    "backHome": "返回首頁",
+    "browseTools": "瀏覽全部工具",
+    "tryPopular": "或者試試這些熱門工具："
+  },
+  "aboutPage": {
+    "heading": "關於我們",
+    "subtitle": "TuHe PDF · 圖合",
+    "whoWeAre": "我們是誰",
+    "whoWeAreContent": "TuHe PDF（圖合）是一個專注於辦公場景的 PDF 工作臺。我們把日常最常用的 PDF 操作——合併、拆分、壓縮、格式轉換、頁面整理、簽名與水印——集中在一個統一的介面裡，讓你開啟瀏覽器就能完成全部工作。",
+    "clientSide": "純瀏覽器端處理",
+    "clientSideContent": "我們的核心原則是：<strong>你的檔案屬於你</strong>。 所有 PDF 處理都在你自己的瀏覽器中完成（基於 JavaScript 與 WebAssembly），檔案從頭到尾不會上傳到任何伺服器。這意味著：",
+    "clientSideItem1": "檔案內容、檔名和後設資料都不會離開你的電腦；",
+    "clientSideItem2": "沒有上傳等待，處理速度只取決於你的裝置效能；",
+    "clientSideItem3": "沒有檔案大小和次數限制，無需註冊登入。",
+    "workbenchDesign": "工作臺式設計",
+    "workbenchDesignContent": "與「一個工具一個頁面」的傳統站點不同，TuHe PDF 採用工作臺式佈局：左側是工具卡片欄，右側是多標籤工作區。你可以同時開啟多個工具、在標籤之間自由切換，像在桌面軟體裡一樣處理檔案。",
+    "openSource": "開源基礎",
+    "openSourceLicenseLink": "許可"
+  },
+  "contactPage": {
+    "heading": "聯絡我們",
+    "subtitle": "我們很樂意聽到你的反饋",
+    "feedback": "問題反饋與功能建議",
+    "feedbackContent": "如果你在使用 TuHe PDF 時遇到問題，或者希望我們增加某個工具或功能，歡迎通過郵件告訴我們。請儘量附上：使用的瀏覽器與版本、操作步驟、以及（如方便）控制台報錯截圖。",
+    "email": "郵箱：",
+    "fileNotice": "關於檔案問題的說明",
+    "fileNoticeContent": "TuHe PDF 的所有處理都在你的瀏覽器本地完成，<strong>請不要通過郵件傳送你的 PDF 檔案</strong>。如果某個檔案處理失敗，描述檔案的大致情況（頁數、大小、是否加密、來源軟體）通常就足夠我們定位問題。",
+    "cooperation": "合作與其他事宜",
+    "cooperationContent": "商務合作、媒體報道或其他事宜，同樣請傳送至",
+    "willReply": "我們會盡快回復。"
+  },
+  "licensingPage": {
+    "heading": "許可",
+    "subtitle": "開源許可與第三方宣告",
+    "license": "1. 許可證",
+    "licenseContent": "TuHe PDF 的原始碼依據 <strong>GNU Affero General Public License v3.0（AGPL-3.0）</strong> 釋出。你可以自由使用、研究、修改和再分發本軟體，前提是遵循該許可證的條款；完整許可證文本見原始碼倉庫根目錄的 <code>LICENSE</code> 檔案，或訪問 <a href=\"https://www.gnu.org/licenses/agpl-3.0.html\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-indigo-400 hover:underline\">gnu.org/licenses/agpl-3.0.html</a>。",
+    "upstream": "2. 上游專案",
+    "upstreamContent": "TuHe PDF 基於 <a href=\"https://github.com/alam00000/bentopdf\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-indigo-400 hover:underline\">BentoPDF</a> 二次開發。感謝上游作者與貢獻者的工作；BentoPDF 同樣以 AGPL-3.0 許可釋出。",
+    "thirdParty": "3. 第三方元件",
+    "thirdPartyContent": "本軟體使用了若干優秀的開源庫，包括但不限於 PDF-lib、PDF.js、PDF-lib.js 生態工具及 WebAssembly 元件。這些元件各自的許可證（MIT、Apache-2.0 等）歸其作者所有，詳見原始碼倉庫的依賴清單。",
+    "yourFiles": "4. 你的檔案",
+    "yourFilesContent": "軟體許可不影響你檔案的版權。使用 TuHe PDF 處理的檔案，其全部權利始終歸你所有；處理過程在你的瀏覽器本地完成，我們不會對檔案主張任何權利，也無法接觸其內容。",
+    "disclaimer": "5. 免責宣告",
+    "disclaimerContent": "本軟體按「現狀」提供，不附帶任何明示或默示的保證，包括但不限於適銷性和特定用途適用性的保證。使用本軟體產生的風險由你自行承擔，詳見 AGPL-3.0 許可證條款。"
+  },
+  "privacy": {
+    "heading": "隱私政策",
+    "lastUpdated": "最後更新：2025 年 9 月 14 日",
+    "section1": "1. 我們對隱私的承諾",
+    "section1Content": "TuHe PDF（以下簡稱“我們”）從根本上是一款以隱私為核心的服務。本隱私政策闡述了我們對保護您隱私的堅定承諾。我們的核心原則很簡單：<strong>您的檔案屬於您自己</strong>。我們不會也無法檢視、訪問、儲存或共享您的檔案。所有 PDF 處理完全在您自己的計算機上、在您的網頁瀏覽器中（客戶端）完成。",
+    "section1_1": "1.1 客戶端處理原則",
+    "section1_1Content": "與其他線上 PDF 服務不同，TuHe PDF 不會將您的檔案上傳到伺服器進行處理。您使用的工具由直接在您裝置上執行的 JavaScript 和 WebAssembly 庫驅動。這意味著您的資料永遠不會離開您的計算機，為您提供最高階別的隱私和安全性。",
+    "section2": "2. 我們不收集的資訊",
+    "section2Intro": "由於我們的客戶端架構，我們在技術上無法收集以下資訊：",
+    "section2Item1": "您使用的 PDF 檔案或任何其他檔案的內容。",
+    "section2Item2": "您檔案中包含的任何個人資料。",
+    "section2Item3": "您的檔案檔名。",
+    "section2Item4": "來自您檔案的任何衍生資訊或後設資料，超出工具在當前會話中執行所必需的部分（且這些資訊在會話結束後立即被丟棄）。",
+    "section3": "3. 我們可能收集的資訊（非個人資料）",
+    "section3Content": "為了改進我們的網站和服務，我們可能收集匿名的、無法識別個人身份的資訊。這類資料幫助我們瞭解使用者如何與我們的網站互動、哪些工具最受歡迎以及如何改進使用者體驗。這包括：",
+    "section3Item1": "<strong>使用分析：</strong>匿名資料，如使用了哪些工具、使用頻率以及訪問了哪些功能。這些資料是聚合的，無法追溯到個人使用者或檔案。",
+    "section3Item2": "<strong>效能資料：</strong>匿名的錯誤報告或效能指標，幫助我們識別和修復錯誤。這些資料不包含任何個人資訊或檔案內容。",
+    "section3Analytics": "我們使用尊重隱私的分析平臺來實現此目的。具體來說，我們使用 <a href=\"https://simpleanalytics.com\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-indigo-400 hover:underline\">Simple Analytics</a> 來跟蹤匿名訪問計數。這意味著我們可以知道有多少使用者訪問我們的網站，但 <strong>我們從不收集個人資訊或識別個人使用者</strong>。Simple Analytics 完全符合 GDPR 並尊重使用者隱私。我們不使用跟蹤 Cookie 進行廣告或跨站分析。",
+    "section4": "4. 第三方庫",
+    "section4Content": "TuHe PDF 使用強大的開源庫構建，如 PDF-lib.js 和 PDF.js。這些庫受到全球開發者的信賴，並遵循相同的客戶端處理原則。雖然我們已經審查了這些庫，但為了您自己的安心，我們建議您檢視它們各自的隱私政策。",
+    "section5": "5. 安全性",
+    "section5Content": "由於您的檔案從未通過網際網路傳輸到我們的伺服器，您在傳輸過程中或伺服器儲存期間不會受到潛在資料洩露的影響。您檔案的安全掌握在您自己手中，並受到您自己計算機和網頁瀏覽器安全性的保護。",
+    "section6": "6. 兒童隱私",
+    "section6Content": "我們的服務不面向 13 歲以下的個人。我們不會故意收集兒童的任何個人資訊。如果您認為有兒童向我們提供了個人資訊，請聯絡我們，我們將採取措施刪除此類資訊。",
+    "section7": "7. 本隱私政策的變更",
+    "section7Content": "我們可能會不時更新本隱私政策。我們將通過在此頁面上釋出新政策並更新頂部的“最後更新”日期來通知您任何變更。建議您定期檢視本隱私政策以瞭解任何變更。",
+    "section8": "8. 聯絡我們",
+    "section8Content": "如果您對本隱私政策有任何疑問，請通過 <a href=\"mailto:contact@tuhepdf.cn\">contact@tuhepdf.cn</a> 與我們聯絡。"
+  },
+  "terms": {
+    "heading": "服務條款",
+    "lastUpdated": "最後更新：2025 年 9 月 14 日",
+    "section1": "1. 接受條款",
+    "section1Content": "訪問和使用 TuHe PDF（以下簡稱“服務”），即表示您接受並同意受本協議條款的約束。如果您不同意遵守這些條款，請不要使用本服務。",
+    "section2": "2. 服務說明",
+    "section2Content": "TuHe PDF 提供一套用於處理和操作 PDF（行動式檔案格式）檔案的客戶端工具。本服務執行的所有操作均在您的網頁瀏覽器內本地完成。<strong>沒有任何檔案或資料會上傳或儲存到我們的伺服器。</strong>",
+    "section3": "3. 使用者行為與責任",
+    "section3Content": "您對使用本服務處理的檔案內容負全部責任。您同意不將本服務用於任何非法目的，包括但不限於：",
+    "section3Item1": "處理侵犯他人版權、商標或智慧財產權的任何材料。",
+    "section3Item2": "處理任何誹謗、中傷、淫穢或其他違法材料。",
+    "section3Item3": "試圖逆向工程、反編譯或以其他方式破壞本服務的功能。",
+    "section4": "4. 免責宣告",
+    "section4Content": "本服務按“現狀”和“可用”原則提供，不作任何明示或默示的保證。我們不保證服務無錯誤、不中斷，也不保證使用工具獲得的結果準確、完整或可靠。您確認自行承擔使用本服務的風險。",
+    "section4Content2": "特別是，我們不保證檔案轉換、壓縮或修改的完美性。資料丟失或損壞雖然可能性極低，但仍有可能發生。您有責任保留原始檔案的備份。",
+    "section5": "5. 責任限制",
+    "section5Content": "在適用法律允許的最大範圍內，TuHe PDF、其開發者或關聯方在任何情況下均不對任何間接、附帶、特殊、後果性或懲罰性損害承擔責任，包括但不限於利潤損失、資料損失、使用損失、商譽損失或其他無形損失，無論這些損失是否因以下原因引起：",
+    "section5Item1": "您訪問或使用（或無法訪問或使用）本服務。",
+    "section5Item2": "任何第三方在本服務上的行為或內容。",
+    "section5Item3": "從本服務獲取的任何內容。",
+    "section5Item4": "對您的傳輸或內容的未經授權訪問、使用或更改。",
+    "section5Liability": "我們對您因使用本免費服務而產生的任何及所有索賠的總責任金額不超過零美元（¥0.00）。",
+    "section6": "6. 智慧財產權",
+    "section6Content": "TuHe PDF 提供的視覺介面、圖形、設計、彙編、資訊、計算機程式碼、產品、軟體、服務以及所有其他元素均受智慧財產權及其他法律保護。本服務包含的所有材料均為 TuHe PDF 或其第三方許可方的財產。",
+    "section7": "7. 適用法律",
+    "section7Content": "本條款受中華人民共和國法律管轄並依其解釋，不考慮法律衝突條款。",
+    "section8": "8. 條款變更",
+    "section8Content": "我們保留隨時自行決定修改或替換這些條款的權利。我們將通過更新本頁頂部的“最後更新”日期來通知變更。在修訂生效後繼續訪問或使用我們的服務，即表示您同意受修訂後條款的約束。",
+    "section9": "9. 聯絡我們",
+    "section9Content": "如果您對這些條款有任何疑問，請通過 <a href=\"mailto:contact@tuhepdf.cn\">contact@tuhepdf.cn</a> 與我們聯絡。",
+    "section10": "10. 商業許可條款",
+    "section10Content": "購買 TuHe PDF 的商業許可，即表示您確認並同意以下內容：",
+    "section10Item1": "<strong>許可協議：</strong> 您已在購買前完整閱讀並理解 <a href=\"licensing.html\" class=\"text-indigo-400 hover:underline\">許可頁面</a> 的全部內容。",
+    "section10Item2": "<strong>許可性質：</strong> 您購買的是 TuHe PDF 開原始碼的商業許可，該許可授予您在閉源和專有環境中使用軟體的權利，無需承擔 AGPL-3.0 許可證的義務。",
+    "section10Item3": "<strong>無許可證金鑰：</strong> TuHe PDF 不使用許可證金鑰。購買後，您將收到一個包含完整原始碼和二進位制檔案的 ZIP 歸檔包，與公開可用的開源倉庫內容一致。",
+    "section10Item4": "<strong>不退款政策：</strong> <strong class=\"text-red-400\">購買後任何情況下均不退款。</strong> 所有銷售均為最終決定。完成購買即表示您確認已評估該軟體（可在 GitHub 上免費獲取）並對其功能感到滿意。",
+    "section10Item5": "<strong>第三方元件：</strong> 商業許可不授予以閉源方式使用 AGPL 許可的第三方元件（如 CPDF、PyMuPDF 和 Ghostscript）的權利。您必須遵守這些元件的 AGPL v3 條款，或從其各自的供應商處獲取單獨的商業許可。",
+    "section10Item6": "<strong>無限使用：</strong> 該許可允許在您組織內的裝置、伺服器和使用者機器上無限制地使用，沒有按使用者、按機器或按席位的限制。",
+    "section10Footer": "有關完整的許可詳情，請訪問我們的 <a href=\"licensing.html\" class=\"text-indigo-400 hover:underline\">許可頁面</a>。"
   }
 }

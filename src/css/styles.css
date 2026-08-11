@@ -1636,3 +1636,17 @@ body:has(#workbench) {
 :lang(zh-TW) .tuhe-quick-title {
   letter-spacing: normal;
 }
+
+/* CJK locales: reset letter-spacing for inline-style labels */
+:lang(zh) {
+  --label-letter-spacing: normal;
+}
+:lang(zh-TW) {
+  --label-letter-spacing: normal;
+}
+:lang(ja) {
+  --label-letter-spacing: normal;
+}
+:lang(ko) {
+  --label-letter-spacing: normal;
+}

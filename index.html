@@ -80,6 +80,7 @@
           data-page-tab="about"
           data-page-title="关于我们"
           data-page-icon="ph-info"
+          data-i18n="nav.about"
           >关于我们</a
         >
         <a
@@ -87,6 +88,7 @@
           data-page-tab="contact"
           data-page-title="联系我们"
           data-page-icon="ph-envelope-simple"
+          data-i18n="nav.contact"
           >联系我们</a
         >
         <a
@@ -94,6 +96,7 @@
           data-page-tab="licensing"
           data-page-title="许可"
           data-page-icon="ph-certificate"
+          data-i18n="nav.licensing"
           >许可</a
         >
         <a
@@ -116,6 +119,7 @@
             <input
               type="text"
               id="rail-search-input"
+              data-i18n-placeholder="tools.searchPlaceholder"
               placeholder="搜索工具… (Ctrl+K)"
               autocomplete="off"
             />
@@ -126,6 +130,7 @@
             type="button"
             title="展开 / 收起卡片栏"
             aria-label="展开或收起卡片栏"
+            data-i18n-title="workbench.toggleRail"
           >
             <i data-lucide="panel-left-open" class="w-4 h-4"></i>
           </button>
@@ -162,12 +167,14 @@
               <h1 class="tuhe-title">
                 TuHe <span class="tuhe-title-cn">图合</span> PDF
               </h1>
-              <p class="tuhe-subtitle">
+              <p class="tuhe-subtitle" data-i18n="workbench.homeSubtitle">
                 纯浏览器端的 PDF 工作台 · 合并、拆分、压缩、转换 ·
                 文件全程不出本机
               </p>
 
-              <p class="tuhe-quick-title">常用工具</p>
+              <p class="tuhe-quick-title" data-i18n="workbench.quickTools">
+                常用工具
+              </p>
               <div class="tuhe-quick-grid">
                 <button class="tuhe-quick-card" data-open-tool="merge-pdf">
                   <i class="ph ph-browsers"></i>
@@ -197,7 +204,7 @@
 
               <p class="tuhe-hint">
                 <i class="ph ph-arrow-left"></i>
-                <span
+                <span data-i18n="workbench.homeHint"
                   >从左侧卡片栏选择任意工具开始，工具会在右侧标签页中打开</span
                 >
               </p>
@@ -211,7 +218,12 @@
     </div>
 
     <!-- 移动端打开卡片栏的悬浮按钮 -->
-    <button id="mobile-rail-btn" type="button" aria-label="打开工具卡片栏">
+    <button
+      id="mobile-rail-btn"
+      type="button"
+      aria-label="打开工具卡片栏"
+      data-i18n-title="workbench.openToolRail"
+    >
       <i data-lucide="layout-grid" class="w-5 h-5"></i>
     </button>
 
