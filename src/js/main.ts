@@ -32,13 +32,13 @@ const init = async () => {
   applyTranslations();
 
   if (isCurrentPageDisabled()) {
-    document.title = t('disabledTool.title') || 'Tool Unavailable';
+    document.title = t('disabledTool.title') || '工具不可用';
     const main = document.querySelector('main') || document.body;
-    const heading = t('disabledTool.heading') || 'This tool has been disabled';
+    const heading = t('disabledTool.heading') || '此工具已被禁用';
     const message =
       t('disabledTool.message') ||
-      'This tool is not available in your deployment. Contact your administrator for more information.';
-    const backHome = t('disabledTool.backHome') || 'Back to Home';
+      '此工具在您的部署环境中不可用。请联系管理员获取更多信息。';
+    const backHome = t('disabledTool.backHome') || '返回首页';
     main.innerHTML = `
       <div class="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
         <i class="ph ph-prohibit text-6xl text-gray-500 mb-4"></i>
