@@ -188,7 +188,9 @@
           </button>
 
           <div id="pageSizeSelector" class="mt-4 hidden">
-            <label class="block text-sm font-semibold text-gray-300 mb-2"
+            <label
+              class="block text-sm font-semibold text-gray-300 mb-2"
+              data-i18n="tools:createPdfForm.pageSizeLabel"
               >Page Size:</label
             >
             <select
@@ -201,8 +203,12 @@
               >
                 Letter (8.5" × 11")
               </option>
-              <option value="a4">A4 (210mm × 297mm)</option>
-              <option value="a5">A5 (148mm × 210mm)</option>
+              <option value="a4" data-i18n="tools:createPdfForm.auto.a4">
+                A4 (210mm × 297mm)
+              </option>
+              <option value="a5" data-i18n="tools:createPdfForm.auto.a5">
+                A5 (148mm × 210mm)
+              </option>
               <option
                 value="legal"
                 data-i18n="tools:createPdfForm.auto.5e4843a8b8"
@@ -215,7 +221,9 @@
               >
                 Tabloid (11" × 17")
               </option>
-              <option value="a3">A3 (297mm × 420mm)</option>
+              <option value="a3" data-i18n="tools:createPdfForm.auto.a3">
+                A3 (297mm × 420mm)
+              </option>
               <option
                 value="custom"
                 data-i18n="tools:createPdfForm.auto.081ae3fdc4"
@@ -227,7 +235,9 @@
             <div id="customDimensionsInput" class="mt-3 hidden space-y-2">
               <div class="flex gap-2">
                 <div class="flex-1">
-                  <label class="block text-xs text-gray-400 mb-1"
+                  <label
+                    class="block text-xs text-gray-400 mb-1"
+                    data-i18n="tools:createPdfForm.widthPts"
                     >Width (pts)</label
                   >
                   <input
@@ -240,7 +250,9 @@
                   />
                 </div>
                 <div class="flex-1">
-                  <label class="block text-xs text-gray-400 mb-1"
+                  <label
+                    class="block text-xs text-gray-400 mb-1"
+                    data-i18n="tools:createPdfForm.heightPts"
                     >Height (pts)</label
                   >
                   <input
@@ -309,7 +321,9 @@
                 class="font-semibold text-gray-200 mb-3 flex items-center gap-2"
               >
                 <i data-lucide="settings" class="w-4 h-4"></i>
-                Properties
+                <span data-i18n="tools:createPdfForm.properties"
+                  >Properties</span
+                >
               </h2>
               <div id="propertiesPanel" class="space-y-3">
                 <p
@@ -327,7 +341,9 @@
                 <span id="fieldCount" class="text-indigo-400 font-bold text-lg"
                   >0</span
                 >
-                field(s)
+                <span data-i18n="tools:createPdfForm.fieldCountSuffix"
+                  >field(s)</span
+                >
               </p>
               <p
                 class="text-xs text-gray-500 mt-1"
@@ -354,7 +370,10 @@
                 >
                   <i data-lucide="chevron-left" class="w-4 h-4"></i>
                 </button>
-                <span id="pageIndicator" class="text-sm text-gray-300 px-2"
+                <span
+                  id="pageIndicator"
+                  class="text-sm text-gray-300 px-2"
+                  data-i18n="tools:createPdfForm.pageInfo"
                   >Page 1 of 1</span
                 >
                 <button
@@ -367,7 +386,11 @@
                 <div
                   class="flex items-center gap-2 md:ml-2 md:border-l border-gray-600 md:pl-2"
                 >
-                  <span class="text-sm text-gray-400">Go to:</span>
+                  <span
+                    class="text-sm text-gray-400"
+                    data-i18n="tools:createPdfForm.goToLabel"
+                    >Go to:</span
+                  >
                   <input
                     type="number"
                     id="gotoPageInput"
@@ -377,6 +400,7 @@
                   <button
                     id="gotoPageBtn"
                     class="bg-indigo-600 hover:bg-indigo-500 text-white px-2 py-1 rounded text-sm transition-colors"
+                    data-i18n="tools:createPdfForm.goToBtn"
                   >
                     Go
                   </button>
@@ -390,7 +414,10 @@
                     checked
                     class="mr-1"
                   />
-                  <label for="enableGridCheckbox" class="text-sm text-gray-400"
+                  <label
+                    for="enableGridCheckbox"
+                    class="text-sm text-gray-400"
+                    data-i18n="tools:createPdfForm.gridLabel"
                     >Grid:</label
                   >
                   <input
@@ -400,6 +427,7 @@
                     max="14"
                     value="2"
                     placeholder="V"
+                    data-i18n-placeholder="tools:createPdfForm.gridVPlaceholder"
                     class="w-12 bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500"
                   />
                   <span class="text-gray-400">x</span>
@@ -410,6 +438,7 @@
                     max="14"
                     value="2"
                     placeholder="H"
+                    data-i18n-placeholder="tools:createPdfForm.gridHPlaceholder"
                     class="w-12 bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500"
                   />
                   <button
@@ -454,7 +483,10 @@
                 <div
                   class="text-gray-400 text-sm font-semibold mr-2 flex items-center gap-1"
                 >
-                  <i data-lucide="wrench" class="w-4 h-4"></i> Fields:
+                  <i data-lucide="wrench" class="w-4 h-4"></i>
+                  <span data-i18n="tools:createPdfForm.fieldsLabel"
+                    >Fields:</span
+                  >
                 </div>
 
                 <div
@@ -462,6 +494,7 @@
                   draggable="true"
                   data-type="text"
                   title="Text Field"
+                  data-i18n-title="tools:createPdfForm.tooltipTextField"
                 >
                   <i data-lucide="type" class="w-4 h-4"></i>
                   <span class="text-xs" data-i18n="tools:digitalSignPdf.text"
@@ -474,6 +507,7 @@
                   draggable="true"
                   data-type="checkbox"
                   title="Checkbox"
+                  data-i18n-title="tools:createPdfForm.tooltipCheckbox"
                 >
                   <i data-lucide="check-square" class="w-4 h-4"></i>
                   <span
@@ -488,6 +522,7 @@
                   draggable="true"
                   data-type="radio"
                   title="Radio Button"
+                  data-i18n-title="tools:createPdfForm.tooltipRadioButton"
                 >
                   <i data-lucide="circle-dot" class="w-4 h-4"></i>
                   <span
@@ -502,6 +537,7 @@
                   draggable="true"
                   data-type="dropdown"
                   title="Dropdown"
+                  data-i18n-title="tools:createPdfForm.tooltipDropdown"
                 >
                   <i data-lucide="chevron-down-square" class="w-4 h-4"></i>
                   <span
@@ -516,6 +552,7 @@
                   draggable="true"
                   data-type="optionlist"
                   title="Option List"
+                  data-i18n-title="tools:createPdfForm.tooltipOptionList"
                 >
                   <i data-lucide="list" class="w-4 h-4"></i>
                   <span
@@ -530,6 +567,7 @@
                   draggable="true"
                   data-type="button"
                   title="Button"
+                  data-i18n-title="tools:createPdfForm.tooltipButton"
                 >
                   <i data-lucide="square-mouse-pointer" class="w-4 h-4"></i>
                   <span
@@ -544,6 +582,7 @@
                   draggable="true"
                   data-type="signature"
                   title="Signature"
+                  data-i18n-title="tools:createPdfForm.tooltipSignature"
                 >
                   <i data-lucide="pen-tool" class="w-4 h-4"></i>
                   <span
@@ -558,6 +597,7 @@
                   draggable="true"
                   data-type="date"
                   title="Date Field"
+                  data-i18n-title="tools:createPdfForm.tooltipDateField"
                 >
                   <i data-lucide="calendar" class="w-4 h-4"></i>
                   <span
@@ -572,6 +612,7 @@
                   draggable="true"
                   data-type="image"
                   title="Image Field"
+                  data-i18n-title="tools:createPdfForm.tooltipImageField"
                 >
                   <i data-lucide="image" class="w-4 h-4"></i>
                   <span
@@ -586,6 +627,7 @@
                   draggable="true"
                   data-type="barcode"
                   title="Barcode Field"
+                  data-i18n-title="tools:createPdfForm.tooltipBarcodeField"
                 >
                   <i data-lucide="qr-code" class="w-4 h-4"></i>
                   <span
@@ -788,12 +830,12 @@
           <summary
             class="cursor-pointer font-semibold text-white flex items-center justify-between"
           >
-            <span data-i18n="tools:pdfEditor.faq1q"
+            <span data-i18n="tools:createPdfForm.faq1q"
               >Is form creator really free?</span
             >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq1a">
+          <p class="mt-3 text-gray-400" data-i18n="tools:createPdfForm.faq1a">
             Yes! TuHe PDF is 100% free with no hidden fees, no signup required,
             and unlimited file processing.
           </p>
@@ -802,7 +844,9 @@
           <summary
             class="cursor-pointer font-semibold text-white flex items-center justify-between"
           >
-            Are my files private and secure?
+            <span data-i18n="tools:pdfEditor.faq2q"
+              >Are my files private and secure?</span
+            >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
           <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq2a">
@@ -814,7 +858,9 @@
           <summary
             class="cursor-pointer font-semibold text-white flex items-center justify-between"
           >
-            Is there a file size limit?
+            <span data-i18n="tools:pdfEditor.faq3q"
+              >Is there a file size limit?</span
+            >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
           <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq3a">

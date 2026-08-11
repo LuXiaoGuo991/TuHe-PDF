@@ -173,6 +173,8 @@
     "customSettings": "自定義設定",
     "customSettingsHint": "微調壓縮引數：",
     "outputQuality": "輸出質量",
+    "qualityUnit": "1-100%",
+    "dpiUnit": "DPI",
     "resizeImagesTo": "調整圖片至",
     "onlyProcessAbove": "僅處理高於",
     "removeMetadata": "移除後設資料",
@@ -289,6 +291,8 @@
     "renderingPage": "正在渲染第 {{page}} 頁...",
     "renderFailed": "頁面渲染失敗。",
     "pageInfo": "第 {{current}} / {{total}} 頁",
+    "flatteningCropLabel": "扁平化裁剪（將頁面轉換為圖片）",
+    "applyToAllPages": "應用到所有頁面",
     "noCropArea": "未選擇裁剪區域",
     "selectAreaFirst": "請先選擇要裁剪的區域。",
     "selectArea": "請至少在一頁上選擇要裁剪的區域。",
@@ -309,7 +313,13 @@
     "dynamic": {
       "8adda31c0e": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "裁剪 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "裁剪 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "crop Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "extractPages": {
     "name": "提取頁面",
@@ -335,7 +345,16 @@
       "6a04af93b9": "載入 PDF 檔案失敗。",
       "9e33c22c50": "請選擇一個 PDF 檔案。"
     },
-    "pageTitle": "提取頁面 - 線上免費 PDF 工具 | TuHe PDF"
+    "totalPagesLabel": "總頁數：",
+    "pagesToExtractLabel": "輸入要提取的頁面（例如 2, 4-6, 9）：",
+    "pagesToExtractPlaceholder": "例如 2, 4-6, 9",
+    "pageTitle": "提取頁面 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "extract Pages 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "duplicateOrganize": {
     "name": "複製與組織",
@@ -372,7 +391,13 @@
       "88f1f34594": "請輸入頁面順序。",
       "3ee3f4d734": "順序無效"
     },
-    "pageTitle": "複製與組織 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "複製與組織 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "duplicate Organize 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "deletePages": {
     "name": "刪除頁面",
@@ -398,7 +423,16 @@
       "e3eece8191": "載入 PDF 檔案失敗。",
       "1cf45e725e": "請選擇一個 PDF 檔案。"
     },
-    "pageTitle": "刪除頁面 - 線上免費 PDF 工具 | TuHe PDF"
+    "totalPagesLabel": "總頁數：",
+    "pagesToDeleteLabel": "輸入要刪除的頁面（例如 2, 4-6, 9）：",
+    "pagesToDeletePlaceholder": "例如 2, 4-6, 9",
+    "pageTitle": "刪除頁面 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "delete Pages 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "editBookmarks": {
     "name": "編輯書籤",
@@ -494,7 +528,13 @@
       "b0765ec34b": "頁面",
       "726081a2a6": "X: {{value0}}，Y: {{value1}}"
     },
-    "pageTitle": "編輯書籤 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "編輯書籤 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "edit Bookmarks 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "tableOfContents": {
     "name": "目錄",
@@ -530,7 +570,13 @@
       "0a193ffe0a": "編輯 PDF",
       "ed40c6ff84": "旋轉 PDF"
     },
-    "pageTitle": "目錄 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "目錄 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "table Of Contents 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "pageNumbers": {
     "name": "頁碼",
@@ -558,7 +604,13 @@
       "1111bc148d": "載入 PDF 檔案失敗。",
       "26e6ad72a2": "請上傳一個有效的 PDF 檔案。"
     },
-    "pageTitle": "頁碼 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "頁碼 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "page Numbers 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "addPageLabels": {
     "name": "新增頁面標籤",
@@ -689,6 +741,21 @@
     "name": "新增水印",
     "subtitle": "在您的 PDF 頁面上新增文字或圖片水印。",
     "applyToAllPages": "應用到所有頁面",
+    "preview": "預覽",
+    "dragToPosition": "拖動浮水印調整位置",
+    "defaultText": "機密",
+    "pageRange": "頁面範圍",
+    "textLabel": "文字",
+    "fontSize": "字型大小",
+    "color": "顏色",
+    "opacity": "不透明度:",
+    "angle": "角度:",
+    "watermarkImage": "浮水印圖片",
+    "scale": "縮放:",
+    "position": "位置",
+    "flattenWatermarkLabel": "扁平化浮水印",
+    "faq2q": "我的檔案是否私密安全？",
+    "faq3q": "有檔案大小限制嗎？",
     "cardDesc": "免費線上新增水印工具",
     "auto": {
       "1062570190": "更換檔案",
@@ -720,11 +787,26 @@
       "7180e53d65": "{{value0}} ({{value1}}, {{value2}} pages)",
       "616dc4c0fd": "請上傳一個有效的 PDF 檔案。"
     },
-    "pageTitle": "新增水印 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "新增水印 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "add Watermark 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。"
   },
   "headerFooter": {
     "name": "頁首和頁尾",
     "subtitle": "在頁面頂部和底部新增文字。",
+    "pageRangeOptional": "頁面範圍（可選）",
+    "pageRangePlaceholder": "例如 1-3, 5",
+    "totalPages": "總頁數：",
+    "fontSize": "字型大小",
+    "fontColor": "字型顏色",
+    "headerLeft": "頁首左側",
+    "headerCenter": "頁首居中",
+    "headerRight": "頁首右側",
+    "footerLeft": "頁尾左側",
+    "footerCenter": "頁尾居中",
+    "footerRight": "頁尾右側",
+    "faq2q": "我的檔案是否私密安全？",
+    "faq3q": "有檔案大小限制嗎？",
     "auto": {
       "7c2dc2e6b3": "格式選項",
       "c2a8c3bc69": "新增頁首頁尾",
@@ -742,7 +824,9 @@
       "6ad0775d4d": "載入 PDF 檔案失敗。",
       "cd24bc9f91": "請上傳一個有效的 PDF 檔案。"
     },
-    "pageTitle": "頁首和頁尾 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "頁首和頁尾 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "header Footer 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。"
   },
   "invertColors": {
     "name": "反轉顏色",
@@ -765,7 +849,13 @@
       "9cf793b9aa": "載入 PDF 檔案失敗。",
       "68cde6dc8c": "請上傳一個有效的 PDF 檔案。"
     },
-    "pageTitle": "反轉顏色 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "反轉顏色 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "invert Colors 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "scannerEffect": {
     "name": "掃描效果",
@@ -805,7 +895,13 @@
       "758bbe8260": "{{value0}} • {{value1}} {{value2}}",
       "7e69040d7a": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "掃描效果 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "掃描效果 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "scanner Effect 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "adjustColors": {
     "name": "調整顏色",
@@ -843,7 +939,13 @@
       "3eb296a549": "{{value0}} • {{value1}} {{value2}}",
       "6b0fedbc0a": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "調整顏色 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "調整顏色 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "adjust Colors 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "backgroundColor": {
     "name": "背景顏色",
@@ -865,7 +967,13 @@
       "f70d9e0d74": "載入 PDF 檔案失敗。",
       "b9cf61f80d": "請上傳一個有效的 PDF 檔案。"
     },
-    "pageTitle": "背景顏色 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "背景顏色 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "background Color 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "changeTextColor": {
     "name": "更改文本顏色",
@@ -887,7 +995,13 @@
       "0e00f36bee": "載入 PDF 檔案失敗。",
       "0602b07098": "請上傳一個有效的 PDF 檔案。"
     },
-    "pageTitle": "更改文本顏色 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "更改文本顏色 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "change Text Color 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "addStamps": {
     "name": "新增印章",
@@ -911,7 +1025,13 @@
     "dynamic": {
       "612ed3ad3b": "移除檔案"
     },
-    "pageTitle": "新增印章 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "新增印章 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "add Stamps 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "removeAnnotations": {
     "name": "移除註釋",
@@ -932,7 +1052,13 @@
       "2e1c623bdc": "載入 PDF 檔案失敗。",
       "b14673b883": "請上傳一個有效的 PDF 檔案。"
     },
-    "pageTitle": "移除註釋 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "移除註釋 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "remove Annotations 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "pdfFormFiller": {
     "name": "PDF 表單填寫器",
@@ -961,13 +1087,41 @@
       "e4f9662450": "移除檔案",
       "50ecff21e2": "設定"
     },
-    "pageTitle": "PDF 表單填寫器 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 表單填寫器 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf Form Filler 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "createPdfForm": {
     "name": "建立 PDF 表單",
     "subtitle": "使用拖放文本欄位建立可填寫的 PDF 表單。",
     "orSeparator": "或",
     "createBlankPdf": "建立空白 PDF",
+    "pageSizeLabel": "頁面大小：",
+    "widthPts": "寬度（點）",
+    "heightPts": "高度（點）",
+    "properties": "屬性",
+    "fieldCountSuffix": "個欄位",
+    "pageInfo": "第 {{current}} / {{total}} 頁",
+    "goToLabel": "跳轉到：",
+    "goToBtn": "跳轉",
+    "gridLabel": "網格：",
+    "fieldsLabel": "欄位：",
+    "gridVPlaceholder": "垂直",
+    "gridHPlaceholder": "水平",
+    "tooltipTextField": "文字欄位",
+    "tooltipCheckbox": "核取方塊",
+    "tooltipRadioButton": "單選按鈕",
+    "tooltipDropdown": "下拉選單",
+    "tooltipOptionList": "選項列表",
+    "tooltipButton": "按鈕",
+    "tooltipSignature": "簽名",
+    "tooltipDateField": "日期欄位",
+    "tooltipImageField": "圖片欄位",
+    "tooltipBarcodeField": "條碼欄位",
     "auto": {
       "ea2efedcab": "Letter（8.5\" × 11\"）",
       "5e4843a8b8": "Legal（8.5\" × 14\"）",
@@ -994,9 +1148,18 @@
       "0a193ffe0a": "編輯 PDF",
       "ed40c6ff84": "旋轉 PDF",
       "bccc6f1f5c": "操作失敗，請重試。",
-      "605a6e91fb": "切換網格"
+      "605a6e91fb": "切換網格",
+      "a4": "A4（210毫米 × 297毫米）",
+      "a5": "A5（148毫米 × 210毫米）",
+      "a3": "A3（297毫米 × 420毫米）"
     },
-    "pageTitle": "建立 PDF 表單 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "建立 PDF 表單 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "create Pdf Form 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "removeBlankPages": {
     "name": "移除空白頁",
@@ -1027,11 +1190,18 @@
       "96820f89e0": "請上傳一個有效的 PDF 檔案。",
       "34d15e8ab1": "80"
     },
-    "pageTitle": "移除空白頁 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "移除空白頁 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "remove Blank Pages 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "imageToPdf": {
     "name": "圖片轉 PDF",
     "subtitle": "將 JPG, PNG, BMP, GIF, TIFF, PNM, PGM, PBM, PPM, PAM, JXR, JPX, JP2, PSD, SVG, HEIC, WebP 轉換為 PDF。",
+    "qualityLabel": "PDF 品質",
     "auto": {
       "d148e69606": "JPG、PNG、BMP、GIF、TIFF、PNM、PGM、PBM、PPM、PAM、JXR、JPX、JP2、PSD、SVG、HEIC、WebP",
       "bb9dede377": "合併 PDF",
@@ -1051,7 +1221,13 @@
       "011eb5b704": "部分檔案已被跳過。僅允許支援的圖片格式。",
       "bfeaca68f4": "檔案無效"
     },
-    "pageTitle": "圖片轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "圖片轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "image To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "pngToPdf": {
     "name": "PNG 轉 PDF",
@@ -1072,7 +1248,13 @@
       "31345167f1": "部分檔案已被跳過。僅允許 PNG 圖片。",
       "9531a0069c": "檔案無效"
     },
-    "pageTitle": "PNG 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "PNG 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "png To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "webpToPdf": {
     "name": "WebP 轉 PDF",
@@ -1093,7 +1275,13 @@
       "dac29db7dd": "部分檔案已被跳過。僅允許 WebP 圖片。",
       "3c6e0f53ba": "檔案無效"
     },
-    "pageTitle": "WebP 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "WebP 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "webp To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "svgToPdf": {
     "name": "SVG 轉 PDF",
@@ -1114,7 +1302,13 @@
       "a991f2ba33": "部分檔案已被跳過。僅允許 SVG 圖形。",
       "0aaa760603": "檔案無效"
     },
-    "pageTitle": "SVG 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "SVG 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "svg To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "bmpToPdf": {
     "name": "BMP 轉 PDF",
@@ -1135,7 +1329,13 @@
       "5f18ec5ebc": "請至少選擇一個 BMP 檔案。",
       "2baabe2097": "({{value0}})"
     },
-    "pageTitle": "BMP 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "BMP 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "bmp To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "heicToPdf": {
     "name": "HEIC 轉 PDF",
@@ -1156,7 +1356,13 @@
       "5088e5e744": "請至少選擇一個 HEIC 檔案。",
       "37dc2dff42": "({{value0}})"
     },
-    "pageTitle": "HEIC 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "HEIC 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "heic To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "tiffToPdf": {
     "name": "TIFF 轉 PDF",
@@ -1177,7 +1383,13 @@
       "bcb176a1ed": "請至少選擇一個 TIFF 檔案。",
       "64f495d84c": "({{value0}})"
     },
-    "pageTitle": "TIFF 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "TIFF 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "tiff To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "textToPdf": {
     "name": "文本轉 PDF",
@@ -1219,7 +1431,13 @@
       "331d64523c": "請至少選擇一個文字檔案。",
       "8c9a7c9a67": "({{value0}})"
     },
-    "pageTitle": "文本轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "文本轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "text To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "jsonToPdf": {
     "name": "JSON 轉 PDF",
@@ -1246,7 +1464,13 @@
       "0a193ffe0a": "編輯 PDF",
       "ed40c6ff84": "旋轉 PDF"
     },
-    "pageTitle": "JSON 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "JSON 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "json To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "pdfToJpg": {
     "name": "PDF 轉 JPG",
@@ -1321,7 +1545,13 @@
       "5866da68d4": "{{value0}} • {{value1}} {{value2}}",
       "dd75ee4288": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "PDF 轉 PNG - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 轉 PNG - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf To Png 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "pdfToWebp": {
     "name": "PDF 轉 WebP",
@@ -1352,7 +1582,13 @@
       "f68d703739": "{{value0}} • {{value1}} {{value2}}",
       "f9c3ea897f": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "PDF 轉 WebP - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 轉 WebP - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf To Webp 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "pdfToBmp": {
     "name": "PDF 轉 BMP",
@@ -1379,7 +1615,13 @@
       "9f87fe7348": "{{value0}} • {{value1}} {{value2}}",
       "25e694ba1c": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "PDF 轉 BMP - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 轉 BMP - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf To Bmp 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "pdfToTiff": {
     "name": "PDF 轉 TIFF",
@@ -1421,7 +1663,13 @@
       "2d62cb9c86": "{{value0}} • {{value1}} {{value2}}",
       "7caf602278": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "PDF 轉 TIFF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 轉 TIFF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf To Tiff 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "pdfToCbz": {
     "name": "PDF 轉 CBZ",
@@ -1500,7 +1748,13 @@
       "1aa9a280e2": "{{value0}} • {{value1}} {{value2}}",
       "6c08c2bcda": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "PDF 轉 灰度 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 轉 灰度 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf To Greyscale 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "pdfToJson": {
     "name": "PDF 轉 JSON",
@@ -1526,7 +1780,13 @@
       "0a193ffe0a": "編輯 PDF",
       "ed40c6ff84": "旋轉 PDF"
     },
-    "pageTitle": "PDF 轉 JSON - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 轉 JSON - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf To Json 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "ocrPdf": {
     "name": "OCR PDF",
@@ -1591,7 +1851,13 @@
     "dynamic": {
       "544984faf5": "設定"
     },
-    "pageTitle": "OCR PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "OCR PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "ocr Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "alternateMerge": {
     "name": "交替混合頁面",
@@ -1620,7 +1886,13 @@
       "ca820f834d": "正在載入 PDF 檔案...",
       "4ed44782a4": "已選擇 {{value0}} 個 PDF 檔案"
     },
-    "pageTitle": "交替混合頁面 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "交替混合頁面 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "alternate Merge 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "addAttachments": {
     "name": "新增附件",
@@ -1652,7 +1924,13 @@
       "b76c5703b2": "Worker 發生錯誤。請檢查控制台瞭解詳情。",
       "b699690e1e": "檔案"
     },
-    "pageTitle": "新增附件 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "新增附件 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "add Attachments 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "extractAttachments": {
     "name": "提取附件",
@@ -1672,7 +1950,13 @@
       "99348f2682": "無附件",
       "88c0a4ed05": "成功提取了 {{value0}} 個附件！"
     },
-    "pageTitle": "提取附件 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "提取附件 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "extract Attachments 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "editAttachments": {
     "name": "編輯附件",
@@ -1702,7 +1986,13 @@
       "a74a16433e": "Worker 發生錯誤。請檢查控制台瞭解詳情。",
       "165ce95328": "附件更新成功！"
     },
-    "pageTitle": "編輯附件 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "編輯附件 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "edit Attachments 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "dividePages": {
     "name": "分割頁面",
@@ -1734,7 +2024,13 @@
       "07ff7bec76": "{{value0}} • {{value1}} pages",
       "c90d4c14de": "{{value0}} • 正在載入..."
     },
-    "pageTitle": "分割頁面 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "分割頁面 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "divide Pages 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "addBlankPage": {
     "name": "新增空白頁",
@@ -1764,7 +2060,13 @@
       "6d8c3c7f1a": "輸入 0 插入到開頭，或 {{value0}} 插入到末尾。",
       "ceda244c1d": "{{value0}} • {{value1}} pages"
     },
-    "pageTitle": "新增空白頁 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "新增空白頁 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "add Blank Page 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "reversePages": {
     "name": "反轉頁面",
@@ -1785,7 +2087,13 @@
       "7c4c0a8d59": "頁面",
       "dbc8218413": "請選擇一個或多個 PDF 檔案。"
     },
-    "pageTitle": "反轉頁面 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "反轉頁面 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "reverse Pages 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "rotatePdf": {
     "name": "旋轉 PDF",
@@ -1809,7 +2117,15 @@
       "0e83e638d1": "{{value0}} • 正在載入...",
       "0932d34a73": "{{value0}}"
     },
-    "pageTitle": "旋轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "rotateLeft": "向左旋轉",
+    "rotateRight": "向右旋轉",
+    "pageTitle": "旋轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "rotate Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "rotateCustom": {
     "name": "按自定義角度旋轉",
@@ -1836,7 +2152,13 @@
       "03a27bd0ab": "-",
       "bbc1fbce78": "{{value0}}"
     },
-    "pageTitle": "按自定義角度旋轉 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "按自定義角度旋轉 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "rotate Custom 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "nUpPdf": {
     "name": "N-Up PDF",
@@ -1866,7 +2188,13 @@
       "2190a71612": "{{value0}} • {{value1}} pages",
       "a26647e4a0": "{{value0}} • 正在載入..."
     },
-    "pageTitle": "N-Up PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "N-Up PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "n Up Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "combineToSinglePage": {
     "name": "合併為單頁",
@@ -1892,7 +2220,13 @@
       "4784218459": "{{value0}} • {{value1}} pages",
       "33c063c234": "{{value0}} • 正在載入..."
     },
-    "pageTitle": "合併為單頁 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "合併為單頁 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "combine To Single Page 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "viewMetadata": {
     "name": "檢視後設資料",
@@ -1913,7 +2247,13 @@
       "f9436236fe": "操作失敗，請重試。",
       "674878efd6": "正在分析完整 PDF 後設資料..."
     },
-    "pageTitle": "檢視後設資料 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "檢視後設資料 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "view Metadata 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "editMetadata": {
     "name": "編輯後設資料",
@@ -1939,7 +2279,13 @@
       "41a32c1325": "值（例如：市場部）",
       "16ebbac701": "鍵（例如：部門）"
     },
-    "pageTitle": "編輯後設資料 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "編輯後設資料 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "edit Metadata 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "pdfsToZip": {
     "name": "PDF 轉 ZIP",
@@ -1962,7 +2308,13 @@
       "8b3c05ec36": "正在建立 ZIP 存檔...",
       "a2a6eeec53": "請選擇 PDF files to create a ZIP archive."
     },
-    "pageTitle": "PDF 轉 ZIP - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 轉 ZIP - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "pdfs To Zip 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "comparePdfs": {
     "name": "比較 PDF",
@@ -2029,6 +2381,22 @@
     "styleChangedFont": "字型：{{before}} → {{after}}",
     "styleChangedFontSize": "字號：{{before}} → {{after}}",
     "textMoved": "已移動\"{{text}}\"",
+    "ocr": "OCR",
+    "overlayView": "疊加視圖",
+    "changeType": "更改類型",
+    "moved": "已移動",
+    "style": "樣式",
+    "content": "內容",
+    "text": "文本",
+    "images": "圖片",
+    "headers": "頁首",
+    "annotations": "註釋",
+    "formatting": "格式",
+    "backgrounds": "背景",
+    "faq2q": "我的檔案隱私安全嗎？",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq2a": "絕對安全！所有處理都在你的瀏覽器中完成，你的檔案永遠不會離開你的裝置，確保完全隱私。",
+    "faq3a": "沒有！處理任意大小的檔案，隨時隨地進行，完全免費。",
     "auto": {
       "dab564d809": "適應",
       "85174b7376": "所有更改",
@@ -2059,7 +2427,9 @@
     "missingPage": "此 PDF 中不存在第 {{page}} 頁。",
     "ocrRunning": "正在對第 {{page}} 頁執行 OCR...",
     "ocrProgress": "OCR：{{status}}",
-    "pageTitle": "比較 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "比較 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "compare Pdfs 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。"
   },
   "posterizePdf": {
     "name": "海報化 PDF",
@@ -2082,7 +2452,13 @@
       "0a193ffe0a": "編輯 PDF",
       "ed40c6ff84": "旋轉 PDF"
     },
-    "pageTitle": "海報化 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "海報化 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "posterize Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "fixPageSize": {
     "name": "修復頁面尺寸",
@@ -2111,7 +2487,13 @@
       "5682a8deba": "請先上傳一個 PDF 檔案。",
       "4e7b720a89": "無檔案"
     },
-    "pageTitle": "修復頁面尺寸 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "修復頁面尺寸 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "fix Page Size 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "linearizePdf": {
     "name": "線性化 PDF",
@@ -2139,7 +2521,13 @@
       "20e8c58c29": "請上傳 at least one PDF file.",
       "3fc2420257": "沒有 PDF 檔案"
     },
-    "pageTitle": "線性化 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "線性化 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "linearize Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "pageDimensions": {
     "name": "頁面尺寸",
@@ -2162,7 +2550,13 @@
       "e6a574d0ee": "{{value0}} × {{value1}} {{value2}}",
       "f5deede4e1": "設定"
     },
-    "pageTitle": "頁面尺寸 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "頁面尺寸 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "page Dimensions 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "removeRestrictions": {
     "name": "移除限制",
@@ -2193,7 +2587,13 @@
       "9afe460e3d": "請先上傳一個 PDF 檔案。",
       "2de7e01738": "無檔案"
     },
-    "pageTitle": "移除限制 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "移除限制 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "remove Restrictions 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "repairPdf": {
     "name": "修復 PDF",
@@ -2217,7 +2617,13 @@
       "2fd1eb15f7": "正在初始化修復引擎...",
       "a8baf6f1f3": "請選擇 one or more PDF files."
     },
-    "pageTitle": "修復 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "修復 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "repair Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "encryptPdf": {
     "name": "加密 PDF",
@@ -2238,6 +2644,8 @@
       "8d7e230034": "輸入密碼以開啟 PDF",
       "61966b4d3c": "輸入許可權密碼（可選）"
     },
+    "userPasswordLabel": "使用者密碼（必填）",
+    "ownerPasswordLabel": "所有者密碼（可選）",
     "dynamic": {
       "f31490d96d": "發生錯誤：{{value0}}",
       "1cc9a81e1a": "加密失敗",
@@ -2250,7 +2658,13 @@
       "2c4bfd0f85": "請先上傳一個 PDF 檔案。",
       "dd9d84669b": "無檔案"
     },
-    "pageTitle": "加密 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "加密 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "encrypt Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "sanitizePdf": {
     "name": "清理 PDF",
@@ -2280,7 +2694,13 @@
       "0f6dc18170": "無更改",
       "2d61fe671a": "未載入 PDF 文件。"
     },
-    "pageTitle": "清理 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "清理 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "sanitize Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "decryptPdf": {
     "name": "解密 PDF",
@@ -2294,6 +2714,7 @@
       "ed40c6ff84": "旋轉 PDF",
       "34479e0409": "輸入 PDF 密碼"
     },
+    "passwordLabel": "PDF 密碼",
     "dynamic": {
       "29b5a25d37": "發生錯誤：{{value0}}",
       "b9a3b1421d": "解密失敗",
@@ -2315,7 +2736,13 @@
       "cb76be345d": "無檔案"
     },
     "processFailed": "解密失敗，請重試。",
-    "pageTitle": "解密 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "解密 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "decrypt Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "flattenPdf": {
     "name": "扁平化 PDF",
@@ -2341,7 +2768,13 @@
       "0b697fdcaa": "正在扁平化 PDF...",
       "87d5747b51": "請選擇 at least one PDF file."
     },
-    "pageTitle": "扁平化 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "扁平化 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "flatten Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "removeMetadata": {
     "name": "移除後設資料",
@@ -2368,7 +2801,13 @@
       "293b45eafc": "請先上傳一個 PDF 檔案。",
       "9bb26fafb5": "無檔案"
     },
-    "pageTitle": "移除後設資料 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "移除後設資料 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "remove Metadata 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "changePermissions": {
     "name": "更改許可權",
@@ -2407,7 +2846,13 @@
       "d90ea623b2": "請先上傳一個 PDF 檔案。",
       "a579977c69": "無檔案"
     },
-    "pageTitle": "更改許可權 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "更改許可權 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "change Permissions 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "odtToPdf": {
     "name": "ODT 轉 PDF",
@@ -2429,7 +2874,13 @@
       "3521d690a3": "已成功將 {{value0}} 轉換為 PDF。",
       "c2f620d499": "請選擇 at least one ODT file."
     },
-    "pageTitle": "ODT 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "ODT 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "odt To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "csvToPdf": {
     "name": "CSV 轉 PDF",
@@ -2453,7 +2904,13 @@
       "f702b2d875": "已成功將 {{value0}} 轉換為 PDF。",
       "b3385b83d4": "請選擇 at least one CSV file."
     },
-    "pageTitle": "CSV 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "CSV 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "csv To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "rtfToPdf": {
     "name": "RTF 轉 PDF",
@@ -2476,7 +2933,13 @@
       "f98b741f34": "已成功將 {{value0}} 轉換為 PDF。",
       "0a05ab24e5": "請選擇 at least one RTF file."
     },
-    "pageTitle": "RTF 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "RTF 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "rtf To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "wordToPdf": {
     "name": "Word 轉 PDF",
@@ -2545,7 +3008,13 @@
       "74fd7493ec": "已成功將 {{value0}} 轉換為 PDF。",
       "9d71f06b8f": "請選擇 at least one Excel file."
     },
-    "pageTitle": "Excel 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "Excel 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "excel To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "powerpointToPdf": {
     "name": "PowerPoint 轉 PDF",
@@ -2567,7 +3036,13 @@
       "94609a8cae": "已成功將 {{value0}} 轉換為 PDF。",
       "af1899e4e6": "請選擇 at least one PowerPoint file."
     },
-    "pageTitle": "PowerPoint 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "PowerPoint 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "powerpoint To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "markdownToPdf": {
     "name": "Markdown 轉 PDF",
@@ -2595,7 +3070,13 @@
       "0a193ffe0a": "編輯 PDF",
       "ed40c6ff84": "旋轉 PDF"
     },
-    "pageTitle": "Markdown 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "Markdown 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "markdown To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "pdfBooklet": {
     "name": "PDF 小冊子",
@@ -2645,7 +3126,13 @@
     "front": "正面",
     "back": "背面",
     "sheet": "張",
-    "pageTitle": "PDF 小冊子 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 小冊子 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf Booklet 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "xpsToPdf": {
     "name": "XPS 轉 PDF",
@@ -2670,7 +3157,13 @@
       "791c680372": "正在載入轉換引擎...",
       "7d896aa183": "請選擇 at least one {{value0}} file."
     },
-    "pageTitle": "XPS 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "XPS 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "xps To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "mobiToPdf": {
     "name": "MOBI 轉 PDF",
@@ -2695,7 +3188,13 @@
       "74a5661b9d": "正在載入轉換引擎...",
       "1a7abc7505": "請選擇 at least one {{value0}} file."
     },
-    "pageTitle": "MOBI 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "MOBI 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "mobi To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "epubToPdf": {
     "name": "EPUB 轉 PDF",
@@ -2720,7 +3219,13 @@
       "0642d0fcdb": "正在載入轉換引擎...",
       "22b7b16873": "請選擇 at least one {{value0}} file."
     },
-    "pageTitle": "EPUB 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "EPUB 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "epub To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "fb2ToPdf": {
     "name": "FB2 轉 PDF",
@@ -2745,7 +3250,13 @@
       "fa537f2cfc": "正在載入轉換引擎...",
       "36e0761e1c": "請選擇 at least one {{value0}} file."
     },
-    "pageTitle": "FB2 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "FB2 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "fb2 To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "cbzToPdf": {
     "name": "CBZ 轉 PDF",
@@ -2769,7 +3280,13 @@
       "657ec1680f": "正在轉換 {{value0}}...",
       "3767ecf995": "請選擇 at least one {{value0}} file."
     },
-    "pageTitle": "CBZ 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "CBZ 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "cbz To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "wpdToPdf": {
     "name": "WPD 轉 PDF",
@@ -2794,7 +3311,13 @@
       "899e0e00c9": "正在載入轉換引擎...",
       "c05b666684": "請選擇 at least one {{value0}} file."
     },
-    "pageTitle": "WPD 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "WPD 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "wpd To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "wpsToPdf": {
     "name": "WPS 轉 PDF",
@@ -2819,7 +3342,13 @@
       "839bb28344": "正在載入轉換引擎...",
       "4af39b0805": "請選擇 at least one {{value0}} file."
     },
-    "pageTitle": "WPS 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "WPS 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "wps To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "xmlToPdf": {
     "name": "XML 轉 PDF",
@@ -2842,7 +3371,13 @@
       "99ae92f70e": "已成功將 {{value0}} 轉換為 PDF。",
       "75c05e3e4d": "請選擇 at least one {{value0}} file."
     },
-    "pageTitle": "XML 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "XML 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "xml To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "pagesToPdf": {
     "name": "Pages 轉 PDF",
@@ -2867,7 +3402,13 @@
       "ef163b0d8e": "正在載入轉換引擎...",
       "6e2b64f357": "請選擇 at least one {{value0}} file."
     },
-    "pageTitle": "Pages 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "Pages 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "pages To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "odgToPdf": {
     "name": "ODG 轉 PDF",
@@ -2892,7 +3433,13 @@
       "245fd93b2b": "正在載入轉換引擎...",
       "2a61c4b789": "請選擇 at least one {{value0}} file."
     },
-    "pageTitle": "ODG 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "ODG 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "odg To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "odsToPdf": {
     "name": "ODS 轉 PDF",
@@ -2917,7 +3464,13 @@
       "4fb6de5f25": "正在載入轉換引擎...",
       "d2f643f113": "請選擇 at least one {{value0}} file."
     },
-    "pageTitle": "ODS 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "ODS 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "ods To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "odpToPdf": {
     "name": "ODP 轉 PDF",
@@ -2942,7 +3495,13 @@
       "bd598b8682": "正在載入轉換引擎...",
       "3f9fd2f58f": "請選擇 at least one {{value0}} file."
     },
-    "pageTitle": "ODP 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "ODP 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "odp To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "pubToPdf": {
     "name": "PUB 轉 PDF",
@@ -2967,7 +3526,13 @@
       "1d973bb300": "正在載入轉換引擎...",
       "dbf215a4fb": "請選擇 at least one {{value0}} file."
     },
-    "pageTitle": "PUB 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "PUB 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "pub To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "vsdToPdf": {
     "name": "VSD 轉 PDF",
@@ -2992,7 +3557,13 @@
       "ecf9899daf": "正在載入轉換引擎...",
       "582b0dbbdf": "請選擇 at least one {{value0}} file."
     },
-    "pageTitle": "VSD 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "VSD 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "vsd To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "psdToPdf": {
     "name": "PSD 轉 PDF",
@@ -3016,7 +3587,13 @@
       "0a745921f6": "正在載入轉換引擎...",
       "29f58a0131": "請選擇 at least one {{value0}} file."
     },
-    "pageTitle": "PSD 轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "PSD 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "psd To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "pdfToSvg": {
     "name": "PDF 轉 SVG",
@@ -3044,7 +3621,13 @@
       "67967aa49b": "正在載入引擎...",
       "d03c2fba20": "請上傳 at least one PDF file."
     },
-    "pageTitle": "PDF 轉 SVG - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 轉 SVG - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf To Svg 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "extractTables": {
     "name": "提取 PDF 表格",
@@ -3073,7 +3656,13 @@
       "823e9c0f13": "請先上傳一個 PDF 檔案。",
       "73433d0bfe": "無檔案"
     },
-    "pageTitle": "提取 PDF 表格 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "提取 PDF 表格 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "extract Tables 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "pdfToCsv": {
     "name": "PDF 轉 CSV",
@@ -3098,7 +3687,13 @@
       "ad03050928": "請先上傳一個 PDF 檔案。",
       "69783ee8ef": "無檔案"
     },
-    "pageTitle": "PDF 轉 CSV - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 轉 CSV - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf To Csv 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "pdfToExcel": {
     "name": "PDF 轉 Excel",
@@ -3124,7 +3719,13 @@
       "2591070d22": "請先上傳一個 PDF 檔案。",
       "59516df9fc": "無檔案"
     },
-    "pageTitle": "PDF 轉 Excel - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 轉 Excel - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf To Excel 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "pdfToText": {
     "name": "PDF 轉文本",
@@ -3153,7 +3754,13 @@
       "fad4a0bfb8": "部分檔案已被跳過。僅允許 PDF 檔案。",
       "3003a34022": "檔案無效"
     },
-    "pageTitle": "PDF 轉 文本 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 轉 文本 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf To Text 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "digitalSignPdf": {
     "name": "PDF 數字簽名",
@@ -3345,7 +3952,13 @@
       "0b58b429fa": "正在載入 PDF 引擎...",
       "e2b1b6aa34": "請至少選擇一個郵件檔案（.eml 或 .msg）。"
     },
-    "pageTitle": "郵件轉 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "郵件轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "email To Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "fontToOutline": {
     "name": "字型轉輪廓",
@@ -3449,7 +4062,13 @@
       "bc5256a321": "{{value0}} • {{value1}} pages",
       "55c6560fcf": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "PDF 轉 Word - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 轉 Word - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf To Word 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "extractImages": {
     "name": "提取圖片",
@@ -3477,7 +4096,13 @@
       "71adf08528": "{{value0}} • {{value1}} pages",
       "de57f04c3f": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "提取圖片 - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "提取圖片 - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "extract Images 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "pdfToMarkdown": {
     "name": "PDF 轉 Markdown",
@@ -3508,7 +4133,13 @@
       "223165f5fd": "轉換錯誤",
       "e98ede1f9b": "正在轉換為 Markdown..."
     },
-    "pageTitle": "PDF 轉 Markdown - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 轉 Markdown - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf To Markdown 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "preparePdfForAi": {
     "name": "為 AI 準備 PDF",
@@ -3540,7 +4171,13 @@
       "a807df92a6": "{{value0}} • {{value1}} pages",
       "570fd297dc": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "為 AI 準備 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "為 AI 準備 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "prepare Pdf For Ai 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "pdfOcg": {
     "name": "PDF 圖層 (OCG)",
@@ -3577,7 +4214,13 @@
       "ebdf5cb44f": "{{value0}} • {{value1}} pages",
       "1c578f88cb": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "PDF 圖層 (OCG) - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 圖層 (OCG) - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf Ocg 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "pdfToPdfa": {
     "name": "PDF 轉 PDF/A",
@@ -3610,7 +4253,13 @@
       "7fdcb51569": "{{value0}} • {{value1}} pages",
       "1ebf7b22d2": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "PDF 轉 PDF/A - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 轉 PDF/A - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf To Pdfa 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "rasterizePdf": {
     "name": "柵格化 PDF",
@@ -3646,7 +4295,13 @@
       "d3132c7fc8": "{{value0}} • {{value1}} pages",
       "5f28791b8c": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "柵格化 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "柵格化 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "faq1q": "rasterize Pdf 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "我的檔案安全保密嗎？",
+    "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
+    "faq3q": "有檔案大小限制嗎？",
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "pdfWorkflow": {
     "name": "PDF 工作流構建器",

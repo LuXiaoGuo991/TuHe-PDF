@@ -800,28 +800,58 @@ const init = async () => {
   // Reserved shortcuts that commonly conflict with browser/OS functions
   const RESERVED_SHORTCUTS: Record<string, { mac?: string; windows?: string }> =
     {
-      'mod+w': { mac: 'Closes tab', windows: 'Closes tab' },
-      'mod+t': { mac: 'Opens new tab', windows: 'Opens new tab' },
-      'mod+n': { mac: 'Opens new window', windows: 'Opens new window' },
+      'mod+w': {
+        mac: 'shortcuts.reserved.closesTab',
+        windows: 'shortcuts.reserved.closesTab',
+      },
+      'mod+t': {
+        mac: 'shortcuts.reserved.opensNewTab',
+        windows: 'shortcuts.reserved.opensNewTab',
+      },
+      'mod+n': {
+        mac: 'shortcuts.reserved.opensNewWindow',
+        windows: 'shortcuts.reserved.opensNewWindow',
+      },
       'mod+shift+n': {
-        mac: 'Opens incognito window',
-        windows: 'Opens incognito window',
+        mac: 'shortcuts.reserved.opensIncognitoWindow',
+        windows: 'shortcuts.reserved.opensIncognitoWindow',
       },
-      'mod+q': { mac: 'Quits application (cannot be overridden)' },
-      'mod+m': { mac: 'Minimizes window' },
-      'mod+h': { mac: 'Hides window' },
-      'mod+r': { mac: 'Reloads page', windows: 'Reloads page' },
-      'mod+shift+r': { mac: 'Hard reloads page', windows: 'Hard reloads page' },
-      'mod+l': { mac: 'Focuses address bar', windows: 'Focuses address bar' },
-      'mod+d': { mac: 'Bookmarks page', windows: 'Bookmarks page' },
+      'mod+q': { mac: 'shortcuts.reserved.quitsApplication' },
+      'mod+m': { mac: 'shortcuts.reserved.minimizesWindow' },
+      'mod+h': { mac: 'shortcuts.reserved.hidesWindow' },
+      'mod+r': {
+        mac: 'shortcuts.reserved.reloadsPage',
+        windows: 'shortcuts.reserved.reloadsPage',
+      },
+      'mod+shift+r': {
+        mac: 'shortcuts.reserved.hardReloadsPage',
+        windows: 'shortcuts.reserved.hardReloadsPage',
+      },
+      'mod+l': {
+        mac: 'shortcuts.reserved.focusesAddressBar',
+        windows: 'shortcuts.reserved.focusesAddressBar',
+      },
+      'mod+d': {
+        mac: 'shortcuts.reserved.bookmarksPage',
+        windows: 'shortcuts.reserved.bookmarksPage',
+      },
       'mod+shift+t': {
-        mac: 'Reopens closed tab',
-        windows: 'Reopens closed tab',
+        mac: 'shortcuts.reserved.reopensClosedTab',
+        windows: 'shortcuts.reserved.reopensClosedTab',
       },
-      'mod+shift+w': { mac: 'Closes window', windows: 'Closes window' },
-      'mod+tab': { mac: 'Switches tabs', windows: 'Switches apps' },
-      'alt+f4': { windows: 'Closes window' },
-      'ctrl+tab': { mac: 'Switches tabs', windows: 'Switches tabs' },
+      'mod+shift+w': {
+        mac: 'shortcuts.reserved.closesWindow',
+        windows: 'shortcuts.reserved.closesWindow',
+      },
+      'mod+tab': {
+        mac: 'shortcuts.reserved.switchesTabs',
+        windows: 'shortcuts.reserved.switchesApps',
+      },
+      'alt+f4': { windows: 'shortcuts.reserved.closesWindow' },
+      'ctrl+tab': {
+        mac: 'shortcuts.reserved.switchesTabs',
+        windows: 'shortcuts.reserved.switchesTabs',
+      },
     };
 
   function getReservedShortcutWarning(
@@ -831,10 +861,10 @@ const init = async () => {
     const reserved = RESERVED_SHORTCUTS[combo];
     if (!reserved) return null;
 
-    const description = isMac ? reserved.mac : reserved.windows;
-    if (!description) return null;
+    const i18nKey = isMac ? reserved.mac : reserved.windows;
+    if (!i18nKey) return null;
 
-    return description;
+    return t(i18nKey);
   }
 
   function showWarningModal(

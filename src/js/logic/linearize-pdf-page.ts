@@ -165,7 +165,11 @@ async function linearizePdf() {
           console.error(
             `Linearization resulted in an empty file for ${file.name}.`
           );
-          throw new Error(`Processing failed for ${file.name}.`);
+          throw new Error(
+            translate('linearizePdf.processingFailed', '处理失败') +
+              ': ' +
+              file.name
+          );
         }
 
         const zipEntryName = deduplicateFileName(
@@ -197,7 +201,12 @@ async function linearizePdf() {
     }
 
     if (successCount === 0) {
-      throw new Error('No PDF files could be linearized.');
+      throw new Error(
+        translate(
+          'linearizePdf.noFilesLinearized',
+          '没有 PDF 文件可以被线性化。'
+        )
+      );
     }
 
     if (loaderText)

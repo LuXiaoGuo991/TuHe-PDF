@@ -161,7 +161,7 @@ sequenceDiagram
     User->>TuHe PDF: Upload PDF
     TuHe PDF->>TuHe PDF: Process locally
     TuHe PDF-->>User: Download result
-    Note over TuHe PDF: No server needed!
+    Note over TuHe PDF: 无需服务器！
 \`\`\`
 
 ### Pie Chart

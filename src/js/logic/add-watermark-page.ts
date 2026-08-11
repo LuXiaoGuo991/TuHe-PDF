@@ -878,7 +878,9 @@ async function applyWatermark() {
       if (config.type === 'text') {
         const text = config.text;
         if (!text.trim())
-          throw new Error('Please enter text for the watermark.');
+          throw new Error(
+            translate('addWatermark.enterText', '请输入水印文本。')
+          );
         const textColor = hexToRgb(config.color);
 
         resultBytes = new Uint8Array(
@@ -896,7 +898,9 @@ async function applyWatermark() {
       } else {
         const imageFile = config.imageFile;
         if (!imageFile)
-          throw new Error('Please select an image file for the watermark.');
+          throw new Error(
+            translate('addWatermark.selectImage', '请选择水印图片文件。')
+          );
         const imageBytes = await readFileAsArrayBuffer(imageFile);
 
         let imageType: 'png' | 'jpg';
@@ -906,7 +910,10 @@ async function applyWatermark() {
           imageType = 'jpg';
         } else {
           throw new Error(
-            'Unsupported Image. Please use a PNG or JPG for the watermark.'
+            translate(
+              'addWatermark.unsupportedImage',
+              '不支持的图片格式。请使用 PNG 或 JPG 作为水印。'
+            )
           );
         }
 

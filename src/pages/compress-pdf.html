@@ -199,14 +199,14 @@
             </select>
             <div id="algorithm-info" class="mt-2 text-xs text-gray-400">
               <p id="condense-info">
-                <strong>Condense</strong>
+                <strong data-i18n="tools:compressPdf.condense">Condense</strong>
                 <span data-i18n="tools:compressPdf.condenseInfo"
                   >uses advanced compression: removes dead-weight, optimizes
                   images, subsets fonts. Best for most PDFs.</span
                 >
               </p>
               <p id="photon-info" class="hidden">
-                <strong>Photon</strong>
+                <strong data-i18n="tools:compressPdf.photon">Photon</strong>
                 <span data-i18n="tools:compressPdf.photonInfo"
                   >converts pages to images. Use for photo-heavy/scanned
                   PDFs.</span
@@ -323,7 +323,12 @@
                     max="100"
                     class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-2 text-sm"
                   />
-                  <p class="text-xs text-gray-500 mt-1">1-100%</p>
+                  <p
+                    class="text-xs text-gray-500 mt-1"
+                    data-i18n="tools:compressPdf.qualityUnit"
+                  >
+                    1-100%
+                  </p>
                 </div>
                 <div>
                   <label
@@ -340,7 +345,12 @@
                     max="300"
                     class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-2 text-sm"
                   />
-                  <p class="text-xs text-gray-500 mt-1">DPI</p>
+                  <p
+                    class="text-xs text-gray-500 mt-1"
+                    data-i18n="tools:compressPdf.dpiUnit"
+                  >
+                    DPI
+                  </p>
                 </div>
                 <div>
                   <label
@@ -357,7 +367,12 @@
                     max="600"
                     class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-2 text-sm"
                   />
-                  <p class="text-xs text-gray-500 mt-1">DPI</p>
+                  <p
+                    class="text-xs text-gray-500 mt-1"
+                    data-i18n="tools:compressPdf.dpiUnit"
+                  >
+                    DPI
+                  </p>
                 </div>
               </div>
 
@@ -444,7 +459,6 @@
         <h3
           id="alert-title"
           class="text-xl font-bold text-white mb-2"
-          data-i18n="alert.title"
           data-i18n="alert.title"
         >
           Alert

@@ -109,7 +109,11 @@ async function convertImageToPng(
       const ctx = canvas.getContext('2d');
       if (!ctx) {
         URL.revokeObjectURL(url);
-        reject(new Error('Failed to get canvas context'));
+        reject(
+          new Error(
+            translate('cbzToPdf.canvasContextFailed', '无法获取画布上下文')
+          )
+        );
         return;
       }
       ctx.drawImage(img, 0, 0);
@@ -118,13 +122,25 @@ async function convertImageToPng(
         if (pngBlob) {
           resolve(pngBlob);
         } else {
-          reject(new Error(`Failed to convert ${filename} to PNG`));
+          reject(
+            new Error(
+              translate('cbzToPdf.convertPngFailed', '转换 PNG 失败') +
+                ': ' +
+                filename
+            )
+          );
         }
       }, 'image/png');
     };
     img.onerror = () => {
       URL.revokeObjectURL(url);
-      reject(new Error(`Failed to load image: ${filename}`));
+      reject(
+        new Error(
+          translate('cbzToPdf.loadImageFailed', '加载图片失败') +
+            ': ' +
+            filename
+        )
+      );
     };
     img.src = url;
   });
@@ -148,7 +164,10 @@ async function convertCbzToPdf(file: File): Promise<Blob> {
   const MAX_ENTRY_BYTES = 100 * 1024 * 1024;
   const MAX_TOTAL_BYTES = 500 * 1024 * 1024;
   if (imageFiles.length > MAX_CBZ_PAGES) {
-    throw new Error(`Archive has too many images (max ${MAX_CBZ_PAGES}).`);
+    throw new Error(
+      translate('cbzToPdf.tooManyImages', '压缩包中图片过多') +
+        ` (最大 ${MAX_CBZ_PAGES} 张)。`
+    );
   }
   let totalBytes = 0;
 
@@ -158,12 +177,16 @@ async function convertCbzToPdf(file: File): Promise<Blob> {
       zipEntry as unknown as { _data?: { uncompressedSize?: number } }
     )._data?.uncompressedSize;
     if (typeof declared === 'number' && declared > MAX_ENTRY_BYTES) {
-      throw new Error('Archive contains an oversized image entry.');
+      throw new Error(
+        translate('cbzToPdf.oversizedImage', '压缩包中包含过大的图片条目。')
+      );
     }
     const imageData = await zipEntry.async('arraybuffer');
     totalBytes += imageData.byteLength;
     if (totalBytes > MAX_TOTAL_BYTES) {
-      throw new Error('Archive is too large when decompressed.');
+      throw new Error(
+        translate('cbzToPdf.archiveTooLarge', '解压后压缩包过大。')
+      );
     }
     const dataArray = new Uint8Array(imageData);
     const actualFormat = detectImageFormat(dataArray);

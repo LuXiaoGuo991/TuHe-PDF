@@ -316,7 +316,7 @@ if (saveStampedBtn) {
     if (!viewerIframe) {
       alert(
         translate(
-          'addStamps.viewerNotReady',
+          'tools:addStamps.viewerNotReady',
           'Viewer not ready. Please upload a PDF and wait for it to finish loading.'
         )
       );
@@ -356,7 +356,7 @@ if (saveStampedBtn) {
 
       alert(
         translate(
-          'addStamps.couldNotAccessExporter',
+          'tools:addStamps.couldNotAccessExporter',
           'Could not access the stamped-PDF exporter. Please use the Export → PDF button in the viewer toolbar as a fallback.'
         )
       );
@@ -364,7 +364,7 @@ if (saveStampedBtn) {
       console.error('Failed to trigger stamped PDF export:', e);
       alert(
         translate(
-          'addStamps.couldNotExportStamped',
+          'tools:addStamps.couldNotExportStamped',
           'Could not export the stamped PDF. Please use the Export → PDF button in the viewer toolbar as a fallback.'
         )
       );

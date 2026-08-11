@@ -204,7 +204,9 @@ async function encryptPdf() {
     const outputFile = qpdf.FS.readFile(outputPath, { encoding: 'binary' });
 
     if (!outputFile || outputFile.length === 0) {
-      throw new Error('Encryption resulted in an empty file.');
+      throw new Error(
+        translate('encryptPdf.emptyResult', '加密结果为空文件。')
+      );
     }
 
     const blob = new Blob([new Uint8Array(outputFile)], {

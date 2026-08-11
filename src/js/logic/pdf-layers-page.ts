@@ -215,8 +215,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (layersArray.length === 0) {
       layersList.innerHTML = `
                 <div class="layers-empty">
-                    <p>${translate('common.pdfLayers.noLayersTitle', 'This PDF has no layers (OCG).')}</p>
-                    <p>${translate('common.pdfLayers.noLayersHint', 'Add a new layer to get started!')}</p>
+                    <p>${translate('pdfLayers.noLayersTitle', 'This PDF has no layers (OCG).')}</p>
+                    <p>${translate('pdfLayers.noLayersHint', 'Add a new layer to get started!')}</p>
                 </div>
             `;
       return;
@@ -233,12 +233,12 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="layer-item" data-number="${layer.number}" style="padding-left: ${layer.depth * 24 + 8}px;">
                 <label class="layer-toggle">
                     <input type="checkbox" ${layer.on ? 'checked' : ''} ${layer.locked ? 'disabled' : ''} data-xref="${layer.xref}" />
-                    <span class="layer-name">${layer.depth > 0 ? '└ ' : ''}${escapeHtml(layer.text || translate('common.pdfLayers.defaultLayerName', 'Layer {{number}}', { number: layer.number }))}</span>
+                    <span class="layer-name">${layer.depth > 0 ? '└ ' : ''}${escapeHtml(layer.text || translate('pdfLayers.defaultLayerName', 'Layer {{number}}', { number: layer.number }))}</span>
                     ${layer.locked ? '<span class="layer-locked">🔒</span>' : ''}
                 </label>
                 <div class="layer-actions">
-                    ${!layer.locked ? `<button class="layer-add-child" data-xref="${layer.xref}" title="${translate('common.pdfLayers.addChildLayer', 'Add child layer')}">+</button>` : ''}
-                    ${!layer.locked ? `<button class="layer-delete" data-xref="${layer.xref}" title="${translate('common.pdfLayers.deleteLayer', 'Delete layer')}">✕</button>` : ''}
+                    ${!layer.locked ? `<button class="layer-add-child" data-xref="${layer.xref}" title="${translate('pdfLayers.addChildLayer', 'Add child layer')}">+</button>` : ''}
+                    ${!layer.locked ? `<button class="layer-delete" data-xref="${layer.xref}" title="${translate('pdfLayers.deleteLayer', 'Delete layer')}">✕</button>` : ''}
                 </div>
             </div>
         `

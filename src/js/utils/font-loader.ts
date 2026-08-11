@@ -121,7 +121,7 @@ export async function getFontForLanguage(lang: string): Promise<ArrayBuffer> {
     const fontResponse = await fetch(fontUrl);
 
     if (!fontResponse.ok) {
-      throw new Error(`Failed to fetch font file: ${fontResponse.statusText}`);
+      throw new Error(`获取字体文件失败：${fontResponse.statusText}`);
     }
 
     const fontBuffer = await fontResponse.arrayBuffer();

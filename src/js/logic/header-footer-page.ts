@@ -207,7 +207,9 @@ async function addHeaderFooter() {
     };
     const indicesToProcess = parsePageRanges(pageRangeInput, totalPages);
     if (indicesToProcess.length === 0)
-      throw new Error('Invalid page range specified.');
+      throw new Error(
+        translate('headerFooter.invalidPageRange', '指定的页面范围无效。')
+      );
     const drawOptions = {
       font: helveticaFont,
       size: fontSize,

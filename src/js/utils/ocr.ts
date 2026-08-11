@@ -156,7 +156,7 @@ function recognizeWithTimeout(
 ): Promise<Tesseract.RecognizeResult> {
   return new Promise((resolve, reject) => {
     const timer = setTimeout(() => {
-      reject(new Error(`OCR recognize timed out after ${timeoutMs}ms`));
+      reject(new Error(`OCR 识别超时（${timeoutMs}ms）`));
     }, timeoutMs);
     worker
       .recognize(canvas, {}, { text: true, hocr: true })
@@ -217,7 +217,7 @@ export async function performOcr(
 
     newPdfDoc.registerFontkit(fontkit);
 
-    progress('Loading fonts...', 0);
+    progress('正在加载字体...', 0);
 
     const selectedLangs = language.split('+');
     const cjkLangs = ['jpn', 'chi_sim', 'chi_tra', 'kor'];
@@ -283,7 +283,7 @@ export async function performOcr(
 
     for (let i = 1; i <= pdf.numPages; i++) {
       progress(
-        `Processing page ${i} of ${pdf.numPages}`,
+        `正在处理第 ${i} 页，共 ${pdf.numPages} 页`,
         (i - 1) / pdf.numPages
       );
 
@@ -295,7 +295,7 @@ export async function performOcr(
         canvas.width = viewport.width;
         canvas.height = viewport.height;
         const context = canvas.getContext('2d');
-        if (!context) throw new Error('Failed to create canvas context');
+        if (!context) throw new Error('无法创建画布上下文');
 
         await pdfJsPage.render({ canvasContext: context, viewport, canvas })
           .promise;
@@ -369,7 +369,7 @@ export async function performOcr(
   }
 
   if (!newPdfDoc) {
-    throw new Error('OCR aborted before any page was processed');
+    throw new Error('OCR 在处理任何页面之前被中止');
   }
 
   const savedBytes = await newPdfDoc.save();

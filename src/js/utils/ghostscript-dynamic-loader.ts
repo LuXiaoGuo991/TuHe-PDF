@@ -24,9 +24,7 @@ export async function loadGhostscript(): Promise<GhostscriptInterface> {
   loadPromise = (async () => {
     const baseUrl = WasmProvider.getUrl('ghostscript');
     if (!baseUrl) {
-      throw new Error(
-        'Ghostscript is not configured. Please configure it in Advanced Settings.'
-      );
+      throw new Error('Ghostscript 未配置。请在高级设置中进行配置。');
     }
 
     const normalizedUrl = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
@@ -52,7 +50,7 @@ export async function loadGhostscript(): Promise<GhostscriptInterface> {
         cachedGS = instance as unknown as GhostscriptInterface;
       } else {
         throw new Error(
-          'Ghostscript wrapper did not expose expected interface. Expected loadGS() or GhostscriptWASM class.'
+          'Ghostscript 包装器未暴露预期接口。需要 loadGS() 或 GhostscriptWASM 类。'
         );
       }
 
@@ -60,10 +58,9 @@ export async function loadGhostscript(): Promise<GhostscriptInterface> {
     } catch (error: unknown) {
       loadPromise = null;
       const msg = error instanceof Error ? error.message : String(error);
-      throw new Error(
-        `Failed to load Ghostscript from ${normalizedUrl}: ${msg}`,
-        { cause: error }
-      );
+      throw new Error(`从 ${normalizedUrl} 加载 Ghostscript 失败：${msg}`, {
+        cause: error,
+      });
     }
   })();
 
@@ -83,7 +80,7 @@ function loadScript(url: string): Promise<void> {
     script.async = true;
 
     script.onload = () => resolve();
-    script.onerror = () => reject(new Error(`Failed to load script: ${url}`));
+    script.onerror = () => reject(new Error(`加载脚本失败：${url}`));
 
     document.head.appendChild(script);
   });

@@ -165,11 +165,15 @@
         <!-- Extract Options (shown after file upload) -->
         <div id="extract-options" class="hidden mt-6">
           <p class="mb-2 font-medium text-white">
-            Total Pages: <span id="total-pages"></span>
+            <span data-i18n="tools:extractPages.totalPagesLabel"
+              >Total Pages:</span
+            >
+            <span id="total-pages"></span>
           </p>
           <label
             for="pages-to-extract"
             class="block mb-2 text-sm font-medium text-gray-300"
+            data-i18n="tools:extractPages.pagesToExtractLabel"
             >Enter pages to extract (e.g., 2, 4-6, 9):</label
           >
           <input
@@ -177,6 +181,7 @@
             id="pages-to-extract"
             class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-2.5 mb-6"
             placeholder="e.g., 2, 4-6, 9"
+            data-i18n-placeholder="tools:extractPages.pagesToExtractPlaceholder"
           />
           <button
             id="process-btn"
@@ -219,7 +224,6 @@
         <h3
           id="alert-title"
           class="text-xl font-bold text-white mb-2"
-          data-i18n="alert.title"
           data-i18n="alert.title"
         >
           Alert
@@ -399,12 +403,12 @@
           <summary
             class="cursor-pointer font-semibold text-white flex items-center justify-between"
           >
-            <span data-i18n="tools:pdfEditor.faq1q"
+            <span data-i18n="tools:extractPages.faq1q"
               >Is extract pages really free?</span
             >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq1a">
+          <p class="mt-3 text-gray-400" data-i18n="tools:extractPages.faq1a">
             Yes! TuHe PDF is 100% free with no hidden fees, no signup required,
             and unlimited file processing.
           </p>
@@ -413,10 +417,12 @@
           <summary
             class="cursor-pointer font-semibold text-white flex items-center justify-between"
           >
-            Are my files private and secure?
+            <span data-i18n="tools:extractPages.faq2q"
+              >Are my files private and secure?</span
+            >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq2a">
+          <p class="mt-3 text-gray-400" data-i18n="tools:extractPages.faq2a">
             Absolutely! All processing happens in your browser. Your files never
             leave your device, ensuring complete privacy.
           </p>
@@ -425,10 +431,12 @@
           <summary
             class="cursor-pointer font-semibold text-white flex items-center justify-between"
           >
-            Is there a file size limit?
+            <span data-i18n="tools:extractPages.faq3q"
+              >Is there a file size limit?</span
+            >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400" data-i18n="tools:pdfEditor.faq3a">
+          <p class="mt-3 text-gray-400" data-i18n="tools:extractPages.faq3a">
             No! Process files of any size, as many times as you want, completely
             free.
           </p>

@@ -48,7 +48,7 @@ export class LibreOfficeConverter {
       progressCallback?.({
         phase: 'loading',
         percent: 0,
-        message: 'Loading conversion engine...',
+        message: '正在加载转换引擎...',
       });
 
       this.converter = new WorkerBrowserConverter({
@@ -64,7 +64,7 @@ export class LibreOfficeConverter {
           message: string;
         }) => {
           if (progressCallback && !this.initialized) {
-            const simplifiedMessage = `Loading conversion engine (${Math.round(info.percent)}%)...`;
+            const simplifiedMessage = `正在加载转换引擎 (${Math.round(info.percent)}%)...`;
             progressCallback({
               phase: info.phase as LoadProgress['phase'],
               percent: info.percent,
@@ -103,7 +103,7 @@ export class LibreOfficeConverter {
 
   async convertToPdf(file: File): Promise<Blob> {
     if (!this.converter) {
-      throw new Error('Converter not initialized');
+      throw new Error('转换器未初始化');
     }
 
     console.log(`[LibreOffice] Converting ${file.name} to PDF...`);

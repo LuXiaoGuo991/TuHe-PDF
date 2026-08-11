@@ -45,12 +45,12 @@ export async function convertXmlToPdf(
     parsed = parser.parse(xmlText) as Record<string, unknown>;
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
-    throw new Error('Invalid XML: ' + toSafeText(msg), { cause: err });
+    throw new Error('无效的 XML：' + toSafeText(msg), { cause: err });
   }
 
   const rootKeys = Object.keys(parsed);
   if (rootKeys.length === 0) {
-    throw new Error('Invalid XML: no root element');
+    throw new Error('无效的 XML：没有根元素');
   }
   const rootName = rootKeys[0];
   const rootValue = parsed[rootName];

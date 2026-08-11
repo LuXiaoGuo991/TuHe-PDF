@@ -229,7 +229,9 @@ async function posterize() {
     const pageIndicesToProcess = parsePageRanges(pageRangeInput, totalPages);
 
     if (pageIndicesToProcess.length === 0) {
-      throw new Error('Invalid page range specified.');
+      throw new Error(
+        translate('posterize.invalidPageRange', '指定的页面范围无效。')
+      );
     }
 
     const tempCanvas = document.createElement('canvas');

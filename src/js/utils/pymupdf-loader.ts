@@ -39,13 +39,11 @@ export async function loadPyMuPDF(): Promise<PyMuPDFInstance> {
 
   loadPromise = (async () => {
     if (!WasmProvider.isConfigured('pymupdf')) {
-      throw new Error(
-        'PyMuPDF is not configured. Please configure it in Advanced Settings.'
-      );
+      throw new Error('PyMuPDF 未配置。请在高级设置中进行配置。');
     }
     if (!WasmProvider.isConfigured('ghostscript')) {
       throw new Error(
-        'Ghostscript is not configured. PyMuPDF requires Ghostscript for some operations. Please configure both in Advanced Settings.'
+        'Ghostscript 未配置。PyMuPDF 部分操作需要 Ghostscript。请在高级设置中同时配置两者。'
       );
     }
 
@@ -60,9 +58,7 @@ export async function loadPyMuPDF(): Promise<PyMuPDFInstance> {
       const module = await import(/* @vite-ignore */ wrapperUrl);
 
       if (typeof module.PyMuPDF !== 'function') {
-        throw new Error(
-          'PyMuPDF module did not export expected PyMuPDF class.'
-        );
+        throw new Error('PyMuPDF 模块未导出所需的 PyMuPDF 类。');
       }
 
       cachedPyMuPDF = new module.PyMuPDF({
@@ -77,7 +73,7 @@ export async function loadPyMuPDF(): Promise<PyMuPDFInstance> {
     } catch (error: unknown) {
       loadPromise = null;
       const msg = error instanceof Error ? error.message : String(error);
-      throw new Error(`Failed to load PyMuPDF processing module: ${msg}`, {
+      throw new Error(`加载 PyMuPDF 处理模块失败：${msg}`, {
         cause: error,
       });
     }

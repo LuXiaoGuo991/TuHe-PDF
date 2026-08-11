@@ -173,6 +173,8 @@
     "customSettings": "自定义设置",
     "customSettingsHint": "微调压缩参数：",
     "outputQuality": "输出质量",
+    "qualityUnit": "1-100%",
+    "dpiUnit": "DPI",
     "resizeImagesTo": "调整图片至",
     "onlyProcessAbove": "仅处理高于",
     "removeMetadata": "移除元数据",
@@ -289,6 +291,8 @@
     "renderingPage": "正在渲染第 {{page}} 页...",
     "renderFailed": "页面渲染失败。",
     "pageInfo": "第 {{current}} / {{total}} 页",
+    "flatteningCropLabel": "扁平化裁剪（将页面转换为图片）",
+    "applyToAllPages": "应用到所有页面",
     "noCropArea": "未选择裁剪区域",
     "selectAreaFirst": "请先选择要裁剪的区域。",
     "selectArea": "请至少在一页上选择要裁剪的区域。",
@@ -309,7 +313,13 @@
     "dynamic": {
       "8adda31c0e": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "裁剪 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "裁剪 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "crop Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "extractPages": {
     "name": "提取页面",
@@ -335,7 +345,16 @@
       "6a04af93b9": "加载 PDF 文件失败。",
       "9e33c22c50": "请选择一个 PDF 文件。"
     },
-    "pageTitle": "提取页面 - 在线免费 PDF 工具 | TuHe PDF"
+    "totalPagesLabel": "总页数：",
+    "pagesToExtractLabel": "输入要提取的页面（例如 2, 4-6, 9）：",
+    "pagesToExtractPlaceholder": "例如 2, 4-6, 9",
+    "pageTitle": "提取页面 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "extract Pages 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "duplicateOrganize": {
     "name": "复制与组织",
@@ -372,7 +391,13 @@
       "88f1f34594": "请输入页面顺序。",
       "3ee3f4d734": "顺序无效"
     },
-    "pageTitle": "复制与组织 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "复制与组织 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "duplicate Organize 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "deletePages": {
     "name": "删除页面",
@@ -398,7 +423,16 @@
       "e3eece8191": "加载 PDF 文件失败。",
       "1cf45e725e": "请选择一个 PDF 文件。"
     },
-    "pageTitle": "删除页面 - 在线免费 PDF 工具 | TuHe PDF"
+    "totalPagesLabel": "总页数：",
+    "pagesToDeleteLabel": "输入要删除的页面（例如 2, 4-6, 9）：",
+    "pagesToDeletePlaceholder": "例如 2, 4-6, 9",
+    "pageTitle": "删除页面 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "delete Pages 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "editBookmarks": {
     "name": "编辑书签",
@@ -494,7 +528,13 @@
       "b0765ec34b": "页面",
       "726081a2a6": "X: {{value0}}，Y: {{value1}}"
     },
-    "pageTitle": "编辑书签 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "编辑书签 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "edit Bookmarks 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "tableOfContents": {
     "name": "目录",
@@ -530,7 +570,13 @@
       "0a193ffe0a": "编辑 PDF",
       "ed40c6ff84": "旋转 PDF"
     },
-    "pageTitle": "目录 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "目录 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "table Of Contents 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "pageNumbers": {
     "name": "页码",
@@ -558,7 +604,13 @@
       "1111bc148d": "加载 PDF 文件失败。",
       "26e6ad72a2": "请上传一个有效的 PDF 文件。"
     },
-    "pageTitle": "页码 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "页码 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "page Numbers 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "addPageLabels": {
     "name": "添加页面标签",
@@ -689,6 +741,21 @@
     "name": "添加水印",
     "subtitle": "在您的 PDF 页面上添加文字或图片水印。",
     "applyToAllPages": "应用到所有页面",
+    "preview": "预览",
+    "dragToPosition": "拖动水印调整位置",
+    "defaultText": "机密",
+    "pageRange": "页面范围",
+    "textLabel": "文本",
+    "fontSize": "字体大小",
+    "color": "颜色",
+    "opacity": "不透明度:",
+    "angle": "角度:",
+    "watermarkImage": "水印图片",
+    "scale": "缩放:",
+    "position": "位置",
+    "flattenWatermarkLabel": "扁平化水印",
+    "faq2q": "我的文件是否私密安全？",
+    "faq3q": "有文件大小限制吗？",
     "cardDesc": "免费在线添加水印工具",
     "auto": {
       "1062570190": "更换文件",
@@ -720,11 +787,26 @@
       "7180e53d65": "{{value0}} ({{value1}}, {{value2}} pages)",
       "616dc4c0fd": "请上传一个有效的 PDF 文件。"
     },
-    "pageTitle": "添加水印 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "添加水印 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "add Watermark 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。"
   },
   "headerFooter": {
     "name": "页眉和页脚",
     "subtitle": "在页面顶部和底部添加文字。",
+    "pageRangeOptional": "页面范围（可选）",
+    "pageRangePlaceholder": "例如 1-3, 5",
+    "totalPages": "总页数：",
+    "fontSize": "字体大小",
+    "fontColor": "字体颜色",
+    "headerLeft": "页眉左侧",
+    "headerCenter": "页眉居中",
+    "headerRight": "页眉右侧",
+    "footerLeft": "页脚左侧",
+    "footerCenter": "页脚居中",
+    "footerRight": "页脚右侧",
+    "faq2q": "我的文件是否私密安全？",
+    "faq3q": "有文件大小限制吗？",
     "auto": {
       "7c2dc2e6b3": "格式选项",
       "c2a8c3bc69": "添加页眉页脚",
@@ -742,7 +824,9 @@
       "6ad0775d4d": "加载 PDF 文件失败。",
       "cd24bc9f91": "请上传一个有效的 PDF 文件。"
     },
-    "pageTitle": "页眉和页脚 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "页眉和页脚 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "header Footer 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。"
   },
   "invertColors": {
     "name": "反转颜色",
@@ -765,7 +849,13 @@
       "9cf793b9aa": "加载 PDF 文件失败。",
       "68cde6dc8c": "请上传一个有效的 PDF 文件。"
     },
-    "pageTitle": "反转颜色 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "反转颜色 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "invert Colors 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "scannerEffect": {
     "name": "扫描效果",
@@ -805,7 +895,13 @@
       "758bbe8260": "{{value0}} • {{value1}} {{value2}}",
       "7e69040d7a": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "扫描效果 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "扫描效果 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "scanner Effect 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "adjustColors": {
     "name": "调整颜色",
@@ -843,7 +939,13 @@
       "3eb296a549": "{{value0}} • {{value1}} {{value2}}",
       "6b0fedbc0a": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "调整颜色 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "调整颜色 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "adjust Colors 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "backgroundColor": {
     "name": "背景颜色",
@@ -865,7 +967,13 @@
       "f70d9e0d74": "加载 PDF 文件失败。",
       "b9cf61f80d": "请上传一个有效的 PDF 文件。"
     },
-    "pageTitle": "背景颜色 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "背景颜色 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "background Color 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "changeTextColor": {
     "name": "更改文本颜色",
@@ -887,7 +995,13 @@
       "0e00f36bee": "加载 PDF 文件失败。",
       "0602b07098": "请上传一个有效的 PDF 文件。"
     },
-    "pageTitle": "更改文本颜色 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "更改文本颜色 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "change Text Color 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "addStamps": {
     "name": "添加印章",
@@ -911,7 +1025,13 @@
     "dynamic": {
       "612ed3ad3b": "移除文件"
     },
-    "pageTitle": "添加印章 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "添加印章 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "add Stamps 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "removeAnnotations": {
     "name": "移除注释",
@@ -932,7 +1052,13 @@
       "2e1c623bdc": "加载 PDF 文件失败。",
       "b14673b883": "请上传一个有效的 PDF 文件。"
     },
-    "pageTitle": "移除注释 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "移除注释 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "remove Annotations 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "pdfFormFiller": {
     "name": "PDF 表单填写器",
@@ -961,13 +1087,41 @@
       "e4f9662450": "移除文件",
       "50ecff21e2": "设置"
     },
-    "pageTitle": "PDF 表单填写器 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 表单填写器 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf Form Filler 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "createPdfForm": {
     "name": "创建 PDF 表单",
     "subtitle": "使用拖放文本字段创建可填写的 PDF 表单。",
     "orSeparator": "或",
     "createBlankPdf": "创建空白 PDF",
+    "pageSizeLabel": "页面大小：",
+    "widthPts": "宽度（磅）",
+    "heightPts": "高度（磅）",
+    "properties": "属性",
+    "fieldCountSuffix": "个字段",
+    "pageInfo": "第 {{current}} / {{total}} 页",
+    "goToLabel": "跳转到：",
+    "goToBtn": "跳转",
+    "gridLabel": "网格：",
+    "fieldsLabel": "字段：",
+    "gridVPlaceholder": "垂直",
+    "gridHPlaceholder": "水平",
+    "tooltipTextField": "文本字段",
+    "tooltipCheckbox": "复选框",
+    "tooltipRadioButton": "单选按钮",
+    "tooltipDropdown": "下拉框",
+    "tooltipOptionList": "选项列表",
+    "tooltipButton": "按钮",
+    "tooltipSignature": "签名",
+    "tooltipDateField": "日期字段",
+    "tooltipImageField": "图片字段",
+    "tooltipBarcodeField": "条形码字段",
     "auto": {
       "ea2efedcab": "Letter（8.5\" × 11\"）",
       "5e4843a8b8": "Legal（8.5\" × 14\"）",
@@ -994,9 +1148,18 @@
       "0a193ffe0a": "编辑 PDF",
       "ed40c6ff84": "旋转 PDF",
       "bccc6f1f5c": "操作失败，请重试。",
-      "605a6e91fb": "切换网格"
+      "605a6e91fb": "切换网格",
+      "a4": "A4（210毫米 × 297毫米）",
+      "a5": "A5（148毫米 × 210毫米）",
+      "a3": "A3（297毫米 × 420毫米）"
     },
-    "pageTitle": "创建 PDF 表单 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "创建 PDF 表单 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "create Pdf Form 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "removeBlankPages": {
     "name": "移除空白页",
@@ -1027,11 +1190,18 @@
       "96820f89e0": "请上传一个有效的 PDF 文件。",
       "34d15e8ab1": "80"
     },
-    "pageTitle": "移除空白页 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "移除空白页 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "remove Blank Pages 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "imageToPdf": {
     "name": "图片转 PDF",
     "subtitle": "将 JPG, PNG, BMP, GIF, TIFF, PNM, PGM, PBM, PPM, PAM, JXR, JPX, JP2, PSD, SVG, HEIC, WebP 转换为 PDF。",
+    "qualityLabel": "PDF 质量",
     "auto": {
       "d148e69606": "JPG、PNG、BMP、GIF、TIFF、PNM、PGM、PBM、PPM、PAM、JXR、JPX、JP2、PSD、SVG、HEIC、WebP",
       "bb9dede377": "合并 PDF",
@@ -1051,7 +1221,13 @@
       "011eb5b704": "部分文件已被跳过。仅允许支持的图片格式。",
       "bfeaca68f4": "文件无效"
     },
-    "pageTitle": "图片转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "图片转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "image To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "pngToPdf": {
     "name": "PNG 转 PDF",
@@ -1072,7 +1248,13 @@
       "31345167f1": "部分文件已被跳过。仅允许 PNG 图片。",
       "9531a0069c": "文件无效"
     },
-    "pageTitle": "PNG 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "PNG 转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "png To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "webpToPdf": {
     "name": "WebP 转 PDF",
@@ -1093,7 +1275,13 @@
       "dac29db7dd": "部分文件已被跳过。仅允许 WebP 图片。",
       "3c6e0f53ba": "文件无效"
     },
-    "pageTitle": "WebP 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "WebP 转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "webp To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "svgToPdf": {
     "name": "SVG 转 PDF",
@@ -1114,7 +1302,13 @@
       "a991f2ba33": "部分文件已被跳过。仅允许 SVG 图形。",
       "0aaa760603": "文件无效"
     },
-    "pageTitle": "SVG 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "SVG 转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "svg To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "bmpToPdf": {
     "name": "BMP 转 PDF",
@@ -1135,7 +1329,13 @@
       "5f18ec5ebc": "请至少选择一个 BMP 文件。",
       "2baabe2097": "({{value0}})"
     },
-    "pageTitle": "BMP 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "BMP 转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "bmp To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "heicToPdf": {
     "name": "HEIC 转 PDF",
@@ -1156,7 +1356,13 @@
       "5088e5e744": "请至少选择一个 HEIC 文件。",
       "37dc2dff42": "({{value0}})"
     },
-    "pageTitle": "HEIC 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "HEIC 转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "heic To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "tiffToPdf": {
     "name": "TIFF 转 PDF",
@@ -1177,7 +1383,13 @@
       "bcb176a1ed": "请至少选择一个 TIFF 文件。",
       "64f495d84c": "({{value0}})"
     },
-    "pageTitle": "TIFF 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "TIFF 转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "tiff To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "textToPdf": {
     "name": "文本转 PDF",
@@ -1219,7 +1431,13 @@
       "331d64523c": "请至少选择一个文本文件。",
       "8c9a7c9a67": "({{value0}})"
     },
-    "pageTitle": "文本转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "文本转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "text To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "jsonToPdf": {
     "name": "JSON 转 PDF",
@@ -1246,7 +1464,13 @@
       "0a193ffe0a": "编辑 PDF",
       "ed40c6ff84": "旋转 PDF"
     },
-    "pageTitle": "JSON 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "JSON 转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "json To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "pdfToJpg": {
     "name": "PDF 转 JPG",
@@ -1321,7 +1545,13 @@
       "5866da68d4": "{{value0}} • {{value1}} {{value2}}",
       "dd75ee4288": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "PDF 转 PNG - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 转 PNG - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf To Png 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "pdfToWebp": {
     "name": "PDF 转 WebP",
@@ -1352,7 +1582,13 @@
       "f68d703739": "{{value0}} • {{value1}} {{value2}}",
       "f9c3ea897f": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "PDF 转 WebP - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 转 WebP - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf To Webp 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "pdfToBmp": {
     "name": "PDF 转 BMP",
@@ -1379,7 +1615,13 @@
       "9f87fe7348": "{{value0}} • {{value1}} {{value2}}",
       "25e694ba1c": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "PDF 转 BMP - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 转 BMP - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf To Bmp 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "pdfToTiff": {
     "name": "PDF 转 TIFF",
@@ -1421,7 +1663,13 @@
       "2d62cb9c86": "{{value0}} • {{value1}} {{value2}}",
       "7caf602278": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "PDF 转 TIFF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 转 TIFF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf To Tiff 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "pdfToCbz": {
     "name": "PDF 转 CBZ",
@@ -1500,7 +1748,13 @@
       "1aa9a280e2": "{{value0}} • {{value1}} {{value2}}",
       "6c08c2bcda": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "PDF 转 灰度 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 转 灰度 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf To Greyscale 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "pdfToJson": {
     "name": "PDF 转 JSON",
@@ -1526,7 +1780,13 @@
       "0a193ffe0a": "编辑 PDF",
       "ed40c6ff84": "旋转 PDF"
     },
-    "pageTitle": "PDF 转 JSON - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 转 JSON - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf To Json 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "ocrPdf": {
     "name": "OCR PDF",
@@ -1591,7 +1851,13 @@
     "dynamic": {
       "544984faf5": "设置"
     },
-    "pageTitle": "OCR PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "OCR PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "ocr Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "alternateMerge": {
     "name": "交替混合页面",
@@ -1620,7 +1886,13 @@
       "ca820f834d": "正在加载 PDF 文件...",
       "4ed44782a4": "已选择 {{value0}} 个 PDF 文件"
     },
-    "pageTitle": "交替混合页面 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "交替混合页面 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "alternate Merge 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "addAttachments": {
     "name": "添加附件",
@@ -1652,7 +1924,13 @@
       "b76c5703b2": "Worker 发生错误。请检查控制台了解详情。",
       "b699690e1e": "文件"
     },
-    "pageTitle": "添加附件 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "添加附件 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "add Attachments 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "extractAttachments": {
     "name": "提取附件",
@@ -1672,7 +1950,13 @@
       "99348f2682": "无附件",
       "88c0a4ed05": "成功提取了 {{value0}} 个附件！"
     },
-    "pageTitle": "提取附件 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "提取附件 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "extract Attachments 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "editAttachments": {
     "name": "编辑附件",
@@ -1702,7 +1986,13 @@
       "a74a16433e": "Worker 发生错误。请检查控制台了解详情。",
       "165ce95328": "附件更新成功！"
     },
-    "pageTitle": "编辑附件 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "编辑附件 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "edit Attachments 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "dividePages": {
     "name": "分割页面",
@@ -1734,7 +2024,13 @@
       "07ff7bec76": "{{value0}} • {{value1}} pages",
       "c90d4c14de": "{{value0}} • 正在加载..."
     },
-    "pageTitle": "分割页面 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "分割页面 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "divide Pages 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "addBlankPage": {
     "name": "添加空白页",
@@ -1764,7 +2060,13 @@
       "6d8c3c7f1a": "输入 0 插入到开头，或 {{value0}} 插入到末尾。",
       "ceda244c1d": "{{value0}} • {{value1}} pages"
     },
-    "pageTitle": "添加空白页 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "添加空白页 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "add Blank Page 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "reversePages": {
     "name": "反转页面",
@@ -1785,7 +2087,13 @@
       "7c4c0a8d59": "页面",
       "dbc8218413": "请选择一个或多个 PDF 文件。"
     },
-    "pageTitle": "反转页面 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "反转页面 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "reverse Pages 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "rotatePdf": {
     "name": "旋转 PDF",
@@ -1809,7 +2117,15 @@
       "0e83e638d1": "{{value0}} • 正在加载...",
       "0932d34a73": "{{value0}}"
     },
-    "pageTitle": "旋转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "rotateLeft": "向左旋转",
+    "rotateRight": "向右旋转",
+    "pageTitle": "旋转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "rotate Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "rotateCustom": {
     "name": "按自定义角度旋转",
@@ -1836,7 +2152,13 @@
       "03a27bd0ab": "-",
       "bbc1fbce78": "{{value0}}"
     },
-    "pageTitle": "按自定义角度旋转 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "按自定义角度旋转 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "rotate Custom 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "nUpPdf": {
     "name": "N-Up PDF",
@@ -1866,7 +2188,13 @@
       "2190a71612": "{{value0}} • {{value1}} pages",
       "a26647e4a0": "{{value0}} • 正在加载..."
     },
-    "pageTitle": "N-Up PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "N-Up PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "n Up Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "combineToSinglePage": {
     "name": "合并为单页",
@@ -1892,7 +2220,13 @@
       "4784218459": "{{value0}} • {{value1}} pages",
       "33c063c234": "{{value0}} • 正在加载..."
     },
-    "pageTitle": "合并为单页 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "合并为单页 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "combine To Single Page 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "viewMetadata": {
     "name": "查看元数据",
@@ -1913,7 +2247,13 @@
       "f9436236fe": "操作失败，请重试。",
       "674878efd6": "正在分析完整 PDF 元数据..."
     },
-    "pageTitle": "查看元数据 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "查看元数据 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "view Metadata 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "editMetadata": {
     "name": "编辑元数据",
@@ -1939,7 +2279,13 @@
       "41a32c1325": "值（例如：市场部）",
       "16ebbac701": "键（例如：部门）"
     },
-    "pageTitle": "编辑元数据 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "编辑元数据 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "edit Metadata 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "pdfsToZip": {
     "name": "PDF 转 ZIP",
@@ -1962,7 +2308,13 @@
       "8b3c05ec36": "正在创建 ZIP 存档...",
       "a2a6eeec53": "请选择 PDF files to create a ZIP archive."
     },
-    "pageTitle": "PDF 转 ZIP - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 转 ZIP - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "pdfs To Zip 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "comparePdfs": {
     "name": "比较 PDF",
@@ -2029,6 +2381,22 @@
     "styleChangedFont": "字体：{{before}} → {{after}}",
     "styleChangedFontSize": "字号：{{before}} → {{after}}",
     "textMoved": "已移动\"{{text}}\"",
+    "ocr": "OCR",
+    "overlayView": "叠加视图",
+    "changeType": "更改类型",
+    "moved": "已移动",
+    "style": "样式",
+    "content": "内容",
+    "text": "文本",
+    "images": "图片",
+    "headers": "页眉",
+    "annotations": "注释",
+    "formatting": "格式",
+    "backgrounds": "背景",
+    "faq2q": "我的文件隐私安全吗？",
+    "faq3q": "有文件大小限制吗？",
+    "faq2a": "绝对安全！所有处理都在你的浏览器中完成，你的文件永远不会离开你的设备，确保完全隐私。",
+    "faq3a": "没有！处理任意大小的文件，随时随地进行，完全免费。",
     "auto": {
       "dab564d809": "适应",
       "85174b7376": "所有更改",
@@ -2059,7 +2427,9 @@
     "missingPage": "此 PDF 中不存在第 {{page}} 页。",
     "ocrRunning": "正在对第 {{page}} 页执行 OCR...",
     "ocrProgress": "OCR：{{status}}",
-    "pageTitle": "比较 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "比较 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "compare Pdfs 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。"
   },
   "posterizePdf": {
     "name": "海报化 PDF",
@@ -2082,7 +2452,13 @@
       "0a193ffe0a": "编辑 PDF",
       "ed40c6ff84": "旋转 PDF"
     },
-    "pageTitle": "海报化 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "海报化 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "posterize Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "fixPageSize": {
     "name": "修复页面尺寸",
@@ -2111,7 +2487,13 @@
       "5682a8deba": "请先上传一个 PDF 文件。",
       "4e7b720a89": "无文件"
     },
-    "pageTitle": "修复页面尺寸 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "修复页面尺寸 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "fix Page Size 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "linearizePdf": {
     "name": "线性化 PDF",
@@ -2139,7 +2521,13 @@
       "20e8c58c29": "请上传 at least one PDF file.",
       "3fc2420257": "没有 PDF 文件"
     },
-    "pageTitle": "线性化 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "线性化 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "linearize Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "pageDimensions": {
     "name": "页面尺寸",
@@ -2162,7 +2550,13 @@
       "e6a574d0ee": "{{value0}} × {{value1}} {{value2}}",
       "f5deede4e1": "设置"
     },
-    "pageTitle": "页面尺寸 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "页面尺寸 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "page Dimensions 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "removeRestrictions": {
     "name": "移除限制",
@@ -2193,7 +2587,13 @@
       "9afe460e3d": "请先上传一个 PDF 文件。",
       "2de7e01738": "无文件"
     },
-    "pageTitle": "移除限制 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "移除限制 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "remove Restrictions 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "repairPdf": {
     "name": "修复 PDF",
@@ -2217,7 +2617,13 @@
       "2fd1eb15f7": "正在初始化修复引擎...",
       "a8baf6f1f3": "请选择 one or more PDF files."
     },
-    "pageTitle": "修复 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "修复 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "repair Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "encryptPdf": {
     "name": "加密 PDF",
@@ -2238,6 +2644,8 @@
       "8d7e230034": "输入密码以打开 PDF",
       "61966b4d3c": "输入权限密码（可选）"
     },
+    "userPasswordLabel": "用户密码（必填）",
+    "ownerPasswordLabel": "所有者密码（可选）",
     "dynamic": {
       "f31490d96d": "发生错误：{{value0}}",
       "1cc9a81e1a": "加密失败",
@@ -2250,7 +2658,13 @@
       "2c4bfd0f85": "请先上传一个 PDF 文件。",
       "dd9d84669b": "无文件"
     },
-    "pageTitle": "加密 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "加密 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "encrypt Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "sanitizePdf": {
     "name": "清理 PDF",
@@ -2280,7 +2694,13 @@
       "0f6dc18170": "无更改",
       "2d61fe671a": "未加载 PDF 文档。"
     },
-    "pageTitle": "清理 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "清理 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "sanitize Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "decryptPdf": {
     "name": "解密 PDF",
@@ -2294,6 +2714,7 @@
       "ed40c6ff84": "旋转 PDF",
       "34479e0409": "输入 PDF 密码"
     },
+    "passwordLabel": "PDF 密码",
     "dynamic": {
       "29b5a25d37": "发生错误：{{value0}}",
       "b9a3b1421d": "解密失败",
@@ -2315,7 +2736,13 @@
       "cb76be345d": "无文件"
     },
     "processFailed": "解密失败，请重试。",
-    "pageTitle": "解密 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "解密 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "decrypt Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "flattenPdf": {
     "name": "扁平化 PDF",
@@ -2341,7 +2768,13 @@
       "0b697fdcaa": "正在扁平化 PDF...",
       "87d5747b51": "请选择 at least one PDF file."
     },
-    "pageTitle": "扁平化 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "扁平化 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "flatten Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "removeMetadata": {
     "name": "移除元数据",
@@ -2368,7 +2801,13 @@
       "293b45eafc": "请先上传一个 PDF 文件。",
       "9bb26fafb5": "无文件"
     },
-    "pageTitle": "移除元数据 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "移除元数据 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "remove Metadata 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "changePermissions": {
     "name": "更改权限",
@@ -2407,7 +2846,13 @@
       "d90ea623b2": "请先上传一个 PDF 文件。",
       "a579977c69": "无文件"
     },
-    "pageTitle": "更改权限 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "更改权限 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "change Permissions 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "odtToPdf": {
     "name": "ODT 转 PDF",
@@ -2429,7 +2874,13 @@
       "3521d690a3": "已成功将 {{value0}} 转换为 PDF。",
       "c2f620d499": "请选择 at least one ODT file."
     },
-    "pageTitle": "ODT 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "ODT 转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "odt To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "csvToPdf": {
     "name": "CSV 转 PDF",
@@ -2453,7 +2904,13 @@
       "f702b2d875": "已成功将 {{value0}} 转换为 PDF。",
       "b3385b83d4": "请选择 at least one CSV file."
     },
-    "pageTitle": "CSV 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "CSV 转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "csv To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "rtfToPdf": {
     "name": "RTF 转 PDF",
@@ -2476,7 +2933,13 @@
       "f98b741f34": "已成功将 {{value0}} 转换为 PDF。",
       "0a05ab24e5": "请选择 at least one RTF file."
     },
-    "pageTitle": "RTF 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "RTF 转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "rtf To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "wordToPdf": {
     "name": "Word 转 PDF",
@@ -2545,7 +3008,13 @@
       "74fd7493ec": "已成功将 {{value0}} 转换为 PDF。",
       "9d71f06b8f": "请选择 at least one Excel file."
     },
-    "pageTitle": "Excel 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "Excel 转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "excel To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "powerpointToPdf": {
     "name": "PowerPoint 转 PDF",
@@ -2567,7 +3036,13 @@
       "94609a8cae": "已成功将 {{value0}} 转换为 PDF。",
       "af1899e4e6": "请选择 at least one PowerPoint file."
     },
-    "pageTitle": "PowerPoint 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "PowerPoint 转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "powerpoint To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "markdownToPdf": {
     "name": "Markdown 转 PDF",
@@ -2595,7 +3070,13 @@
       "0a193ffe0a": "编辑 PDF",
       "ed40c6ff84": "旋转 PDF"
     },
-    "pageTitle": "Markdown 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "Markdown 转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "markdown To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "pdfBooklet": {
     "name": "PDF 小册子",
@@ -2645,7 +3126,13 @@
     "front": "正面",
     "back": "背面",
     "sheet": "张",
-    "pageTitle": "PDF 小册子 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 小册子 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf Booklet 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "xpsToPdf": {
     "name": "XPS 转 PDF",
@@ -2670,7 +3157,13 @@
       "791c680372": "正在加载转换引擎...",
       "7d896aa183": "请选择 at least one {{value0}} file."
     },
-    "pageTitle": "XPS 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "XPS 转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "xps To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "mobiToPdf": {
     "name": "MOBI 转 PDF",
@@ -2695,7 +3188,13 @@
       "74a5661b9d": "正在加载转换引擎...",
       "1a7abc7505": "请选择 at least one {{value0}} file."
     },
-    "pageTitle": "MOBI 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "MOBI 转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "mobi To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "epubToPdf": {
     "name": "EPUB 转 PDF",
@@ -2720,7 +3219,13 @@
       "0642d0fcdb": "正在加载转换引擎...",
       "22b7b16873": "请选择 at least one {{value0}} file."
     },
-    "pageTitle": "EPUB 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "EPUB 转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "epub To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "fb2ToPdf": {
     "name": "FB2 转 PDF",
@@ -2745,7 +3250,13 @@
       "fa537f2cfc": "正在加载转换引擎...",
       "36e0761e1c": "请选择 at least one {{value0}} file."
     },
-    "pageTitle": "FB2 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "FB2 转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "fb2 To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "cbzToPdf": {
     "name": "CBZ 转 PDF",
@@ -2769,7 +3280,13 @@
       "657ec1680f": "正在转换 {{value0}}...",
       "3767ecf995": "请选择 at least one {{value0}} file."
     },
-    "pageTitle": "CBZ 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "CBZ 转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "cbz To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "wpdToPdf": {
     "name": "WPD 转 PDF",
@@ -2794,7 +3311,13 @@
       "899e0e00c9": "正在加载转换引擎...",
       "c05b666684": "请选择 at least one {{value0}} file."
     },
-    "pageTitle": "WPD 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "WPD 转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "wpd To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "wpsToPdf": {
     "name": "WPS 转 PDF",
@@ -2819,7 +3342,13 @@
       "839bb28344": "正在加载转换引擎...",
       "4af39b0805": "请选择 at least one {{value0}} file."
     },
-    "pageTitle": "WPS 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "WPS 转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "wps To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "xmlToPdf": {
     "name": "XML 转 PDF",
@@ -2842,7 +3371,13 @@
       "99ae92f70e": "已成功将 {{value0}} 转换为 PDF。",
       "75c05e3e4d": "请选择 at least one {{value0}} file."
     },
-    "pageTitle": "XML 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "XML 转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "xml To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "pagesToPdf": {
     "name": "Pages 转 PDF",
@@ -2867,7 +3402,13 @@
       "ef163b0d8e": "正在加载转换引擎...",
       "6e2b64f357": "请选择 at least one {{value0}} file."
     },
-    "pageTitle": "Pages 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "Pages 转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "pages To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "odgToPdf": {
     "name": "ODG 转 PDF",
@@ -2892,7 +3433,13 @@
       "245fd93b2b": "正在加载转换引擎...",
       "2a61c4b789": "请选择 at least one {{value0}} file."
     },
-    "pageTitle": "ODG 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "ODG 转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "odg To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "odsToPdf": {
     "name": "ODS 转 PDF",
@@ -2917,7 +3464,13 @@
       "4fb6de5f25": "正在加载转换引擎...",
       "d2f643f113": "请选择 at least one {{value0}} file."
     },
-    "pageTitle": "ODS 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "ODS 转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "ods To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "odpToPdf": {
     "name": "ODP 转 PDF",
@@ -2942,7 +3495,13 @@
       "bd598b8682": "正在加载转换引擎...",
       "3f9fd2f58f": "请选择 at least one {{value0}} file."
     },
-    "pageTitle": "ODP 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "ODP 转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "odp To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "pubToPdf": {
     "name": "PUB 转 PDF",
@@ -2967,7 +3526,13 @@
       "1d973bb300": "正在加载转换引擎...",
       "dbf215a4fb": "请选择 at least one {{value0}} file."
     },
-    "pageTitle": "PUB 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "PUB 转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "pub To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "vsdToPdf": {
     "name": "VSD 转 PDF",
@@ -2992,7 +3557,13 @@
       "ecf9899daf": "正在加载转换引擎...",
       "582b0dbbdf": "请选择 at least one {{value0}} file."
     },
-    "pageTitle": "VSD 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "VSD 转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "vsd To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "psdToPdf": {
     "name": "PSD 转 PDF",
@@ -3016,7 +3587,13 @@
       "0a745921f6": "正在加载转换引擎...",
       "29f58a0131": "请选择 at least one {{value0}} file."
     },
-    "pageTitle": "PSD 转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "PSD 转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "psd To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "pdfToSvg": {
     "name": "PDF 转 SVG",
@@ -3044,7 +3621,13 @@
       "67967aa49b": "正在加载引擎...",
       "d03c2fba20": "请上传 at least one PDF file."
     },
-    "pageTitle": "PDF 转 SVG - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 转 SVG - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf To Svg 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "extractTables": {
     "name": "提取 PDF 表格",
@@ -3073,7 +3656,13 @@
       "823e9c0f13": "请先上传一个 PDF 文件。",
       "73433d0bfe": "无文件"
     },
-    "pageTitle": "提取 PDF 表格 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "提取 PDF 表格 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "extract Tables 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "pdfToCsv": {
     "name": "PDF 转 CSV",
@@ -3098,7 +3687,13 @@
       "ad03050928": "请先上传一个 PDF 文件。",
       "69783ee8ef": "无文件"
     },
-    "pageTitle": "PDF 转 CSV - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 转 CSV - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf To Csv 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "pdfToExcel": {
     "name": "PDF 转 Excel",
@@ -3124,7 +3719,13 @@
       "2591070d22": "请先上传一个 PDF 文件。",
       "59516df9fc": "无文件"
     },
-    "pageTitle": "PDF 转 Excel - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 转 Excel - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf To Excel 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "pdfToText": {
     "name": "PDF 转文本",
@@ -3153,7 +3754,13 @@
       "fad4a0bfb8": "部分文件已被跳过。仅允许 PDF 文件。",
       "3003a34022": "文件无效"
     },
-    "pageTitle": "PDF 转 文本 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 转 文本 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf To Text 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "digitalSignPdf": {
     "name": "PDF 数字签名",
@@ -3345,7 +3952,13 @@
       "0b58b429fa": "正在加载 PDF 引擎...",
       "e2b1b6aa34": "请至少选择一个邮件文件（.eml 或 .msg）。"
     },
-    "pageTitle": "邮件转 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "邮件转 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "email To Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "fontToOutline": {
     "name": "字体转轮廓",
@@ -3449,7 +4062,13 @@
       "bc5256a321": "{{value0}} • {{value1}} pages",
       "55c6560fcf": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "PDF 转 Word - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 转 Word - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf To Word 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "extractImages": {
     "name": "提取图片",
@@ -3477,7 +4096,13 @@
       "71adf08528": "{{value0}} • {{value1}} pages",
       "de57f04c3f": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "提取图片 - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "提取图片 - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "extract Images 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "pdfToMarkdown": {
     "name": "PDF 转 Markdown",
@@ -3508,7 +4133,13 @@
       "223165f5fd": "转换错误",
       "e98ede1f9b": "正在转换为 Markdown..."
     },
-    "pageTitle": "PDF 转 Markdown - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 转 Markdown - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf To Markdown 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "preparePdfForAi": {
     "name": "为 AI 准备 PDF",
@@ -3540,7 +4171,13 @@
       "a807df92a6": "{{value0}} • {{value1}} pages",
       "570fd297dc": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "为 AI 准备 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "为 AI 准备 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "prepare Pdf For Ai 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "pdfOcg": {
     "name": "PDF 图层 (OCG)",
@@ -3577,7 +4214,13 @@
       "ebdf5cb44f": "{{value0}} • {{value1}} pages",
       "1c578f88cb": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "PDF 图层 (OCG) - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 图层 (OCG) - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf Ocg 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "pdfToPdfa": {
     "name": "PDF 转 PDF/A",
@@ -3610,7 +4253,13 @@
       "7fdcb51569": "{{value0}} • {{value1}} pages",
       "1ebf7b22d2": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "PDF 转 PDF/A - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "PDF 转 PDF/A - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "pdf To Pdfa 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "rasterizePdf": {
     "name": "栅格化 PDF",
@@ -3646,7 +4295,13 @@
       "d3132c7fc8": "{{value0}} • {{value1}} pages",
       "5f28791b8c": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "栅格化 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "栅格化 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "faq1q": "rasterize Pdf 真的免费吗？",
+    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
+    "faq2q": "我的文件安全保密吗？",
+    "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
+    "faq3q": "有文件大小限制吗？",
+    "faq3a": "没有！处理任何大小的文件，无限次，完全免费。"
   },
   "pdfWorkflow": {
     "name": "PDF 工作流构建器",
