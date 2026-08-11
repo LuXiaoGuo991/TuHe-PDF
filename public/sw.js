@@ -2,10 +2,10 @@
  * TuHe PDF Service Worker
  * Caches WASM files and static assets for offline support and faster loading
  * Supports both local and CDN delivery with deduplication
- * Version: 1.1.0
+ * Version: 1.2.0
  */
 
-const CACHE_VERSION = 'tuhe-pdf-v1';
+const CACHE_VERSION = 'tuhe-pdf-v2';
 const CACHE_NAME = `${CACHE_VERSION}-static`;
 
 const trustedCdnOrigins = new Set(['https://cdn.jsdelivr.net']);
@@ -129,7 +129,13 @@ async function cacheFirstStrategyWithDedup(request, isCDN) {
 
     const networkResponse = await fetch(request);
 
-    if (networkResponse && networkResponse.status === 200) {
+    if (!networkResponse || !networkResponse.ok) {
+      throw new Error(
+        `Resource request failed: ${networkResponse?.status || 'network error'}`
+      );
+    }
+
+    if (networkResponse.status === 200) {
       const clone = networkResponse.clone();
       const buffer = await clone.arrayBuffer();
       if (buffer.byteLength > 0) {
@@ -154,7 +160,7 @@ async function cacheFirstStrategyWithDedup(request, isCDN) {
       const localPath = getLocalPathForCDNUrl(url.pathname);
 
       if (localPath) {
-        const localUrl = `${basePath}${localPath}${fileName}`;
+        const localUrl = `${basePath}${localPath}`;
         try {
           const fallbackResponse = await fetch(localUrl);
           if (fallbackResponse && fallbackResponse.status === 200) {
@@ -268,12 +274,28 @@ async function networkFirstStrategy(request) {
 }
 
 /**
- * Map CDN URL path to local path
- * Returns the local directory path for a given CDN package
+ * Map legacy CDN URL paths to their same-origin resource paths.
  */
 function getLocalPathForCDNUrl(pathname) {
+  const pymupdfMatch = pathname.match(/\/@bentopdf\/pymupdf-wasm@[^/]+\/(.+)$/);
+  if (pymupdfMatch) {
+    return `/wasm/pymupdf/${pymupdfMatch[1]}`;
+  }
+
+  const ghostscriptMatch = pathname.match(
+    /\/@bentopdf\/gs-wasm@[^/]+\/assets\/(.+)$/
+  );
+  if (ghostscriptMatch) {
+    return `/wasm/ghostscript/${ghostscriptMatch[1]}`;
+  }
+
+  const cpdfMatch = pathname.match(/\/coherentpdf@[^/]+\/dist\/(.+)$/);
+  if (cpdfMatch) {
+    return `/wasm/cpdf/${cpdfMatch[1]}`;
+  }
+
   if (pathname.includes('/@matbee/libreoffice-converter')) {
-    return '/libreoffice-wasm/';
+    return `/libreoffice-wasm/${pathname.split('/').pop()}`;
   }
   return null;
 }
@@ -290,12 +312,14 @@ function shouldCache(pathname, isCDN = false) {
     return (
       pathname.includes('/@bentopdf/pymupdf-wasm') ||
       pathname.includes('/@bentopdf/gs-wasm') ||
+      pathname.includes('/coherentpdf') ||
       pathname.includes('/@matbee/libreoffice-converter') ||
       CACHEABLE_EXTENSIONS.test(pathname)
     );
   }
 
   return (
+    pathname.includes('/wasm/') ||
     pathname.includes('/libreoffice-wasm/') ||
     pathname.includes('/embedpdf/') ||
     pathname.includes('/assets/') ||

@@ -186,7 +186,7 @@ describe('XSS replay — WASM provider localStorage poisoning', () => {
 
     const got = WasmProvider.getUrl('pymupdf');
     expect(got).not.toContain('attacker.test');
-    expect(got).toMatch(/cdn\.jsdelivr\.net|^https?:\/\/[^/]+\//);
+    expect(got).toMatch(/^\/wasm\/|cdn\.jsdelivr\.net|^https?:\/\/[^/]+\//);
 
     const remaining = JSON.parse(
       localStorage.getItem('tuhe-pdf:wasm-providers') || '{}'
@@ -194,6 +194,17 @@ describe('XSS replay — WASM provider localStorage poisoning', () => {
     expect(remaining.pymupdf).toBeUndefined();
     expect(remaining.ghostscript).toBeUndefined();
     expect(remaining.cpdf).toBeUndefined();
+  });
+
+  it('allows a same-origin WASM path without trusting a protocol-relative URL', async () => {
+    vi.resetModules();
+    const { WasmProvider } = await import('../js/utils/wasm-provider');
+
+    WasmProvider.setUrl('pymupdf', '/wasm/pymupdf');
+    expect(WasmProvider.getUrl('pymupdf')).toBe('/wasm/pymupdf/');
+    expect(() =>
+      WasmProvider.setUrl('pymupdf', '//attacker.test/wasm/')
+    ).toThrow('Invalid URL');
   });
 });
 

@@ -1,6 +1,6 @@
 /**
  * Font mappings for OCR text layer rendering
- * Maps Tesseract language codes to appropriate Noto Sans font families and their CDN URLs
+ * Maps Tesseract language codes to appropriate Noto Sans font families and source URLs.
  */
 
 export const languageToFontFamily: Record<string, string> = {

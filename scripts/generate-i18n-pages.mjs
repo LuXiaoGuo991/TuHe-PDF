@@ -3,6 +3,7 @@ import path from 'path';
 import { JSDOM } from 'jsdom';
 import { fileURLToPath } from 'url';
 import { SITE_URL } from './site-config.mjs';
+import { fallbackLanguages } from '../src/js/i18n/fallback-languages.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -27,7 +28,6 @@ const KEY_MAPPING = {
 function loadAllTranslations() {
   const translations = {};
   for (const lang of languages) {
-    if (lang === 'en') continue;
     const commonPath = path.join(LOCALES_DIR, `${lang}/common.json`);
     const toolsPath = path.join(LOCALES_DIR, `${lang}/tools.json`);
     translations[lang] = {
@@ -42,13 +42,52 @@ function loadAllTranslations() {
   return translations;
 }
 
-function loadEnglishTools() {
-  const toolsPath = path.join(LOCALES_DIR, 'en/tools.json');
-  if (!fs.existsSync(toolsPath)) return {};
-  return JSON.parse(fs.readFileSync(toolsPath, 'utf-8'));
+function getNestedValue(resource, key) {
+  return key.split('.').reduce((value, part) => {
+    if (!value || typeof value !== 'object') return undefined;
+    return value[part];
+  }, resource);
 }
 
-const ENGLISH_TOOLS = loadEnglishTools();
+function getTranslation(key, lang, translations) {
+  const isToolsKey = key.startsWith('tools:');
+  const keyPath = isToolsKey ? key.slice('tools:'.length) : key;
+  const resourceName = isToolsKey ? 'tools' : 'common';
+  const fallbackChain = [
+    lang,
+    ...(fallbackLanguages[lang] || fallbackLanguages.default),
+  ].filter((item, index, chain) => chain.indexOf(item) === index);
+
+  for (const candidateLang of fallbackChain) {
+    const value = getNestedValue(
+      translations[candidateLang]?.[resourceName],
+      keyPath
+    );
+    if (typeof value === 'string') return value;
+  }
+
+  return null;
+}
+
+function renderStaticTranslations(document, lang, translations) {
+  document.querySelectorAll('[data-i18n]').forEach((element) => {
+    const key = element.getAttribute('data-i18n');
+    const translation = key ? getTranslation(key, lang, translations) : null;
+    if (translation !== null) element.textContent = translation;
+  });
+
+  document.querySelectorAll('[data-i18n-placeholder]').forEach((element) => {
+    const key = element.getAttribute('data-i18n-placeholder');
+    const translation = key ? getTranslation(key, lang, translations) : null;
+    if (translation !== null) element.setAttribute('placeholder', translation);
+  });
+
+  document.querySelectorAll('[data-i18n-title]').forEach((element) => {
+    const key = element.getAttribute('data-i18n-title');
+    const translation = key ? getTranslation(key, lang, translations) : null;
+    if (translation !== null) element.setAttribute('title', translation);
+  });
+}
 
 // TODO@ALAM: Let users build only a single language
 function buildUrl(langPrefix, pagePath) {
@@ -149,11 +188,8 @@ function injectToolBreadcrumb(document, lang, toolName, toolUrl) {
   document.body.appendChild(script);
 }
 
-function resolveToolName(translationKey, langTools) {
-  const langEntry = langTools && langTools[translationKey];
-  if (langEntry && langEntry.name) return langEntry.name;
-  const enEntry = ENGLISH_TOOLS[translationKey];
-  return enEntry && enEntry.name ? enEntry.name : null;
+function resolveToolName(translationKey, lang, translations) {
+  return getTranslation(`tools:${translationKey}.name`, lang, translations);
 }
 
 function processFileForLanguage(
@@ -175,6 +211,10 @@ function processFileForLanguage(
 
   document.documentElement.lang = lang;
   document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+  // Render marked HTML text before writing the static page so it remains
+  // localized when JavaScript is delayed, blocked, or unavailable.
+  renderStaticTranslations(document, lang, translations);
 
   let title = null;
   let description = null;
@@ -248,7 +288,7 @@ function processFileForLanguage(
 
   injectOrganizationLd(document);
 
-  const localizedToolName = resolveToolName(translationKey, tools);
+  const localizedToolName = resolveToolName(translationKey, lang, translations);
   if (localizedToolName) {
     injectToolBreadcrumb(document, lang, localizedToolName, localizedUrl);
   }
@@ -298,7 +338,7 @@ function processFileForLanguage(
   fs.writeFileSync(path.join(langDir, file), result);
 }
 
-function updateEnglishFile(filePath, originalContent) {
+function updateEnglishFile(filePath, originalContent, translations) {
   const filenameNoExt = path.basename(filePath, '.html');
   const dom = new JSDOM(originalContent);
   const document = dom.window.document;
@@ -341,7 +381,7 @@ function updateEnglishFile(filePath, originalContent) {
 
   const enTranslationKey =
     KEY_MAPPING[filenameNoExt] || toCamelCase(filenameNoExt);
-  const enToolName = resolveToolName(enTranslationKey, ENGLISH_TOOLS);
+  const enToolName = resolveToolName(enTranslationKey, 'en', translations);
   if (enToolName) {
     injectToolBreadcrumb(document, 'en', enToolName, canonicalUrl);
   }
@@ -410,7 +450,7 @@ async function generateI18nPages() {
       await new Promise((resolve) => setImmediate(resolve));
     }
 
-    updateEnglishFile(filePath, originalContent);
+    updateEnglishFile(filePath, originalContent, translations);
   }
 
   console.log('✅ i18n pages generated successfully!');
