@@ -23,6 +23,19 @@ const toCamelCase = (str) => {
 const KEY_MAPPING = {
   index: 'home',
   404: 'notFound',
+  // Tool pages whose filename doesn't map cleanly to tools.json key via toCamelCase
+  bookmark: 'editBookmarks',
+  'combine-single-page': 'combineToSinglePage',
+  'edit-pdf': 'pdfEditor',
+  'form-creator': 'createPdfForm',
+  'form-filler': 'pdfFormFiller',
+  'organize-pdf': 'duplicateOrganize',
+  'overlay-pdf': 'pdfOverlay',
+  'pdf-layers': 'pdfOcg',
+  'pdf-to-docx': 'pdfToWord',
+  'pdf-to-zip': 'pdfsToZip',
+  'text-color': 'changeTextColor',
+  'txt-to-pdf': 'textToPdf',
 };
 
 function loadAllTranslations() {

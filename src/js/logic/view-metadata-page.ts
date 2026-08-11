@@ -1,5 +1,6 @@
 import { showLoader, hideLoader, showAlert } from '../ui.js';
 import { t } from '../i18n/i18n';
+import i18next from 'i18next';
 
 const translate = (
   key: string,
@@ -76,9 +77,10 @@ function parsePdfDate(pdfDate: string | unknown): string {
     const hour = pdfDate.substring(10, 12);
     const minute = pdfDate.substring(12, 14);
     const second = pdfDate.substring(14, 16);
+    const locale = i18next.resolvedLanguage || i18next.language || 'zh-CN';
     return new Date(
       `${year}-${month}-${day}T${hour}:${minute}:${second}Z`
-    ).toLocaleString();
+    ).toLocaleString(locale);
   } catch {
     return pdfDate;
   }

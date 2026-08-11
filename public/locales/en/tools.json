@@ -33,7 +33,8 @@
       "258deea2b3": "{{value0}} {{value1}}",
       "81e221e4f3": "{{value0}} {{value1}}.",
       "b05071e61a": "Repairing {{value0}}..."
-    }
+    },
+    "pageTitle": "PDF Multi Tool Online Free - PDF Tool | TuHe PDF"
   },
   "mergePdf": {
     "name": "Merge PDF",
@@ -79,7 +80,8 @@
     "removeFile": "Remove file",
     "pageLabel": "Page {{page}}",
     "filePageTitle": "{{name}} (page {{page}})",
-    "auto": {}
+    "auto": {},
+    "pageTitle": "Merge PDF Online Free - PDF Tool | TuHe PDF"
   },
   "splitPdf": {
     "name": "Split PDF",
@@ -149,7 +151,8 @@
     "invalidRange": "Please enter a valid page range.",
     "selectEvenOdd": "Please select even or odd pages.",
     "noBookmarksFound": "No bookmarks found at the selected level.",
-    "auto": {}
+    "auto": {},
+    "pageTitle": "Split PDF Online Free - PDF Tool | TuHe PDF"
   },
   "compressPdf": {
     "name": "Compress PDF",
@@ -206,7 +209,8 @@
     "batchCompleteMsg": "Compressed {{count}} PDF(s). Total size reduced from {{original}} to {{compressed}} (Saved {{percent}}%).",
     "batchFinishedMsg": "Compressed {{count}} PDF(s). Total size: {{compressed}}.",
     "errorMsg": "An error occurred during compression. Please try again.",
-    "auto": {}
+    "auto": {},
+    "pageTitle": "Compress PDF Online Free - PDF Tool | TuHe PDF"
   },
   "pdfEditor": {
     "name": "PDF Editor",
@@ -223,7 +227,8 @@
     "downloadEdited": "Download Edited PDF",
     "downloadFailed": "Failed to download the edited PDF.",
     "loadFailed": "Failed to load the PDF Editor.",
-    "auto": {}
+    "auto": {},
+    "pageTitle": "PDF Editor Online Free - PDF Tool | TuHe PDF"
   },
   "jpgToPdf": {
     "name": "JPG to PDF",
@@ -248,7 +253,8 @@
     "createSuccess": "PDF created successfully!",
     "conversionErrorTitle": "Conversion Error",
     "convertFailed": "Failed to convert images to PDF.",
-    "auto": {}
+    "auto": {},
+    "pageTitle": "JPG to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "signPdf": {
     "name": "Sign PDF",
@@ -271,7 +277,8 @@
     "downloadSuccess": "Signed PDF downloaded successfully!",
     "exportFailedTitle": "Export failed",
     "exportFailedMsg": "Could not export the signed PDF. Please try again.",
-    "auto": {}
+    "auto": {},
+    "pageTitle": "Sign PDF Online Free - PDF Tool | TuHe PDF"
   },
   "cropPdf": {
     "name": "Crop PDF",
@@ -301,7 +308,8 @@
     },
     "dynamic": {
       "8adda31c0e": "{{value0}} • {{value1}}"
-    }
+    },
+    "pageTitle": "Crop PDF Online Free - PDF Tool | TuHe PDF"
   },
   "extractPages": {
     "name": "Extract Pages",
@@ -326,7 +334,8 @@
       "56a397a4ca": "{{value0}} • {{value1}} pages",
       "6a04af93b9": "Failed to load PDF file.",
       "9e33c22c50": "Please select a PDF file."
-    }
+    },
+    "pageTitle": "Extract Pages Online Free - PDF Tool | TuHe PDF"
   },
   "duplicateOrganize": {
     "name": "Duplicate & Organize",
@@ -362,7 +371,8 @@
       "6ea125d343": "Invalid Page Numbers",
       "88f1f34594": "Please enter a page order.",
       "3ee3f4d734": "Invalid Order"
-    }
+    },
+    "pageTitle": "Duplicate & Organize Online Free - PDF Tool | TuHe PDF"
   },
   "deletePages": {
     "name": "Delete Pages",
@@ -387,7 +397,8 @@
       "0564a7c930": "{{value0}} • {{value1}} pages",
       "e3eece8191": "Failed to load PDF file.",
       "1cf45e725e": "Please select a PDF file."
-    }
+    },
+    "pageTitle": "Delete Pages Online Free - PDF Tool | TuHe PDF"
   },
   "editBookmarks": {
     "name": "Edit Bookmarks",
@@ -435,7 +446,8 @@
       "b409ca64f8": "{{value0}}%",
       "b0765ec34b": "Page {{value0}} / {{value1}}",
       "726081a2a6": "X: {{value0}}, Y: {{value1}} "
-    }
+    },
+    "pageTitle": "Edit Bookmarks Online Free - PDF Tool | TuHe PDF"
   },
   "tableOfContents": {
     "name": "Table of Contents",
@@ -470,7 +482,8 @@
       "0784d816a9": "Split Pdf",
       "0a193ffe0a": "Edit Pdf",
       "ed40c6ff84": "Rotate Pdf"
-    }
+    },
+    "pageTitle": "Table of Contents Online Free - PDF Tool | TuHe PDF"
   },
   "pageNumbers": {
     "name": "Page Numbers",
@@ -497,7 +510,8 @@
       "b20dee6fba": "{{value0}} • {{value1}} pages",
       "1111bc148d": "Failed to load PDF file.",
       "26e6ad72a2": "Please upload a valid PDF file."
-    }
+    },
+    "pageTitle": "Page Numbers Online Free - PDF Tool | TuHe PDF"
   },
   "addPageLabels": {
     "name": "Add Page Labels",
@@ -557,7 +571,8 @@
       "UppercaseLetters": "Uppercase Letters",
       "NoLabelPrefixOnly": "No Label Prefix Only"
     },
-    "auto": {}
+    "auto": {},
+    "pageTitle": "Add Page Labels Online Free - PDF Tool | TuHe PDF"
   },
   "batesNumbering": {
     "name": "Bates Numbering",
@@ -620,7 +635,8 @@
       "c49b7cb420": "Failed to load one or more PDF files.",
       "705817c3d7": "Please upload valid PDF files.",
       "95189fa63d": "Loading PDFs..."
-    }
+    },
+    "pageTitle": "Bates Numbering Online Free - PDF Tool | TuHe PDF"
   },
   "addWatermark": {
     "name": "Add Watermark",
@@ -656,7 +672,8 @@
       "90d503c4bc": "Failed to load PDF file.",
       "7180e53d65": "{{value0}} ({{value1}}, {{value2}} pages)",
       "616dc4c0fd": "Please upload a valid PDF file."
-    }
+    },
+    "pageTitle": "Add Watermark Online Free - PDF Tool | TuHe PDF"
   },
   "headerFooter": {
     "name": "Header & Footer",
@@ -677,7 +694,8 @@
       "5a4117e257": "{{value0}} • {{value1}} pages",
       "6ad0775d4d": "Failed to load PDF file.",
       "cd24bc9f91": "Please upload a valid PDF file."
-    }
+    },
+    "pageTitle": "Header & Footer Online Free - PDF Tool | TuHe PDF"
   },
   "invertColors": {
     "name": "Invert Colors",
@@ -699,7 +717,8 @@
       "25238f70eb": "{{value0}} • {{value1}} pages",
       "9cf793b9aa": "Failed to load PDF file.",
       "68cde6dc8c": "Please upload a valid PDF file."
-    }
+    },
+    "pageTitle": "Invert Colors Online Free - PDF Tool | TuHe PDF"
   },
   "scannerEffect": {
     "name": "Scanner Effect",
@@ -738,7 +757,8 @@
       "7bf2857a6a": "No File",
       "758bbe8260": "{{value0}} • {{value1}} {{value2}}",
       "7e69040d7a": "{{value0}} • {{value1}}"
-    }
+    },
+    "pageTitle": "Scanner Effect Online Free - PDF Tool | TuHe PDF"
   },
   "adjustColors": {
     "name": "Adjust Colors",
@@ -775,7 +795,8 @@
       "c1d991c32d": "No File",
       "3eb296a549": "{{value0}} • {{value1}} {{value2}}",
       "6b0fedbc0a": "{{value0}} • {{value1}}"
-    }
+    },
+    "pageTitle": "Adjust Colors Online Free - PDF Tool | TuHe PDF"
   },
   "backgroundColor": {
     "name": "Background Color",
@@ -796,7 +817,8 @@
       "9a4711e8a0": "{{value0}} • {{value1}} pages",
       "f70d9e0d74": "Failed to load PDF file.",
       "b9cf61f80d": "Please upload a valid PDF file."
-    }
+    },
+    "pageTitle": "Background Color Online Free - PDF Tool | TuHe PDF"
   },
   "changeTextColor": {
     "name": "Change Text Color",
@@ -817,7 +839,8 @@
       "1b2ec4b858": "{{value0}} • {{value1}} pages",
       "0e00f36bee": "Failed to load PDF file.",
       "0602b07098": "Please upload a valid PDF file."
-    }
+    },
+    "pageTitle": "Change Text Color Online Free - PDF Tool | TuHe PDF"
   },
   "addStamps": {
     "name": "Add Stamps",
@@ -837,7 +860,8 @@
     },
     "dynamic": {
       "612ed3ad3b": "Remove file"
-    }
+    },
+    "pageTitle": "Add Stamps Online Free - PDF Tool | TuHe PDF"
   },
   "removeAnnotations": {
     "name": "Remove Annotations",
@@ -857,7 +881,8 @@
       "269b7169f3": "Please upload a PDF file first.",
       "2e1c623bdc": "Failed to load PDF file.",
       "b14673b883": "Please upload a valid PDF file."
-    }
+    },
+    "pageTitle": "Remove Annotations Online Free - PDF Tool | TuHe PDF"
   },
   "pdfFormFiller": {
     "name": "PDF Form Filler",
@@ -885,7 +910,8 @@
       "ffef0959f2": "Please upload a valid PDF file.",
       "e4f9662450": "Remove file",
       "50ecff21e2": ""
-    }
+    },
+    "pageTitle": "PDF Form Filler Online Free - PDF Tool | TuHe PDF"
   },
   "createPdfForm": {
     "name": "Create PDF Form",
@@ -919,7 +945,8 @@
       "ed40c6ff84": "Rotate Pdf",
       "bccc6f1f5c": "An error occurred.",
       "605a6e91fb": "Toggle Grid"
-    }
+    },
+    "pageTitle": "Create PDF Form Online Free - PDF Tool | TuHe PDF"
   },
   "removeBlankPages": {
     "name": "Remove Blank Pages",
@@ -949,7 +976,8 @@
       "2405929a27": "Failed to load PDF file.",
       "96820f89e0": "Please upload a valid PDF file.",
       "34d15e8ab1": "80"
-    }
+    },
+    "pageTitle": "Remove Blank Pages Online Free - PDF Tool | TuHe PDF"
   },
   "imageToPdf": {
     "name": "Images to PDF",
@@ -972,7 +1000,8 @@
       "7cef803f5f": "({{value0}})",
       "011eb5b704": "Some files were skipped. Only supported image formats are allowed.",
       "bfeaca68f4": "Invalid Files"
-    }
+    },
+    "pageTitle": "Images to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "pngToPdf": {
     "name": "PNG to PDF",
@@ -992,7 +1021,8 @@
       "06ee098f08": "({{value0}})",
       "31345167f1": "Some files were skipped. Only PNG images are allowed.",
       "9531a0069c": "Invalid Files"
-    }
+    },
+    "pageTitle": "PNG to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "webpToPdf": {
     "name": "WebP to PDF",
@@ -1012,7 +1042,8 @@
       "92f7b39102": "({{value0}})",
       "dac29db7dd": "Some files were skipped. Only WebP images are allowed.",
       "3c6e0f53ba": "Invalid Files"
-    }
+    },
+    "pageTitle": "WebP to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "svgToPdf": {
     "name": "SVG to PDF",
@@ -1032,7 +1063,8 @@
       "f71cb9d2cc": "({{value0}})",
       "a991f2ba33": "Some files were skipped. Only SVG graphics are allowed.",
       "0aaa760603": "Invalid Files"
-    }
+    },
+    "pageTitle": "SVG to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "bmpToPdf": {
     "name": "BMP to PDF",
@@ -1052,7 +1084,8 @@
       "363556b52f": "Converting BMP to PDF...",
       "5f18ec5ebc": "Please select at least one BMP file.",
       "2baabe2097": "({{value0}})"
-    }
+    },
+    "pageTitle": "BMP to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "heicToPdf": {
     "name": "HEIC to PDF",
@@ -1072,7 +1105,8 @@
       "858af38004": "Converting HEIC to PDF...",
       "5088e5e744": "Please select at least one HEIC file.",
       "37dc2dff42": "({{value0}})"
-    }
+    },
+    "pageTitle": "HEIC to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "tiffToPdf": {
     "name": "TIFF to PDF",
@@ -1092,7 +1126,8 @@
       "17f3b48e45": "Converting TIFF to PDF...",
       "bcb176a1ed": "Please select at least one TIFF file.",
       "64f495d84c": "({{value0}})"
-    }
+    },
+    "pageTitle": "TIFF to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "textToPdf": {
     "name": "Text to PDF",
@@ -1133,7 +1168,8 @@
       "77f8701633": "No Text",
       "331d64523c": "Please select at least one text file.",
       "8c9a7c9a67": "({{value0}})"
-    }
+    },
+    "pageTitle": "Text to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "jsonToPdf": {
     "name": "JSON to PDF",
@@ -1159,7 +1195,8 @@
       "0784d816a9": "Split Pdf",
       "0a193ffe0a": "Edit Pdf",
       "ed40c6ff84": "Rotate Pdf"
-    }
+    },
+    "pageTitle": "JSON to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "pdfToJpg": {
     "name": "PDF to JPG",
@@ -1202,7 +1239,8 @@
       "71ef9ac6e1": "90%",
       "67bab51c34": "{{value0}} • {{value1}} {{value2}}",
       "0b79ba5389": "{{value0}} • {{value1}}"
-    }
+    },
+    "pageTitle": "PDF to JPG Online Free - PDF Tool | TuHe PDF"
   },
   "pdfToPng": {
     "name": "PDF to PNG",
@@ -1232,7 +1270,8 @@
       "8c487e8a5e": "2.0x",
       "5866da68d4": "{{value0}} • {{value1}} {{value2}}",
       "dd75ee4288": "{{value0}} • {{value1}}"
-    }
+    },
+    "pageTitle": "PDF to PNG Online Free - PDF Tool | TuHe PDF"
   },
   "pdfToWebp": {
     "name": "PDF to WebP",
@@ -1262,7 +1301,8 @@
       "5ac64b1153": "85%",
       "f68d703739": "{{value0}} • {{value1}} {{value2}}",
       "f9c3ea897f": "{{value0}} • {{value1}}"
-    }
+    },
+    "pageTitle": "PDF to WebP Online Free - PDF Tool | TuHe PDF"
   },
   "pdfToBmp": {
     "name": "PDF to BMP",
@@ -1288,7 +1328,8 @@
     "dynamic": {
       "9f87fe7348": "{{value0}} • {{value1}} {{value2}}",
       "25e694ba1c": "{{value0}} • {{value1}}"
-    }
+    },
+    "pageTitle": "PDF to BMP Online Free - PDF Tool | TuHe PDF"
   },
   "pdfToTiff": {
     "name": "PDF to TIFF",
@@ -1329,7 +1370,8 @@
       "c37ab99d32": "Failed to load the image processor. Please ensure your browser supports SharedArrayBuffer (requires HTTPS or localhost).",
       "2d62cb9c86": "{{value0}} • {{value1}} {{value2}}",
       "7caf602278": "{{value0}} • {{value1}}"
-    }
+    },
+    "pageTitle": "PDF to TIFF Online Free - PDF Tool | TuHe PDF"
   },
   "pdfToCbz": {
     "name": "PDF to CBZ",
@@ -1384,7 +1426,8 @@
       "c58c3fe79a": "{{value0}}%",
       "982f70cf6e": "{{value0}} • {{value1}} {{value2}}",
       "dab1c2d482": "{{value0}} • {{value1}}"
-    }
+    },
+    "pageTitle": "PDF to CBZ Online Free - PDF Tool | TuHe PDF"
   },
   "pdfToGreyscale": {
     "name": "PDF to Greyscale",
@@ -1406,7 +1449,8 @@
       "47c2241964": "No File",
       "1aa9a280e2": "{{value0}} • {{value1}} {{value2}}",
       "6c08c2bcda": "{{value0}} • {{value1}}"
-    }
+    },
+    "pageTitle": "PDF to Greyscale Online Free - PDF Tool | TuHe PDF"
   },
   "pdfToJson": {
     "name": "PDF to JSON",
@@ -1431,7 +1475,8 @@
       "0784d816a9": "Split Pdf",
       "0a193ffe0a": "Edit Pdf",
       "ed40c6ff84": "Rotate Pdf"
-    }
+    },
+    "pageTitle": "PDF to JSON Online Free - PDF Tool | TuHe PDF"
   },
   "ocrPdf": {
     "name": "OCR PDF",
@@ -1495,7 +1540,8 @@
     },
     "dynamic": {
       "544984faf5": ""
-    }
+    },
+    "pageTitle": "OCR PDF Online Free - PDF Tool | TuHe PDF"
   },
   "alternateMerge": {
     "name": "Alternate & Mix Pages",
@@ -1523,7 +1569,8 @@
       "e8c65343b7": "{{value0}} • {{value1}} pages",
       "ca820f834d": "Loading PDF files...",
       "4ed44782a4": "{{value0}} PDF files selected"
-    }
+    },
+    "pageTitle": "Alternate & Mix Pages Online Free - PDF Tool | TuHe PDF"
   },
   "addAttachments": {
     "name": "Add Attachments",
@@ -1554,7 +1601,8 @@
       "8413da039e": "{{value0}} • Loading...",
       "b76c5703b2": "Worker error occurred. Check console for details.",
       "b699690e1e": "{{value0}} file(s) attached successfully."
-    }
+    },
+    "pageTitle": "Add Attachments Online Free - PDF Tool | TuHe PDF"
   },
   "extractAttachments": {
     "name": "Extract Attachments",
@@ -1573,7 +1621,8 @@
       "8b078d8f78": "The PDF file(s) do not contain any attachments to extract.",
       "99348f2682": "No Attachments",
       "88c0a4ed05": "{{value0}} attachment(s) extracted successfully!"
-    }
+    },
+    "pageTitle": "Extract Attachments Online Free - PDF Tool | TuHe PDF"
   },
   "editAttachments": {
     "name": "Edit Attachments",
@@ -1602,7 +1651,8 @@
       "df05883ac6": "No attachments found in this PDF.",
       "a74a16433e": "Worker error occurred. Check console for details.",
       "165ce95328": "Attachments updated successfully!"
-    }
+    },
+    "pageTitle": "Edit Attachments Online Free - PDF Tool | TuHe PDF"
   },
   "dividePages": {
     "name": "Divide Pages",
@@ -1633,7 +1683,8 @@
       "6b2f10d8ba": "Failed to load PDF file.",
       "07ff7bec76": "{{value0}} • {{value1}} pages",
       "c90d4c14de": "{{value0}} • Loading..."
-    }
+    },
+    "pageTitle": "Divide Pages Online Free - PDF Tool | TuHe PDF"
   },
   "addBlankPage": {
     "name": "Add Blank Page",
@@ -1662,7 +1713,8 @@
       "b6aab8baeb": "Failed to load PDF file.",
       "6d8c3c7f1a": "Enter 0 to insert at the beginning, or {{value0}} to insert at the end.",
       "ceda244c1d": "{{value0}} • {{value1}} pages"
-    }
+    },
+    "pageTitle": "Add Blank Page Online Free - PDF Tool | TuHe PDF"
   },
   "reversePages": {
     "name": "Reverse Pages",
@@ -1682,7 +1734,8 @@
       "3efb65a545": "Reversing {{value0}} ({{value1}}/{{value2}})...",
       "7c4c0a8d59": "Reversing page order...",
       "dbc8218413": "Please select one or more PDF files."
-    }
+    },
+    "pageTitle": "Reverse Pages Online Free - PDF Tool | TuHe PDF"
   },
   "rotatePdf": {
     "name": "Rotate PDF",
@@ -1705,7 +1758,8 @@
       "2e699f5dc4": "{{value0}} • {{value1}} pages",
       "0e83e638d1": "{{value0}} • Loading...",
       "0932d34a73": "{{value0}}"
-    }
+    },
+    "pageTitle": "Rotate PDF Online Free - PDF Tool | TuHe PDF"
   },
   "rotateCustom": {
     "name": "Rotate by Custom Degrees",
@@ -1731,7 +1785,8 @@
       "fa49b7e42c": "+",
       "03a27bd0ab": "-",
       "bbc1fbce78": "{{value0}}"
-    }
+    },
+    "pageTitle": "Rotate by Custom Degrees Online Free - PDF Tool | TuHe PDF"
   },
   "nUpPdf": {
     "name": "N-Up PDF",
@@ -1760,7 +1815,8 @@
       "b7290858ca": "Failed to load PDF file.",
       "2190a71612": "{{value0}} • {{value1}} pages",
       "a26647e4a0": "{{value0}} • Loading..."
-    }
+    },
+    "pageTitle": "N-Up PDF Online Free - PDF Tool | TuHe PDF"
   },
   "combineToSinglePage": {
     "name": "Combine to Single Page",
@@ -1785,7 +1841,8 @@
       "e152772381": "Failed to load PDF file.",
       "4784218459": "{{value0}} • {{value1}} pages",
       "33c063c234": "{{value0}} • Loading..."
-    }
+    },
+    "pageTitle": "Combine to Single Page Online Free - PDF Tool | TuHe PDF"
   },
   "viewMetadata": {
     "name": "View Metadata",
@@ -1805,7 +1862,8 @@
       "89046c7aaa": "{{value0}}",
       "f9436236fe": "Could not fully analyze the PDF. It may be corrupted or have an unusual structure.",
       "674878efd6": "Analyzing full PDF metadata..."
-    }
+    },
+    "pageTitle": "View Metadata Online Free - PDF Tool | TuHe PDF"
   },
   "editMetadata": {
     "name": "Edit Metadata",
@@ -1830,7 +1888,8 @@
       "c2b223c470": "{{value0}} • Loading...",
       "41a32c1325": "Value (e.g., Marketing)",
       "16ebbac701": "Key (e.g., Department)"
-    }
+    },
+    "pageTitle": "Edit Metadata Online Free - PDF Tool | TuHe PDF"
   },
   "pdfsToZip": {
     "name": "PDFs to ZIP",
@@ -1852,7 +1911,8 @@
       "c0127af1aa": "Adding {{value0}} ({{value1}}/{{value2}})...",
       "8b3c05ec36": "Creating ZIP archive...",
       "a2a6eeec53": "Please select PDF files to create a ZIP archive."
-    }
+    },
+    "pageTitle": "PDFs to ZIP Online Free - PDF Tool | TuHe PDF"
   },
   "comparePdfs": {
     "name": "Compare PDFs",
@@ -1926,7 +1986,8 @@
     },
     "missingPage": "Page {{page}} does not exist in this PDF.",
     "ocrRunning": "Running OCR on page {{page}}...",
-    "ocrProgress": "OCR: {{status}}"
+    "ocrProgress": "OCR: {{status}}",
+    "pageTitle": "Compare PDFs Online Free - PDF Tool | TuHe PDF"
   },
   "posterizePdf": {
     "name": "Posterize PDF",
@@ -1948,7 +2009,8 @@
       "0784d816a9": "Split Pdf",
       "0a193ffe0a": "Edit Pdf",
       "ed40c6ff84": "Rotate Pdf"
-    }
+    },
+    "pageTitle": "Posterize PDF Online Free - PDF Tool | TuHe PDF"
   },
   "fixPageSize": {
     "name": "Fix Page Size",
@@ -1976,7 +2038,8 @@
       "c3a6d5d19c": "Standardizing pages...",
       "5682a8deba": "Please upload a PDF file first.",
       "4e7b720a89": "No File"
-    }
+    },
+    "pageTitle": "Fix Page Size Online Free - PDF Tool | TuHe PDF"
   },
   "linearizePdf": {
     "name": "Linearize PDF",
@@ -2003,7 +2066,8 @@
       "ede4d9529f": "Optimizing PDFs for web view (linearizing)...",
       "20e8c58c29": "Please upload at least one PDF file.",
       "3fc2420257": "No PDF Files"
-    }
+    },
+    "pageTitle": "Linearize PDF Online Free - PDF Tool | TuHe PDF"
   },
   "pageDimensions": {
     "name": "Page Dimensions",
@@ -2025,7 +2089,8 @@
       "22472882ef": "{{value0}}°",
       "e6a574d0ee": "{{value0}} x {{value1}} {{value2}}",
       "f5deede4e1": ""
-    }
+    },
+    "pageTitle": "Page Dimensions Online Free - PDF Tool | TuHe PDF"
   },
   "removeRestrictions": {
     "name": "Remove Restrictions",
@@ -2055,7 +2120,8 @@
       "ae0f78ae39": "Initializing...",
       "9afe460e3d": "Please upload a PDF file first.",
       "2de7e01738": "No File"
-    }
+    },
+    "pageTitle": "Remove Restrictions Online Free - PDF Tool | TuHe PDF"
   },
   "repairPdf": {
     "name": "Repair PDF",
@@ -2078,7 +2144,8 @@
       "f63b91416a": "Repairing {{value0}} ({{value1}}/{{value2}})...",
       "2fd1eb15f7": "Initializing repair engine...",
       "a8baf6f1f3": "Please select one or more PDF files."
-    }
+    },
+    "pageTitle": "Repair PDF Online Free - PDF Tool | TuHe PDF"
   },
   "encryptPdf": {
     "name": "Encrypt PDF",
@@ -2110,7 +2177,8 @@
       "bec4cf0d52": "Input Required",
       "2c4bfd0f85": "Please upload a PDF file first.",
       "dd9d84669b": "No File"
-    }
+    },
+    "pageTitle": "Encrypt PDF Online Free - PDF Tool | TuHe PDF"
   },
   "sanitizePdf": {
     "name": "Sanitize PDF",
@@ -2139,7 +2207,8 @@
       "00e694f932": "No items were selected for removal or none were found in the PDF.",
       "0f6dc18170": "No Changes",
       "2d61fe671a": "No PDF document loaded."
-    }
+    },
+    "pageTitle": "Sanitize PDF Online Free - PDF Tool | TuHe PDF"
   },
   "decryptPdf": {
     "name": "Decrypt PDF",
@@ -2173,7 +2242,8 @@
       "8e6de480a6": "Please upload at least one PDF file.",
       "cb76be345d": "No File"
     },
-    "processFailed": "Decryption failed. Please try again."
+    "processFailed": "Decryption failed. Please try again.",
+    "pageTitle": "Decrypt PDF Online Free - PDF Tool | TuHe PDF"
   },
   "flattenPdf": {
     "name": "Flatten PDF",
@@ -2198,7 +2268,8 @@
       "459e7aabf1": "Flattening multiple PDFs...",
       "0b697fdcaa": "Flattening PDF...",
       "87d5747b51": "Please select at least one PDF file."
-    }
+    },
+    "pageTitle": "Flatten PDF Online Free - PDF Tool | TuHe PDF"
   },
   "removeMetadata": {
     "name": "Remove Metadata",
@@ -2224,7 +2295,8 @@
       "f39a42f002": "Removing all metadata...",
       "293b45eafc": "Please upload a PDF file first.",
       "9bb26fafb5": "No File"
-    }
+    },
+    "pageTitle": "Remove Metadata Online Free - PDF Tool | TuHe PDF"
   },
   "changePermissions": {
     "name": "Change Permissions",
@@ -2262,7 +2334,8 @@
       "15c99d78f8": "Owner Password Required",
       "d90ea623b2": "Please upload a PDF file first.",
       "a579977c69": "No File"
-    }
+    },
+    "pageTitle": "Change Permissions Online Free - PDF Tool | TuHe PDF"
   },
   "odtToPdf": {
     "name": "ODT to PDF",
@@ -2283,7 +2356,8 @@
       "f1311f9c1a": "Converting {{value0}}/{{value1}}: {{value2}}...",
       "3521d690a3": "Successfully converted {{value0}} to PDF.",
       "c2f620d499": "Please select at least one ODT file."
-    }
+    },
+    "pageTitle": "ODT to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "csvToPdf": {
     "name": "CSV to PDF",
@@ -2306,7 +2380,8 @@
       "c7241436c3": "Preparing conversion...",
       "f702b2d875": "Successfully converted {{value0}} to PDF.",
       "b3385b83d4": "Please select at least one CSV file."
-    }
+    },
+    "pageTitle": "CSV to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "rtfToPdf": {
     "name": "RTF to PDF",
@@ -2328,7 +2403,8 @@
       "edd7466655": "Converting multiple RTF files to PDF...",
       "f98b741f34": "Successfully converted {{value0}} to PDF.",
       "0a05ab24e5": "Please select at least one RTF file."
-    }
+    },
+    "pageTitle": "RTF to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "wordToPdf": {
     "name": "Word to PDF",
@@ -2371,7 +2447,8 @@
       "df5707067f": "Preparing preview...",
       "e6ffaaa90c": "Please upload a .docx file first.",
       "d6c3ffcaae": "No File"
-    }
+    },
+    "pageTitle": "Word to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "excelToPdf": {
     "name": "Excel to PDF",
@@ -2395,7 +2472,8 @@
       "14b92e28b5": "Converting {{value0}}/{{value1}}: {{value2}}...",
       "74fd7493ec": "Successfully converted {{value0}} to PDF.",
       "9d71f06b8f": "Please select at least one Excel file."
-    }
+    },
+    "pageTitle": "Excel to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "powerpointToPdf": {
     "name": "PowerPoint to PDF",
@@ -2416,7 +2494,8 @@
       "ec950a4de2": "Converting {{value0}}/{{value1}}: {{value2}}...",
       "94609a8cae": "Successfully converted {{value0}} to PDF.",
       "af1899e4e6": "Please select at least one PowerPoint file."
-    }
+    },
+    "pageTitle": "PowerPoint to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "markdownToPdf": {
     "name": "Markdown to PDF",
@@ -2443,7 +2522,8 @@
       "0784d816a9": "Split Pdf",
       "0a193ffe0a": "Edit Pdf",
       "ed40c6ff84": "Rotate Pdf"
-    }
+    },
+    "pageTitle": "Markdown to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "pdfBooklet": {
     "name": "PDF Booklet",
@@ -2488,7 +2568,8 @@
       "a9ad50182d": "Failed to load PDF file.",
       "efe8322c67": "{{value0}} • {{value1}} pages",
       "4ceed58d26": "{{value0}} • Loading..."
-    }
+    },
+    "pageTitle": "PDF Booklet Online Free - PDF Tool | TuHe PDF"
   },
   "xpsToPdf": {
     "name": "XPS to PDF",
@@ -2512,7 +2593,8 @@
       "ba195f6b9f": "Converting {{value0}}...",
       "791c680372": "Loading engine...",
       "7d896aa183": "Please select at least one {{value0}} file."
-    }
+    },
+    "pageTitle": "XPS to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "mobiToPdf": {
     "name": "MOBI to PDF",
@@ -2536,7 +2618,8 @@
       "b481d5a5b7": "Converting {{value0}}...",
       "74a5661b9d": "Loading engine...",
       "1a7abc7505": "Please select at least one {{value0}} file."
-    }
+    },
+    "pageTitle": "MOBI to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "epubToPdf": {
     "name": "EPUB to PDF",
@@ -2560,7 +2643,8 @@
       "c6ebd08683": "Converting {{value0}}...",
       "0642d0fcdb": "Loading engine...",
       "22b7b16873": "Please select at least one {{value0}} file."
-    }
+    },
+    "pageTitle": "EPUB to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "fb2ToPdf": {
     "name": "FB2 to PDF",
@@ -2584,7 +2668,8 @@
       "ae2a0e93af": "Converting {{value0}}...",
       "fa537f2cfc": "Loading engine...",
       "36e0761e1c": "Please select at least one {{value0}} file."
-    }
+    },
+    "pageTitle": "FB2 to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "cbzToPdf": {
     "name": "CBZ to PDF",
@@ -2607,7 +2692,8 @@
       "18d1e68f41": "Successfully converted {{value0}} to PDF.",
       "657ec1680f": "Converting {{value0}}...",
       "3767ecf995": "Please select at least one {{value0}} file."
-    }
+    },
+    "pageTitle": "CBZ to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "wpdToPdf": {
     "name": "WPD to PDF",
@@ -2631,7 +2717,8 @@
       "36762d3298": "Converting {{value0}}...",
       "899e0e00c9": "Loading engine...",
       "c05b666684": "Please select at least one {{value0}} file."
-    }
+    },
+    "pageTitle": "WPD to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "wpsToPdf": {
     "name": "WPS to PDF",
@@ -2655,7 +2742,8 @@
       "87eac04e52": "Converting {{value0}}...",
       "839bb28344": "Loading engine...",
       "4af39b0805": "Please select at least one {{value0}} file."
-    }
+    },
+    "pageTitle": "WPS to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "xmlToPdf": {
     "name": "XML to PDF",
@@ -2677,7 +2765,8 @@
       "57a112278a": "Converting multiple files...",
       "99ae92f70e": "Successfully converted {{value0}} to PDF.",
       "75c05e3e4d": "Please select at least one {{value0}} file."
-    }
+    },
+    "pageTitle": "XML to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "pagesToPdf": {
     "name": "Pages to PDF",
@@ -2701,7 +2790,8 @@
       "a8b3abcef2": "Converting {{value0}}...",
       "ef163b0d8e": "Loading engine...",
       "6e2b64f357": "Please select at least one {{value0}} file."
-    }
+    },
+    "pageTitle": "Pages to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "odgToPdf": {
     "name": "ODG to PDF",
@@ -2725,7 +2815,8 @@
       "333a6ea118": "Converting {{value0}}...",
       "245fd93b2b": "Loading engine...",
       "2a61c4b789": "Please select at least one {{value0}} file."
-    }
+    },
+    "pageTitle": "ODG to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "odsToPdf": {
     "name": "ODS to PDF",
@@ -2749,7 +2840,8 @@
       "4dd49077fa": "Converting {{value0}}...",
       "4fb6de5f25": "Loading engine...",
       "d2f643f113": "Please select at least one {{value0}} file."
-    }
+    },
+    "pageTitle": "ODS to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "odpToPdf": {
     "name": "ODP to PDF",
@@ -2773,7 +2865,8 @@
       "9ce08de74a": "Converting {{value0}}...",
       "bd598b8682": "Loading engine...",
       "3f9fd2f58f": "Please select at least one {{value0}} file."
-    }
+    },
+    "pageTitle": "ODP to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "pubToPdf": {
     "name": "PUB to PDF",
@@ -2797,7 +2890,8 @@
       "b0ddd3bf3e": "Converting {{value0}}...",
       "1d973bb300": "Loading engine...",
       "dbf215a4fb": "Please select at least one {{value0}} file."
-    }
+    },
+    "pageTitle": "PUB to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "vsdToPdf": {
     "name": "VSD to PDF",
@@ -2821,7 +2915,8 @@
       "63888e1e6e": "Converting {{value0}}...",
       "ecf9899daf": "Loading engine...",
       "582b0dbbdf": "Please select at least one {{value0}} file."
-    }
+    },
+    "pageTitle": "VSD to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "psdToPdf": {
     "name": "PSD to PDF",
@@ -2844,7 +2939,8 @@
       "c5e9e96303": "Converting {{value0}}...",
       "0a745921f6": "Loading engine...",
       "29f58a0131": "Please select at least one {{value0}} file."
-    }
+    },
+    "pageTitle": "PSD to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "pdfToSvg": {
     "name": "PDF to SVG",
@@ -2871,7 +2967,8 @@
       "733ccaa9fb": "Converting to SVG...",
       "67967aa49b": "Loading Engine...",
       "d03c2fba20": "Please upload at least one PDF file."
-    }
+    },
+    "pageTitle": "PDF to SVG Online Free - PDF Tool | TuHe PDF"
   },
   "extractTables": {
     "name": "Extract PDF Tables",
@@ -2899,7 +2996,8 @@
       "79bc8aecb7": "Loading Engine...",
       "823e9c0f13": "Please upload a PDF file first.",
       "73433d0bfe": "No File"
-    }
+    },
+    "pageTitle": "Extract PDF Tables Online Free - PDF Tool | TuHe PDF"
   },
   "pdfToCsv": {
     "name": "PDF to CSV",
@@ -2923,7 +3021,8 @@
       "267db28b36": "Loading Engine...",
       "ad03050928": "Please upload a PDF file first.",
       "69783ee8ef": "No File"
-    }
+    },
+    "pageTitle": "PDF to CSV Online Free - PDF Tool | TuHe PDF"
   },
   "pdfToExcel": {
     "name": "PDF to Excel",
@@ -2948,7 +3047,8 @@
       "9c4cf6ec2b": "Loading Engine...",
       "2591070d22": "Please upload a PDF file first.",
       "59516df9fc": "No File"
-    }
+    },
+    "pageTitle": "PDF to Excel Online Free - PDF Tool | TuHe PDF"
   },
   "pdfToText": {
     "name": "PDF to Text",
@@ -2976,7 +3076,8 @@
       "2a17bf4990": "({{value0}})",
       "fad4a0bfb8": "Some files were skipped. Only PDF files are allowed.",
       "3003a34022": "Invalid Files"
-    }
+    },
+    "pageTitle": "PDF to Text Online Free - PDF Tool | TuHe PDF"
   },
   "digitalSignPdf": {
     "name": "Digital Signature PDF",
@@ -3167,7 +3268,8 @@
       "bf0046c338": "Parsing {{value0}}...",
       "0b58b429fa": "Loading PDF engine...",
       "e2b1b6aa34": "Please select at least one {{value0}} file (.eml or .msg)."
-    }
+    },
+    "pageTitle": "Email to PDF Online Free - PDF Tool | TuHe PDF"
   },
   "fontToOutline": {
     "name": "Font to Outline",
@@ -3200,7 +3302,8 @@
       "b9e71d80df": "Processing multiple PDFs...",
       "7db89a06ed": "Converting fonts to outlines...",
       "ff6a22c28e": "Please select at least one PDF file."
-    }
+    },
+    "pageTitle": "Font to Outline Online Free - PDF Tool | TuHe PDF"
   },
   "deskewPdf": {
     "name": "Deskew PDF",
@@ -3239,7 +3342,8 @@
       "92c18c8069": "Please select at least one PDF file.",
       "d5273db50d": "({{value0}} KB)",
       "9462cdd58a": ""
-    }
+    },
+    "pageTitle": "Deskew PDF Online Free - PDF Tool | TuHe PDF"
   },
   "pdfToWord": {
     "name": "PDF to Word",
@@ -3268,7 +3372,8 @@
       "9ca476fb35": "{{value0}} • Could not load page count",
       "bc5256a321": "{{value0}} • {{value1}} pages",
       "55c6560fcf": "{{value0}} • {{value1}}"
-    }
+    },
+    "pageTitle": "PDF to Word Online Free - PDF Tool | TuHe PDF"
   },
   "extractImages": {
     "name": "Extract Images",
@@ -3295,7 +3400,8 @@
       "ffccc13590": "{{value0}} • Could not load page count",
       "71adf08528": "{{value0}} • {{value1}} pages",
       "de57f04c3f": "{{value0}} • {{value1}}"
-    }
+    },
+    "pageTitle": "Extract Images Online Free - PDF Tool | TuHe PDF"
   },
   "pdfToMarkdown": {
     "name": "PDF to Markdown",
@@ -3325,7 +3431,8 @@
       "9a68de9cfd": "Failed to convert PDF. It may be image-based or corrupted.",
       "223165f5fd": "Conversion Error",
       "e98ede1f9b": "Converting to Markdown..."
-    }
+    },
+    "pageTitle": "PDF to Markdown Online Free - PDF Tool | TuHe PDF"
   },
   "preparePdfForAi": {
     "name": "Prepare PDF for AI",
@@ -3356,7 +3463,8 @@
       "e06864fb5a": "{{value0}} • Could not load page count",
       "a807df92a6": "{{value0}} • {{value1}} pages",
       "570fd297dc": "{{value0}} • {{value1}}"
-    }
+    },
+    "pageTitle": "Prepare PDF for AI Online Free - PDF Tool | TuHe PDF"
   },
   "pdfOcg": {
     "name": "PDF OCG",
@@ -3392,7 +3500,8 @@
       "a3681b9fa8": "{{value0}} • Could not load page count",
       "ebdf5cb44f": "{{value0}} • {{value1}} pages",
       "1c578f88cb": "{{value0}} • {{value1}}"
-    }
+    },
+    "pageTitle": "PDF OCG Online Free - PDF Tool | TuHe PDF"
   },
   "pdfToPdfa": {
     "name": "PDF to PDF/A",
@@ -3424,7 +3533,8 @@
       "5c1931ff9b": "{{value0}} • Could not load page count",
       "7fdcb51569": "{{value0}} • {{value1}} pages",
       "1ebf7b22d2": "{{value0}} • {{value1}}"
-    }
+    },
+    "pageTitle": "PDF to PDF/A Online Free - PDF Tool | TuHe PDF"
   },
   "rasterizePdf": {
     "name": "Rasterize PDF",
@@ -3459,7 +3569,8 @@
       "3750c60c73": "{{value0}} • Could not load page count",
       "d3132c7fc8": "{{value0}} • {{value1}} pages",
       "5f28791b8c": "{{value0}} • {{value1}}"
-    }
+    },
+    "pageTitle": "Rasterize PDF Online Free - PDF Tool | TuHe PDF"
   },
   "pdfWorkflow": {
     "name": "PDF Workflow Builder",
@@ -3564,7 +3675,8 @@
     "executionFailed": "Workflow execution failed. Please try again.",
     "pdfLoadFailed": "Failed to load PDF. Please try again.",
     "imageLoadFailed": "Failed to load images. Please try again.",
-    "fileLoadFailed": "Failed to load files. Please try again."
+    "fileLoadFailed": "Failed to load files. Please try again.",
+    "pageTitle": "PDF Workflow Builder Online Free - PDF Tool | TuHe PDF"
   },
   "wasmSettings": {
     "title": "Advanced Features Settings",
@@ -3652,7 +3764,8 @@
       "fc7bc22501": "Missing Files"
     },
     "applying": "Applying {{mode}}...",
-    "processFailed": "Overlay processing failed. Please try again."
+    "processFailed": "Overlay processing failed. Please try again.",
+    "pageTitle": "PDF Overlay Online Free - PDF Tool | TuHe PDF"
   },
   "formCreator": {
     "dynamic": {

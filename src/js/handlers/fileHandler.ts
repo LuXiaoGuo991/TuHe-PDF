@@ -30,6 +30,7 @@ import {
 import * as pdfjsLib from 'pdfjs-dist';
 import { loadPdfDocument } from '../utils/load-pdf-document.js';
 import { t } from '../i18n/i18n';
+import i18next from 'i18next';
 const translate = (
   key: string,
   fallback: string,
@@ -288,9 +289,11 @@ async function handleSinglePdfUpload(toolId: string, file: File) {
             const hour = pdfDate.substring(10, 12);
             const minute = pdfDate.substring(12, 14);
             const second = pdfDate.substring(14, 16);
+            const locale =
+              i18next.resolvedLanguage || i18next.language || 'zh-CN';
             return new Date(
               `${year}-${month}-${day}T${hour}:${minute}:${second}Z`
-            ).toLocaleString();
+            ).toLocaleString(locale);
           } catch {
             return pdfDate;
           }
