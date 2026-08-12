@@ -770,7 +770,13 @@
       "705817c3d7": "Please upload valid PDF files.",
       "95189fa63d": "Loading PDFs..."
     },
-    "pageTitle": "Bates Numbering Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Bates Numbering Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "What is Bates numbering?",
+    "faq1a": "Bates numbering is a method of indexing legal documents for easy identification and retrieval. Each page receives a unique sequential number, often combined with a prefix or suffix.",
+    "faq2q": "Can I bates number multiple PDFs at once?",
+    "faq2a": "Yes! Upload multiple PDFs and the bates numbers will continue sequentially across all files. Drag files to reorder them.",
+    "faq3q": "Are my files secure?",
+    "faq3a": "Absolutely! All processing happens in your browser. Your files never leave your device."
   },
   "addWatermark": {
     "name": "Add Watermark",
@@ -824,7 +830,9 @@
     },
     "pageTitle": "Add Watermark Online Free - PDF Tool | TuHe PDF",
     "faq1q": "Is add watermark really free?",
-    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing."
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2a": "Completely secure! All processing happens in your browser, files never leave your device, ensuring full privacy.",
+    "faq3a": "None! Process files of any size, unlimited times, completely free."
   },
   "headerFooter": {
     "name": "Header & Footer",
@@ -861,7 +869,10 @@
     },
     "pageTitle": "Header & Footer Online Free - PDF Tool | TuHe PDF",
     "faq1q": "Is header footer really free?",
-    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing."
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no signup required, and unlimited file processing.",
+    "faq2a": "Completely secure! All processing happens in your browser, files never leave your device, ensuring full privacy.",
+    "faq3a": "None! Process files of any size, unlimited times, completely free.",
+    "invalidPageRange": "The specified page range is invalid."
   },
   "invertColors": {
     "name": "Invert Colors",
@@ -1549,7 +1560,13 @@
       "67bab51c34": "{{value0}} • {{value1}} {{value2}}",
       "0b79ba5389": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "PDF to JPG Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF to JPG Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is PDF to JPG really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no registration required, and unlimited file processing.",
+    "faq2q": "Which quality should I choose?",
+    "faq2a": "Use High or Maximum for print-quality images, Medium for web use, or Low to save disk space. Higher quality produces larger file sizes.",
+    "faq3q": "Are my files secure and private?",
+    "faq3a": "Absolutely! All processing happens entirely in your browser. Your files never leave your device, ensuring complete privacy."
   },
   "pdfToPng": {
     "name": "PDF to PNG",
@@ -1760,7 +1777,13 @@
       "982f70cf6e": "{{value0}} • {{value1}} {{value2}}",
       "dab1c2d482": "{{value0}} • {{value1}}"
     },
-    "pageTitle": "PDF to CBZ Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "PDF to CBZ Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is PDF to CBZ really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no registration required, and unlimited file processing.",
+    "faq2q": "What is CBZ format?",
+    "faq2a": "CBZ (Comic Book ZIP) is a popular format for digital comics and manga. It's simply a ZIP archive containing page images, supported by most comic book readers.",
+    "faq3q": "Are my files secure and private?",
+    "faq3a": "Absolutely! All processing happens entirely in your browser. Your files never leave your device, ensuring complete privacy."
   },
   "pdfToGreyscale": {
     "name": "PDF to Greyscale",
@@ -2597,7 +2620,9 @@
     "faq2q": "Are my files private and secure?",
     "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
     "faq3q": "Is there a file size limit?",
-    "faq3a": "No! Process files of any size, as many times as you want, completely free."
+    "faq3a": "No! Process files of any size, as many times as you want, completely free.",
+    "processingFailed": "Processing failed",
+    "noFilesLinearized": "No files linearized"
   },
   "pageDimensions": {
     "name": "Page Dimensions",
@@ -2741,7 +2766,8 @@
     "faq2q": "Are my files private and secure?",
     "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
     "faq3q": "Is there a file size limit?",
-    "faq3a": "No! Process files of any size, as many times as you want, completely free."
+    "faq3a": "No! Process files of any size, as many times as you want, completely free.",
+    "emptyResult": "Encryption result is an empty file."
   },
   "sanitizePdf": {
     "name": "Sanitize PDF",
@@ -2933,7 +2959,8 @@
     "faq2q": "Are my files private and secure?",
     "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
     "faq3q": "Is there a file size limit?",
-    "faq3a": "No! Process files of any size, as many times as you want, completely free."
+    "faq3a": "No! Process files of any size, as many times as you want, completely free.",
+    "emptyResult": "Processing result is an empty file."
   },
   "odtToPdf": {
     "name": "ODT to PDF",
@@ -3064,7 +3091,13 @@
       "e6ffaaa90c": "Please upload a .docx file first.",
       "d6c3ffcaae": "No File"
     },
-    "pageTitle": "Word to PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Word to PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is Word to PDF really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no registration required, and unlimited file processing.",
+    "faq2q": "Does conversion preserve formatting?",
+    "faq2a": "Yes! The conversion preserves fonts, images, and layouts from the original document automatically. All processing happens in your browser.",
+    "faq3q": "Are my files secure and private?",
+    "faq3a": "Absolutely! All processing happens entirely in your browser. Your files never leave your device, ensuring complete privacy."
   },
   "excelToPdf": {
     "name": "Excel to PDF",
@@ -3213,7 +3246,8 @@
     "faq2q": "Are my files private and secure?",
     "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
     "faq3q": "Is there a file size limit?",
-    "faq3a": "No! Process files of any size, as many times as you want, completely free."
+    "faq3a": "No! Process files of any size, as many times as you want, completely free.",
+    "pageSheetSummary": "Page {{page}}/{{total}} on sheet {{sheet}}/{{sheetTotal}}"
   },
   "xpsToPdf": {
     "name": "XPS to PDF",
@@ -3964,7 +3998,13 @@
       "4cff9de413": "Invalid Certificate",
       "934e0a255a": "Please select a .pem, .crt, .cer, or .der certificate file.",
       "ce9a858d22": "Please select a PDF file."
-    }
+    },
+    "faq1q": "Is Signature Validation really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no registration required, and unlimited file processing.",
+    "faq2q": "How does signature validation work?",
+    "faq2a": "Upload a signed PDF and our tool will automatically detect and validate all digital signatures. You can also upload a custom X.509 certificate to validate against a custom trust source.",
+    "faq3q": "Are my files secure and private?",
+    "faq3a": "Absolutely! All processing happens entirely in your browser. Your files never leave your device, ensuring complete privacy."
   },
   "timestampPdf": {
     "name": "Timestamp PDF",
@@ -4000,7 +4040,15 @@
       "90c1cb027a": "{{value0}} • {{value1}} pages",
       "bdf9248f12": "{{value0}} • Loading pages...",
       "a36f98a780": "Please select a PDF file."
-    }
+    },
+    "faq1q": "Is PDF Timestamp really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no registration required, and unlimited file processing.",
+    "faq2q": "What is a document timestamp?",
+    "faq2a": "A document timestamp (RFC 3161) is a cryptographic proof that your PDF existed at a specific point in time. A trusted Time Stamp Authority (TSA) server signs a hash of your document along with the current time.",
+    "faq3q": "Are my files secure and private?",
+    "faq3a": "Absolutely! Only a document digest is sent to the TSA, not the file itself. Your PDF files never leave your device.",
+    "faq4q": "Is there a file size limit?",
+    "faq4a": "No! Process files of any size, unlimited times, completely free."
   },
   "emailToPdf": {
     "name": "Email to PDF",
@@ -4039,7 +4087,10 @@
     "faq2q": "Are my files private and secure?",
     "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
     "faq3q": "Is there a file size limit?",
-    "faq3a": "No! Process files of any size, as many times as you want, completely free."
+    "faq3a": "No! Process files of any size, as many times as you want, completely free.",
+    "faq4q": "Are my files secure and private?",
+    "faq4a": "Absolutely! All processing happens entirely in your browser. Your email files never leave your device, ensuring complete privacy for sensitive communications.",
+    "unsupportedFileType": "Unsupported file type"
   },
   "fontToOutline": {
     "name": "Font to Outline",
@@ -4073,7 +4124,15 @@
       "7db89a06ed": "Converting fonts to outlines...",
       "ff6a22c28e": "Please select at least one PDF file."
     },
-    "pageTitle": "Font to Outline Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Font to Outline Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is Font to Outline really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no registration required, and unlimited file processing.",
+    "faq2q": "What is font to outline conversion?",
+    "faq2a": "Converting fonts to outlines means transforming text characters from font-based representations into vector paths/curves. This ensures the PDF looks identical on any device.",
+    "faq3q": "When should I use this tool?",
+    "faq3a": "Use this tool when preparing PDFs for professional printing, sharing documents with special fonts, or when you need to ensure consistent appearance across different systems and devices.",
+    "faq4q": "Are my files secure and private?",
+    "faq4a": "Absolutely! All processing happens entirely in your browser. Your files never leave your device, ensuring complete privacy."
   },
   "deskewPdf": {
     "name": "Deskew PDF",
@@ -4115,7 +4174,13 @@
       "d5273db50d": "({{value0}} KB)",
       "9462cdd58a": ""
     },
-    "pageTitle": "Deskew PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Deskew PDF Online Free - PDF Tool | TuHe PDF",
+    "faq1q": "Is PDF Deskew really free?",
+    "faq1a": "Yes! TuHe PDF is 100% free with no hidden fees, no registration required, and unlimited file processing.",
+    "faq2q": "How does deskewing work?",
+    "faq2a": "Our tool uses OpenCV's advanced image processing algorithms to detect skew angles with high precision. It works best on documents with clear text content.",
+    "faq3q": "Are my files secure and private?",
+    "faq3a": "Absolutely! All processing happens entirely in your browser. Your files never leave your device, ensuring complete privacy."
   },
   "pdfToWord": {
     "name": "PDF to Word",
@@ -4802,5 +4867,14 @@
     "labelOrPrompt": "Label / Prompt",
     "defaultJsScript": "app.alert(\"Hello World!\");",
     "visibility": "Visibility"
+  },
+  "overlayPdf": {
+    "emptyResult": "Processing produced an empty file."
+  },
+  "posterize": {
+    "invalidPageRange": "Invalid page range"
+  },
+  "wasmProvider": {
+    "invalidUrl": "Invalid URL"
   }
 }

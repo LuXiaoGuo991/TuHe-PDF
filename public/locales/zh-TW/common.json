@@ -5,7 +5,7 @@
     "contact": "聯絡我們",
     "licensing": "許可",
     "allTools": "所有工具",
-    "docs": "檔案",
+    "docs": "文檔",
     "openMainMenu": "開啟主選單",
     "language": "語言",
     "searchLanguage": "搜尋語言…",
@@ -231,7 +231,7 @@
       "answer": "是的。TuHe PDF 完全符合 GDPR。由於所有檔案處理都在您的瀏覽器中本地進行，並且我們從不收集或將您的檔案傳輸到任何伺服器，因此我們無法訪問您的資料。這確保您始終掌控您的檔案。"
     },
     "dataStorage": {
-      "question": "你們會儲存或跟蹤我的任何檔案嗎？",
+      "question": "您會儲存或跟蹤我的任何檔案嗎？",
       "answer": "不。我們從不儲存、跟蹤或記錄您的檔案。您在 TuHe PDF 上所做的所有操作都在您的瀏覽器記憶體中進行，並在您關閉頁面後消失。沒有上傳，沒有歷史記錄，也沒有涉及伺服器。"
     },
     "different": {
@@ -243,7 +243,7 @@
       "answer": "通過完全在您的瀏覽器內部執行，TuHe PDF 確保您的檔案從未離開您的裝置。這消除了伺服器駭客攻擊、資料洩露或未經授權訪問的風險。您的檔案始終屬於您。"
     },
     "analytics": {
-      "question": "你們使用 Cookie 或分析來跟蹤我嗎？",
+      "question": "您使用 Cookie 或分析來跟蹤我嗎？",
       "answer": "我們關心您的隱私。TuHe PDF 不會跟蹤個人資訊。我們僅使用 Simple Analytics 檢視匿名訪問計數。這意味著我們可以知道有多少使用者訪問我們的網站，但我們永遠不知道您是誰。Simple Analytics 完全符合 GDPR 並尊重您的隱私。"
     },
     "privateSecure": "我的檔案安全私密嗎？",
@@ -333,7 +333,7 @@
       "b770559d57": "範本\"{{value0}}\"已載入。",
       "3e37f1d2b7": "已載入",
       "faec63c70c": "載入",
-      "03e67a394e": "設定",
+      "03e67a394e": "範本 \"{{value0}}\" 已儲存。",
       "be0ce2cc7a": "已儲存",
       "4db44d4a58": "該名稱的範本已存在。",
       "9181ca520d": "請輸入名稱。",
@@ -637,9 +637,9 @@
     "whoWeAre": "我們是誰",
     "whoWeAreContent": "TuHe PDF（圖合）是一個專注於辦公場景的 PDF 工作臺。我們把日常最常用的 PDF 操作——合併、拆分、壓縮、格式轉換、頁面整理、簽名與水印——集中在一個統一的介面裡，讓你開啟瀏覽器就能完成全部工作。",
     "clientSide": "純瀏覽器端處理",
-    "clientSideContent": "我們的核心原則是：<strong>你的檔案屬於你</strong>。 所有 PDF 處理都在你自己的瀏覽器中完成（基於 JavaScript 與 WebAssembly），檔案從頭到尾不會上傳到任何伺服器。這意味著：",
-    "clientSideItem1": "檔案內容、檔名和後設資料都不會離開你的電腦；",
-    "clientSideItem2": "沒有上傳等待，處理速度只取決於你的裝置效能；",
+    "clientSideContent": "我們的核心原則是：<strong>您的檔案屬於你</strong>。 所有 PDF 處理都在你自己的瀏覽器中完成（基於 JavaScript 與 WebAssembly），檔案從頭到尾不會上傳到任何伺服器。這意味著：",
+    "clientSideItem1": "檔案內容、檔名和後設資料都不會離開您的電腦；",
+    "clientSideItem2": "沒有上傳等待，處理速度只取決於您的裝置效能；",
     "clientSideItem3": "沒有檔案大小和次數限制，無需註冊登入。",
     "workbenchDesign": "工作臺式設計",
     "workbenchDesignContent": "與「一個工具一個頁面」的傳統站點不同，TuHe PDF 採用工作臺式佈局：左側是工具卡片欄，右側是多標籤工作區。你可以同時開啟多個工具、在標籤之間自由切換，像在桌面軟體裡一樣處理檔案。",
@@ -648,12 +648,12 @@
   },
   "contactPage": {
     "heading": "聯絡我們",
-    "subtitle": "我們很樂意聽到你的反饋",
+    "subtitle": "我們很樂意聽到您的反饋",
     "feedback": "問題反饋與功能建議",
     "feedbackContent": "如果你在使用 TuHe PDF 時遇到問題，或者希望我們增加某個工具或功能，歡迎通過郵件告訴我們。請儘量附上：使用的瀏覽器與版本、操作步驟、以及（如方便）控制臺報錯截圖。",
     "email": "郵箱：",
     "fileNotice": "關於檔案問題的說明",
-    "fileNoticeContent": "TuHe PDF 的所有處理都在你的瀏覽器本地完成，<strong>請不要通過郵件傳送你的 PDF 檔案</strong>。如果某個檔案處理失敗，描述檔案的大致情況（頁數、大小、是否加密、來源軟體）通常就足夠我們定位問題。",
+    "fileNoticeContent": "TuHe PDF 的所有處理都在您的瀏覽器本地完成，<strong>請不要通過郵件傳送您的 PDF 檔案</strong>。如果某個檔案處理失敗，描述檔案的大致情況（頁數、大小、是否加密、來源軟體）通常就足夠我們定位問題。",
     "cooperation": "合作與其他事宜",
     "cooperationContent": "商務合作、媒體報道或其他事宜，同樣請傳送至",
     "willReply": "我們會盡快回復。"
@@ -667,10 +667,10 @@
     "upstreamContent": "TuHe PDF 基於 <a href=\"https://github.com/alam00000/bentopdf\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-indigo-400 hover:underline\">BentoPDF</a> 二次開發。感謝上游作者與貢獻者的工作；BentoPDF 同樣以 AGPL-3.0 許可釋出。",
     "thirdParty": "3. 第三方元件",
     "thirdPartyContent": "本軟體使用了若干優秀的開源庫，包括但不限於 PDF-lib、PDF.js、PDF-lib.js 生態工具及 WebAssembly 元件。這些元件各自的許可證（MIT、Apache-2.0 等）歸其作者所有，詳見原始碼倉庫的依賴清單。",
-    "yourFiles": "4. 你的檔案",
-    "yourFilesContent": "軟體許可不影響你檔案的版權。使用 TuHe PDF 處理的檔案，其全部權利始終歸你所有；處理過程在你的瀏覽器本地完成，我們不會對檔案主張任何權利，也無法接觸其內容。",
+    "yourFiles": "4. 您的檔案",
+    "yourFilesContent": "軟體許可不影響你檔案的版權。使用 TuHe PDF 處理的檔案，其全部權利始終歸你所有；處理過程在您的瀏覽器本地完成，我們不會對檔案主張任何權利，也無法接觸其內容。",
     "disclaimer": "5. 免責宣告",
-    "disclaimerContent": "本軟體按「現狀」提供，不附帶任何明示或默示的保證，包括但不限於適銷性和特定用途適用性的保證。使用本軟體產生的風險由你自行承擔，詳見 AGPL-3.0 許可證條款。"
+    "disclaimerContent": "本軟體按「現狀」提供，不附帶任何明示或默示的保證，包括但不限於適銷性和特定用途適用性的保證。使用本軟體產生的風險由您自行承擔，詳見 AGPL-3.0 許可證條款。"
   },
   "privacy": {
     "heading": "隱私政策",

@@ -69,13 +69,7 @@
     "vue": "^3.5.29"
   },
   "dependencies": {
-    "@fontsource/cedarville-cursive": "^5.2.7",
-    "@fontsource/dancing-script": "^5.2.8",
     "@fontsource/dm-sans": "^5.2.8",
-    "@fontsource/great-vibes": "^5.2.8",
-    "@fontsource/kalam": "^5.2.8",
-    "@fontsource/lato": "^5.2.7",
-    "@fontsource/merriweather": "^5.2.11",
     "@kenjiuno/msgreader": "^1.28.0",
     "@matbee/libreoffice-converter": "^2.5.0",
     "@neslinesli93/qpdf-wasm": "^0.3.0",

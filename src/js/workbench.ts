@@ -552,7 +552,13 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
     const closeBtn = document.createElement('button');
     closeBtn.type = 'button';
     closeBtn.className = 'wb-tab-close';
-    closeBtn.setAttribute('aria-label', `关闭 ${title}`);
+    closeBtn.setAttribute(
+      'aria-label',
+      t('workbench.closeTabAria', {
+        name: title,
+        defaultValue: `Close ${title}`,
+      })
+    );
     closeBtn.innerHTML = '<i data-lucide="x" class="w-3.5 h-3.5"></i>';
     closeBtn.addEventListener('click', (e) => {
       e.stopPropagation();
