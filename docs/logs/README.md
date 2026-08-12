@@ -10,7 +10,7 @@
 | [2026-08-09](2026-08-09.md) | 前端门面规划、办公用户审计、部署准备、DNS/安全组记录、TuHe T/H 标志探索和技能安装。                    | progress, planning, testing, deployment, frontend, design, logo, imagegen, office-users, skills |
 | [2026-08-10](2026-08-10.md) | 工作台标签页无任务时复用替换、原位替换动画优化，并移除全部 115 个工具页面的页脚区块。                  | workbench, tabs, footer, animation, frontend                                                    |
 | [2026-08-11](2026-08-11.md) | Review 国际化和品牌配置，实施同源资源与中文静态渲染；提交前审查记录资源复现、URL/CSP、DOM 和字体阻断。 | review, i18n, branding, seo, testing, wasm, ocr, offline, security, delivery                    |
-| [2026-08-12](2026-08-12.md) | 中文 UX 四维复审、修复并再复审：覆盖动态 DOM 文案、日期元数据、字号、键同步与完整构建。                | review, i18n, chinese-ux, zh-TW, accessibility, testing, fonts, build                           |
+| [2026-08-12](2026-08-12.md) | 中文 UX 四维复审；中国大陆法律合规审查；实施个人免费项目的备案、隐私、同源资源与时间戳功能收敛。       | review, i18n, chinese-ux, legal, privacy, icp, cross-border, security, testing                  |
 
 ## 查询方式
 

@@ -69,7 +69,6 @@ export * from './split-node';
 export * from './svg-to-pdf-node';
 export * from './table-of-contents-node';
 export * from './text-to-pdf-node';
-export * from './timestamp-node';
 export * from './vsd-to-pdf-node';
 export * from './watermark-node';
 export * from './word-to-pdf-node';

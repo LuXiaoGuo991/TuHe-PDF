@@ -1,7 +1,5 @@
 import { defineConfig } from 'vitest/config';
 import type { IncomingMessage, ServerResponse } from 'http';
-import http from 'http';
-import https from 'https';
 import type { Connect, Plugin } from 'vite';
 import { loadEnv } from 'vite';
 // import basicSsl from '@vitejs/plugin-basic-ssl';
@@ -197,161 +195,13 @@ function createLanguageMiddleware(isDev: boolean): Connect.NextHandleFunction {
   };
 }
 
-function buildCorsProxyAllowedHosts(): Set<string> {
-  const hosts = new Set<string>([
-    'cdn.jsdelivr.net',
-    'fonts.googleapis.com',
-    'fonts.gstatic.com',
-    'tuhe-pdf-cors-proxy.tuhe-pdf.workers.dev',
-    'timestamp.digicert.com',
-    'timestamp.sectigo.com',
-    'ts.ssl.com',
-    'freetsa.org',
-    'tsa.mesign.com',
-  ]);
-
-  const envHostSources = [
-    process.env.VITE_CORS_PROXY_URL,
-    process.env.VITE_WASM_PYMUPDF_URL,
-    process.env.VITE_WASM_GS_URL,
-    process.env.VITE_WASM_CPDF_URL,
-    process.env.VITE_TESSERACT_WORKER_URL,
-    process.env.VITE_TESSERACT_CORE_URL,
-    process.env.VITE_TESSERACT_LANG_URL,
-    process.env.VITE_OCR_FONT_BASE_URL,
-  ];
-  for (const raw of envHostSources) {
-    if (!raw) continue;
-    try {
-      hosts.add(new URL(raw).hostname);
-    } catch {
-      console.warn(
-        `[vite] Ignoring malformed VITE_* URL in dev CORS proxy allowlist: ${raw}`
-      );
-    }
-  }
-
-  const extra = process.env.VITE_DEV_CORS_PROXY_EXTRA_HOSTS;
-  if (extra) {
-    for (const host of extra.split(',').map((s) => s.trim())) {
-      if (host) hosts.add(host);
-    }
-  }
-
-  return hosts;
-}
-
-const CORS_PROXY_ALLOWED_HOSTS = buildCorsProxyAllowedHosts();
-
-function createCorsProxyMiddleware(): Connect.NextHandleFunction {
-  return (
-    req: IncomingMessage,
-    res: ServerResponse,
-    next: Connect.NextFunction
-  ): void => {
-    if (!req.url?.startsWith('/cors-proxy')) return next();
-
-    if (req.method === 'OPTIONS') {
-      res.setHeader('Access-Control-Allow-Origin', req.headers.origin || '*');
-      res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
-      res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-      res.statusCode = 204;
-      res.end();
-      return;
-    }
-
-    const parsed = new URL(req.url, 'http://localhost');
-    const targetUrl = parsed.searchParams.get('url');
-    if (!targetUrl) {
-      res.statusCode = 400;
-      res.end('Missing url parameter');
-      return;
-    }
-
-    let targetHost: string;
-    let targetProtocol: string;
-    try {
-      const parsedTarget = new URL(targetUrl);
-      targetHost = parsedTarget.hostname;
-      targetProtocol = parsedTarget.protocol;
-    } catch {
-      res.statusCode = 400;
-      res.end('Invalid url parameter');
-      return;
-    }
-
-    if (targetProtocol !== 'https:' && targetProtocol !== 'http:') {
-      res.statusCode = 400;
-      res.end('Unsupported protocol');
-      return;
-    }
-
-    if (!CORS_PROXY_ALLOWED_HOSTS.has(targetHost)) {
-      console.warn(`[CORS Proxy] Blocked disallowed host: ${targetHost}`);
-      res.statusCode = 403;
-      res.end(`Host not allowed: ${targetHost}`);
-      return;
-    }
-
-    console.log(`[CORS Proxy] ${req.method} ${targetUrl}`);
-
-    const bodyChunks: Buffer[] = [];
-    req.on('data', (chunk: Buffer) => bodyChunks.push(chunk));
-    req.on('end', () => {
-      const body = Buffer.concat(bodyChunks);
-      const target = new URL(targetUrl);
-      const transport = target.protocol === 'https:' ? https : http;
-
-      const headers: Record<string, string> = {};
-      if (req.headers['content-type']) {
-        headers['Content-Type'] = req.headers['content-type'] as string;
-      }
-      if (body.length > 0) {
-        headers['Content-Length'] = String(body.length);
-      }
-
-      const proxyReq = transport.request(
-        targetUrl,
-        { method: req.method || 'GET', headers },
-        (proxyRes) => {
-          console.log(
-            `[CORS Proxy] Response: ${proxyRes.statusCode} from ${targetUrl}`
-          );
-          res.setHeader(
-            'Access-Control-Allow-Origin',
-            req.headers.origin || '*'
-          );
-          res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
-          res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-          res.statusCode = proxyRes.statusCode || 200;
-          proxyRes.pipe(res);
-        }
-      );
-
-      proxyReq.on('error', (err) => {
-        const msg = String(err.message).replace(/[\r\n]+/g, ' ');
-        console.error('[CORS Proxy] Error:', msg);
-        res.statusCode = 502;
-        res.end(`Proxy error: ${msg}`);
-      });
-
-      if (body.length > 0) {
-        proxyReq.write(body);
-      }
-      proxyReq.end();
-    });
-  };
-}
-
 function languageRouterPlugin(): Plugin {
   return {
     name: 'language-router',
     configureServer(server) {
-      server.middlewares.use(createCorsProxyMiddleware());
       server.middlewares.use(createLanguageMiddleware(true));
     },
     configurePreviewServer(server) {
-      server.middlewares.use(createCorsProxyMiddleware());
       server.middlewares.use(createLanguageMiddleware(false));
     },
   };
@@ -446,13 +296,7 @@ export default defineConfig(({ mode }) => {
   const fileEnv = loadEnv(mode, __dirname, '');
   const envOf = (key: string): string => process.env[key] ?? fileEnv[key] ?? '';
 
-  const USE_CDN = process.env.VITE_USE_CDN === 'true';
-
-  if (USE_CDN) {
-    console.log('[Vite] Using CDN for WASM files (with local fallback)');
-  } else {
-    console.log('[Vite] Using local WASM files only');
-  }
+  console.log('[Vite] Using same-origin local assets only');
 
   const staticCopyTargets = [
     {
@@ -729,7 +573,6 @@ export default defineConfig(({ mode }) => {
             __dirname,
             'src/pages/digital-sign-pdf.html'
           ),
-          'timestamp-pdf': resolve(__dirname, 'src/pages/timestamp-pdf.html'),
           'validate-signature-pdf': resolve(
             __dirname,
             'src/pages/validate-signature-pdf.html'
@@ -740,7 +583,6 @@ export default defineConfig(({ mode }) => {
             'src/pages/font-to-outline.html'
           ),
           'deskew-pdf': resolve(__dirname, 'src/pages/deskew-pdf.html'),
-          'wasm-settings': resolve(__dirname, 'src/pages/wasm-settings.html'),
           'bates-numbering': resolve(
             __dirname,
             'src/pages/bates-numbering.html'

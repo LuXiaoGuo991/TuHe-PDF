@@ -37,7 +37,6 @@ import { SanitizeNode } from './sanitize-node';
 import { EncryptNode } from './encrypt-node';
 import { DecryptNode } from './decrypt-node';
 import { DigitalSignNode } from './digital-sign-node';
-import { TimestampNode } from './timestamp-node';
 import { RedactNode } from './redact-node';
 import { RepairNode } from './repair-node';
 import { PdfToTextNode } from './pdf-to-text-node';
@@ -590,14 +589,6 @@ export const nodeRegistry: Record<string, NodeRegistryEntry> = {
     description: 'Apply a digital signature to PDF',
     factory: () => new DigitalSignNode(),
     toolPageId: 'digital-sign-pdf',
-  },
-  TimestampNode: {
-    label: 'Timestamp',
-    category: 'Secure PDF',
-    icon: 'ph-clock',
-    description: 'Add an RFC 3161 document timestamp',
-    factory: () => new TimestampNode(),
-    toolPageId: 'timestamp-pdf',
   },
   RedactNode: {
     label: 'Redact',

@@ -3,108 +3,52 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Primary Meta Tags -->
-    <title>联系我们 - TuHe PDF</title>
+    <title>联系与投诉 - 图合PDF工具（TuHe PDF）</title>
     <meta
       name="description"
-      content="联系 TuHe PDF（图合）团队：问题反馈、功能建议与合作洽谈。"
+      content="图合PDF工具（TuHe PDF）的联系、个人信息权利、侵权投诉和安全漏洞报告渠道。"
     />
     <meta name="robots" content="index, follow" />
-
-    <!-- Canonical URL -->
     <link rel="canonical" href="https://www.tuhepdf.cn/contact" />
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.tuhepdf.cn/contact" />
-    <meta property="og:title" content="联系我们 - TuHe PDF" />
-    <meta
-      property="og:description"
-      content="联系 TuHe PDF（图合）团队：问题反馈、功能建议与合作洽谈。"
-    />
-    <meta property="og:site_name" content="TuHe PDF" />
-
     <link href="/src/css/styles.css" rel="stylesheet" />
-
-    <!-- Web App Manifest -->
     <link rel="manifest" href="/site.webmanifest" />
-
-    <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="192x192"
-      href="/images/favicon-192x192.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="512x512"
-      href="/images/favicon-512x512.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/images/apple-touch-icon.png"
-    />
-    <link rel="icon" href="/favicon.ico" sizes="32x32" />
   </head>
-
   <body class="antialiased bg-gray-900 text-gray-300">
     {{> navbar }}
-
-    <div id="app" class="container mx-auto p-4 md:p-8">
-      <section class="max-w-4xl mx-auto py-12">
-        <h1
-          class="text-4xl md:text-5xl font-bold text-center text-white mb-4"
-          data-i18n="contactPage.heading"
-        >
-          联系我们
+    <main class="container mx-auto p-4 md:p-8">
+      <section class="mx-auto max-w-4xl py-12">
+        <h1 class="mb-4 text-center text-4xl font-bold text-white md:text-5xl">
+          联系与投诉
         </h1>
-        <p class="text-center text-gray-500" data-i18n="contactPage.subtitle">
-          我们很乐意听到你的反馈
+        <p class="text-center text-gray-500">
+          图合PDF工具（TuHe PDF），由个人开发者运营
         </p>
-
         <div class="legal-content mt-12">
-          <h2 data-i18n="contactPage.feedback">问题反馈与功能建议</h2>
-          <p data-i18n="contactPage.feedbackContent">
-            如果你在使用 TuHe PDF 时遇到问题，或者希望我们增加某个工具或功能，
-            欢迎通过邮件告诉我们。请尽量附上：使用的浏览器与版本、操作步骤、
-            以及（如方便）控制台报错截图。
-          </p>
+          <h2>联系渠道</h2>
           <p>
-            <span data-i18n="contactPage.email">邮箱：</span>
+            请发送邮件至
             <a
               href="mailto:contact@tuhepdf.cn"
               class="text-indigo-400 hover:underline"
               >contact@tuhepdf.cn</a
-            >
+            >。该邮箱受理工具问题反馈、个人信息查阅/更正/删除请求、投诉、版权侵权通知和安全漏洞报告；我们将在
+            15 个工作日内答复。
           </p>
 
-          <h2 data-i18n="contactPage.fileNotice">关于文件问题的说明</h2>
-          <p data-i18n-html="contactPage.fileNoticeContent">
-            TuHe PDF 的所有处理都在你的浏览器本地完成，
-            <strong>请不要通过邮件发送你的 PDF 文件</strong>。
-            如果某个文件处理失败，描述文件的大致情况（页数、大小、是否加密、来源软件）
-            通常就足够我们定位问题。
-          </p>
-
-          <h2 data-i18n="contactPage.cooperation">合作与其他事宜</h2>
+          <h2>请勿发送敏感材料</h2>
           <p>
-            <span data-i18n="contactPage.cooperationContent"
-              >商务合作、媒体报道或其他事宜，同样请发送至</span
-            >
-            <a
-              href="mailto:contact@tuhepdf.cn"
-              class="text-indigo-400 hover:underline"
-              >contact@tuhepdf.cn</a
-            >，<span data-i18n="contactPage.willReply">我们会尽快回复。</span>
+            本站不接收或保存 PDF。请不要通过邮件发送
+            PDF、身份证、护照、证书私钥、密码或其他敏感材料。报告处理问题时，请提供浏览器版本、复现步骤、文件页数/大小、是否加密等必要的非敏感说明。
+          </p>
+
+          <h2>侵权与安全报告</h2>
+          <p>
+            版权或其他侵权通知请说明权利归属、涉嫌侵权页面地址和可联系的方式。安全漏洞报告请说明影响、复现条件和建议的安全联系方式；请避免公开披露可能危及用户或网站安全的细节，直至问题得到处理。
           </p>
         </div>
       </section>
-    </div>
-
+    </main>
     {{> footer }}
     <script type="module" src="src/js/utils/lucide-init.ts"></script>
     <script type="module" src="src/js/mobileMenu.ts"></script>
