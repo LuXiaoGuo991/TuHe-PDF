@@ -158,9 +158,13 @@ function displayResults(result: DeskewResult): void {
       return `
         <div class="flex items-center gap-2 text-sm py-1">
           <i data-lucide="${icon}" class="w-4 h-4 ${color}"></i>
-          <span class="text-gray-300">Page ${idx + 1}:</span>
+          <span class="text-gray-300">${translate(
+            'tools:deskewPdf.pageNumber',
+            'Page {{page}}:',
+            { page: idx + 1 }
+          )}</span>
           <span class="${color}">${angle.toFixed(2)}°</span>
-          ${wasCorrected ? '<span class="text-green-400 text-xs">(corrected)</span>' : ''}
+          ${wasCorrected ? `<span class="text-green-400 text-xs">${translate('tools:deskewPdf.corrected', '(corrected)')}</span>` : ''}
         </div>
       `;
     })
