@@ -1,5 +1,6 @@
 import i18next from 'i18next';
 import HttpBackend from 'i18next-http-backend';
+import DOMPurify from 'dompurify';
 import { fallbackLanguages } from './fallback-languages.js';
 
 // Supported languages
@@ -192,26 +193,45 @@ export const changeLanguage = (lang: SupportedLanguage): void => {
 
 // Apply translations to all elements with data-i18n attribute
 export const applyTranslations = (): void => {
-  document.querySelectorAll('[data-i18n]').forEach((element) => {
-    const key = element.getAttribute('data-i18n');
+  document.querySelectorAll('[data-i18n-html]').forEach((element) => {
+    const key = element.getAttribute('data-i18n-html');
     if (key) {
       const translation = t(key);
       if (translation && translation !== key) {
-        // Preserve child elements (e.g. icons) by only updating text nodes;
-        // for elements with no children, use textContent to avoid XSS.
-        if (element.children.length > 0) {
-          for (const node of element.childNodes) {
-            if (node.nodeType === Node.TEXT_NODE) {
-              node.textContent = translation;
-              break;
-            }
-          }
-        } else {
-          element.textContent = translation;
-        }
+        const sanitized = DOMPurify.sanitize(translation);
+        const parsed = new DOMParser().parseFromString(sanitized, 'text/html');
+        element.replaceChildren(...Array.from(parsed.body.childNodes));
       }
     }
   });
+
+  document
+    .querySelectorAll('[data-i18n]:not([data-i18n-html])')
+    .forEach((element) => {
+      const key = element.getAttribute('data-i18n');
+      if (key) {
+        const translation = t(key);
+        if (translation && translation !== key) {
+          // Preserve child elements (e.g. icons) by updating only direct text.
+          if (element.children.length > 0) {
+            const textNode = Array.from(element.childNodes).find(
+              (node) =>
+                node.nodeType === Node.TEXT_NODE && node.textContent?.trim()
+            );
+            if (textNode) {
+              textNode.textContent = translation;
+            } else {
+              element.insertBefore(
+                document.createTextNode(translation),
+                element.firstChild
+              );
+            }
+          } else {
+            element.textContent = translation;
+          }
+        }
+      }
+    });
 
   document.querySelectorAll('[data-i18n-placeholder]').forEach((element) => {
     const key = element.getAttribute('data-i18n-placeholder');

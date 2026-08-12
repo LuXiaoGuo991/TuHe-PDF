@@ -230,7 +230,7 @@ async function posterize() {
 
     if (pageIndicesToProcess.length === 0) {
       throw new Error(
-        translate('posterize.invalidPageRange', '指定的页面范围无效。')
+        translate('tools:posterize.invalidPageRange', '指定的页面范围无效。')
       );
     }
 

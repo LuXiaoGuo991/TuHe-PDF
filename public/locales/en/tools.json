@@ -2631,6 +2631,7 @@
     "pageNumber": "Page #",
     "dimensions": "Dimensions",
     "standardSize": "Standard Size",
+    "orientation": "Orientation",
     "aspectRatio": "Aspect Ratio",
     "area": "Area",
     "rotation": "Rotation",
@@ -3247,7 +3248,7 @@
     "faq2a": "Absolutely! All processing happens in your browser. Your files never leave your device, ensuring complete privacy.",
     "faq3q": "Is there a file size limit?",
     "faq3a": "No! Process files of any size, as many times as you want, completely free.",
-    "pageSheetSummary": "Page {{page}}/{{total}} on sheet {{sheet}}/{{sheetTotal}}"
+    "pageSheetSummary": "{{pages}} pages → {{sheets}} output pages"
   },
   "xpsToPdf": {
     "name": "XPS to PDF",

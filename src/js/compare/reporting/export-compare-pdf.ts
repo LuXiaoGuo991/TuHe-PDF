@@ -16,6 +16,7 @@ import { downloadFile } from '../../utils/helpers.ts';
 import { computeComparisonForPair } from '../../logic/compare-render.ts';
 import { LRUCache } from '../lru-cache.ts';
 import { loadPdfDocument } from '../../utils/load-pdf-document.js';
+import { t } from '../../i18n/i18n.js';
 
 const HIGHLIGHT_COLORS: Record<
   string,
@@ -139,7 +140,10 @@ export async function exportComparePdf(
   for (let i = 0; i < pairs.length; i++) {
     const pair = pairs[i];
     onProgress?.(
-      `Rendering page ${i + 1} of ${pairs.length}...`,
+      t('tools:comparePdfs.renderingPage', {
+        current: i + 1,
+        total: pairs.length,
+      }),
       Math.round(((i + 1) / pairs.length) * 100)
     );
 

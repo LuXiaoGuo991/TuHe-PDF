@@ -166,7 +166,7 @@ async function linearizePdf() {
             `Linearization resulted in an empty file for ${file.name}.`
           );
           throw new Error(
-            translate('linearizePdf.processingFailed', '处理失败') +
+            translate('tools:linearizePdf.processingFailed', '处理失败') +
               ': ' +
               file.name
           );
@@ -203,7 +203,7 @@ async function linearizePdf() {
     if (successCount === 0) {
       throw new Error(
         translate(
-          'linearizePdf.noFilesLinearized',
+          'tools:linearizePdf.noFilesLinearized',
           '没有 PDF 文件可以被线性化。'
         )
       );

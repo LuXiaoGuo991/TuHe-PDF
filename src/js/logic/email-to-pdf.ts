@@ -348,7 +348,7 @@ export async function parseEmailFile(file: File): Promise<ParsedEmail> {
     return parseMsgFile(file);
   } else {
     throw new Error(
-      translate('emailToPdf.unsupportedFileType', '不支持的文件类型') +
+      translate('tools:emailToPdf.unsupportedFileType', '不支持的文件类型') +
         ': .' +
         ext
     );

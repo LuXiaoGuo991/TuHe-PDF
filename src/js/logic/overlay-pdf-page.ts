@@ -200,7 +200,7 @@ async function processOverlay() {
     const outputFile = qpdf.FS.readFile(outputPath, { encoding: 'binary' });
     if (!outputFile || outputFile.length === 0) {
       throw new Error(
-        translate('overlayPdf.emptyResult', '处理产生的文件为空。')
+        translate('tools:overlayPdf.emptyResult', '处理产生的文件为空。')
       );
     }
 

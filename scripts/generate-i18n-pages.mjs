@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { JSDOM } from 'jsdom';
+import createDOMPurify from 'dompurify';
 import { fileURLToPath } from 'url';
 import { SITE_URL } from './site-config.mjs';
 import { fallbackLanguages } from '../src/js/i18n/fallback-languages.js';
@@ -83,11 +84,42 @@ function getTranslation(key, lang, translations) {
 }
 
 function renderStaticTranslations(document, lang, translations) {
-  document.querySelectorAll('[data-i18n]').forEach((element) => {
-    const key = element.getAttribute('data-i18n');
+  const purifier = createDOMPurify(document.defaultView);
+  document.querySelectorAll('[data-i18n-html]').forEach((element) => {
+    const key = element.getAttribute('data-i18n-html');
     const translation = key ? getTranslation(key, lang, translations) : null;
-    if (translation !== null) element.textContent = translation;
+    if (translation !== null) {
+      const sanitized = purifier.sanitize(translation);
+      const parsed = new document.defaultView.DOMParser().parseFromString(
+        sanitized,
+        'text/html'
+      );
+      element.replaceChildren(...Array.from(parsed.body.childNodes));
+    }
   });
+
+  document
+    .querySelectorAll('[data-i18n]:not([data-i18n-html])')
+    .forEach((element) => {
+      const key = element.getAttribute('data-i18n');
+      const translation = key ? getTranslation(key, lang, translations) : null;
+      if (translation === null) return;
+      if (element.children.length > 0) {
+        const textNode = Array.from(element.childNodes).find(
+          (node) => node.nodeType === 3 && node.textContent?.trim()
+        );
+        if (textNode) {
+          textNode.textContent = translation;
+        } else {
+          element.insertBefore(
+            document.createTextNode(translation),
+            element.firstChild
+          );
+        }
+      } else {
+        element.textContent = translation;
+      }
+    });
 
   document.querySelectorAll('[data-i18n-placeholder]').forEach((element) => {
     const key = element.getAttribute('data-i18n-placeholder');

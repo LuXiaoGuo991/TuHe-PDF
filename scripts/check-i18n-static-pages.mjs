@@ -68,13 +68,33 @@ const failures = [];
 for (const file of files) {
   const dom = new JSDOM(fs.readFileSync(file, 'utf8'));
   const document = dom.window.document;
-  document.querySelectorAll('[data-i18n]').forEach((element) => {
-    const key = element.getAttribute('data-i18n');
+  document.querySelectorAll('[data-i18n-html]').forEach((element) => {
+    const key = element.getAttribute('data-i18n-html');
     const expected = key ? resolve(key) : null;
-    if (expected === null || element.textContent !== expected) {
+    const expectedText = expected
+      ? new dom.window.DOMParser().parseFromString(expected, 'text/html').body
+          .textContent
+      : null;
+    if (expectedText === null || element.textContent !== expectedText) {
       failures.push(`${path.relative(ROOT, file)}: ${key || '(missing key)'}`);
     }
   });
+  document
+    .querySelectorAll('[data-i18n]:not([data-i18n-html])')
+    .forEach((element) => {
+      const key = element.getAttribute('data-i18n');
+      const expected = key ? resolve(key) : null;
+      const directText = element.children.length
+        ? Array.from(element.childNodes).find(
+            (node) => node.nodeType === 3 && node.textContent?.trim()
+          )?.textContent
+        : element.textContent;
+      if (expected === null || directText !== expected) {
+        failures.push(
+          `${path.relative(ROOT, file)}: ${key || '(missing key)'}`
+        );
+      }
+    });
   document
     .querySelectorAll('[data-i18n-placeholder], [data-i18n-title]')
     .forEach((element) => {
