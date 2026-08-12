@@ -5,11 +5,7 @@ import { createIcons, icons } from 'lucide';
 import '@phosphor-icons/web/regular';
 import * as pdfjsLib from 'pdfjs-dist';
 import '../css/styles.css';
-import {
-  escapeHtml,
-  formatShortcutDisplay,
-  formatStars,
-} from './utils/helpers.js';
+import { escapeHtml, formatShortcutDisplay } from './utils/helpers.js';
 import {
   initI18n,
   applyTranslations,
@@ -245,7 +241,6 @@ const init = async () => {
     'Deskew PDF': 'tools:deskewPdf',
     'Digital Signature': 'tools:digitalSignPdf',
     'Validate Signature': 'tools:validateSignaturePdf',
-    'Timestamp PDF': 'tools:timestampPdf',
     'Scanner Effect': 'tools:scannerEffect',
     'Adjust Colors': 'tools:adjustColors',
     'Markdown to PDF': 'tools:markdownToPdf',
@@ -550,29 +545,6 @@ const init = async () => {
 
   createIcons({ icons });
   console.log('💙 感谢使用 TuHe PDF！如果喜欢我们的工具，欢迎分享给更多人。');
-
-  const githubStarsElements = [
-    document.getElementById('github-stars-desktop'),
-    document.getElementById('github-stars-mobile'),
-  ];
-
-  if (githubStarsElements.some((el) => el) && !__SIMPLE_MODE__) {
-    fetch('https://api.github.com/repos/alam00000/tuhe-pdf')
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.stargazers_count !== undefined) {
-          const formattedStars = formatStars(data.stargazers_count);
-          githubStarsElements.forEach((el) => {
-            if (el) el.textContent = formattedStars;
-          });
-        }
-      })
-      .catch(() => {
-        githubStarsElements.forEach((el) => {
-          if (el) el.textContent = '-';
-        });
-      });
-  }
 
   // Initialize Shortcuts System
   ShortcutsManager.init();

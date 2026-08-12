@@ -1,14 +1,12 @@
 /**
  * TuHe PDF Service Worker
  * Caches WASM files and static assets for offline support and faster loading
- * Supports both local and CDN delivery with deduplication
- * Version: 1.2.0
+ * Uses same-origin resources only
+ * Version: 2.0.0
  */
 
-const CACHE_VERSION = 'tuhe-pdf-v2';
+const CACHE_VERSION = 'tuhe-pdf-v3';
 const CACHE_NAME = `${CACHE_VERSION}-static`;
-
-const trustedCdnOrigins = new Set(['https://cdn.jsdelivr.net']);
 
 const getBasePath = () => {
   const scope = self.registration?.scope || self.location.href;
@@ -69,10 +67,9 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
 
-  const isCDN = trustedCdnOrigins.has(url.origin);
   const isLocal = url.origin === location.origin;
 
-  if (!isLocal && !isCDN) {
+  if (!isLocal) {
     return;
   }
   if (
@@ -96,8 +93,8 @@ self.addEventListener('fetch', (event) => {
 
   if (isLocal && url.pathname.includes('/locales/')) {
     event.respondWith(networkFirstStrategy(event.request));
-  } else if (shouldCache(url.pathname, isCDN)) {
-    event.respondWith(cacheFirstStrategyWithDedup(event.request, isCDN));
+  } else if (shouldCache(url.pathname)) {
+    event.respondWith(cacheFirstStrategyWithDedup(event.request));
   } else if (
     isLocal &&
     (url.pathname.endsWith('.html') ||
@@ -111,10 +108,9 @@ self.addEventListener('fetch', (event) => {
 });
 
 /**
- * Cache-first strategy with deduplication
- * Ensures we only cache CDN OR local version, never both
+ * Cache-first strategy for same-origin static assets.
  */
-async function cacheFirstStrategyWithDedup(request, isCDN) {
+async function cacheFirstStrategyWithDedup(request) {
   const url = new URL(request.url);
   const fileName = url.pathname.split('/').pop();
 
@@ -140,7 +136,6 @@ async function cacheFirstStrategyWithDedup(request, isCDN) {
       const buffer = await clone.arrayBuffer();
       if (buffer.byteLength > 0) {
         const cache = await caches.open(CACHE_NAME);
-        await removeDuplicateCache(cache, fileName, isCDN);
         await cache.put(
           request,
           new Response(buffer, {
@@ -154,39 +149,6 @@ async function cacheFirstStrategyWithDedup(request, isCDN) {
 
     return networkResponse;
   } catch (error) {
-    if (isCDN) {
-      console.warn(`⚠️ [CDN Failed] Trying local fallback for: ${fileName}`);
-      const basePath = getBasePath();
-      const localPath = getLocalPathForCDNUrl(url.pathname);
-
-      if (localPath) {
-        const localUrl = `${basePath}${localPath}`;
-        try {
-          const fallbackResponse = await fetch(localUrl);
-          if (fallbackResponse && fallbackResponse.status === 200) {
-            const fbClone = fallbackResponse.clone();
-            const fbBuffer = await fbClone.arrayBuffer();
-            if (fbBuffer.byteLength > 0) {
-              const cache = await caches.open(CACHE_NAME);
-              await cache.put(
-                localUrl,
-                new Response(fbBuffer, {
-                  status: fallbackResponse.status,
-                  statusText: fallbackResponse.statusText,
-                  headers: fallbackResponse.headers,
-                })
-              );
-            }
-            return fallbackResponse;
-          }
-        } catch (fallbackError) {
-          console.error(
-            '[ServiceWorker] Both CDN and local failed for:',
-            fileName
-          );
-        }
-      }
-    }
     throw error;
   }
 }
@@ -207,9 +169,10 @@ async function findCachedFile(fileName, requestUrl) {
   const requests = await cache.keys();
   for (const req of requests) {
     const reqUrl = new URL(req.url);
-    const trustedOrigin =
-      reqUrl.origin === location.origin || trustedCdnOrigins.has(reqUrl.origin);
-    if (trustedOrigin && reqUrl.pathname.split('/').pop() === fileName) {
+    if (
+      reqUrl.origin === location.origin &&
+      reqUrl.pathname.split('/').pop() === fileName
+    ) {
       const response = await cache.match(req);
       if (response) {
         const clone = response.clone();
@@ -222,20 +185,6 @@ async function findCachedFile(fileName, requestUrl) {
     }
   }
   return null;
-}
-
-async function removeDuplicateCache(cache, fileName, isCDN) {
-  const requests = await cache.keys();
-
-  for (const req of requests) {
-    const reqUrl = new URL(req.url);
-    if (reqUrl.pathname.split('/').pop() === fileName) {
-      const reqIsCDN = trustedCdnOrigins.has(reqUrl.origin);
-      if (reqIsCDN !== isCDN) {
-        await cache.delete(req);
-      }
-    }
-  }
 }
 
 /**
@@ -274,50 +223,12 @@ async function networkFirstStrategy(request) {
 }
 
 /**
- * Map legacy CDN URL paths to their same-origin resource paths.
- */
-function getLocalPathForCDNUrl(pathname) {
-  const pymupdfMatch = pathname.match(/\/@bentopdf\/pymupdf-wasm@[^/]+\/(.+)$/);
-  if (pymupdfMatch) {
-    return `/wasm/pymupdf/${pymupdfMatch[1]}`;
-  }
-
-  const ghostscriptMatch = pathname.match(
-    /\/@bentopdf\/gs-wasm@[^/]+\/assets\/(.+)$/
-  );
-  if (ghostscriptMatch) {
-    return `/wasm/ghostscript/${ghostscriptMatch[1]}`;
-  }
-
-  const cpdfMatch = pathname.match(/\/coherentpdf@[^/]+\/dist\/(.+)$/);
-  if (cpdfMatch) {
-    return `/wasm/cpdf/${cpdfMatch[1]}`;
-  }
-
-  if (pathname.includes('/@matbee/libreoffice-converter')) {
-    return `/libreoffice-wasm/${pathname.split('/').pop()}`;
-  }
-  return null;
-}
-
-/**
- * Determine if a URL should be cached
- * Handles both local and CDN URLs
+ * Determine whether a same-origin URL should be cached.
  */
 const CACHEABLE_EXTENSIONS =
   /\.(js|mjs|css|wasm|whl|zip|json|png|jpg|jpeg|gif|svg|woff|woff2|ttf|gz|br)$/;
 
-function shouldCache(pathname, isCDN = false) {
-  if (isCDN) {
-    return (
-      pathname.includes('/@bentopdf/pymupdf-wasm') ||
-      pathname.includes('/@bentopdf/gs-wasm') ||
-      pathname.includes('/coherentpdf') ||
-      pathname.includes('/@matbee/libreoffice-converter') ||
-      CACHEABLE_EXTENSIONS.test(pathname)
-    );
-  }
-
+function shouldCache(pathname) {
   return (
     pathname.includes('/wasm/') ||
     pathname.includes('/libreoffice-wasm/') ||
@@ -384,28 +295,6 @@ self.addEventListener('message', (event) => {
       })
     );
     return;
-  }
-
-  if (
-    event.data.type === 'SET_TRUSTED_CDN_HOSTS' &&
-    Array.isArray(event.data.hosts)
-  ) {
-    for (const origin of event.data.hosts) {
-      if (typeof origin !== 'string') continue;
-      try {
-        const parsed = new URL(origin);
-        if (parsed.protocol !== 'https:' && parsed.protocol !== 'http:') {
-          continue;
-        }
-        trustedCdnOrigins.add(parsed.origin);
-      } catch (e) {
-        console.warn(
-          '[ServiceWorker] Ignoring malformed trusted-host origin:',
-          origin,
-          e
-        );
-      }
-    }
   }
 });
 

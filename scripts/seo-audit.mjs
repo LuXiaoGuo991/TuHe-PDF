@@ -10,7 +10,7 @@ const DIST_DIR = path.resolve(__dirname, '../dist');
 const LOCALES_DIR = path.resolve(__dirname, '../public/locales');
 const HOST = new URL(SITE_URL).hostname;
 
-const NOINDEX_ALLOWLIST = new Set(['404.html', 'wasm-settings.html']);
+const NOINDEX_ALLOWLIST = new Set(['404.html']);
 const SKIP_DIRS = new Set([
   'assets',
   'docs',

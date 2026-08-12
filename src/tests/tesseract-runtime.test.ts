@@ -30,7 +30,7 @@ describe('tesseract-runtime', () => {
     createWorker.mockReset();
   });
 
-  it('normalizes self-hosted OCR asset URLs', () => {
+  it('ignores configured OCR asset URLs and uses same-origin assets', () => {
     const config = resolveTesseractAssetConfig({
       VITE_TESSERACT_WORKER_URL:
         'https://internal.example.com/ocr/worker.min.js/',
@@ -39,24 +39,30 @@ describe('tesseract-runtime', () => {
     });
 
     expect(config).toEqual({
-      workerPath: 'https://internal.example.com/ocr/worker.min.js',
-      corePath: 'https://internal.example.com/ocr/core',
-      langPath: 'https://internal.example.com/ocr/lang-data',
+      workerPath: '/wasm/tesseract/worker.min.js',
+      corePath: '/wasm/tesseract/core',
+      langPath: '/wasm/tesseract/lang',
     });
     expect(hasConfiguredTesseractOverrides(config)).toBe(true);
     expect(hasCompleteTesseractOverrides(config)).toBe(true);
   });
 
-  it('returns logger-only options when no self-hosted OCR assets are configured', () => {
+  it('always configures same-origin OCR assets', () => {
     const logger = vi.fn();
 
-    expect(buildTesseractWorkerOptions(logger, {})).toEqual({ logger });
+    expect(buildTesseractWorkerOptions(logger, {})).toEqual({
+      logger,
+      workerPath: '/wasm/tesseract/worker.min.js',
+      corePath: '/wasm/tesseract/core',
+      langPath: '/wasm/tesseract/lang',
+      gzip: true,
+    });
     expect(
       hasConfiguredTesseractOverrides(resolveTesseractAssetConfig({}))
-    ).toBe(false);
+    ).toBe(true);
   });
 
-  it('throws on partial OCR asset configuration', () => {
+  it('does not accept partial OCR asset configuration', () => {
     const env = {
       VITE_TESSERACT_WORKER_URL:
         'https://internal.example.com/ocr/worker.min.js',
@@ -65,13 +71,15 @@ describe('tesseract-runtime', () => {
 
     expect(
       getIncompleteTesseractOverrideKeys(resolveTesseractAssetConfig(env))
-    ).toEqual(['VITE_TESSERACT_LANG_URL']);
-    expect(() => buildTesseractWorkerOptions(undefined, env)).toThrow(
-      'Self-hosted OCR assets are partially configured'
-    );
+    ).toEqual([]);
+    expect(buildTesseractWorkerOptions(undefined, env)).toMatchObject({
+      workerPath: '/wasm/tesseract/worker.min.js',
+      corePath: '/wasm/tesseract/core',
+      langPath: '/wasm/tesseract/lang',
+    });
   });
 
-  it('passes configured OCR asset URLs to Tesseract.createWorker', async () => {
+  it('passes same-origin OCR asset URLs to Tesseract.createWorker', async () => {
     const logger = vi.fn();
     createWorker.mockResolvedValue({ id: 'worker' });
 
@@ -84,9 +92,9 @@ describe('tesseract-runtime', () => {
 
     expect(createWorker).toHaveBeenCalledWith('eng', 1, {
       logger,
-      workerPath: 'https://internal.example.com/ocr/worker.min.js',
-      corePath: 'https://internal.example.com/ocr/core',
-      langPath: 'https://internal.example.com/ocr/lang-data',
+      workerPath: '/wasm/tesseract/worker.min.js',
+      corePath: '/wasm/tesseract/core',
+      langPath: '/wasm/tesseract/lang',
       gzip: true,
     });
   });
@@ -95,11 +103,8 @@ describe('tesseract-runtime', () => {
     expect(
       getAvailableTesseractLanguageEntries({
         VITE_TESSERACT_AVAILABLE_LANGUAGES: 'eng,deu',
-      })
-    ).toEqual([
-      ['eng', 'English'],
-      ['deu', 'German'],
-    ]);
+      }).map(([code]) => code)
+    ).toEqual(['eng', 'deu']);
   });
 
   it('reports unavailable OCR languages for restricted air-gap builds', () => {

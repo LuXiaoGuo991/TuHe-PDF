@@ -12,37 +12,6 @@ const isDevelopment =
   window.location.hostname === '127.0.0.1' ||
   window.location.port !== '';
 
-function collectTrustedWasmHosts(): string[] {
-  const hosts = new Set<string>();
-  const candidates = [
-    import.meta.env.VITE_WASM_PYMUPDF_URL,
-    import.meta.env.VITE_WASM_GS_URL,
-    import.meta.env.VITE_WASM_CPDF_URL,
-    import.meta.env.VITE_TESSERACT_WORKER_URL,
-    import.meta.env.VITE_TESSERACT_CORE_URL,
-    import.meta.env.VITE_TESSERACT_LANG_URL,
-    import.meta.env.VITE_OCR_FONT_BASE_URL,
-  ];
-  for (const raw of candidates) {
-    if (!raw) continue;
-    try {
-      hosts.add(new URL(raw).origin);
-    } catch {
-      console.warn(
-        `[SW] Ignoring malformed VITE_* URL for SW trusted-hosts: ${raw}`
-      );
-    }
-  }
-  return Array.from(hosts);
-}
-
-function sendTrustedHostsToSw(target: ServiceWorker | null | undefined) {
-  if (!target) return;
-  const hosts = collectTrustedWasmHosts();
-  if (hosts.length === 0) return;
-  target.postMessage({ type: 'SET_TRUSTED_CDN_HOSTS', hosts });
-}
-
 if (isDevelopment) {
   console.log('[Dev Mode] Service Worker registration skipped in development');
   console.log('Service Worker will be active in production builds');
@@ -58,10 +27,6 @@ if (isDevelopment) {
           registration.scope
         );
 
-        sendTrustedHostsToSw(
-          registration.active || registration.waiting || registration.installing
-        );
-
         setInterval(
           () => {
             registration.update();
@@ -73,9 +38,6 @@ if (isDevelopment) {
           const newWorker = registration.installing;
           if (newWorker) {
             newWorker.addEventListener('statechange', () => {
-              if (newWorker.state === 'activated') {
-                sendTrustedHostsToSw(newWorker);
-              }
               if (
                 newWorker.state === 'installed' &&
                 navigator.serviceWorker.controller
@@ -94,10 +56,6 @@ if (isDevelopment) {
       .catch((error) => {
         console.error('[SW] Service Worker registration failed:', error);
       });
-
-    navigator.serviceWorker.ready.then((registration) => {
-      sendTrustedHostsToSw(registration.active);
-    });
 
     navigator.serviceWorker.addEventListener('controllerchange', () => {
       console.log('[SW] New service worker activated, reloading...');

@@ -26,26 +26,9 @@ ENV COMPRESSION_MODE=$COMPRESSION_MODE
 ARG BASE_URL
 ENV BASE_URL=$BASE_URL
 
-# WASM module URLs (pre-configured defaults)
-# Override these for air-gapped or self-hosted WASM deployments
-ARG VITE_WASM_PYMUPDF_URL
-ARG VITE_WASM_GS_URL
-ARG VITE_WASM_CPDF_URL
-ENV VITE_WASM_PYMUPDF_URL=$VITE_WASM_PYMUPDF_URL
-ENV VITE_WASM_GS_URL=$VITE_WASM_GS_URL
-ENV VITE_WASM_CPDF_URL=$VITE_WASM_CPDF_URL
-
-# OCR asset URLs (optional, used for self-hosted or air-gapped OCR)
-ARG VITE_TESSERACT_WORKER_URL
-ARG VITE_TESSERACT_CORE_URL
-ARG VITE_TESSERACT_LANG_URL
+# OCR language list for the locally bundled OCR data
 ARG VITE_TESSERACT_AVAILABLE_LANGUAGES
-ARG VITE_OCR_FONT_BASE_URL
-ENV VITE_TESSERACT_WORKER_URL=$VITE_TESSERACT_WORKER_URL
-ENV VITE_TESSERACT_CORE_URL=$VITE_TESSERACT_CORE_URL
-ENV VITE_TESSERACT_LANG_URL=$VITE_TESSERACT_LANG_URL
 ENV VITE_TESSERACT_AVAILABLE_LANGUAGES=$VITE_TESSERACT_AVAILABLE_LANGUAGES
-ENV VITE_OCR_FONT_BASE_URL=$VITE_OCR_FONT_BASE_URL
 
 # Default UI language (e.g. en, fr, de, es, zh, ar)
 ARG VITE_DEFAULT_LANGUAGE
@@ -70,11 +53,7 @@ ENV SITE_URL=$SITE_URL
 
 ENV NODE_OPTIONS="--max-old-space-size=3072"
 
-RUN --mount=type=secret,id=VITE_CORS_PROXY_URL,required=false \
-    --mount=type=secret,id=VITE_CORS_PROXY_SECRET,required=false \
-    VITE_CORS_PROXY_URL=$(cat /run/secrets/VITE_CORS_PROXY_URL 2>/dev/null || echo "") \
-    VITE_CORS_PROXY_SECRET=$(cat /run/secrets/VITE_CORS_PROXY_SECRET 2>/dev/null || echo "") \
-    npm run build
+RUN npm run build
 
 # Production stage
 FROM quay.io/nginx/nginx-unprivileged:alpine-slim

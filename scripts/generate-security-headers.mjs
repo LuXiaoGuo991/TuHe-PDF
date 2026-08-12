@@ -5,58 +5,14 @@ import { fileURLToPath } from 'node:url';
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 
-function originOf(urlStr) {
-  if (!urlStr) return null;
-  try {
-    const u = new URL(urlStr);
-    if (u.protocol !== 'https:' && u.protocol !== 'http:') return null;
-    return `${u.protocol}//${u.host}`;
-  } catch {
-    return null;
-  }
-}
-
-function uniq(values) {
-  return Array.from(new Set(values.filter(Boolean)));
-}
-
-const DEFAULT_CORS_PROXY_ORIGIN =
-  'https://tuhe-pdf-cors-proxy.tuhe-pdf.workers.dev';
-
-const wasmOrigins = uniq([
-  originOf(process.env.VITE_WASM_PYMUPDF_URL),
-  originOf(process.env.VITE_WASM_GS_URL),
-  originOf(process.env.VITE_WASM_CPDF_URL),
-]);
-
-const tesseractOrigins = uniq([
-  originOf(process.env.VITE_TESSERACT_WORKER_URL),
-  originOf(process.env.VITE_TESSERACT_CORE_URL),
-  originOf(process.env.VITE_TESSERACT_LANG_URL),
-]);
-
-const corsProxyOrigin =
-  originOf(process.env.VITE_CORS_PROXY_URL) || DEFAULT_CORS_PROXY_ORIGIN;
-
-const ocrFontOrigin = originOf(process.env.VITE_OCR_FONT_BASE_URL);
-
-const scriptOrigins = uniq([...wasmOrigins, ...tesseractOrigins]);
-const connectOrigins = uniq([
-  ...wasmOrigins,
-  ...tesseractOrigins,
-  corsProxyOrigin,
-  ocrFontOrigin,
-]);
-const fontOrigins = uniq([ocrFontOrigin].filter(Boolean));
-
 const directives = [
   `default-src 'self'`,
-  `script-src 'self' 'wasm-unsafe-eval' 'unsafe-eval' blob: ${scriptOrigins.join(' ')}`.trim(),
+  `script-src 'self' 'wasm-unsafe-eval' 'unsafe-eval' blob:`,
   `worker-src 'self' blob:`,
-  `style-src 'self' 'unsafe-inline' https://fonts.googleapis.com`,
-  `img-src 'self' data: blob: https:`,
-  `font-src 'self' data: https://fonts.gstatic.com ${fontOrigins.join(' ')}`.trim(),
-  `connect-src 'self' blob: https://api.github.com https://fonts.gstatic.com ${connectOrigins.join(' ')}`.trim(),
+  `style-src 'self' 'unsafe-inline'`,
+  `img-src 'self' data: blob:`,
+  `font-src 'self' data:`,
+  `connect-src 'self' blob:`,
   `object-src 'none'`,
   `base-uri 'self'`,
   `frame-src 'self' blob:`,
@@ -66,11 +22,11 @@ const directives = [
 
 const docsDirectives = [
   `default-src 'self'`,
-  `script-src 'self' 'unsafe-inline' ${scriptOrigins.join(' ')}`.trim(),
-  `style-src 'self' 'unsafe-inline' https://fonts.googleapis.com`,
-  `img-src 'self' data: blob: https:`,
-  `font-src 'self' data: https://fonts.gstatic.com ${fontOrigins.join(' ')}`.trim(),
-  `connect-src 'self' https://api.github.com https://fonts.gstatic.com ${connectOrigins.join(' ')}`.trim(),
+  `script-src 'self' 'unsafe-inline'`,
+  `style-src 'self' 'unsafe-inline'`,
+  `img-src 'self' data: blob:`,
+  `font-src 'self' data:`,
+  `connect-src 'self'`,
   `object-src 'none'`,
   `base-uri 'self'`,
   `frame-ancestors 'self'`,
@@ -100,7 +56,5 @@ const outPath = join(repoRoot, 'security-headers.conf');
 const docsOutPath = join(repoRoot, 'security-headers-docs.conf');
 writeFileSync(outPath, contents);
 writeFileSync(docsOutPath, docsContents);
-console.log(
-  `[security-headers] wrote ${outPath} with ${scriptOrigins.length} script-src / ${connectOrigins.length} connect-src origin(s)`
-);
+console.log(`[security-headers] wrote ${outPath} with same-origin directives`);
 console.log(`[security-headers] wrote ${docsOutPath} (docs CSP)`);

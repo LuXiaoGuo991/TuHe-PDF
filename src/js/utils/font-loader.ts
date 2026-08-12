@@ -1,6 +1,5 @@
 import {
   getFontAssetFileName,
-  getFontUrlForFamily,
   languageToFontFamily,
 } from '../config/font-mappings.js';
 
@@ -10,43 +9,11 @@ const DB_NAME = 'tuhe-pdf-fonts';
 const DB_VERSION = 1;
 const STORE_NAME = 'fonts';
 
-type OcrFontEnv = Partial<Pick<ImportMetaEnv, 'VITE_OCR_FONT_BASE_URL'>>;
-
-const LOCAL_FONT_DEFAULTS: Record<string, string> = {
-  'Noto Sans SC': '/wasm/ocr/fonts/NotoSansCJKsc-Regular.otf',
-  'Noto Sans': '/wasm/ocr/fonts/NotoSans-Regular.ttf',
-};
-
-function getDefaultFontEnv(): OcrFontEnv {
-  return import.meta.env;
-}
-
-function normalizeFontBaseUrl(url?: string): string | undefined {
-  const trimmed = url?.trim();
-
-  if (!trimmed) {
-    return undefined;
-  }
-
-  return trimmed.replace(/\/+$/, '');
-}
-
 export function resolveFontUrl(
   fontFamily: string,
-  env: OcrFontEnv = getDefaultFontEnv()
+  _env?: Record<string, string | undefined>
 ): string {
-  const fontBaseUrl = normalizeFontBaseUrl(env.VITE_OCR_FONT_BASE_URL);
-
-  if (fontBaseUrl) {
-    return `${fontBaseUrl}/${getFontAssetFileName(fontFamily)}`;
-  }
-
-  const localDefault = LOCAL_FONT_DEFAULTS[fontFamily];
-  if (localDefault) {
-    return localDefault;
-  }
-
-  return getFontUrlForFamily(fontFamily);
+  return `/wasm/ocr/fonts/${getFontAssetFileName(fontFamily)}`;
 }
 
 async function openFontDB(): Promise<IDBDatabase> {

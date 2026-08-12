@@ -1325,6 +1325,55 @@ body:has(#workbench) {
   overflow: hidden;
 }
 
+/* 首页工作区内的备案与法律入口，确保主页面也能直接核验运营主体。 */
+#workbench-compliance {
+  flex: 0 0 auto;
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  padding: 6px 16px;
+  border-top: 1px solid #1f2937;
+  background: #0b1220;
+  color: #9ca3af;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+#workbench-compliance a {
+  color: #cbd5e1;
+  text-decoration: none;
+}
+
+#workbench-compliance a:hover,
+#workbench-compliance a:focus-visible {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.workbench-police-record {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.workbench-police-record img {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
+@media (max-width: 720px) {
+  #workbench-compliance {
+    justify-content: flex-start;
+    gap: 3px 10px;
+    padding-inline: 10px;
+    font-size: 10px;
+  }
+}
+
 .wb-panel {
   position: absolute;
   inset: 0;

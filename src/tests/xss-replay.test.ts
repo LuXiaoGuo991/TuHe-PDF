@@ -171,7 +171,7 @@ describe('XSS replay — WASM provider localStorage poisoning', () => {
     expect(stored).toContain('attacker.test');
   });
 
-  it('WasmProvider scrubs the untrusted URLs on load and falls back to env defaults', async () => {
+  it('WasmProvider ignores untrusted URLs and always uses same-origin defaults', async () => {
     localStorage.setItem(
       'tuhe-pdf:wasm-providers',
       JSON.stringify({
@@ -186,45 +186,24 @@ describe('XSS replay — WASM provider localStorage poisoning', () => {
 
     const got = WasmProvider.getUrl('pymupdf');
     expect(got).not.toContain('attacker.test');
-    expect(got).toMatch(/^\/wasm\/|cdn\.jsdelivr\.net|^https?:\/\/[^/]+\//);
-
-    const remaining = JSON.parse(
-      localStorage.getItem('tuhe-pdf:wasm-providers') || '{}'
-    );
-    expect(remaining.pymupdf).toBeUndefined();
-    expect(remaining.ghostscript).toBeUndefined();
-    expect(remaining.cpdf).toBeUndefined();
+    expect(got).toBe('/wasm/pymupdf/');
   });
 
-  it('allows a same-origin WASM path without trusting a protocol-relative URL', async () => {
+  it('does not allow localStorage to override the fixed same-origin WASM path', async () => {
     vi.resetModules();
     const { WasmProvider } = await import('../js/utils/wasm-provider');
 
-    WasmProvider.setUrl('pymupdf', '/wasm/pymupdf');
     expect(WasmProvider.getUrl('pymupdf')).toBe('/wasm/pymupdf/');
-    expect(() =>
-      WasmProvider.setUrl('pymupdf', '//attacker.test/wasm/')
-    ).toThrow('Invalid URL');
   });
 });
 
-describe('XSS replay — CDN URL version pinning', () => {
-  it('every WASM CDN default URL is pinned to an exact patch version', async () => {
+describe('XSS replay — fixed same-origin WASM paths', () => {
+  it('every WASM URL is a same-origin path', async () => {
     const { WasmProvider } = await import('../js/utils/wasm-provider');
     const urls = WasmProvider.getAllProviders();
     for (const [pkg, url] of Object.entries(urls)) {
       if (!url) continue;
-      let hostname: string;
-      try {
-        hostname = new URL(url).hostname;
-      } catch {
-        continue;
-      }
-      if (hostname !== 'cdn.jsdelivr.net') continue;
-      expect(
-        /@\d+\.\d+\.\d+/.test(url),
-        `${pkg} URL "${url}" must be pinned to an exact version (e.g. pkg@1.2.3)`
-      ).toBe(true);
+      expect(url, `${pkg} must use a same-origin path`).toMatch(/^\/wasm\//);
     }
   });
 });

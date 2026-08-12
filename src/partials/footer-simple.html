@@ -1,33 +1,61 @@
 <footer class="mt-16 border-t-2 border-gray-700 py-8" data-simple-footer="true">
-  <div class="container mx-auto px-4">
-    <div class="flex items-center justify-between flex-wrap gap-4">
-      <div>
-        <div class="flex items-center mb-2">
-          <img
-            id="footer-logo"
-            src="{{baseUrl}}{{#if brandLogo}}{{brandLogo}}{{else}}images/favicon.svg{{/if}}"
-            alt="{{#if brandName}}{{brandName}}{{else}}TuHe PDF{{/if}} Logo"
-            class="h-8 w-8 mr-2"
-          />
-          <span id="footer-brand" class="text-white font-bold text-lg"
-            >{{#if brandName}}{{brandName}}{{else}}TuHe PDF{{/if}}</span
-          >
-        </div>
-        <p id="footer-copyright" class="text-gray-400 text-sm">
-          {{#if footerText}}{{footerText}}{{else}}&copy; 2026 TuHe PDF. All
-          rights reserved.{{/if}}
-        </p>
-        <p class="text-gray-500 text-xs mt-2">
-          <span data-i18n="footer.version">Version</span>
-          <span id="app-version">{{appVersion}}</span>
-        </p>
+  <div class="container mx-auto px-4 text-center">
+    <div class="flex flex-col items-center gap-4">
+      <div class="flex items-center">
+        <img
+          id="footer-logo"
+          src="{{baseUrl}}{{#if brandLogo}}{{brandLogo}}{{else}}images/favicon.svg{{/if}}"
+          alt="TuHe PDF Logo"
+          class="mr-2 h-8 w-8"
+        />
+        <span id="footer-brand" class="text-lg font-bold text-white"
+          >TuHe PDF</span
+        >
       </div>
-      <a
-        href="wasm-settings.html"
-        class="text-sm text-gray-400 hover:text-indigo-400"
-        data-i18n="footer.advancedSettings"
-        >Advanced Settings</a
+      <p class="text-sm text-gray-400">
+        图合PDF工具（TuHe PDF），由个人开发者运营
+      </p>
+      <div
+        class="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm text-gray-400"
       >
+        <a href="about.html" class="hover:text-indigo-400">关于</a>
+        <a href="contact.html" class="hover:text-indigo-400">联系与投诉</a>
+        <a href="terms.html" class="hover:text-indigo-400">服务条款</a>
+        <a href="privacy.html" class="hover:text-indigo-400">隐私政策</a>
+      </div>
+      <div
+        class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-gray-500"
+      >
+        <a
+          href="https://beian.miit.gov.cn/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-indigo-400"
+          >苏ICP备2026010377号</a
+        >
+        <span class="flex items-center gap-1"
+          ><img
+            src="{{baseUrl}}images/备案图标.png"
+            alt="公安备案图标"
+            class="h-4 w-4"
+          /><a
+            href="https://beian.mps.gov.cn/#/query/webSearch?code=32132202001544"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-indigo-400"
+            >苏公网安备32132202001544号</a
+          ></span
+        >
+      </div>
+      <p class="text-xs text-gray-500">
+        <a
+          href="https://github.com/alam00000/tuhe-pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-indigo-400"
+          >TuHe PDF 开源仓库（GitHub）</a
+        >，访问境外平台将适用其隐私规则。
+      </p>
       <div id="simple-mode-lang-switcher" class="flex-shrink-0"></div>
     </div>
   </div>
