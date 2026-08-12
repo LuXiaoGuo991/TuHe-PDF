@@ -5,12 +5,16 @@
     "contact": "聯絡我們",
     "licensing": "許可",
     "allTools": "所有工具",
-    "docs": "文檔",
+    "docs": "檔案",
     "openMainMenu": "開啟主選單",
     "language": "語言",
     "searchLanguage": "搜尋語言…",
     "noLanguagesFound": "未找到語言"
   },
+  "homePage": "TuHe PDF 首頁",
+  "logoAlt": "圖合 PDF 標誌",
+  "pageTitle": "TuHe PDF - 圖合 · 瀏覽器端 PDF 工作臺",
+  "pageDescription": "TuHe PDF（圖合）- 純瀏覽器端 PDF 工具臺：合併、拆分、壓縮、轉換 PDF，檔案不出本機，免註冊，無限制。",
   "donation": {
     "message": "喜歡 TuHe PDF？幫助我們保持免費和開源！",
     "button": "捐贈"
@@ -389,8 +393,7 @@
       "ce86f9b182": "無法顯示該頁面。",
       "e3d25c4962": "渲染錯誤",
       "6850b548a2": "正在載入第 {{value0}} 頁...",
-      "4e708e8c7c": "Mermaid 錯誤：{{value0}}",
-      "03e67e394e": "範本 \"{{value0}}\" 已儲存。"
+      "4e708e8c7c": "Mermaid 錯誤：{{value0}}"
     },
     "workflow": {
       "status": {
@@ -595,17 +598,43 @@
     "bytes": "位元組",
     "k": "K"
   },
+  "labels": {
+    "insertAfterPage": "插入到此頁之後",
+    "blankPageCount": "空白頁數量",
+    "backgroundColor": "背景顏色",
+    "pageSize": "頁面尺寸",
+    "includeCcBcc": "在頁首中包含抄送和密送收件人",
+    "includeAttachments": "包含郵件附件列表",
+    "exportFormat": "匯出格式",
+    "pageOrder": "頁面順序（以逗號分隔）",
+    "format": "格式",
+    "color": "顏色",
+    "ownerPasswordOptional": "所有者密碼（可選）",
+    "newTextColor": "新文本顏色",
+    "pdfQuality": "PDF 質量",
+    "sourceRotation": "源頁面旋轉",
+    "gridMode": "網格模式",
+    "generatePreview": "生成預覽",
+    "includeImagesBase64": "以 Base64 格式包含圖片",
+    "sensitivity": "靈敏度：",
+    "copyMetadataJson": "將後設資料複製為 JSON",
+    "pageRangeTotal": "頁面範圍（例如 1,3,5-7）- 總計：",
+    "pages": "頁",
+    "pdfaVersion": "PDF/A 版本"
+  },
   "workbench": {
     "noMatchingTools": "沒有匹配的工具",
     "closeTab": "關閉標籤頁",
     "closeTabMessage": "「{{title}}」中還有已上傳的檔案或正在進行的任務，關閉後這些進度將丟失。確定要關閉嗎？",
     "closeTabConfirm": "仍然關閉",
+    "closeTabAria": "關閉“{{title}}”標籤頁",
     "toggleRail": "展開 / 收起卡片欄",
     "openToolRail": "開啟工具卡片欄",
     "quickTools": "常用工具",
     "homeSubtitle": "純瀏覽器端的 PDF 工作臺 · 合併、拆分、壓縮、轉換 · 檔案全程不出本機",
     "homeHint": "從左側卡片欄選擇任意工具開始，工具會在右側標籤頁中開啟",
-    "searchPlaceholder": "搜尋工具… (Ctrl+K)"
+    "searchPlaceholder": "搜尋工具… (Ctrl+K)",
+    "toolRailAria": "工具卡片欄"
   },
   "viewMetadata": {
     "noInfoDict": "- 未找到 Info Dictionary 資料 -",
@@ -644,7 +673,8 @@
     "workbenchDesign": "工作臺式設計",
     "workbenchDesignContent": "與「一個工具一個頁面」的傳統站點不同，TuHe PDF 採用工作臺式佈局：左側是工具卡片欄，右側是多標籤工作區。你可以同時開啟多個工具、在標籤之間自由切換，像在桌面軟體裡一樣處理檔案。",
     "openSource": "開源基礎",
-    "openSourceLicenseLink": "許可"
+    "openSourceLicenseLink": "許可",
+    "openSourceContent": "TuHe PDF 基於開源專案 BentoPDF 二次開發，遵循 AGPL-3.0 許可證。詳見許可頁面。"
   },
   "contactPage": {
     "heading": "聯絡我們",
@@ -739,7 +769,8 @@
     "section10Item4": "<strong>不退款政策：</strong> <strong class=\"text-red-400\">購買後任何情況下均不退款。</strong> 所有銷售均為最終決定。完成購買即表示您確認已評估該軟體（可在 GitHub 上免費獲取）並對其功能感到滿意。",
     "section10Item5": "<strong>第三方元件：</strong> 商業許可不授予以閉源方式使用 AGPL 許可的第三方元件（如 CPDF、PyMuPDF 和 Ghostscript）的權利。您必須遵守這些元件的 AGPL v3 條款，或從其各自的供應商處獲取單獨的商業許可。",
     "section10Item6": "<strong>無限使用：</strong> 該許可允許在您組織內的裝置、伺服器和使用者機器上無限制地使用，沒有按使用者、按機器或按席位的限制。",
-    "section10Footer": "有關完整的許可詳情，請訪問我們的 <a href=\"licensing.html\" class=\"text-indigo-400 hover:underline\">許可頁面</a>。"
+    "section10Footer": "有關完整的許可詳情，請訪問我們的 <a href=\"licensing.html\" class=\"text-indigo-400 hover:underline\">許可頁面</a>。",
+    "upstreamContent": "TuHe PDF 基於 BentoPDF 二次開發，遵循 GNU AGPL-3.0 許可證。感謝上游作者與貢獻者的工作。"
   },
   "ocrLanguage": {
     "eng": "英語",
@@ -811,7 +842,7 @@
     "nep": "尼泊爾語",
     "nld": "荷蘭語",
     "nor": "挪威語",
-    "ori": "奧里亞語",
+    "ori": "奧裡亞語",
     "pan": "旁遮普語",
     "pol": "波蘭語",
     "por": "葡萄牙語",
@@ -844,5 +875,58 @@
     "uzb_cyrl": "烏茲別克語（西里爾字母）",
     "vie": "越南語",
     "yid": "意第緒語"
+  },
+  "validateSignature": {
+    "noSignatures": "未找到簽名",
+    "noSignaturesDesc": "此 PDF 不包含任何數字簽名。",
+    "signaturesFound": "{{count}} 個簽名已找到",
+    "signaturesFound_plural": "{{count}} 個簽名已找到",
+    "valid": "有效",
+    "trustVerification": "信任驗證：{{trusted}}/{{total}} 個簽名通過了自定義證書驗證",
+    "unknown": "未知",
+    "trusted": "已信任",
+    "notInTrustChain": "不在信任鏈中",
+    "signatureNumber": "簽名 {{index}}",
+    "fullCoverage": "完全覆蓋",
+    "partialCoverage": "部分覆蓋",
+    "signedBy": "簽署人",
+    "issuer": "簽發機構",
+    "signedOn": "簽署時間",
+    "validFrom": "有效期開始",
+    "validUntil": "有效期結束",
+    "reason": "簽署原因",
+    "location": "簽署地點",
+    "technicalDetails": "技術詳情",
+    "serialNumber": "序列號",
+    "digestAlgorithm": "摘要演算法",
+    "signatureAlgorithm": "簽名演算法",
+    "error": "錯誤",
+    "status": {
+      "valid": "有效簽名",
+      "unsupportedAlgorithm": "未驗證 — 不支援的簽名演算法",
+      "modifiedAfterSigning": "無效 — 簽名後被修改（部分覆蓋）",
+      "cryptoFailed": "無效 — 加密驗證失敗",
+      "invalid": "無效簽名",
+      "insecureDigest": "不安全的摘要演算法（MD5 / SHA-1）",
+      "certExpired": "證書已過期",
+      "selfSigned": "自簽名 — 簽署人身份未驗證",
+      "signatureIntact": "簽名完整 — 簽署人身份未驗證"
+    }
+  },
+  "addWatermark": {
+    "enterText": "請輸入水印文本。",
+    "selectImage": "請選擇水印圖片檔案。",
+    "unsupportedImage": "不支援的圖片格式。請使用 PNG 或 JPG 作為水印。"
+  },
+  "cbzToPdf": {
+    "canvasContextFailed": "無法獲取畫布上下文",
+    "convertPngFailed": "轉換 PNG 失敗",
+    "loadImageFailed": "載入圖片失敗",
+    "tooManyImages": "壓縮包中圖片過多",
+    "oversizedImage": "壓縮包中包含過大的圖片條目。",
+    "archiveTooLarge": "解壓後壓縮包過大。"
+  },
+  "bookmarkPdf": {
+    "previewText": "預覽文本"
   }
 }

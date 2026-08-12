@@ -263,7 +263,7 @@ async function changePermissions() {
 
     if (!outputFile || outputFile.length === 0) {
       throw new Error(
-        translate('changePermissions.emptyResult', '处理结果为空文件。')
+        translate('tools:changePermissions.emptyResult', '处理结果为空文件。')
       );
     }
 

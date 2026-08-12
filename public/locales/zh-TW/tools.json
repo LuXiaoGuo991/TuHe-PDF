@@ -10,7 +10,7 @@
     "input": "輸入",
     "output": "輸出"
   },
-  "convertToPdf": "转换为 PDF",
+  "convertToPdf": "轉換為 PDF",
   "pdfMultiTool": {
     "name": "PDF 多功能工具",
     "subtitle": "在一個統一的介面中合併、分割、組織、刪除、旋轉、新增空白頁、提取和複製。",
@@ -55,13 +55,13 @@
     "hiw2Title": "排列順序",
     "hiw2Desc": "上下拖動檔案，按你希望的順序排列",
     "hiw3Title": "合併檔案",
-    "hiw3Desc": "點選合併按鈕，將所有 PDF 合併為一個文件",
+    "hiw3Desc": "點選合併按鈕，將所有 PDF 合併為一個檔案",
     "hiw4Title": "下載",
     "hiw4Desc": "儲存合併後的 PDF——所有頁面按你選擇的順序組合",
     "faq1q": "一次可以合併多少個 PDF？",
     "faq1a": "沒有限制！一次操作即可合併任意數量的 PDF 檔案，對檔案數量和總大小均無限制。",
     "faq2q": "合併會降低 PDF 質量嗎？",
-    "faq2a": "不會！TuHe PDF 在合併時會保留所有 PDF 的原始質量，文件保持清晰，無質量損失。",
+    "faq2a": "不會！TuHe PDF 在合併時會保留所有 PDF 的原始質量，檔案保持清晰，無質量損失。",
     "faq3q": "選擇檔案後可以重新排序嗎？",
     "faq3a": "可以！在點選合併按鈕之前，拖放檔案即可按任意順序排列。",
     "cardDesc": "免費線上 PDF 合併工具",
@@ -73,7 +73,7 @@
     "mergeFailed": "PDF 合併失敗。",
     "workerError": "合併 worker 發生意外錯誤。",
     "invalidFiles": "PDF 合併失敗。請檢查所有檔案是否有效且未加密。",
-    "loadingPdfs": "正在載入 PDF 文件...",
+    "loadingPdfs": "正在載入 PDF 檔案...",
     "loadFailed": "一個或多個 PDF 檔案載入失敗",
     "pagesRangeLabel": "頁碼（如 1-3, 5）- 共 {{total}} 頁",
     "rangePlaceholder": "留空表示全部頁面",
@@ -131,9 +131,9 @@
     "faq1q": "可以提取指定的頁碼範圍嗎？",
     "faq1a": "可以！你可以從 PDF 中提取任意指定頁面或頁碼範圍，精確選擇所需頁面或分割為單獨檔案。",
     "faq2q": "分割後的 PDF 會損失質量嗎？",
-    "faq2a": "不會！分割後的 PDF 與原始文件質量完全一致，不會發生壓縮或質量損失。",
+    "faq2a": "不會！分割後的 PDF 與原始檔案質量完全一致，不會發生壓縮或質量損失。",
     "faq3q": "可以一次分割多個 PDF 嗎？",
-    "faq3a": "可以，支援批次處理多個 PDF，文件管理更高效。",
+    "faq3a": "可以，支援批次處理多個 PDF，檔案管理更高效。",
     "cardDesc": "免費線上 PDF 分割工具",
     "loadFailed": "PDF 檔案載入失敗。",
     "renderingPreviews": "正在渲染頁面預覽...",
@@ -147,7 +147,7 @@
     "nTimesWarning": "PDF 共 {{total}} 頁，無法被 {{n}} 整除，最後一個 PDF 將包含 {{remainder}} 頁。",
     "nMinError": "N 至少為 1。",
     "noPagesSelected": "沒有選擇要分割的頁面。",
-    "noPdfLoaded": "未載入 PDF 文件。",
+    "noPdfLoaded": "未載入 PDF 檔案。",
     "invalidRange": "請輸入有效的頁碼範圍。",
     "selectEvenOdd": "請選擇奇數頁或偶數頁。",
     "noBookmarksFound": "所選級別未找到書籤。",
@@ -374,7 +374,7 @@
       "b7b2151528": "正在構建新 PDF...",
       "93889c4f64": "刪除頁面",
       "b1b2a7b600": "複製頁面",
-      "1d7a59ce91": "您不能刪除文件的最後一頁。",
+      "1d7a59ce91": "您不能刪除檔案的最後一頁。",
       "520b80318a": "無法刪除",
       "d370ae8ed8": "{{value0}} • {{value1}} 頁",
       "e5afc36c9b": "載入 PDF 檔案失敗。",
@@ -384,7 +384,7 @@
       "06bf2457c8": "頁面順序無效",
       "d6d71e1a8b": "請確保排序中的所有頁碼都是唯一的。",
       "6e2937ad37": "頁碼重複",
-      "9fce12d6c1": "指定的頁數（{{value0}}）與文件當前的頁數（{{value1}}）不匹配。請提供所有頁面的完整排序。",
+      "9fce12d6c1": "指定的頁數（{{value0}}）與檔案當前的頁數（{{value1}}）不匹配。請提供所有頁面的完整排序。",
       "9188d43dd0": "頁數不正確",
       "f1ea100a4f": "請輸入正數。",
       "6ea125d343": "頁碼無效",
@@ -401,7 +401,7 @@
   },
   "deletePages": {
     "name": "刪除頁面",
-    "subtitle": "自您的文件中移除特定頁面。",
+    "subtitle": "自您的檔案中移除特定頁面。",
     "cardDesc": "免費線上刪除頁面工具",
     "auto": {
       "4b23671761": "刪除頁面並下載",
@@ -520,6 +520,31 @@
     "resetConfirm": "重置並返回檔案上傳頁面？所有未儲存的更改將丟失。",
     "deleteAllConfirm": "刪除全部 {{count}} 條書籤？",
     "fitToWidth": "適合寬度",
+    "undo": "撤銷",
+    "redo": "重做",
+    "deleteAll": "刪除全部",
+    "reset": "重置",
+    "backToTools": "返回工具",
+    "pageIndicator": "第 1 / 1 頁",
+    "goTo": "轉到:",
+    "go": "轉到",
+    "clickToSetDestination": "點選 PDF 設定書籤目標位置",
+    "addToPage": "新增到第",
+    "batchMode": "批次模式",
+    "selected": "已選",
+    "batchOperations": "批次操作",
+    "selectAll": "全選",
+    "deselectAll": "取消全選",
+    "deleteSelected": "刪除所選",
+    "expandAll": "展開全部",
+    "collapseAll": "摺疊全部",
+    "importBtn": "匯入",
+    "importCsvBtn": "匯入 CSV",
+    "importJsonBtn": "匯入 JSON",
+    "exportBtn": "匯出",
+    "exportCsvBtn": "匯出 CSV",
+    "exportJsonBtn": "匯出 JSON",
+    "noBookmarksYet": "暫無書籤。請在上方新增！",
     "dynamic": {
       "80825a5a20": "刪除",
       "4af82fdf15": "編輯",
@@ -534,39 +559,14 @@
     "faq2q": "我的檔案安全保密嗎？",
     "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
     "faq3q": "有檔案大小限制嗎？",
-    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。",
-    "undo": "撤销",
-    "redo": "重做",
-    "deleteAll": "删除全部",
-    "reset": "重置",
-    "backToTools": "返回工具",
-    "pageIndicator": "第 1 / 1 页",
-    "goTo": "转到:",
-    "go": "转到",
-    "clickToSetDestination": "点击 PDF 设置书签目标位置",
-    "addToPage": "添加到第",
-    "batchMode": "批量模式",
-    "selected": "已选",
-    "batchOperations": "批量操作",
-    "selectAll": "全选",
-    "deselectAll": "取消全选",
-    "deleteSelected": "删除所选",
-    "expandAll": "展开全部",
-    "collapseAll": "折叠全部",
-    "importBtn": "导入",
-    "importCsvBtn": "导入 CSV",
-    "importJsonBtn": "导入 JSON",
-    "exportBtn": "导出",
-    "exportCsvBtn": "导出 CSV",
-    "exportJsonBtn": "导出 JSON",
-    "noBookmarksYet": "暂无书签。请在上方添加！"
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "tableOfContents": {
     "name": "目錄",
     "subtitle": "根據 PDF 書籤生成目錄頁。",
     "titleLabel": "目錄標題",
     "fontSize": "字型大小",
-    "fontFamily": "字體系列",
+    "fontFamily": "字型系列",
     "addBookmark": "為目錄頁新增書籤",
     "generateButton": "生成目錄",
     "selectPdfFirst": "請先選擇 PDF 檔案。",
@@ -605,7 +605,7 @@
   },
   "pageNumbers": {
     "name": "頁碼",
-    "subtitle": "將頁碼插入到您的文件中。",
+    "subtitle": "將頁碼插入到您的檔案中。",
     "auto": {
       "5f27939446": "底部居中",
       "922e100333": "左下",
@@ -741,7 +741,7 @@
       "0bf8e42298": "立即獲取加蓋 Bates 編號的 PDF。多個檔案將以 ZIP 格式提供。",
       "9f3f0f105f": "為 PDF 新增頁碼",
       "bd7baa8910": "為頁面新增頁首和頁尾文字",
-      "c746838f0d": "為 PDF 文件新增水印",
+      "c746838f0d": "為 PDF 檔案新增水印",
       "02577a621c": "合併多個 PDF",
       "684e0fea3c": "整理 PDF",
       "da8df80df7": "重新排序和整理頁面",
@@ -761,22 +761,22 @@
       "95189fa63d": "正在載入 PDF..."
     },
     "pageTitle": "Bates 編號 - 線上免費 PDF 工具 | TuHe PDF",
-    "selectStyle": "选择样式",
-    "customizeStyle": "自定义样式",
-    "preview": "预览",
-    "batesPadding": "贝茨编号填充",
-    "batesStartsFrom": "贝茨编号起始值",
-    "fileCounterStartsFrom": "文件计数器起始值",
+    "selectStyle": "選擇樣式",
+    "customizeStyle": "自定義樣式",
+    "preview": "預覽",
+    "batesPadding": "貝茨編號填充",
+    "batesStartsFrom": "貝茨編號起始值",
+    "fileCounterStartsFrom": "檔案計數器起始值",
     "position": "位置",
-    "font": "字体",
-    "fontSize": "字号",
-    "color": "颜色",
-    "faq1q": "什么是贝茨编号？",
-    "faq1a": "贝茨编号是一种为法律文件编制索引的方法，便于识别和检索。每个页面都会获得一个唯一的顺序编号，通常带前缀或后缀。",
-    "faq2q": "我可以同时为多个 PDF 添加贝茨编号吗？",
-    "faq2a": "可以！上传多个 PDF，贝茨编号将跨所有文件顺序连续。拖拽文件可重新排序。",
-    "faq3q": "我的文件安全吗？",
-    "faq3a": "绝对安全！所有处理都在您的浏览器中完成。您的文件永远不会离开您的设备。"
+    "font": "字型",
+    "fontSize": "字號",
+    "color": "顏色",
+    "faq1q": "什麼是貝茨編號？",
+    "faq1a": "貝茨編號是一種為法律檔案編制索引的方法，便於識別和檢索。每個頁面都會獲得一個唯一的順序編號，通常帶字首或字尾。",
+    "faq2q": "我可以同時為多個 PDF 新增貝茨編號嗎？",
+    "faq2a": "可以！上傳多個 PDF，貝茨編號將跨所有檔案順序連續。拖拽檔案可重新排序。",
+    "faq3q": "我的檔案安全嗎？",
+    "faq3a": "絕對安全！所有處理都在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置。"
   },
   "addWatermark": {
     "name": "新增水印",
@@ -831,8 +831,8 @@
     "pageTitle": "新增水印 - 線上免費 PDF 工具 | TuHe PDF",
     "faq1q": "新增水印 真的免費嗎？",
     "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
-    "faq2a": "完全安全！所有处理都在您的浏览器中完成，文件不会离开您的设备，隐私得到充分保障。",
-    "faq3a": "没有！任意大小的文件都可以免费处理，次数不限。"
+    "faq2a": "完全安全！所有處理都在您的瀏覽器中完成，檔案不會離開您的裝置，隱私得到充分保障。",
+    "faq3a": "沒有！任意大小的檔案都可以免費處理，次數不限。"
   },
   "headerFooter": {
     "name": "頁首和頁尾",
@@ -870,8 +870,9 @@
     "pageTitle": "頁首和頁尾 - 線上免費 PDF 工具 | TuHe PDF",
     "faq1q": "頁首和頁尾 真的免費嗎？",
     "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
-    "faq2a": "完全安全！所有处理都在您的浏览器中完成，文件不会离开您的设备，隐私得到充分保障。",
-    "faq3a": "没有！任意大小的文件都可以免费处理，次数不限。"
+    "faq2a": "完全安全！所有處理都在您的瀏覽器中完成，檔案不會離開您的裝置，隱私得到充分保障。",
+    "faq3a": "沒有！任意大小的檔案都可以免費處理，次數不限。",
+    "invalidPageRange": "指定的頁面範圍無效。"
   },
   "invertColors": {
     "name": "反轉顏色",
@@ -1442,7 +1443,7 @@
     "uploadFiles": "上傳檔案",
     "typeText": "輸入文本",
     "acceptedFormats": "文本檔案 (.txt)",
-    "fontFamily": "字體系列",
+    "fontFamily": "字型系列",
     "fontSize": "字型大小",
     "textColor": "文本顏色",
     "pageSize": "頁面大小",
@@ -1560,12 +1561,12 @@
       "0b79ba5389": "{{value0}} • {{value1}}"
     },
     "pageTitle": "PDF 轉 JPG - 線上免費 PDF 工具 | TuHe PDF",
-    "faq1q": "PDF 转 JPG 真的免费吗？",
-    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
-    "faq2q": "应该选择哪种质量？",
-    "faq2a": "使用\"高\"或\"最高\"质量以获得打印品质的图片，使用\"中\"质量用于网页，或使用\"低\"质量以节省磁盘空间。质量越高，文件越大。",
-    "faq3q": "我的文件安全保密吗？",
-    "faq3a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。"
+    "faq1q": "PDF 轉 JPG 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "應該選擇哪種質量？",
+    "faq2a": "使用\"高\"或\"最高\"質量以獲得列印品質的圖片，使用\"中\"質量用於網頁，或使用\"低\"質量以節省磁碟空間。質量越高，檔案越大。",
+    "faq3q": "我的檔案安全保密嗎？",
+    "faq3a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。"
   },
   "pdfToPng": {
     "name": "PDF 轉 PNG",
@@ -1680,7 +1681,7 @@
     "dpi": "DPI (解析度)",
     "dpiExplanation": "DPI 越高 = 列印質量越好，檔案越大",
     "compression": "壓縮方式",
-    "compressionExplanation": "LZW 和 Deflate 為無失真壓縮。CCITT Group 4 最適合黑白掃描文件。",
+    "compressionExplanation": "LZW 和 Deflate 為無失真壓縮。CCITT Group 4 最適合黑白掃描檔案。",
     "colorMode": "色彩模式",
     "multiPage": "儲存為多頁 TIFF (單個檔案)",
     "loadingVips": "正在載入影像處理器...",
@@ -1696,7 +1697,7 @@
     "auto": {
       "786b211bd4": "LZW（無損）",
       "bcf697dca9": "Deflate / ZIP（無損）",
-      "8c5ef95e67": "CCITT Group 4（黑白文件）",
+      "8c5ef95e67": "CCITT Group 4（黑白檔案）",
       "d96f72b8a2": "JPEG（有損）",
       "5655e65ce9": "PackBits",
       "7684d1b63b": "無（不壓縮）",
@@ -1777,12 +1778,12 @@
       "dab1c2d482": "{{value0}} • {{value1}}"
     },
     "pageTitle": "PDF 轉 CBZ - 線上免費 PDF 工具 | TuHe PDF",
-    "faq1q": "PDF 转 CBZ 真的免费吗？",
-    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
-    "faq2q": "什么是 CBZ 格式？",
-    "faq2a": "CBZ（Comic Book ZIP）是一种流行的数字漫画和日漫格式。它本质上是一个包含页面图片的 ZIP 压缩包，支持大多数漫画阅读器。",
-    "faq3q": "我的文件安全保密吗？",
-    "faq3a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。"
+    "faq1q": "PDF 轉 CBZ 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "什麼是 CBZ 格式？",
+    "faq2a": "CBZ（Comic Book ZIP）是一種流行的數字漫畫和日漫格式。它本質上是一個包含頁面圖片的 ZIP 壓縮包，支援大多數漫畫閱讀器。",
+    "faq3q": "我的檔案安全保密嗎？",
+    "faq3a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。"
   },
   "pdfToGreyscale": {
     "name": "PDF 轉灰度",
@@ -1848,7 +1849,7 @@
   "ocrPdf": {
     "name": "OCR PDF",
     "subtitle": "使 PDF 可搜尋和可複製。",
-    "languagesInDocument": "文件中的語言",
+    "languagesInDocument": "檔案中的語言",
     "searchLanguagesPlaceholder": "搜尋語言...",
     "selectedLabel": "已選擇：",
     "none": "無",
@@ -1893,11 +1894,11 @@
     "extractTextLabel": "提取文本：",
     "extractTextDescription": "使用 Tesseract OCR 從掃描的影像或 PDF 中識別文本。",
     "searchableOutputLabel": "可搜尋輸出：",
-    "searchableOutputDescription": "建立一個帶有不可見文本層的新 PDF，使您的文件完全可搜尋，同時保留原始外觀。",
+    "searchableOutputDescription": "建立一個帶有不可見文本層的新 PDF，使您的檔案完全可搜尋，同時保留原始外觀。",
     "characterFilteringLabel": "字元過濾：",
-    "characterFilteringDescription": "使用白名單過濾掉不需要的字元並提高特定文件型別（發票、表單等）的準確性。",
+    "characterFilteringDescription": "使用白名單過濾掉不需要的字元並提高特定檔案型別（發票、表單等）的準確性。",
     "multiLanguageSupportLabel": "多語言支援：",
-    "multiLanguageSupportDescription": "為包含混合語言內容的文件選擇多種語言。",
+    "multiLanguageSupportDescription": "為包含混合語言內容的檔案選擇多種語言。",
     "auto": {
       "bb9dede377": "合併 PDF",
       "ae395b2670": "壓縮 PDF",
@@ -1959,7 +1960,7 @@
       "6db1c59993": "點選或拖放檔案以附加",
       "479b61ff56": "任意檔案型別",
       "f9dca904bf": "附件級別",
-      "978be941ab": "文件級別",
+      "978be941ab": "檔案級別",
       "4c355531b8": "頁面級別",
       "bb9dede377": "合併 PDF",
       "ae395b2670": "壓縮 PDF",
@@ -2036,7 +2037,7 @@
       "389ecde49d": "正在載入附件...",
       "151df6b489": "移除附件",
       "03e33d2166": "第 {{value0}} 頁附件",
-      "9ee1e04045": "文件級附件",
+      "9ee1e04045": "檔案級附件",
       "88aa4e1e76": "取消全選",
       "73e3ef7c28": "移除所有附件",
       "df05883ac6": "此 PDF 中未找到附件。",
@@ -2088,7 +2089,7 @@
     "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
     "faq3q": "有檔案大小限制嗎？",
     "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。",
-    "pagesToDivide": "要分割的页面",
+    "pagesToDivide": "要分割的頁面",
     "splitDirection": "分割方向"
   },
   "addBlankPage": {
@@ -2097,7 +2098,7 @@
     "auto": {
       "19bcf761ef": "指定插入空白頁的位置。",
       "517a547bfc": "位置 0 表示在開頭插入，位置等於頁數表示在末尾插入。",
-      "3cd3ecbfbe": "空白頁將與文件第一頁的尺寸匹配。",
+      "3cd3ecbfbe": "空白頁將與檔案第一頁的尺寸匹配。",
       "f68bd2e058": "輸入 0 插入到開頭。",
       "b75cdcccde": "新增空白頁",
       "bb9dede377": "合併 PDF",
@@ -2129,7 +2130,7 @@
   },
   "reversePages": {
     "name": "反轉頁面",
-    "subtitle": "反轉文件中所有頁面的順序。",
+    "subtitle": "反轉檔案中所有頁面的順序。",
     "auto": {
       "61a95548fc": "所有頁面將被反轉（首頁變末頁，末頁變首頁）。",
       "f8fa83c60e": "如果您上傳多個 PDF，每個檔案都將被反轉並以 ZIP 檔案形式下載。",
@@ -2254,9 +2255,9 @@
     "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
     "faq3q": "有檔案大小限制嗎？",
     "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。",
-    "pagesPerSheet": "每张页数",
-    "outputPageSize": "输出页面尺寸",
-    "borderColor": "边框颜色"
+    "pagesPerSheet": "每張頁數",
+    "outputPageSize": "輸出頁面尺寸",
+    "borderColor": "邊框顏色"
   },
   "combineToSinglePage": {
     "name": "合併為單頁",
@@ -2289,16 +2290,16 @@
     "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
     "faq3q": "有檔案大小限制嗎？",
     "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。",
-    "layoutDirection": "布局方向",
-    "spacing": "间距",
-    "separatorThickness": "分隔线粗细",
-    "separatorColor": "分隔线颜色"
+    "layoutDirection": "佈局方向",
+    "spacing": "間距",
+    "separatorThickness": "分隔線粗細",
+    "separatorColor": "分隔線顏色"
   },
   "viewMetadata": {
     "name": "檢視後設資料",
     "subtitle": "檢查 PDF 的隱藏屬性。",
     "auto": {
-      "95ff7aea01": "文件後設資料",
+      "95ff7aea01": "檔案後設資料",
       "bb9dede377": "合併 PDF",
       "ae395b2670": "壓縮 PDF",
       "0784d816a9": "分割 PDF",
@@ -2352,15 +2353,15 @@
     "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
     "faq3q": "有檔案大小限制嗎？",
     "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。",
-    "title": "标题",
+    "title": "標題",
     "author": "作者",
-    "subject": "主题",
-    "keywords": "关键词",
-    "creator": "创建者",
+    "subject": "主題",
+    "keywords": "關鍵詞",
+    "creator": "建立者",
     "producer": "生成器",
-    "creationDate": "创建日期",
+    "creationDate": "建立日期",
     "modificationDate": "修改日期",
-    "addCustomField": "添加自定义字段"
+    "addCustomField": "新增自定義欄位"
   },
   "pdfsToZip": {
     "name": "PDF 轉 ZIP",
@@ -2406,8 +2407,8 @@
     "exportAsPdf": "匯出為 PDF",
     "splitView": "分屏檢視",
     "alternating": "交替",
-    "leftDocument": "左側文件",
-    "rightDocument": "右側文件",
+    "leftDocument": "左側檔案",
+    "rightDocument": "右側檔案",
     "original": "原始",
     "modified": "修改後",
     "searchChanges": "搜尋更改...",
@@ -2457,8 +2458,8 @@
     "styleChangedFontSize": "字號：{{before}} → {{after}}",
     "textMoved": "已移動\"{{text}}\"",
     "ocr": "OCR",
-    "overlayView": "疊加視圖",
-    "changeType": "更改類型",
+    "overlayView": "疊加檢視",
+    "changeType": "更改型別",
     "moved": "已移動",
     "style": "樣式",
     "content": "內容",
@@ -2534,16 +2535,16 @@
     "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
     "faq3q": "有檔案大小限制嗎？",
     "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。",
-    "pagePreview": "页面预览",
-    "rows": "行数",
-    "columns": "列数",
-    "overlap": "重叠",
-    "pageRange": "页面范围",
-    "totalPages": "总页数",
-    "pageSize": "页面尺寸",
+    "pagePreview": "頁面預覽",
+    "rows": "行數",
+    "columns": "列數",
+    "overlap": "重疊",
+    "pageRange": "頁面範圍",
+    "totalPages": "總頁數",
+    "pageSize": "頁面尺寸",
     "orientation": "方向",
-    "contentScaling": "内容缩放",
-    "units": "单位"
+    "contentScaling": "內容縮放",
+    "units": "單位"
   },
   "fixPageSize": {
     "name": "修復頁面尺寸",
@@ -2579,13 +2580,13 @@
     "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
     "faq3q": "有檔案大小限制嗎？",
     "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。",
-    "targetPageSize": "目标页面尺寸",
-    "width": "宽度",
+    "targetPageSize": "目標頁面尺寸",
+    "width": "寬度",
     "height": "高度",
-    "units": "单位",
+    "units": "單位",
     "orientation": "方向",
-    "contentScaling": "内容缩放",
-    "marginColor": "边距颜色"
+    "contentScaling": "內容縮放",
+    "marginColor": "邊距顏色"
   },
   "linearizePdf": {
     "name": "線性化 PDF",
@@ -2619,7 +2620,9 @@
     "faq2q": "我的檔案安全保密嗎？",
     "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
     "faq3q": "有檔案大小限制嗎？",
-    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。",
+    "processingFailed": "處理失敗",
+    "noFilesLinearized": "沒有檔案被線性化"
   },
   "pageDimensions": {
     "name": "頁面尺寸",
@@ -2649,13 +2652,14 @@
     "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
     "faq3q": "有檔案大小限制嗎？",
     "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。",
-    "units": "单位",
-    "pageNumber": "页码",
+    "units": "單位",
+    "pageNumber": "頁碼",
     "dimensions": "尺寸",
-    "standardSize": "标准尺寸",
-    "aspectRatio": "宽高比",
-    "area": "面积",
-    "rotation": "旋转"
+    "standardSize": "標準尺寸",
+    "orientation": "方向",
+    "aspectRatio": "寬高比",
+    "area": "面積",
+    "rotation": "旋轉"
   },
   "removeRestrictions": {
     "name": "移除限制",
@@ -2763,7 +2767,8 @@
     "faq2q": "我的檔案安全保密嗎？",
     "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
     "faq3q": "有檔案大小限制嗎？",
-    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。",
+    "emptyResult": "加密結果為空檔案。"
   },
   "sanitizePdf": {
     "name": "清理 PDF",
@@ -2791,7 +2796,7 @@
       "3e222526c4": "正在清理 PDF...",
       "00e694f932": "未選擇要移除的專案或 PDF 中未找到。",
       "0f6dc18170": "無更改",
-      "2d61fe671a": "未載入 PDF 文件。"
+      "2d61fe671a": "未載入 PDF 檔案。"
     },
     "pageTitle": "清理 PDF - 線上免費 PDF 工具 | TuHe PDF",
     "faq1q": "清理 PDF 真的免費嗎？",
@@ -2884,7 +2889,7 @@
       "2d679f42f6": "建立者與生成者資訊",
       "de60328327": "建立與修改日期",
       "eb80b7f01c": "XMP 後設資料流",
-      "d02066cb8c": "文件 ID",
+      "d02066cb8c": "檔案 ID",
       "5506a43e27": "PieceInfo（私有應用程式資料）",
       "addde70e9e": "刪除所有後設資料",
       "bb9dede377": "合併 PDF",
@@ -2952,10 +2957,11 @@
     "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
     "faq3q": "有檔案大小限制嗎？",
     "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。",
-    "currentPassword": "当前密码",
-    "newUserPassword": "新用户密码",
-    "newOwnerPassword": "新所有者密码",
-    "allowDocumentAssembly": "允许文档组装"
+    "currentPassword": "當前密碼",
+    "newUserPassword": "新使用者密碼",
+    "newOwnerPassword": "新所有者密碼",
+    "allowDocumentAssembly": "允許檔案組裝",
+    "emptyResult": "處理結果為空檔案。"
   },
   "odtToPdf": {
     "name": "ODT 轉 PDF",
@@ -3017,7 +3023,7 @@
   },
   "rtfToPdf": {
     "name": "RTF 轉 PDF",
-    "subtitle": "將富文本格式文件轉換為 PDF。支援多個檔案。",
+    "subtitle": "將富文本格式檔案轉換為 PDF。支援多個檔案。",
     "acceptedFormats": "RTF 檔案",
     "convertButton": "轉換為 PDF",
     "auto": {
@@ -3046,7 +3052,7 @@
   },
   "wordToPdf": {
     "name": "Word 轉 PDF",
-    "subtitle": "將 Word 文件 (DOCX, DOC, ODT, RTF) 轉換為 PDF 格式。支援多個檔案。",
+    "subtitle": "將 Word 檔案 (DOCX, DOC, ODT, RTF) 轉換為 PDF 格式。支援多個檔案。",
     "acceptedFormats": "DOCX, DOC, ODT, RTF 檔案",
     "convertButton": "轉換為 PDF",
     "auto": {
@@ -3073,11 +3079,11 @@
     },
     "dynamic": {
       "4716974d31": "轉換過程中發生錯誤。錯誤資訊：{{value0}}",
-      "c7656bfe50": "成功將 {{value0}} 個 Word 文件轉換為 PDF。",
+      "c7656bfe50": "成功將 {{value0}} 個 Word 檔案轉換為 PDF。",
       "ce88334fff": "轉換完成",
       "ac56a3e11b": "正在轉換 {{value0}}/{{value1}}：{{value2}}...",
       "59a8cc5e17": "已成功將 {{value0}} 轉換為 PDF。",
-      "7e35823cb1": "請選擇至少一個 Word 文件。",
+      "7e35823cb1": "請選擇至少一個 Word 檔案。",
       "02029cec28": "操作失敗，請重試。",
       "80685ef3be": "操作失敗，請重試。",
       "5e47f85e0d": "正在生成高質量 PDF...",
@@ -3087,12 +3093,12 @@
       "d6c3ffcaae": "無檔案"
     },
     "pageTitle": "Word 轉 PDF - 線上免費 PDF 工具 | TuHe PDF",
-    "faq1q": "Word 转 PDF 真的免费吗？",
-    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
-    "faq2q": "转换会保留格式吗？",
-    "faq2a": "是的！转换会自动保留原始文档的字体、图片和布局。所有处理都在您的浏览器中完成。",
-    "faq3q": "我的文件安全保密吗？",
-    "faq3a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。"
+    "faq1q": "Word 轉 PDF 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "轉換會保留格式嗎？",
+    "faq2a": "是的！轉換會自動保留原始檔案的字型、圖片和佈局。所有處理都在您的瀏覽器中完成。",
+    "faq3q": "我的檔案安全保密嗎？",
+    "faq3a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。"
   },
   "excelToPdf": {
     "name": "Excel 轉 PDF",
@@ -3241,11 +3247,12 @@
     "faq2q": "我的檔案安全保密嗎？",
     "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
     "faq3q": "有檔案大小限制嗎？",
-    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。"
+    "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。",
+    "pageSheetSummary": "第 {{page}}/{{total}} 頁在第 {{sheet}}/{{sheetTotal}} 張"
   },
   "xpsToPdf": {
     "name": "XPS 轉 PDF",
-    "subtitle": "將 XPS/OXPS 文件轉換為 PDF 格式。支援多個檔案。",
+    "subtitle": "將 XPS/OXPS 檔案轉換為 PDF 格式。支援多個檔案。",
     "acceptedFormats": "XPS, OXPS 檔案",
     "convertButton": "轉換為 PDF",
     "auto": {
@@ -3399,7 +3406,7 @@
   },
   "wpdToPdf": {
     "name": "WPD 轉 PDF",
-    "subtitle": "將 WordPerfect 文件 (WPD) 轉換為 PDF 格式。支援多個檔案。",
+    "subtitle": "將 WordPerfect 檔案 (WPD) 轉換為 PDF 格式。支援多個檔案。",
     "acceptedFormats": "WPD 檔案",
     "convertButton": "轉換為 PDF",
     "auto": {
@@ -3430,7 +3437,7 @@
   },
   "wpsToPdf": {
     "name": "WPS 轉 PDF",
-    "subtitle": "將 WPS Office 文件轉換為 PDF 格式。支援多個檔案。",
+    "subtitle": "將 WPS Office 檔案轉換為 PDF 格式。支援多個檔案。",
     "acceptedFormats": "WPS 檔案",
     "convertButton": "轉換為 PDF",
     "auto": {
@@ -3461,7 +3468,7 @@
   },
   "xmlToPdf": {
     "name": "XML 轉 PDF",
-    "subtitle": "將 XML 文件轉換為 PDF 格式。支援多個檔案。",
+    "subtitle": "將 XML 檔案轉換為 PDF 格式。支援多個檔案。",
     "acceptedFormats": "XML 檔案",
     "convertButton": "轉換為 PDF",
     "auto": {
@@ -3490,7 +3497,7 @@
   },
   "pagesToPdf": {
     "name": "Pages 轉 PDF",
-    "subtitle": "將 Apple Pages 文件轉換為 PDF 格式。支援多個檔案。",
+    "subtitle": "將 Apple Pages 檔案轉換為 PDF 格式。支援多個檔案。",
     "acceptedFormats": "Pages 檔案",
     "convertButton": "轉換為 PDF",
     "auto": {
@@ -3840,7 +3847,7 @@
     "name": "PDF 轉文本",
     "subtitle": "從 PDF 檔案中提取文本並儲存為純文本檔案 (.txt)。支援多個檔案。",
     "noteLabel": "注意：",
-    "noteText": "此工具僅適用於數字建立的 PDF。對於掃描文件或基於影像的 PDF，請改用我們的 OCR PDF 工具。",
+    "noteText": "此工具僅適用於數字建立的 PDF。對於掃描檔案或基於影像的 PDF，請改用我們的 OCR PDF 工具。",
     "convertButton": "提取文本",
     "auto": {
       "bb9dede377": "合併 PDF",
@@ -3886,7 +3893,7 @@
     "certValidity": "有效期",
     "signatureDetails": "簽名詳情（可選）",
     "reason": "原因",
-    "reasonPlaceholder": "例如：我批准此文件",
+    "reasonPlaceholder": "例如：我批准此檔案",
     "location": "位置",
     "locationPlaceholder": "例如：北京，中國",
     "contactInfo": "聯絡資訊",
@@ -3934,7 +3941,7 @@
     "defaultSignatureText": "由 {{signer}} 數字簽名\n{{date}}",
     "pageCount": "{{count}} 頁",
     "howToStep1Title": "上傳 PDF",
-    "howToStep1Text": "選擇您要簽署的 PDF 文件",
+    "howToStep1Text": "選擇您要簽署的 PDF 檔案",
     "howToStep2Title": "上傳證書",
     "howToStep2Text": "提供您的 .pfx 或 .p12 證書檔案和密碼",
     "howToStep3Title": "簽署並下載",
@@ -3945,7 +3952,7 @@
     "relatedSanitizeDesc": "刪除隱藏資料",
     "relatedPermissionsDesc": "設定 PDF 許可權",
     "faqWhatIsQuestion": "什麼是數字簽名？",
-    "faqWhatIsAnswer": "數字簽名是一種驗證文件真實性和完整性的加密機制。與繪製的簽名不同，它使用公鑰加密（X.509 證書）來證明簽名者的身份。",
+    "faqWhatIsAnswer": "數字簽名是一種驗證檔案真實性和完整性的加密機制。與繪製的簽名不同，它使用公鑰加密（X.509 證書）來證明簽名者的身份。",
     "faqFormatsQuestion": "支援哪些證書格式？",
     "faqFormatsAnswer": "我們支援 PKCS#12 格式的證書（.pfx、.p12），其中包含您的證書和私鑰（一個加密檔案）。這些通常由證書頒發機構頒發。",
     "faqPrivateKeyQuestion": "我的私鑰安全嗎？",
@@ -3965,7 +3972,7 @@
   "validateSignaturePdf": {
     "name": "驗證 PDF 簽名",
     "pageTitle": "驗證 PDF 簽名 - 驗證數字簽名 | TuHe PDF",
-    "subtitle": "驗證您的 PDF 檔案中的數字簽名。檢查證書有效性、檢視簽名者詳情並確認文件完整性。所有處理都在您的瀏覽器中進行。",
+    "subtitle": "驗證您的 PDF 檔案中的數字簽名。檢查證書有效性、檢視簽名者詳情並確認檔案完整性。所有處理都在您的瀏覽器中進行。",
     "auto": {
       "4205553299": "簽名驗證結果",
       "669c25442e": "自定義證書檔案 X.509（可選）",
@@ -3974,7 +3981,7 @@
       "5515cecbd8": "上傳 PDF",
       "c0481911b9": "從您的裝置中選擇數字簽名的 PDF 檔案",
       "1224313bb3": "自動分析",
-      "1118722b1e": "該工具提取並解析文件中的所有數字簽名",
+      "1118722b1e": "該工具提取並解析檔案中的所有數字簽名",
       "730ace573c": "檢視結果",
       "bec47e5e06": "檢視簽名者資訊、證書有效性和簽名狀態",
       "fcf771a47b": "數字簽名",
@@ -3993,24 +4000,24 @@
       "934e0a255a": "請選擇 .pem、.crt、.cer 或 .der 證書檔案。",
       "ce9a858d22": "請選擇一個 PDF 檔案。"
     },
-    "faq1q": "签名验证 真的免费吗？",
-    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
-    "faq2q": "如何验证数字签名？",
-    "faq2a": "上传已签名的 PDF 文件，我们的工具将自动检测并验证所有数字签名。您还可以上传自定义的 X.509 证书以根据自定义信任源进行验证。",
-    "faq3q": "我的文件安全保密吗？",
-    "faq3a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。"
+    "faq1q": "簽名驗證 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "如何驗證數字簽名？",
+    "faq2a": "上傳已簽名的 PDF 檔案，我們的工具將自動檢測並驗證所有數字簽名。您還可以上傳自定義的 X.509 證書以根據自定義信任源進行驗證。",
+    "faq3q": "我的檔案安全保密嗎？",
+    "faq3a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。"
   },
   "timestampPdf": {
     "name": "PDF 時間戳",
-    "pageTitle": "免費線上 PDF 時間戳 - RFC 3161 文件時間戳 | TuHe PDF",
-    "subtitle": "通過可信的 TSA 伺服器為您的 PDF 新增 RFC 3161 時間戳。證明您的文件在特定時間點存在。無需證書。",
+    "pageTitle": "免費線上 PDF 時間戳 - RFC 3161 檔案時間戳 | TuHe PDF",
+    "subtitle": "通過可信的 TSA 伺服器為您的 PDF 新增 RFC 3161 時間戳。證明您的檔案在特定時間點存在。無需證書。",
     "tsaSectionTitle": "時間戳伺服器 (TSA)",
     "selectTsa": "選擇 TSA 伺服器",
     "applyTimestamp": "應用時間戳",
     "successMessage": "PDF 時間戳新增成功！時間戳可在任何 PDF 閱讀器中驗證。",
     "auto": {
       "bf9bc0c472": "新增時間戳需要聯絡選定的 TSA 伺服器以獲取受信任的時間戳令牌。",
-      "f431115754": "選擇要新增時間戳的 PDF 文件",
+      "f431115754": "選擇要新增時間戳的 PDF 檔案",
       "8763b90ca8": "選擇 TSA 伺服器",
       "3c0dae3c70": "選擇一個受信任的 TSA 伺服器",
       "5215980529": "下載",
@@ -4019,10 +4026,10 @@
       "114a8d8958": "使用 X.509 證書籤名",
       "0f07855beb": "驗證簽名",
       "c38a47c616": "驗證數字簽名",
-      "e97f784fcc": "文件時間戳（RFC 3161）是一種加密證明，證明您的 PDF 在特定時間點已存在。受信任的時間戳機構（TSA）伺服器會對文件的雜湊值及當前時間進行簽名，建立一個嵌入 PDF 中的防篡改時間戳。",
-      "3691aa32b8": "不需要。與數字簽名不同，文件時間戳不需要個人證書。TSA 伺服器使用自己的證書提供受信任的時間戳。",
-      "c909f24756": "不會。只有您文件的加密雜湊（SHA-256）會被髮送到 TSA 伺服器。您實際的 PDF 內容永遠不會離開您的瀏覽器。",
-      "0302dba565": "是的。該工具建立標準的 RFC 3161 文件時間戳（ETSI.RFC3161 SubFilter），可被 Adobe Acrobat 和其他主流 PDF 檢視器識別。"
+      "e97f784fcc": "檔案時間戳（RFC 3161）是一種加密證明，證明您的 PDF 在特定時間點已存在。受信任的時間戳機構（TSA）伺服器會對檔案的雜湊值及當前時間進行簽名，建立一個嵌入 PDF 中的防篡改時間戳。",
+      "3691aa32b8": "不需要。與數字簽名不同，檔案時間戳不需要個人證書。TSA 伺服器使用自己的證書提供受信任的時間戳。",
+      "c909f24756": "不會。只有您檔案的加密雜湊（SHA-256）會被髮送到 TSA 伺服器。您實際的 PDF 內容永遠不會離開您的瀏覽器。",
+      "0302dba565": "是的。該工具建立標準的 RFC 3161 檔案時間戳（ETSI.RFC3161 SubFilter），可被 Adobe Acrobat 和其他主流 PDF 檢視器識別。"
     },
     "dynamic": {
       "f75cc851aa": "操作失敗，請重試。",
@@ -4035,14 +4042,14 @@
       "bdf9248f12": "{{value0}} • 正在載入頁面...",
       "a36f98a780": "請選擇一個 PDF 檔案。"
     },
-    "faq1q": "PDF 时间戳 真的免费吗？",
-    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
-    "faq2q": "什么是文档时间戳？",
-    "faq2a": "文档时间戳（RFC 3161）是一种加密证明，证明您的 PDF 在特定时间点已存在。受信任的时间戳机构（TSA）服务器会对文档的哈希值及当前时间进行签名。",
-    "faq3q": "我的文件安全保密吗？",
-    "faq3a": "绝对安全！时间戳请求仅发送文档摘要而非文件本身。您的 PDF 文件永远不会离开您的设备。",
-    "faq4q": "有文件大小限制吗？",
-    "faq4a": "没有！处理任何大小的文件，无限次，完全免费。"
+    "faq1q": "PDF 時間戳 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "什麼是檔案時間戳？",
+    "faq2a": "檔案時間戳（RFC 3161）是一種加密證明，證明您的 PDF 在特定時間點已存在。受信任的時間戳機構（TSA）伺服器會對檔案的雜湊值及當前時間進行簽名。",
+    "faq3q": "我的檔案安全保密嗎？",
+    "faq3a": "絕對安全！時間戳請求僅傳送檔案摘要而非檔案本身。您的 PDF 檔案永遠不會離開您的裝置。",
+    "faq4q": "有檔案大小限制嗎？",
+    "faq4a": "沒有！處理任何大小的檔案，無限次，完全免費。"
   },
   "emailToPdf": {
     "name": "郵件轉 PDF",
@@ -4056,7 +4063,7 @@
       "a38c1a4b63": "點選或拖放 .eml 或 .msg 檔案以開始",
       "1f22ff8294": "點選轉換按鈕生成您的 PDF",
       "21f1cf5699": "即時儲存您轉換後的 PDF 檔案",
-      "2f4e232e46": "將 Word 文件轉換為 PDF",
+      "2f4e232e46": "將 Word 檔案轉換為 PDF",
       "d43e38ba8b": "將文本檔案轉換為 PDF",
       "fe17a5bb0f": "編輯 PDF",
       "d3ff2e8cb2": "TuHe PDF 支援 .eml（標準電子郵件格式）和 .msg（Microsoft Outlook）檔案。這些是匯出或儲存的電子郵件最常見的格式。",
@@ -4082,8 +4089,9 @@
     "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
     "faq3q": "有檔案大小限制嗎？",
     "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。",
-    "faq4q": "我的文件安全保密吗？",
-    "faq4a": "绝对安全！所有处理均在您的浏览器中完成。您的电子邮件文件永远不会离开您的设备，确保敏感通信的完全隐私。"
+    "faq4q": "我的檔案安全保密嗎？",
+    "faq4a": "絕對安全！所有處理均在您的瀏覽器中完成。您的電子郵件檔案永遠不會離開您的裝置，確保敏感通訊的完全隱私。",
+    "unsupportedFileType": "不支援的檔案型別"
   },
   "fontToOutline": {
     "name": "字型轉輪廓",
@@ -4105,7 +4113,7 @@
       "adfbd1a347": "轉換為存檔格式",
       "02a3e813d7": "修復損壞的 PDF 檔案",
       "a26ee4f5a0": "將字型轉為輪廓意味著將文本字元從基於字型的表示形式轉換為向量路徑/曲線。這確保 PDF 在任何裝置上看起來都完全相同，即使原始字型未安裝也是如此。",
-      "1a4d97e7db": "在準備專業列印的 PDF、分享包含特殊字型的文件，或需要確保在不同系統和裝置上外觀一致時使用此工具。",
+      "1a4d97e7db": "在準備專業列印的 PDF、分享包含特殊字型的檔案，或需要確保在不同系統和裝置上外觀一致時使用此工具。",
       "4d65f6e337": "不會。轉換後，文本變為向量圖形，不再可選擇或搜尋。如果需要可搜尋的文本，請考慮在轉換後使用 OCR 工具。",
       "9c649e3408": "是的！所有處理完全在您的瀏覽器中使用 WebAssembly 完成。您的檔案不會離開裝置。"
     },
@@ -4118,14 +4126,14 @@
       "ff6a22c28e": "請選擇至少一個 PDF 檔案。"
     },
     "pageTitle": "字型轉輪廓 - 線上免費 PDF 工具 | TuHe PDF",
-    "faq1q": "字体转轮廓 真的免费吗？",
-    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
-    "faq2q": "什么是字体转轮廓？",
-    "faq2a": "字体转轮廓意味着将文本字符从基于字体的表示形式转换为矢量路径/曲线。这确保 PDF 在任何设备上看起来都完全相同。",
-    "faq3q": "什么时候应该使用此工具？",
-    "faq3a": "在准备专业打印的 PDF、分享包含特殊字体的文档，或需要确保在不同系统和设备上外观一致时使用此工具。",
-    "faq4q": "我的文件安全保密吗？",
-    "faq4a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。"
+    "faq1q": "字型轉輪廓 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "什麼是字型轉輪廓？",
+    "faq2a": "字型轉輪廓意味著將文本字元從基於字型的表示形式轉換為向量路徑/曲線。這確保 PDF 在任何裝置上看起來都完全相同。",
+    "faq3q": "什麼時候應該使用此工具？",
+    "faq3a": "在準備專業列印的 PDF、分享包含特殊字型的檔案，或需要確保在不同系統和裝置上外觀一致時使用此工具。",
+    "faq4q": "我的檔案安全保密嗎？",
+    "faq4a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。"
   },
   "deskewPdf": {
     "name": "校正 PDF",
@@ -4152,8 +4160,8 @@
       "02a3e813d7": "修復損壞的 PDF 檔案",
       "989dd4ea29": "旋轉 PDF 頁面",
       "a154d77304": "使 PDF 可搜尋",
-      "253e8cb914": "糾偏是修正掃描文件中傾斜或旋轉頁面的過程。掃描文件時，頁面輕微傾斜很常見。此工具可自動檢測並修正這種傾斜。",
-      "bcb7b013dd": "我們的工具使用 OpenCV 的高階影像處理演算法，高精度檢測傾斜角度。它在文本內容清晰的文件上效果最佳。",
+      "253e8cb914": "糾偏是修正掃描檔案中傾斜或旋轉頁面的過程。掃描檔案時，頁面輕微傾斜很常見。此工具可自動檢測並修正這種傾斜。",
+      "bcb7b013dd": "我們的工具使用 OpenCV 的高階影像處理演算法，高精度檢測傾斜角度。它在文本內容清晰的檔案上效果最佳。",
       "9c649e3408": "是的！所有處理完全在您的瀏覽器中使用 WebAssembly 完成。您的檔案不會離開裝置。"
     },
     "dynamic": {
@@ -4166,18 +4174,18 @@
       "9462cdd58a": "設定"
     },
     "pageTitle": "校正 PDF - 線上免費 PDF 工具 | TuHe PDF",
-    "skewThreshold": "倾斜阈值",
-    "processingQuality": "处理质量",
-    "faq1q": "PDF 纠偏 真的免费吗？",
-    "faq1a": "是的！TuHe PDF 100% 免费，无隐藏费用，无需注册，文件处理无任何限制。",
-    "faq2q": "纠偏功能如何工作？",
-    "faq2a": "我们的工具使用 OpenCV 的高级图像处理算法，高精度检测倾斜角度。它在文本内容清晰的文档上效果最佳。",
-    "faq3q": "我的文件安全保密吗？",
-    "faq3a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。"
+    "skewThreshold": "傾斜閾值",
+    "processingQuality": "處理質量",
+    "faq1q": "PDF 糾偏 真的免費嗎？",
+    "faq1a": "是的！TuHe PDF 100% 免費，無隱藏費用，無需註冊，檔案處理無任何限制。",
+    "faq2q": "糾偏功能如何工作？",
+    "faq2a": "我們的工具使用 OpenCV 的高階影像處理演算法，高精度檢測傾斜角度。它在文本內容清晰的檔案上效果最佳。",
+    "faq3q": "我的檔案安全保密嗎？",
+    "faq3a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。"
   },
   "pdfToWord": {
     "name": "PDF 轉 Word",
-    "subtitle": "將 PDF 檔案轉換為可編輯的 Word 文件。",
+    "subtitle": "將 PDF 檔案轉換為可編輯的 Word 檔案。",
     "auto": {
       "6d4fcf7a04": "轉換為 DOCX",
       "c91e040a8e": "Word 轉 PDF",
@@ -4319,9 +4327,9 @@
     "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
     "faq3q": "有檔案大小限制嗎？",
     "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。",
-    "textOption": "文本选项",
-    "metadataOption": "元数据选项",
-    "extraInfoOption": "额外信息选项"
+    "textOption": "文本選項",
+    "metadataOption": "後設資料選項",
+    "extraInfoOption": "額外資訊選項"
   },
   "pdfOcg": {
     "name": "PDF 圖層 (OCG)",
@@ -4446,9 +4454,9 @@
     "faq2a": "絕對安全！所有處理均在您的瀏覽器中完成。您的檔案永遠不會離開您的裝置，確保完全隱私。",
     "faq3q": "有檔案大小限制嗎？",
     "faq3a": "沒有！處理任何大小的檔案，無限次，完全免費。",
-    "dpiResolution": "DPI 分辨率",
-    "imageFormat": "图片格式",
-    "convertToGrayscale": "转换为灰度"
+    "dpiResolution": "DPI 解析度",
+    "imageFormat": "圖片格式",
+    "convertToGrayscale": "轉換為灰度"
   },
   "pdfWorkflow": {
     "name": "PDF 工作流構建器",
@@ -4506,7 +4514,7 @@
       "noPdfFilesUploaded": "PDF 輸入節點中未上傳 PDF 檔案",
       "failedToLoadFile": "無法載入 \"{{file}}\"，檔案可能已損壞",
       "noImagesUploaded": "影像輸入節點中未上傳影像",
-      "noWordDocsUploaded": "Word 輸入節點中未上傳文件",
+      "noWordDocsUploaded": "Word 輸入節點中未上傳檔案",
       "noExcelUploaded": "Excel 輸入節點中未上傳電子表格",
       "noPowerPointUploaded": "PowerPoint 輸入節點中未上傳簡報",
       "noCbzUploaded": "CBZ 輸入節點中未上傳漫畫歸檔",
@@ -4572,7 +4580,7 @@
     "y1Hint": "下邊距（以磅為單位）",
     "retainPageLabelsHint": "關閉（預設）：自然 1–N 編號。開啟：保留每個檔案的原始頁面標籤（可能產生重複標籤）。",
     "fileLabels": {
-      "wordDocsLabel": "Word 文件",
+      "wordDocsLabel": "Word 檔案",
       "spreadsheetsLabel": "電子表格",
       "presentationsLabel": "簡報",
       "textFilesLabel": "文本檔案",
@@ -4599,7 +4607,7 @@
       "xpsHint": "支援格式：XPS、OXPS",
       "comicsHint": "支援格式：CBZ、CBR",
       "visioHint": "支援格式：VSD、VSDX",
-      "documentsBtnLabel": "文件",
+      "documentsBtnLabel": "檔案",
       "spreadsheetsBtnLabel": "電子表格",
       "presentationsBtnLabel": "簡報",
       "textFilesBtnLabel": "文本檔案",
@@ -4723,7 +4731,7 @@
     "preconfiguredTitle": "預配置且可立即使用。",
     "preconfiguredDescription": "高階處理模組從 CDN 自動載入。如果您需要使用自定義源（例如，對於 air-gapped 或自託管部署），可以覆蓋以下 URL。",
     "usingDefault": "使用預設值：{{url}}",
-    "pymupdfSubtitle": "文件處理引擎",
+    "pymupdfSubtitle": "檔案處理引擎",
     "pymupdfFeatures": "啟用：PDF 轉文本、Markdown、SVG、DOCX、Excel • 提取影像/表格 • 格式轉換",
     "testButton": "測試",
     "recommendedLabel": "推薦：",
@@ -4837,28 +4845,37 @@
     "barcodeHintEan13": "精確 12 或 13 位數字",
     "barcodeHintUpca": "精確 11 或 12 位數字",
     "selectFieldToEdit": "選擇一個欄位以編輯屬性",
-    "label": "标签",
-    "action": "动作",
-    "none": "无",
-    "printForm": "打印表单",
-    "showHideField": "显示/隐藏字段",
+    "label": "標籤",
+    "action": "動作",
+    "none": "無",
+    "printForm": "打印表單",
+    "showHideField": "顯示/隱藏欄位",
     "url": "URL",
     "urlPlaceholder": "https://example.com",
-    "javascriptCode": "JavaScript 代码",
-    "targetField": "目标字段",
-    "show": "显示",
-    "hide": "隐藏",
-    "toggle": "切换",
-    "optionsLabel": "选项（每行一个或用逗号分隔）",
-    "selectedOption": "已选选项",
-    "fillWithFormFiller": "如需实际填写或更改选项，请使用我们的 PDF 表单填写器。",
-    "imageFieldNote": "在 PDF 中点击此字段将打开文件选择器以上传图片。",
-    "fieldName": "字段名",
-    "groupName": "（组名）",
-    "barcodeFormat": "条码格式",
-    "barcodeValue": "条码值",
-    "labelOrPrompt": "标签/提示",
+    "javascriptCode": "JavaScript 程式碼",
+    "targetField": "目標欄位",
+    "show": "顯示",
+    "hide": "隱藏",
+    "toggle": "切換",
+    "optionsLabel": "選項（每行一個或用逗號分隔）",
+    "selectedOption": "已選選項",
+    "fillWithFormFiller": "如需實際填寫或更改選項，請使用我們的 PDF 表單填寫器。",
+    "imageFieldNote": "在 PDF 中點選此欄位將開啟檔案選擇器以上傳圖片。",
+    "fieldName": "欄位名",
+    "groupName": "（組名）",
+    "barcodeFormat": "條碼格式",
+    "barcodeValue": "條碼值",
+    "labelOrPrompt": "標籤/提示",
     "defaultJsScript": "app.alert(\"您好世界！\");",
-    "visibility": "可见性"
+    "visibility": "可見性"
+  },
+  "overlayPdf": {
+    "emptyResult": "處理產生的檔案為空。"
+  },
+  "posterize": {
+    "invalidPageRange": "無效的頁面範圍"
+  },
+  "wasmProvider": {
+    "invalidUrl": "無效的 URL"
   }
 }

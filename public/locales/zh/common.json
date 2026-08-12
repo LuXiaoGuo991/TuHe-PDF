@@ -56,14 +56,14 @@
     },
     "lightningFast": {
       "title": "极速处理",
-      "description": "瞬间处理 PDF, 无需等待。"
+      "description": "瞬间处理 PDF，无需等待。"
     }
   },
   "tools": {
     "title": "开始使用",
     "toolsLabel": "工具",
     "subtitle": "点击工具以打开文件上传",
-    "searchPlaceholder": "搜索工具 (例如 '合并', '分割'…)",
+    "searchPlaceholder": "搜索工具（例如“合并”“拆分”……）",
     "backToTools": "返回工具列表",
     "firstLoadNotice": "首次加载需要一点时间，因为我们正在下载转换引擎。之后所有加载将即时完成。"
   },
@@ -142,7 +142,7 @@
     "displayPreferences": "显示设置",
     "searchShortcuts": "搜索快捷键…",
     "shortcutsInfo": "按下并按住按键以设置快捷键。更改将自动保存。",
-    "shortcutsWarning": "⚠️ 避免使用通用的浏览器快捷键 (Cmd/Ctrl+W, Cmd/Ctrl+T, Cmd/Ctrl+N 等)，因为它们可能无法稳定工作。",
+    "shortcutsWarning": "⚠️ 避免使用通用的浏览器快捷键（Cmd/Ctrl+W、Cmd/Ctrl+T、Cmd/Ctrl+N 等），因为它们可能无法稳定工作。",
     "import": "导入",
     "export": "导出",
     "resetToDefaults": "恢复默认",
@@ -393,8 +393,7 @@
       "ce86f9b182": "无法显示该页面。",
       "e3d25c4962": "渲染错误",
       "6850b548a2": "正在加载第 {{value0}} 页…",
-      "4e708e8c7c": "Mermaid 错误：{{value0}}",
-      "03e67e394e": "模板 \"{{value0}}\" 已保存。"
+      "4e708e8c7c": "Mermaid 错误：{{value0}}"
     },
     "workflow": {
       "status": {
@@ -599,11 +598,36 @@
     "bytes": "字节",
     "k": "K"
   },
+  "labels": {
+    "insertAfterPage": "插入到此页之后",
+    "blankPageCount": "空白页数量",
+    "backgroundColor": "背景颜色",
+    "pageSize": "页面尺寸",
+    "includeCcBcc": "在页眉中包含抄送和密送收件人",
+    "includeAttachments": "包含邮件附件列表",
+    "exportFormat": "导出格式",
+    "pageOrder": "页面顺序（以逗号分隔）",
+    "format": "格式",
+    "color": "颜色",
+    "ownerPasswordOptional": "所有者密码（可选）",
+    "newTextColor": "新文本颜色",
+    "pdfQuality": "PDF 质量",
+    "sourceRotation": "源页面旋转",
+    "gridMode": "网格模式",
+    "generatePreview": "生成预览",
+    "includeImagesBase64": "以 Base64 格式包含图片",
+    "sensitivity": "灵敏度：",
+    "copyMetadataJson": "将元数据复制为 JSON",
+    "pageRangeTotal": "页面范围（例如 1,3,5-7）- 总计：",
+    "pages": "页",
+    "pdfaVersion": "PDF/A 版本"
+  },
   "workbench": {
     "noMatchingTools": "没有匹配的工具",
     "closeTab": "关闭标签页",
     "closeTabMessage": "「{{title}}」中还有已上传的文件或正在进行的任务，关闭后这些进度将丢失。确定要关闭吗？",
     "closeTabConfirm": "仍然关闭",
+    "closeTabAria": "关闭“{{title}}”标签页",
     "toggleRail": "展开 / 收起卡片栏",
     "openToolRail": "打开工具卡片栏",
     "quickTools": "常用工具",
@@ -642,7 +666,7 @@
     "whoWeAre": "我们是谁",
     "whoWeAreContent": "TuHe PDF（图合）是一个专注于办公场景的 PDF 工作台。我们把日常最常用的 PDF 操作——合并、拆分、压缩、格式转换、页面整理、签名与水印——集中在一个统一的界面里，让你打开浏览器就能完成全部工作。",
     "clientSide": "纯浏览器端处理",
-    "clientSideContent": "我们的核心原则是：<strong>您的文件属于你</strong>。 所有 PDF 处理都在你自己的浏览器中完成（基于 JavaScript 与 WebAssembly），文件从头到尾不会上传到任何服务器。这意味着：",
+    "clientSideContent": "我们的核心原则是：<strong>您的文件属于您</strong>。所有 PDF 处理都在您自己的浏览器中完成（基于 JavaScript 与 WebAssembly），文件从头到尾不会上传到任何服务器。这意味着：",
     "clientSideItem1": "文件内容、文件名和元数据都不会离开您的电脑；",
     "clientSideItem2": "没有上传等待，处理速度只取决于您的设备性能；",
     "clientSideItem3": "没有文件大小和次数限制，无需注册登录。",
@@ -656,7 +680,7 @@
     "heading": "联系我们",
     "subtitle": "我们很乐意听到您的反馈",
     "feedback": "问题反馈与功能建议",
-    "feedbackContent": "如果你在使用 TuHe PDF 时遇到问题，或者希望我们增加某个工具或功能，欢迎通过邮件告诉我们。请尽量附上：使用的浏览器与版本、操作步骤、以及（如方便）控制台报错截图。",
+    "feedbackContent": "如果您在使用 TuHe PDF 时遇到问题，或者希望我们增加某个工具或功能，欢迎通过邮件告诉我们。请尽量附上：使用的浏览器与版本、操作步骤，以及（如方便）控制台报错截图。",
     "email": "邮箱：",
     "fileNotice": "关于文件问题的说明",
     "fileNoticeContent": "TuHe PDF 的所有处理都在您的浏览器本地完成，<strong>请不要通过邮件发送您的 PDF 文件</strong>。如果某个文件处理失败，描述文件的大致情况（页数、大小、是否加密、来源软件）通常就足够我们定位问题。",
@@ -674,7 +698,7 @@
     "thirdParty": "3. 第三方组件",
     "thirdPartyContent": "本软件使用了若干优秀的开源库，包括但不限于 PDF-lib、PDF.js、PDF-lib.js 生态工具及 WebAssembly 组件。这些组件各自的许可证（MIT、Apache-2.0 等）归其作者所有，详见源代码仓库的依赖清单。",
     "yourFiles": "4. 您的文件",
-    "yourFilesContent": "软件许可不影响你文件的版权。使用 TuHe PDF 处理的文档，其全部权利始终归您所有；处理过程在您的浏览器本地完成，我们不会对文件主张任何权利，也无法接触其内容。",
+    "yourFilesContent": "软件许可不影响您文件的版权。使用 TuHe PDF 处理的文档，其全部权利始终归您所有；处理过程在您的浏览器本地完成，我们不会对文件主张任何权利，也无法接触其内容。",
     "disclaimer": "5. 免责声明",
     "disclaimerContent": "本软件按「现状」提供，不附带任何明示或默示的保证，包括但不限于适销性和特定用途适用性的保证。使用本软件产生的风险由您自行承担，详见 AGPL-3.0 许可证条款。"
   },

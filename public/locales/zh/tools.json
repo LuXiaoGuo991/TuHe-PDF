@@ -2656,6 +2656,7 @@
     "pageNumber": "页码",
     "dimensions": "尺寸",
     "standardSize": "标准尺寸",
+    "orientation": "方向",
     "aspectRatio": "宽高比",
     "area": "面积",
     "rotation": "旋转"
@@ -3247,7 +3248,7 @@
     "faq2a": "绝对安全！所有处理均在您的浏览器中完成。您的文件永远不会离开您的设备，确保完全隐私。",
     "faq3q": "有文件大小限制吗？",
     "faq3a": "没有！处理任何大小的文件，无限次，完全免费。",
-    "pageSheetSummary": "第 {{page}}/{{total}} 页在第 {{sheet}}/{{sheetTotal}} 张"
+    "pageSheetSummary": "{{pages}} 页 → {{sheets}} 个输出页"
   },
   "xpsToPdf": {
     "name": "XPS 转 PDF",
