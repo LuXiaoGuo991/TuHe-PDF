@@ -383,5 +383,10 @@
     "heading": "Bu araç devre dışı bırakıldı",
     "message": "Bu araç, dağıtımınızda mevcut değil. Daha fazla bilgi için yöneticinizle iletişime geçin.",
     "backHome": "Ana Sayfaya Dön"
+  },
+  "workbench": {
+    "workflowEditor": {
+      "deleteNode": "Delete node"
+    }
   }
 }

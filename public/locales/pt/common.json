@@ -383,5 +383,10 @@
     "heading": "Esta ferramenta foi desativada",
     "message": "Esta ferramenta não está disponível na sua implantação. Entre em contato com o seu administrador para mais informações.",
     "backHome": "Voltar para o Início"
+  },
+  "workbench": {
+    "workflowEditor": {
+      "deleteNode": "Delete node"
+    }
   }
 }

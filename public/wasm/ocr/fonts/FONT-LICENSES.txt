@@ -1,0 +1,35 @@
+# OCR 字体许可证与来源记录
+
+本目录中的以下字体随 TuHe PDF 部署产物分发，均采用 **SIL Open Font License 1.1 (OFL-1.1)**。完整许可条款见字体上游仓库中的 `OFL.txt`；字体内嵌 `name` 表同样声明 OFL-1.1。
+
+## NotoSansCJKsc-Regular.otf
+
+- 字体家族：Noto Sans CJK SC Regular
+- 内嵌版本：2.004
+- 上游项目：`notofonts/noto-cjk`
+- 来源版本：Noto CJK v2.004（GitHub tag `Sans2.004`）
+- 许可：SIL Open Font License 1.1
+- 文件大小：16,437,364 bytes
+- SHA-256：`2c76254f6fc379fddfce0a7e84fb5385bb135d3e399294f6eeb6680d0365b74b`
+
+## NotoSans-Regular.ttf
+
+- 字体家族：Noto Sans Regular
+- 内嵌版本：2.008
+- 上游项目：`notofonts/latin-greek-cyrillic`
+- 来源版本：Noto Sans v2.008（GitHub release tag `NotoSans-v2.008`）
+- 许可：SIL Open Font License 1.1
+- 文件大小：569,208 bytes
+- SHA-256：`b85c38ecea8a7cfb39c24e395a4007474fa5a4fc864f6ee33309eb4948d232d5`
+
+## 校验
+
+在仓库根目录运行：
+
+```powershell
+Get-FileHash public/wasm/ocr/fonts/NotoSansCJKsc-Regular.otf -Algorithm SHA256
+Get-FileHash public/wasm/ocr/fonts/NotoSans-Regular.ttf -Algorithm SHA256
+```
+
+如果 hash 与上文不一致，不应继续发布；先确认字体来源和许可证，再更新本记录。
+

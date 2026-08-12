@@ -33,16 +33,22 @@ for (const relativePath of REQUIRED_ASSETS) {
 if (target === 'public') {
   const sw = fs.readFileSync(path.join(ROOT, 'public/sw.js'), 'utf8');
   const envExample = fs.readFileSync(path.join(ROOT, '.env.example'), 'utf8');
-  const expectedFallbacks = [
-    'pymupdf-wasm@',
-    'gs-wasm@',
-    'coherentpdf@',
-    '/wasm/pymupdf/',
-    '/wasm/ghostscript/',
-    '/wasm/cpdf/',
+  const expectedServiceWorkerMarkers = [
+    "pathname.includes('/wasm/')",
+    'cacheFirstStrategyWithDedup',
   ];
-  for (const marker of expectedFallbacks) {
-    if (!sw.includes(marker)) missing.push(`public/sw.js fallback: ${marker}`);
+  for (const marker of expectedServiceWorkerMarkers) {
+    if (!sw.includes(marker))
+      missing.push(`public/sw.js local cache: ${marker}`);
+  }
+  const forbiddenRemoteFallbacks = [
+    'cdn.jsdelivr.net',
+    'githack.com',
+    'raw.githubusercontent.com',
+  ];
+  for (const marker of forbiddenRemoteFallbacks) {
+    if (sw.includes(marker))
+      missing.push(`public/sw.js remote fallback forbidden: ${marker}`);
   }
   for (const marker of [
     'VITE_WASM_PYMUPDF_URL=/wasm/pymupdf/',

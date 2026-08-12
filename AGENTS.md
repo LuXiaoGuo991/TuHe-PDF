@@ -43,3 +43,8 @@
 - 优先保留已工作的行为，避免无关的大范围清理。
 - 进行破坏性变更时，记录确切目标以及不再需要这些目标的原因。
 - 完成代码或配置变更后，运行与变更风险相称的聚焦验证，并把结果记录到日志。
+
+## 干净检出后的构建准备
+
+- 执行正式构建或本地资源检查前，先运行 `npm install`，再运行 `npm run setup:wasm`，将固定版本 npm 包中的 PyMuPDF、Ghostscript 和 CoherentPDF 资源复制到 `public/wasm/` 并校验 SHA-256。
+- `public/wasm/pymupdf/`、`public/wasm/ghostscript/`、`public/wasm/cpdf/` 为生成目录，不应手工修改或提交大文件；资源版本与 hash 由 `scripts/setup-wasm.mjs` 管理。

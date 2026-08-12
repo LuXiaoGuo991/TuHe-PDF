@@ -383,5 +383,10 @@
     "heading": "이 도구는 비활성화되었습니다",
     "message": "이 도구는 현재 배포 환경에서 사용할 수 없습니다. 자세한 내용은 관리자에게 문의하세요.",
     "backHome": "홈으로 돌아가기"
+  },
+  "workbench": {
+    "workflowEditor": {
+      "deleteNode": "Delete node"
+    }
   }
 }

@@ -634,7 +634,10 @@
     "homeSubtitle": "純瀏覽器端的 PDF 工作臺 · 合併、拆分、壓縮、轉換 · 檔案全程不出本機",
     "homeHint": "從左側卡片欄選擇任意工具開始，工具會在右側標籤頁中開啟",
     "searchPlaceholder": "搜尋工具… (Ctrl+K)",
-    "toolRailAria": "工具卡片欄"
+    "toolRailAria": "工具卡片欄",
+    "workflowEditor": {
+      "deleteNode": "刪除節點"
+    }
   },
   "viewMetadata": {
     "noInfoDict": "- 未找到 Info Dictionary 資料 -",

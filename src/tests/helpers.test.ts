@@ -6,6 +6,7 @@ import {
   formatBytes,
   formatRawDate,
   parsePageRanges,
+  isSameOriginPath,
 } from '../js/utils/helpers';
 
 describe('helpers', () => {
@@ -225,6 +226,41 @@ describe('helpers', () => {
     it('should skip non-numeric values', () => {
       const result = parsePageRanges('1,abc,5', totalPages);
       expect(result).toEqual([0, 4]);
+    });
+  });
+
+  describe('isSameOriginPath', () => {
+    it('accepts a plain same-origin path', () => {
+      expect(isSameOriginPath('/tools/merge-pdf')).toBe(true);
+    });
+
+    it('accepts root path', () => {
+      expect(isSameOriginPath('/')).toBe(true);
+    });
+
+    it('rejects a double-slash cross-origin URL', () => {
+      expect(isSameOriginPath('//evil.example.com/x')).toBe(false);
+    });
+
+    it('rejects backslash bypass /\\evil.example/x', () => {
+      expect(isSameOriginPath('/\\evil.example/x')).toBe(false);
+    });
+
+    it('rejects a hexadecimal escape that produces a backslash', () => {
+      const payload = '/' + String.fromCharCode(0x5c) + 'evil.example/x';
+      expect(isSameOriginPath(payload)).toBe(false);
+    });
+
+    it('rejects an absolute http URL', () => {
+      expect(isSameOriginPath('https://evil.example.com/x')).toBe(false);
+    });
+
+    it('rejects a javascript: URL', () => {
+      expect(isSameOriginPath('javascript:alert(1)')).toBe(false);
+    });
+
+    it('rejects non-string input', () => {
+      expect(isSameOriginPath(null as unknown as string)).toBe(false);
     });
   });
 });

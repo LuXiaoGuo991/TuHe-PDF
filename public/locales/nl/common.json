@@ -383,5 +383,10 @@
     "heading": "Deze tool is uitgeschakeld",
     "message": "Deze tool is niet beschikbaar in deze implementatie. Neem contact op met de beheerder voor meer informatie.",
     "backHome": "Terug naar Thuis"
+  },
+  "workbench": {
+    "workflowEditor": {
+      "deleteNode": "Delete node"
+    }
   }
 }

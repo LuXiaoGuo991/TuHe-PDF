@@ -32,3 +32,7 @@ rg -n "Dockerfile|compose|<功能或文件名>" docs/logs
 - 本地 Docker 服务名为 `tuhe-pdf`，暴露端口 `8080`。
 - 复制到 Linux 镜像中的 Shell 脚本可能带有 Windows CRLF 换行；Dockerfile 会在启动前统一处理。
 - 两个 qpdf 集成测试缺少 PDF fixture。修改测试前先查看 2026-08-08 日志中的测试记录。
+
+## 2026-08-12 补充索引
+
+- Phase 0 稳定基线补齐与验收：安全路径校验、800/800 测试、可复现 WASM、workflow 键盘无障碍、字体许可证、iframe ADR。

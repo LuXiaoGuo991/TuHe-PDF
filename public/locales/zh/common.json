@@ -634,7 +634,10 @@
     "homeSubtitle": "纯浏览器端的 PDF 工作台 · 合并、拆分、压缩、转换 · 文件全程不出本机",
     "homeHint": "从左侧卡片栏选择任意工具开始，工具会在右侧标签页中打开",
     "searchPlaceholder": "搜索工具… (Ctrl+K)",
-    "toolRailAria": "工具卡片栏"
+    "toolRailAria": "工具卡片栏",
+    "workflowEditor": {
+      "deleteNode": "删除节点"
+    }
   },
   "viewMetadata": {
     "noInfoDict": "- 未找到 Info Dictionary 数据 -",

@@ -72,3 +72,4 @@ test
 !docs/
 !docs/logs/
 !docs/logs/*.md
+!public/wasm/ocr/fonts/FONT-LICENSES.txt
