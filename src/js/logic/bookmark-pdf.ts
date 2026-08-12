@@ -1032,7 +1032,7 @@ redoBtn?.addEventListener('click', redo);
 resetBtn?.addEventListener('click', async () => {
   const confirmed = await showConfirmModal(
     translate(
-      'editBookmarks.resetConfirm',
+      'tools:editBookmarks.resetConfirm',
       'Reset and go back to file uploader? All unsaved changes will be lost.'
     )
   );
@@ -1055,7 +1055,7 @@ deleteAllBtn?.addEventListener('click', async () => {
 
   const confirmed = await showConfirmModal(
     translate(
-      'editBookmarks.deleteAllConfirm',
+      'tools:editBookmarks.deleteAllConfirm',
       'Delete all {{count}} bookmark(s)?',
       { count: bookmarkTree.length }
     )
@@ -1333,7 +1333,7 @@ csvInput?.addEventListener('change', async (e: Event) => {
   await showAlertModal(
     translate('tools:editBookmarks.csvLoaded', 'CSV Loaded'),
     translate(
-      'editBookmarks.csvLoadedMsg',
+      'tools:editBookmarks.csvLoadedMsg',
       'Loaded {{count}} bookmarks from CSV. Now upload your PDF.',
       { count: csvBookmarks.length }
     )
@@ -1351,7 +1351,7 @@ jsonInput?.addEventListener('change', async (e: Event) => {
     await showAlertModal(
       translate('tools:editBookmarks.jsonLoaded', 'JSON Loaded'),
       translate(
-        'editBookmarks.jsonLoadedMsg',
+        'tools:editBookmarks.jsonLoadedMsg',
         'Loaded bookmarks from JSON. Now upload your PDF.'
       )
     );
@@ -1807,7 +1807,7 @@ function createNodeElement(node: BookmarkNode, level = 0): HTMLLIElement {
           name: 'title',
           label: translate('tools:editBookmarks.title', 'Title'),
           placeholder: translate(
-            'editBookmarks.enterBookmarkTitle',
+            'tools:editBookmarks.enterBookmarkTitle',
             'Enter bookmark title'
           ),
         },
@@ -1846,7 +1846,7 @@ function createNodeElement(node: BookmarkNode, level = 0): HTMLLIElement {
           name: 'title',
           label: translate('tools:editBookmarks.title', 'Title'),
           placeholder: translate(
-            'editBookmarks.enterBookmarkTitle',
+            'tools:editBookmarks.enterBookmarkTitle',
             'Enter bookmark title'
           ),
         },
@@ -1905,7 +1905,7 @@ function createNodeElement(node: BookmarkNode, level = 0): HTMLLIElement {
             {
               value: 'bold-italic',
               label: translate(
-                'editBookmarks.styleBoldItalic',
+                'tools:editBookmarks.styleBoldItalic',
                 'Bold & Italic'
               ),
             },
@@ -2047,7 +2047,7 @@ csvImportHidden?.addEventListener('change', async (e: Event) => {
     await showAlertModal(
       translate('common.success', 'Success'),
       translate(
-        'editBookmarks.importedBookmarks',
+        'tools:editBookmarks.importedBookmarks',
         'Imported {{count}} bookmarks!',
         { count: imported.length }
       )
@@ -2176,7 +2176,7 @@ jsonImportHidden?.addEventListener('change', async (e: Event) => {
     await showAlertModal(
       translate('common.success', 'Success'),
       translate(
-        'editBookmarks.bookmarksImportedJson',
+        'tools:editBookmarks.bookmarksImportedJson',
         'Bookmarks imported from JSON!'
       )
     );
@@ -2226,7 +2226,7 @@ extractExistingBtn?.addEventListener('click', async () => {
     await showAlertModal(
       translate('tools:editBookmarks.info', 'Info'),
       translate(
-        'editBookmarks.noExistingBookmarks',
+        'tools:editBookmarks.noExistingBookmarks',
         'No existing bookmarks found in this PDF.'
       )
     );
@@ -2505,7 +2505,7 @@ downloadBtn?.addEventListener('click', async () => {
     await showAlertModal(
       translate('common.error', 'Error'),
       translate(
-        'editBookmarks.errorSavingPdf',
+        'tools:editBookmarks.errorSavingPdf',
         'Error saving PDF. Check console for details.'
       )
     );
