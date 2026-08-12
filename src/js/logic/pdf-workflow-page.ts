@@ -821,7 +821,7 @@ function showNodeSettings(node: BaseWorkflowNode) {
     fileSection.appendChild(label);
 
     const formatHint = document.createElement('p');
-    formatHint.className = 'text-[10px] text-gray-500 mb-2';
+    formatHint.className = 'text-xs text-gray-500 mb-2';
     formatHint.textContent = translate(
       'common.dynamic.0692b26df8',
       'Supported: JPG, PNG, BMP, GIF, TIFF, WebP, HEIC, PSD, SVG, PNM, PGM, PBM, PPM, PAM, JXR, JPX, JP2'
@@ -1243,7 +1243,7 @@ function showNodeSettings(node: BaseWorkflowNode) {
 
     if (fileInputConfig.hint) {
       const hint = document.createElement('p');
-      hint.className = 'text-[10px] text-gray-500 mb-2';
+      hint.className = 'text-xs text-gray-500 mb-2';
       const hintKey = fileHintI18nKeys[fileInputConfig.hint];
       hint.textContent = hintKey
         ? translate(hintKey, fileInputConfig.hint)
@@ -1585,7 +1585,7 @@ function showNodeSettings(node: BaseWorkflowNode) {
           if (!opt) continue;
           const tag = document.createElement('span');
           tag.className =
-            'inline-flex items-center gap-1 px-2 py-0.5 rounded bg-indigo-600 text-white text-[10px]';
+            'inline-flex items-center gap-1 px-2 py-0.5 rounded bg-indigo-600 text-white text-xs';
           tag.textContent = opt.label;
           const removeBtn = document.createElement('button');
           removeBtn.type = 'button';
@@ -1732,7 +1732,7 @@ function showNodeSettings(node: BaseWorkflowNode) {
 
     if (controlHints[key]) {
       const hint = document.createElement('p');
-      hint.className = 'text-[10px] text-gray-500 mt-1';
+      hint.className = 'text-xs text-gray-500 mt-1';
       const hintKey = hintI18nKeys[key];
       hint.textContent = hintKey
         ? translate(hintKey, controlHints[key])

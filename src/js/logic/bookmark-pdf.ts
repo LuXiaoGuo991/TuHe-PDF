@@ -1757,7 +1757,11 @@ function createNodeElement(node: BookmarkNode, level = 0): HTMLLIElement {
 
   titleDiv.innerHTML = `
                 <span class="text-sm block ${styleClass} ${textColorClass}" ${customColorStyle}>${escapeHTML(node.title)}${destinationIcon}</span>
-                <span class="text-xs text-gray-500">Page ${escapeHTML(String(node.page))}</span>
+                <span class="text-xs text-gray-500">${translate(
+                  'tools:editBookmarks.pageNumber',
+                  'Page {{page}}',
+                  { page: node.page }
+                )}</span>
             `;
 
   titleDiv.addEventListener('click', async () => {

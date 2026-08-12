@@ -98,17 +98,22 @@ function renderSummary() {
   let summaryHTML = `
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
       <div class="bg-gray-900 border border-gray-700 rounded-lg p-4">
-        <p class="text-sm text-gray-400 mb-1">Total Pages</p>
+        <p class="text-sm text-gray-400 mb-1">${translate('tools:pageDimensions.totalPages', 'Total Pages')}</p>
         <p class="text-2xl font-bold text-white">${stats.totalPages}</p>
       </div>
       <div class="bg-gray-900 border border-gray-700 rounded-lg p-4">
-        <p class="text-sm text-gray-400 mb-1">Unique Page Sizes</p>
+        <p class="text-sm text-gray-400 mb-1">${translate('tools:pageDimensions.uniquePageSizes', 'Unique Page Sizes')}</p>
         <p class="text-2xl font-bold text-white">${stats.uniqueSizesCount}</p>
       </div>
       <div class="bg-gray-900 border border-gray-700 rounded-lg p-4">
-        <p class="text-sm text-gray-400 mb-1">Document Type</p>
+        <p class="text-sm text-gray-400 mb-1">${translate('tools:pageDimensions.documentType', 'Document Type')}</p>
         <p class="text-2xl font-bold ${stats.hasMixedSizes ? 'text-yellow-400' : 'text-green-400'}">
-          ${stats.hasMixedSizes ? 'Mixed Sizes' : 'Uniform'}
+          ${translate(
+            stats.hasMixedSizes
+              ? 'tools:pageDimensions.mixedSizes'
+              : 'tools:pageDimensions.uniformSizes',
+            stats.hasMixedSizes ? 'Mixed Sizes' : 'Uniform'
+          )}
         </p>
       </div>
     </div>
@@ -120,13 +125,13 @@ function renderSummary() {
         <div class="flex items-start gap-3">
           <i data-lucide="alert-triangle" class="w-5 h-5 text-yellow-400 mt-0.5 flex-shrink-0"></i>
           <div>
-            <h4 class="text-yellow-200 font-semibold mb-2">Mixed Page Sizes Detected</h4>
-            <p class="text-sm text-gray-300 mb-3">This document contains pages with different dimensions:</p>
+            <h4 class="text-yellow-200 font-semibold mb-2">${translate('tools:pageDimensions.mixedSizesDetected', 'Mixed Page Sizes Detected')}</h4>
+            <p class="text-sm text-gray-300 mb-3">${translate('tools:pageDimensions.mixedSizesDescription', 'This document contains pages with different dimensions:')}</p>
             <ul class="space-y-1 text-sm text-gray-300">
               ${stats.uniqueSizes
                 .map(
                   (size: UniqueSizeEntry) => `
-                <li>• ${size.label}: ${size.count} page${size.count > 1 ? 's' : ''}</li>
+                <li>• ${translate('tools:pageDimensions.sizePageCount', '{{size}}: {{count}} page(s)', { size: size.label, count: size.count })}</li>
               `
                 )
                 .join('')}

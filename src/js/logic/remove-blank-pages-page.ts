@@ -14,7 +14,7 @@ import { createIcons, icons } from 'lucide';
 import { initPagePreview } from '../utils/page-preview.js';
 import { loadPdfWithPasswordPrompt } from '../utils/password-prompt.js';
 import { loadPdfDocument } from '../utils/load-pdf-document.js';
-import { escapeHtml } from '../utils/helpers.js';
+import { escapeHtml, formatBytes } from '../utils/helpers.js';
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.mjs',
@@ -34,7 +34,7 @@ const pageState: {
   pageThumbnails: new Map(),
 };
 
-function showLoader(msg = '处理中...') {
+function showLoader(msg = translate('loader.processing', 'Processing...')) {
   document.getElementById('loader-modal')?.classList.remove('hidden');
   const txt = document.getElementById('loader-text');
   if (txt) txt.textContent = msg;
@@ -80,10 +80,7 @@ function updateFileDisplay() {
   const area = document.getElementById('file-display-area');
   if (!area || !pageState.file || !pageState.pdfDoc) return;
 
-  const fileSize =
-    pageState.file.size < 1024 * 1024
-      ? `${(pageState.file.size / 1024).toFixed(1)} KB`
-      : `${(pageState.file.size / 1024 / 1024).toFixed(2)} MB`;
+  const fileSize = formatBytes(pageState.file.size);
   const pageCount = pageState.pdfDoc.getPageCount();
 
   area.innerHTML = `
@@ -91,9 +88,9 @@ function updateFileDisplay() {
             <div class="flex items-center justify-between">
                 <div class="flex-1 min-w-0">
                     <p class="truncate font-medium text-white">${escapeHtml(pageState.file.name)}</p>
-                    <p class="text-gray-400 text-sm">${fileSize} • ${pageCount} page${pageCount !== 1 ? 's' : ''}</p>
+                    <p class="text-gray-400 text-sm">${fileSize} • ${translate('common.filePages', '{{count}} pages', { count: pageCount })}</p>
                 </div>
-                <button id="remove-file" class="text-red-400 hover:text-red-300 p-2 flex-shrink-0 ml-2" title="Remove file">
+                <button id="remove-file" class="text-red-400 hover:text-red-300 p-2 flex-shrink-0 ml-2" title="${translate('tools:common.removeFile', 'Remove file')}">
                     <i data-lucide="trash-2" class="w-4 h-4"></i>
                 </button>
             </div>
