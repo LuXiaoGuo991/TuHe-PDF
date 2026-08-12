@@ -102,7 +102,7 @@ async function decryptWithPyMuPDF(
     if (document.needsPass || document.isEncrypted) {
       const authenticated = document.authenticate(password);
       if (!authenticated) {
-        throw new Error('PDF 密码无效。');
+        throw new Error('Invalid PDF password.');
       }
     }
 

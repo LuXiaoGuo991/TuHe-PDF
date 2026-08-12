@@ -383,5 +383,10 @@
     "heading": "Det här verktyget har inaktiverats",
     "message": "Det här verktyget är inte tillgängligt i din installation. Kontakta din administratör för mer information.",
     "backHome": "Tillbaka till startsidan"
+  },
+  "workbench": {
+    "workflowEditor": {
+      "deleteNode": "Delete node"
+    }
   }
 }

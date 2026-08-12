@@ -310,6 +310,25 @@ export function getPDFDocument(
 }
 
 /**
+ * Checks whether a path is same-origin (safe for internal navigation).
+ * Rejects values containing backslashes — browsers parse /\evil.example/
+ * as a cross-origin URL, which bypasses a simple prefix check.
+ * @param value - The path to validate
+ * @returns true if the path resolves to the current origin
+ */
+export function isSameOriginPath(value: string): boolean {
+  if (typeof value !== 'string') return false;
+  // Reject any backslash before parsing — /\host/ is cross-origin in browsers
+  if (value.includes('\\')) return false;
+  try {
+    const resolved = new URL(value, location.origin);
+    return resolved.origin === location.origin;
+  } catch {
+    return false;
+  }
+}
+
+/**
  * Escape HTML special characters to prevent XSS
  * @param text - The text to escape
  * @returns The escaped text

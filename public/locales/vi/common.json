@@ -383,5 +383,10 @@
     "heading": "Công cụ này đã bị vô hiệu hóa",
     "message": "Công cụ này không có sẵn trong môi trường triển khai của bạn. Vui lòng liên hệ quản trị viên để biết thêm thông tin.",
     "backHome": "Quay về trang chủ"
+  },
+  "workbench": {
+    "workflowEditor": {
+      "deleteNode": "Delete node"
+    }
   }
 }

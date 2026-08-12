@@ -383,5 +383,10 @@
     "heading": "Tento nástroj bol zakázaný",
     "message": "Tento nástroj nie je vo vašom nasadení dostupný. Pre viac informácií kontaktujte svojho administrátora.",
     "backHome": "Späť domov"
+  },
+  "workbench": {
+    "workflowEditor": {
+      "deleteNode": "Delete node"
+    }
   }
 }

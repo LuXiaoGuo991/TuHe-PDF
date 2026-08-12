@@ -634,7 +634,10 @@
     "homeSubtitle": "Browser-based PDF Workbench · Merge, Split, Compress, Convert · Your files never leave your device",
     "homeHint": "Select any tool from the sidebar to start — it will open in a tab on the right",
     "searchPlaceholder": "Search tools… (Ctrl+K)",
-    "toolRailAria": "Tool Sidebar"
+    "toolRailAria": "Tool Sidebar",
+    "workflowEditor": {
+      "deleteNode": "Delete node"
+    }
   },
   "viewMetadata": {
     "noInfoDict": "- No Info Dictionary data found -",

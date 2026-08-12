@@ -131,11 +131,11 @@ export function extractPagesWithQpdf(
   ]);
   try {
     if (exitCode !== 0 && exitCode !== 3) {
-      throw new Error(`提取页面失败（qpdf 退出码 ${exitCode}）。`);
+      throw new Error(`Page extraction failed (qpdf exit code ${exitCode}).`);
     }
     const bytes = qpdf.FS.readFile(outputPath, { encoding: 'binary' });
     if (!bytes || bytes.length === 0) {
-      throw new Error('页面提取生成的 PDF 为空。');
+      throw new Error('Page extraction produced an empty PDF.');
     }
     return bytes;
   } finally {

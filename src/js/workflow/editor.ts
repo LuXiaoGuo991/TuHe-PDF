@@ -158,12 +158,18 @@ class WorkflowNodeElement extends LitElement {
                 'Not connected'
               )}</span
             >
-            <span
+            <button
+              type="button"
               data-wf-delete="${node.id}"
+              aria-label="${translate(
+                'workbench.workflowEditor.deleteNode',
+                'Delete node'
+              )}"
               style="
               cursor: pointer; display: flex; align-items: center; justify-content: center;
               width: 18px; height: 18px; border-radius: 4px;
               color: #6b7280; transition: all 0.15s;
+              background: none; border: none; padding: 0;
             "
             >
               <svg
@@ -179,7 +185,7 @@ class WorkflowNodeElement extends LitElement {
                 <line x1="18" y1="6" x2="6" y2="18"></line>
                 <line x1="6" y1="6" x2="18" y2="18"></line>
               </svg>
-            </span>
+            </button>
           </div>
           <div style="height: 1px; background: #374151; margin: 0 14px;"></div>
           <div
@@ -374,7 +380,7 @@ export async function createWorkflowEditor(
   const observer = new MutationObserver(injectPhosphor);
   observer.observe(container, { childList: true, subtree: true });
 
-  const onPointerDown = (e: Event) => {
+  const onDeleteClick = (e: Event) => {
     const target = (e.target as HTMLElement).closest<HTMLElement>(
       '[data-wf-delete]'
     );
@@ -407,7 +413,7 @@ export async function createWorkflowEditor(
     target.style.background = 'transparent';
   };
 
-  container.addEventListener('pointerdown', onPointerDown, true);
+  container.addEventListener('click', onDeleteClick, true);
   container.addEventListener('mouseenter', onMouseEnter, true);
   container.addEventListener('mouseleave', onMouseLeave, true);
 
@@ -421,7 +427,7 @@ export async function createWorkflowEditor(
         clearTimeout(phosphorTimer);
         phosphorTimer = null;
       }
-      container.removeEventListener('pointerdown', onPointerDown, true);
+      container.removeEventListener('click', onDeleteClick, true);
       container.removeEventListener('mouseenter', onMouseEnter, true);
       container.removeEventListener('mouseleave', onMouseLeave, true);
       area.destroy();
