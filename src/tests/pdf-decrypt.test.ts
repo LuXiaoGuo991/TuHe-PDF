@@ -189,9 +189,7 @@ describe('pdf decrypt', () => {
 
     await expect(
       pdfDecryptModule.decryptPdfBytes(new Uint8Array([9]), '1234')
-    ).rejects.toThrow(
-      'CoherentPDF: cpdf failed\nPyMuPDF: Invalid PDF password.'
-    );
+    ).rejects.toThrow(pdfDecryptModule.InvalidPdfPasswordError);
     expect(warnSpy).toHaveBeenCalledWith(
       '[PDF Decrypt] PyMuPDF decryption failed: Invalid PDF password.'
     );

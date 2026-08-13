@@ -631,6 +631,7 @@
     "toggleRail": "Show / Hide sidebar",
     "openToolRail": "Open tool sidebar",
     "quickTools": "Common Tools",
+    "browseByCategory": "Browse by category",
     "homeSubtitle": "Browser-based PDF Workbench · Merge, Split, Compress, Convert · Your files never leave your device",
     "homeHint": "Select any tool from the sidebar to start — it will open in a tab on the right",
     "searchPlaceholder": "Search tools… (Ctrl+K)",

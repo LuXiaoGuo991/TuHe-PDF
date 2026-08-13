@@ -631,6 +631,7 @@
     "toggleRail": "展开 / 收起卡片栏",
     "openToolRail": "打开工具卡片栏",
     "quickTools": "常用工具",
+    "browseByCategory": "按类别浏览",
     "homeSubtitle": "纯浏览器端的 PDF 工作台 · 合并、拆分、压缩、转换 · 文件全程不出本机",
     "homeHint": "从左侧卡片栏选择任意工具开始，工具会在右侧标签页中打开",
     "searchPlaceholder": "搜索工具… (Ctrl+K)",

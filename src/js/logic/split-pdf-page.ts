@@ -383,7 +383,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const extractPages = async (indices: number[]): Promise<Uint8Array> => {
         const instance = await ensureQpdf();
-        return extractPagesWithQpdf(instance, inputPath, indices);
+        try {
+          return extractPagesWithQpdf(instance, inputPath, indices);
+        } catch (e) {
+          console.error('Page extraction failed:', e);
+          throw new Error(
+            translate(
+              'tools:splitPdf.splitFailed',
+              'Failed to split PDF. Please check your selection.'
+            ),
+            { cause: e }
+          );
+        }
       };
 
       switch (splitMode) {

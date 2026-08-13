@@ -15,7 +15,10 @@ import {
   formatBytes,
   readFileAsArrayBuffer,
 } from '../utils/helpers.js';
-import { decryptPdfBytes } from '../utils/pdf-decrypt.js';
+import {
+  decryptPdfBytes,
+  InvalidPdfPasswordError,
+} from '../utils/pdf-decrypt.js';
 import { icons, createIcons } from 'lucide';
 import JSZip from 'jszip';
 import { DecryptPdfState } from '@/types';
@@ -253,7 +256,7 @@ async function decryptPdf() {
     console.error('Error during PDF decryption:', error);
 
     const errorMessage = error instanceof Error ? error.message : '';
-    if (errorMessage === 'INVALID_PASSWORD') {
+    if (error instanceof InvalidPdfPasswordError) {
       showAlert(
         translate('tools:decryptPdf.dynamic.270381bfec', 'Incorrect Password'),
         translate(
