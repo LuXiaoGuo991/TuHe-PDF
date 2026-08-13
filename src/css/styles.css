@@ -2277,6 +2277,14 @@ body:has(#workbench) {
   background-color: var(--color-action-hover);
 }
 
+/* Component foregrounds must win over legacy text/hover utility classes. */
+.ui-button-primary:not(:disabled) {
+  color: var(--color-on-action);
+}
+.ui-button-danger:not(:disabled) {
+  color: var(--color-on-danger);
+}
+
 .ui-drop-zone {
   color: var(--color-text-secondary);
   background: var(--color-surface-sunken);

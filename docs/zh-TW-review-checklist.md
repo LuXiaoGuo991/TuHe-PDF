@@ -8,8 +8,8 @@
 1. 选择一批（一个命名空间，如 `mergePdf`）。
 2. 逐条核对 zh-TW 与 zh 的差异：术语（合併 / 分割 / 壓縮 / 旋轉 / 簽名）、操作动词、UI 控件措辞。
 3. 复核通过后，在下方表格把该命名空间标记为 ✅，记录**复核人、复核日期**。
-4. 把该命名空间加入 `docs/zh-TW-review-manifest.json` 的 `reviewedNamespaces`。
-5. 运行 `node scripts/check-zh-tw-review.mjs`，确认该批已计入且无占位符 / HTML / 快捷键不一致。
+4. 把该命名空间加入 `docs/zh-TW-review-manifest.json` 的 `reviewedNamespaces`，记录与表格一致的 `keyCount`、`reviewer`、`reviewedAt`。
+5. 运行 `npm run check:zh-tw-review`，确认该批已计入且清单元数据、占位符、HTML、快捷键均一致。
 
 ## OpenCC 约束
 
@@ -18,10 +18,12 @@
 
 ## 机器门控
 
-`node scripts/check-zh-tw-review.mjs` 校验：
+`npm run check:zh-tw-structure` 校验结构契约，可用于日常构建；`npm run check:zh-tw-review` 额外要求全部人工复核完成，用于发布门控。两者均校验：
 
-- 当前 4219 个键是否**全部落入已完成批次**（未覆盖的键视为新增 / 未复核，门控失败）。
+- 清单是否覆盖全部命名空间，键数是否准确，已复核批次的复核人、日期是否与 manifest 一致。
 - 插值占位符 `{{...}}`、HTML 标记、快捷键 token 是否与 zh / en 一致。
+
+发布门控还会检查当前 4219 个键是否**全部落入已完成批次**；未覆盖的键视为新增 / 未复核并失败。
 
 ## 批次清单
 

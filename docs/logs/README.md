@@ -11,7 +11,7 @@
 | [2026-08-10](2026-08-10.md) | 工作台标签页无任务时复用替换、原位替换动画优化，并移除全部 115 个工具页面的页脚区块。                            | workbench, tabs, footer, animation, frontend                                                    |
 | [2026-08-11](2026-08-11.md) | Review 国际化和品牌配置，实施同源资源与中文静态渲染；提交前审查记录资源复现、URL/CSP、DOM 和字体阻断。           | review, i18n, branding, seo, testing, wasm, ocr, offline, security, delivery                    |
 | [2026-08-12](2026-08-12.md) | 中文 UX 与法律合规收敛；完成 Phase 0 稳定基线提交，并实施 Phase 2 Design Token、工作台与 10 个高频工具视觉迁移。 | review, phase0, phase2, design-token, workbench, tools, accessibility, i18n, testing            |
-| [2026-08-13](2026-08-13.md) | 精简工作台首页并完成八卡响应式布局；审查 Phase 0/2/3，确认 Phase 3 主题同步、WCAG、全量迁移和繁中复核遗漏。      | frontend, workbench, homepage, responsive, playwright, review, phase3, accessibility            |
+| [2026-08-13](2026-08-13.md) | 精简工作台首页并完成八卡响应式布局；审查并修复 Phase 3 主题同步、WCAG、迁移门控和繁中结构审计遗漏。              | frontend, workbench, homepage, responsive, playwright, review, phase3, accessibility, i18n      |
 
 ## 查询方式
 

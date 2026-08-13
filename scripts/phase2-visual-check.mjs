@@ -138,6 +138,46 @@ async function createPage(viewport = { width: 1440, height: 900 }) {
   return { context, page };
 }
 
+async function waitForContentFrame(page, selector, timeout = 10_000) {
+  await page.waitForSelector(selector, { state: 'attached', timeout });
+  await page.waitForFunction(
+    (iframeSelector) => {
+      const iframe = document.querySelector(iframeSelector);
+      return (
+        iframe instanceof HTMLIFrameElement &&
+        iframe.contentDocument?.readyState !== 'loading'
+      );
+    },
+    selector,
+    { timeout }
+  );
+
+  const iframe = await page.$(selector);
+  const frame = await iframe?.contentFrame();
+  check(frame, `iframe did not expose contentFrame(): ${selector}`);
+  return frame;
+}
+
+async function assertButtonForeground(frame, selector, token, label) {
+  await frame.waitForSelector(selector, { state: 'attached' });
+  const colors = await frame.$eval(
+    selector,
+    (button, foregroundToken) => {
+      const probe = document.createElement('span');
+      probe.style.color = `var(${foregroundToken})`;
+      document.body.appendChild(probe);
+      const expected = getComputedStyle(probe).color;
+      probe.remove();
+      return { actual: getComputedStyle(button).color, expected };
+    },
+    token
+  );
+  check(
+    colors.actual === colors.expected,
+    `${label} foreground resolved to ${colors.actual}, expected ${colors.expected}`
+  );
+}
+
 async function goto(page, pathname) {
   await page.goto(`${baseUrl}/${pathname}`, { waitUntil: 'domcontentloaded' });
   await page.waitForSelector('body', { state: 'visible' });
@@ -462,16 +502,10 @@ async function validateThemeSync() {
     await goto(page, 'index.html');
     await page.fill('#home-tool-search', 'PNG');
     await page.press('#home-tool-search', 'Enter');
-    await page.waitForSelector(
+    const frame = await waitForContentFrame(
+      page,
       '.wb-panel-active iframe[src$="pdf-to-png.html"]'
     );
-
-    const frame = page
-      .frames()
-      .find(
-        (f) => f !== page.mainFrame() && f.url().includes('pdf-to-png.html')
-      );
-    check(frame, 'tool iframe did not become a frame');
 
     // Wait until the iframe has run initTheme (data-theme attribute set).
     await frame.waitForFunction(
@@ -489,6 +523,20 @@ async function validateThemeSync() {
       parentBefore === 'dark' && frameBefore === 'dark',
       `expected dark before toggle, got parent=${parentBefore} iframe=${frameBefore}`
     );
+    await assertButtonForeground(
+      frame,
+      '.ui-button-primary.ui-text-primary',
+      '--color-on-action',
+      'dark primary button'
+    );
+    const dangerPage = await context.newPage();
+    await goto(dangerPage, 'digital-sign-pdf.html');
+    await assertButtonForeground(
+      dangerPage,
+      '.ui-button-danger.ui-text-danger',
+      '--color-on-danger',
+      'dark danger button'
+    );
 
     await page.click('#topbar-theme-toggle');
     await page.waitForFunction(
@@ -498,6 +546,23 @@ async function validateThemeSync() {
       () => document.documentElement.getAttribute('data-theme') === 'light',
       { timeout: 5_000 }
     );
+    await assertButtonForeground(
+      frame,
+      '.ui-button-primary.ui-text-primary',
+      '--color-on-action',
+      'light primary button'
+    );
+    await dangerPage.waitForFunction(
+      () => document.documentElement.getAttribute('data-theme') === 'light',
+      { timeout: 5_000 }
+    );
+    await assertButtonForeground(
+      dangerPage,
+      '.ui-button-danger.ui-text-danger',
+      '--color-on-danger',
+      'light danger button'
+    );
+    await dangerPage.close();
 
     // A freshly opened standalone tool page must inherit the persisted theme.
     const fresh = await context.newPage();
