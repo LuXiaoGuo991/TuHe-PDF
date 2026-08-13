@@ -713,7 +713,7 @@ function setViewMode(mode: 'overlay' | 'side-by-side') {
   if (mode === 'overlay') {
     if (wrapper)
       wrapper.className =
-        'compare-viewer-wrapper overlay-mode border border-slate-200';
+        'compare-viewer-wrapper overlay-mode border ui-border';
     if (overlayControls) overlayControls.classList.remove('hidden');
     if (sideControls) sideControls.classList.add('hidden');
     if (btnOverlay) {
@@ -731,7 +731,7 @@ function setViewMode(mode: 'overlay' | 'side-by-side') {
   } else {
     if (wrapper)
       wrapper.className =
-        'compare-viewer-wrapper side-by-side-mode border border-slate-200';
+        'compare-viewer-wrapper side-by-side-mode border ui-border';
     if (overlayControls) overlayControls.classList.add('hidden');
     if (sideControls) sideControls.classList.remove('hidden');
     if (btnOverlay) {
@@ -790,7 +790,7 @@ async function handleFileInput(
 
       const icon = document.createElement('i');
       icon.setAttribute('data-lucide', 'check-circle');
-      icon.className = 'w-10 h-10 mb-3 text-green-500';
+      icon.className = 'w-10 h-10 mb-3 ui-text-success';
 
       const p = document.createElement('p');
       p.className = 'text-sm ui-text-secondary truncate';

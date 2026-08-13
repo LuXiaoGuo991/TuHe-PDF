@@ -399,12 +399,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let errorEl = document.getElementById(errorId);
 
     if (valid) {
-      input.classList.remove('border-red-500', 'focus:ring-red-500');
+      input.classList.remove('ui-border-danger', 'ui-focus-ring');
       input.classList.add('ui-border', 'ui-focus-ring');
       if (errorEl) errorEl.remove();
     } else {
       input.classList.remove('ui-border', 'ui-focus-ring');
-      input.classList.add('border-red-500', 'focus:ring-red-500');
+      input.classList.add('ui-border-danger', 'ui-focus-ring');
       if (!errorEl) {
         errorEl = document.createElement('p');
         errorEl.id = errorId;

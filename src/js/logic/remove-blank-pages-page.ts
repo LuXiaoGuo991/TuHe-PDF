@@ -292,7 +292,7 @@ function updatePreviewPanel() {
     const thumbnail = pageState.pageThumbnails.get(pageIndex) || '';
     const div = document.createElement('div');
     div.className =
-      'relative cursor-pointer flex flex-col items-center gap-1 p-2 border-2 border-red-500 rounded-lg ui-bg-raised transition-colors group';
+      'relative cursor-pointer flex flex-col items-center gap-1 p-2 border-2 ui-border-danger rounded-lg ui-bg-raised transition-colors group';
     div.dataset.pageIndex = String(pageIndex);
     div.dataset.selected = 'true';
 
@@ -302,7 +302,7 @@ function updatePreviewPanel() {
                 <div class="absolute top-1 left-1 ui-bg-action ui-text-primary text-xs px-2 py-1 rounded-md font-semibold shadow-lg z-10 pointer-events-none">
                     ${pageIndex + 1}
                 </div>
-                <div class="absolute top-1 right-1 bg-red-500 rounded-full w-5 h-5 flex items-center justify-center check-mark z-10">
+                <div class="absolute top-1 right-1 ui-bg-danger rounded-full w-5 h-5 flex items-center justify-center check-mark z-10">
                     <i data-lucide="check" class="w-3 h-3 ui-text-primary"></i>
                 </div>
             </div>
@@ -321,12 +321,12 @@ function togglePageSelection(div: HTMLElement, pageIndex: number) {
 
   if (isSelected) {
     div.dataset.selected = 'false';
-    div.classList.remove('border-red-500');
+    div.classList.remove('ui-border-danger');
     div.classList.add('ui-border', 'opacity-50');
     checkMark?.classList.add('hidden');
   } else {
     div.dataset.selected = 'true';
-    div.classList.add('border-red-500');
+    div.classList.add('ui-border-danger');
     div.classList.remove('ui-border', 'opacity-50');
     checkMark?.classList.remove('hidden');
   }

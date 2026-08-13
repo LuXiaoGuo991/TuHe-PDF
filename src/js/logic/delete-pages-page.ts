@@ -219,7 +219,7 @@ async function renderThumbnails() {
 
     const deleteOverlay = document.createElement('div');
     deleteOverlay.className =
-      'absolute inset-0 bg-red-500/50 hidden items-center justify-center rounded-lg';
+      'absolute inset-0 ui-bg-danger hidden items-center justify-center rounded-lg';
     deleteOverlay.innerHTML =
       '<i data-lucide="x" class="w-8 h-8 ui-text-primary"></i>';
 
@@ -233,7 +233,7 @@ async function renderThumbnails() {
 }
 
 function togglePageDelete(pageNum: number, wrapper: HTMLElement) {
-  const overlay = wrapper.querySelector('.bg-red-500\\/50');
+  const overlay = wrapper.querySelector('.ui-bg-danger\\/50');
   if (deleteState.pagesToDelete.has(pageNum)) {
     deleteState.pagesToDelete.delete(pageNum);
     overlay?.classList.add('hidden');
@@ -271,7 +271,7 @@ function updatePreview() {
 
   container.querySelectorAll('[data-page]').forEach((wrapper) => {
     const pageNum = parseInt((wrapper as HTMLElement).dataset.page || '0', 10);
-    const overlay = wrapper.querySelector('.bg-red-500\\/50');
+    const overlay = wrapper.querySelector('.ui-bg-danger\\/50');
     if (deleteState.pagesToDelete.has(pageNum)) {
       overlay?.classList.remove('hidden');
       overlay?.classList.add('flex');

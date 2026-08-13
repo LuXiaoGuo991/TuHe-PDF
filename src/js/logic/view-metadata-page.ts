@@ -278,7 +278,7 @@ async function displayMetadata() {
         }
       } catch (xmlError) {
         console.error('Failed to parse XMP XML:', xmlError);
-        xmpSection.ul.innerHTML = `<li><span class="text-red-500 italic">${translate('viewMetadata.xmpError', '- Error parsing XMP XML. Displaying raw.')}</span></li>`;
+        xmpSection.ul.innerHTML = `<li><span class="ui-text-danger italic">${translate('viewMetadata.xmpError', '- Error parsing XMP XML. Displaying raw.')}</span></li>`;
         const pre = document.createElement('pre');
         pre.className =
           'text-xs ui-text-secondary whitespace-pre-wrap break-all';

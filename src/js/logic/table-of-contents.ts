@@ -56,10 +56,10 @@ function showStatus(
   statusMessage.textContent = message;
   statusMessage.className = `mt-4 p-3 rounded-lg text-sm ${
     type === 'success'
-      ? 'bg-green-900 text-green-200'
+      ? 'ui-bg-success ui-text-success'
       : type === 'error'
-        ? 'bg-red-900 text-red-200'
-        : 'bg-blue-900 text-blue-200'
+        ? 'ui-bg-danger ui-text-danger'
+        : 'ui-bg-info ui-text-info'
   }`;
   statusMessage.classList.remove('hidden');
 }
@@ -104,16 +104,16 @@ async function handleFileSelect(file: File) {
 
 dropZone.addEventListener('dragover', (e) => {
   e.preventDefault();
-  dropZone.classList.add('border-blue-500');
+  dropZone.classList.add('ui-border-info');
 });
 
 dropZone.addEventListener('dragleave', () => {
-  dropZone.classList.remove('border-blue-500');
+  dropZone.classList.remove('ui-border-info');
 });
 
 dropZone.addEventListener('drop', (e) => {
   e.preventDefault();
-  dropZone.classList.remove('border-blue-500');
+  dropZone.classList.remove('ui-border-info');
   const file = e.dataTransfer?.files[0];
   if (file) {
     handleFileSelect(file);

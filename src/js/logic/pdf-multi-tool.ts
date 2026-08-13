@@ -814,7 +814,7 @@ function createPageElement(
     marker.className =
       'split-marker absolute -right-3 top-0 bottom-0 w-6 flex items-center justify-center z-20 pointer-events-none';
     marker.innerHTML =
-      '<div class="h-full w-0.5 border-l-2 border-dashed border-blue-400"></div>';
+      '<div class="h-full w-0.5 border-l-2 border-dashed ui-border-info"></div>';
     card.appendChild(marker);
   }
 
@@ -1075,7 +1075,7 @@ function renderSplitMarkers() {
       marker.className =
         'split-marker absolute -right-3 top-0 bottom-0 w-6 flex items-center justify-center z-20 pointer-events-none';
       marker.innerHTML =
-        '<div class="h-full w-0.5 border-l-2 border-dashed border-blue-400"></div>';
+        '<div class="h-full w-0.5 border-l-2 border-dashed ui-border-info"></div>';
       (cardEl as HTMLElement).appendChild(marker);
     }
   });

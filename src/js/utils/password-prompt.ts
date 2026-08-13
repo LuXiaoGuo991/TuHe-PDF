@@ -585,8 +585,8 @@ export async function promptAndDecryptBatch(
         `[data-file-idx="${localIdx}"]`
       );
       if (!row) return;
-      row.classList.remove('border', 'border-red-500/50');
-      row.classList.add('opacity-50', 'border', 'border-green-500/50');
+      row.classList.remove('border', 'ui-border-danger');
+      row.classList.add('opacity-50', 'border', 'ui-border-success');
       const pwInput = row.querySelector<HTMLInputElement>('input[data-pw-idx]');
       if (pwInput) pwInput.disabled = true;
       const skipBtn = row.querySelector<HTMLButtonElement>('[data-skip-idx]');
@@ -607,14 +607,14 @@ export async function promptAndDecryptBatch(
         `[data-file-idx="${localIdx}"]`
       );
       if (!row) return;
-      row.classList.remove('border-green-500/50');
-      row.classList.add('border', 'border-red-500/50');
+      row.classList.remove('ui-border-success');
+      row.classList.add('border', 'ui-border-danger');
       const pwInput = row.querySelector<HTMLInputElement>('input[data-pw-idx]');
       if (pwInput) {
         pwInput.value = '';
         pwInput.focus();
-        pwInput.classList.add('border-red-500');
-        setTimeout(() => pwInput.classList.remove('border-red-500'), 2000);
+        pwInput.classList.add('ui-border-danger');
+        setTimeout(() => pwInput.classList.remove('ui-border-danger'), 2000);
       }
     }
 
@@ -641,7 +641,7 @@ export async function promptAndDecryptBatch(
       } else {
         skippedSet.add(idx);
         row.classList.add('opacity-40');
-        row.classList.remove('border', 'border-red-500/50');
+        row.classList.remove('border', 'ui-border-danger');
         const pwInput =
           row.querySelector<HTMLInputElement>('input[data-pw-idx]');
         if (pwInput) pwInput.disabled = true;

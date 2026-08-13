@@ -74,13 +74,32 @@ const replacements = new Map([
   ['bg-gray-700/50', 'ui-bg-raised'],
   ['border-gray-600/60', 'ui-border'],
   ['border-gray-600/50', 'ui-border'],
+  ['border-slate-200', 'ui-border'],
+]);
+
+// 语义色通配映射：red→danger, green→success, yellow/amber/orange→warning,
+// blue→info, indigo→action。用于把工作台 UI 的功能色 token 化。
+const semanticColorMap = [
+  ['red', 'danger'],
+  ['green', 'success'],
+  ['yellow', 'warning'],
+  ['amber', 'warning'],
+  ['orange', 'warning'],
+  ['blue', 'info'],
+  ['indigo', 'action'],
+];
+
+// 这些文件的颜色是 PDF 文档内容（书签颜色、表单字段色），不跟随主题，跳过语义色 token 化。
+const semanticColorExclude = new Set([
+  'src/js/types/bookmark-pdf-type.ts',
+  'src/js/logic/form-creator.ts',
 ]);
 
 // 检测替换后仍残留的 legacy 颜色类（含任意色阶和透明度变体）。
 const legacyPattern =
   /(?:^|\s)(?:[a-z-]+:)*(?:bg|text|border|ring|divide|outline|placeholder|file:bg|file:text)-(?:gray|indigo)(?:-[0-9]+)?(?:\/[0-9]+)?(?=\s|["'`])/g;
 
-function migrate(content, isHtml) {
+function migrate(content, isHtml, relativePath) {
   let next = content;
   for (const [from, to] of [...replacements].sort(
     (a, b) => b[0].length - a[0].length
@@ -92,6 +111,44 @@ function migrate(content, isHtml) {
       ),
       to
     );
+  }
+
+  // 语义色通配 token 化（PDF 内容文件跳过）
+  if (relativePath && !semanticColorExclude.has(relativePath)) {
+    for (const [color, semantic] of semanticColorMap) {
+      next = next.replace(
+        new RegExp(`hover:bg-${color}-\\d+(?:/\\d+)?`, 'g'),
+        `ui-hover-bg-${semantic}`
+      );
+      next = next.replace(
+        new RegExp(`hover:border-${color}-\\d+(?:/\\d+)?`, 'g'),
+        `ui-hover-border-${semantic}`
+      );
+      next = next.replace(
+        new RegExp(`(?<!:)bg-${color}-\\d+(?:/\\d+)?`, 'g'),
+        `ui-bg-${semantic}`
+      );
+      next = next.replace(
+        new RegExp(`(?<!:)text-${color}-\\d+(?:/\\d+)?`, 'g'),
+        `ui-text-${semantic}`
+      );
+      next = next.replace(
+        new RegExp(`(?<!:)border-${color}-\\d+(?:/\\d+)?`, 'g'),
+        `ui-border-${semantic}`
+      );
+      next = next.replace(
+        new RegExp(`(?<!:)ring-${color}-\\d+(?:/\\d+)?`, 'g'),
+        `ui-ring-${semantic}`
+      );
+      next = next.replace(
+        new RegExp(`focus:ring-${color}-\\d+(?:/\\d+)?`, 'g'),
+        'ui-focus-ring'
+      );
+      next = next.replace(
+        new RegExp(`accent-${color}-\\d+(?:/\\d+)?`, 'g'),
+        'ui-accent-action'
+      );
+    }
   }
 
   if (isHtml) {
@@ -180,8 +237,8 @@ const unresolvedByFile = [];
 
 for (const { file, isHtml, slug } of targets) {
   const original = fs.readFileSync(file, 'utf8');
-  const migrated = migrate(original, isHtml);
   const relative = path.relative(ROOT, file);
+  const migrated = migrate(original, isHtml, relative);
 
   if (migrated !== original) {
     changed++;

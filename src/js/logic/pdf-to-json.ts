@@ -37,10 +37,10 @@ function showStatus(
   statusMessage.textContent = message;
   statusMessage.className = `mt-4 p-3 rounded-lg text-sm ${
     type === 'success'
-      ? 'bg-green-900 text-green-200'
+      ? 'ui-bg-success ui-text-success'
       : type === 'error'
-        ? 'bg-red-900 text-red-200'
-        : 'bg-blue-900 text-blue-200'
+        ? 'ui-bg-danger ui-text-danger'
+        : 'ui-bg-info ui-text-info'
   }`;
   statusMessage.classList.remove('hidden');
 }
