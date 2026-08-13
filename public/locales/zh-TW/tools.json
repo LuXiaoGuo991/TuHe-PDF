@@ -81,7 +81,15 @@
     "pageLabel": "第 {{page}} 頁",
     "filePageTitle": "{{name}}（第 {{page}} 頁）",
     "auto": {},
-    "pageTitle": "合併 PDF - 線上免費 PDF 工具 | TuHe PDF"
+    "pageTitle": "合併 PDF - 線上免費 PDF 工具 | TuHe PDF",
+    "localProcessing": "本機處理",
+    "resultTitle": "合併檔案已就緒",
+    "resultDescription": "合併後的 PDF 已產生，可隨時下載。",
+    "downloadResult": "下載合併後的 PDF",
+    "clearConfirmTitle": "清空所有檔案？",
+    "clearConfirmMessage": "這將移除全部已選檔案，且無法復原。",
+    "cancelClear": "取消",
+    "fileMeta": "{{total}} 頁 · PDF"
   },
   "splitPdf": {
     "name": "分割 PDF",
@@ -4839,7 +4847,7 @@
     "selectPlaceholder": "請選擇...",
     "defaultButton": "按鈕",
     "tooltipPlaceholder": "供螢幕閱讀器使用的說明",
-    "defaultDateFormat": "yyyy/mm/dd",
+    "defaultDateFormat": "yyyy年mm月dd日",
     "clickToUploadImage": "點選上傳圖片",
     "invalidData": "無效資料",
     "barcode": "條形碼",

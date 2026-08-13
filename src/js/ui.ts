@@ -81,14 +81,15 @@ export const showLoader = (text = t('common.loading'), progress?: number) => {
         progressContainer = document.createElement('div');
         progressContainer.className = 'loader-progress-container w-64 mt-4';
         progressContainer.innerHTML = `
-                    <div class="bg-gray-700 rounded-full h-2 overflow-hidden">
-                        <div class="loader-progress-bar bg-indigo-500 h-full transition-all duration-300" style="width: 0%"></div>
+                    <div class="merge-progress-track">
+                        <div class="loader-progress-bar merge-progress-bar" style="width: 0%"></div>
                     </div>
-                    <p class="loader-progress-text text-xs text-gray-400 mt-1 text-center">0%</p>
+                    <p class="loader-progress-text text-xs ui-text-secondary mt-1 text-center">0%</p>
                 `;
-        loaderModal
-          .querySelector('.bg-gray-800')
-          ?.appendChild(progressContainer);
+        const loaderCard =
+          loaderModal.querySelector<HTMLElement>('[data-loader-card]') ??
+          (loaderModal.firstElementChild as HTMLElement | null);
+        loaderCard?.appendChild(progressContainer);
         progressBar = progressContainer.querySelector(
           '.loader-progress-bar'
         ) as HTMLElement;
@@ -260,19 +261,19 @@ export const renderPageThumbnails = async (
 
     const pageNumSpan = document.createElement('div');
     pageNumSpan.className =
-      'absolute top-1 left-1 bg-indigo-600 text-white text-xs px-2 py-1 rounded-md font-semibold shadow-lg z-10 pointer-events-none';
+      'ui-page-number absolute top-1 left-1 text-xs px-2 py-1 rounded-md font-semibold shadow-lg z-10 pointer-events-none';
     pageNumSpan.textContent = pageNumber.toString();
 
     if (toolId === 'organize') {
       wrapper.className =
-        'page-thumbnail relative cursor-move flex flex-col items-center gap-1 p-2 border-2 border-gray-600 hover:border-indigo-500 rounded-lg bg-gray-700 transition-colors group';
+        'ui-thumbnail-card page-thumbnail relative cursor-move flex flex-col items-center gap-1 p-2 border-2 rounded-lg transition-colors group';
 
       imgContainer.appendChild(pageNumSpan);
       wrapper.appendChild(imgContainer);
 
       const deleteBtn = document.createElement('button');
       deleteBtn.className =
-        'delete-page-btn absolute top-1 right-1 bg-red-600 hover:bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center z-10';
+        'delete-page-btn ui-button-danger absolute top-1 right-1 rounded-full w-6 h-6 flex items-center justify-center z-10';
       deleteBtn.innerHTML = '&times;';
       deleteBtn.addEventListener('click', (e) => {
         (e.currentTarget as HTMLElement).parentElement.remove();
@@ -280,7 +281,7 @@ export const renderPageThumbnails = async (
         // Renumber remaining pages
         const pages = container.querySelectorAll('.page-thumbnail');
         pages.forEach((page, index) => {
-          const numSpan = page.querySelector('.bg-indigo-600');
+          const numSpan = page.querySelector('.ui-page-number');
           if (numSpan) {
             numSpan.textContent = (index + 1).toString();
           }
@@ -292,7 +293,7 @@ export const renderPageThumbnails = async (
       wrapper.appendChild(deleteBtn);
     } else if (toolId === 'rotate') {
       wrapper.className =
-        'page-rotator-item flex flex-col items-center gap-2 p-2 border-2 border-gray-600 hover:border-indigo-500 rounded-lg bg-gray-700 transition-colors relative group';
+        'ui-thumbnail-card page-rotator-item flex flex-col items-center gap-2 p-2 border-2 rounded-lg transition-colors relative group';
 
       // Read rotation from state (handles "Rotate All" on lazy-loaded pages)
       const rotationStateArray = getRotationState();
@@ -317,23 +318,23 @@ export const renderPageThumbnails = async (
       // Custom Stepper Component
       const stepperContainer = document.createElement('div');
       stepperContainer.className =
-        'flex items-center border border-gray-600 rounded-md bg-gray-800 overflow-hidden w-24 h-8';
+        'ui-stepper flex items-center border rounded-md overflow-hidden w-24 h-8';
 
       const decrementBtn = document.createElement('button');
       decrementBtn.className =
-        'px-2 h-full text-gray-400 hover:text-white hover:bg-gray-700 border-r border-gray-600 transition-colors flex items-center justify-center';
+        'ui-stepper-button px-2 h-full border-r transition-colors flex items-center justify-center';
       decrementBtn.innerHTML = '<i data-lucide="minus" class="w-3 h-3"></i>';
 
       const angleInput = document.createElement('input');
       angleInput.type = 'number';
       angleInput.className =
-        'no-spinner w-full h-full bg-transparent text-white text-xs text-center focus:outline-none appearance-none m-0 p-0 border-none';
+        'no-spinner w-full h-full bg-transparent ui-text-primary text-xs text-center focus:outline-none appearance-none m-0 p-0 border-none';
       angleInput.value = initialRotation.toString();
       angleInput.placeholder = translate('common.dynamic.d44e20976e', '0');
 
       const incrementBtn = document.createElement('button');
       incrementBtn.className =
-        'px-2 h-full text-gray-400 hover:text-white hover:bg-gray-700 border-l border-gray-600 transition-colors flex items-center justify-center';
+        'ui-stepper-button px-2 h-full border-l transition-colors flex items-center justify-center';
       incrementBtn.innerHTML = '<i data-lucide="plus" class="w-3 h-3"></i>';
 
       // Helper to update rotation
@@ -375,7 +376,7 @@ export const renderPageThumbnails = async (
 
       const rotateBtn = document.createElement('button');
       rotateBtn.className =
-        'rotate-btn btn bg-gray-700 hover:bg-gray-600 p-1.5 rounded-md text-gray-200 transition-colors flex-shrink-0';
+        'rotate-btn ui-button-secondary p-1.5 rounded-md transition-colors flex-shrink-0';
       rotateBtn.title = translate('common.dynamic.b1c9a82c0a', 'Rotate +90°');
       rotateBtn.innerHTML = '<i data-lucide="rotate-cw" class="w-4 h-4"></i>';
       rotateBtn.addEventListener('click', (e) => {
@@ -388,7 +389,7 @@ export const renderPageThumbnails = async (
       wrapper.appendChild(controlsDiv);
     } else if (toolId === 'delete-pages') {
       wrapper.className =
-        'page-thumbnail relative cursor-pointer flex flex-col items-center gap-1 p-2 border-2 border-gray-600 hover:border-indigo-500 rounded-lg bg-gray-700 transition-colors group';
+        'ui-thumbnail-card page-thumbnail relative cursor-pointer flex flex-col items-center gap-1 p-2 border-2 rounded-lg transition-colors group';
       wrapper.dataset.pageNumber = pageNumber.toString();
 
       imgContainer.appendChild(pageNumSpan);
@@ -481,14 +482,14 @@ export const renderFileDisplay = (container: HTMLElement, files: File[]) => {
     files.forEach((file: File) => {
       const fileDiv = document.createElement('div');
       fileDiv.className =
-        'flex items-center justify-between bg-gray-700 p-3 rounded-lg text-sm';
+        'ui-file-row flex items-center justify-between p-3 rounded-lg text-sm';
 
       const nameSpan = document.createElement('span');
-      nameSpan.className = 'truncate font-medium text-gray-200';
+      nameSpan.className = 'truncate font-medium ui-text-primary';
       nameSpan.textContent = file.name;
 
       const sizeSpan = document.createElement('span');
-      sizeSpan.className = 'flex-shrink-0 ml-4 text-gray-400';
+      sizeSpan.className = 'flex-shrink-0 ml-4 ui-text-secondary';
       sizeSpan.textContent = formatBytes(file.size);
 
       fileDiv.append(nameSpan, sizeSpan);
@@ -503,14 +504,14 @@ const createFileInputHTML = (options: FileInputOptions = {}) => {
   const showControls = options.showControls || false;
 
   return `
-        <div id="drop-zone" class="relative flex flex-col items-center justify-center w-full h-48 border-2 border-dashed border-gray-600 rounded-xl cursor-pointer bg-gray-900 hover:bg-gray-700 transition-colors duration-300">
+        <div id="drop-zone" class="ui-panel ui-drop-zone relative flex flex-col items-center justify-center w-full h-48 cursor-pointer transition-colors duration-300">
             <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                <i data-lucide="upload-cloud" class="w-10 h-10 mb-3 text-gray-400"></i>
-                <p class="mb-2 text-sm text-gray-400"><span class="font-semibold">${t('upload.clickToSelect')}</span> ${t('upload.orDragAndDrop')}</p>
-                <p class="text-xs text-gray-500">${multiple ? t('upload.pdfOrImages') : t('upload.singleFileHint')}</p>
-                <p class="text-xs text-gray-500">${t('upload.filesNeverLeave')}</p>
+                <i data-lucide="upload-cloud" class="w-10 h-10 mb-3 ui-text-secondary"></i>
+                <p class="mb-2 text-sm ui-text-secondary"><span class="font-semibold">${t('upload.clickToSelect')}</span> ${t('upload.orDragAndDrop')}</p>
+                <p class="text-xs ui-text-tertiary">${multiple ? t('upload.pdfOrImages') : t('upload.singleFileHint')}</p>
+                <p class="text-xs ui-text-tertiary">${t('upload.filesNeverLeave')}</p>
             </div>
-            <input id="file-input" type="file" class="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer" ${multiple} accept="${acceptedFiles}">
+            <input id="file-input" type="file" class="ui-input absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer" ${multiple} accept="${acceptedFiles}">
         </div>
         
         ${
@@ -518,10 +519,10 @@ const createFileInputHTML = (options: FileInputOptions = {}) => {
             ? `
             <!-- NEW: Add control buttons for multi-file uploads -->
             <div id="file-controls" class="hidden mt-4 flex gap-3">
-                <button id="add-more-btn" class="btn bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-4 py-2 rounded-lg flex items-center gap-2">
+                <button id="add-more-btn" class="btn ui-button-primary font-semibold px-4 py-2 rounded-lg flex items-center gap-2">
                     <i data-lucide="plus"></i> ${t('upload.addMore')}
                 </button>
-                <button id="clear-files-btn" class="btn bg-gray-700 hover:bg-gray-600 text-white font-semibold px-4 py-2 rounded-lg flex items-center gap-2">
+                <button id="clear-files-btn" class="btn ui-button-danger font-semibold px-4 py-2 rounded-lg flex items-center gap-2">
                     <i data-lucide="trash-2"></i> ${t('upload.clearAll')}
                 </button>
             </div>

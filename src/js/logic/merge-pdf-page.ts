@@ -45,6 +45,7 @@ interface MergeState {
   cachedThumbnails: boolean | null;
   lastFileHash: string | null;
   mergeSuccess: boolean;
+  resultBlob: Blob | null;
 }
 
 const mergeState: MergeState = {
@@ -56,6 +57,7 @@ const mergeState: MergeState = {
   cachedThumbnails: null,
   lastFileHash: null,
   mergeSuccess: false,
+  resultBlob: null,
 };
 
 const mergeWorker = new Worker(
@@ -156,7 +158,7 @@ async function renderPageMergeThumbnails() {
     ) => {
       const wrapper = document.createElement('div');
       wrapper.className =
-        'page-thumbnail relative cursor-move flex flex-col items-center gap-1 p-2 border-2 border-gray-600 hover:border-indigo-500 rounded-lg bg-gray-700 transition-colors';
+        'page-thumbnail relative cursor-move flex flex-col items-center gap-1 p-2 border-2 ui-border ui-hover-border-action rounded-lg ui-bg-raised transition-colors';
       wrapper.dataset.fileName = fileKey;
       wrapper.dataset.pageIndex = (pageNumber - 1).toString();
 
@@ -169,14 +171,14 @@ async function renderPageMergeThumbnails() {
 
       const pageNumDiv = document.createElement('div');
       pageNumDiv.className =
-        'absolute top-1 left-1 bg-indigo-600 text-white text-xs px-2 py-1 rounded-md font-semibold shadow-lg';
+        'absolute top-1 left-1 ui-bg-action ui-text-primary text-xs px-2 py-1 rounded-md font-semibold shadow-lg';
       pageNumDiv.textContent = pageNumber.toString();
 
       imgContainer.append(img, pageNumDiv);
 
       const fileNamePara = document.createElement('p');
       fileNamePara.className =
-        'text-xs text-gray-400 truncate w-full text-center';
+        'text-xs ui-text-secondary truncate w-full text-center';
       const fullTitle = displayName
         ? translate(
             'tools:mergePdf.filePageTitle',
@@ -286,6 +288,8 @@ const resetState = async () => {
   mergeState.cachedThumbnails = null;
   mergeState.lastFileHash = null;
   mergeState.mergeSuccess = false;
+  mergeState.resultBlob = null;
+  document.getElementById('merge-result')?.classList.add('hidden');
 
   const fileList = document.getElementById('file-list');
   if (fileList) fileList.innerHTML = '';
@@ -299,10 +303,10 @@ const resetState = async () => {
   const pagePanel = document.getElementById('page-mode-panel');
 
   if (fileModeBtn && pageModeBtn && filePanel && pagePanel) {
-    fileModeBtn.classList.add('bg-indigo-600', 'text-white');
-    fileModeBtn.classList.remove('bg-gray-700', 'text-gray-300');
-    pageModeBtn.classList.remove('bg-indigo-600', 'text-white');
-    pageModeBtn.classList.add('bg-gray-700', 'text-gray-300');
+    fileModeBtn.classList.add('ui-bg-action', 'ui-text-primary');
+    fileModeBtn.classList.remove('ui-bg-raised', 'ui-text-secondary');
+    pageModeBtn.classList.remove('ui-bg-action', 'ui-text-primary');
+    pageModeBtn.classList.add('ui-bg-raised', 'ui-text-secondary');
 
     filePanel.classList.remove('hidden');
     pagePanel.classList.add('hidden');
@@ -318,7 +322,7 @@ export async function merge() {
     return;
   }
 
-  showLoader(translate('tools:mergePdf.merging', 'Merging PDFs...'));
+  showLoader(translate('tools:mergePdf.merging', 'Merging PDFs...'), 15);
   try {
     const jobs: MergeJob[] = [];
     const filesToMerge: MergeFile[] = [];
@@ -435,24 +439,28 @@ export async function merge() {
       retainPageLabels: retainCheckbox?.checked ?? false,
     };
 
+    showLoader(translate('tools:mergePdf.merging', 'Merging PDFs...'), 65);
     mergeWorker.postMessage(
       message,
       filesToMerge.map((f) => f.data)
     );
 
     mergeWorker.onmessage = (e: MessageEvent<MergeResponse>) => {
-      hideLoader();
       if (e.data.status === 'success') {
+        showLoader(
+          translate('tools:mergePdf.resultTitle', 'Merged PDF ready'),
+          100
+        );
         const blob = new Blob([e.data.pdfBytes], { type: 'application/pdf' });
+        mergeState.resultBlob = blob;
         downloadFile(blob, 'merged.pdf');
         mergeState.mergeSuccess = true;
+        document.getElementById('merge-result')?.classList.remove('hidden');
+        hideLoader();
         showAlert(
           translate('alert.success', 'Success'),
           translate('tools:mergePdf.mergeSuccess', 'PDFs merged successfully!'),
-          'success',
-          async () => {
-            await resetState();
-          }
+          'success'
         );
       } else {
         console.error('Worker merge error:', e.data.message);
@@ -555,34 +563,46 @@ export async function refreshMergeUI() {
     const safeFileName = fileKey.replace(/[^a-zA-Z0-9]/g, '_');
 
     const li = document.createElement('li');
-    li.className =
-      'bg-gray-700 p-3 rounded-lg border border-gray-600 hover:border-indigo-500 transition-colors';
+    li.className = 'merge-file-item ui-hover-border-action transition-colors';
     li.dataset.fileName = fileKey;
 
+    const typeIcon = document.createElement('div');
+    typeIcon.className = 'merge-file-icon';
+    typeIcon.setAttribute('aria-hidden', 'true');
+    typeIcon.innerHTML = '<i data-lucide="file-text" class="w-5 h-5"></i>';
+
     const mainDiv = document.createElement('div');
-    mainDiv.className = 'flex items-center justify-between';
+    mainDiv.className = 'min-w-0';
 
     const nameSpan = document.createElement('span');
-    nameSpan.className = 'truncate font-medium text-white flex-1 mr-2';
+    nameSpan.className = 'block truncate font-medium ui-text-primary';
     nameSpan.title = f.name;
     nameSpan.textContent = f.name;
 
     const dragHandle = document.createElement('div');
     dragHandle.className =
-      'drag-handle cursor-move text-gray-400 hover:text-white p-1 rounded transition-colors';
+      'drag-handle cursor-move ui-text-secondary ui-hover-text-primary p-1 rounded transition-colors';
     dragHandle.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="5" r="1"/><circle cx="15" cy="5" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="9" cy="19" r="1"/><circle cx="15" cy="19" r="1"/></svg>`; // Safe: static content
 
-    mainDiv.append(nameSpan, dragHandle);
+    const meta = document.createElement('p');
+    meta.className = 'merge-file-meta';
+    meta.textContent = translate(
+      'tools:mergePdf.fileMeta',
+      `${pageCount} pages · PDF`,
+      { total: pageCount }
+    );
+
+    mainDiv.append(nameSpan, meta);
 
     const rangeDiv = document.createElement('div');
-    rangeDiv.className = 'mt-2 flex items-center gap-2';
+    rangeDiv.className = 'merge-file-options';
 
     const inputWrapper = document.createElement('div');
     inputWrapper.className = 'flex-1';
 
     const label = document.createElement('label');
     label.htmlFor = `range-${safeFileName}`;
-    label.className = 'text-xs text-gray-400';
+    label.className = 'text-xs ui-text-secondary';
     label.textContent = translate(
       'tools:mergePdf.pagesRangeLabel',
       `Pages (e.g., 1-3, 5) - Total: ${pageCount}`,
@@ -592,8 +612,7 @@ export async function refreshMergeUI() {
     const input = document.createElement('input');
     input.type = 'text';
     input.id = `range-${safeFileName}`;
-    input.className =
-      'w-full bg-gray-800 border border-gray-600 text-white rounded-md p-2 text-sm mt-1 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors';
+    input.className = 'ui-input w-full p-2 text-sm mt-1 transition-colors';
     input.placeholder = translate(
       'tools:mergePdf.rangePlaceholder',
       'Leave blank for all pages'
@@ -602,8 +621,7 @@ export async function refreshMergeUI() {
     inputWrapper.append(label, input);
 
     const deleteBtn = document.createElement('button');
-    deleteBtn.className =
-      'text-red-400 hover:text-red-300 p-2 flex-shrink-0 self-end';
+    deleteBtn.className = 'ui-button-danger p-2 flex-shrink-0';
     deleteBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
     deleteBtn.title = translate('tools:mergePdf.removeFile', 'Remove file');
     deleteBtn.onclick = (e) => {
@@ -612,8 +630,8 @@ export async function refreshMergeUI() {
       updateUI();
     };
 
-    rangeDiv.append(inputWrapper, deleteBtn);
-    li.append(mainDiv, rangeDiv);
+    rangeDiv.append(dragHandle, inputWrapper, deleteBtn);
+    li.append(typeIcon, mainDiv, rangeDiv);
     fileList.appendChild(li);
   });
 
@@ -632,10 +650,10 @@ export async function refreshMergeUI() {
     filePanel.classList.remove('hidden');
     pagePanel.classList.add('hidden');
 
-    newFileModeBtn.classList.add('bg-indigo-600', 'text-white');
-    newFileModeBtn.classList.remove('bg-gray-700', 'text-gray-300');
-    newPageModeBtn.classList.remove('bg-indigo-600', 'text-white');
-    newPageModeBtn.classList.add('bg-gray-700', 'text-gray-300');
+    newFileModeBtn.classList.add('ui-bg-action', 'ui-text-primary');
+    newFileModeBtn.classList.remove('ui-bg-raised', 'ui-text-secondary');
+    newPageModeBtn.classList.remove('ui-bg-action', 'ui-text-primary');
+    newPageModeBtn.classList.add('ui-bg-raised', 'ui-text-secondary');
   });
 
   newPageModeBtn.addEventListener('click', async () => {
@@ -645,10 +663,10 @@ export async function refreshMergeUI() {
     filePanel.classList.add('hidden');
     pagePanel.classList.remove('hidden');
 
-    newPageModeBtn.classList.add('bg-indigo-600', 'text-white');
-    newPageModeBtn.classList.remove('bg-gray-700', 'text-gray-300');
-    newFileModeBtn.classList.remove('bg-indigo-600', 'text-white');
-    newFileModeBtn.classList.add('bg-gray-700', 'text-gray-300');
+    newPageModeBtn.classList.add('ui-bg-action', 'ui-text-primary');
+    newPageModeBtn.classList.remove('ui-bg-raised', 'ui-text-secondary');
+    newFileModeBtn.classList.remove('ui-bg-action', 'ui-text-primary');
+    newFileModeBtn.classList.add('ui-bg-raised', 'ui-text-secondary');
 
     await renderPageMergeThumbnails();
   });
@@ -658,15 +676,15 @@ export async function refreshMergeUI() {
     filePanel.classList.add('hidden');
     pagePanel.classList.remove('hidden');
 
-    newPageModeBtn.classList.add('bg-indigo-600', 'text-white');
-    newPageModeBtn.classList.remove('bg-gray-700', 'text-gray-300');
-    newFileModeBtn.classList.remove('bg-indigo-600', 'text-white');
-    newFileModeBtn.classList.add('bg-gray-700', 'text-gray-300');
+    newPageModeBtn.classList.add('ui-bg-action', 'ui-text-primary');
+    newPageModeBtn.classList.remove('ui-bg-raised', 'ui-text-secondary');
+    newFileModeBtn.classList.remove('ui-bg-action', 'ui-text-primary');
+    newFileModeBtn.classList.add('ui-bg-raised', 'ui-text-secondary');
 
     await renderPageMergeThumbnails();
   } else {
-    newFileModeBtn.classList.add('bg-indigo-600', 'text-white');
-    newPageModeBtn.classList.add('bg-gray-700', 'text-gray-300');
+    newFileModeBtn.classList.add('ui-bg-action', 'ui-text-primary');
+    newPageModeBtn.classList.add('ui-bg-raised', 'ui-text-secondary');
   }
 }
 
@@ -680,6 +698,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const clearFilesBtn = document.getElementById('clear-files-btn');
   const backBtn = document.getElementById('back-to-tools');
   const mergeOptions = document.getElementById('merge-options');
+  const clearConfirmModal = document.getElementById('clear-confirm-modal');
+  const clearCancelBtn = document.getElementById('clear-cancel-btn');
+  const clearConfirmBtn = document.getElementById('clear-confirm-btn');
+  const downloadResultBtn = document.getElementById('download-result-btn');
 
   if (backBtn) {
     backBtn.addEventListener('click', () => {
@@ -698,17 +720,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     dropZone.addEventListener('dragover', (e) => {
       e.preventDefault();
-      dropZone.classList.add('bg-gray-700');
+      dropZone.classList.add('is-dragging');
     });
 
     dropZone.addEventListener('dragleave', (e) => {
       e.preventDefault();
-      dropZone.classList.remove('bg-gray-700');
+      dropZone.classList.remove('is-dragging');
     });
 
     dropZone.addEventListener('drop', async (e) => {
       e.preventDefault();
-      dropZone.classList.remove('bg-gray-700');
+      dropZone.classList.remove('is-dragging');
       const files = e.dataTransfer?.files;
       if (files && files.length > 0) {
         const pdfFiles = Array.from(files).filter(
@@ -735,12 +757,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (clearFilesBtn) {
-    clearFilesBtn.addEventListener('click', async () => {
-      state.files = [];
-      await updateUI();
+  if (clearFilesBtn && clearConfirmModal) {
+    clearFilesBtn.addEventListener('click', () => {
+      clearConfirmModal.classList.remove('hidden');
     });
   }
+
+  clearCancelBtn?.addEventListener('click', () => {
+    clearConfirmModal?.classList.add('hidden');
+  });
+
+  clearConfirmBtn?.addEventListener('click', async () => {
+    clearConfirmModal?.classList.add('hidden');
+    await resetState();
+  });
+
+  downloadResultBtn?.addEventListener('click', () => {
+    if (mergeState.resultBlob)
+      downloadFile(mergeState.resultBlob, 'merged.pdf');
+  });
 
   if (processBtn) {
     processBtn.addEventListener('click', async () => {

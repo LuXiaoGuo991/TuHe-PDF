@@ -81,7 +81,15 @@
     "pageLabel": "第 {{page}} 页",
     "filePageTitle": "{{name}}（第 {{page}} 页）",
     "auto": {},
-    "pageTitle": "合并 PDF - 在线免费 PDF 工具 | TuHe PDF"
+    "pageTitle": "合并 PDF - 在线免费 PDF 工具 | TuHe PDF",
+    "localProcessing": "本地处理",
+    "resultTitle": "合并文件已就绪",
+    "resultDescription": "合并后的 PDF 已生成，可随时下载。",
+    "downloadResult": "下载合并后的 PDF",
+    "clearConfirmTitle": "清空所有文件？",
+    "clearConfirmMessage": "这将移除全部已选文件，且无法撤销。",
+    "cancelClear": "取消",
+    "fileMeta": "{{total}} 页 · PDF"
   },
   "splitPdf": {
     "name": "分割 PDF",
@@ -4839,7 +4847,7 @@
     "selectPlaceholder": "请选择…",
     "defaultButton": "按钮",
     "tooltipPlaceholder": "供屏幕阅读器使用的说明",
-    "defaultDateFormat": "yyyy/mm/dd",
+    "defaultDateFormat": "yyyy年mm月dd日",
     "clickToUploadImage": "点击上传图片",
     "invalidData": "无效数据",
     "barcode": "条形码",

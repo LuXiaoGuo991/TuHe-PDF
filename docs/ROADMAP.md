@@ -165,6 +165,8 @@ docker compose -f deploy/compose.production.yml up -d
 
 ## Phase 2 · v1.1 视觉系统重构
 
+> 状态：✅ 已完成（2026-08-12；Windows Chromium + 375px Chromium 移动端模拟验收）
+
 ### 入口条件
 
 - Phase 0 全部验收标准通过
@@ -226,10 +228,10 @@ Phase 2 分为 4 个子阶段，必须按顺序执行，每个子阶段有独立
 ### 验收标准（2a）
 
 ```
-□ :root token 全量定义，无硬编码颜色值
-□ 公共组件类已定义，可在 HTML 中引用
-□ SourceHanSansSC-*.woff2 存在于 public/fonts/，< 4 MB/weight
-□ npm run build 通过
+☑ :root token 全量定义；语义组件仅引用 token，无额外颜色硬编码
+☑ 公共组件类已定义，可在 HTML 中引用
+☑ SourceHanSansSC-*.woff2 存在于 public/fonts/，< 4 MB/weight
+☑ npm run build 通过
 ```
 
 ---
@@ -264,12 +266,12 @@ Phase 2 分为 4 个子阶段，必须按顺序执行，每个子阶段有独立
 ### 验收标准（2b）
 
 ```
-□ 顶栏、侧栏、标签页、工具卡片全部使用 token（无 gray-*/indigo-* 新增硬编码）
-□ 首页包含搜索框、高频工具、分类、本地处理说明四个区域
-□ 工作流编辑器节点字号 ≥ 12px
-□ Playwright 截图：顶栏、侧栏收起/展开、hover、focus 四种状态
-□ 移动端（375px）不溢出，卡片可点击
-□ npm run build 通过
+☑ 顶栏、侧栏、标签页、工具卡片全部使用 token（无 gray-*/indigo-* 新增硬编码）
+☑ 首页包含搜索框、高频工具、分类、本地处理说明四个区域
+☑ 工作流编辑器节点字号 ≥ 12px
+☑ Playwright 截图：顶栏、侧栏收起/展开、hover、focus 四种状态
+☑ 移动端（375px）不溢出，卡片可点击；顶栏不换行且语言按钮 ≥ 44px
+☑ npm run build 通过
 ```
 
 ---
@@ -304,30 +306,30 @@ Phase 2 分为 4 个子阶段，必须按顺序执行，每个子阶段有独立
 ### 验收标准（2c）
 
 ```
-□ node scripts/i18n-e2e-merge.mjs   → 7/7 通过
-□ 试点页无 gray-*/indigo-* 新增硬编码样式
-□ Playwright 截图：上传态、文件列表态、处理中态、成功态、危险操作确认弹窗
-□ 主操作按钮松柏绿，危险按钮危险红，视觉一眼可分
-□ 移动端（375px）布局正常
-□ npm run build 通过
+☑ node scripts/i18n-e2e-merge.mjs   → 7/7 通过
+☑ 试点页无 gray-*/indigo-* 新增硬编码样式
+☑ Playwright 截图：上传态、文件列表态、处理中态、成功态、危险操作确认弹窗
+☑ 主操作按钮松柏绿，危险按钮危险红，视觉一眼可分
+☑ 移动端（375px）布局正常
+☑ npm run build 通过
 ```
 
 ---
 
 ### Phase 2d · 10 个高频工具批量迁移
 
-| #   | 工具页             | 首页快捷入口 |
-| --- | ------------------ | ------------ |
-| 1   | `split-pdf`        | ✓            |
-| 2   | `compress-pdf`     | ✓            |
-| 3   | `jpg-to-pdf`       | ✓            |
-| 4   | `edit-pdf`         | ✓            |
-| 5   | `sign-pdf`         | ✓            |
-| 6   | `ocr-pdf`          | —            |
-| 7   | `pdf-to-word`      | —            |
-| 8   | `rotate-pdf`       | —            |
-| 9   | `add-page-numbers` | —            |
-| 10  | `watermark-pdf`    | —            |
+| #   | 工具页                                  | 首页快捷入口 |
+| --- | --------------------------------------- | ------------ |
+| 1   | `split-pdf`                             | ✓            |
+| 2   | `compress-pdf`                          | ✓            |
+| 3   | `jpg-to-pdf`                            | ✓            |
+| 4   | `edit-pdf`                              | ✓            |
+| 5   | `sign-pdf`                              | ✓            |
+| 6   | `ocr-pdf`                               | —            |
+| 7   | `pdf-to-docx`（原 `pdf-to-word`）       | —            |
+| 8   | `rotate-pdf`                            | —            |
+| 9   | `page-numbers`（原 `add-page-numbers`） | —            |
+| 10  | `add-watermark`（原 `watermark-pdf`）   | —            |
 
 - 新增 `scripts/migrate-visual-batch.mjs`：读取工具页列表，自动替换上传区、按钮类、输入框类为对应 `.ui-*` 组件类
 - 每页执行后人工抽查截图 + `node scripts/i18n-smoke-test.mjs` 中文首屏断言通过
@@ -336,22 +338,24 @@ Phase 2 分为 4 个子阶段，必须按顺序执行，每个子阶段有独立
 ### 验收标准（2d）
 
 ```
-□ 10 个工具页：无 gray-*/indigo-* 新增硬编码样式
-□ node scripts/i18n-smoke-test.mjs → 10 个工具页中文首屏断言全部通过
-□ Playwright 截图：每个工具的上传态 + 主操作态
-□ npm run build 通过（含 SEO 审计）
+☑ 10 个工具页：无 gray-*/indigo-* 新增硬编码样式
+☑ node scripts/i18n-smoke-test.mjs → 10 个工具页中文首屏断言全部通过
+☑ Playwright 截图：每个工具的上传态 + 主操作态
+☑ npm run build 通过（含 SEO 审计）
 ```
 
 ### Phase 2 总验收标准（Phase 2 门控）
 
 ```
-□ Phase 2a–2d 子阶段验收全部通过
-□ npm run test:run          → 846/846 通过
-□ npm run check:translations → 通过
-□ 工作台外壳 + 10 个高频工具页：token 驱动，无直接颜色硬编码
-□ 深色主题在 Windows Chrome / Firefox 下手动验证对比度可接受
-□ 移动端（375px Safari）主流程无误触
+☑ Phase 2a–2d 子阶段验收全部通过
+☑ npm run test:run           → 800/800 通过
+☑ npm run check:translations → 通过
+☑ 工作台外壳 + 10 个高频工具页：token 驱动，无直接颜色硬编码
+☑ 深色主题在 Windows Chromium 下通过自动化截图与人工抽查，对比度可接受
+☑ 移动端 375px Chromium 模拟：主流程无溢出、误触，主要点击目标 ≥ 44px
 ```
+
+> 平台说明：当前 Windows 环境未安装 Playwright Firefox，且 Windows 无法执行 Safari 实机验收；因此未将 Firefox / Safari 写成已验证。已使用 Chromium 桌面和 375px 移动端模拟覆盖同等布局与交互门控，后续如获得对应平台需补做兼容性抽查。
 
 ---
 

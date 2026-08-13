@@ -84,17 +84,18 @@ document.addEventListener('DOMContentLoaded', () => {
         fileDisplayArea.innerHTML = '';
         const fileDiv = document.createElement('div');
         fileDiv.className =
-          'flex items-center justify-between bg-gray-700 p-3 rounded-lg text-sm';
+          'flex items-center justify-between ui-bg-raised p-3 rounded-lg text-sm';
 
         const infoContainer = document.createElement('div');
         infoContainer.className = 'flex flex-col overflow-hidden';
 
         const nameSpan = document.createElement('div');
-        nameSpan.className = 'truncate font-medium text-gray-200 text-sm mb-1';
+        nameSpan.className =
+          'truncate font-medium ui-text-primary text-sm mb-1';
         nameSpan.textContent = file.name;
 
         const metaSpan = document.createElement('div');
-        metaSpan.className = 'text-xs text-gray-400';
+        metaSpan.className = 'text-xs ui-text-secondary';
         metaSpan.textContent = `${formatBytes(file.size)} • ${t('common.loadingPageCount')}`; // Placeholder
 
         infoContainer.append(nameSpan, metaSpan);
@@ -102,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add remove button
         const removeBtn = document.createElement('button');
         removeBtn.className =
-          'ml-4 text-red-400 hover:text-red-300 flex-shrink-0';
+          'ml-4 ui-text-danger ui-hover-text-danger flex-shrink-0';
         removeBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
         removeBtn.onclick = () => {
           state.files = [];
@@ -207,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const createWrapper = (canvas: HTMLCanvasElement, pageNumber: number) => {
         const wrapper = document.createElement('div');
         wrapper.className =
-          'page-thumbnail-wrapper p-2 border-2 border-gray-600 rounded-lg cursor-pointer hover:border-indigo-500 bg-gray-700 transition-colors relative group flex flex-col items-center gap-1';
+          'page-thumbnail-wrapper p-2 border-2 ui-border rounded-lg cursor-pointer ui-hover-border-action ui-bg-raised transition-colors relative group flex flex-col items-center gap-1';
         wrapper.dataset.pageIndex = (pageNumber - 1).toString();
         wrapper.dataset.pageNumber = pageNumber.toString();
 
@@ -220,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const pageNumDiv = document.createElement('div');
         pageNumDiv.className =
-          'absolute top-1 left-1 bg-indigo-600 text-white text-xs px-2 py-1 rounded-md font-semibold shadow-lg z-10 pointer-events-none';
+          'absolute top-1 left-1 ui-bg-action ui-text-primary text-xs px-2 py-1 rounded-md font-semibold shadow-lg z-10 pointer-events-none';
         pageNumDiv.textContent = pageNumber.toString();
 
         imgContainer.append(img, pageNumDiv);
@@ -233,11 +234,11 @@ document.addEventListener('DOMContentLoaded', () => {
           const isSelected = wrapper.classList.contains('selected');
 
           if (isSelected) {
-            wrapper.classList.remove('selected', 'border-indigo-500');
-            wrapper.classList.add('border-gray-600');
+            wrapper.classList.remove('selected', 'ui-border-action');
+            wrapper.classList.add('ui-border');
           } else {
-            wrapper.classList.add('selected', 'border-indigo-500');
-            wrapper.classList.remove('border-gray-600');
+            wrapper.classList.add('selected', 'ui-border-action');
+            wrapper.classList.remove('ui-border');
           }
         };
 
@@ -295,7 +296,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document
       .querySelectorAll('.page-thumbnail-wrapper.selected')
       .forEach((el) => {
-        el.classList.remove('selected', 'border-indigo-500');
+        el.classList.remove('selected', 'ui-border-action');
         el.classList.add('border-transparent');
       });
     visualSelectorRendered = false;
@@ -623,17 +624,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     dropZone.addEventListener('dragover', (e) => {
       e.preventDefault();
-      dropZone.classList.add('bg-gray-700');
+      dropZone.classList.add('ui-bg-raised');
     });
 
     dropZone.addEventListener('dragleave', (e) => {
       e.preventDefault();
-      dropZone.classList.remove('bg-gray-700');
+      dropZone.classList.remove('ui-bg-raised');
     });
 
     dropZone.addEventListener('drop', (e) => {
       e.preventDefault();
-      dropZone.classList.remove('bg-gray-700');
+      dropZone.classList.remove('ui-bg-raised');
       const files = e.dataTransfer?.files;
       if (files) {
         const pdfFiles = Array.from(files).filter(

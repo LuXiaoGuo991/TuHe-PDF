@@ -38,7 +38,8 @@
     "security:codeql:quick": "codeql database analyze ./codeql-db --format=csv --output=codeql-results.csv --threads=0 codeql/javascript-queries:codeql-suites/javascript-security-extended.qls",
     "security:patterns": "node scripts/security-patterns-check.mjs",
     "security:audit": "npm audit --audit-level=high && npm run lint:security && npm run security:patterns",
-    "prepare": "husky"
+    "prepare": "husky",
+    "subset:fonts": "node scripts/subset-fonts.mjs"
   },
   "devDependencies": {
     "@bentopdf/gs-wasm": "0.1.1",
@@ -62,6 +63,7 @@
     "husky": "^9.1.7",
     "jsdom": "^28.1.0",
     "lint-staged": "^16.3.1",
+    "playwright-core": "^1.62.1",
     "prettier": "^3.8.1",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.56.1",

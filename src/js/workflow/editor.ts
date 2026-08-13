@@ -152,7 +152,7 @@ class WorkflowNodeElement extends LitElement {
             ></span>
             <span
               data-wf="label"
-              style="font-size: 10px; color: #6b7280; font-weight: 500; flex: 1;"
+              style="font-size: 12px; color: #6b7280; font-weight: 500; flex: 1;"
               >${translate(
                 'common.workflow.status.notConnected',
                 'Not connected'
@@ -202,7 +202,7 @@ class WorkflowNodeElement extends LitElement {
                 ${node.label}
               </div>
               <div
-                style="font-size: 11px; color: #9ca3af; margin-top: 2px; line-height: 1.3;"
+                style="font-size: 12px; color: #9ca3af; margin-top: 2px; line-height: 1.3;"
               >
                 ${node.description}
               </div>
