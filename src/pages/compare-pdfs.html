@@ -69,11 +69,44 @@
 
     <link href="/src/css/styles.css" rel="stylesheet" />
     <style>
+      /* 业务语义色：PDF 纸张与差异图例/叠加为固定颜色，不跟随主题。 */
+      :root {
+        --compare-paper: #ffffff;
+        --compare-paper-label-bg: rgba(255, 255, 255, 0.95);
+        --compare-paper-label-fg: #64748b;
+        --compare-paper-label-border: #e2e8f0;
+        --compare-paper-divider: #cbd5e1;
+        --compare-placeholder-border: #94a3b8;
+        --compare-placeholder-fg: #475569;
+        --compare-placeholder-bg: rgba(255, 255, 255, 0.92);
+
+        --compare-added: rgba(34, 197, 94, 0.28);
+        --compare-removed: rgba(239, 68, 68, 0.28);
+        --compare-modified: rgba(245, 158, 11, 0.28);
+        --compare-moved: rgba(168, 85, 247, 0.28);
+        --compare-style-changed: rgba(59, 130, 246, 0.28);
+        --compare-active: rgba(99, 102, 241, 0.7);
+
+        --compare-added-solid: #22c55e;
+        --compare-removed-solid: #ef4444;
+        --compare-modified-solid: #f59e0b;
+        --compare-moved-solid: #a855f7;
+        --compare-style-changed-solid: #3b82f6;
+        --compare-category-solid: #6366f1;
+
+        --compare-added-fg: #86efac;
+        --compare-removed-fg: #fca5a5;
+        --compare-modified-fg: #fcd34d;
+        --compare-moved-fg: #c4b5fd;
+        --compare-style-changed-fg: #93c5fd;
+        --compare-category-fg: #a5b4fc;
+      }
+
       .compare-viewer-wrapper.overlay-mode {
         position: relative;
         display: flex;
         align-items: stretch;
-        background: #ffffff;
+        background: var(--compare-paper);
         overflow: hidden;
         min-height: 0;
         padding: 1.5rem;
@@ -125,7 +158,7 @@
         display: flex;
         gap: 0;
         padding: 0;
-        background: #ffffff;
+        background: var(--compare-paper);
       }
 
       .compare-workspace {
@@ -153,14 +186,14 @@
       }
 
       .compare-viewer-wrapper.side-by-side-mode #panel-1 {
-        border-right: 2px solid #cbd5e1;
+        border-right: 2px solid var(--compare-paper-divider);
       }
 
       .compare-panel {
         position: relative;
         min-width: 0;
         min-height: 0;
-        background: #ffffff;
+        background: var(--compare-paper);
       }
 
       .compare-panel-label {
@@ -172,9 +205,9 @@
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: var(--label-letter-spacing, 0.05em);
-        color: #64748b;
-        background: rgba(255, 255, 255, 0.95);
-        border-bottom: 1px solid #e2e8f0;
+        color: var(--compare-paper-label-fg);
+        background: var(--compare-paper-label-bg);
+        border-bottom: 1px solid var(--compare-paper-label-border);
         backdrop-filter: blur(4px);
       }
 
@@ -191,7 +224,7 @@
 
       .compare-canvas-stage canvas {
         display: block;
-        background: #ffffff;
+        background: var(--compare-paper);
       }
 
       .compare-highlight-layer {
@@ -208,28 +241,28 @@
       }
 
       .compare-highlight.added {
-        background: rgba(34, 197, 94, 0.28);
+        background: var(--compare-added);
       }
 
       .compare-highlight.removed,
       .compare-highlight.page-removed {
-        background: rgba(239, 68, 68, 0.28);
+        background: var(--compare-removed);
       }
 
       .compare-highlight.modified {
-        background: rgba(245, 158, 11, 0.28);
+        background: var(--compare-modified);
       }
 
       .compare-highlight.moved {
-        background: rgba(168, 85, 247, 0.28);
+        background: var(--compare-moved);
       }
 
       .compare-highlight.style-changed {
-        background: rgba(59, 130, 246, 0.28);
+        background: var(--compare-style-changed);
       }
 
       .compare-highlight.active {
-        outline: 2px solid rgba(99, 102, 241, 0.7);
+        outline: 2px solid var(--compare-active);
         outline-offset: 1px;
       }
 
@@ -241,10 +274,10 @@
         justify-content: center;
         text-align: center;
         padding: 1rem;
-        border: 1px dashed #94a3b8;
+        border: 1px dashed var(--compare-placeholder-border);
         border-radius: 0.75rem;
-        color: #475569;
-        background: rgba(255, 255, 255, 0.92);
+        color: var(--compare-placeholder-fg);
+        background: var(--compare-placeholder-bg);
       }
 
       .compare-placeholder.hidden {
@@ -255,8 +288,8 @@
         display: flex;
         flex-direction: column;
         gap: 0;
-        background: rgba(15, 23, 42, 0.6);
-        border: 1px solid rgba(51, 65, 85, 0.5);
+        background: var(--color-surface-raised);
+        border: 1px solid var(--color-border);
         border-radius: 0.75rem;
         overflow: hidden;
         height: 100%;
@@ -265,7 +298,7 @@
 
       .compare-sidebar-header {
         padding: 0.5rem 0.75rem;
-        border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+        border-bottom: 1px solid var(--color-border-subtle);
       }
 
       .compare-sidebar-filters {
@@ -273,7 +306,7 @@
         flex-direction: column;
         gap: 0;
         padding: 0;
-        border-bottom: 1px solid rgba(51, 65, 85, 0.4);
+        border-bottom: 1px solid var(--color-border-subtle);
       }
 
       .compare-filter-group {
@@ -285,7 +318,7 @@
       }
 
       .compare-filter-group + .compare-filter-group {
-        border-top: 1px solid rgba(51, 65, 85, 0.25);
+        border-top: 1px solid var(--color-border-subtle);
       }
 
       .compare-filter-label {
@@ -294,7 +327,7 @@
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: var(--label-letter-spacing, 0.08em);
-        color: #64748b;
+        color: var(--color-text-tertiary);
       }
 
       .compare-pill {
@@ -312,69 +345,165 @@
       }
 
       .compare-pill.removed {
-        color: #fca5a5;
-        background: rgba(239, 68, 68, 0.1);
-        border-color: rgba(239, 68, 68, 0.15);
+        color: var(--compare-removed-fg);
+        background: color-mix(
+          in srgb,
+          var(--compare-removed-solid) 10%,
+          transparent
+        );
+        border-color: color-mix(
+          in srgb,
+          var(--compare-removed-solid) 15%,
+          transparent
+        );
       }
 
       .compare-pill.removed.active {
-        background: rgba(239, 68, 68, 0.25);
-        border-color: rgba(239, 68, 68, 0.5);
+        background: color-mix(
+          in srgb,
+          var(--compare-removed-solid) 25%,
+          transparent
+        );
+        border-color: color-mix(
+          in srgb,
+          var(--compare-removed-solid) 50%,
+          transparent
+        );
       }
 
       .compare-pill.modified {
-        color: #fcd34d;
-        background: rgba(245, 158, 11, 0.1);
-        border-color: rgba(245, 158, 11, 0.15);
+        color: var(--compare-modified-fg);
+        background: color-mix(
+          in srgb,
+          var(--compare-modified-solid) 10%,
+          transparent
+        );
+        border-color: color-mix(
+          in srgb,
+          var(--compare-modified-solid) 15%,
+          transparent
+        );
       }
 
       .compare-pill.modified.active {
-        background: rgba(245, 158, 11, 0.25);
-        border-color: rgba(245, 158, 11, 0.5);
+        background: color-mix(
+          in srgb,
+          var(--compare-modified-solid) 25%,
+          transparent
+        );
+        border-color: color-mix(
+          in srgb,
+          var(--compare-modified-solid) 50%,
+          transparent
+        );
       }
 
       .compare-pill.added {
-        color: #86efac;
-        background: rgba(34, 197, 94, 0.1);
-        border-color: rgba(34, 197, 94, 0.15);
+        color: var(--compare-added-fg);
+        background: color-mix(
+          in srgb,
+          var(--compare-added-solid) 10%,
+          transparent
+        );
+        border-color: color-mix(
+          in srgb,
+          var(--compare-added-solid) 15%,
+          transparent
+        );
       }
 
       .compare-pill.added.active {
-        background: rgba(34, 197, 94, 0.25);
-        border-color: rgba(34, 197, 94, 0.5);
+        background: color-mix(
+          in srgb,
+          var(--compare-added-solid) 25%,
+          transparent
+        );
+        border-color: color-mix(
+          in srgb,
+          var(--compare-added-solid) 50%,
+          transparent
+        );
       }
 
       .compare-pill.moved {
-        color: #c4b5fd;
-        background: rgba(168, 85, 247, 0.1);
-        border-color: rgba(168, 85, 247, 0.15);
+        color: var(--compare-moved-fg);
+        background: color-mix(
+          in srgb,
+          var(--compare-moved-solid) 10%,
+          transparent
+        );
+        border-color: color-mix(
+          in srgb,
+          var(--compare-moved-solid) 15%,
+          transparent
+        );
       }
 
       .compare-pill.moved.active {
-        background: rgba(168, 85, 247, 0.25);
-        border-color: rgba(168, 85, 247, 0.5);
+        background: color-mix(
+          in srgb,
+          var(--compare-moved-solid) 25%,
+          transparent
+        );
+        border-color: color-mix(
+          in srgb,
+          var(--compare-moved-solid) 50%,
+          transparent
+        );
       }
 
       .compare-pill.style-changed {
-        color: #93c5fd;
-        background: rgba(59, 130, 246, 0.1);
-        border-color: rgba(59, 130, 246, 0.15);
+        color: var(--compare-style-changed-fg);
+        background: color-mix(
+          in srgb,
+          var(--compare-style-changed-solid) 10%,
+          transparent
+        );
+        border-color: color-mix(
+          in srgb,
+          var(--compare-style-changed-solid) 15%,
+          transparent
+        );
       }
 
       .compare-pill.style-changed.active {
-        background: rgba(59, 130, 246, 0.25);
-        border-color: rgba(59, 130, 246, 0.5);
+        background: color-mix(
+          in srgb,
+          var(--compare-style-changed-solid) 25%,
+          transparent
+        );
+        border-color: color-mix(
+          in srgb,
+          var(--compare-style-changed-solid) 50%,
+          transparent
+        );
       }
 
       .compare-pill.category {
-        color: #a5b4fc;
-        background: rgba(99, 102, 241, 0.1);
-        border-color: rgba(99, 102, 241, 0.15);
+        color: var(--compare-category-fg);
+        background: color-mix(
+          in srgb,
+          var(--compare-category-solid) 10%,
+          transparent
+        );
+        border-color: color-mix(
+          in srgb,
+          var(--compare-category-solid) 15%,
+          transparent
+        );
       }
 
       .compare-pill.category.active {
-        background: rgba(99, 102, 241, 0.25);
-        border-color: rgba(99, 102, 241, 0.5);
+        background: color-mix(
+          in srgb,
+          var(--compare-category-solid) 25%,
+          transparent
+        );
+        border-color: color-mix(
+          in srgb,
+          var(--compare-category-solid) 50%,
+          transparent
+        );
       }
 
       .compare-pill.category.disabled {
@@ -399,21 +528,21 @@
         padding: 0.5rem 0.75rem;
         cursor: pointer;
         transition: background 0.15s;
-        border: 1px solid rgba(51, 65, 85, 0.3);
+        border: 1px solid var(--color-border-subtle);
         border-radius: 0.5rem;
         font-size: 0.8125rem;
-        color: #cbd5e1;
+        color: var(--color-text-secondary);
         line-height: 1.5;
       }
 
       .compare-change-item:hover {
-        background: rgba(99, 102, 241, 0.06);
-        border-color: rgba(99, 102, 241, 0.2);
+        background: color-mix(in srgb, var(--color-action) 6%, transparent);
+        border-color: color-mix(in srgb, var(--color-action) 20%, transparent);
       }
 
       .compare-change-item.active {
-        background: rgba(99, 102, 241, 0.1);
-        border-color: rgba(99, 102, 241, 0.3);
+        background: color-mix(in srgb, var(--color-action) 10%, transparent);
+        border-color: color-mix(in srgb, var(--color-action) 30%, transparent);
       }
 
       .compare-section-header {
@@ -433,32 +562,32 @@
 
       .compare-section-label.added,
       .compare-section-label.page-added {
-        color: #86efac;
+        color: var(--compare-added-fg);
       }
       .compare-section-label.removed,
       .compare-section-label.page-removed {
-        color: #fca5a5;
+        color: var(--compare-removed-fg);
       }
       .compare-section-label.modified {
-        color: #fcd34d;
+        color: var(--compare-modified-fg);
       }
       .compare-section-label.moved {
-        color: #c4b5fd;
+        color: var(--compare-moved-fg);
       }
       .compare-section-label.style-changed {
-        color: #93c5fd;
+        color: var(--compare-style-changed-fg);
       }
 
       .compare-section-count {
         font-size: 0.75rem;
         font-weight: 600;
-        color: #64748b;
+        color: var(--color-text-tertiary);
       }
 
       .compare-section-line {
         flex: 1;
         height: 1px;
-        background: rgba(51, 65, 85, 0.4);
+        background: var(--color-border-subtle);
       }
 
       .compare-change-dot {
@@ -469,30 +598,30 @@
       }
 
       .compare-change-dot.added {
-        background: #22c55e;
+        background: var(--compare-added-solid);
       }
       .compare-change-dot.removed {
-        background: #ef4444;
+        background: var(--compare-removed-solid);
       }
       .compare-change-dot.modified {
-        background: #f59e0b;
+        background: var(--compare-modified-solid);
       }
       .compare-change-dot.page-added {
-        background: #22c55e;
+        background: var(--compare-added-solid);
       }
       .compare-change-dot.page-removed {
-        background: #ef4444;
+        background: var(--compare-removed-solid);
       }
       .compare-change-dot.moved {
-        background: #a855f7;
+        background: var(--compare-moved-solid);
       }
       .compare-change-dot.style-changed {
-        background: #3b82f6;
+        background: var(--compare-style-changed-solid);
       }
 
       .compare-change-desc {
         font-size: 0.8125rem;
-        color: #e2e8f0;
+        color: var(--color-text-primary);
         overflow-wrap: anywhere;
         white-space: pre-line;
       }
@@ -500,7 +629,7 @@
       .compare-change-empty {
         padding: 2rem 1rem;
         font-size: 0.8125rem;
-        color: #64748b;
+        color: var(--color-text-tertiary);
         text-align: center;
       }
 

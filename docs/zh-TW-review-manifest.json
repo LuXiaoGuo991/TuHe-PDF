@@ -1,0 +1,6 @@
+{
+  "resource": "tools",
+  "reviewedNamespaces": [],
+  "lastReviewed": null,
+  "note": "人工复核按命名空间分批进行。将已完成复核的命名空间加入 reviewedNamespaces，并在 docs/zh-TW-review-checklist.md 记录复核人、日期与键数。OpenCC 仅生成候选 diff，绝不自动覆盖已确认文本。"
+}

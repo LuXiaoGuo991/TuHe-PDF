@@ -41,6 +41,15 @@
   --color-warning: #d6a653;
   --color-danger: #d85b55;
   --color-info: #77b9c4;
+  /* 用途型 token：仅按钮与状态文字组件消费，避免调暗共享语义色。
+     数值经 WCAG AA 计算：普通文字 ≥ 4.5:1，非文字控件边界 ≥ 3:1。 */
+  --color-on-action: #121513;
+  --color-button-danger: #d85b55;
+  --color-on-danger: #121513;
+  --color-status-success-text: #56a981;
+  --color-status-warning-text: #d6a653;
+  --color-status-danger-text: #d85b55;
+  --color-status-info-text: #77b9c4;
 }
 
 /* 暖白阅读主题：与深色主题共享组件结构，仅覆盖语义 token。 */
@@ -59,6 +68,13 @@
   --color-action-hover: #2d674d;
   --color-focus: #317d8d;
   --color-brand-accent: #b8513d;
+  --color-on-action: #ffffff;
+  --color-button-danger: #b33632;
+  --color-on-danger: #ffffff;
+  --color-status-success-text: #1f7048;
+  --color-status-warning-text: #795200;
+  --color-status-danger-text: #a52f2f;
+  --color-status-info-text: #236c78;
 }
 
 .ui-surface {
@@ -108,7 +124,7 @@
     color 160ms ease;
 }
 .ui-button-primary {
-  color: var(--color-text-primary);
+  color: var(--color-on-action);
   background-color: var(--color-action);
   border-color: var(--color-action);
 }
@@ -129,14 +145,14 @@
   border-color: var(--color-action-hover);
 }
 .ui-button-danger {
-  color: var(--color-text-primary);
-  background-color: var(--color-danger);
-  border-color: var(--color-danger);
+  color: var(--color-on-danger);
+  background-color: var(--color-button-danger);
+  border-color: var(--color-button-danger);
 }
 .ui-button-danger:hover {
   background-color: color-mix(
     in srgb,
-    var(--color-danger),
+    var(--color-button-danger),
     var(--color-text-primary) 12%
   );
 }
@@ -150,19 +166,23 @@
 }
 .ui-status-success,
 .ui-status-warning,
-.ui-status-danger {
+.ui-status-danger,
+.ui-status-info {
   border: 1px solid currentColor;
   border-radius: 8px;
   background-color: var(--color-surface-sunken);
 }
 .ui-status-success {
-  color: var(--color-success);
+  color: var(--color-status-success-text);
 }
 .ui-status-warning {
-  color: var(--color-warning);
+  color: var(--color-status-warning-text);
 }
 .ui-status-danger {
-  color: var(--color-danger);
+  color: var(--color-status-danger-text);
+}
+.ui-status-info {
+  color: var(--color-status-info-text);
 }
 
 @theme {
@@ -1791,7 +1811,7 @@ body:has(#workbench) {
 }
 
 .tuhe-home-inner {
-  max-width: 760px;
+  max-width: 820px;
   width: 100%;
   animation: tuhe-home-in 0.5s ease;
 }
@@ -1856,23 +1876,38 @@ body:has(#workbench) {
 .tuhe-subtitle {
   font-size: 15px;
   color: var(--color-text-secondary);
-  margin-bottom: 36px;
+  margin-bottom: 30px;
 }
 
-.tuhe-quick-title {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+.tuhe-search {
+  position: relative;
+  width: min(100%, 620px);
+  margin: 0 auto 24px;
+}
+
+.tuhe-search .ph {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  z-index: 1;
+  transform: translateY(-50%);
   color: var(--color-text-tertiary);
-  margin-bottom: 14px;
+  pointer-events: none;
+}
+
+.tuhe-search .ui-input {
+  width: 100%;
+  min-height: 48px;
+  padding: 11px 16px 11px 44px;
+  border-radius: 8px;
+  font-size: 14px;
 }
 
 .tuhe-quick-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
-  margin-bottom: 36px;
+  margin-bottom: 26px;
 }
 
 .tuhe-quick-card {
@@ -1888,6 +1923,7 @@ body:has(#workbench) {
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
+  min-height: 90px;
   transition:
     background-color 0.18s ease,
     border-color 0.18s ease;
@@ -1901,108 +1937,6 @@ body:has(#workbench) {
 .tuhe-quick-card i,
 .tuhe-quick-card .ph {
   font-size: 24px;
-  color: var(--color-action-hover);
-}
-
-.tuhe-section-heading {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 0 0 14px;
-  text-align: left;
-}
-
-.tuhe-section-heading h2 {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: var(--color-text-tertiary);
-}
-
-.tuhe-category-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 24px;
-  text-align: left;
-}
-
-.tuhe-category {
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  background: var(--color-surface);
-  overflow: hidden;
-}
-
-.tuhe-category summary {
-  list-style: none;
-  cursor: pointer;
-  padding: 12px 16px;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-text-primary);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: background-color 0.18s ease;
-  user-select: none;
-}
-
-.tuhe-category summary::-webkit-details-marker {
-  display: none;
-}
-
-.tuhe-category summary::after {
-  content: '';
-  width: 8px;
-  height: 8px;
-  border-right: 2px solid var(--color-text-tertiary);
-  border-bottom: 2px solid var(--color-text-tertiary);
-  transform: rotate(45deg);
-  transition: transform 0.18s ease;
-  flex-shrink: 0;
-}
-
-.tuhe-category[open] summary::after {
-  transform: rotate(-135deg);
-}
-
-.tuhe-category summary:hover {
-  background: var(--color-surface-raised);
-}
-
-.tuhe-category-tools {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 8px;
-  padding: 4px 12px 12px;
-}
-
-.tuhe-category-tool {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 12px;
-  border-radius: 6px;
-  background: var(--color-surface-sunken);
-  border: 1px solid transparent;
-  color: var(--color-text-secondary);
-  font-size: 13px;
-  cursor: pointer;
-  transition:
-    background-color 0.18s ease,
-    border-color 0.18s ease,
-    color 0.18s ease;
-}
-
-.tuhe-category-tool:hover {
-  background: var(--color-surface-raised);
-  border-color: var(--color-border);
-  color: var(--color-text-primary);
-}
-
-.tuhe-category-tool .ph {
-  font-size: 16px;
   color: var(--color-action-hover);
 }
 
@@ -2099,6 +2033,43 @@ body:has(#workbench) {
   .tuhe-title {
     font-size: 30px;
   }
+
+  #tuhe-home {
+    justify-content: flex-start;
+    padding: 32px 18px 88px;
+  }
+
+  .tuhe-logo-badge {
+    width: 72px;
+    height: 72px;
+    margin-bottom: 18px;
+  }
+
+  .tuhe-logo-badge img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .tuhe-subtitle {
+    margin: 6px auto 24px;
+    max-width: 32rem;
+    line-height: 1.65;
+  }
+
+  .tuhe-search {
+    margin-bottom: 18px;
+  }
+
+  .tuhe-quick-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+
+  .tuhe-quick-card {
+    min-height: 82px;
+    padding: 14px 8px;
+  }
 }
 
 #mobile-rail-btn {
@@ -2131,11 +2102,6 @@ body:has(#workbench) {
 /* Chinese locale: reset Latin-oriented letter-spacing on CJK text */
 :lang(zh) .rail-category-header,
 :lang(zh-TW) .rail-category-header {
-  letter-spacing: normal;
-}
-
-:lang(zh) .tuhe-quick-title,
-:lang(zh-TW) .tuhe-quick-title {
   letter-spacing: normal;
 }
 

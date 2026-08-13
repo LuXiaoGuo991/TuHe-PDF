@@ -1,8 +1,19 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import postcss from 'postcss';
+import { parse } from 'parse5';
+
+// True only when executed directly (`node scripts/migrate-visual-batch.mjs`),
+// false when imported (e.g. by the unit tests).
+const isMain =
+  !!process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+
+/** Normalize a relative path to POSIX separators (`/`), so that Windows
+ *  `path.relative()` output (`\\`) matches the `/`-based exemption keys. */
+export const toPosix = (relativePath) => relativePath.split(path.sep).join('/');
 
 // 精确的颜色类替换映射：从 Tailwind gray/indigo/green/red/yellow/blue
 // 迁移到 styles.css 中定义的 `.ui-*` 语义组件类。
@@ -89,17 +100,188 @@ const semanticColorMap = [
   ['indigo', 'action'],
 ];
 
-// 这些文件的颜色是 PDF 文档内容（书签颜色、表单字段色），不跟随主题，跳过语义色 token 化。
-const semanticColorExclude = new Set([
-  'src/js/types/bookmark-pdf-type.ts',
-  'src/js/logic/form-creator.ts',
-]);
+// ---------------------------------------------------------------------------
+// 豁免表：逐条登记「文件 + 选择器/token + 原因」，禁止整文件跳过。
+// ---------------------------------------------------------------------------
+export const EXEMPTIONS = [
+  {
+    file: 'src/pages/compare-pdfs.html',
+    customProperty: '--compare-',
+    reason: 'PDF 纸张与差异叠加/图例为业务语义色，固定不变，不跟随主题',
+  },
+  {
+    file: 'src/pages/pdf-workflow.html',
+    customProperty: '--wf-socket-color',
+    reason: 'socket/连接线颜色为页面级业务变量，不跟随主题',
+  },
+  {
+    file: 'src/pages/pdf-workflow.html',
+    customProperty: '--cat-color',
+    reason: '节点类别色为页面级业务变量，不跟随主题',
+  },
+  {
+    file: 'src/pages/form-creator.html',
+    selector: '#pdfCanvasWrapper',
+    reason: 'PDF 表单预览画布边框为文档内容，不跟随主题',
+  },
+  {
+    file: 'src/js/logic/form-creator.ts',
+    colorFamily: 'gray',
+    reason: 'PDF 表单字段的灰色边框/文字属于文档内容，不跟随主题',
+  },
+  {
+    file: 'src/js/logic/pdf-workflow-page.ts',
+    colorFamily: 'violet',
+    reason: '工作流节点类别色为业务语义，不跟随主题',
+  },
+  {
+    file: 'src/js/logic/pdf-workflow-page.ts',
+    colorFamily: 'rose',
+    reason: '工作流节点类别色为业务语义，不跟随主题',
+  },
+  {
+    file: 'src/js/logic/pdf-workflow-page.ts',
+    colorFamily: 'teal',
+    reason: '工作流节点类别色为业务语义，不跟随主题',
+  },
+  {
+    file: 'src/js/types/bookmark-pdf-type.ts',
+    colorFamily: 'purple',
+    reason: '书签类别紫色属于 PDF 文档内容，不跟随主题',
+  },
+];
 
-// 检测替换后仍残留的 legacy 颜色类（含任意色阶和透明度变体）。
-const legacyPattern =
-  /(?:^|\s)(?:[a-z-]+:)*(?:bg|text|border|ring|divide|outline|placeholder|file:bg|file:text)-(?:gray|indigo)(?:-[0-9]+)?(?:\/[0-9]+)?(?=\s|["'`])/g;
+function matchingExemptions(file) {
+  return EXEMPTIONS.filter((ex) => ex.file === file);
+}
 
-function migrate(content, isHtml, relativePath) {
+function isCustomPropertyExempt(file, prop) {
+  return matchingExemptions(file).some(
+    (ex) => ex.customProperty && prop.startsWith(ex.customProperty)
+  );
+}
+
+function isSelectorExempt(file, selector) {
+  return matchingExemptions(file).some(
+    (ex) => ex.selector && ex.selector === selector
+  );
+}
+
+function isColorFamilyExempt(file, colorFamily) {
+  return matchingExemptions(file).some(
+    (ex) => ex.colorFamily && ex.colorFamily === colorFamily
+  );
+}
+
+// ---------------------------------------------------------------------------
+// 颜色检测
+// ---------------------------------------------------------------------------
+
+const COLOR_LITERAL_RE =
+  /#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})\b|rgba?\(\s*[\d.\s,%]+\)|hsla?\([\d.\s,%deg]+\)/g;
+
+const COLOR_FAMILY =
+  'gray|slate|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose';
+
+const TAILWIND_COLOR_RE = new RegExp(
+  `(?:^|[\\s"'\\x60])((?:[a-z-]+:)*(?:bg|text|border|ring|divide|outline|placeholder|accent|fill|stroke|from|via|to)-(${COLOR_FAMILY})(?:-\\d+)?(?:\\/\\d+)?)(?=[\\s"'\\x60])`,
+  'g'
+);
+
+function findColorLiterals(value) {
+  return value.match(COLOR_LITERAL_RE) || [];
+}
+
+/** Strip `var(--exempted, <fallback>)` fallbacks for an exempted custom
+ *  property, so fallback colors are not reported as unapproved. */
+function stripExemptedVarFallbacks(file, value) {
+  let next = value;
+  for (const ex of matchingExemptions(file)) {
+    if (!ex.customProperty) continue;
+    const name = ex.customProperty.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    next = next.replace(
+      new RegExp(`var\\(${name}[^)]*\\)`, 'g'),
+      `var(${ex.customProperty})`
+    );
+  }
+  return next;
+}
+
+function cssIssues(file, cssText) {
+  const issues = [];
+  let root;
+  try {
+    root = postcss.parse(cssText);
+  } catch {
+    return issues;
+  }
+  root.walkDecls((decl) => {
+    if (isCustomPropertyExempt(file, decl.prop)) return;
+    const value = stripExemptedVarFallbacks(file, decl.value);
+    for (const color of findColorLiterals(value)) {
+      issues.push({ kind: 'css-color', value: color, prop: decl.prop });
+    }
+  });
+  return issues;
+}
+
+function tailwindIssues(file, text) {
+  const issues = [];
+  for (const match of text.matchAll(TAILWIND_COLOR_RE)) {
+    const token = match[1];
+    const colorFamily = match[2];
+    if (isColorFamilyExempt(file, colorFamily)) continue;
+    issues.push({ kind: 'tailwind-class', value: token });
+  }
+  return issues;
+}
+
+/** Collect unapproved legacy colors for a file's (post-migration) content. */
+export function collectIssues(file, content) {
+  const rel = toPosix(file);
+  const issues = [];
+  const isHtml = rel.endsWith('.html');
+
+  if (isHtml) {
+    let doc;
+    try {
+      doc = parse(content);
+    } catch {
+      return issues;
+    }
+    const walk = (node) => {
+      if (node.tagName === 'style') {
+        const text = node.childNodes?.map((n) => n.value || '').join('') || '';
+        issues.push(...cssIssues(rel, text));
+      } else if (node.attrs) {
+        const styleAttr = node.attrs.find((a) => a.name === 'style');
+        const classAttr = node.attrs.find((a) => a.name === 'class');
+        const idAttr = node.attrs.find((a) => a.name === 'id');
+
+        if (styleAttr) {
+          if (!isSelectorExempt(rel, idAttr ? `#${idAttr.value}` : '')) {
+            issues.push(...cssIssues(rel, styleAttr.value));
+          }
+        }
+        if (classAttr) {
+          issues.push(...tailwindIssues(rel, classAttr.value));
+        }
+      }
+      if (node.childNodes) for (const child of node.childNodes) walk(child);
+    };
+    walk(doc);
+  } else {
+    issues.push(...tailwindIssues(rel, content));
+  }
+
+  return issues;
+}
+
+// ---------------------------------------------------------------------------
+// 迁移（apply）
+// ---------------------------------------------------------------------------
+
+export function migrate(content, isHtml) {
   let next = content;
   for (const [from, to] of [...replacements].sort(
     (a, b) => b[0].length - a[0].length
@@ -113,42 +295,40 @@ function migrate(content, isHtml, relativePath) {
     );
   }
 
-  // 语义色通配 token 化（PDF 内容文件跳过）
-  if (relativePath && !semanticColorExclude.has(relativePath)) {
-    for (const [color, semantic] of semanticColorMap) {
-      next = next.replace(
-        new RegExp(`hover:bg-${color}-\\d+(?:/\\d+)?`, 'g'),
-        `ui-hover-bg-${semantic}`
-      );
-      next = next.replace(
-        new RegExp(`hover:border-${color}-\\d+(?:/\\d+)?`, 'g'),
-        `ui-hover-border-${semantic}`
-      );
-      next = next.replace(
-        new RegExp(`(?<!:)bg-${color}-\\d+(?:/\\d+)?`, 'g'),
-        `ui-bg-${semantic}`
-      );
-      next = next.replace(
-        new RegExp(`(?<!:)text-${color}-\\d+(?:/\\d+)?`, 'g'),
-        `ui-text-${semantic}`
-      );
-      next = next.replace(
-        new RegExp(`(?<!:)border-${color}-\\d+(?:/\\d+)?`, 'g'),
-        `ui-border-${semantic}`
-      );
-      next = next.replace(
-        new RegExp(`(?<!:)ring-${color}-\\d+(?:/\\d+)?`, 'g'),
-        `ui-ring-${semantic}`
-      );
-      next = next.replace(
-        new RegExp(`focus:ring-${color}-\\d+(?:/\\d+)?`, 'g'),
-        'ui-focus-ring'
-      );
-      next = next.replace(
-        new RegExp(`accent-${color}-\\d+(?:/\\d+)?`, 'g'),
-        'ui-accent-action'
-      );
-    }
+  // 语义色通配 token 化
+  for (const [color, semantic] of semanticColorMap) {
+    next = next.replace(
+      new RegExp(`hover:bg-${color}-\\d+(?:/\\d+)?`, 'g'),
+      `ui-hover-bg-${semantic}`
+    );
+    next = next.replace(
+      new RegExp(`hover:border-${color}-\\d+(?:/\\d+)?`, 'g'),
+      `ui-hover-border-${semantic}`
+    );
+    next = next.replace(
+      new RegExp(`(?<!:)bg-${color}-\\d+(?:/\\d+)?`, 'g'),
+      `ui-bg-${semantic}`
+    );
+    next = next.replace(
+      new RegExp(`(?<!:)text-${color}-\\d+(?:/\\d+)?`, 'g'),
+      `ui-text-${semantic}`
+    );
+    next = next.replace(
+      new RegExp(`(?<!:)border-${color}-\\d+(?:/\\d+)?`, 'g'),
+      `ui-border-${semantic}`
+    );
+    next = next.replace(
+      new RegExp(`(?<!:)ring-${color}-\\d+(?:/\\d+)?`, 'g'),
+      `ui-ring-${semantic}`
+    );
+    next = next.replace(
+      new RegExp(`focus:ring-${color}-\\d+(?:/\\d+)?`, 'g'),
+      'ui-focus-ring'
+    );
+    next = next.replace(
+      new RegExp(`accent-${color}-\\d+(?:/\\d+)?`, 'g'),
+      'ui-accent-action'
+    );
   }
 
   if (isHtml) {
@@ -210,51 +390,55 @@ function collectHtmlFiles() {
     .map((f) => path.join(pagesDir, f));
 }
 
-const args = process.argv.slice(2);
-const write = args.includes('--write');
-const check = args.includes('--check') || !write;
-const htmlOnly = args.includes('--html');
-const tsOnly = args.includes('--ts');
-const toolArg = args.find((arg) => arg.startsWith('--tool='))?.slice(7);
+if (isMain) {
+  const args = process.argv.slice(2);
+  const write = args.includes('--write');
+  const check = args.includes('--check') || !write;
+  const htmlOnly = args.includes('--html');
+  const tsOnly = args.includes('--ts');
+  const toolArg = args.find((arg) => arg.startsWith('--tool='))?.slice(7);
 
-const targets = [];
-if (!tsOnly) {
-  for (const html of collectHtmlFiles()) {
-    if (toolArg && !html.includes(toolArg)) continue;
-    targets.push({ file: html, isHtml: true, slug: path.basename(html) });
+  const targets = [];
+  if (!tsOnly) {
+    for (const html of collectHtmlFiles()) {
+      if (toolArg && !html.includes(toolArg)) continue;
+      targets.push({ file: html, isHtml: true, slug: path.basename(html) });
+    }
   }
+  if (!htmlOnly) {
+    for (const ts of collectTsFiles()) {
+      if (toolArg && !ts.includes(toolArg)) continue;
+      targets.push({ file: ts, isHtml: false, slug: path.basename(ts) });
+    }
+  }
+
+  let changed = 0;
+  let unapprovedTotal = 0;
+  const unapprovedByFile = [];
+
+  for (const { file, isHtml } of targets) {
+    const original = fs.readFileSync(file, 'utf8');
+    const relative = toPosix(path.relative(ROOT, file));
+    const migrated = migrate(original, isHtml);
+
+    if (migrated !== original) {
+      changed++;
+      if (write) fs.writeFileSync(file, migrated);
+      console.log(`${write ? 'updated' : 'would update'} ${relative}`);
+    }
+
+    const issues = collectIssues(relative, migrated);
+    if (issues.length) {
+      unapprovedTotal += issues.length;
+      unapprovedByFile.push([relative, issues.length]);
+      console.error(
+        `unapproved ${relative} (${issues.length})${issues[0] ? ` e.g. ${issues[0].value}` : ''}`
+      );
+    }
+  }
+
+  console.log(
+    `${targets.length} file(s), ${changed} file(s) ${write ? 'updated' : 'need migration'}, ${unapprovedTotal} unapproved legacy color(s) in ${unapprovedByFile.length} file(s).`
+  );
+  if (check && (changed > 0 || unapprovedTotal > 0)) process.exitCode = 1;
 }
-if (!htmlOnly) {
-  for (const ts of collectTsFiles()) {
-    if (toolArg && !ts.includes(toolArg)) continue;
-    targets.push({ file: ts, isHtml: false, slug: path.basename(ts) });
-  }
-}
-
-let changed = 0;
-let unresolvedTotal = 0;
-const unresolvedByFile = [];
-
-for (const { file, isHtml, slug } of targets) {
-  const original = fs.readFileSync(file, 'utf8');
-  const relative = path.relative(ROOT, file);
-  const migrated = migrate(original, isHtml, relative);
-
-  if (migrated !== original) {
-    changed++;
-    if (write) fs.writeFileSync(file, migrated);
-    console.log(`${write ? 'updated' : 'would update'} ${relative}`);
-  }
-
-  const matches = migrated.match(legacyPattern) || [];
-  if (matches.length) {
-    unresolvedTotal += matches.length;
-    unresolvedByFile.push([relative, matches.length]);
-    console.error(`unresolved ${relative} (${matches.length})`);
-  }
-}
-
-console.log(
-  `${targets.length} file(s), ${changed} file(s) ${write ? 'updated' : 'need migration'}, ${unresolvedTotal} unresolved legacy token(s) in ${unresolvedByFile.length} file(s).`
-);
-if (check && (changed > 0 || unresolvedTotal > 0)) process.exitCode = 1;

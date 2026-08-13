@@ -696,15 +696,6 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
       tool.hidden = !matches;
       if (matches) visibleCount += 1;
     });
-    home
-      .querySelectorAll<HTMLDetailsElement>('[data-home-category]')
-      .forEach((category) => {
-        const hasMatch = !!category.querySelector(
-          '[data-home-tool]:not([hidden])'
-        );
-        category.hidden = !hasMatch;
-        if (query && hasMatch) category.open = true;
-      });
     homeEmpty?.classList.toggle('visible', visibleCount === 0);
   };
   homeSearch?.addEventListener('input', () =>

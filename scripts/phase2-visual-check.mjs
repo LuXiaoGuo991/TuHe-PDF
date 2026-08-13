@@ -180,6 +180,21 @@ async function validateWorkbench() {
     await assertVisibleBox(page, '.wb-topbar', 'workbench topbar');
     await assertVisibleBox(page, '#tool-rail', 'workbench rail');
     await assertVisibleBox(page, '.tuhe-quick-card', 'workbench tool card');
+    const quickToolIds = await page
+      .locator('.tuhe-quick-card')
+      .evaluateAll((cards) => cards.map((card) => card.dataset.openTool));
+    check(
+      quickToolIds.length === 8,
+      `expected 8 quick tools, found ${quickToolIds.length}`
+    );
+    check(
+      quickToolIds[0] === 'image-to-pdf' && quickToolIds[1] === 'pdf-to-png',
+      `unexpected leading quick tools: ${quickToolIds.slice(0, 2).join(', ')}`
+    );
+    check(
+      (await page.locator('.tuhe-category-stack').count()) === 0,
+      'removed home category browser is still present'
+    );
     await screenshot(page, 'workbench-topbar');
     await screenshot(page, 'workbench-rail-collapsed');
 
@@ -229,9 +244,23 @@ async function validateWorkbench() {
       'focus-visible ring missing'
     );
     await screenshot(page, 'workbench-search-focus');
+
+    await page.fill('#home-tool-search', 'PNG');
+    const visibleQuickToolIds = await page
+      .locator('.tuhe-quick-card:visible')
+      .evaluateAll((cards) => cards.map((card) => card.dataset.openTool));
+    check(
+      visibleQuickToolIds.length === 1 &&
+        visibleQuickToolIds[0] === 'pdf-to-png',
+      `PNG search returned: ${visibleQuickToolIds.join(', ')}`
+    );
+    await page.press('#home-tool-search', 'Enter');
+    await page.waitForSelector(
+      '.wb-panel-active iframe[src$="pdf-to-png.html"]'
+    );
     pass(
       'workbench desktop states',
-      'topbar, rail collapsed/expanded, hover and focus screenshots'
+      '8 quick tools, order, search navigation, and responsive states'
     );
   } finally {
     await context.close();
@@ -427,9 +456,75 @@ async function validateTool(tool) {
   }
 }
 
+async function validateThemeSync() {
+  const { context, page } = await createPage();
+  try {
+    await goto(page, 'index.html');
+    await page.fill('#home-tool-search', 'PNG');
+    await page.press('#home-tool-search', 'Enter');
+    await page.waitForSelector(
+      '.wb-panel-active iframe[src$="pdf-to-png.html"]'
+    );
+
+    const frame = page
+      .frames()
+      .find(
+        (f) => f !== page.mainFrame() && f.url().includes('pdf-to-png.html')
+      );
+    check(frame, 'tool iframe did not become a frame');
+
+    // Wait until the iframe has run initTheme (data-theme attribute set).
+    await frame.waitForFunction(
+      () => document.documentElement.hasAttribute('data-theme'),
+      { timeout: 10_000 }
+    );
+
+    const parentBefore = await page.evaluate(() =>
+      document.documentElement.getAttribute('data-theme')
+    );
+    const frameBefore = await frame.evaluate(() =>
+      document.documentElement.getAttribute('data-theme')
+    );
+    check(
+      parentBefore === 'dark' && frameBefore === 'dark',
+      `expected dark before toggle, got parent=${parentBefore} iframe=${frameBefore}`
+    );
+
+    await page.click('#topbar-theme-toggle');
+    await page.waitForFunction(
+      () => document.documentElement.getAttribute('data-theme') === 'light'
+    );
+    await frame.waitForFunction(
+      () => document.documentElement.getAttribute('data-theme') === 'light',
+      { timeout: 5_000 }
+    );
+
+    // A freshly opened standalone tool page must inherit the persisted theme.
+    const fresh = await context.newPage();
+    await goto(fresh, 'pdf-to-png.html');
+    const freshTheme = await fresh.evaluate(() =>
+      document.documentElement.getAttribute('data-theme')
+    );
+    check(
+      freshTheme === 'light',
+      `standalone tool page did not inherit light theme (got ${freshTheme})`
+    );
+    await fresh.close();
+
+    await screenshot(page, 'theme-sync-light');
+    pass(
+      'theme iframe sync',
+      'toggle syncs open iframe and standalone page inherits persisted theme'
+    );
+  } finally {
+    await context.close();
+  }
+}
+
 try {
   await validateWorkbench();
   await validateMerge();
+  await validateThemeSync();
   for (const tool of tools) await validateTool(tool);
 } catch (error) {
   fail('phase2 visual suite', error);
