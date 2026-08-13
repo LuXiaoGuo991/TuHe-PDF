@@ -147,18 +147,18 @@ export interface OutlineItem {
 export type ColorClassMap = Record<string, string>;
 
 export const COLOR_CLASSES: ColorClassMap = {
-  red: 'bg-red-100 border-red-300',
-  blue: 'bg-blue-100 border-blue-300',
-  green: 'bg-green-100 border-green-300',
-  yellow: 'bg-yellow-100 border-yellow-300',
+  red: 'ui-bg-danger ui-border-danger',
+  blue: 'ui-bg-info ui-border-info',
+  green: 'ui-bg-success ui-border-success',
+  yellow: 'ui-bg-warning ui-border-warning',
   purple: 'bg-purple-100 border-purple-300',
 };
 
 export const TEXT_COLOR_CLASSES: ColorClassMap = {
-  red: 'text-red-600',
-  blue: 'text-blue-600',
-  green: 'text-green-600',
-  yellow: 'text-yellow-600',
+  red: 'ui-text-danger',
+  blue: 'ui-text-info',
+  green: 'ui-text-success',
+  yellow: 'ui-text-warning',
   purple: 'text-purple-600',
 };
 

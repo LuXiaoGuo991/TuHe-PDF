@@ -395,7 +395,7 @@ async function renderThumbnails() {
 
     const deleteBtn = document.createElement('button');
     deleteBtn.className =
-      'delete-btn bg-red-600 hover:bg-red-700 ui-text-primary rounded-full w-8 h-8 flex items-center justify-center';
+      'delete-btn ui-bg-danger ui-hover-bg-danger ui-text-primary rounded-full w-8 h-8 flex items-center justify-center';
     deleteBtn.title = translate(
       'tools:duplicateOrganize.dynamic.93889c4f64',
       'Delete Page'

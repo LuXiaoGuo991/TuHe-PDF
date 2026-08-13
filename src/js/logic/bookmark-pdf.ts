@@ -814,7 +814,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const coordDisplay = document.createElement('div');
     coordDisplay.id = 'destination-coord-display';
     coordDisplay.className =
-      'absolute bg-blue-500 ui-text-primary px-2 py-1 rounded text-xs font-mono z-50 pointer-events-none';
+      'absolute ui-bg-info ui-text-primary px-2 py-1 rounded text-xs font-mono z-50 pointer-events-none';
     coordDisplay.style.left =
       canvasX + canvasRect.left - wrapperRect.left + 20 + 'px';
     coordDisplay.style.top =
@@ -1678,7 +1678,7 @@ function createNodeElement(node: BookmarkNode, level = 0): HTMLLIElement {
   const isSelected = selectedBookmarks.has(node.id);
   const isMatch =
     !searchQuery || node.title.toLowerCase().includes(searchQuery);
-  const highlight = isMatch && searchQuery ? 'bg-yellow-100' : '';
+  const highlight = isMatch && searchQuery ? 'ui-bg-warning' : '';
   const colorClass =
     node.color && typeof node.color === 'string'
       ? COLOR_CLASSES[node.color] || ''
@@ -1687,7 +1687,7 @@ function createNodeElement(node: BookmarkNode, level = 0): HTMLLIElement {
   const textColorClass = getTextColor(node.color);
 
   const div = document.createElement('div');
-  div.className = `flex items-center gap-2 p-2 rounded border ui-border-subtle ${colorClass} ${highlight} ${isSelected ? 'ring-2 ring-blue-500' : ''} hover:ui-bg-surface`;
+  div.className = `flex items-center gap-2 p-2 rounded border ui-border-subtle ${colorClass} ${highlight} ${isSelected ? 'ring-2 ui-ring-info' : ''} hover:ui-bg-surface`;
 
   if (batchMode) {
     const checkbox = document.createElement('input');
@@ -1752,7 +1752,7 @@ function createNodeElement(node: BookmarkNode, level = 0): HTMLLIElement {
   const hasDestination =
     node.destX !== null || node.destY !== null || node.zoom !== null;
   const destinationIcon = hasDestination
-    ? '<i data-lucide="crosshair" class="w-3 h-3 inline-block ml-1 text-blue-500"></i>'
+    ? '<i data-lucide="crosshair" class="w-3 h-3 inline-block ml-1 ui-text-info"></i>'
     : '';
 
   titleDiv.innerHTML = `
@@ -1957,7 +1957,7 @@ function createNodeElement(node: BookmarkNode, level = 0): HTMLLIElement {
   actionsDiv.appendChild(editBtn);
 
   const deleteBtn = document.createElement('button');
-  deleteBtn.className = 'p-1 ui-hover-bg-raised rounded text-red-600';
+  deleteBtn.className = 'p-1 ui-hover-bg-raised rounded ui-text-danger';
   deleteBtn.title = translate(
     'tools:editBookmarks.dynamic.80825a5a20',
     'Delete'

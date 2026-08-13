@@ -2180,6 +2180,15 @@ body:has(#workbench) {
 .ui-bg-success {
   background-color: var(--color-success);
 }
+.ui-bg-danger {
+  background-color: var(--color-danger);
+}
+.ui-bg-info {
+  background-color: var(--color-info);
+}
+.ui-bg-warning {
+  background-color: var(--color-warning);
+}
 .ui-text-primary {
   color: var(--color-text-primary);
 }
@@ -2216,8 +2225,29 @@ body:has(#workbench) {
 .ui-border-action-soft {
   border-color: color-mix(in srgb, var(--color-action), transparent 40%);
 }
+.ui-border-danger {
+  border-color: var(--color-danger);
+}
+.ui-border-info {
+  border-color: var(--color-info);
+}
+.ui-border-warning {
+  border-color: var(--color-warning);
+}
+.ui-border-success {
+  border-color: var(--color-success);
+}
 .ui-ring-action {
   box-shadow: 0 0 0 2px var(--color-action);
+}
+.ui-ring-danger {
+  box-shadow: 0 0 0 2px var(--color-danger);
+}
+.ui-ring-info {
+  box-shadow: 0 0 0 2px var(--color-info);
+}
+.ui-accent-action {
+  accent-color: var(--color-action);
 }
 .ui-divide-subtle > :not([hidden]) ~ :not([hidden]) {
   border-top: 1px solid var(--color-border-subtle);
@@ -2233,6 +2263,27 @@ body:has(#workbench) {
     in srgb,
     var(--color-success),
     var(--color-text-primary) 10%
+  );
+}
+.ui-hover-bg-danger:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--color-danger),
+    var(--color-text-primary) 12%
+  );
+}
+.ui-hover-bg-info:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--color-info),
+    var(--color-text-primary) 12%
+  );
+}
+.ui-hover-bg-warning:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--color-warning),
+    var(--color-text-primary) 12%
   );
 }
 .ui-hover-border-action:hover {

@@ -505,7 +505,7 @@ function buildToolbox() {
     { key: 'Input', color: 'ui-text-info' },
     { key: 'Edit & Annotate', color: 'ui-text-action' },
     { key: 'Organize & Manage', color: 'text-violet-300' },
-    { key: 'Optimize & Repair', color: 'text-amber-300' },
+    { key: 'Optimize & Repair', color: 'ui-text-warning' },
     { key: 'Secure PDF', color: 'text-rose-300' },
     { key: 'Output', color: 'text-teal-300' },
   ];
@@ -894,7 +894,7 @@ function showNodeSettings(node: BaseWorkflowNode) {
       certName.textContent = node.getCertFilename();
 
       const statusDot = document.createElement('span');
-      statusDot.className = `w-2 h-2 rounded-full flex-shrink-0 mx-2 ${node.hasCert() ? 'bg-green-400' : 'bg-yellow-400'}`;
+      statusDot.className = `w-2 h-2 rounded-full flex-shrink-0 mx-2 ${node.hasCert() ? 'ui-bg-success' : 'ui-bg-warning'}`;
 
       const removeBtn = document.createElement('button');
       removeBtn.className =

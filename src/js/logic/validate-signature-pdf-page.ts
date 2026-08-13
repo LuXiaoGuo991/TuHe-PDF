@@ -503,7 +503,7 @@ function createSignatureCard(
   let trustBadge = '';
   if (state.trustedCert) {
     if (result.isTrusted) {
-      trustBadge = `<span class="text-xs bg-green-900 text-green-300 px-2 py-1 rounded ml-2"><i data-lucide="shield-check" class="inline w-3 h-3 mr-1"></i>${trustedLabel}</span>`;
+      trustBadge = `<span class="text-xs ui-bg-success ui-text-success px-2 py-1 rounded ml-2"><i data-lucide="shield-check" class="inline w-3 h-3 mr-1"></i>${trustedLabel}</span>`;
     } else {
       trustBadge = `<span class="text-xs ui-bg-raised ui-text-secondary px-2 py-1 rounded ml-2"><i data-lucide="shield-x" class="inline w-3 h-3 mr-1"></i>${notTrustedLabel}</span>`;
     }
@@ -552,9 +552,9 @@ function createSignatureCard(
 
   let coverageBadge = '';
   if (result.coverageStatus === 'full') {
-    coverageBadge = `<span class="text-xs bg-green-900 text-green-300 px-2 py-1 rounded">${fullCovLabel}</span>`;
+    coverageBadge = `<span class="text-xs ui-bg-success ui-text-success px-2 py-1 rounded">${fullCovLabel}</span>`;
   } else if (result.coverageStatus === 'partial') {
-    coverageBadge = `<span class="text-xs bg-yellow-900 ui-text-warning px-2 py-1 rounded">${partialCovLabel}</span>`;
+    coverageBadge = `<span class="text-xs ui-bg-warning ui-text-warning px-2 py-1 rounded">${partialCovLabel}</span>`;
   }
 
   card.innerHTML = `

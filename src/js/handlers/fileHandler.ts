@@ -479,7 +479,7 @@ async function handleSinglePdfUpload(toolId: string, file: File) {
             }
           } catch (xmlError) {
             console.error('Failed to parse XMP XML:', xmlError);
-            xmpSection.ul.innerHTML = `<li><span class="text-red-500 italic">${translate('fileHandler.xmpParseFailed', '- Unable to parse XMP metadata. -')}</span></li>`;
+            xmpSection.ul.innerHTML = `<li><span class="ui-text-danger italic">${translate('fileHandler.xmpParseFailed', '- Unable to parse XMP metadata. -')}</span></li>`;
             const pre = document.createElement('pre');
             pre.className =
               'text-xs ui-text-secondary whitespace-pre-wrap break-all';
@@ -561,7 +561,7 @@ async function handleSinglePdfUpload(toolId: string, file: File) {
         const removeBtn = document.createElement('button');
         removeBtn.type = 'button';
         removeBtn.className =
-          'btn p-2 text-red-500 ui-hover-bg-raised rounded-full self-center sm:self-auto';
+          'btn p-2 ui-text-danger ui-hover-bg-raised rounded-full self-center sm:self-auto';
         removeBtn.innerHTML = '<i data-lucide="trash-2"></i>';
         removeBtn.addEventListener('click', () => fieldWrapper.remove());
 

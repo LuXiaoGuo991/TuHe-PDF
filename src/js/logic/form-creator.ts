@@ -497,31 +497,31 @@ function applyFieldContainerState(
   selected: boolean
 ): void {
   container.classList.remove(
-    'border-indigo-200',
+    'ui-border-action',
     'group-hover:border-dashed',
-    'group-hover:border-indigo-300',
+    'group-ui-hover-border-action',
     'border-dashed',
     'ui-border-action',
-    'bg-indigo-50',
-    'bg-indigo-50/30',
+    'ui-bg-action',
+    'ui-bg-action',
     'bg-transparent'
   );
 
   if (selected) {
     container.classList.add('border-dashed', 'ui-border-action');
     container.classList.add(
-      hasTransparentBackground(field) ? 'bg-transparent' : 'bg-indigo-50'
+      hasTransparentBackground(field) ? 'bg-transparent' : 'ui-bg-action'
     );
     return;
   }
 
   container.classList.add(
-    'border-indigo-200',
+    'ui-border-action',
     'group-hover:border-dashed',
-    'group-hover:border-indigo-300'
+    'group-ui-hover-border-action'
   );
   container.classList.add(
-    hasTransparentBackground(field) ? 'bg-transparent' : 'bg-indigo-50/30'
+    hasTransparentBackground(field) ? 'bg-transparent' : 'ui-bg-action'
   );
 }
 
@@ -714,7 +714,7 @@ function renderField(field: FormField): void {
           : index === 0;
 
         if (isSelected) {
-          optEl.className += ' bg-blue-600 ui-text-primary';
+          optEl.className += ' ui-bg-info ui-text-primary';
         } else {
           optEl.className += ' text-black';
         }
@@ -865,7 +865,7 @@ function renderField(field: FormField): void {
   const handles = ['nw', 'ne', 'sw', 'se', 'n', 's', 'e', 'w'];
   handles.forEach((pos) => {
     const handle = document.createElement('div');
-    handle.className = `absolute w-2.5 h-2.5 ui-bg-light border border-indigo-600 z-10 cursor-${pos}-resize resize-handle hidden`; // Added hidden class
+    handle.className = `absolute w-2.5 h-2.5 ui-bg-light border ui-border-action z-10 cursor-${pos}-resize resize-handle hidden`; // Added hidden class
     const positions: Record<string, string> = {
       nw: 'top-0 left-0 -translate-x-1/2 -translate-y-1/2',
       ne: 'top-0 right-0 translate-x-1/2 -translate-y-1/2',
@@ -1319,8 +1319,8 @@ function showProperties(field: FormField): void {
             <span class="text-xs ui-text-secondary">${translate('tools:formCreator.exampleOfCurrentFormat', 'Example of current format:')}</span>
             <span id="dateFormatExample" class="text-sm ui-text-primary font-medium ml-2"></span>
         </div>
-        <div class="bg-blue-900/30 border border-blue-700/50 rounded p-2 mt-2">
-            <p class="text-xs text-blue-200">
+        <div class="ui-bg-info border ui-border-info rounded p-2 mt-2">
+            <p class="text-xs ui-text-info">
                 <i data-lucide="info" class="w-4 h-4 flex-shrink-0 mt-0.5"></i>
                 <span>${translate('tools:formCreator.browserDateNote', 'Browser Note: Firefox and Chrome may show their native date picker format during selection. The correct format will apply when you finish entering the date.')}</span>
             </p>
@@ -1424,7 +1424,7 @@ function showProperties(field: FormField): void {
         <input type="checkbox" id="propTransparentBackground" ${field.transparentBackground ? 'checked' : ''} class="mr-2">
         <label for="propTransparentBackground" class="text-xs font-semibold ui-text-secondary">${translate('tools:formCreator.transparentBackground', 'Transparent Background')}</label>
       </div>
-      <button id="deleteBtn" class="w-full bg-red-600 ui-text-primary py-2 rounded hover:bg-red-700 transition text-sm font-semibold">
+      <button id="deleteBtn" class="w-full ui-bg-danger ui-text-primary py-2 rounded ui-hover-bg-danger transition text-sm font-semibold">
         ${translate('tools:formCreator.deleteField', 'Delete Field')}
       </button>
     </div>
@@ -1455,13 +1455,13 @@ function showProperties(field: FormField): void {
         'Field name cannot be empty'
       );
       nameError.classList.remove('hidden');
-      propName.classList.add('border-red-500');
+      propName.classList.add('ui-border-danger');
       return false;
     }
 
     if (field.type === 'radio') {
       nameError.classList.add('hidden');
-      propName.classList.remove('border-red-500');
+      propName.classList.remove('ui-border-danger');
       return true;
     }
 
@@ -1477,12 +1477,12 @@ function showProperties(field: FormField): void {
         { value0: newName, value1: isDuplicateInPdf ? 'PDF' : 'form' }
       );
       nameError.classList.remove('hidden');
-      propName.classList.add('border-red-500');
+      propName.classList.add('ui-border-danger');
       return false;
     }
 
     nameError.classList.add('hidden');
-    propName.classList.remove('border-red-500');
+    propName.classList.remove('ui-border-danger');
     return true;
   };
 

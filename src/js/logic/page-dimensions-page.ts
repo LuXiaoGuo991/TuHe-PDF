@@ -121,11 +121,11 @@ function renderSummary() {
 
   if (stats.hasMixedSizes) {
     summaryHTML += `
-      <div class="bg-yellow-900/20 border border-yellow-500/30 rounded-lg p-4 mb-4">
+      <div class="ui-bg-warning border ui-border-warning rounded-lg p-4 mb-4">
         <div class="flex items-start gap-3">
           <i data-lucide="alert-triangle" class="w-5 h-5 ui-text-warning mt-0.5 flex-shrink-0"></i>
           <div>
-            <h4 class="text-yellow-200 font-semibold mb-2">${translate('tools:pageDimensions.mixedSizesDetected', 'Mixed Page Sizes Detected')}</h4>
+            <h4 class="ui-text-warning font-semibold mb-2">${translate('tools:pageDimensions.mixedSizesDetected', 'Mixed Page Sizes Detected')}</h4>
             <p class="text-sm ui-text-secondary mb-3">${translate('tools:pageDimensions.mixedSizesDescription', 'This document contains pages with different dimensions:')}</p>
             <ul class="space-y-1 text-sm ui-text-secondary">
               ${stats.uniqueSizes

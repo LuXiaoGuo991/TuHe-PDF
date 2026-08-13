@@ -132,7 +132,7 @@ function displayAttachments(attachments: AttachmentInfo[]) {
 
   const removeAllBtn = document.createElement('button');
   removeAllBtn.className =
-    'bg-red-500 hover:bg-red-600 ui-text-primary px-4 py-2 rounded text-sm';
+    'ui-bg-danger ui-hover-bg-danger ui-text-primary px-4 py-2 rounded text-sm';
   removeAllBtn.textContent = translate(
     'tools:editAttachments.dynamic.73e3ef7c28',
     'Remove All Attachments'
@@ -155,7 +155,7 @@ function displayAttachments(attachments: AttachmentInfo[]) {
           const btn = element.querySelector('button');
           if (btn) {
             btn.classList.remove('ui-bg-raised');
-            btn.classList.add('bg-red-600');
+            btn.classList.add('ui-bg-danger');
           }
         }
       });
@@ -174,7 +174,7 @@ function displayAttachments(attachments: AttachmentInfo[]) {
           const btn = element.querySelector('button');
           if (btn) {
             btn.classList.add('ui-bg-raised');
-            btn.classList.remove('bg-red-600');
+            btn.classList.remove('ui-bg-danger');
           }
         }
       });
@@ -223,7 +223,7 @@ function displayAttachments(attachments: AttachmentInfo[]) {
     actionsDiv.className = 'flex items-center gap-2';
 
     const removeBtn = document.createElement('button');
-    removeBtn.className = `${pageState.attachmentsToRemove.has(attachment.index) ? 'ui-bg-raised' : 'bg-red-600'} hover:bg-red-700 ui-text-primary px-3 py-1 rounded text-sm`;
+    removeBtn.className = `${pageState.attachmentsToRemove.has(attachment.index) ? 'ui-bg-raised' : 'ui-bg-danger'} ui-hover-bg-danger ui-text-primary px-3 py-1 rounded text-sm`;
     removeBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
     removeBtn.title = translate(
       'tools:editAttachments.dynamic.151df6b489',
@@ -234,12 +234,12 @@ function displayAttachments(attachments: AttachmentInfo[]) {
         pageState.attachmentsToRemove.delete(attachment.index);
         attachmentDiv.classList.remove('opacity-50', 'line-through');
         removeBtn.classList.remove('ui-bg-raised');
-        removeBtn.classList.add('bg-red-600');
+        removeBtn.classList.add('ui-bg-danger');
       } else {
         pageState.attachmentsToRemove.add(attachment.index);
         attachmentDiv.classList.add('opacity-50', 'line-through');
         removeBtn.classList.add('ui-bg-raised');
-        removeBtn.classList.remove('bg-red-600');
+        removeBtn.classList.remove('ui-bg-danger');
       }
 
       const allSelected = pageState.allAttachments.every(function (att) {
