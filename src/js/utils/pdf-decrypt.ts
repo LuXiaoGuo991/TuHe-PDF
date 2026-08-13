@@ -11,6 +11,18 @@ export interface PdfDecryptResult {
 
 const DECRYPT_LOG_PREFIX = '[PDF Decrypt]';
 
+/**
+ * Thrown when decryption fails because the supplied password is wrong.
+ * Lets callers detect this specific cause with `instanceof` instead of
+ * matching English substrings in an engine's raw error message.
+ */
+export class InvalidPdfPasswordError extends Error {
+  constructor() {
+    super('Invalid PDF password.');
+    this.name = 'InvalidPdfPasswordError';
+  }
+}
+
 function getErrorMessage(error: unknown): string {
   if (error instanceof Error && error.message) {
     return error.message;
@@ -102,7 +114,7 @@ async function decryptWithPyMuPDF(
     if (document.needsPass || document.isEncrypted) {
       const authenticated = document.authenticate(password);
       if (!authenticated) {
-        throw new Error('Invalid PDF password.');
+        throw new InvalidPdfPasswordError();
       }
     }
 
@@ -122,6 +134,7 @@ export async function decryptPdfBytes(
   password: string
 ): Promise<PdfDecryptResult> {
   const errors: string[] = [];
+  let hadInvalidPassword = false;
 
   if (isCpdfAvailable()) {
     console.info(`${DECRYPT_LOG_PREFIX} Trying CoherentPDF decryption`);
@@ -163,10 +176,17 @@ export async function decryptPdfBytes(
         `${DECRYPT_LOG_PREFIX} PyMuPDF decryption failed: ${errorMessage}`
       );
       errors.push(`PyMuPDF: ${errorMessage}`);
+      if (error instanceof InvalidPdfPasswordError) {
+        hadInvalidPassword = true;
+      }
     }
   } else {
     console.warn(`${DECRYPT_LOG_PREFIX} PyMuPDF is not configured`);
     errors.push('PyMuPDF: not configured.');
+  }
+
+  if (hadInvalidPassword) {
+    throw new InvalidPdfPasswordError();
   }
 
   throw new Error(errors.join('\n'));
