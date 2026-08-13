@@ -90,20 +90,20 @@
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
   </head>
 
-  <body class="antialiased bg-gray-900">
+  <body class="phase2-tool-page antialiased ui-bg-canvas">
     {{> navbar }}
 
     <div
       id="uploader"
-      class="min-h-screen flex flex-col items-center justify-start py-12 p-4 bg-gray-900"
+      class="min-h-screen flex flex-col items-center justify-start py-12 p-4 ui-bg-canvas"
     >
       <div
         id="tool-uploader"
-        class="bg-gray-800 rounded-xl shadow-xl px-4 py-8 md:p-8 max-w-4xl w-full text-gray-200 border border-gray-700"
+        class="ui-bg-surface rounded-xl shadow-xl px-4 py-8 md:p-8 max-w-4xl w-full ui-text-primary border ui-border-subtle"
       >
         <button
           id="back-to-tools"
-          class="flex items-center gap-2 text-indigo-400 hover:text-indigo-300 mb-6 font-semibold"
+          class="ui-button-secondary flex items-center gap-2 ui-text-action ui-hover-text-action mb-6 font-semibold"
         >
           <i data-lucide="arrow-left" class="cursor-pointer"></i>
           <span class="cursor-pointer" data-i18n="tools.backToTools">
@@ -112,41 +112,50 @@
         </button>
 
         <h1
-          class="text-2xl font-bold text-white mb-2"
+          class="text-2xl font-bold ui-text-primary mb-2"
           data-i18n="tools:adjustColors.name"
         >
           Adjust Colors
         </h1>
-        <p class="text-gray-400 mb-6" data-i18n="tools:adjustColors.subtitle">
+        <p
+          class="ui-text-secondary mb-6"
+          data-i18n="tools:adjustColors.subtitle"
+        >
           Fine-tune brightness, contrast, saturation and more in your PDF.
         </p>
 
         <div
           id="drop-zone"
-          class="relative flex flex-col items-center justify-center w-full h-48 md:h-64 border-2 border-dashed border-gray-600 rounded-xl cursor-pointer bg-gray-900 hover:bg-gray-700 transition-colors duration-300"
+          class="ui-panel ui-drop-zone relative flex flex-col items-center justify-center w-full h-48 md:h-64 border-2 border-dashed ui-border rounded-xl cursor-pointer ui-bg-canvas ui-hover-bg-raised transition-colors duration-300"
         >
           <div class="flex flex-col items-center justify-center pt-5 pb-6">
             <i
               data-lucide="upload-cloud"
-              class="w-10 h-10 mb-3 text-gray-400"
+              class="w-10 h-10 mb-3 ui-text-secondary"
             ></i>
-            <p class="mb-2 text-sm text-gray-400">
+            <p class="mb-2 text-sm ui-text-secondary">
               <span class="font-semibold" data-i18n="upload.clickToSelect"
                 >Click to select a file</span
               >
               <span data-i18n="upload.orDragAndDrop">or drag and drop</span>
             </p>
-            <p class="text-xs text-gray-500" data-i18n="upload.hints.singlePdf">
+            <p
+              class="text-xs ui-text-tertiary"
+              data-i18n="upload.hints.singlePdf"
+            >
               A single PDF file
             </p>
-            <p class="text-xs text-gray-500" data-i18n="upload.filesNeverLeave">
+            <p
+              class="text-xs ui-text-tertiary"
+              data-i18n="upload.filesNeverLeave"
+            >
               Your files never leave your device.
             </p>
           </div>
           <input
             id="file-input"
             type="file"
-            class="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
+            class="ui-input absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
             accept="application/pdf"
           />
         </div>
@@ -157,7 +166,7 @@
           <div class="flex flex-col lg:flex-row gap-6">
             <div class="flex-1 min-w-0">
               <div
-                class="border border-gray-600 rounded-lg overflow-hidden bg-gray-900"
+                class="border ui-border rounded-lg overflow-hidden ui-bg-canvas"
               >
                 <canvas id="preview-canvas" class="w-full"></canvas>
               </div>
@@ -166,7 +175,7 @@
             <div class="lg:w-80 flex-shrink-0 space-y-4">
               <div class="flex items-center justify-between">
                 <h3
-                  class="text-lg font-semibold text-white flex items-center gap-2"
+                  class="text-lg font-semibold ui-text-primary flex items-center gap-2"
                 >
                   <i data-lucide="palette" class="w-5 h-5"></i>
                   <span data-i18n="tools:adjustColors.colorSettings"
@@ -175,7 +184,7 @@
                 </h3>
                 <button
                   id="reset-settings-btn"
-                  class="text-xs text-gray-300 hover:text-white border border-gray-600 hover:border-gray-500 px-3 py-1 rounded-lg transition-colors"
+                  class="ui-button-secondary text-xs ui-text-secondary ui-hover-text-primary border ui-border ui-hover-border-action px-3 py-1 rounded-lg transition-colors"
                   data-i18n="multiTool.reset"
                 >
                   Reset
@@ -185,11 +194,11 @@
               <div>
                 <div class="flex justify-between text-sm mb-1">
                   <span
-                    class="text-gray-300"
+                    class="ui-text-secondary"
                     data-i18n="tools:adjustColors.brightness"
                     >Brightness</span
                   >
-                  <span id="brightness-value" class="text-gray-400">0</span>
+                  <span id="brightness-value" class="ui-text-secondary">0</span>
                 </div>
                 <input
                   type="range"
@@ -197,18 +206,18 @@
                   min="-100"
                   max="100"
                   value="0"
-                  class="w-full accent-indigo-500"
+                  class="ui-input w-full accent-indigo-500"
                 />
               </div>
 
               <div>
                 <div class="flex justify-between text-sm mb-1">
                   <span
-                    class="text-gray-300"
+                    class="ui-text-secondary"
                     data-i18n="tools:adjustColors.contrast"
                     >Contrast</span
                   >
-                  <span id="contrast-value" class="text-gray-400">0</span>
+                  <span id="contrast-value" class="ui-text-secondary">0</span>
                 </div>
                 <input
                   type="range"
@@ -216,18 +225,18 @@
                   min="-100"
                   max="100"
                   value="0"
-                  class="w-full accent-indigo-500"
+                  class="ui-input w-full accent-indigo-500"
                 />
               </div>
 
               <div>
                 <div class="flex justify-between text-sm mb-1">
                   <span
-                    class="text-gray-300"
+                    class="ui-text-secondary"
                     data-i18n="tools:adjustColors.saturation"
                     >Saturation</span
                   >
-                  <span id="saturation-value" class="text-gray-400">0</span>
+                  <span id="saturation-value" class="ui-text-secondary">0</span>
                 </div>
                 <input
                   type="range"
@@ -235,18 +244,18 @@
                   min="-100"
                   max="100"
                   value="0"
-                  class="w-full accent-indigo-500"
+                  class="ui-input w-full accent-indigo-500"
                 />
               </div>
 
               <div>
                 <div class="flex justify-between text-sm mb-1">
                   <span
-                    class="text-gray-300"
+                    class="ui-text-secondary"
                     data-i18n="tools:adjustColors.hueShift"
                     >Hue Shift</span
                   >
-                  <span id="hue-shift-value" class="text-gray-400">0°</span>
+                  <span id="hue-shift-value" class="ui-text-secondary">0°</span>
                 </div>
                 <input
                   type="range"
@@ -254,18 +263,20 @@
                   min="0"
                   max="360"
                   value="0"
-                  class="w-full accent-indigo-500"
+                  class="ui-input w-full accent-indigo-500"
                 />
               </div>
 
               <div>
                 <div class="flex justify-between text-sm mb-1">
                   <span
-                    class="text-gray-300"
+                    class="ui-text-secondary"
                     data-i18n="tools:adjustColors.temperature"
                     >Temperature</span
                   >
-                  <span id="temperature-value" class="text-gray-400">0</span>
+                  <span id="temperature-value" class="ui-text-secondary"
+                    >0</span
+                  >
                 </div>
                 <input
                   type="range"
@@ -273,18 +284,18 @@
                   min="-50"
                   max="50"
                   value="0"
-                  class="w-full accent-indigo-500"
+                  class="ui-input w-full accent-indigo-500"
                 />
               </div>
 
               <div>
                 <div class="flex justify-between text-sm mb-1">
                   <span
-                    class="text-gray-300"
+                    class="ui-text-secondary"
                     data-i18n="tools:adjustColors.tint"
                     >Tint</span
                   >
-                  <span id="tint-value" class="text-gray-400">0</span>
+                  <span id="tint-value" class="ui-text-secondary">0</span>
                 </div>
                 <input
                   type="range"
@@ -292,18 +303,18 @@
                   min="-50"
                   max="50"
                   value="0"
-                  class="w-full accent-indigo-500"
+                  class="ui-input w-full accent-indigo-500"
                 />
               </div>
 
               <div>
                 <div class="flex justify-between text-sm mb-1">
                   <span
-                    class="text-gray-300"
+                    class="ui-text-secondary"
                     data-i18n="tools:adjustColors.gamma"
                     >Gamma</span
                   >
-                  <span id="gamma-value" class="text-gray-400">1.0</span>
+                  <span id="gamma-value" class="ui-text-secondary">1.0</span>
                 </div>
                 <input
                   type="range"
@@ -312,18 +323,18 @@
                   max="5.0"
                   value="1.0"
                   step="0.1"
-                  class="w-full accent-indigo-500"
+                  class="ui-input w-full accent-indigo-500"
                 />
               </div>
 
               <div>
                 <div class="flex justify-between text-sm mb-1">
                   <span
-                    class="text-gray-300"
+                    class="ui-text-secondary"
                     data-i18n="tools:adjustColors.sepia"
                     >Sepia</span
                   >
-                  <span id="sepia-value" class="text-gray-400">0</span>
+                  <span id="sepia-value" class="ui-text-secondary">0</span>
                 </div>
                 <input
                   type="range"
@@ -331,7 +342,7 @@
                   min="0"
                   max="100"
                   value="0"
-                  class="w-full accent-indigo-500"
+                  class="ui-input w-full accent-indigo-500"
                 />
               </div>
             </div>
@@ -339,7 +350,7 @@
 
           <button
             id="process-btn"
-            class="btn-gradient w-full mt-6"
+            class="ui-button-secondary btn-gradient w-full mt-6"
             data-i18n="tools:adjustColors.processButton"
           >
             Apply Color Adjustments
@@ -350,15 +361,15 @@
 
     <div
       id="loader-modal"
-      class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
+      class="hidden fixed inset-0 ui-bg-sunken bg-opacity-75 flex items-center justify-center z-50"
     >
       <div
-        class="bg-gray-800 p-8 rounded-lg flex flex-col items-center gap-4 border border-gray-700 shadow-xl"
+        class="ui-bg-surface p-8 rounded-lg flex flex-col items-center gap-4 border ui-border-subtle shadow-xl"
       >
         <div class="solid-spinner"></div>
         <p
           id="loader-text"
-          class="text-white text-lg font-medium"
+          class="ui-text-primary text-lg font-medium"
           data-i18n="loader.processing"
         >
           Processing...
@@ -368,22 +379,22 @@
 
     <div
       id="alert-modal"
-      class="fixed inset-0 bg-gray-900 bg-opacity-90 flex items-center justify-center z-50 hidden"
+      class="fixed inset-0 ui-bg-canvas bg-opacity-90 flex items-center justify-center z-50 hidden"
     >
       <div
-        class="bg-gray-800 rounded-lg shadow-xl p-6 max-w-sm w-full border border-gray-700"
+        class="ui-bg-surface rounded-lg shadow-xl p-6 max-w-sm w-full border ui-border-subtle"
       >
         <h3
           id="alert-title"
-          class="text-xl font-bold text-white mb-2"
+          class="text-xl font-bold ui-text-primary mb-2"
           data-i18n="alert.title"
         >
           Alert
         </h3>
-        <p id="alert-message" class="text-gray-300 mb-6"></p>
+        <p id="alert-message" class="ui-text-secondary mb-6"></p>
         <button
           id="alert-ok"
-          class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
+          class="ui-button-primary w-full ui-bg-action ui-hover-bg-action ui-text-primary font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
           data-i18n="alert.ok"
         >
           OK
@@ -393,7 +404,7 @@
 
     <section class="max-w-4xl mx-auto px-4 py-12">
       <h2
-        class="text-2xl md:text-3xl font-bold text-white mb-8 text-center"
+        class="text-2xl md:text-3xl font-bold ui-text-primary mb-8 text-center"
         data-i18n="howItWorks.title"
       >
         How It Works
@@ -401,19 +412,19 @@
       <div class="space-y-6">
         <div class="flex items-start gap-4">
           <div
-            class="flex-shrink-0 w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold"
+            class="flex-shrink-0 w-10 h-10 ui-bg-action rounded-full flex items-center justify-center ui-text-primary font-bold"
           >
             1
           </div>
           <div class="flex-1">
             <h3
-              class="text-lg font-semibold text-white mb-1"
+              class="text-lg font-semibold ui-text-primary mb-1"
               data-i18n="howItWorks.step1Title"
             >
               Upload File
             </h3>
             <p
-              class="text-gray-400"
+              class="ui-text-secondary"
               data-i18n="tools:adjustColors.auto.5185d4cfaa"
             >
               Click or drag and drop your PDF file to begin
@@ -422,19 +433,19 @@
         </div>
         <div class="flex items-start gap-4">
           <div
-            class="flex-shrink-0 w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold"
+            class="flex-shrink-0 w-10 h-10 ui-bg-action rounded-full flex items-center justify-center ui-text-primary font-bold"
           >
             2
           </div>
           <div class="flex-1">
             <h3
-              class="text-lg font-semibold text-white mb-1"
+              class="text-lg font-semibold ui-text-primary mb-1"
               data-i18n="tools:adjustColors.name"
             >
               Adjust Colors
             </h3>
             <p
-              class="text-gray-400"
+              class="ui-text-secondary"
               data-i18n="tools:adjustColors.auto.e61e46124c"
             >
               Fine-tune color settings with real-time preview
@@ -443,19 +454,19 @@
         </div>
         <div class="flex items-start gap-4">
           <div
-            class="flex-shrink-0 w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold"
+            class="flex-shrink-0 w-10 h-10 ui-bg-action rounded-full flex items-center justify-center ui-text-primary font-bold"
           >
             3
           </div>
           <div class="flex-1">
             <h3
-              class="text-lg font-semibold text-white mb-1"
+              class="text-lg font-semibold ui-text-primary mb-1"
               data-i18n="howItWorks.step3Title"
             >
               Download
             </h3>
             <p
-              class="text-gray-400"
+              class="ui-text-secondary"
               data-i18n="tools:adjustColors.auto.1dd8829f05"
             >
               Save your color-adjusted PDF instantly
@@ -467,7 +478,7 @@
 
     <section class="max-w-6xl mx-auto px-4 py-12">
       <h2
-        class="text-2xl md:text-3xl font-bold text-white mb-6 text-center"
+        class="text-2xl md:text-3xl font-bold ui-text-primary mb-6 text-center"
         data-i18n="relatedTools.title"
       >
         Related PDF Tools
@@ -475,16 +486,16 @@
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
         <a
           href="pdf-to-greyscale.html"
-          class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
+          class="block ui-bg-surface p-4 rounded-lg ui-hover-bg-raised transition-colors border ui-border-subtle"
         >
           <h3
-            class="text-white font-semibold mb-1"
+            class="ui-text-primary font-semibold mb-1"
             data-i18n="tools:pdfToGreyscale.name"
           >
             PDF to Greyscale
           </h3>
           <p
-            class="text-gray-400 text-sm"
+            class="ui-text-secondary text-sm"
             data-i18n="tools:adjustColors.auto.7df28a4e05"
           >
             Free online greyscale tool
@@ -492,16 +503,16 @@
         </a>
         <a
           href="invert-colors.html"
-          class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
+          class="block ui-bg-surface p-4 rounded-lg ui-hover-bg-raised transition-colors border ui-border-subtle"
         >
           <h3
-            class="text-white font-semibold mb-1"
+            class="ui-text-primary font-semibold mb-1"
             data-i18n="tools:invertColors.name"
           >
             Invert Colors
           </h3>
           <p
-            class="text-gray-400 text-sm"
+            class="ui-text-secondary text-sm"
             data-i18n="tools:adjustColors.auto.fc3df6590d"
           >
             Free online invert colors tool
@@ -509,16 +520,16 @@
         </a>
         <a
           href="scanner-effect.html"
-          class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
+          class="block ui-bg-surface p-4 rounded-lg ui-hover-bg-raised transition-colors border ui-border-subtle"
         >
           <h3
-            class="text-white font-semibold mb-1"
+            class="ui-text-primary font-semibold mb-1"
             data-i18n="tools:scannerEffect.name"
           >
             Scanner Effect
           </h3>
           <p
-            class="text-gray-400 text-sm"
+            class="ui-text-secondary text-sm"
             data-i18n="tools:adjustColors.auto.89a12214ae"
           >
             Make PDFs look scanned
@@ -526,16 +537,16 @@
         </a>
         <a
           href="background-color.html"
-          class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
+          class="block ui-bg-surface p-4 rounded-lg ui-hover-bg-raised transition-colors border ui-border-subtle"
         >
           <h3
-            class="text-white font-semibold mb-1"
+            class="ui-text-primary font-semibold mb-1"
             data-i18n="tools:backgroundColor.name"
           >
             Background Color
           </h3>
           <p
-            class="text-gray-400 text-sm"
+            class="ui-text-secondary text-sm"
             data-i18n="tools:adjustColors.auto.8e56f3377f"
           >
             Change PDF background
@@ -543,16 +554,16 @@
         </a>
         <a
           href="text-color.html"
-          class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
+          class="block ui-bg-surface p-4 rounded-lg ui-hover-bg-raised transition-colors border ui-border-subtle"
         >
           <h3
-            class="text-white font-semibold mb-1"
+            class="ui-text-primary font-semibold mb-1"
             data-i18n="tools:textToPdf.textColor"
           >
             Text Color
           </h3>
           <p
-            class="text-gray-400 text-sm"
+            class="ui-text-secondary text-sm"
             data-i18n="tools:adjustColors.auto.0bac357f85"
           >
             Change PDF text color
@@ -563,50 +574,59 @@
 
     <section class="max-w-4xl mx-auto px-4 py-12">
       <h2
-        class="text-2xl md:text-3xl font-bold text-white mb-6 text-center"
+        class="text-2xl md:text-3xl font-bold ui-text-primary mb-6 text-center"
         data-i18n="faq.sectionTitle"
       >
         Frequently Asked Questions
       </h2>
       <div class="space-y-4">
-        <details class="bg-gray-800 p-5 rounded-lg border border-gray-700">
+        <details class="ui-bg-surface p-5 rounded-lg border ui-border-subtle">
           <summary
-            class="cursor-pointer font-semibold text-white flex items-center justify-between"
+            class="cursor-pointer font-semibold ui-text-primary flex items-center justify-between"
           >
             <span data-i18n="tools:adjustColors.faq1q"
               >Is adjust colors really free?</span
             >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400" data-i18n="tools:adjustColors.faq1a">
+          <p
+            class="mt-3 ui-text-secondary"
+            data-i18n="tools:adjustColors.faq1a"
+          >
             Yes! TuHe PDF is 100% free with no hidden fees, no signup required,
             and unlimited file processing.
           </p>
         </details>
-        <details class="bg-gray-800 p-5 rounded-lg border border-gray-700">
+        <details class="ui-bg-surface p-5 rounded-lg border ui-border-subtle">
           <summary
-            class="cursor-pointer font-semibold text-white flex items-center justify-between"
+            class="cursor-pointer font-semibold ui-text-primary flex items-center justify-between"
           >
             <span data-i18n="tools:adjustColors.faq2q"
               >Are my files private and secure?</span
             >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400" data-i18n="tools:adjustColors.faq2a">
+          <p
+            class="mt-3 ui-text-secondary"
+            data-i18n="tools:adjustColors.faq2a"
+          >
             Absolutely! All processing happens in your browser. Your files never
             leave your device, ensuring complete privacy.
           </p>
         </details>
-        <details class="bg-gray-800 p-5 rounded-lg border border-gray-700">
+        <details class="ui-bg-surface p-5 rounded-lg border ui-border-subtle">
           <summary
-            class="cursor-pointer font-semibold text-white flex items-center justify-between"
+            class="cursor-pointer font-semibold ui-text-primary flex items-center justify-between"
           >
             <span data-i18n="tools:adjustColors.faq3q"
               >Is there a file size limit?</span
             >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400" data-i18n="tools:adjustColors.faq3a">
+          <p
+            class="mt-3 ui-text-secondary"
+            data-i18n="tools:adjustColors.faq3a"
+          >
             No! Process files of any size, as many times as you want, completely
             free.
           </p>

@@ -88,16 +88,16 @@ function initializePage() {
   if (dropZone) {
     dropZone.addEventListener('dragover', (event) => {
       event.preventDefault();
-      dropZone.classList.add('border-indigo-500');
+      dropZone.classList.add('ui-border-action');
     });
 
     dropZone.addEventListener('dragleave', () => {
-      dropZone.classList.remove('border-indigo-500');
+      dropZone.classList.remove('ui-border-action');
     });
 
     dropZone.addEventListener('drop', (event) => {
       event.preventDefault();
-      dropZone.classList.remove('border-indigo-500');
+      dropZone.classList.remove('ui-border-action');
       if (event.dataTransfer?.files.length) {
         handleFiles(event.dataTransfer.files);
       }
@@ -192,17 +192,17 @@ function updateFileDisplay() {
 
   const fileDiv = document.createElement('div');
   fileDiv.className =
-    'flex items-center justify-between bg-gray-700 p-3 rounded-lg';
+    'flex items-center justify-between ui-bg-raised p-3 rounded-lg';
 
   const infoContainer = document.createElement('div');
   infoContainer.className = 'flex flex-col flex-1 min-w-0';
 
   const nameSpan = document.createElement('div');
-  nameSpan.className = 'truncate font-medium text-gray-200 text-sm mb-1';
+  nameSpan.className = 'truncate font-medium ui-text-primary text-sm mb-1';
   nameSpan.textContent = pageState.file.name;
 
   const metaSpan = document.createElement('div');
-  metaSpan.className = 'text-xs text-gray-400';
+  metaSpan.className = 'text-xs ui-text-secondary';
   metaSpan.textContent = translate(
     'tools:addPageLabels.fileMeta',
     `${formatBytes(pageState.file.size)} • ${pageState.pageCount} pages`,
@@ -215,7 +215,8 @@ function updateFileDisplay() {
   infoContainer.append(nameSpan, metaSpan);
 
   const removeBtn = document.createElement('button');
-  removeBtn.className = 'ml-4 text-red-400 hover:text-red-300 flex-shrink-0';
+  removeBtn.className =
+    'ml-4 ui-text-danger ui-hover-text-danger flex-shrink-0';
   removeBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
   removeBtn.onclick = resetState;
 
@@ -248,13 +249,13 @@ function renderRules() {
   pageState.rules.forEach((rule, index) => {
     const card = document.createElement('div');
     card.className =
-      'rounded-lg border border-gray-700 bg-gray-900 p-4 space-y-4';
+      'rounded-lg border ui-border-subtle ui-bg-canvas p-4 space-y-4';
 
     const header = document.createElement('div');
     header.className = 'flex items-center justify-between gap-4';
 
     const title = document.createElement('div');
-    title.className = 'text-sm font-semibold text-white';
+    title.className = 'text-sm font-semibold ui-text-primary';
     title.textContent = translate(
       'tools:addPageLabels.ruleTitle',
       `Label Rule ${index + 1}`,
@@ -264,7 +265,7 @@ function renderRules() {
     const removeBtn = document.createElement('button');
     removeBtn.type = 'button';
     removeBtn.className =
-      'text-red-400 hover:text-red-300 disabled:text-gray-600 disabled:cursor-not-allowed';
+      'ui-text-danger ui-hover-text-danger disabled:ui-text-tertiary disabled:cursor-not-allowed';
     removeBtn.disabled = pageState.rules.length === 1;
     removeBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
     removeBtn.addEventListener('click', () => {
@@ -279,7 +280,7 @@ function renderRules() {
 
     const rangeGroup = document.createElement('div');
     const rangeLabel = document.createElement('label');
-    rangeLabel.className = 'block mb-2 text-sm font-medium text-gray-300';
+    rangeLabel.className = 'block mb-2 text-sm font-medium ui-text-secondary';
     rangeLabel.textContent = translate(
       'tools:addPageLabels.pageRangeLabel',
       'Page Range'
@@ -292,7 +293,7 @@ function renderRules() {
       'All pages, or e.g. 1-4, 7, odd'
     );
     rangeInput.className =
-      'w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-2.5 focus:ring-indigo-500 focus:border-indigo-500';
+      'w-full ui-bg-raised border ui-border ui-text-primary rounded-lg p-2.5 ui-focus-ring ui-focus-ring';
     rangeInput.addEventListener('input', (event) => {
       rule.pageRange = (event.target as HTMLInputElement).value;
     });
@@ -303,14 +304,14 @@ function renderRules() {
 
     const styleGroup = document.createElement('div');
     const styleLabel = document.createElement('label');
-    styleLabel.className = 'block mb-2 text-sm font-medium text-gray-300';
+    styleLabel.className = 'block mb-2 text-sm font-medium ui-text-secondary';
     styleLabel.textContent = translate(
       'tools:addPageLabels.labelStyleLabel',
       'Label Style'
     );
     const styleSelect = document.createElement('select');
     styleSelect.className =
-      'w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-2.5 focus:ring-indigo-500 focus:border-indigo-500';
+      'w-full ui-bg-raised border ui-border ui-text-primary rounded-lg p-2.5 ui-focus-ring ui-focus-ring';
 
     PAGE_LABEL_STYLE_OPTIONS.forEach((styleName) => {
       const option = document.createElement('option');
@@ -331,7 +332,7 @@ function renderRules() {
 
     const prefixGroup = document.createElement('div');
     const prefixLabel = document.createElement('label');
-    prefixLabel.className = 'block mb-2 text-sm font-medium text-gray-300';
+    prefixLabel.className = 'block mb-2 text-sm font-medium ui-text-secondary';
     prefixLabel.textContent = translate(
       'tools:addPageLabels.labelPrefixLabel',
       'Label Prefix'
@@ -344,7 +345,7 @@ function renderRules() {
       'Optional prefix, e.g. A-'
     );
     prefixInput.className =
-      'w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-2.5 focus:ring-indigo-500 focus:border-indigo-500';
+      'w-full ui-bg-raised border ui-border ui-text-primary rounded-lg p-2.5 ui-focus-ring ui-focus-ring';
     prefixInput.addEventListener('input', (event) => {
       rule.prefix = (event.target as HTMLInputElement).value;
     });
@@ -357,7 +358,7 @@ function renderRules() {
 
     const startGroup = document.createElement('div');
     const startLabel = document.createElement('label');
-    startLabel.className = 'block mb-2 text-sm font-medium text-gray-300';
+    startLabel.className = 'block mb-2 text-sm font-medium ui-text-secondary';
     startLabel.textContent = translate(
       'tools:addPageLabels.startValueLabel',
       'Start Value'
@@ -368,7 +369,7 @@ function renderRules() {
     startInput.step = '1';
     startInput.value = String(rule.startValue);
     startInput.className =
-      'w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-2.5 focus:ring-indigo-500 focus:border-indigo-500';
+      'w-full ui-bg-raised border ui-border ui-text-primary rounded-lg p-2.5 ui-focus-ring ui-focus-ring';
     startInput.addEventListener('input', (event) => {
       rule.startValue = normalizePageLabelStartValue(
         parseInt((event.target as HTMLInputElement).value, 10)
@@ -380,12 +381,12 @@ function renderRules() {
     progressGroup.className = 'flex items-end';
     const progressLabel = document.createElement('label');
     progressLabel.className =
-      'flex w-full items-center gap-3 rounded-lg border border-gray-700 bg-gray-800 px-4 py-3 text-sm text-gray-300';
+      'flex w-full items-center gap-3 rounded-lg border ui-border-subtle ui-bg-surface px-4 py-3 text-sm ui-text-secondary';
     const progressInput = document.createElement('input');
     progressInput.type = 'checkbox';
     progressInput.checked = rule.progress;
     progressInput.className =
-      'h-4 w-4 rounded border-gray-500 bg-gray-700 text-indigo-600 focus:ring-indigo-500';
+      'h-4 w-4 rounded ui-border ui-bg-raised ui-text-action ui-focus-ring';
     progressInput.addEventListener('change', (event) => {
       rule.progress = (event.target as HTMLInputElement).checked;
     });
@@ -400,7 +401,7 @@ function renderRules() {
     startGrid.append(startGroup, progressGroup);
 
     const note = document.createElement('p');
-    note.className = 'text-xs text-gray-500';
+    note.className = 'text-xs ui-text-tertiary';
     note.textContent = translate(
       'tools:addPageLabels.examplesNote',
       'Examples: 1-4 for Roman front matter, 15-20 with prefix A- and start value 0, or odd with progress enabled.'

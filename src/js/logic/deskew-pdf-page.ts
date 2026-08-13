@@ -88,21 +88,21 @@ function updateFileDisplay(): void {
   selectedFiles.forEach((file, index) => {
     const row = document.createElement('div');
     row.className =
-      'flex items-center justify-between bg-gray-700 p-3 rounded-lg';
+      'flex items-center justify-between ui-bg-raised p-3 rounded-lg';
 
     const info = document.createElement('div');
     info.className = 'flex items-center gap-3';
 
     const fileIcon = document.createElement('i');
     fileIcon.setAttribute('data-lucide', 'file-text');
-    fileIcon.className = 'w-5 h-5 text-indigo-400';
+    fileIcon.className = 'w-5 h-5 ui-text-action';
 
     const nameSpan = document.createElement('span');
-    nameSpan.className = 'text-gray-200 truncate max-w-xs';
+    nameSpan.className = 'ui-text-primary truncate max-w-xs';
     nameSpan.textContent = file.name;
 
     const sizeSpan = document.createElement('span');
-    sizeSpan.className = 'text-gray-500 text-sm';
+    sizeSpan.className = 'ui-text-tertiary text-sm';
     sizeSpan.textContent = translate(
       'tools:deskewPdf.dynamic.d5273db50d',
       `(${(file.size / 1024).toFixed(1)} KB)`,
@@ -112,7 +112,7 @@ function updateFileDisplay(): void {
     info.append(fileIcon, nameSpan, sizeSpan);
 
     const removeBtn = document.createElement('button');
-    removeBtn.className = 'remove-file text-gray-400 hover:text-red-400';
+    removeBtn.className = 'remove-file ui-text-secondary hover:ui-text-danger';
     removeBtn.dataset.index = String(index);
 
     const removeIcon = document.createElement('i');
@@ -153,18 +153,18 @@ function displayResults(result: DeskewResult): void {
   anglesList.innerHTML = result.angles
     .map((angle, idx) => {
       const wasCorrected = result.corrected[idx];
-      const color = wasCorrected ? 'text-green-400' : 'text-gray-400';
+      const color = wasCorrected ? 'ui-text-success' : 'ui-text-secondary';
       const icon = wasCorrected ? 'check' : 'minus';
       return `
         <div class="flex items-center gap-2 text-sm py-1">
           <i data-lucide="${icon}" class="w-4 h-4 ${color}"></i>
-          <span class="text-gray-300">${translate(
+          <span class="ui-text-secondary">${translate(
             'tools:deskewPdf.pageNumber',
             'Page {{page}}:',
             { page: idx + 1 }
           )}</span>
           <span class="${color}">${angle.toFixed(2)}°</span>
-          ${wasCorrected ? `<span class="text-green-400 text-xs">${translate('tools:deskewPdf.corrected', '(corrected)')}</span>` : ''}
+          ${wasCorrected ? `<span class="ui-text-success text-xs">${translate('tools:deskewPdf.corrected', '(corrected)')}</span>` : ''}
         </div>
       `;
     })
@@ -273,16 +273,16 @@ function initPage(): void {
   if (dropZone) {
     dropZone.addEventListener('dragover', (e) => {
       e.preventDefault();
-      dropZone.classList.add('bg-gray-700');
+      dropZone.classList.add('ui-bg-raised');
     });
 
     dropZone.addEventListener('dragleave', () => {
-      dropZone.classList.remove('bg-gray-700');
+      dropZone.classList.remove('ui-bg-raised');
     });
 
     dropZone.addEventListener('drop', (e) => {
       e.preventDefault();
-      dropZone.classList.remove('bg-gray-700');
+      dropZone.classList.remove('ui-bg-raised');
       if (e.dataTransfer?.files) {
         const pdfFiles = Array.from(e.dataTransfer.files).filter(
           (f) => f.type === 'application/pdf'

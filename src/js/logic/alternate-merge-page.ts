@@ -56,10 +56,10 @@ async function updateUI() {
     // Show file count summary
     const summaryDiv = document.createElement('div');
     summaryDiv.className =
-      'flex items-center justify-between bg-gray-700 p-3 rounded-lg text-sm';
+      'flex items-center justify-between ui-bg-raised p-3 rounded-lg text-sm';
 
     const infoSpan = document.createElement('span');
-    infoSpan.className = 'text-gray-200';
+    infoSpan.className = 'ui-text-primary';
     infoSpan.textContent = translate(
       'tools:alternateMerge.dynamic.4ed44782a4',
       `${pageState.files.length} PDF files selected`,
@@ -67,7 +67,7 @@ async function updateUI() {
     );
 
     const clearBtn = document.createElement('button');
-    clearBtn.className = 'text-red-400 hover:text-red-300';
+    clearBtn.className = 'ui-text-danger ui-hover-text-danger';
     clearBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
     clearBtn.onclick = function () {
       resetState();
@@ -101,18 +101,18 @@ async function updateUI() {
 
         const li = document.createElement('li');
         li.className =
-          'bg-gray-700 p-3 rounded-lg border border-gray-600 flex items-center justify-between';
+          'ui-bg-raised p-3 rounded-lg border ui-border flex items-center justify-between';
         li.dataset.fileName = fileKey;
 
         const infoDiv = document.createElement('div');
         infoDiv.className = 'flex items-center gap-2 truncate flex-1';
 
         const nameSpan = document.createElement('span');
-        nameSpan.className = 'truncate font-medium text-white';
+        nameSpan.className = 'truncate font-medium ui-text-primary';
         nameSpan.textContent = file.name;
 
         const metaSpan = document.createElement('span');
-        metaSpan.className = 'text-sm text-gray-400 flex-shrink-0';
+        metaSpan.className = 'text-sm ui-text-secondary flex-shrink-0';
         metaSpan.textContent = translate(
           'tools:alternateMerge.dynamic.e8c65343b7',
           `${formatBytes(file.size)} • ${pageCount} pages`,
@@ -123,7 +123,7 @@ async function updateUI() {
 
         const dragHandle = document.createElement('div');
         dragHandle.className =
-          'drag-handle cursor-move text-gray-400 hover:text-white p-1 rounded ml-2';
+          'drag-handle cursor-move ui-text-secondary ui-hover-text-primary p-1 rounded ml-2';
         dragHandle.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="5" r="1"/><circle cx="15" cy="5" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="9" cy="19" r="1"/><circle cx="15" cy="19" r="1"/></svg>`;
 
         li.append(infoDiv, dragHandle);
@@ -288,17 +288,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     dropZone.addEventListener('dragover', function (e) {
       e.preventDefault();
-      dropZone.classList.add('bg-gray-700');
+      dropZone.classList.add('ui-bg-raised');
     });
 
     dropZone.addEventListener('dragleave', function (e) {
       e.preventDefault();
-      dropZone.classList.remove('bg-gray-700');
+      dropZone.classList.remove('ui-bg-raised');
     });
 
     dropZone.addEventListener('drop', function (e) {
       e.preventDefault();
-      dropZone.classList.remove('bg-gray-700');
+      dropZone.classList.remove('ui-bg-raised');
       const files = e.dataTransfer?.files;
       if (files && files.length > 0) {
         handleFileSelect(files);

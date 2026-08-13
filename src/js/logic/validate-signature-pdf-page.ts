@@ -79,16 +79,16 @@ function initializePage(): void {
   if (dropZone) {
     dropZone.addEventListener('dragover', (e) => {
       e.preventDefault();
-      dropZone.classList.add('bg-gray-700');
+      dropZone.classList.add('ui-bg-raised');
     });
 
     dropZone.addEventListener('dragleave', () => {
-      dropZone.classList.remove('bg-gray-700');
+      dropZone.classList.remove('ui-bg-raised');
     });
 
     dropZone.addEventListener('drop', (e) => {
       e.preventDefault();
-      dropZone.classList.remove('bg-gray-700');
+      dropZone.classList.remove('ui-bg-raised');
       const droppedFiles = e.dataTransfer?.files;
       if (droppedFiles && droppedFiles.length > 0) {
         handlePdfFile(droppedFiles[0]);
@@ -106,16 +106,16 @@ function initializePage(): void {
   if (certDropZone) {
     certDropZone.addEventListener('dragover', (e) => {
       e.preventDefault();
-      certDropZone.classList.add('bg-gray-700');
+      certDropZone.classList.add('ui-bg-raised');
     });
 
     certDropZone.addEventListener('dragleave', () => {
-      certDropZone.classList.remove('bg-gray-700');
+      certDropZone.classList.remove('ui-bg-raised');
     });
 
     certDropZone.addEventListener('drop', (e) => {
       e.preventDefault();
-      certDropZone.classList.remove('bg-gray-700');
+      certDropZone.classList.remove('ui-bg-raised');
       const droppedFiles = e.dataTransfer?.files;
       if (droppedFiles && droppedFiles.length > 0) {
         handleCertFile(droppedFiles[0]);
@@ -175,23 +175,24 @@ function updatePdfDisplay(): void {
 
   const fileDiv = document.createElement('div');
   fileDiv.className =
-    'flex items-center justify-between bg-gray-700 p-3 rounded-lg';
+    'flex items-center justify-between ui-bg-raised p-3 rounded-lg';
 
   const infoContainer = document.createElement('div');
   infoContainer.className = 'flex flex-col flex-1 min-w-0';
 
   const nameSpan = document.createElement('div');
-  nameSpan.className = 'truncate font-medium text-gray-200 text-sm mb-1';
+  nameSpan.className = 'truncate font-medium ui-text-primary text-sm mb-1';
   nameSpan.textContent = state.pdfFile.name;
 
   const metaSpan = document.createElement('div');
-  metaSpan.className = 'text-xs text-gray-400';
+  metaSpan.className = 'text-xs ui-text-secondary';
   metaSpan.textContent = formatBytes(state.pdfFile.size);
 
   infoContainer.append(nameSpan, metaSpan);
 
   const removeBtn = document.createElement('button');
-  removeBtn.className = 'ml-4 text-red-400 hover:text-red-300 flex-shrink-0';
+  removeBtn.className =
+    'ml-4 ui-text-danger ui-hover-text-danger flex-shrink-0';
   removeBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
   removeBtn.onclick = () => resetState();
 
@@ -273,26 +274,27 @@ function updateCertDisplay(): void {
 
   const certDiv = document.createElement('div');
   certDiv.className =
-    'flex items-center justify-between bg-gray-700 p-3 rounded-lg';
+    'flex items-center justify-between ui-bg-raised p-3 rounded-lg';
 
   const infoContainer = document.createElement('div');
   infoContainer.className = 'flex flex-col flex-1 min-w-0';
 
   const nameSpan = document.createElement('div');
-  nameSpan.className = 'truncate font-medium text-gray-200 text-sm mb-1';
+  nameSpan.className = 'truncate font-medium ui-text-primary text-sm mb-1';
 
   const cn = state.trustedCert.subject.getField('CN');
   nameSpan.textContent = (cn?.value as string) || state.trustedCertFile.name;
 
   const metaSpan = document.createElement('div');
-  metaSpan.className = 'text-xs text-green-400';
+  metaSpan.className = 'text-xs ui-text-success';
   metaSpan.innerHTML =
     '<i data-lucide="check-circle" class="inline w-3 h-3 mr-1"></i>Trusted certificate loaded';
 
   infoContainer.append(nameSpan, metaSpan);
 
   const removeBtn = document.createElement('button');
-  removeBtn.className = 'ml-4 text-red-400 hover:text-red-300 flex-shrink-0';
+  removeBtn.className =
+    'ml-4 ui-text-danger ui-hover-text-danger flex-shrink-0';
   removeBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
   removeBtn.onclick = async () => {
     resetCertState();
@@ -347,10 +349,10 @@ function displayResults(): void {
 
   if (state.results.length === 0) {
     resultsContainer.innerHTML = `
-            <div class="bg-gray-700 rounded-lg p-6 text-center border border-gray-600">
-                <i data-lucide="file-x" class="w-12 h-12 mx-auto mb-4 text-gray-400"></i>
-                <h3 class="text-lg font-semibold text-white mb-2">${translate('validateSignature.noSignatures', 'No Signatures Found')}</h3>
-                <p class="text-gray-400">${translate('validateSignature.noSignaturesDesc', 'This PDF does not contain any digital signatures.')}</p>
+            <div class="ui-bg-raised rounded-lg p-6 text-center border ui-border">
+                <i data-lucide="file-x" class="w-12 h-12 mx-auto mb-4 ui-text-secondary"></i>
+                <h3 class="text-lg font-semibold ui-text-primary mb-2">${translate('validateSignature.noSignatures', 'No Signatures Found')}</h3>
+                <p class="ui-text-secondary">${translate('validateSignature.noSignaturesDesc', 'This PDF does not contain any digital signatures.')}</p>
             </div>
         `;
     createIcons({ icons });
@@ -358,8 +360,7 @@ function displayResults(): void {
   }
 
   const summaryDiv = document.createElement('div');
-  summaryDiv.className =
-    'mb-4 p-3 bg-gray-700 rounded-lg border border-gray-600';
+  summaryDiv.className = 'mb-4 p-3 ui-bg-raised rounded-lg border ui-border';
 
   const validCount = state.results.filter(
     (r) => r.isValid && !r.isExpired && r.isTrusted
@@ -376,16 +377,16 @@ function displayResults(): void {
   const validLabel = translate('validateSignature.valid', 'valid');
 
   let summaryHtml = `
-        <p class="text-gray-300">
+        <p class="ui-text-secondary">
             ${sigFoundText}
-            <span class="text-gray-500">•</span>
-            <span class="${validCount === state.results.length ? 'text-green-400' : 'text-yellow-400'}">${validCount} ${validLabel}</span>
+            <span class="ui-text-tertiary">•</span>
+            <span class="${validCount === state.results.length ? 'ui-text-success' : 'ui-text-warning'}">${validCount} ${validLabel}</span>
         </p>
     `;
 
   if (state.trustedCert) {
     summaryHtml += `
-            <p class="text-xs text-gray-400 mt-1">
+            <p class="text-xs ui-text-secondary mt-1">
                 <i data-lucide="shield-check" class="inline w-3 h-3 mr-1"></i>
                 ${translate(
                   'validateSignature.trustVerification',
@@ -412,9 +413,9 @@ function createSignatureCard(
   index: number
 ): HTMLElement {
   const card = document.createElement('div');
-  card.className = 'bg-gray-700 rounded-lg p-4 border border-gray-600 mb-4';
+  card.className = 'ui-bg-raised rounded-lg p-4 border ui-border mb-4';
 
-  let statusColor = 'text-green-400';
+  let statusColor = 'ui-text-success';
   let statusIcon = 'check-circle';
   let statusText = translate(
     'validateSignature.status.valid',
@@ -423,7 +424,7 @@ function createSignatureCard(
 
   if (!result.isValid) {
     if (result.cryptoVerificationStatus === 'unsupported') {
-      statusColor = 'text-yellow-400';
+      statusColor = 'ui-text-warning';
       statusIcon = 'alert-triangle';
       statusText = translate(
         'validateSignature.status.unsupportedAlgorithm',
@@ -433,14 +434,14 @@ function createSignatureCard(
       result.cryptoVerified === true &&
       result.coverageStatus === 'partial'
     ) {
-      statusColor = 'text-red-400';
+      statusColor = 'ui-text-danger';
       statusIcon = 'x-circle';
       statusText = translate(
         'validateSignature.status.modifiedAfterSigning',
         'Invalid — Modified After Signing (partial coverage)'
       );
     } else {
-      statusColor = 'text-red-400';
+      statusColor = 'ui-text-danger';
       statusIcon = 'x-circle';
       statusText =
         result.cryptoVerified === false
@@ -451,21 +452,21 @@ function createSignatureCard(
           : translate('validateSignature.status.invalid', 'Invalid Signature');
     }
   } else if (result.usesInsecureDigest) {
-    statusColor = 'text-red-400';
+    statusColor = 'ui-text-danger';
     statusIcon = 'x-circle';
     statusText = translate(
       'validateSignature.status.insecureDigest',
       'Insecure Digest (MD5 / SHA-1)'
     );
   } else if (result.isExpired) {
-    statusColor = 'text-yellow-400';
+    statusColor = 'ui-text-warning';
     statusIcon = 'alert-triangle';
     statusText = translate(
       'validateSignature.status.certExpired',
       'Certificate Expired'
     );
   } else if (!result.isTrusted) {
-    statusColor = 'text-yellow-400';
+    statusColor = 'ui-text-warning';
     statusIcon = 'alert-triangle';
     statusText = result.isSelfSigned
       ? translate(
@@ -504,7 +505,7 @@ function createSignatureCard(
     if (result.isTrusted) {
       trustBadge = `<span class="text-xs bg-green-900 text-green-300 px-2 py-1 rounded ml-2"><i data-lucide="shield-check" class="inline w-3 h-3 mr-1"></i>${trustedLabel}</span>`;
     } else {
-      trustBadge = `<span class="text-xs bg-gray-600 text-gray-300 px-2 py-1 rounded ml-2"><i data-lucide="shield-x" class="inline w-3 h-3 mr-1"></i>${notTrustedLabel}</span>`;
+      trustBadge = `<span class="text-xs ui-bg-raised ui-text-secondary px-2 py-1 rounded ml-2"><i data-lucide="shield-x" class="inline w-3 h-3 mr-1"></i>${notTrustedLabel}</span>`;
     }
   }
 
@@ -553,7 +554,7 @@ function createSignatureCard(
   if (result.coverageStatus === 'full') {
     coverageBadge = `<span class="text-xs bg-green-900 text-green-300 px-2 py-1 rounded">${fullCovLabel}</span>`;
   } else if (result.coverageStatus === 'partial') {
-    coverageBadge = `<span class="text-xs bg-yellow-900 text-yellow-300 px-2 py-1 rounded">${partialCovLabel}</span>`;
+    coverageBadge = `<span class="text-xs bg-yellow-900 ui-text-warning px-2 py-1 rounded">${partialCovLabel}</span>`;
   }
 
   card.innerHTML = `
@@ -561,7 +562,7 @@ function createSignatureCard(
             <div class="flex items-center gap-3">
                 <i data-lucide="${statusIcon}" class="w-6 h-6 ${statusColor}"></i>
                 <div>
-                    <h3 class="font-semibold text-white">${signatureLabel}</h3>
+                    <h3 class="font-semibold ui-text-primary">${signatureLabel}</h3>
                     <p class="text-sm ${statusColor}">${statusText}</p>
                 </div>
             </div>
@@ -573,15 +574,15 @@ function createSignatureCard(
         <div class="space-y-3 text-sm">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <p class="text-gray-400">${signedByLabel}</p>
-                    <p class="text-white font-medium">${escapeHtml(result.signerName)}</p>
-                    ${result.signerOrg ? `<p class="text-gray-400 text-xs">${escapeHtml(result.signerOrg)}</p>` : ''}
-                    ${result.signerEmail ? `<p class="text-gray-400 text-xs">${escapeHtml(result.signerEmail)}</p>` : ''}
+                    <p class="ui-text-secondary">${signedByLabel}</p>
+                    <p class="ui-text-primary font-medium">${escapeHtml(result.signerName)}</p>
+                    ${result.signerOrg ? `<p class="ui-text-secondary text-xs">${escapeHtml(result.signerOrg)}</p>` : ''}
+                    ${result.signerEmail ? `<p class="ui-text-secondary text-xs">${escapeHtml(result.signerEmail)}</p>` : ''}
                 </div>
                 <div>
-                    <p class="text-gray-400">${issuerLabel}</p>
-                    <p class="text-white font-medium">${escapeHtml(result.issuer)}</p>
-                    ${result.issuerOrg ? `<p class="text-gray-400 text-xs">${escapeHtml(result.issuerOrg)}</p>` : ''}
+                    <p class="ui-text-secondary">${issuerLabel}</p>
+                    <p class="ui-text-primary font-medium">${escapeHtml(result.issuer)}</p>
+                    ${result.issuerOrg ? `<p class="ui-text-secondary text-xs">${escapeHtml(result.issuerOrg)}</p>` : ''}
                 </div>
             </div>
 
@@ -589,8 +590,8 @@ function createSignatureCard(
               result.signatureDate
                 ? `
                 <div>
-                    <p class="text-gray-400">${signedOnLabel}</p>
-                    <p class="text-white">${formatDate(result.signatureDate)}</p>
+                    <p class="ui-text-secondary">${signedOnLabel}</p>
+                    <p class="ui-text-primary">${formatDate(result.signatureDate)}</p>
                 </div>
             `
                 : ''
@@ -598,12 +599,12 @@ function createSignatureCard(
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <p class="text-gray-400">${validFromLabel}</p>
-                    <p class="text-white">${formatDate(result.validFrom)}</p>
+                    <p class="ui-text-secondary">${validFromLabel}</p>
+                    <p class="ui-text-primary">${formatDate(result.validFrom)}</p>
                 </div>
                 <div>
-                    <p class="text-gray-400">${validUntilLabel}</p>
-                    <p class="${result.isExpired ? 'text-red-400' : 'text-white'}">${formatDate(result.validTo)}</p>
+                    <p class="ui-text-secondary">${validUntilLabel}</p>
+                    <p class="${result.isExpired ? 'ui-text-danger' : 'ui-text-primary'}">${formatDate(result.validTo)}</p>
                 </div>
             </div>
 
@@ -611,8 +612,8 @@ function createSignatureCard(
               result.reason
                 ? `
                 <div>
-                    <p class="text-gray-400">${reasonLabel}</p>
-                    <p class="text-white">${escapeHtml(result.reason)}</p>
+                    <p class="ui-text-secondary">${reasonLabel}</p>
+                    <p class="ui-text-primary">${escapeHtml(result.reason)}</p>
                 </div>
             `
                 : ''
@@ -622,23 +623,23 @@ function createSignatureCard(
               result.location
                 ? `
                 <div>
-                    <p class="text-gray-400">${locationLabel}</p>
-                    <p class="text-white">${escapeHtml(result.location)}</p>
+                    <p class="ui-text-secondary">${locationLabel}</p>
+                    <p class="ui-text-primary">${escapeHtml(result.location)}</p>
                 </div>
             `
                 : ''
             }
 
             <details class="mt-2">
-                <summary class="cursor-pointer text-indigo-400 hover:text-indigo-300 text-sm">
+                <summary class="cursor-pointer ui-text-action ui-hover-text-action text-sm">
                     ${techDetailsLabel}
                 </summary>
-                <div class="mt-2 p-3 bg-gray-800 rounded text-xs space-y-1">
-                    <p><span class="text-gray-400">${serialNumLabel}:</span> <span class="text-gray-300 font-mono">${escapeHtml(result.serialNumber)}</span></p>
-                    <p><span class="text-gray-400">${digestAlgLabel}:</span> <span class="text-gray-300">${escapeHtml(result.algorithms.digest)}</span></p>
-                    <p><span class="text-gray-400">${sigAlgLabel}:</span> <span class="text-gray-300">${escapeHtml(result.algorithms.signature)}</span></p>
-                    ${result.errorMessage ? `<p class="text-red-400">${errorLabel}: ${escapeHtml(result.errorMessage)}</p>` : ''}
-                    ${result.unsupportedAlgorithmReason ? `<p class="text-yellow-300">${escapeHtml(result.unsupportedAlgorithmReason)}</p>` : ''}
+                <div class="mt-2 p-3 ui-bg-surface rounded text-xs space-y-1">
+                    <p><span class="ui-text-secondary">${serialNumLabel}:</span> <span class="ui-text-secondary font-mono">${escapeHtml(result.serialNumber)}</span></p>
+                    <p><span class="ui-text-secondary">${digestAlgLabel}:</span> <span class="ui-text-secondary">${escapeHtml(result.algorithms.digest)}</span></p>
+                    <p><span class="ui-text-secondary">${sigAlgLabel}:</span> <span class="ui-text-secondary">${escapeHtml(result.algorithms.signature)}</span></p>
+                    ${result.errorMessage ? `<p class="ui-text-danger">${errorLabel}: ${escapeHtml(result.errorMessage)}</p>` : ''}
+                    ${result.unsupportedAlgorithmReason ? `<p class="ui-text-warning">${escapeHtml(result.unsupportedAlgorithmReason)}</p>` : ''}
                 </div>
             </details>
         </div>

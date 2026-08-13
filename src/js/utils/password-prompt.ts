@@ -37,38 +37,38 @@ function ensureSingleModal(): HTMLDivElement {
   modal.className =
     'fixed inset-0 bg-black/70 backdrop-blur-sm z-[100] hidden items-center justify-center p-4';
   modal.innerHTML = `
-    <div class="bg-gray-800 rounded-xl border border-gray-700 shadow-2xl max-w-md w-full overflow-hidden">
+    <div class="ui-bg-surface rounded-xl border ui-border-subtle shadow-2xl max-w-md w-full overflow-hidden">
       <div class="p-6">
         <div class="flex items-start gap-4 mb-4">
-          <div class="w-12 h-12 flex items-center justify-center rounded-full bg-indigo-500/10 flex-shrink-0">
-            <i data-lucide="lock" class="w-6 h-6 text-indigo-400"></i>
+          <div class="w-12 h-12 flex items-center justify-center rounded-full ui-bg-sunken flex-shrink-0">
+            <i data-lucide="lock" class="w-6 h-6 ui-text-action"></i>
           </div>
           <div class="flex-1">
-            <h3 id="password-modal-title" class="text-xl font-bold text-white mb-1">${translate('passwordPrompt.required', 'Password Required')}</h3>
-            <p id="password-modal-subtitle" class="text-gray-400 text-sm truncate"></p>
+            <h3 id="password-modal-title" class="text-xl font-bold ui-text-primary mb-1">${translate('passwordPrompt.required', 'Password Required')}</h3>
+            <p id="password-modal-subtitle" class="ui-text-secondary text-sm truncate"></p>
           </div>
         </div>
         <div class="mt-4">
           <div class="relative">
             <input type="password" id="password-modal-input"
-              class="w-full bg-gray-700 border border-gray-600 text-gray-200 rounded-lg px-4 py-2.5 pr-10 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              class="w-full ui-bg-raised border ui-border ui-text-primary rounded-lg px-4 py-2.5 pr-10 text-sm focus:ring-2 ui-focus-ring focus:border-transparent"
               placeholder="${translate('passwordPrompt.enterPassword', 'Enter password')}" autocomplete="off" />
             <button id="password-modal-toggle" type="button"
-              class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-200">
+              class="absolute right-3 top-1/2 -translate-y-1/2 ui-text-secondary hover:ui-text-primary">
               <i data-lucide="eye" class="w-4 h-4"></i>
             </button>
           </div>
-          <p id="password-modal-error" class="text-xs text-red-400 mt-2 hidden"></p>
-          <p id="password-modal-progress" class="text-xs text-gray-400 mt-2 hidden"></p>
+          <p id="password-modal-error" class="text-xs ui-text-danger mt-2 hidden"></p>
+          <p id="password-modal-progress" class="text-xs ui-text-secondary mt-2 hidden"></p>
         </div>
       </div>
-      <div class="flex gap-3 p-4 border-t border-gray-700">
+      <div class="flex gap-3 p-4 border-t ui-border-subtle">
         <button id="password-modal-cancel"
-          class="flex-1 px-4 py-2.5 bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-medium transition-colors">
+          class="flex-1 px-4 py-2.5 ui-bg-raised ui-hover-bg-raised ui-text-primary rounded-lg font-medium transition-colors">
           ${translate('passwordPrompt.skip', 'Skip')}
         </button>
         <button id="password-modal-submit"
-          class="flex-1 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium transition-colors">
+          class="flex-1 px-4 py-2.5 ui-bg-action ui-hover-bg-action ui-text-primary rounded-lg font-medium transition-colors">
           ${translate('passwordPrompt.unlock', 'Unlock')}
         </button>
       </div>
@@ -86,44 +86,44 @@ function ensureBatchModal(): HTMLDivElement {
   modal.className =
     'fixed inset-0 bg-black/70 backdrop-blur-sm z-[100] hidden items-center justify-center p-4';
   modal.innerHTML = `
-    <div class="bg-gray-800 rounded-xl border border-gray-700 shadow-2xl max-w-lg w-full max-h-[90vh] flex flex-col overflow-hidden">
+    <div class="ui-bg-surface rounded-xl border ui-border-subtle shadow-2xl max-w-lg w-full max-h-[90vh] flex flex-col overflow-hidden">
       <div class="p-6 overflow-y-auto flex-1 min-h-0">
         <div class="flex items-start gap-4 mb-4">
-          <div class="w-12 h-12 flex items-center justify-center rounded-full bg-indigo-500/10 flex-shrink-0">
-            <i data-lucide="lock" class="w-6 h-6 text-indigo-400"></i>
+          <div class="w-12 h-12 flex items-center justify-center rounded-full ui-bg-sunken flex-shrink-0">
+            <i data-lucide="lock" class="w-6 h-6 ui-text-action"></i>
           </div>
           <div class="flex-1">
-            <h3 id="batch-modal-title" class="text-xl font-bold text-white mb-1"></h3>
-            <p class="text-gray-400 text-sm">${translate('passwordPrompt.enterEach', 'Enter passwords for each encrypted file')}</p>
+            <h3 id="batch-modal-title" class="text-xl font-bold ui-text-primary mb-1"></h3>
+            <p class="ui-text-secondary text-sm">${translate('passwordPrompt.enterEach', 'Enter passwords for each encrypted file')}</p>
           </div>
         </div>
         <div class="flex items-center gap-2 mt-3 mb-3">
           <input type="checkbox" id="batch-modal-same-pw" checked
-            class="w-4 h-4 rounded bg-gray-700 border-gray-600 text-indigo-500 focus:ring-indigo-500 focus:ring-offset-0 cursor-pointer" />
-          <label for="batch-modal-same-pw" class="text-sm text-gray-300 cursor-pointer select-none">${translate('passwordPrompt.useSame', 'Use same password for all files')}</label>
+            class="w-4 h-4 rounded ui-bg-raised ui-border ui-text-action ui-focus-ring focus:ring-offset-0 cursor-pointer" />
+          <label for="batch-modal-same-pw" class="text-sm ui-text-secondary cursor-pointer select-none">${translate('passwordPrompt.useSame', 'Use same password for all files')}</label>
         </div>
         <div id="batch-modal-shared" class="mb-3">
           <div class="relative">
             <input type="password" id="batch-modal-shared-input"
-              class="w-full bg-gray-700 border border-gray-600 text-gray-200 rounded-lg px-4 py-2.5 pr-10 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              class="w-full ui-bg-raised border ui-border ui-text-primary rounded-lg px-4 py-2.5 pr-10 text-sm focus:ring-2 ui-focus-ring focus:border-transparent"
               placeholder="${translate('passwordPrompt.passwordForAll', 'Password for all files')}" autocomplete="off" />
             <button id="batch-modal-shared-toggle" type="button"
-              class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-200">
+              class="absolute right-3 top-1/2 -translate-y-1/2 ui-text-secondary hover:ui-text-primary">
               <i data-lucide="eye" class="w-4 h-4"></i>
             </button>
           </div>
         </div>
         <div id="batch-modal-filelist" class="space-y-2 hidden"></div>
-        <p id="batch-modal-error" class="text-xs text-red-400 mt-2 hidden"></p>
-        <p id="batch-modal-progress" class="text-xs text-gray-400 mt-2 hidden"></p>
+        <p id="batch-modal-error" class="text-xs ui-text-danger mt-2 hidden"></p>
+        <p id="batch-modal-progress" class="text-xs ui-text-secondary mt-2 hidden"></p>
       </div>
-      <div class="flex gap-3 p-4 border-t border-gray-700 flex-shrink-0">
+      <div class="flex gap-3 p-4 border-t ui-border-subtle flex-shrink-0">
         <button id="batch-modal-cancel"
-          class="flex-1 px-4 py-2.5 bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-medium transition-colors">
+          class="flex-1 px-4 py-2.5 ui-bg-raised ui-hover-bg-raised ui-text-primary rounded-lg font-medium transition-colors">
           ${translate('passwordPrompt.skipAll', 'Skip All')}
         </button>
         <button id="batch-modal-submit"
-          class="flex-1 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium transition-colors">
+          class="flex-1 px-4 py-2.5 ui-bg-action ui-hover-bg-action ui-text-primary rounded-lg font-medium transition-colors">
           ${translate('passwordPrompt.unlockAll', 'Unlock All')}
         </button>
       </div>
@@ -493,14 +493,14 @@ export async function promptAndDecryptBatch(
   filelistEl.innerHTML = fileNames
     .map(
       (name, i) =>
-        `<div class="flex items-center gap-2 p-2 bg-gray-700/50 rounded-lg transition-all" data-file-idx="${i}">
-          <i data-lucide="file-lock" class="w-4 h-4 text-indigo-400 flex-shrink-0" data-icon-idx="${i}"></i>
-          <span class="text-sm text-gray-300 truncate flex-1" title="${esc(name)}">${esc(name)}</span>
+        `<div class="flex items-center gap-2 p-2 ui-bg-raised rounded-lg transition-all" data-file-idx="${i}">
+          <i data-lucide="file-lock" class="w-4 h-4 ui-text-action flex-shrink-0" data-icon-idx="${i}"></i>
+          <span class="text-sm ui-text-secondary truncate flex-1" title="${esc(name)}">${esc(name)}</span>
           <div class="flex items-center gap-1.5 flex-shrink-0">
             <input type="password" data-pw-idx="${i}" placeholder="${translate('passwordPrompt.password', 'Password')}"
-              class="w-32 bg-gray-600 border border-gray-500 text-gray-200 rounded px-2 py-1 text-xs focus:ring-1 focus:ring-indigo-500 focus:border-transparent" autocomplete="off" />
+              class="w-32 ui-bg-raised border ui-border ui-text-primary rounded px-2 py-1 text-xs focus:ring-1 ui-focus-ring focus:border-transparent" autocomplete="off" />
             <button type="button" data-skip-idx="${i}" title="${translate('passwordPrompt.skipFile', 'Skip this file')}"
-              class="p-1 rounded text-gray-400 hover:text-red-400 hover:bg-gray-600 transition-colors">
+              class="p-1 rounded ui-text-secondary hover:ui-text-danger ui-hover-bg-raised transition-colors">
               <i data-lucide="x" class="w-3.5 h-3.5"></i>
             </button>
           </div>
@@ -596,8 +596,8 @@ export async function promptAndDecryptBatch(
       );
       if (iconEl) {
         iconEl.setAttribute('data-lucide', 'check-circle');
-        iconEl.classList.remove('text-indigo-400');
-        iconEl.classList.add('text-green-400');
+        iconEl.classList.remove('ui-text-action');
+        iconEl.classList.add('ui-text-success');
       }
       createIcons({ icons });
     }

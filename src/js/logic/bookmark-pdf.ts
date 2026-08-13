@@ -243,17 +243,17 @@ function showInputModal(
         if (field.type === 'text') {
           return `
   <div class="mb-4">
-    <label class="block text-sm font-medium text-gray-700 mb-2">${escapeHTML(field.label)}</label>
+    <label class="block text-sm font-medium ui-text-secondary mb-2">${escapeHTML(field.label)}</label>
       <input type="text" id="modal-${field.name}" value="${escapeHTML(String(defaultValues[field.name] || ''))}"
-class="w-full px-3 py-2 border border-gray-300 rounded-lg text-gray-900"
+class="w-full px-3 py-2 border ui-border rounded-lg ui-text-primary"
 placeholder="${escapeHTML(field.placeholder || '')}" />
   </div>
     `;
         } else if (field.type === 'select') {
           return `
   <div class="mb-4">
-    <label class="block text-sm font-medium text-gray-700 mb-2">${escapeHTML(field.label)}</label>
-      <select id="modal-${field.name}" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-gray-900">
+    <label class="block text-sm font-medium ui-text-secondary mb-2">${escapeHTML(field.label)}</label>
+      <select id="modal-${field.name}" class="w-full px-3 py-2 border ui-border rounded-lg ui-text-primary">
         ${field.options
           .map(
             (opt) => `
@@ -272,24 +272,24 @@ placeholder="${escapeHTML(field.placeholder || '')}" />
             defaultValues.destX !== null && defaultValues.destX !== undefined;
           return `
   <div class="mb-4">
-    <label class="block text-sm font-medium text-gray-700 mb-2">${escapeHTML(field.label)}</label>
-      <div class="p-3 bg-gray-50 rounded-lg border border-gray-200 space-y-2">
+    <label class="block text-sm font-medium ui-text-secondary mb-2">${escapeHTML(field.label)}</label>
+      <div class="p-3 ui-bg-surface rounded-lg border ui-border-subtle space-y-2">
         <div class="flex items-center gap-2">
           <label class="flex items-center gap-1 text-xs">
             <input type="checkbox" id="modal-use-destination" class="w-4 h-4" ${hasDestination ? 'checked' : ''}>
-              <span class="text-gray-700">${translate('tools:editBookmarks.setCustomDestination', 'Set custom destination')}</span>
+              <span class="ui-text-secondary">${translate('tools:editBookmarks.setCustomDestination', 'Set custom destination')}</span>
                 </label>
                 </div>
                 <div id="destination-controls" class="${hasDestination ? '' : 'hidden'} space-y-2">
                   <div class="grid grid-cols-2 gap-2">
                     <div>
-                    <label class="text-xs text-gray-600">${translate('tools:editBookmarks.page', 'Page')}</label>
+                    <label class="text-xs ui-text-tertiary">${translate('tools:editBookmarks.page', 'Page')}</label>
                       <input type="number" id="modal-dest-page" min="1" max="${escapeHTML(String(field.maxPages || 1))}" value="${escapeHTML(String(defaultValues.destPage || field.page || 1))}"
-class="w-full px-2 py-1 border border-gray-300 rounded text-sm text-gray-900" step="1" />
+class="w-full px-2 py-1 border ui-border rounded text-sm ui-text-primary" step="1" />
   </div>
   <div>
-  <label class="text-xs text-gray-600">${translate('tools:editBookmarks.zoom', 'Zoom(%)')}</label>
-    <select id="modal-dest-zoom" class="w-full px-2 py-1 border border-gray-300 rounded text-sm text-gray-900">
+  <label class="text-xs ui-text-tertiary">${translate('tools:editBookmarks.zoom', 'Zoom(%)')}</label>
+    <select id="modal-dest-zoom" class="w-full px-2 py-1 border ui-border rounded text-sm ui-text-primary">
       <option value="">${translate('tools:editBookmarks.inherit', 'Inherit')}</option>
         <option value="0">${translate('tools:editBookmarks.fitPage', 'Fit Page')}</option>
           <option value="50">50%</option>
@@ -303,20 +303,20 @@ class="w-full px-2 py-1 border border-gray-300 rounded text-sm text-gray-900" st
                       </div>
                       <div class="grid grid-cols-2 gap-2">
                         <div>
-                        <label class="text-xs text-gray-600">${translate('tools:editBookmarks.xPosition', 'X Position')}</label>
+                        <label class="text-xs ui-text-tertiary">${translate('tools:editBookmarks.xPosition', 'X Position')}</label>
                           <input type="number" id="modal-dest-x" value="0" step="10"
-class="w-full px-2 py-1 border border-gray-300 rounded text-sm text-gray-900" />
+class="w-full px-2 py-1 border ui-border rounded text-sm ui-text-primary" />
   </div>
   <div>
-  <label class="text-xs text-gray-600">${translate('tools:editBookmarks.yPosition', 'Y Position')}</label>
+  <label class="text-xs ui-text-tertiary">${translate('tools:editBookmarks.yPosition', 'Y Position')}</label>
     <input type="number" id="modal-dest-y" value="0" step="10"
-class="w-full px-2 py-1 border border-gray-300 rounded text-sm text-gray-900" />
+class="w-full px-2 py-1 border ui-border rounded text-sm ui-text-primary" />
   </div>
   </div>
-  <button id="modal-pick-destination" class="w-full px-3 py-2 btn-gradient text-white rounded text-xs !flex items-center justify-center gap-1">
+  <button id="modal-pick-destination" class="w-full px-3 py-2 btn-gradient ui-text-primary rounded text-xs !flex items-center justify-center gap-1">
     <i data-lucide="crosshair" class="w-3 h-3"></i> ${translate('tools:editBookmarks.clickToPickLocation', 'Click on PDF to Pick Location')}
       </button>
-      <p class="text-xs text-gray-500 italic">${translate('tools:editBookmarks.clickToPickLocationHint', 'Click the button above, then click on the PDF where you want the bookmark to jump to')}</p>
+      <p class="text-xs ui-text-tertiary italic">${translate('tools:editBookmarks.clickToPickLocationHint', 'Click the button above, then click on the PDF where you want the bookmark to jump to')}</p>
         </div>
         </div>
         </div>
@@ -324,8 +324,8 @@ class="w-full px-2 py-1 border border-gray-300 rounded text-sm text-gray-900" />
         } else if (field.type === 'preview') {
           return `
         <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700 mb-2">${escapeHTML(field.label)}</label>
-            <div id="modal-preview" class="style-preview bg-gray-50">
+          <label class="block text-sm font-medium ui-text-secondary mb-2">${escapeHTML(field.label)}</label>
+            <div id="modal-preview" class="style-preview ui-bg-surface">
               <span id="preview-text" style="font-size: 16px;">${translate('tools:editBookmarks.previewText', 'Preview Text')}</span>
                 </div>
                 </div>
@@ -337,13 +337,13 @@ class="w-full px-2 py-1 border border-gray-300 rounded text-sm text-gray-900" />
 
     modal.innerHTML = `
                 <div class="p-6">
-                  <h3 class="text-xl font-bold text-gray-800 mb-4">${escapeHTML(title)}</h3>
+                  <h3 class="text-xl font-bold ui-text-primary mb-4">${escapeHTML(title)}</h3>
                     <div class="mb-6">
                       ${fieldsHTML}
 </div>
   <div class="flex gap-2 justify-end">
-    <button id="modal-cancel" class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 text-gray-700">${translate('common.cancel', 'Cancel')}</button>
-      <button id="modal-confirm" class="px-4 py-2 rounded btn-gradient text-white">${translate('tools:editBookmarks.confirm', 'Confirm')}</button>
+    <button id="modal-cancel" class="px-4 py-2 rounded-lg ui-bg-raised ui-hover-bg-raised ui-text-secondary">${translate('common.cancel', 'Cancel')}</button>
+      <button id="modal-confirm" class="px-4 py-2 rounded btn-gradient ui-text-primary">${translate('tools:editBookmarks.confirm', 'Confirm')}</button>
         </div>
         </div>
           `;
@@ -814,7 +814,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const coordDisplay = document.createElement('div');
     coordDisplay.id = 'destination-coord-display';
     coordDisplay.className =
-      'absolute bg-blue-500 text-white px-2 py-1 rounded text-xs font-mono z-50 pointer-events-none';
+      'absolute bg-blue-500 ui-text-primary px-2 py-1 rounded text-xs font-mono z-50 pointer-events-none';
     coordDisplay.style.left =
       canvasX + canvasRect.left - wrapperRect.left + 20 + 'px';
     coordDisplay.style.top =
@@ -851,11 +851,11 @@ function showConfirmModal(message: string): Promise<boolean> {
 
     modal.innerHTML = `
   <div class="p-6">
-    <h3 class="text-xl font-bold text-gray-800 mb-4">${translate('tools:editBookmarks.confirmAction', 'Confirm Action')}</h3>
-      <p class="text-gray-600 mb-6">${escapeHTML(message)}</p>
+    <h3 class="text-xl font-bold ui-text-primary mb-4">${translate('tools:editBookmarks.confirmAction', 'Confirm Action')}</h3>
+      <p class="ui-text-tertiary mb-6">${escapeHTML(message)}</p>
         <div class="flex gap-2 justify-end">
-          <button id="modal-cancel" class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 text-gray-700">${translate('common.cancel', 'Cancel')}</button>
-            <button id="modal-confirm" class="px-4 py-2 rounded btn-gradient text-white">${translate('tools:editBookmarks.confirm', 'Confirm')}</button>
+          <button id="modal-cancel" class="px-4 py-2 rounded-lg ui-bg-raised ui-hover-bg-raised ui-text-secondary">${translate('common.cancel', 'Cancel')}</button>
+            <button id="modal-confirm" class="px-4 py-2 rounded btn-gradient ui-text-primary">${translate('tools:editBookmarks.confirm', 'Confirm')}</button>
               </div>
               </div>
                 `;
@@ -904,10 +904,10 @@ function showAlertModal(title: string, message: string): Promise<boolean> {
 
     modal.innerHTML = `
               <div class="p-6">
-                <h3 class="text-xl font-bold text-gray-800 mb-4">${escapeHTML(title)}</h3>
-                  <p class="text-gray-600 mb-6">${escapeHTML(message)}</p>
+                <h3 class="text-xl font-bold ui-text-primary mb-4">${escapeHTML(title)}</h3>
+                  <p class="ui-text-tertiary mb-6">${escapeHTML(message)}</p>
                     <div class="flex justify-end">
-                      <button id="modal-ok" class="px-4 py-2 rounded btn-gradient text-white">${translate('common.ok', 'OK')}</button>
+                      <button id="modal-ok" class="px-4 py-2 rounded btn-gradient ui-text-primary">${translate('common.ok', 'OK')}</button>
                         </div>
                         </div>
                           `;
@@ -938,10 +938,10 @@ function handleResize(): void {
   if (window.innerWidth >= 1024) {
     viewerSection?.classList.remove('hidden');
     bookmarksSection?.classList.remove('hidden');
-    showViewerBtn?.classList.remove('bg-indigo-600', 'text-white');
-    showViewerBtn?.classList.add('text-gray-300');
-    showBookmarksBtn?.classList.remove('bg-indigo-600', 'text-white');
-    showBookmarksBtn?.classList.add('text-gray-300');
+    showViewerBtn?.classList.remove('ui-bg-action', 'ui-text-primary');
+    showViewerBtn?.classList.add('ui-text-secondary');
+    showBookmarksBtn?.classList.remove('ui-bg-action', 'ui-text-primary');
+    showBookmarksBtn?.classList.add('ui-text-secondary');
   }
 }
 
@@ -950,19 +950,19 @@ window.addEventListener('resize', handleResize);
 showViewerBtn?.addEventListener('click', () => {
   viewerSection?.classList.remove('hidden');
   bookmarksSection?.classList.add('hidden');
-  showViewerBtn?.classList.add('bg-indigo-600', 'text-white');
-  showViewerBtn?.classList.remove('text-gray-300');
-  showBookmarksBtn?.classList.remove('bg-indigo-600', 'text-white');
-  showBookmarksBtn?.classList.add('text-gray-300');
+  showViewerBtn?.classList.add('ui-bg-action', 'ui-text-primary');
+  showViewerBtn?.classList.remove('ui-text-secondary');
+  showBookmarksBtn?.classList.remove('ui-bg-action', 'ui-text-primary');
+  showBookmarksBtn?.classList.add('ui-text-secondary');
 });
 
 showBookmarksBtn?.addEventListener('click', () => {
   viewerSection?.classList.add('hidden');
   bookmarksSection?.classList.remove('hidden');
-  showBookmarksBtn?.classList.add('bg-indigo-600', 'text-white');
-  showBookmarksBtn?.classList.remove('text-gray-300');
-  showViewerBtn?.classList.remove('bg-indigo-600', 'text-white');
-  showViewerBtn?.classList.add('text-gray-300');
+  showBookmarksBtn?.classList.add('ui-bg-action', 'ui-text-primary');
+  showBookmarksBtn?.classList.remove('ui-text-secondary');
+  showViewerBtn?.classList.remove('ui-bg-action', 'ui-text-primary');
+  showViewerBtn?.classList.add('ui-text-secondary');
 });
 
 importDropdownBtn?.addEventListener('click', (e: MouseEvent) => {
@@ -1093,10 +1093,10 @@ function resetToUploader(): void {
 
   viewerSection?.classList.remove('hidden');
   bookmarksSection?.classList.add('hidden');
-  showViewerBtn?.classList.add('bg-indigo-600', 'text-white');
-  showViewerBtn?.classList.remove('text-gray-300');
-  showBookmarksBtn?.classList.remove('bg-indigo-600', 'text-white');
-  showBookmarksBtn?.classList.add('text-gray-300');
+  showViewerBtn?.classList.add('ui-bg-action', 'ui-text-primary');
+  showViewerBtn?.classList.remove('ui-text-secondary');
+  showBookmarksBtn?.classList.remove('ui-bg-action', 'ui-text-primary');
+  showBookmarksBtn?.classList.add('ui-text-secondary');
 }
 
 document.addEventListener('keydown', (e: KeyboardEvent) => {
@@ -1245,14 +1245,14 @@ function renderFileDisplay(file: File): void {
 
   const fileDiv = document.createElement('div');
   fileDiv.className =
-    'flex items-center justify-between bg-gray-700 p-3 rounded-lg text-sm';
+    'flex items-center justify-between ui-bg-raised p-3 rounded-lg text-sm';
 
   const nameSpan = document.createElement('span');
-  nameSpan.className = 'truncate font-medium text-gray-200';
+  nameSpan.className = 'truncate font-medium ui-text-primary';
   nameSpan.textContent = file.name;
 
   const sizeSpan = document.createElement('span');
-  sizeSpan.className = 'flex-shrink-0 ml-4 text-gray-400';
+  sizeSpan.className = 'flex-shrink-0 ml-4 ui-text-secondary';
   sizeSpan.textContent = formatBytes(file.size);
 
   fileDiv.append(nameSpan, sizeSpan);
@@ -1632,13 +1632,13 @@ function getStyleClasses(style: BookmarkStyle): string {
 }
 
 function getTextColor(color: BookmarkColor | string): string {
-  if (!color) return 'text-gray-700';
+  if (!color) return 'ui-text-secondary';
 
   if (typeof color === 'string' && color.startsWith('#')) {
     return '';
   }
 
-  return TEXT_COLOR_CLASSES[color] || 'text-gray-700';
+  return TEXT_COLOR_CLASSES[color] || 'ui-text-secondary';
 }
 
 function renderBookmarkTree(): void {
@@ -1687,7 +1687,7 @@ function createNodeElement(node: BookmarkNode, level = 0): HTMLLIElement {
   const textColorClass = getTextColor(node.color);
 
   const div = document.createElement('div');
-  div.className = `flex items-center gap-2 p-2 rounded border border-gray-200 ${colorClass} ${highlight} ${isSelected ? 'ring-2 ring-blue-500' : ''} hover:bg-gray-50`;
+  div.className = `flex items-center gap-2 p-2 rounded border ui-border-subtle ${colorClass} ${highlight} ${isSelected ? 'ring-2 ring-blue-500' : ''} hover:ui-bg-surface`;
 
   if (batchMode) {
     const checkbox = document.createElement('input');
@@ -1715,7 +1715,7 @@ function createNodeElement(node: BookmarkNode, level = 0): HTMLLIElement {
   dragHandle.dataset.dragHandle = 'true';
   dragHandle.className = 'cursor-move flex-shrink-0';
   dragHandle.innerHTML =
-    '<i data-lucide="grip-vertical" class="w-4 h-4 text-gray-400"></i>';
+    '<i data-lucide="grip-vertical" class="w-4 h-4 ui-text-secondary"></i>';
   div.appendChild(dragHandle);
 
   if (hasChildren) {
@@ -1757,7 +1757,7 @@ function createNodeElement(node: BookmarkNode, level = 0): HTMLLIElement {
 
   titleDiv.innerHTML = `
                 <span class="text-sm block ${styleClass} ${textColorClass}" ${customColorStyle}>${escapeHTML(node.title)}${destinationIcon}</span>
-                <span class="text-xs text-gray-500">${translate(
+                <span class="text-xs ui-text-tertiary">${translate(
                   'tools:editBookmarks.pageNumber',
                   'Page {{page}}',
                   { page: node.page }
@@ -1795,7 +1795,7 @@ function createNodeElement(node: BookmarkNode, level = 0): HTMLLIElement {
   actionsDiv.className = 'flex gap-1 flex-shrink-0';
 
   const addChildBtn = document.createElement('button');
-  addChildBtn.className = 'p-1 hover:bg-gray-200 rounded text-gray-700';
+  addChildBtn.className = 'p-1 ui-hover-bg-raised rounded ui-text-secondary';
   addChildBtn.title = translate(
     'tools:editBookmarks.dynamic.01df70fb24',
     'Add child'
@@ -1837,7 +1837,7 @@ function createNodeElement(node: BookmarkNode, level = 0): HTMLLIElement {
   actionsDiv.appendChild(addChildBtn);
 
   const editBtn = document.createElement('button');
-  editBtn.className = 'p-1 hover:bg-gray-200 rounded text-gray-700';
+  editBtn.className = 'p-1 ui-hover-bg-raised rounded ui-text-secondary';
   editBtn.title = translate('tools:editBookmarks.dynamic.4af82fdf15', 'Edit');
   editBtn.innerHTML = '<i data-lucide="edit-2" class="w-4 h-4"></i>';
   editBtn.addEventListener('click', async (e: MouseEvent) => {
@@ -1957,7 +1957,7 @@ function createNodeElement(node: BookmarkNode, level = 0): HTMLLIElement {
   actionsDiv.appendChild(editBtn);
 
   const deleteBtn = document.createElement('button');
-  deleteBtn.className = 'p-1 hover:bg-gray-200 rounded text-red-600';
+  deleteBtn.className = 'p-1 ui-hover-bg-raised rounded text-red-600';
   deleteBtn.title = translate(
     'tools:editBookmarks.dynamic.80825a5a20',
     'Delete'

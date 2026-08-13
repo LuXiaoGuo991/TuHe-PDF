@@ -258,11 +258,11 @@ async function handleSinglePdfUpload(toolId: string, file: File) {
           const wrapper = document.createElement('div');
           wrapper.className = 'mb-4';
           const h3 = document.createElement('h3');
-          h3.className = 'text-lg font-semibold text-white mb-2';
+          h3.className = 'text-lg font-semibold ui-text-primary mb-2';
           h3.textContent = title;
           const ul = document.createElement('ul');
           ul.className =
-            'space-y-3 text-sm bg-gray-900 p-4 rounded-lg border border-gray-700';
+            'space-y-3 text-sm ui-bg-canvas p-4 rounded-lg border ui-border-subtle';
           wrapper.append(h3, ul);
           return { wrapper, ul };
         };
@@ -271,10 +271,10 @@ async function handleSinglePdfUpload(toolId: string, file: File) {
           const li = document.createElement('li');
           li.className = 'flex flex-col sm:flex-row';
           const strong = document.createElement('strong');
-          strong.className = 'w-40 flex-shrink-0 text-gray-400';
+          strong.className = 'w-40 flex-shrink-0 ui-text-secondary';
           strong.textContent = key;
           const div = document.createElement('div');
-          div.className = 'flex-grow text-white break-all';
+          div.className = 'flex-grow ui-text-primary break-all';
           div.textContent = value;
           li.append(strong, div);
           return li;
@@ -343,7 +343,7 @@ async function handleSinglePdfUpload(toolId: string, file: File) {
             infoSection.ul.appendChild(createListItem(key, displayValue));
           }
         } else {
-          infoSection.ul.innerHTML = `<li><span class="text-gray-500 italic">${translate('fileHandler.noInfoData', '- No Info Dictionary data found -')}</span></li>`;
+          infoSection.ul.innerHTML = `<li><span class="ui-text-tertiary italic">${translate('fileHandler.noInfoData', '- No Info Dictionary data found -')}</span></li>`;
         }
         resultsDiv.appendChild(infoSection.wrapper);
 
@@ -361,7 +361,7 @@ async function handleSinglePdfUpload(toolId: string, file: File) {
             );
           }
         } else {
-          fieldsSection.ul.innerHTML = `<li><span class="text-gray-500 italic">${translate('fileHandler.noFormFields', '- No interactive form fields found -')}</span></li>`;
+          fieldsSection.ul.innerHTML = `<li><span class="ui-text-tertiary italic">${translate('fileHandler.noFormFields', '- No interactive form fields found -')}</span></li>`;
         }
         resultsDiv.appendChild(fieldsSection.wrapper);
 
@@ -370,12 +370,12 @@ async function handleSinglePdfUpload(toolId: string, file: File) {
           li.className = 'flex flex-col sm:flex-row';
 
           const strong = document.createElement('strong');
-          strong.className = 'w-56 flex-shrink-0 text-gray-400';
+          strong.className = 'w-56 flex-shrink-0 ui-text-secondary';
           strong.textContent = key;
           strong.style.paddingLeft = `${indent * 1.2}rem`;
 
           const div = document.createElement('div');
-          div.className = 'flex-grow text-white break-all';
+          div.className = 'flex-grow ui-text-primary break-all';
           div.textContent = value;
 
           li.append(strong, div);
@@ -386,7 +386,8 @@ async function handleSinglePdfUpload(toolId: string, file: File) {
           const li = document.createElement('li');
           li.className = 'flex pt-2';
           const strong = document.createElement('strong');
-          strong.className = 'w-full flex-shrink-0 text-gray-300 font-medium';
+          strong.className =
+            'w-full flex-shrink-0 ui-text-secondary font-medium';
           strong.textContent = key;
           strong.style.paddingLeft = `${indent * 1.2}rem`;
           li.append(strong);
@@ -474,19 +475,19 @@ async function handleSinglePdfUpload(toolId: string, file: File) {
             }
 
             if (xmpSection.ul.children.length === 0) {
-              xmpSection.ul.innerHTML = `<li><span class="text-gray-500 italic">${translate('fileHandler.noXmpProperties', '- No parseable XMP properties found -')}</span></li>`;
+              xmpSection.ul.innerHTML = `<li><span class="ui-text-tertiary italic">${translate('fileHandler.noXmpProperties', '- No parseable XMP properties found -')}</span></li>`;
             }
           } catch (xmlError) {
             console.error('Failed to parse XMP XML:', xmlError);
             xmpSection.ul.innerHTML = `<li><span class="text-red-500 italic">${translate('fileHandler.xmpParseFailed', '- Unable to parse XMP metadata. -')}</span></li>`;
             const pre = document.createElement('pre');
             pre.className =
-              'text-xs text-gray-300 whitespace-pre-wrap break-all';
+              'text-xs ui-text-secondary whitespace-pre-wrap break-all';
             pre.textContent = rawXmpString;
             xmpSection.ul.appendChild(pre);
           }
         } else {
-          xmpSection.ul.innerHTML = `<li><span class="text-gray-500 italic">${translate('fileHandler.noXmpMetadata', '- No XMP metadata found -')}</span></li>`;
+          xmpSection.ul.innerHTML = `<li><span class="ui-text-tertiary italic">${translate('fileHandler.noXmpMetadata', '- No XMP metadata found -')}</span></li>`;
         }
         resultsDiv.appendChild(xmpSection.wrapper);
 
@@ -546,7 +547,7 @@ async function handleSinglePdfUpload(toolId: string, file: File) {
           'Key (e.g., Department)'
         );
         keyInput.className =
-          'custom-meta-key w-full sm:w-1/3 bg-gray-800 border border-gray-600 text-white rounded-lg p-2';
+          'custom-meta-key w-full sm:w-1/3 ui-bg-surface border ui-border ui-text-primary rounded-lg p-2';
 
         const valueInput = document.createElement('input');
         valueInput.type = 'text';
@@ -555,12 +556,12 @@ async function handleSinglePdfUpload(toolId: string, file: File) {
           'Value (e.g., Marketing)'
         );
         valueInput.className =
-          'custom-meta-value w-full sm:flex-grow bg-gray-800 border border-gray-600 text-white rounded-lg p-2';
+          'custom-meta-value w-full sm:flex-grow ui-bg-surface border ui-border ui-text-primary rounded-lg p-2';
 
         const removeBtn = document.createElement('button');
         removeBtn.type = 'button';
         removeBtn.className =
-          'btn p-2 text-red-500 hover:bg-gray-700 rounded-full self-center sm:self-auto';
+          'btn p-2 text-red-500 ui-hover-bg-raised rounded-full self-center sm:self-auto';
         removeBtn.innerHTML = '<i data-lucide="trash-2"></i>';
         removeBtn.addEventListener('click', () => fieldWrapper.remove());
 
@@ -772,7 +773,7 @@ async function handleMultiFileUpload(toolId: string) {
 
       const wrapper = document.createElement('div');
       wrapper.className =
-        'w-full h-36 sm:h-40 md:h-44 bg-gray-900 rounded-md border-2 border-gray-600 flex items-center justify-center overflow-hidden';
+        'w-full h-36 sm:h-40 md:h-44 ui-bg-canvas rounded-md border-2 ui-border flex items-center justify-center overflow-hidden';
 
       const img = document.createElement('img');
       try {
@@ -787,7 +788,7 @@ async function handleMultiFileUpload(toolId: string) {
 
       const p = document.createElement('p');
       p.className =
-        'absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white text-xs text-center truncate p-1';
+        'absolute bottom-0 left-0 right-0 ui-bg-sunken bg-opacity-50 ui-text-primary text-xs text-center truncate p-1';
       p.textContent = file.name;
 
       wrapper.appendChild(img);

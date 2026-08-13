@@ -45,14 +45,14 @@ function initializePage() {
   if (dropZone) {
     dropZone.addEventListener('dragover', (e) => {
       e.preventDefault();
-      dropZone.classList.add('border-indigo-500');
+      dropZone.classList.add('ui-border-action');
     });
     dropZone.addEventListener('dragleave', () => {
-      dropZone.classList.remove('border-indigo-500');
+      dropZone.classList.remove('ui-border-action');
     });
     dropZone.addEventListener('drop', (e) => {
       e.preventDefault();
-      dropZone.classList.remove('border-indigo-500');
+      dropZone.classList.remove('ui-border-action');
       if (e.dataTransfer?.files.length) handleFiles(e.dataTransfer.files);
     });
   }
@@ -114,14 +114,14 @@ function updateFileDisplay() {
   fileDisplayArea.innerHTML = '';
   const fileDiv = document.createElement('div');
   fileDiv.className =
-    'flex items-center justify-between bg-gray-700 p-3 rounded-lg';
+    'flex items-center justify-between ui-bg-raised p-3 rounded-lg';
   const infoContainer = document.createElement('div');
   infoContainer.className = 'flex flex-col flex-1 min-w-0';
   const nameSpan = document.createElement('div');
-  nameSpan.className = 'truncate font-medium text-gray-200 text-sm mb-1';
+  nameSpan.className = 'truncate font-medium ui-text-primary text-sm mb-1';
   nameSpan.textContent = pageState.file.name;
   const metaSpan = document.createElement('div');
-  metaSpan.className = 'text-xs text-gray-400';
+  metaSpan.className = 'text-xs ui-text-secondary';
   metaSpan.textContent = translate(
     'tools:headerFooter.dynamic.5a4117e257',
     `${formatBytes(pageState.file.size)} • ${pageState.pdfDoc.getPageCount()} pages`,
@@ -132,7 +132,8 @@ function updateFileDisplay() {
   );
   infoContainer.append(nameSpan, metaSpan);
   const removeBtn = document.createElement('button');
-  removeBtn.className = 'ml-4 text-red-400 hover:text-red-300 flex-shrink-0';
+  removeBtn.className =
+    'ml-4 ui-text-danger ui-hover-text-danger flex-shrink-0';
   removeBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
   removeBtn.onclick = resetState;
   fileDiv.append(infoContainer, removeBtn);

@@ -64,17 +64,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const file = state.files[index];
         const fileDiv = document.createElement('div');
         fileDiv.className =
-          'flex items-center justify-between bg-gray-700 p-3 rounded-lg text-sm';
+          'flex items-center justify-between ui-bg-raised p-3 rounded-lg text-sm';
 
         const infoContainer = document.createElement('div');
         infoContainer.className = 'flex flex-col overflow-hidden';
 
         const nameSpan = document.createElement('div');
-        nameSpan.className = 'truncate font-medium text-gray-200 text-sm mb-1';
+        nameSpan.className =
+          'truncate font-medium ui-text-primary text-sm mb-1';
         nameSpan.textContent = file.name;
 
         const metaSpan = document.createElement('div');
-        metaSpan.className = 'text-xs text-gray-400';
+        metaSpan.className = 'text-xs ui-text-secondary';
         metaSpan.textContent = translate(
           'tools:extractImages.dynamic.de57f04c3f',
           `${formatBytes(file.size)} • ${t('common.loadingPageCount')}`,
@@ -88,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const removeBtn = document.createElement('button');
         removeBtn.className =
-          'ml-4 text-red-400 hover:text-red-300 flex-shrink-0';
+          'ml-4 ui-text-danger ui-hover-text-danger flex-shrink-0';
         removeBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
         removeBtn.onclick = () => {
           state.files = state.files.filter((_: File, i: number) => i !== index);
@@ -145,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const url = URL.createObjectURL(blob);
 
       const card = document.createElement('div');
-      card.className = 'bg-gray-700 rounded-lg overflow-hidden';
+      card.className = 'ui-bg-raised rounded-lg overflow-hidden';
 
       const imgEl = document.createElement('img');
       imgEl.src = url;
@@ -155,11 +156,11 @@ document.addEventListener('DOMContentLoaded', () => {
       info.className = 'p-2 flex justify-between items-center';
 
       const name = document.createElement('span');
-      name.className = 'text-xs text-gray-300 truncate';
+      name.className = 'text-xs ui-text-secondary truncate';
       name.textContent = img.name;
 
       const downloadBtn = document.createElement('button');
-      downloadBtn.className = 'text-indigo-400 hover:text-indigo-300';
+      downloadBtn.className = 'ui-text-action ui-hover-text-action';
       downloadBtn.innerHTML = '<i data-lucide="download" class="w-4 h-4"></i>';
       downloadBtn.onclick = () => {
         downloadFile(blob, img.name);
@@ -312,17 +313,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     dropZone.addEventListener('dragover', (e) => {
       e.preventDefault();
-      dropZone.classList.add('bg-gray-700');
+      dropZone.classList.add('ui-bg-raised');
     });
 
     dropZone.addEventListener('dragleave', (e) => {
       e.preventDefault();
-      dropZone.classList.remove('bg-gray-700');
+      dropZone.classList.remove('ui-bg-raised');
     });
 
     dropZone.addEventListener('drop', (e) => {
       e.preventDefault();
-      dropZone.classList.remove('bg-gray-700');
+      dropZone.classList.remove('ui-bg-raised');
       const files = e.dataTransfer?.files;
       if (files && files.length > 0) {
         handleFileSelect(files);

@@ -38,7 +38,7 @@ const init = async () => {
     main.innerHTML = `
       <div class="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
         <i class="ph ph-prohibit text-6xl ui-text-tertiary mb-4"></i>
-        <h1 class="text-2xl font-bold text-white mb-2">${heading}</h1>
+        <h1 class="text-2xl font-bold ui-text-primary mb-2">${heading}</h1>
         <p class="ui-text-secondary mb-6">${message}</p>
         <a href="${import.meta.env.BASE_URL}" class="ui-button-primary px-6 py-2 rounded-lg transition">${backHome}</a>
       </div>
@@ -115,7 +115,8 @@ const init = async () => {
         const subtitle = toolsHeader.querySelector('p');
         if (title) {
           title.textContent = t('simpleMode.title');
-          title.className = 'text-4xl md:text-5xl font-bold text-white mb-3';
+          title.className =
+            'text-4xl md:text-5xl font-bold ui-text-primary mb-3';
         }
         if (subtitle) {
           subtitle.textContent = t('simpleMode.subtitle');
@@ -398,7 +399,7 @@ const init = async () => {
         }
 
         const toolName = document.createElement('h3');
-        toolName.className = 'font-semibold text-white';
+        toolName.className = 'font-semibold ui-text-primary';
         const toolKey = toolTranslationKeys[tool.name];
         toolName.textContent = toolKey ? t(`${toolKey}.name`) : tool.name;
 

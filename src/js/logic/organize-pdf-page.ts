@@ -57,14 +57,14 @@ function initializePage() {
   if (dropZone) {
     dropZone.addEventListener('dragover', (e) => {
       e.preventDefault();
-      dropZone.classList.add('bg-gray-700');
+      dropZone.classList.add('ui-bg-raised');
     });
     dropZone.addEventListener('dragleave', () => {
-      dropZone.classList.remove('bg-gray-700');
+      dropZone.classList.remove('ui-bg-raised');
     });
     dropZone.addEventListener('drop', (e) => {
       e.preventDefault();
-      dropZone.classList.remove('bg-gray-700');
+      dropZone.classList.remove('ui-bg-raised');
       const droppedFiles = e.dataTransfer?.files;
       if (droppedFiles && droppedFiles.length > 0) handleFile(droppedFiles[0]);
     });
@@ -262,17 +262,17 @@ function updateFileDisplay() {
   fileDisplayArea.innerHTML = '';
   const fileDiv = document.createElement('div');
   fileDiv.className =
-    'flex items-center justify-between bg-gray-700 p-3 rounded-lg';
+    'flex items-center justify-between ui-bg-raised p-3 rounded-lg';
 
   const infoContainer = document.createElement('div');
   infoContainer.className = 'flex flex-col flex-1 min-w-0';
 
   const nameSpan = document.createElement('div');
-  nameSpan.className = 'truncate font-medium text-gray-200 text-sm mb-1';
+  nameSpan.className = 'truncate font-medium ui-text-primary text-sm mb-1';
   nameSpan.textContent = organizeState.file.name;
 
   const metaSpan = document.createElement('div');
-  metaSpan.className = 'text-xs text-gray-400';
+  metaSpan.className = 'text-xs ui-text-secondary';
   metaSpan.textContent = translate(
     'tools:duplicateOrganize.dynamic.d370ae8ed8',
     `${formatBytes(organizeState.file.size)} • ${organizeState.totalPages} pages`,
@@ -285,7 +285,8 @@ function updateFileDisplay() {
   infoContainer.append(nameSpan, metaSpan);
 
   const removeBtn = document.createElement('button');
-  removeBtn.className = 'ml-4 text-red-400 hover:text-red-300 flex-shrink-0';
+  removeBtn.className =
+    'ml-4 ui-text-danger ui-hover-text-danger flex-shrink-0';
   removeBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
   removeBtn.onclick = () => resetState();
 
@@ -362,7 +363,7 @@ async function renderThumbnails() {
 
     const wrapper = document.createElement('div');
     wrapper.className =
-      'page-thumbnail relative cursor-move flex flex-col items-center gap-1 p-2 border-2 border-gray-600 hover:border-indigo-500 rounded-lg bg-gray-700 transition-colors group';
+      'page-thumbnail relative cursor-move flex flex-col items-center gap-1 p-2 border-2 ui-border ui-hover-border-action rounded-lg ui-bg-raised transition-colors group';
     wrapper.dataset.originalPageIndex = (i - 1).toString();
     wrapper.dataset.pageNumber = i.toString();
 
@@ -376,7 +377,7 @@ async function renderThumbnails() {
 
     const pageLabel = document.createElement('div');
     pageLabel.className =
-      'page-number absolute top-1 left-1 bg-indigo-600 text-white text-xs px-2 py-1 rounded-md font-semibold shadow-lg z-10 pointer-events-none';
+      'page-number absolute top-1 left-1 ui-bg-action ui-text-primary text-xs px-2 py-1 rounded-md font-semibold shadow-lg z-10 pointer-events-none';
     pageLabel.textContent = i.toString();
     imgContainer.appendChild(pageLabel);
 
@@ -385,7 +386,7 @@ async function renderThumbnails() {
 
     const duplicateBtn = document.createElement('button');
     duplicateBtn.className =
-      'duplicate-btn bg-green-600 hover:bg-green-700 text-white rounded-full w-8 h-8 flex items-center justify-center';
+      'duplicate-btn ui-bg-success ui-hover-bg-success ui-text-primary rounded-full w-8 h-8 flex items-center justify-center';
     duplicateBtn.title = translate(
       'tools:duplicateOrganize.dynamic.b1b2a7b600',
       'Duplicate Page'
@@ -394,7 +395,7 @@ async function renderThumbnails() {
 
     const deleteBtn = document.createElement('button');
     deleteBtn.className =
-      'delete-btn bg-red-600 hover:bg-red-700 text-white rounded-full w-8 h-8 flex items-center justify-center';
+      'delete-btn bg-red-600 hover:bg-red-700 ui-text-primary rounded-full w-8 h-8 flex items-center justify-center';
     deleteBtn.title = translate(
       'tools:duplicateOrganize.dynamic.93889c4f64',
       'Delete Page'

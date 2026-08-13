@@ -4,54 +4,8 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-const tools = [
-  ['split-pdf', 'src/pages/split-pdf.html', 'src/js/logic/split-pdf-page.ts'],
-  [
-    'compress-pdf',
-    'src/pages/compress-pdf.html',
-    'src/js/logic/compress-pdf-page.ts',
-  ],
-  [
-    'jpg-to-pdf',
-    'src/pages/jpg-to-pdf.html',
-    'src/js/logic/jpg-to-pdf-page.ts',
-  ],
-  ['edit-pdf', 'src/pages/edit-pdf.html', 'src/js/logic/edit-pdf-page.ts'],
-  ['sign-pdf', 'src/pages/sign-pdf.html', 'src/js/logic/sign-pdf-page.ts'],
-  ['ocr-pdf', 'src/pages/ocr-pdf.html', 'src/js/logic/ocr-pdf-page.ts'],
-  [
-    'pdf-to-word',
-    'src/pages/pdf-to-docx.html',
-    'src/js/logic/pdf-to-docx-page.ts',
-  ],
-  [
-    'rotate-pdf',
-    'src/pages/rotate-pdf.html',
-    'src/js/logic/rotate-pdf-page.ts',
-  ],
-  [
-    'add-page-numbers',
-    'src/pages/page-numbers.html',
-    'src/js/logic/page-numbers-page.ts',
-  ],
-  [
-    'watermark-pdf',
-    'src/pages/add-watermark.html',
-    'src/js/logic/add-watermark-page.ts',
-  ],
-];
-
-const pilot = [
-  'merge-pdf',
-  'src/pages/merge-pdf.html',
-  'src/js/logic/merge-pdf-page.ts',
-];
-const aliases = new Map([
-  ['pdf-to-docx', 'pdf-to-word'],
-  ['page-numbers', 'add-page-numbers'],
-  ['add-watermark', 'watermark-pdf'],
-]);
-
+// 精确的颜色类替换映射：从 Tailwind gray/indigo/green/red/yellow/blue
+// 迁移到 styles.css 中定义的 `.ui-*` 语义组件类。
 const replacements = new Map([
   ['hover:file:bg-indigo-700', 'ui-file-hover-bg-action'],
   ['file:bg-indigo-600', 'ui-file-bg-action'],
@@ -93,8 +47,36 @@ const replacements = new Map([
   ['text-white', 'ui-text-primary'],
   ['border-gray-600', 'ui-border'],
   ['border-gray-700', 'ui-border-subtle'],
+  // 浅色 UI 类与未覆盖色阶 → 深色 token（bookmark 等页面的浅色编辑区）
+  ['hover:bg-gray-200', 'ui-hover-bg-raised'],
+  ['hover:bg-gray-500', 'ui-hover-bg-raised'],
+  ['hover:border-gray-500', 'ui-hover-border-action'],
+  ['focus:ring-gray-300', 'ui-focus-ring'],
+  ['placeholder-gray-400', 'ui-placeholder-muted'],
+  ['ring-indigo-400', 'ui-focus-ring'],
+  ['bg-gray-600', 'ui-bg-raised'],
+  ['bg-gray-500', 'ui-bg-raised'],
+  ['bg-gray-100', 'ui-bg-raised'],
+  ['bg-gray-50', 'ui-bg-surface'],
+  ['text-gray-800', 'ui-text-primary'],
+  ['text-gray-700', 'ui-text-secondary'],
+  ['border-gray-500', 'ui-border'],
+  ['border-gray-200', 'ui-border-subtle'],
+  // 透明度变体 → 实色 ui-*（深色主题下差异可接受）
+  ['peer-focus:ring-indigo-500', 'ui-focus-ring'],
+  ['focus:ring-indigo-500/30', 'ui-focus-ring'],
+  ['border-indigo-700/40', 'ui-border-action-soft'],
+  ['bg-indigo-900/20', 'ui-bg-sunken'],
+  ['bg-indigo-500/10', 'ui-bg-sunken'],
+  ['bg-gray-900/80', 'ui-bg-canvas'],
+  ['bg-gray-800/95', 'ui-bg-surface'],
+  ['bg-gray-700/80', 'ui-bg-raised'],
+  ['bg-gray-700/50', 'ui-bg-raised'],
+  ['border-gray-600/60', 'ui-border'],
+  ['border-gray-600/50', 'ui-border'],
 ]);
 
+// 检测替换后仍残留的 legacy 颜色类（含任意色阶和透明度变体）。
 const legacyPattern =
   /(?:^|\s)(?:[a-z-]+:)*(?:bg|text|border|ring|divide|outline|placeholder|file:bg|file:text)-(?:gray|indigo)(?:-[0-9]+)?(?:\/[0-9]+)?(?=\s|["'`])/g;
 
@@ -138,6 +120,8 @@ function migrate(content, isHtml) {
       'id="$1" class="ui-panel ui-drop-zone '
     );
   }
+
+  // 去重：连续重复的 ui-* 类名合并为一个。
   next = next.replace(
     /\b(ui-button-primary|ui-button-secondary|ui-button-danger|ui-input)(?:\s+\1)+/g,
     '$1'
@@ -145,45 +129,75 @@ function migrate(content, isHtml) {
   return next;
 }
 
+// 递归发现 src/js 下所有 TS 文件（排除测试与 i18n 目录）。
+function collectTsFiles() {
+  const jsDir = path.join(ROOT, 'src', 'js');
+  const out = [];
+  const walk = (dir) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (entry.name === 'tests' || entry.name === 'i18n') continue;
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) walk(full);
+      else if (entry.name.endsWith('.ts')) out.push(full);
+    }
+  };
+  walk(jsDir);
+  return out;
+}
+
+function collectHtmlFiles() {
+  const pagesDir = path.join(ROOT, 'src', 'pages');
+  return fs
+    .readdirSync(pagesDir)
+    .filter((f) => f.endsWith('.html'))
+    .map((f) => path.join(pagesDir, f));
+}
+
 const args = process.argv.slice(2);
 const write = args.includes('--write');
 const check = args.includes('--check') || !write;
+const htmlOnly = args.includes('--html');
+const tsOnly = args.includes('--ts');
 const toolArg = args.find((arg) => arg.startsWith('--tool='))?.slice(7);
-let selected = tools;
-if (toolArg) {
-  const requested = toolArg.split(',').map((item) => aliases.get(item) || item);
-  selected = [...tools, pilot].filter(([slug]) => requested.includes(slug));
-  const missing = requested.filter(
-    (slug) => !selected.some(([item]) => item === slug)
-  );
-  if (missing.length)
-    throw new Error(`Unknown tool slug(s): ${missing.join(', ')}`);
+
+const targets = [];
+if (!tsOnly) {
+  for (const html of collectHtmlFiles()) {
+    if (toolArg && !html.includes(toolArg)) continue;
+    targets.push({ file: html, isHtml: true, slug: path.basename(html) });
+  }
+}
+if (!htmlOnly) {
+  for (const ts of collectTsFiles()) {
+    if (toolArg && !ts.includes(toolArg)) continue;
+    targets.push({ file: ts, isHtml: false, slug: path.basename(ts) });
+  }
 }
 
 let changed = 0;
-let unresolved = 0;
-for (const [slug, ...relativeFiles] of selected) {
-  for (const relativeFile of relativeFiles) {
-    const absolute = path.join(ROOT, relativeFile);
-    const original = fs.readFileSync(absolute, 'utf8');
-    const migrated = migrate(original, relativeFile.endsWith('.html'));
-    if (migrated !== original) {
-      changed++;
-      if (write) fs.writeFileSync(absolute, migrated);
-      console.log(
-        `${write ? 'updated' : 'would update'} ${slug}: ${relativeFile}`
-      );
-    }
-    const source = write ? migrated : original;
-    const matches = source.match(legacyPattern) || [];
-    if (matches.length) {
-      unresolved += matches.length;
-      console.error(`unresolved ${slug}: ${relativeFile} (${matches.length})`);
-    }
+let unresolvedTotal = 0;
+const unresolvedByFile = [];
+
+for (const { file, isHtml, slug } of targets) {
+  const original = fs.readFileSync(file, 'utf8');
+  const migrated = migrate(original, isHtml);
+  const relative = path.relative(ROOT, file);
+
+  if (migrated !== original) {
+    changed++;
+    if (write) fs.writeFileSync(file, migrated);
+    console.log(`${write ? 'updated' : 'would update'} ${relative}`);
+  }
+
+  const matches = migrated.match(legacyPattern) || [];
+  if (matches.length) {
+    unresolvedTotal += matches.length;
+    unresolvedByFile.push([relative, matches.length]);
+    console.error(`unresolved ${relative} (${matches.length})`);
   }
 }
 
 console.log(
-  `${selected.length} tool(s), ${changed} file(s) ${write ? 'updated' : 'need migration'}, ${unresolved} unresolved legacy token(s).`
+  `${targets.length} file(s), ${changed} file(s) ${write ? 'updated' : 'need migration'}, ${unresolvedTotal} unresolved legacy token(s) in ${unresolvedByFile.length} file(s).`
 );
-if (check && (changed > 0 || unresolved > 0)) process.exitCode = 1;
+if (check && (changed > 0 || unresolvedTotal > 0)) process.exitCode = 1;

@@ -41,16 +41,16 @@ function initializePage() {
   if (dropZone) {
     dropZone.addEventListener('dragover', (e) => {
       e.preventDefault();
-      dropZone.classList.add('bg-gray-700');
+      dropZone.classList.add('ui-bg-raised');
     });
 
     dropZone.addEventListener('dragleave', () => {
-      dropZone.classList.remove('bg-gray-700');
+      dropZone.classList.remove('ui-bg-raised');
     });
 
     dropZone.addEventListener('drop', (e) => {
       e.preventDefault();
-      dropZone.classList.remove('bg-gray-700');
+      dropZone.classList.remove('ui-bg-raised');
       const droppedFiles = e.dataTransfer?.files;
       if (droppedFiles && droppedFiles.length > 0) {
         handleFiles(droppedFiles);
@@ -135,17 +135,17 @@ function updateUI() {
     files.forEach((file, index) => {
       const fileDiv = document.createElement('div');
       fileDiv.className =
-        'flex items-center justify-between bg-gray-700 p-3 rounded-lg text-sm';
+        'flex items-center justify-between ui-bg-raised p-3 rounded-lg text-sm';
 
       const infoContainer = document.createElement('div');
       infoContainer.className = 'flex items-center gap-2 overflow-hidden';
 
       const nameSpan = document.createElement('span');
-      nameSpan.className = 'truncate font-medium text-gray-200';
+      nameSpan.className = 'truncate font-medium ui-text-primary';
       nameSpan.textContent = file.name;
 
       const sizeSpan = document.createElement('span');
-      sizeSpan.className = 'flex-shrink-0 text-gray-400 text-xs';
+      sizeSpan.className = 'flex-shrink-0 ui-text-secondary text-xs';
       sizeSpan.textContent = translate(
         'tools:svgToPdf.dynamic.f71cb9d2cc',
         `(${formatBytes(file.size)})`,
@@ -156,7 +156,7 @@ function updateUI() {
 
       const removeBtn = document.createElement('button');
       removeBtn.className =
-        'ml-4 text-red-400 hover:text-red-300 flex-shrink-0';
+        'ml-4 ui-text-danger ui-hover-text-danger flex-shrink-0';
       removeBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
       removeBtn.onclick = () => {
         files = files.filter((_, i) => i !== index);

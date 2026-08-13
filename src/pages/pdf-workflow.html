@@ -238,7 +238,9 @@
     </style>
   </head>
 
-  <body class="antialiased bg-gray-900 h-screen flex flex-col overflow-hidden">
+  <body
+    class="phase2-tool-page antialiased ui-bg-canvas h-screen flex flex-col overflow-hidden"
+  >
     {{> navbar }}
 
     <!-- Main Workflow Layout -->
@@ -246,11 +248,11 @@
       <!-- LEFT SIDEBAR: Node Toolbox -->
       <aside
         id="toolbox-sidebar"
-        class="w-60 bg-gray-800 border-r border-gray-700 flex-col overflow-y-auto flex-shrink-0 hidden md:flex max-md:fixed max-md:inset-y-0 max-md:left-0 max-md:z-40 max-md:shadow-2xl"
+        class="w-60 ui-bg-surface border-r ui-border-subtle flex-col overflow-y-auto flex-shrink-0 hidden md:flex max-md:fixed max-md:inset-y-0 max-md:left-0 max-md:z-40 max-md:shadow-2xl"
       >
-        <div class="p-3 border-b border-gray-700">
+        <div class="p-3 border-b ui-border-subtle">
           <h2
-            class="text-white font-bold text-sm mb-2"
+            class="ui-text-primary font-bold text-sm mb-2"
             data-i18n="tools:pdfWorkflow.nodes"
           >
             Nodes
@@ -260,7 +262,7 @@
             type="text"
             placeholder="Search nodes..."
             data-i18n-placeholder="tools:pdfWorkflow.searchNodes"
-            class="w-full bg-gray-900 border border-gray-600 text-white rounded-md px-2 py-1.5 text-xs focus:border-indigo-500 focus:outline-none"
+            class="ui-input w-full ui-bg-canvas border ui-border ui-text-primary rounded-md px-2 py-1.5 text-xs ui-focus-ring focus:outline-none"
           />
         </div>
 
@@ -276,17 +278,17 @@
         <!-- Top Toolbar -->
         <div
           id="workflow-toolbar"
-          class="h-11 bg-gray-800 border-b border-gray-700 flex items-center px-2 md:px-4 gap-1.5 md:gap-2 flex-shrink-0"
+          class="h-11 ui-bg-surface border-b ui-border-subtle flex items-center px-2 md:px-4 gap-1.5 md:gap-2 flex-shrink-0"
         >
           <button
             id="toolbox-toggle"
-            class="md:hidden bg-gray-700 hover:bg-gray-600 text-white p-1.5 rounded-lg transition-colors"
+            class="ui-button-secondary md:hidden ui-bg-raised ui-hover-bg-raised ui-text-primary p-1.5 rounded-lg transition-colors"
           >
             <i class="ph ph-plus-circle text-lg"></i>
           </button>
           <button
             id="run-btn"
-            class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-3 md:px-4 py-1.5 rounded-lg flex items-center gap-1.5 text-sm transition-colors"
+            class="ui-button-primary ui-bg-action ui-hover-bg-action ui-text-primary font-semibold px-3 md:px-4 py-1.5 rounded-lg flex items-center gap-1.5 text-sm transition-colors"
           >
             <i class="ph ph-play text-base"></i>
             <span class="hidden md:inline" data-i18n="tools:pdfWorkflow.run"
@@ -295,7 +297,7 @@
           </button>
           <button
             id="clear-btn"
-            class="bg-gray-700 hover:bg-gray-600 text-white px-2.5 md:px-3 py-1.5 rounded-lg text-sm flex items-center gap-1 transition-colors"
+            class="ui-button-secondary ui-bg-raised ui-hover-bg-raised ui-text-primary px-2.5 md:px-3 py-1.5 rounded-lg text-sm flex items-center gap-1 transition-colors"
           >
             <i class="ph ph-trash text-base md:hidden"></i>
             <span class="hidden md:inline" data-i18n="tools:pdfWorkflow.clear"
@@ -305,7 +307,7 @@
           <div class="flex-1"></div>
           <button
             id="save-btn"
-            class="bg-gray-700 hover:bg-gray-600 text-white px-2.5 md:px-3 py-1.5 rounded-lg text-sm flex items-center gap-1 transition-colors"
+            class="ui-button-secondary ui-bg-raised ui-hover-bg-raised ui-text-primary px-2.5 md:px-3 py-1.5 rounded-lg text-sm flex items-center gap-1 transition-colors"
           >
             <i class="ph ph-floppy-disk text-sm"></i>
             <span class="hidden md:inline" data-i18n="tools:pdfWorkflow.save"
@@ -314,7 +316,7 @@
           </button>
           <button
             id="load-btn"
-            class="bg-gray-700 hover:bg-gray-600 text-white px-2.5 md:px-3 py-1.5 rounded-lg text-sm flex items-center gap-1 transition-colors"
+            class="ui-button-secondary ui-bg-raised ui-hover-bg-raised ui-text-primary px-2.5 md:px-3 py-1.5 rounded-lg text-sm flex items-center gap-1 transition-colors"
           >
             <i class="ph ph-folder-open text-sm"></i>
             <span class="hidden md:inline" data-i18n="tools:pdfWorkflow.load"
@@ -323,7 +325,7 @@
           </button>
           <button
             id="export-btn"
-            class="bg-gray-700 hover:bg-gray-600 text-white px-2.5 md:px-3 py-1.5 rounded-lg text-sm flex items-center gap-1 transition-colors"
+            class="ui-button-secondary ui-bg-raised ui-hover-bg-raised ui-text-primary px-2.5 md:px-3 py-1.5 rounded-lg text-sm flex items-center gap-1 transition-colors"
           >
             <i class="ph ph-export text-sm"></i>
             <span class="hidden md:inline" data-i18n="tools:pdfWorkflow.export"
@@ -332,7 +334,7 @@
           </button>
           <button
             id="import-btn"
-            class="bg-gray-700 hover:bg-gray-600 text-white px-2.5 md:px-3 py-1.5 rounded-lg text-sm flex items-center gap-1 transition-colors"
+            class="ui-button-secondary ui-bg-raised ui-hover-bg-raised ui-text-primary px-2.5 md:px-3 py-1.5 rounded-lg text-sm flex items-center gap-1 transition-colors"
           >
             <i class="ph ph-download-simple text-sm"></i>
             <span class="hidden md:inline" data-i18n="tools:pdfWorkflow.import"
@@ -347,7 +349,7 @@
         <!-- Bottom Status Bar -->
         <div
           id="status-bar"
-          class="h-7 bg-gray-800 border-t border-gray-700 hidden md:flex items-center px-4 text-xs text-gray-400"
+          class="h-7 ui-bg-surface border-t ui-border-subtle hidden md:flex items-center px-4 text-xs ui-text-secondary"
         >
           <span id="status-text" data-i18n="tools:pdfWorkflow.ready"
             >Ready</span
@@ -365,21 +367,21 @@
       <!-- RIGHT SIDEBAR: Selected Node Settings -->
       <aside
         id="settings-sidebar"
-        class="w-64 bg-gray-800 border-l border-gray-700 flex flex-col overflow-y-auto flex-shrink-0 hidden max-md:fixed max-md:inset-y-0 max-md:right-0 max-md:z-40 max-md:shadow-2xl"
+        class="w-64 ui-bg-surface border-l ui-border-subtle flex flex-col overflow-y-auto flex-shrink-0 hidden max-md:fixed max-md:inset-y-0 max-md:right-0 max-md:z-40 max-md:shadow-2xl"
       >
         <div
-          class="p-3 border-b border-gray-700 flex items-center justify-between"
+          class="p-3 border-b ui-border-subtle flex items-center justify-between"
         >
           <h2
             id="settings-title"
-            class="text-white font-bold text-sm"
+            class="ui-text-primary font-bold text-sm"
             data-i18n="tools:pdfWorkflow.settings"
           >
             Settings
           </h2>
           <button
             id="close-settings"
-            class="text-gray-400 hover:text-white transition-colors"
+            class="ui-button-secondary ui-text-secondary ui-hover-text-primary transition-colors"
           >
             <i class="ph ph-x text-base"></i>
           </button>
@@ -394,12 +396,12 @@
       class="hidden fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50"
     >
       <div
-        class="bg-gray-800/95 p-8 rounded-2xl flex flex-col items-center gap-4 border border-gray-600/50 shadow-2xl"
+        class="ui-bg-surface p-8 rounded-2xl flex flex-col items-center gap-4 border ui-border shadow-2xl"
       >
         <div class="solid-spinner"></div>
         <p
           id="loader-text"
-          class="text-white text-lg font-medium"
+          class="ui-text-primary text-lg font-medium"
           data-i18n="tools:pdfWorkflow.processing"
         >
           Processing...
@@ -413,23 +415,23 @@
       class="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 hidden"
     >
       <div
-        class="bg-gray-800/95 rounded-2xl shadow-2xl p-6 max-w-sm w-full mx-4 border border-gray-600/50"
+        class="ui-bg-surface rounded-2xl shadow-2xl p-6 max-w-sm w-full mx-4 border ui-border"
       >
         <div class="flex items-center gap-3 mb-5">
           <div
-            class="w-9 h-9 rounded-xl bg-indigo-500/10 flex items-center justify-center"
+            class="w-9 h-9 rounded-xl ui-bg-sunken flex items-center justify-center"
           >
-            <i class="ph ph-floppy-disk text-lg text-indigo-400"></i>
+            <i class="ph ph-floppy-disk text-lg ui-text-action"></i>
           </div>
           <h3
-            class="text-base font-semibold text-white"
+            class="text-base font-semibold ui-text-primary"
             data-i18n="tools:pdfWorkflow.saveTemplate"
           >
             Save Template
           </h3>
         </div>
         <label
-          class="block text-xs font-medium text-gray-400 mb-1.5"
+          class="block text-xs font-medium ui-text-secondary mb-1.5"
           data-i18n="tools:pdfWorkflow.templateName"
           >Template Name</label
         >
@@ -438,24 +440,24 @@
           type="text"
           placeholder="e.g. Invoice Workflow"
           data-i18n-placeholder="tools:pdfWorkflow.templatePlaceholder"
-          class="w-full bg-gray-900/80 border border-gray-600/60 text-white rounded-lg px-3 py-2.5 text-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/30 focus:outline-none placeholder-gray-500 mb-1"
+          class="ui-input w-full ui-bg-canvas border ui-border ui-text-primary rounded-lg px-3 py-2.5 text-sm ui-focus-ring focus:ring-1 ui-focus-ring focus:outline-none ui-placeholder-muted mb-1"
         />
         <p
           id="save-template-error"
-          class="text-red-400 text-xs mb-4 hidden"
+          class="ui-text-danger text-xs mb-4 hidden"
         ></p>
         <div class="flex gap-2 mt-4">
           <button
             id="save-template-cancel"
             data-i18n="tools:pdfWorkflow.cancel"
-            class="flex-1 bg-gray-700/80 hover:bg-gray-600 text-gray-300 font-medium py-2.5 px-4 rounded-lg transition-colors text-sm"
+            class="ui-button-secondary flex-1 ui-bg-raised ui-hover-bg-raised ui-text-secondary font-medium py-2.5 px-4 rounded-lg transition-colors text-sm"
           >
             Cancel
           </button>
           <button
             id="save-template-confirm"
             data-i18n="tools:pdfWorkflow.save"
-            class="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white font-medium py-2.5 px-4 rounded-lg transition-colors text-sm"
+            class="ui-button-primary flex-1 ui-bg-action ui-hover-bg-action ui-text-primary font-medium py-2.5 px-4 rounded-lg transition-colors text-sm"
           >
             Save
           </button>
@@ -469,16 +471,16 @@
       class="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 hidden"
     >
       <div
-        class="bg-gray-800/95 rounded-2xl shadow-2xl p-6 max-w-md w-full mx-4 border border-gray-600/50"
+        class="ui-bg-surface rounded-2xl shadow-2xl p-6 max-w-md w-full mx-4 border ui-border"
       >
         <div class="flex items-center gap-3 mb-5">
           <div
-            class="w-9 h-9 rounded-xl bg-indigo-500/10 flex items-center justify-center"
+            class="w-9 h-9 rounded-xl ui-bg-sunken flex items-center justify-center"
           >
-            <i class="ph ph-folder-open text-lg text-indigo-400"></i>
+            <i class="ph ph-folder-open text-lg ui-text-action"></i>
           </div>
           <h3
-            class="text-base font-semibold text-white"
+            class="text-base font-semibold ui-text-primary"
             data-i18n="tools:pdfWorkflow.loadTemplate"
           >
             Load Template
@@ -490,7 +492,7 @@
         ></div>
         <p
           id="load-template-empty"
-          class="text-gray-500 text-sm text-center py-6 hidden"
+          class="ui-text-tertiary text-sm text-center py-6 hidden"
         >
           <span data-i18n="tools:pdfWorkflow.noTemplates"
             >No saved templates yet.</span
@@ -499,7 +501,7 @@
         <button
           id="load-template-cancel"
           data-i18n="tools:pdfWorkflow.cancel"
-          class="w-full bg-gray-700/80 hover:bg-gray-600 text-gray-300 font-medium py-2.5 px-4 rounded-lg transition-colors text-sm mt-2"
+          class="ui-button-secondary w-full ui-bg-raised ui-hover-bg-raised ui-text-secondary font-medium py-2.5 px-4 rounded-lg transition-colors text-sm mt-2"
         >
           Cancel
         </button>
@@ -512,19 +514,19 @@
       class="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 hidden"
     >
       <div
-        class="bg-gray-800/95 rounded-2xl shadow-2xl p-6 max-w-sm w-full mx-4 border border-gray-600/50"
+        class="ui-bg-surface rounded-2xl shadow-2xl p-6 max-w-sm w-full mx-4 border ui-border"
       >
         <h3
           id="alert-title"
-          class="text-lg font-semibold text-white mb-2"
+          class="text-lg font-semibold ui-text-primary mb-2"
           data-i18n="alert.title"
         >
           Alert
         </h3>
-        <p id="alert-message" class="text-gray-300 text-sm mb-6"></p>
+        <p id="alert-message" class="ui-text-secondary text-sm mb-6"></p>
         <button
           id="alert-ok"
-          class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-medium py-2.5 px-4 rounded-lg transition-colors text-sm"
+          class="ui-button-primary w-full ui-bg-action ui-hover-bg-action ui-text-primary font-medium py-2.5 px-4 rounded-lg transition-colors text-sm"
         >
           OK
         </button>
@@ -537,25 +539,25 @@
       class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden"
     >
       <div
-        class="bg-gray-800/95 rounded-2xl shadow-2xl border border-gray-600/50 p-5 w-80 mx-4"
+        class="ui-bg-surface rounded-2xl shadow-2xl border ui-border p-5 w-80 mx-4"
       >
-        <h3 class="text-white font-semibold text-sm mb-1">
+        <h3 class="ui-text-primary font-semibold text-sm mb-1">
           <i class="ph ph-lock text-sm"></i> Protected PDF
         </h3>
         <p
           id="pdf-password-filename"
-          class="text-gray-400 text-xs mb-3 truncate"
+          class="ui-text-secondary text-xs mb-3 truncate"
         ></p>
         <input
           type="password"
           id="pdf-password-input"
           placeholder="Enter password"
           data-i18n-placeholder="passwordPrompt.enterPassword"
-          class="w-full bg-gray-900 border border-gray-600 text-white rounded-md px-3 py-2 text-xs focus:border-indigo-500 focus:outline-none mb-1"
+          class="ui-input w-full ui-bg-canvas border ui-border ui-text-primary rounded-md px-3 py-2 text-xs ui-focus-ring focus:outline-none mb-1"
         />
         <p
           id="pdf-password-error"
-          class="text-red-400 text-xs mb-3 hidden"
+          class="ui-text-danger text-xs mb-3 hidden"
           data-i18n="tools:pdfWorkflow.incorrectPassword"
         >
           Incorrect password
@@ -564,14 +566,14 @@
           <button
             id="pdf-password-skip"
             data-i18n="passwordPrompt.skip"
-            class="flex-1 bg-gray-700/80 hover:bg-gray-600 text-gray-300 text-xs py-2 rounded-lg transition-colors"
+            class="ui-button-secondary flex-1 ui-bg-raised ui-hover-bg-raised ui-text-secondary text-xs py-2 rounded-lg transition-colors"
           >
             Skip
           </button>
           <button
             id="pdf-password-unlock"
             data-i18n="passwordPrompt.unlock"
-            class="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white text-xs py-2 rounded-lg transition-colors"
+            class="ui-button-primary flex-1 ui-bg-action ui-hover-bg-action ui-text-primary text-xs py-2 rounded-lg transition-colors"
           >
             Unlock
           </button>

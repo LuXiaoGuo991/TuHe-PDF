@@ -211,12 +211,12 @@ if (toggleGridBtn) {
     gridAlwaysVisible = !gridAlwaysVisible;
 
     if (gridAlwaysVisible) {
-      toggleGridBtn.classList.add('bg-indigo-600');
-      toggleGridBtn.classList.remove('bg-gray-600');
+      toggleGridBtn.classList.add('ui-bg-action');
+      toggleGridBtn.classList.remove('ui-bg-raised');
       if (gridEnabled) renderGrid();
     } else {
-      toggleGridBtn.classList.remove('bg-indigo-600');
-      toggleGridBtn.classList.add('bg-gray-600');
+      toggleGridBtn.classList.remove('ui-bg-action');
+      toggleGridBtn.classList.add('ui-bg-raised');
       removeGrid();
     }
   });
@@ -236,7 +236,7 @@ function renderGrid() {
     for (let i = 0; i <= gridV; i++) {
       const line = document.createElement('div');
       line.className =
-        'absolute top-0 bottom-0 border-l-2 border-indigo-500 opacity-60';
+        'absolute top-0 bottom-0 border-l-2 ui-border-action opacity-60';
       line.style.left = i * stepX + 'px';
       gridContainer.appendChild(line);
     }
@@ -247,7 +247,7 @@ function renderGrid() {
     for (let i = 0; i <= gridH; i++) {
       const line = document.createElement('div');
       line.className =
-        'absolute left-0 right-0 border-t-2 border-indigo-500 opacity-60';
+        'absolute left-0 right-0 border-t-2 ui-border-action opacity-60';
       line.style.top = i * stepY + 'px';
       gridContainer.appendChild(line);
     }
@@ -309,18 +309,18 @@ toolItems.forEach((item) => {
     if (selectedToolType === type) {
       // Deselect
       selectedToolType = null;
-      item.classList.remove('ring-2', 'ring-indigo-400', 'bg-indigo-600');
+      item.classList.remove('ring-2', 'ui-focus-ring', 'ui-bg-action');
       canvas.style.cursor = 'default';
     } else {
       // Deselect previous tool
       if (selectedToolType) {
         toolItems.forEach((t) =>
-          t.classList.remove('ring-2', 'ring-indigo-400', 'bg-indigo-600')
+          t.classList.remove('ring-2', 'ui-focus-ring', 'ui-bg-action')
         );
       }
       // Select new tool
       selectedToolType = type;
-      item.classList.add('ring-2', 'ring-indigo-400', 'bg-indigo-600');
+      item.classList.add('ring-2', 'ui-focus-ring', 'ui-bg-action');
       canvas.style.cursor = 'crosshair';
     }
   });
@@ -404,7 +404,7 @@ canvas.addEventListener('click', (e) => {
     createField(selectedToolType as FormCreatorFieldType, x, y);
 
     toolItems.forEach((item) =>
-      item.classList.remove('ring-2', 'ring-indigo-400', 'bg-indigo-600')
+      item.classList.remove('ring-2', 'ui-focus-ring', 'ui-bg-action')
     );
     selectedToolType = null;
     canvas.style.cursor = 'default';
@@ -501,14 +501,14 @@ function applyFieldContainerState(
     'group-hover:border-dashed',
     'group-hover:border-indigo-300',
     'border-dashed',
-    'border-indigo-500',
+    'ui-border-action',
     'bg-indigo-50',
     'bg-indigo-50/30',
     'bg-transparent'
   );
 
   if (selected) {
-    container.classList.add('border-dashed', 'border-indigo-500');
+    container.classList.add('border-dashed', 'ui-border-action');
     container.classList.add(
       hasTransparentBackground(field) ? 'bg-transparent' : 'bg-indigo-50'
     );
@@ -663,7 +663,7 @@ function renderField(field: FormField): void {
   } else if (field.type === 'radio') {
     fieldContainer.classList.add('rounded-full'); // Make container round for radio
     contentEl.innerHTML = field.checked
-      ? '<div class="w-3/4 h-3/4 bg-black rounded-full"></div>'
+      ? '<div class="w-3/4 h-3/4 ui-bg-sunken rounded-full"></div>'
       : '';
   } else if (field.type === 'dropdown') {
     contentEl.className =
@@ -714,7 +714,7 @@ function renderField(field: FormField): void {
           : index === 0;
 
         if (isSelected) {
-          optEl.className += ' bg-blue-600 text-white';
+          optEl.className += ' bg-blue-600 ui-text-primary';
         } else {
           optEl.className += ' text-black';
         }
@@ -742,7 +742,7 @@ function renderField(field: FormField): void {
       field.label || translate('tools:formCreator.defaultButton', 'Button');
   } else if (field.type === 'signature') {
     contentEl.className =
-      'w-full h-full flex items-center justify-center text-gray-400';
+      'w-full h-full flex items-center justify-center ui-text-secondary';
     contentEl.style.backgroundColor = getPreviewBackgroundColor(
       field,
       '#f9fafb'
@@ -760,7 +760,7 @@ function renderField(field: FormField): void {
     setTimeout(() => (window as LucideWindow).lucide?.createIcons(), 0);
   } else if (field.type === 'image') {
     contentEl.className =
-      'w-full h-full flex items-center justify-center text-gray-500 border border-gray-300';
+      'w-full h-full flex items-center justify-center ui-text-tertiary border border-gray-300';
     contentEl.style.backgroundColor = getPreviewBackgroundColor(
       field,
       '#f3f4f6'
@@ -794,11 +794,11 @@ function renderField(field: FormField): void {
           String(field.name).replace(/[\r\n]+/g, ' '),
           error
         );
-        contentEl.innerHTML = `<div class="flex flex-col items-center text-center p-1 text-gray-400"><i data-lucide="qr-code" class="w-6 h-6 mb-1"></i><span class="text-xs leading-tight">${translate('tools:formCreator.invalidData', '无效数据')}</span></div>`;
+        contentEl.innerHTML = `<div class="flex flex-col items-center text-center p-1 ui-text-secondary"><i data-lucide="qr-code" class="w-6 h-6 mb-1"></i><span class="text-xs leading-tight">${translate('tools:formCreator.invalidData', '无效数据')}</span></div>`;
         setTimeout(() => (window as LucideWindow).lucide?.createIcons(), 0);
       }
     } else {
-      contentEl.innerHTML = `<div class="flex flex-col items-center text-center p-1 text-gray-400"><i data-lucide="qr-code" class="w-6 h-6 mb-1"></i><span class="text-xs leading-tight">${translate('tools:formCreator.barcode', '条形码')}</span></div>`;
+      contentEl.innerHTML = `<div class="flex flex-col items-center text-center p-1 ui-text-secondary"><i data-lucide="qr-code" class="w-6 h-6 mb-1"></i><span class="text-xs leading-tight">${translate('tools:formCreator.barcode', '条形码')}</span></div>`;
       setTimeout(() => (window as LucideWindow).lucide?.createIcons(), 0);
     }
   }
@@ -865,7 +865,7 @@ function renderField(field: FormField): void {
   const handles = ['nw', 'ne', 'sw', 'se', 'n', 's', 'e', 'w'];
   handles.forEach((pos) => {
     const handle = document.createElement('div');
-    handle.className = `absolute w-2.5 h-2.5 bg-white border border-indigo-600 z-10 cursor-${pos}-resize resize-handle hidden`; // Added hidden class
+    handle.className = `absolute w-2.5 h-2.5 ui-bg-light border border-indigo-600 z-10 cursor-${pos}-resize resize-handle hidden`; // Added hidden class
     const positions: Record<string, string> = {
       nw: 'top-0 left-0 -translate-x-1/2 -translate-y-1/2',
       ne: 'top-0 right-0 translate-x-1/2 -translate-y-1/2',
@@ -1134,92 +1134,92 @@ function showProperties(field: FormField): void {
   if (field.type === 'text') {
     specificProps = `
         <div>
-            <label class="block text-xs font-semibold text-gray-300 mb-1">${translate('tools:formCreator.value', 'Value')}</label>
-            <input type="text" id="propValue" value="${escapeHtml(field.defaultValue)}" ${field.combCells > 0 ? `maxlength="${field.combCells}"` : field.maxLength > 0 ? `maxlength="${field.maxLength}"` : ''} class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+            <label class="block text-xs font-semibold ui-text-secondary mb-1">${translate('tools:formCreator.value', 'Value')}</label>
+            <input type="text" id="propValue" value="${escapeHtml(field.defaultValue)}" ${field.combCells > 0 ? `maxlength="${field.combCells}"` : field.maxLength > 0 ? `maxlength="${field.maxLength}"` : ''} class="w-full ui-bg-raised border ui-border ui-text-primary rounded px-2 py-1 text-sm ui-focus-ring ui-focus-ring">
         </div>
         <div>
-            <label class="block text-xs font-semibold text-gray-300 mb-1">${translate('tools:formCreator.maxLength', 'Max Length (0 for unlimited)')}</label>
-            <input type="number" id="propMaxLength" value="${field.maxLength}" min="0" ${field.combCells > 0 ? 'disabled' : ''} class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500 disabled:opacity-50">
+            <label class="block text-xs font-semibold ui-text-secondary mb-1">${translate('tools:formCreator.maxLength', 'Max Length (0 for unlimited)')}</label>
+            <input type="number" id="propMaxLength" value="${field.maxLength}" min="0" ${field.combCells > 0 ? 'disabled' : ''} class="w-full ui-bg-raised border ui-border ui-text-primary rounded px-2 py-1 text-sm ui-focus-ring ui-focus-ring disabled:opacity-50">
         </div>
         <div>
-            <label class="block text-xs font-semibold text-gray-300 mb-1">${translate('tools:formCreator.divideIntoBoxes', 'Divide into boxes (0 to disable)')}</label>
-            <input type="number" id="propComb" value="${field.combCells}" min="0" class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+            <label class="block text-xs font-semibold ui-text-secondary mb-1">${translate('tools:formCreator.divideIntoBoxes', 'Divide into boxes (0 to disable)')}</label>
+            <input type="number" id="propComb" value="${field.combCells}" min="0" class="w-full ui-bg-raised border ui-border ui-text-primary rounded px-2 py-1 text-sm ui-focus-ring ui-focus-ring">
         </div>
         <div>
-            <label class="block text-xs font-semibold text-gray-300 mb-1">${translate('tools:formCreator.fontSize', 'Font Size')}</label>
-            <input type="number" id="propFontSize" value="${field.fontSize}" min="8" max="72" class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+            <label class="block text-xs font-semibold ui-text-secondary mb-1">${translate('tools:formCreator.fontSize', 'Font Size')}</label>
+            <input type="number" id="propFontSize" value="${field.fontSize}" min="8" max="72" class="w-full ui-bg-raised border ui-border ui-text-primary rounded px-2 py-1 text-sm ui-focus-ring ui-focus-ring">
         </div>
         <div>
-            <label class="block text-xs font-semibold text-gray-300 mb-1">${translate('tools:formCreator.textColor', 'Text Color')}</label>
+            <label class="block text-xs font-semibold ui-text-secondary mb-1">${translate('tools:formCreator.textColor', 'Text Color')}</label>
             <input type="color" id="propTextColor" value="${field.textColor}">
         </div>
         <div>
-            <label class="block text-xs font-semibold text-gray-300 mb-1">${translate('tools:formCreator.alignment', 'Alignment')}</label>
-            <select id="propAlignment" class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+            <label class="block text-xs font-semibold ui-text-secondary mb-1">${translate('tools:formCreator.alignment', 'Alignment')}</label>
+            <select id="propAlignment" class="w-full ui-bg-raised border ui-border ui-text-primary rounded px-2 py-1 text-sm ui-focus-ring ui-focus-ring">
             <option value="left" ${field.alignment === 'left' ? 'selected' : ''}>${translate('tools:formCreator.alignLeft', 'Left')}</option>
             <option value="center" ${field.alignment === 'center' ? 'selected' : ''}>${translate('tools:formCreator.alignCenter', 'Center')}</option>
             <option value="right" ${field.alignment === 'right' ? 'selected' : ''}>${translate('tools:formCreator.alignRight', 'Right')}</option>
             </select>
         </div>
-        <div class="flex items-center justify-between bg-gray-600 p-2 rounded mt-2">
-            <label for="propMultiline" class="text-xs font-semibold text-gray-300">${translate('tools:formCreator.multiline', 'Multi-line')}</label>
-            <button id="propMultilineBtn" class="w-12 h-6 rounded-full transition-colors duration-200 focus:outline-none ${field.multiline ? 'bg-indigo-600' : 'bg-gray-500'} relative">
-                <span class="absolute top-1 left-1 bg-white w-4 h-4 rounded-full transition-transform duration-200 ${field.multiline ? 'translate-x-6' : 'translate-x-0'}"></span>
+        <div class="flex items-center justify-between ui-bg-raised p-2 rounded mt-2">
+            <label for="propMultiline" class="text-xs font-semibold ui-text-secondary">${translate('tools:formCreator.multiline', 'Multi-line')}</label>
+            <button id="propMultilineBtn" class="w-12 h-6 rounded-full transition-colors duration-200 focus:outline-none ${field.multiline ? 'ui-bg-action' : 'ui-bg-raised'} relative">
+                <span class="absolute top-1 left-1 ui-bg-light w-4 h-4 rounded-full transition-transform duration-200 ${field.multiline ? 'translate-x-6' : 'translate-x-0'}"></span>
             </button>
         </div>
         `;
   } else if (field.type === 'checkbox') {
     specificProps = `
-        <div class="flex items-center justify-between bg-gray-600 p-2 rounded">
-            <label for="propChecked" class="text-xs font-semibold text-gray-300">${translate('tools:formCreator.checkedState', 'Checked State')}</label>
-            <button id="propCheckedBtn" class="w-12 h-6 rounded-full transition-colors duration-200 focus:outline-none ${field.checked ? 'bg-indigo-600' : 'bg-gray-500'} relative">
-                <span class="absolute top-1 left-1 bg-white w-4 h-4 rounded-full transition-transform duration-200 ${field.checked ? 'translate-x-6' : 'translate-x-0'}"></span>
+        <div class="flex items-center justify-between ui-bg-raised p-2 rounded">
+            <label for="propChecked" class="text-xs font-semibold ui-text-secondary">${translate('tools:formCreator.checkedState', 'Checked State')}</label>
+            <button id="propCheckedBtn" class="w-12 h-6 rounded-full transition-colors duration-200 focus:outline-none ${field.checked ? 'ui-bg-action' : 'ui-bg-raised'} relative">
+                <span class="absolute top-1 left-1 ui-bg-light w-4 h-4 rounded-full transition-transform duration-200 ${field.checked ? 'translate-x-6' : 'translate-x-0'}"></span>
             </button>
         </div>
         `;
   } else if (field.type === 'radio') {
     specificProps = `
         <div>
-            <label class="block text-xs font-semibold text-gray-300 mb-1">${translate('tools:formCreator.groupNameHint', 'Group Name (Must be same for group)')}</label>
-            <input type="text" id="propGroupName" value="${escapeHtml(field.groupName)}" class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+            <label class="block text-xs font-semibold ui-text-secondary mb-1">${translate('tools:formCreator.groupNameHint', 'Group Name (Must be same for group)')}</label>
+            <input type="text" id="propGroupName" value="${escapeHtml(field.groupName)}" class="w-full ui-bg-raised border ui-border ui-text-primary rounded px-2 py-1 text-sm ui-focus-ring ui-focus-ring">
         </div>
         <div>
-            <label class="block text-xs font-semibold text-gray-300 mb-1">${translate('tools:formCreator.exportValue', 'Export Value')}</label>
-            <input type="text" id="propExportValue" value="${escapeHtml(field.exportValue)}" class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+            <label class="block text-xs font-semibold ui-text-secondary mb-1">${translate('tools:formCreator.exportValue', 'Export Value')}</label>
+            <input type="text" id="propExportValue" value="${escapeHtml(field.exportValue)}" class="w-full ui-bg-raised border ui-border ui-text-primary rounded px-2 py-1 text-sm ui-focus-ring ui-focus-ring">
         </div>
-        <div class="flex items-center justify-between bg-gray-600 p-2 rounded mt-2">
-            <label for="propChecked" class="text-xs font-semibold text-gray-300">${translate('tools:formCreator.checkedState', 'Checked State')}</label>
-            <button id="propCheckedBtn" class="w-12 h-6 rounded-full transition-colors duration-200 focus:outline-none ${field.checked ? 'bg-indigo-600' : 'bg-gray-500'} relative">
-                <span class="absolute top-1 left-1 bg-white w-4 h-4 rounded-full transition-transform duration-200 ${field.checked ? 'translate-x-6' : 'translate-x-0'}"></span>
+        <div class="flex items-center justify-between ui-bg-raised p-2 rounded mt-2">
+            <label for="propChecked" class="text-xs font-semibold ui-text-secondary">${translate('tools:formCreator.checkedState', 'Checked State')}</label>
+            <button id="propCheckedBtn" class="w-12 h-6 rounded-full transition-colors duration-200 focus:outline-none ${field.checked ? 'ui-bg-action' : 'ui-bg-raised'} relative">
+                <span class="absolute top-1 left-1 ui-bg-light w-4 h-4 rounded-full transition-transform duration-200 ${field.checked ? 'translate-x-6' : 'translate-x-0'}"></span>
             </button>
         </div>
         `;
   } else if (field.type === 'dropdown' || field.type === 'optionlist') {
     specificProps = `
         <div>
-            <label class="block text-xs font-semibold text-gray-300 mb-1">${translate('tools:formCreator.optionsLabel', '选项（每行一个或用逗号分隔）')}</label>
-            <textarea id="propOptions" class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500 h-24">${escapeHtml(field.options?.join('\n') ?? '')}</textarea>
+            <label class="block text-xs font-semibold ui-text-secondary mb-1">${translate('tools:formCreator.optionsLabel', '选项（每行一个或用逗号分隔）')}</label>
+            <textarea id="propOptions" class="w-full ui-bg-raised border ui-border ui-text-primary rounded px-2 py-1 text-sm ui-focus-ring ui-focus-ring h-24">${escapeHtml(field.options?.join('\n') ?? '')}</textarea>
         </div>
         <div>
-            <label class="block text-xs font-semibold text-gray-300 mb-1">${translate('tools:formCreator.selectedOption', '已选选项')}</label>
-            <select id="propSelectedOption" class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+            <label class="block text-xs font-semibold ui-text-secondary mb-1">${translate('tools:formCreator.selectedOption', '已选选项')}</label>
+            <select id="propSelectedOption" class="w-full ui-bg-raised border ui-border ui-text-primary rounded px-2 py-1 text-sm ui-focus-ring ui-focus-ring">
                 <option value="">${translate('tools:formCreator.none', '无')}</option>
                 ${field.options?.map((opt) => `<option value="${escapeHtml(opt)}" ${field.defaultValue === opt ? 'selected' : ''}>${escapeHtml(opt)}</option>`).join('')}
             </select>
         </div>
-        <div class="text-xs text-gray-400 italic mt-2">
+        <div class="text-xs ui-text-secondary italic mt-2">
             ${translate('tools:formCreator.fillWithFormFiller', '如需实际填写或更改选项，请使用我们的 PDF 表单填写器。')}
         </div>
         `;
   } else if (field.type === 'button') {
     specificProps = `
         <div>
-            <label class="block text-xs font-semibold text-gray-300 mb-1">${translate('tools:formCreator.label', '标签')}</label>
-            <input type="text" id="propLabel" value="${escapeHtml(field.label)}" class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+            <label class="block text-xs font-semibold ui-text-secondary mb-1">${translate('tools:formCreator.label', '标签')}</label>
+            <input type="text" id="propLabel" value="${escapeHtml(field.label)}" class="w-full ui-bg-raised border ui-border ui-text-primary rounded px-2 py-1 text-sm ui-focus-ring ui-focus-ring">
         </div>
         <div>
-            <label class="block text-xs font-semibold text-gray-300 mb-1">${translate('tools:formCreator.action', '动作')}</label>
-            <select id="propAction" class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+            <label class="block text-xs font-semibold ui-text-secondary mb-1">${translate('tools:formCreator.action', '动作')}</label>
+            <select id="propAction" class="w-full ui-bg-raised border ui-border ui-text-primary rounded px-2 py-1 text-sm ui-focus-ring ui-focus-ring">
                 <option value="none" ${field.action === 'none' ? 'selected' : ''}>${translate('tools:formCreator.none', '无')}</option>
                 <option value="reset" ${field.action === 'reset' ? 'selected' : ''}>${translate('tools:formCreator.resetForm', '重置表单')}</option>
                 <option value="print" ${field.action === 'print' ? 'selected' : ''}>${translate('tools:formCreator.printForm', '打印表单')}</option>
@@ -1229,17 +1229,17 @@ function showProperties(field: FormField): void {
             </select>
         </div>
         <div id="propUrlContainer" class="${field.action === 'url' ? '' : 'hidden'}">
-            <label class="block text-xs font-semibold text-gray-300 mb-1">${translate('tools:formCreator.url', 'URL')}</label>
-            <input type="text" id="propActionUrl" value="${escapeHtml(field.actionUrl || '')}" placeholder="${translate('tools:formCreator.urlPlaceholder', 'https://example.com')}" class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+            <label class="block text-xs font-semibold ui-text-secondary mb-1">${translate('tools:formCreator.url', 'URL')}</label>
+            <input type="text" id="propActionUrl" value="${escapeHtml(field.actionUrl || '')}" placeholder="${translate('tools:formCreator.urlPlaceholder', 'https://example.com')}" class="w-full ui-bg-raised border ui-border ui-text-primary rounded px-2 py-1 text-sm ui-focus-ring ui-focus-ring">
         </div>
         <div id="propJsContainer" class="${field.action === 'js' ? '' : 'hidden'}">
-            <label class="block text-xs font-semibold text-gray-300 mb-1">${translate('tools:formCreator.javascriptCode', 'JavaScript 代码')}</label>
-            <textarea id="propJsScript" class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500 h-24 font-mono">${escapeHtml(field.jsScript || '')}</textarea>
+            <label class="block text-xs font-semibold ui-text-secondary mb-1">${translate('tools:formCreator.javascriptCode', 'JavaScript 代码')}</label>
+            <textarea id="propJsScript" class="w-full ui-bg-raised border ui-border ui-text-primary rounded px-2 py-1 text-sm ui-focus-ring ui-focus-ring h-24 font-mono">${escapeHtml(field.jsScript || '')}</textarea>
         </div>
         <div id="propShowHideContainer" class="${field.action === 'showHide' ? '' : 'hidden'}">
             <div class="mb-2">
-                <label class="block text-xs font-semibold text-gray-300 mb-1">${translate('tools:formCreator.targetField', '目标字段')}</label>
-                <select id="propTargetField" class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+                <label class="block text-xs font-semibold ui-text-secondary mb-1">${translate('tools:formCreator.targetField', '目标字段')}</label>
+                <select id="propTargetField" class="w-full ui-bg-raised border ui-border ui-text-primary rounded px-2 py-1 text-sm ui-focus-ring ui-focus-ring">
                     <option value="">${translate('tools:formCreator.selectField', '选择一个字段...')}</option>
                     ${fields
                       .filter((f) => f.id !== field.id)
@@ -1251,8 +1251,8 @@ function showProperties(field: FormField): void {
                 </select>
             </div>
             <div>
-                <label class="block text-xs font-semibold text-gray-300 mb-1">${translate('tools:formCreator.visibility', '可见性')}</label>
-                <select id="propVisibilityAction" class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+                <label class="block text-xs font-semibold ui-text-secondary mb-1">${translate('tools:formCreator.visibility', '可见性')}</label>
+                <select id="propVisibilityAction" class="w-full ui-bg-raised border ui-border ui-text-primary rounded px-2 py-1 text-sm ui-focus-ring ui-focus-ring">
                     <option value="show" ${field.visibilityAction === 'show' ? 'selected' : ''}>${translate('tools:formCreator.show', '显示')}</option>
                     <option value="hide" ${field.visibilityAction === 'hide' ? 'selected' : ''}>${translate('tools:formCreator.hide', '隐藏')}</option>
                     <option value="toggle" ${field.visibilityAction === 'toggle' ? 'selected' : ''}>${translate('tools:formCreator.toggle', '切换')}</option>
@@ -1262,7 +1262,7 @@ function showProperties(field: FormField): void {
         `;
   } else if (field.type === 'signature') {
     specificProps = `
-        <div class="text-xs text-gray-400 italic mb-2">
+        <div class="text-xs ui-text-secondary italic mb-2">
             ${translate('tools:formCreator.signatureFieldNote', 'Signature fields are AcroForm signature fields and are visible only in advanced PDF viewers.')}
         </div>
         `;
@@ -1305,19 +1305,19 @@ function showProperties(field: FormField): void {
     );
     specificProps = `
         <div>
-            <label class="block text-xs font-semibold text-gray-300 mb-1">${translate('tools:formCreator.dateFormat', 'Date Format')}</label>
-            <select id="propDateFormat" class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+            <label class="block text-xs font-semibold ui-text-secondary mb-1">${translate('tools:formCreator.dateFormat', 'Date Format')}</label>
+            <select id="propDateFormat" class="w-full ui-bg-raised border ui-border ui-text-primary rounded px-2 py-1 text-sm ui-focus-ring ui-focus-ring">
                 ${formats.map((f) => `<option value="${f}" ${field.dateFormat === f ? 'selected' : ''}>${f}</option>`).join('')}
                 <option value="custom" ${isCustom ? 'selected' : ''}>${translate('tools:formCreator.custom', 'Custom')}</option>
             </select>
         </div>
         <div id="customFormatContainer" class="${isCustom ? '' : 'hidden'} mt-2">
-            <label class="block text-xs font-semibold text-gray-300 mb-1">${translate('tools:formCreator.customFormat', 'Custom Format')}</label>
-            <input type="text" id="propCustomFormat" value="${isCustom ? escapeHtml(field.dateFormat ?? '') : ''}" placeholder="${translate('tools:formCreator.dateFormatPlaceholder', 'e.g. dd/mm/yyyy HH:MM:ss')}" class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+            <label class="block text-xs font-semibold ui-text-secondary mb-1">${translate('tools:formCreator.customFormat', 'Custom Format')}</label>
+            <input type="text" id="propCustomFormat" value="${isCustom ? escapeHtml(field.dateFormat ?? '') : ''}" placeholder="${translate('tools:formCreator.dateFormatPlaceholder', 'e.g. dd/mm/yyyy HH:MM:ss')}" class="w-full ui-bg-raised border ui-border ui-text-primary rounded px-2 py-1 text-sm ui-focus-ring ui-focus-ring">
         </div>
-        <div class="mt-3 p-2 bg-gray-700 rounded">
-            <span class="text-xs text-gray-400">${translate('tools:formCreator.exampleOfCurrentFormat', 'Example of current format:')}</span>
-            <span id="dateFormatExample" class="text-sm text-white font-medium ml-2"></span>
+        <div class="mt-3 p-2 ui-bg-raised rounded">
+            <span class="text-xs ui-text-secondary">${translate('tools:formCreator.exampleOfCurrentFormat', 'Example of current format:')}</span>
+            <span id="dateFormatExample" class="text-sm ui-text-primary font-medium ml-2"></span>
         </div>
         <div class="bg-blue-900/30 border border-blue-700/50 rounded p-2 mt-2">
             <p class="text-xs text-blue-200">
@@ -1329,18 +1329,18 @@ function showProperties(field: FormField): void {
   } else if (field.type === 'image') {
     specificProps = `
         <div>
-            <label class="block text-xs font-semibold text-gray-300 mb-1">${translate('tools:formCreator.labelOrPrompt', '标签/提示')}</label>
-            <input type="text" id="propLabel" value="${escapeHtml(field.label)}" class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+            <label class="block text-xs font-semibold ui-text-secondary mb-1">${translate('tools:formCreator.labelOrPrompt', '标签/提示')}</label>
+            <input type="text" id="propLabel" value="${escapeHtml(field.label)}" class="w-full ui-bg-raised border ui-border ui-text-primary rounded px-2 py-1 text-sm ui-focus-ring ui-focus-ring">
         </div>
-        <div class="text-xs text-gray-400 italic mt-2">
+        <div class="text-xs ui-text-secondary italic mt-2">
             ${translate('tools:formCreator.imageFieldNote', '在 PDF 中点击此字段将打开文件选择器以上传图片。')}
         </div>
         `;
   } else if (field.type === 'barcode') {
     specificProps = `
         <div>
-            <label class="block text-xs font-semibold text-gray-300 mb-1">${translate('tools:formCreator.barcodeFormat', '条码格式')}</label>
-            <select id="propBarcodeFormat" class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+            <label class="block text-xs font-semibold ui-text-secondary mb-1">${translate('tools:formCreator.barcodeFormat', '条码格式')}</label>
+            <select id="propBarcodeFormat" class="w-full ui-bg-raised border ui-border ui-text-primary rounded px-2 py-1 text-sm ui-focus-ring ui-focus-ring">
                 <option value="qrcode" ${field.barcodeFormat === 'qrcode' ? 'selected' : ''}>QR Code</option>
                 <option value="code128" ${field.barcodeFormat === 'code128' ? 'selected' : ''}>Code 128</option>
                 <option value="code39" ${field.barcodeFormat === 'code39' ? 'selected' : ''}>Code 39</option>
@@ -1351,19 +1351,19 @@ function showProperties(field: FormField): void {
             </select>
         </div>
         <div>
-            <label class="block text-xs font-semibold text-gray-300 mb-1">${translate('tools:formCreator.barcodeValue', '条码值')}</label>
-            <input type="text" id="propBarcodeValue" value="${escapeHtml(field.barcodeValue || '')}" class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+            <label class="block text-xs font-semibold ui-text-secondary mb-1">${translate('tools:formCreator.barcodeValue', '条码值')}</label>
+            <input type="text" id="propBarcodeValue" value="${escapeHtml(field.barcodeValue || '')}" class="w-full ui-bg-raised border ui-border ui-text-primary rounded px-2 py-1 text-sm ui-focus-ring ui-focus-ring">
         </div>
-        <div id="barcodeFormatHint" class="text-xs text-gray-400 italic"></div>
+        <div id="barcodeFormatHint" class="text-xs ui-text-secondary italic"></div>
         `;
   }
 
   const propertiesHtml = `
     <div class="space-y-3">
       <div>
-        <label class="block text-xs font-semibold text-gray-300 mb-1">${translate('tools:formCreator.fieldName', '字段名')} ${field.type === 'radio' ? translate('tools:formCreator.groupName', '（组名）') : ''}</label>
-        <input type="text" id="propName" value="${escapeHtml(field.name)}" class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500">
-        <div id="nameError" class="hidden text-red-400 text-xs mt-1"></div>
+        <label class="block text-xs font-semibold ui-text-secondary mb-1">${translate('tools:formCreator.fieldName', '字段名')} ${field.type === 'radio' ? translate('tools:formCreator.groupName', '（组名）') : ''}</label>
+        <input type="text" id="propName" value="${escapeHtml(field.name)}" class="w-full ui-bg-raised border ui-border ui-text-primary rounded px-2 py-1 text-sm ui-focus-ring ui-focus-ring">
+        <div id="nameError" class="hidden ui-text-danger text-xs mt-1"></div>
       </div>
       ${
         field.type === 'radio' &&
@@ -1371,8 +1371,8 @@ function showProperties(field: FormField): void {
           fields.some((f) => f.type === 'radio' && f.id !== field.id))
           ? `
       <div>
-        <label class="block text-xs font-semibold text-gray-300 mb-1">${translate('tools:formCreator.existingRadioGroups', 'Existing Radio Groups')}</label>
-        <select id="existingGroups" class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+        <label class="block text-xs font-semibold ui-text-secondary mb-1">${translate('tools:formCreator.existingRadioGroups', 'Existing Radio Groups')}</label>
+        <select id="existingGroups" class="w-full ui-bg-raised border ui-border ui-text-primary rounded px-2 py-1 text-sm ui-focus-ring ui-focus-ring">
           <option value="">${translate('tools:formCreator.selectExistingGroup', '-- Select existing group --')}</option>
           ${Array.from(existingRadioGroups)
             .map(
@@ -1394,37 +1394,37 @@ function showProperties(field: FormField): void {
             )
             .join('')}
         </select>
-        <p class="text-xs text-gray-400 mt-1">${translate('tools:formCreator.selectToAddToGroup', 'Select to add this button to an existing group')}</p>
+        <p class="text-xs ui-text-secondary mt-1">${translate('tools:formCreator.selectToAddToGroup', 'Select to add this button to an existing group')}</p>
       </div>
       `
           : ''
       }
       ${specificProps}
       <div>
-        <label class="block text-xs font-semibold text-gray-300 mb-1">${translate('tools:formCreator.tooltipHelpText', 'Tooltip / Help Text')}</label>
-        <input type="text" id="propTooltip" value="${escapeHtml(field.tooltip)}" placeholder="${translate('tools:formCreator.tooltipPlaceholder', 'Description for screen readers')}" class="w-full bg-gray-600 border border-gray-500 text-white rounded px-2 py-1 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+        <label class="block text-xs font-semibold ui-text-secondary mb-1">${translate('tools:formCreator.tooltipHelpText', 'Tooltip / Help Text')}</label>
+        <input type="text" id="propTooltip" value="${escapeHtml(field.tooltip)}" placeholder="${translate('tools:formCreator.tooltipPlaceholder', 'Description for screen readers')}" class="w-full ui-bg-raised border ui-border ui-text-primary rounded px-2 py-1 text-sm ui-focus-ring ui-focus-ring">
       </div>
       <div class="flex items-center">
         <input type="checkbox" id="propRequired" ${field.required ? 'checked' : ''} class="mr-2">
-        <label for="propRequired" class="text-xs font-semibold text-gray-300">${translate('tools:formCreator.required', 'Required')}</label>
+        <label for="propRequired" class="text-xs font-semibold ui-text-secondary">${translate('tools:formCreator.required', 'Required')}</label>
       </div>
       <div class="flex items-center">
         <input type="checkbox" id="propReadOnly" ${field.readOnly ? 'checked' : ''} class="mr-2">
-        <label for="propReadOnly" class="text-xs font-semibold text-gray-300">${translate('tools:formCreator.readOnly', 'Read Only')}</label>
+        <label for="propReadOnly" class="text-xs font-semibold ui-text-secondary">${translate('tools:formCreator.readOnly', 'Read Only')}</label>
       </div>
       <div>
-        <label class="block text-xs font-semibold text-gray-300 mb-1">${translate('tools:formCreator.borderColor', 'Border Color')}</label>
+        <label class="block text-xs font-semibold ui-text-secondary mb-1">${translate('tools:formCreator.borderColor', 'Border Color')}</label>
         <input type="color" id="propBorderColor" value="${field.borderColor || '#000000'}">
       </div>
       <div class="flex items-center">
         <input type="checkbox" id="propHideBorder" ${field.hideBorder ? 'checked' : ''} class="mr-2">
-        <label for="propHideBorder" class="text-xs font-semibold text-gray-300">${translate('tools:formCreator.hideBorder', 'Hide Border')}</label>
+        <label for="propHideBorder" class="text-xs font-semibold ui-text-secondary">${translate('tools:formCreator.hideBorder', 'Hide Border')}</label>
       </div>
       <div class="flex items-center">
         <input type="checkbox" id="propTransparentBackground" ${field.transparentBackground ? 'checked' : ''} class="mr-2">
-        <label for="propTransparentBackground" class="text-xs font-semibold text-gray-300">${translate('tools:formCreator.transparentBackground', 'Transparent Background')}</label>
+        <label for="propTransparentBackground" class="text-xs font-semibold ui-text-secondary">${translate('tools:formCreator.transparentBackground', 'Transparent Background')}</label>
       </div>
-      <button id="deleteBtn" class="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700 transition text-sm font-semibold">
+      <button id="deleteBtn" class="w-full bg-red-600 ui-text-primary py-2 rounded hover:bg-red-700 transition text-sm font-semibold">
         ${translate('tools:formCreator.deleteField', 'Delete Field')}
       </button>
     </div>
@@ -1720,13 +1720,13 @@ function showProperties(field: FormField): void {
         // Update Toggle Button UI
         const span = propMultilineBtn.querySelector('span');
         if (field.multiline) {
-          propMultilineBtn.classList.remove('bg-gray-500');
-          propMultilineBtn.classList.add('bg-indigo-600');
+          propMultilineBtn.classList.remove('ui-bg-raised');
+          propMultilineBtn.classList.add('ui-bg-action');
           span?.classList.remove('translate-x-0');
           span?.classList.add('translate-x-6');
         } else {
-          propMultilineBtn.classList.remove('bg-indigo-600');
-          propMultilineBtn.classList.add('bg-gray-500');
+          propMultilineBtn.classList.remove('ui-bg-action');
+          propMultilineBtn.classList.add('ui-bg-raised');
           span?.classList.remove('translate-x-6');
           span?.classList.add('translate-x-0');
         }
@@ -1762,13 +1762,13 @@ function showProperties(field: FormField): void {
       // Update Toggle Button UI
       const span = propCheckedBtn.querySelector('span');
       if (field.checked) {
-        propCheckedBtn.classList.remove('bg-gray-500');
-        propCheckedBtn.classList.add('bg-indigo-600');
+        propCheckedBtn.classList.remove('ui-bg-raised');
+        propCheckedBtn.classList.add('ui-bg-action');
         span?.classList.remove('translate-x-0');
         span?.classList.add('translate-x-6');
       } else {
-        propCheckedBtn.classList.remove('bg-indigo-600');
-        propCheckedBtn.classList.add('bg-gray-500');
+        propCheckedBtn.classList.remove('ui-bg-action');
+        propCheckedBtn.classList.add('ui-bg-raised');
         span?.classList.remove('translate-x-6');
         span?.classList.add('translate-x-0');
       }
@@ -1786,7 +1786,7 @@ function showProperties(field: FormField): void {
               : '';
           } else {
             contentEl.innerHTML = field.checked
-              ? '<div class="w-3/4 h-3/4 bg-black rounded-full"></div>'
+              ? '<div class="w-3/4 h-3/4 ui-bg-sunken rounded-full"></div>'
               : '';
           }
         }
@@ -2195,7 +2195,7 @@ function showProperties(field: FormField): void {
 // Hide properties panel
 function hideProperties(): void {
   propertiesPanel.innerHTML =
-    '<p class="text-gray-500 text-sm">' +
+    '<p class="ui-text-tertiary text-sm">' +
     translate(
       'tools:formCreator.selectFieldToEdit',
       'Select a field to edit properties'
@@ -2221,7 +2221,7 @@ document.addEventListener('keydown', (e) => {
   } else if (e.key === 'Escape' && selectedToolType) {
     // Cancel tool selection
     toolItems.forEach((item) =>
-      item.classList.remove('ring-2', 'ring-indigo-400', 'bg-indigo-600')
+      item.classList.remove('ring-2', 'ui-focus-ring', 'ui-bg-action')
     );
     selectedToolType = null;
     canvas.style.cursor = 'default';
@@ -2958,7 +2958,7 @@ function resetToInitial(): void {
   canvas.innerHTML = '';
 
   propertiesPanel.innerHTML =
-    '<p class="text-gray-500 text-sm">' +
+    '<p class="ui-text-tertiary text-sm">' +
     translate(
       'tools:formCreator.selectFieldToEdit',
       'Select a field to edit properties'
@@ -3085,16 +3085,16 @@ function updatePageNavigation(): void {
 // Drag and drop handlers for upload area
 dropZone.addEventListener('dragover', (e) => {
   e.preventDefault();
-  dropZone.classList.add('border-indigo-500', 'bg-gray-600');
+  dropZone.classList.add('ui-border-action', 'ui-bg-raised');
 });
 
 dropZone.addEventListener('dragleave', () => {
-  dropZone.classList.remove('border-indigo-500', 'bg-gray-600');
+  dropZone.classList.remove('ui-border-action', 'ui-bg-raised');
 });
 
 dropZone.addEventListener('drop', (e) => {
   e.preventDefault();
-  dropZone.classList.remove('border-indigo-500', 'bg-gray-600');
+  dropZone.classList.remove('ui-border-action', 'ui-bg-raised');
   const files = e.dataTransfer?.files;
   if (files && files.length > 0 && files[0].type === 'application/pdf') {
     handlePdfUpload(files[0]);
