@@ -9,6 +9,7 @@
     "setup:wasm": "node scripts/setup-wasm.mjs",
     "build": "npm run check:translations && tsc && vite build && node scripts/check-local-resources.mjs --dist && node --max-old-space-size=3072 scripts/generate-i18n-pages.mjs && node scripts/check-i18n-static-pages.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-security-headers.mjs && node scripts/seo-audit.mjs",
     "check:translations": "node scripts/check-translations.js",
+    "check:contrast": "node scripts/check-contrast.mjs",
     "check:local-resources": "node scripts/check-local-resources.mjs",
     "check:i18n-static": "node scripts/check-i18n-static-pages.mjs",
     "seo-audit": "node scripts/seo-audit.mjs",
