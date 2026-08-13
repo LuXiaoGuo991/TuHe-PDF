@@ -37,10 +37,10 @@ const init = async () => {
     const backHome = t('disabledTool.backHome') || '返回首页';
     main.innerHTML = `
       <div class="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
-        <i class="ph ph-prohibit text-6xl text-gray-500 mb-4"></i>
+        <i class="ph ph-prohibit text-6xl ui-text-tertiary mb-4"></i>
         <h1 class="text-2xl font-bold text-white mb-2">${heading}</h1>
-        <p class="text-gray-400 mb-6">${message}</p>
-        <a href="${import.meta.env.BASE_URL}" class="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition">${backHome}</a>
+        <p class="ui-text-secondary mb-6">${message}</p>
+        <a href="${import.meta.env.BASE_URL}" class="ui-button-primary px-6 py-2 rounded-lg transition">${backHome}</a>
       </div>
     `;
     return;
@@ -119,7 +119,7 @@ const init = async () => {
         }
         if (subtitle) {
           subtitle.textContent = t('simpleMode.subtitle');
-          subtitle.className = 'text-lg text-gray-400';
+          subtitle.className = 'text-lg ui-text-secondary';
         }
       }
 
@@ -330,7 +330,7 @@ const init = async () => {
       const chevron = document.createElement('i');
       chevron.setAttribute('data-lucide', 'chevron-down');
       chevron.className =
-        'category-chevron w-5 h-5 text-gray-400 transition-transform duration-300';
+        'category-chevron w-5 h-5 ui-text-secondary transition-transform duration-300';
 
       header.append(title, chevron);
 
@@ -380,19 +380,19 @@ const init = async () => {
           toolCard = document.createElement('a');
           toolCard.href = tool.href;
           toolCard.className =
-            'tool-card block bg-gray-800 rounded-xl p-4 cursor-pointer flex flex-col items-center justify-center text-center no-underline hover:shadow-lg transition duration-200';
+            'tool-card ui-surface block rounded-lg p-4 cursor-pointer flex flex-col items-center justify-center text-center no-underline transition duration-200';
         } else {
           toolCard = document.createElement('div');
           toolCard.className =
-            'tool-card bg-gray-800 rounded-xl p-4 cursor-pointer flex flex-col items-center justify-center text-center hover:shadow-lg transition duration-200';
+            'tool-card ui-surface rounded-lg p-4 cursor-pointer flex flex-col items-center justify-center text-center transition duration-200';
           toolCard.dataset.toolId = getToolId(tool);
         }
 
         const icon = document.createElement('i');
-        icon.className = 'w-10 h-10 mb-3 text-indigo-400';
+        icon.className = 'w-10 h-10 mb-3 ui-text-action';
 
         if (tool.icon.startsWith('ph-')) {
-          icon.className = `ph ${tool.icon} text-4xl mb-3 text-indigo-400`;
+          icon.className = `ph ${tool.icon} text-4xl mb-3 ui-text-action`;
         } else {
           icon.setAttribute('data-lucide', tool.icon);
         }
@@ -406,7 +406,7 @@ const init = async () => {
 
         if (tool.subtitle) {
           const toolSubtitle = document.createElement('p');
-          toolSubtitle.className = 'text-xs text-gray-400 mt-1 px-2';
+          toolSubtitle.className = 'text-xs ui-text-secondary mt-1 px-2';
           toolSubtitle.textContent = toolKey
             ? t(`${toolKey}.subtitle`)
             : tool.subtitle;
@@ -564,10 +564,10 @@ const init = async () => {
 
   if (shortcutsTabBtn && preferencesTabBtn) {
     shortcutsTabBtn.addEventListener('click', () => {
-      shortcutsTabBtn.classList.add('bg-indigo-600', 'text-white');
-      shortcutsTabBtn.classList.remove('text-gray-300');
-      preferencesTabBtn.classList.remove('bg-indigo-600', 'text-white');
-      preferencesTabBtn.classList.add('text-gray-300');
+      shortcutsTabBtn.classList.add('is-active');
+      shortcutsTabBtn.classList.remove('ui-text-secondary');
+      preferencesTabBtn.classList.remove('is-active');
+      preferencesTabBtn.classList.add('ui-text-secondary');
       shortcutsTabContent?.classList.remove('hidden');
       preferencesTabContent?.classList.add('hidden');
       shortcutsTabFooter?.classList.remove('hidden');
@@ -576,10 +576,10 @@ const init = async () => {
     });
 
     preferencesTabBtn.addEventListener('click', () => {
-      preferencesTabBtn.classList.add('bg-indigo-600', 'text-white');
-      preferencesTabBtn.classList.remove('text-gray-300');
-      shortcutsTabBtn.classList.remove('bg-indigo-600', 'text-white');
-      shortcutsTabBtn.classList.add('text-gray-300');
+      preferencesTabBtn.classList.add('is-active');
+      preferencesTabBtn.classList.remove('ui-text-secondary');
+      shortcutsTabBtn.classList.remove('is-active');
+      shortcutsTabBtn.classList.add('ui-text-secondary');
       preferencesTabContent?.classList.remove('hidden');
       shortcutsTabContent?.classList.add('hidden');
       preferencesTabFooter?.classList.remove('hidden');
@@ -937,7 +937,7 @@ const init = async () => {
 
       const header = document.createElement('h3');
       header.className =
-        'text-gray-400 text-xs font-bold uppercase tracking-wider mb-3 pl-1';
+        'ui-text-secondary text-xs font-bold uppercase tracking-wider mb-3 pl-1';
       const categoryKey = categoryTranslationKeys[category.name];
       header.textContent = categoryKey ? t(categoryKey) : category.name;
       section.appendChild(header);
@@ -955,21 +955,21 @@ const init = async () => {
 
         const item = document.createElement('div');
         item.className =
-          'shortcut-item flex items-center justify-between p-3 bg-gray-900 rounded-lg border border-gray-700 hover:border-gray-600 transition-colors';
+          'shortcut-item ui-surface flex items-center justify-between p-3 rounded-lg border ui-border-subtle ui-hover-border-action transition-colors';
 
         const left = document.createElement('div');
         left.className = 'flex items-center gap-3';
 
         const icon = document.createElement('i');
         if (tool.icon.startsWith('ph-')) {
-          icon.className = `ph ${tool.icon} w-5 h-5 text-indigo-400`;
+          icon.className = `ph ${tool.icon} w-5 h-5 ui-text-action`;
         } else {
-          icon.className = 'w-5 h-5 text-indigo-400';
+          icon.className = 'w-5 h-5 ui-text-action';
           icon.setAttribute('data-lucide', tool.icon);
         }
 
         const name = document.createElement('span');
-        name.className = 'text-gray-200 font-medium';
+        name.className = 'ui-text-primary font-medium';
         const toolKey = toolTranslationKeys[tool.name];
         name.textContent = toolKey ? t(`${toolKey}.name`) : tool.name;
 
@@ -981,14 +981,14 @@ const init = async () => {
         const input = document.createElement('input');
         input.type = 'text';
         input.className =
-          'shortcut-input w-32 bg-gray-800 border border-gray-600 text-white text-center text-sm rounded px-2 py-1 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all';
+          'shortcut-input ui-input w-32 text-center text-sm rounded px-2 py-1 outline-none transition-all';
         input.placeholder = t('settings.clickToSet');
         input.value = formatShortcutDisplay(currentShortcut, isMac);
         input.readOnly = true;
 
         const clearBtn = document.createElement('button');
         clearBtn.className =
-          'absolute -right-2 -top-2 bg-gray-700 hover:bg-red-600 text-white rounded-full p-0.5 hidden group-hover:block shadow-sm';
+          'absolute -right-2 -top-2 ui-button-danger rounded-full p-0.5 hidden group-hover:block shadow-sm';
         clearBtn.innerHTML = '<i data-lucide="x" class="w-3 h-3"></i>';
         if (currentShortcut) {
           right.classList.add('group');
@@ -1081,7 +1081,7 @@ const init = async () => {
                 ShortcutsManager.getShortcut(toolId) || '',
                 isMac
               );
-              input.classList.remove('border-indigo-500', 'text-indigo-400');
+              input.classList.remove('is-recording');
               input.blur();
               return;
             }
@@ -1103,7 +1103,7 @@ const init = async () => {
                   ShortcutsManager.getShortcut(toolId) || '',
                   isMac
                 );
-                input.classList.remove('border-indigo-500', 'text-indigo-400');
+                input.classList.remove('is-recording');
                 input.blur();
                 return;
               }
@@ -1125,7 +1125,7 @@ const init = async () => {
 
         input.onfocus = () => {
           input.value = t('settings.pressKeys');
-          input.classList.add('border-indigo-500', 'text-indigo-400');
+          input.classList.add('is-recording');
         };
 
         input.onblur = () => {
@@ -1133,7 +1133,7 @@ const init = async () => {
             ShortcutsManager.getShortcut(toolId) || '',
             isMac
           );
-          input.classList.remove('border-indigo-500', 'text-indigo-400');
+          input.classList.remove('is-recording');
         };
 
         right.append(input);

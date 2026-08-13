@@ -94,20 +94,20 @@
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
   </head>
 
-  <body class="antialiased bg-gray-900">
+  <body class="phase2-tool-page antialiased ui-bg-canvas">
     {{> navbar }}
 
     <div
       id="uploader"
-      class="min-h-screen flex flex-col items-center justify-start py-12 p-4 bg-gray-900"
+      class="min-h-screen flex flex-col items-center justify-start py-12 p-4 ui-bg-canvas"
     >
       <div
         id="tool-uploader"
-        class="bg-gray-800 rounded-xl shadow-xl px-4 py-8 md:p-8 max-w-2xl w-full text-gray-200 border border-gray-700"
+        class="ui-bg-surface rounded-xl shadow-xl px-4 py-8 md:p-8 max-w-2xl w-full ui-text-primary border ui-border-subtle"
       >
         <button
           id="back-to-tools"
-          class="flex items-center gap-2 text-indigo-400 hover:text-indigo-300 mb-6 font-semibold"
+          class="ui-button-secondary flex items-center gap-2 ui-text-action ui-hover-text-action mb-6 font-semibold"
         >
           <i data-lucide="arrow-left" class="cursor-pointer"></i>
           <span class="cursor-pointer" data-i18n="tools.backToTools">
@@ -116,41 +116,50 @@
         </button>
 
         <h1
-          class="text-2xl font-bold text-white mb-2"
+          class="text-2xl font-bold ui-text-primary mb-2"
           data-i18n="tools:addWatermark.name"
         >
           Add Watermark
         </h1>
-        <p class="text-gray-400 mb-6" data-i18n="tools:addWatermark.subtitle">
+        <p
+          class="ui-text-secondary mb-6"
+          data-i18n="tools:addWatermark.subtitle"
+        >
           Stamp text or an image over your PDF pages.
         </p>
 
         <div
           id="drop-zone"
-          class="relative flex flex-col items-center justify-center w-full h-48 md:h-64 border-2 border-dashed border-gray-600 rounded-xl cursor-pointer bg-gray-900 hover:bg-gray-700 transition-colors duration-300"
+          class="ui-panel ui-drop-zone relative flex flex-col items-center justify-center w-full h-48 md:h-64 border-2 border-dashed ui-border rounded-xl cursor-pointer ui-bg-canvas ui-hover-bg-raised transition-colors duration-300"
         >
           <div class="flex flex-col items-center justify-center pt-5 pb-6">
             <i
               data-lucide="upload-cloud"
-              class="w-10 h-10 mb-3 text-gray-400"
+              class="w-10 h-10 mb-3 ui-text-secondary"
             ></i>
-            <p class="mb-2 text-sm text-gray-400">
+            <p class="mb-2 text-sm ui-text-secondary">
               <span class="font-semibold" data-i18n="upload.clickToSelect"
                 >Click to select a file</span
               >
               <span data-i18n="upload.orDragAndDrop">or drag and drop</span>
             </p>
-            <p class="text-xs text-gray-500" data-i18n="upload.hints.pdfFile">
+            <p
+              class="text-xs ui-text-tertiary"
+              data-i18n="upload.hints.pdfFile"
+            >
               PDF file
             </p>
-            <p class="text-xs text-gray-500" data-i18n="upload.filesNeverLeave">
+            <p
+              class="text-xs ui-text-tertiary"
+              data-i18n="upload.filesNeverLeave"
+            >
               Your files never leave your device.
             </p>
           </div>
           <input
             id="file-input"
             type="file"
-            class="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
+            class="ui-input absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
             accept="application/pdf"
           />
         </div>
@@ -159,14 +168,17 @@
       </div>
     </div>
 
-    <div id="editor-panel" class="hidden bg-gray-900 px-2 sm:px-4 py-4 sm:py-8">
+    <div
+      id="editor-panel"
+      class="hidden ui-bg-canvas px-2 sm:px-4 py-4 sm:py-8"
+    >
       <div class="max-w-7xl mx-auto">
         <div
           class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0 sm:justify-between mb-4 sm:mb-6"
         >
           <button
             id="editor-back-btn"
-            class="flex items-center gap-2 text-indigo-400 hover:text-indigo-300 font-semibold text-sm"
+            class="ui-button-secondary flex items-center gap-2 ui-text-action ui-hover-text-action font-semibold text-sm"
           >
             <i data-lucide="arrow-left" class="w-4 h-4"></i>
             <span data-i18n="tools:addWatermark.auto.1062570190"
@@ -175,18 +187,18 @@
           </button>
           <div
             id="editor-file-info"
-            class="text-xs sm:text-sm text-gray-400 truncate max-w-full sm:max-w-[60%]"
+            class="text-xs sm:text-sm ui-text-secondary truncate max-w-full sm:max-w-[60%]"
           ></div>
         </div>
 
         <div class="flex flex-col lg:flex-row gap-4 sm:gap-6">
           <div class="flex-1 min-w-0 flex flex-col">
             <div
-              class="bg-gray-800 rounded-xl border border-gray-700 p-2 sm:p-4 flex-1 flex flex-col"
+              class="ui-bg-surface rounded-xl border ui-border-subtle p-2 sm:p-4 flex-1 flex flex-col"
             >
               <div class="flex items-center justify-between mb-2 sm:mb-3">
                 <span
-                  class="text-xs sm:text-sm font-medium text-gray-300"
+                  class="text-xs sm:text-sm font-medium ui-text-secondary"
                   data-i18n="tools:addWatermark.preview"
                   >Preview</span
                 >
@@ -194,37 +206,39 @@
                   <button
                     id="prev-page-btn"
                     disabled
-                    class="p-1 rounded hover:bg-gray-700 text-gray-400 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                    class="ui-button-secondary p-1 rounded ui-hover-bg-raised ui-text-secondary disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                   >
                     <i data-lucide="chevron-left" class="w-4 h-4"></i>
                   </button>
-                  <div class="flex items-center gap-1 text-xs text-gray-300">
+                  <div
+                    class="flex items-center gap-1 text-xs ui-text-secondary"
+                  >
                     <input
                       id="page-num-input"
                       type="number"
                       min="1"
                       value="1"
-                      class="w-10 bg-gray-700 border border-gray-600 text-white rounded text-center text-xs py-0.5"
+                      class="ui-input w-10 ui-bg-raised border ui-border ui-text-primary rounded text-center text-xs py-0.5"
                     />
                     <span>/ <span id="total-pages">1</span></span>
                   </div>
                   <button
                     id="next-page-btn"
                     disabled
-                    class="p-1 rounded hover:bg-gray-700 text-gray-400 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                    class="ui-button-secondary p-1 rounded ui-hover-bg-raised ui-text-secondary disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                   >
                     <i data-lucide="chevron-right" class="w-4 h-4"></i>
                   </button>
                 </div>
                 <span
-                  class="text-xs text-gray-500 hidden sm:inline"
+                  class="text-xs ui-text-tertiary hidden sm:inline"
                   data-i18n="tools:addWatermark.dragToPosition"
                   >Drag watermark to position</span
                 >
               </div>
               <div
                 id="preview-wrapper"
-                class="flex-1 min-h-[200px] lg:min-h-0 flex items-center justify-center bg-gray-900 rounded-lg overflow-hidden"
+                class="flex-1 min-h-[200px] lg:min-h-0 flex items-center justify-center ui-bg-canvas rounded-lg overflow-hidden"
               >
                 <div
                   id="preview-container"
@@ -242,7 +256,7 @@
                     "
                   >
                     <div
-                      class="relative border border-dashed border-indigo-400/60 cursor-grab active:cursor-grabbing"
+                      class="relative border border-dashed ui-border-action-soft cursor-grab active:cursor-grabbing"
                     >
                       <div
                         id="watermark-overlay"
@@ -254,19 +268,19 @@
                       <img id="image-watermark-overlay" class="hidden" alt="" />
                       <div
                         data-handle="nw"
-                        class="resize-handle absolute -top-1.5 -left-1.5 w-3 h-3 bg-white border-2 border-indigo-500 rounded-sm cursor-nw-resize pointer-events-auto z-10"
+                        class="resize-handle absolute -top-1.5 -left-1.5 w-3 h-3 ui-bg-light border-2 ui-border-action rounded-sm cursor-nw-resize pointer-events-auto z-10"
                       ></div>
                       <div
                         data-handle="ne"
-                        class="resize-handle absolute -top-1.5 -right-1.5 w-3 h-3 bg-white border-2 border-indigo-500 rounded-sm cursor-ne-resize pointer-events-auto z-10"
+                        class="resize-handle absolute -top-1.5 -right-1.5 w-3 h-3 ui-bg-light border-2 ui-border-action rounded-sm cursor-ne-resize pointer-events-auto z-10"
                       ></div>
                       <div
                         data-handle="sw"
-                        class="resize-handle absolute -bottom-1.5 -left-1.5 w-3 h-3 bg-white border-2 border-indigo-500 rounded-sm cursor-sw-resize pointer-events-auto z-10"
+                        class="resize-handle absolute -bottom-1.5 -left-1.5 w-3 h-3 ui-bg-light border-2 ui-border-action rounded-sm cursor-sw-resize pointer-events-auto z-10"
                       ></div>
                       <div
                         data-handle="se"
-                        class="resize-handle absolute -bottom-1.5 -right-1.5 w-3 h-3 bg-white border-2 border-indigo-500 rounded-sm cursor-se-resize pointer-events-auto z-10"
+                        class="resize-handle absolute -bottom-1.5 -right-1.5 w-3 h-3 ui-bg-light border-2 ui-border-action rounded-sm cursor-se-resize pointer-events-auto z-10"
                       ></div>
                     </div>
                   </div>
@@ -277,19 +291,19 @@
 
           <div class="w-full lg:w-80 flex-shrink-0">
             <div
-              class="bg-gray-800 rounded-xl border border-gray-700 p-3 sm:p-5 space-y-3 sm:space-y-5"
+              class="ui-bg-surface rounded-xl border ui-border-subtle p-3 sm:p-5 space-y-3 sm:space-y-5"
             >
               <div class="flex gap-2">
                 <button
                   id="type-text-btn"
-                  class="flex-1 py-2 px-3 text-sm font-medium rounded-lg bg-indigo-600 text-white transition-colors"
+                  class="ui-button-primary flex-1 py-2 px-3 text-sm font-medium rounded-lg ui-bg-action ui-text-primary transition-colors"
                   data-i18n="tools:digitalSignPdf.text"
                 >
                   Text
                 </button>
                 <button
                   id="type-image-btn"
-                  class="flex-1 py-2 px-3 text-sm font-medium rounded-lg bg-gray-700 text-gray-300 hover:bg-gray-600 transition-colors"
+                  class="ui-button-secondary flex-1 py-2 px-3 text-sm font-medium rounded-lg ui-bg-raised ui-text-secondary ui-hover-bg-raised transition-colors"
                   data-i18n="tools:addWatermark.auto.50e19fda0d"
                 >
                   Image
@@ -297,17 +311,17 @@
               </div>
 
               <div
-                class="flex items-center gap-2 bg-gray-900 rounded-lg px-3 py-2"
+                class="flex items-center gap-2 ui-bg-canvas rounded-lg px-3 py-2"
               >
                 <input
                   type="checkbox"
                   id="apply-all-pages"
                   checked
-                  class="w-4 h-4 accent-indigo-500 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
+                  class="ui-input w-4 h-4 ui-accent-action ui-bg-raised ui-border rounded ui-focus-ring"
                 />
                 <label
                   for="apply-all-pages"
-                  class="text-sm text-gray-300 cursor-pointer"
+                  class="text-sm ui-text-secondary cursor-pointer"
                   data-i18n="tools:addWatermark.applyToAllPages"
                   >Apply to all pages</label
                 >
@@ -316,7 +330,7 @@
               <div id="page-range-section" class="space-y-1.5">
                 <label
                   for="page-range-input"
-                  class="block text-sm font-medium text-gray-300"
+                  class="block text-sm font-medium ui-text-secondary"
                   data-i18n="tools:addWatermark.pageRange"
                   >Page Range</label
                 >
@@ -326,10 +340,10 @@
                   value="all"
                   placeholder="all  or  1-3, 5, 7-9"
                   data-i18n-placeholder="tools:addWatermark.auto.30dc22c2a2"
-                  class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-2.5 text-sm placeholder-gray-500"
+                  class="ui-input w-full ui-bg-raised border ui-border ui-text-primary rounded-lg p-2.5 text-sm ui-placeholder-muted"
                 />
                 <p
-                  class="text-xs text-gray-500"
+                  class="text-xs ui-text-tertiary"
                   data-i18n="tools:addWatermark.auto.ca593330ee"
                 >
                   Use "all" or specify pages, e.g. 1-3, 5, 7-9
@@ -341,7 +355,7 @@
                   <div>
                     <label
                       for="watermark-text"
-                      class="block mb-1.5 text-sm font-medium text-gray-300"
+                      class="block mb-1.5 text-sm font-medium ui-text-secondary"
                       data-i18n="tools:addWatermark.textLabel"
                       >Text</label
                     >
@@ -350,14 +364,14 @@
                       id="watermark-text"
                       placeholder="CONFIDENTIAL"
                       data-i18n-placeholder="tools:addWatermark.auto.84c9cc88e4"
-                      class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-2.5 text-sm"
+                      class="ui-input w-full ui-bg-raised border ui-border ui-text-primary rounded-lg p-2.5 text-sm"
                     />
                   </div>
                   <div class="grid grid-cols-2 gap-3">
                     <div>
                       <label
                         for="font-size"
-                        class="block mb-1.5 text-sm font-medium text-gray-300"
+                        class="block mb-1.5 text-sm font-medium ui-text-secondary"
                         data-i18n="tools:addWatermark.fontSize"
                         >Font Size</label
                       >
@@ -367,13 +381,13 @@
                         value="72"
                         min="10"
                         max="200"
-                        class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-2.5 text-sm"
+                        class="ui-input w-full ui-bg-raised border ui-border ui-text-primary rounded-lg p-2.5 text-sm"
                       />
                     </div>
                     <div>
                       <label
                         for="text-color"
-                        class="block mb-1.5 text-sm font-medium text-gray-300"
+                        class="block mb-1.5 text-sm font-medium ui-text-secondary"
                         data-i18n="tools:addWatermark.color"
                         >Color</label
                       >
@@ -381,14 +395,14 @@
                         type="color"
                         id="text-color"
                         value="#888888"
-                        class=""
+                        class="ui-input"
                       />
                     </div>
                   </div>
                   <div>
                     <label
                       for="opacity-text"
-                      class="block mb-1.5 text-sm font-medium text-gray-300"
+                      class="block mb-1.5 text-sm font-medium ui-text-secondary"
                     >
                       <span data-i18n="tools:addWatermark.opacity"
                         >Opacity:</span
@@ -402,13 +416,13 @@
                       max="1"
                       step="0.05"
                       value="0.3"
-                      class="w-full h-2 bg-gray-700 rounded-lg cursor-pointer accent-indigo-500"
+                      class="ui-input w-full h-2 ui-bg-raised rounded-lg cursor-pointer ui-accent-action"
                     />
                   </div>
                   <div>
                     <label
                       for="angle-text"
-                      class="block mb-1.5 text-sm font-medium text-gray-300"
+                      class="block mb-1.5 text-sm font-medium ui-text-secondary"
                     >
                       <span data-i18n="tools:addWatermark.angle">Angle:</span>
                       <span id="angle-value-text">-45</span>&deg;
@@ -420,7 +434,7 @@
                       max="90"
                       step="1"
                       value="-45"
-                      class="w-full h-2 bg-gray-700 rounded-lg cursor-pointer accent-indigo-500"
+                      class="ui-input w-full h-2 ui-bg-raised rounded-lg cursor-pointer ui-accent-action"
                     />
                   </div>
                 </div>
@@ -431,7 +445,7 @@
                   <div>
                     <label
                       for="image-watermark-input"
-                      class="block mb-1.5 text-sm font-medium text-gray-300"
+                      class="block mb-1.5 text-sm font-medium ui-text-secondary"
                       data-i18n="tools:addWatermark.watermarkImage"
                       >Watermark Image</label
                     >
@@ -439,13 +453,13 @@
                       type="file"
                       id="image-watermark-input"
                       accept="image/png, image/jpeg"
-                      class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-2 text-sm file:mr-3 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-indigo-600 file:text-white hover:file:bg-indigo-700"
+                      class="ui-input w-full ui-bg-raised border ui-border ui-text-primary rounded-lg p-2 text-sm file:mr-3 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold ui-file-bg-action ui-file-text-primary ui-file-hover-bg-action"
                     />
                   </div>
                   <div>
                     <label
                       for="image-scale"
-                      class="block mb-1.5 text-sm font-medium text-gray-300"
+                      class="block mb-1.5 text-sm font-medium ui-text-secondary"
                     >
                       <span data-i18n="tools:addWatermark.scale">Scale:</span>
                       <span id="image-scale-value">100</span>%
@@ -457,13 +471,13 @@
                       max="200"
                       step="5"
                       value="100"
-                      class="w-full h-2 bg-gray-700 rounded-lg cursor-pointer accent-indigo-500"
+                      class="ui-input w-full h-2 ui-bg-raised rounded-lg cursor-pointer ui-accent-action"
                     />
                   </div>
                   <div>
                     <label
                       for="opacity-image"
-                      class="block mb-1.5 text-sm font-medium text-gray-300"
+                      class="block mb-1.5 text-sm font-medium ui-text-secondary"
                     >
                       <span data-i18n="tools:addWatermark.opacity"
                         >Opacity:</span
@@ -477,13 +491,13 @@
                       max="1"
                       step="0.05"
                       value="0.3"
-                      class="w-full h-2 bg-gray-700 rounded-lg cursor-pointer accent-indigo-500"
+                      class="ui-input w-full h-2 ui-bg-raised rounded-lg cursor-pointer ui-accent-action"
                     />
                   </div>
                   <div>
                     <label
                       for="angle-image"
-                      class="block mb-1.5 text-sm font-medium text-gray-300"
+                      class="block mb-1.5 text-sm font-medium ui-text-secondary"
                     >
                       <span data-i18n="tools:addWatermark.angle">Angle:</span>
                       <span id="angle-value-image">0</span>&deg;
@@ -495,7 +509,7 @@
                       max="90"
                       step="1"
                       value="0"
-                      class="w-full h-2 bg-gray-700 rounded-lg cursor-pointer accent-indigo-500"
+                      class="ui-input w-full h-2 ui-bg-raised rounded-lg cursor-pointer ui-accent-action"
                     />
                   </div>
                 </div>
@@ -503,70 +517,70 @@
 
               <div>
                 <label
-                  class="block mb-1.5 text-sm font-medium text-gray-300"
+                  class="block mb-1.5 text-sm font-medium ui-text-secondary"
                   data-i18n="tools:addWatermark.position"
                   >Position</label
                 >
                 <div class="grid grid-cols-3 gap-1.5">
                   <button
                     data-pos="0.15,0.15"
-                    class="pos-preset-btn py-1.5 text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 rounded-md transition-colors"
+                    class="ui-button-secondary pos-preset-btn py-1.5 text-xs ui-bg-raised ui-hover-bg-raised ui-text-secondary rounded-md transition-colors"
                     data-i18n="tools:addWatermark.auto.589ad2aaca"
                   >
                     Top Left
                   </button>
                   <button
                     data-pos="0.5,0.15"
-                    class="pos-preset-btn py-1.5 text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 rounded-md transition-colors"
+                    class="ui-button-secondary pos-preset-btn py-1.5 text-xs ui-bg-raised ui-hover-bg-raised ui-text-secondary rounded-md transition-colors"
                     data-i18n="tools:addWatermark.auto.cae0435c41"
                   >
                     Top
                   </button>
                   <button
                     data-pos="0.85,0.15"
-                    class="pos-preset-btn py-1.5 text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 rounded-md transition-colors"
+                    class="ui-button-secondary pos-preset-btn py-1.5 text-xs ui-bg-raised ui-hover-bg-raised ui-text-secondary rounded-md transition-colors"
                     data-i18n="tools:addWatermark.auto.d0fa5ce893"
                   >
                     Top Right
                   </button>
                   <button
                     data-pos="0.15,0.5"
-                    class="pos-preset-btn py-1.5 text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 rounded-md transition-colors"
+                    class="ui-button-secondary pos-preset-btn py-1.5 text-xs ui-bg-raised ui-hover-bg-raised ui-text-secondary rounded-md transition-colors"
                     data-i18n="multiTool.rotateLeft"
                   >
                     Left
                   </button>
                   <button
                     data-pos="0.5,0.5"
-                    class="pos-preset-btn py-1.5 text-xs bg-indigo-600 hover:bg-indigo-500 text-white rounded-md transition-colors"
+                    class="ui-button-primary pos-preset-btn py-1.5 text-xs ui-bg-action ui-hover-bg-action ui-text-primary rounded-md transition-colors"
                     data-i18n="tools:addWatermark.auto.a2391118c8"
                   >
                     Center
                   </button>
                   <button
                     data-pos="0.85,0.5"
-                    class="pos-preset-btn py-1.5 text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 rounded-md transition-colors"
+                    class="ui-button-secondary pos-preset-btn py-1.5 text-xs ui-bg-raised ui-hover-bg-raised ui-text-secondary rounded-md transition-colors"
                     data-i18n="multiTool.rotateRight"
                   >
                     Right
                   </button>
                   <button
                     data-pos="0.15,0.85"
-                    class="pos-preset-btn py-1.5 text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 rounded-md transition-colors"
+                    class="ui-button-secondary pos-preset-btn py-1.5 text-xs ui-bg-raised ui-hover-bg-raised ui-text-secondary rounded-md transition-colors"
                     data-i18n="tools:addWatermark.auto.922e100333"
                   >
                     Bottom Left
                   </button>
                   <button
                     data-pos="0.5,0.85"
-                    class="pos-preset-btn py-1.5 text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 rounded-md transition-colors"
+                    class="ui-button-secondary pos-preset-btn py-1.5 text-xs ui-bg-raised ui-hover-bg-raised ui-text-secondary rounded-md transition-colors"
                     data-i18n="tools:addWatermark.auto.cce7f2f2f0"
                   >
                     Bottom
                   </button>
                   <button
                     data-pos="0.85,0.85"
-                    class="pos-preset-btn py-1.5 text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 rounded-md transition-colors"
+                    class="ui-button-secondary pos-preset-btn py-1.5 text-xs ui-bg-raised ui-hover-bg-raised ui-text-secondary rounded-md transition-colors"
                     data-i18n="tools:addWatermark.auto.45c0e2551b"
                   >
                     Bottom Right
@@ -574,21 +588,21 @@
                 </div>
               </div>
 
-              <div class="flex items-start gap-3 bg-gray-900 rounded-lg p-3">
+              <div class="flex items-start gap-3 ui-bg-canvas rounded-lg p-3">
                 <input
                   type="checkbox"
                   id="flatten-watermark"
-                  class="mt-0.5 w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
+                  class="ui-input mt-0.5 w-4 h-4 ui-text-action ui-bg-raised ui-border rounded ui-focus-ring"
                 />
                 <div>
                   <label
                     for="flatten-watermark"
-                    class="text-sm font-medium text-gray-300 cursor-pointer"
+                    class="text-sm font-medium ui-text-secondary cursor-pointer"
                     data-i18n="tools:addWatermark.flattenWatermarkLabel"
                     >Flatten watermark</label
                   >
                   <p
-                    class="text-xs text-gray-500 mt-0.5"
+                    class="text-xs ui-text-tertiary mt-0.5"
                     data-i18n="tools:addWatermark.auto.b0b29a0e17"
                   >
                     Bakes the watermark into page pixels, making it
@@ -599,7 +613,7 @@
 
               <button
                 id="process-btn"
-                class="btn-gradient w-full"
+                class="ui-button-primary btn-gradient w-full"
                 data-i18n="tools:addWatermark.name"
               >
                 Add Watermark
@@ -612,15 +626,15 @@
 
     <div
       id="loader-modal"
-      class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
+      class="hidden fixed inset-0 ui-bg-sunken bg-opacity-75 flex items-center justify-center z-50"
     >
       <div
-        class="bg-gray-800 p-8 rounded-lg flex flex-col items-center gap-4 border border-gray-700 shadow-xl"
+        class="ui-bg-surface p-8 rounded-lg flex flex-col items-center gap-4 border ui-border-subtle shadow-xl"
       >
         <div class="solid-spinner"></div>
         <p
           id="loader-text"
-          class="text-white text-lg font-medium"
+          class="ui-text-primary text-lg font-medium"
           data-i18n="loader.processing"
         >
           Processing...
@@ -630,22 +644,22 @@
 
     <div
       id="alert-modal"
-      class="fixed inset-0 bg-gray-900 bg-opacity-90 flex items-center justify-center z-50 hidden"
+      class="fixed inset-0 ui-bg-canvas bg-opacity-90 flex items-center justify-center z-50 hidden"
     >
       <div
-        class="bg-gray-800 rounded-lg shadow-xl p-6 max-w-sm w-full border border-gray-700"
+        class="ui-bg-surface rounded-lg shadow-xl p-6 max-w-sm w-full border ui-border-subtle"
       >
         <h3
           id="alert-title"
-          class="text-xl font-bold text-white mb-2"
+          class="text-xl font-bold ui-text-primary mb-2"
           data-i18n="alert.title"
         >
           Alert
         </h3>
-        <p id="alert-message" class="text-gray-300 mb-6"></p>
+        <p id="alert-message" class="ui-text-secondary mb-6"></p>
         <button
           id="alert-ok"
-          class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
+          class="ui-button-primary w-full ui-bg-action ui-hover-bg-action ui-text-primary font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
           data-i18n="alert.ok"
         >
           OK
@@ -656,7 +670,7 @@
     <!-- How It Works Section -->
     <section class="max-w-4xl mx-auto px-4 py-12">
       <h2
-        class="text-2xl md:text-3xl font-bold text-white mb-8 text-center"
+        class="text-2xl md:text-3xl font-bold ui-text-primary mb-8 text-center"
         data-i18n="howItWorks.title"
       >
         How It Works
@@ -664,54 +678,54 @@
       <div class="space-y-6">
         <div class="flex items-start gap-4">
           <div
-            class="flex-shrink-0 w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold"
+            class="flex-shrink-0 w-10 h-10 ui-bg-action rounded-full flex items-center justify-center ui-text-primary font-bold"
           >
             1
           </div>
           <div class="flex-1">
             <h3
-              class="text-lg font-semibold text-white mb-1"
+              class="text-lg font-semibold ui-text-primary mb-1"
               data-i18n="howItWorks.step1Title"
             >
               Upload File
             </h3>
-            <p class="text-gray-400" data-i18n="howItWorks.step1">
+            <p class="ui-text-secondary" data-i18n="howItWorks.step1">
               Click or drag and drop your file to begin
             </p>
           </div>
         </div>
         <div class="flex items-start gap-4">
           <div
-            class="flex-shrink-0 w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold"
+            class="flex-shrink-0 w-10 h-10 ui-bg-action rounded-full flex items-center justify-center ui-text-primary font-bold"
           >
             2
           </div>
           <div class="flex-1">
             <h3
-              class="text-lg font-semibold text-white mb-1"
+              class="text-lg font-semibold ui-text-primary mb-1"
               data-i18n="howItWorks.step2Title"
             >
               Process
             </h3>
-            <p class="text-gray-400" data-i18n="howItWorks.step2">
+            <p class="ui-text-secondary" data-i18n="howItWorks.step2">
               Click the process button to start
             </p>
           </div>
         </div>
         <div class="flex items-start gap-4">
           <div
-            class="flex-shrink-0 w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold"
+            class="flex-shrink-0 w-10 h-10 ui-bg-action rounded-full flex items-center justify-center ui-text-primary font-bold"
           >
             3
           </div>
           <div class="flex-1">
             <h3
-              class="text-lg font-semibold text-white mb-1"
+              class="text-lg font-semibold ui-text-primary mb-1"
               data-i18n="howItWorks.step3Title"
             >
               Download
             </h3>
-            <p class="text-gray-400" data-i18n="howItWorks.step3">
+            <p class="ui-text-secondary" data-i18n="howItWorks.step3">
               Save your processed file instantly
             </p>
           </div>
@@ -722,7 +736,7 @@
     <!-- Related Tools Section -->
     <section class="max-w-6xl mx-auto px-4 py-12">
       <h2
-        class="text-2xl md:text-3xl font-bold text-white mb-6 text-center"
+        class="text-2xl md:text-3xl font-bold ui-text-primary mb-6 text-center"
         data-i18n="relatedTools.title"
       >
         Related PDF Tools
@@ -730,30 +744,33 @@
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
         <a
           href="merge-pdf.html"
-          class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
+          class="block ui-bg-surface p-4 rounded-lg ui-hover-bg-raised transition-colors border ui-border-subtle"
         >
           <h3
-            class="text-white font-semibold mb-1"
+            class="ui-text-primary font-semibold mb-1"
             data-i18n="tools:addWatermark.auto.bb9dede377"
           >
             Merge Pdf
           </h3>
-          <p class="text-gray-400 text-sm" data-i18n="tools:mergePdf.cardDesc">
+          <p
+            class="ui-text-secondary text-sm"
+            data-i18n="tools:mergePdf.cardDesc"
+          >
             Free online merge pdf tool
           </p>
         </a>
         <a
           href="compress-pdf.html"
-          class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
+          class="block ui-bg-surface p-4 rounded-lg ui-hover-bg-raised transition-colors border ui-border-subtle"
         >
           <h3
-            class="text-white font-semibold mb-1"
+            class="ui-text-primary font-semibold mb-1"
             data-i18n="tools:addWatermark.auto.ae395b2670"
           >
             Compress Pdf
           </h3>
           <p
-            class="text-gray-400 text-sm"
+            class="ui-text-secondary text-sm"
             data-i18n="tools:compressPdf.cardDesc"
           >
             Free online compress pdf tool
@@ -761,43 +778,52 @@
         </a>
         <a
           href="split-pdf.html"
-          class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
+          class="block ui-bg-surface p-4 rounded-lg ui-hover-bg-raised transition-colors border ui-border-subtle"
         >
           <h3
-            class="text-white font-semibold mb-1"
+            class="ui-text-primary font-semibold mb-1"
             data-i18n="tools:addWatermark.auto.0784d816a9"
           >
             Split Pdf
           </h3>
-          <p class="text-gray-400 text-sm" data-i18n="tools:splitPdf.cardDesc">
+          <p
+            class="ui-text-secondary text-sm"
+            data-i18n="tools:splitPdf.cardDesc"
+          >
             Free online split pdf tool
           </p>
         </a>
         <a
           href="edit-pdf.html"
-          class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
+          class="block ui-bg-surface p-4 rounded-lg ui-hover-bg-raised transition-colors border ui-border-subtle"
         >
           <h3
-            class="text-white font-semibold mb-1"
+            class="ui-text-primary font-semibold mb-1"
             data-i18n="tools:addWatermark.auto.0a193ffe0a"
           >
             Edit Pdf
           </h3>
-          <p class="text-gray-400 text-sm" data-i18n="tools:pdfEditor.cardDesc">
+          <p
+            class="ui-text-secondary text-sm"
+            data-i18n="tools:pdfEditor.cardDesc"
+          >
             Free online edit pdf tool
           </p>
         </a>
         <a
           href="rotate-pdf.html"
-          class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
+          class="block ui-bg-surface p-4 rounded-lg ui-hover-bg-raised transition-colors border ui-border-subtle"
         >
           <h3
-            class="text-white font-semibold mb-1"
+            class="ui-text-primary font-semibold mb-1"
             data-i18n="tools:addWatermark.auto.ed40c6ff84"
           >
             Rotate Pdf
           </h3>
-          <p class="text-gray-400 text-sm" data-i18n="tools:rotatePdf.cardDesc">
+          <p
+            class="ui-text-secondary text-sm"
+            data-i18n="tools:rotatePdf.cardDesc"
+          >
             Free online rotate pdf tool
           </p>
         </a>
@@ -807,50 +833,59 @@
     <!-- FAQ Section -->
     <section class="max-w-4xl mx-auto px-4 py-12">
       <h2
-        class="text-2xl md:text-3xl font-bold text-white mb-6 text-center"
+        class="text-2xl md:text-3xl font-bold ui-text-primary mb-6 text-center"
         data-i18n="faq.sectionTitle"
       >
         Frequently Asked Questions
       </h2>
       <div class="space-y-4">
-        <details class="bg-gray-800 p-5 rounded-lg border border-gray-700">
+        <details class="ui-bg-surface p-5 rounded-lg border ui-border-subtle">
           <summary
-            class="cursor-pointer font-semibold text-white flex items-center justify-between"
+            class="cursor-pointer font-semibold ui-text-primary flex items-center justify-between"
           >
             <span data-i18n="tools:addWatermark.faq1q"
               >Is add watermark really free?</span
             >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400" data-i18n="tools:addWatermark.faq1a">
+          <p
+            class="mt-3 ui-text-secondary"
+            data-i18n="tools:addWatermark.faq1a"
+          >
             Yes! TuHe PDF is 100% free with no hidden fees, no signup required,
             and unlimited file processing.
           </p>
         </details>
-        <details class="bg-gray-800 p-5 rounded-lg border border-gray-700">
+        <details class="ui-bg-surface p-5 rounded-lg border ui-border-subtle">
           <summary
-            class="cursor-pointer font-semibold text-white flex items-center justify-between"
+            class="cursor-pointer font-semibold ui-text-primary flex items-center justify-between"
           >
             <span data-i18n="tools:addWatermark.faq2q"
               >Are my files private and secure?</span
             >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400" data-i18n="tools:addWatermark.faq2a">
+          <p
+            class="mt-3 ui-text-secondary"
+            data-i18n="tools:addWatermark.faq2a"
+          >
             Absolutely! All processing happens in your browser. Your files never
             leave your device, ensuring complete privacy.
           </p>
         </details>
-        <details class="bg-gray-800 p-5 rounded-lg border border-gray-700">
+        <details class="ui-bg-surface p-5 rounded-lg border ui-border-subtle">
           <summary
-            class="cursor-pointer font-semibold text-white flex items-center justify-between"
+            class="cursor-pointer font-semibold ui-text-primary flex items-center justify-between"
           >
             <span data-i18n="tools:addWatermark.faq3q"
               >Is there a file size limit?</span
             >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400" data-i18n="tools:addWatermark.faq3a">
+          <p
+            class="mt-3 ui-text-secondary"
+            data-i18n="tools:addWatermark.faq3a"
+          >
             No! Process files of any size, as many times as you want, completely
             free.
           </p>

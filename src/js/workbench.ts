@@ -683,6 +683,38 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
     });
   });
 
+  const homeSearch = document.getElementById(
+    'home-tool-search'
+  ) as HTMLInputElement | null;
+  const homeEmpty = document.getElementById('home-search-empty');
+  const filterHomeTools = (value: string) => {
+    const query = value.trim().toLocaleLowerCase();
+    let visibleCount = 0;
+    home.querySelectorAll<HTMLElement>('[data-home-tool]').forEach((tool) => {
+      const matches =
+        !query || (tool.textContent || '').toLocaleLowerCase().includes(query);
+      tool.hidden = !matches;
+      if (matches) visibleCount += 1;
+    });
+    home
+      .querySelectorAll<HTMLDetailsElement>('[data-home-category]')
+      .forEach((category) => {
+        const hasMatch = !!category.querySelector(
+          '[data-home-tool]:not([hidden])'
+        );
+        category.hidden = !hasMatch;
+        if (query && hasMatch) category.open = true;
+      });
+    homeEmpty?.classList.toggle('visible', visibleCount === 0);
+  };
+  homeSearch?.addEventListener('input', () =>
+    filterHomeTools(homeSearch.value)
+  );
+  homeSearch?.addEventListener('keydown', (event) => {
+    if (event.key !== 'Enter') return;
+    home.querySelector<HTMLElement>('[data-home-tool]:not([hidden])')?.click();
+  });
+
   /* ---------- 初始化 ---------- */
 
   renderRail();

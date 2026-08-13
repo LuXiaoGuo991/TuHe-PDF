@@ -10,7 +10,7 @@ const translate = (
 };
 
 const getDefaultDateFormat = (): string =>
-  translate('tools:formCreator.defaultDateFormat', 'yyyy/mm/dd');
+  translate('tools:formCreator.defaultDateFormat', 'yyyy年mm月dd日');
 
 const getPdfLanguage = (): string => {
   const language = document.documentElement.lang || 'en';

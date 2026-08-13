@@ -81,7 +81,15 @@
     "pageLabel": "Page {{page}}",
     "filePageTitle": "{{name}} (page {{page}})",
     "auto": {},
-    "pageTitle": "Merge PDF Online Free - PDF Tool | TuHe PDF"
+    "pageTitle": "Merge PDF Online Free - PDF Tool | TuHe PDF",
+    "localProcessing": "Local processing",
+    "resultTitle": "Merged PDF ready",
+    "resultDescription": "Your merged document is ready to download.",
+    "downloadResult": "Download merged PDF",
+    "clearConfirmTitle": "Clear all files?",
+    "clearConfirmMessage": "This removes every selected file and cannot be undone.",
+    "cancelClear": "Cancel",
+    "fileMeta": "{{total}} pages · PDF"
   },
   "splitPdf": {
     "name": "Split PDF",

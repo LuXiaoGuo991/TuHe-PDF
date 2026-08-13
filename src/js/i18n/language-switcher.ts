@@ -10,25 +10,20 @@ export const createLanguageSwitcher = (): HTMLElement => {
   const currentLang = getLanguageFromUrl();
 
   const container = document.createElement('div');
-  container.className = 'relative';
+  container.className = 'language-switcher';
   container.id = 'language-switcher';
 
   const button = document.createElement('button');
-  button.className = `
-    inline-flex items-center gap-1.5 text-sm font-medium
-    bg-gray-800 text-gray-200 border border-gray-600
-    px-3 py-1.5 rounded-full transition-colors duration-200
-    shadow-sm hover:shadow-md hover:bg-gray-700
-  `.trim();
+  button.className = 'language-switcher-button';
   button.setAttribute('aria-haspopup', 'true');
   button.setAttribute('aria-expanded', 'false');
 
   const textSpan = document.createElement('span');
-  textSpan.className = 'font-medium';
+  textSpan.className = 'language-switcher-current';
   textSpan.textContent = languageNames[currentLang];
 
   const chevron = document.createElement('svg');
-  chevron.className = 'w-4 h-4';
+  chevron.className = 'language-switcher-chevron';
   chevron.setAttribute('fill', 'none');
   chevron.setAttribute('stroke', 'currentColor');
   chevron.setAttribute('viewBox', '0 0 24 24');
@@ -39,17 +34,11 @@ export const createLanguageSwitcher = (): HTMLElement => {
   button.appendChild(chevron);
 
   const dropdown = document.createElement('div');
-  dropdown.className = `
-    hidden absolute right-0 mt-2 z-50
-    w-64 max-w-[calc(100vw-2rem)]
-    rounded-lg bg-gray-800 border border-gray-700 shadow-xl
-    flex flex-col overflow-hidden
-  `.trim();
+  dropdown.className = 'language-switcher-menu hidden';
   dropdown.setAttribute('role', 'menu');
 
   const searchWrapper = document.createElement('div');
-  searchWrapper.className =
-    'p-2 border-b border-gray-700 bg-gray-800 flex-shrink-0';
+  searchWrapper.className = 'language-switcher-search';
 
   const searchPlaceholder =
     t('nav.searchLanguage') !== 'nav.searchLanguage'
@@ -59,23 +48,17 @@ export const createLanguageSwitcher = (): HTMLElement => {
   const searchInput = document.createElement('input');
   searchInput.type = 'search';
   searchInput.placeholder = searchPlaceholder;
-  searchInput.className = `
-    w-full px-3 py-1.5 text-sm
-    bg-gray-900 text-gray-200
-    border border-gray-700 rounded-md
-    focus:outline-none focus:border-indigo-500
-    placeholder-gray-500
-  `.trim();
+  searchInput.className = 'language-switcher-search-input';
   searchInput.setAttribute('aria-label', searchPlaceholder);
   searchWrapper.appendChild(searchInput);
   dropdown.appendChild(searchWrapper);
 
   const list = document.createElement('div');
-  list.className = 'max-h-64 overflow-y-auto py-1';
+  list.className = 'language-switcher-options';
   list.setAttribute('role', 'none');
 
   const emptyState = document.createElement('p');
-  emptyState.className = 'hidden px-4 py-3 text-sm text-gray-400 text-center';
+  emptyState.className = 'language-switcher-empty hidden';
   const emptyText =
     t('nav.noLanguagesFound') !== 'nav.noLanguagesFound'
       ? t('nav.noLanguagesFound')
@@ -86,11 +69,7 @@ export const createLanguageSwitcher = (): HTMLElement => {
   supportedLanguages.forEach((lang) => {
     const option = document.createElement('button');
     option.type = 'button';
-    option.className = `
-      w-full px-4 py-2 text-left text-sm text-gray-200
-      hover:bg-gray-700 flex items-center gap-2 transition-colors
-      ${lang === currentLang ? 'bg-gray-700' : ''}
-    `.trim();
+    option.className = `language-switcher-option ${lang === currentLang ? 'is-active' : ''}`;
     option.setAttribute('role', 'menuitem');
     option.dataset.lang = lang;
     option.dataset.searchKey = `${languageNames[lang]} ${lang}`.toLowerCase();
@@ -191,24 +170,18 @@ export const injectLanguageSwitcher = (): void => {
       wrapper.appendChild(socialIconsContainer);
       const switcher = createLanguageSwitcher();
 
-      switcher.className = 'relative w-full';
+      switcher.className = 'language-switcher language-switcher-footer';
 
       const button = switcher.querySelector('button');
       if (button) {
-        button.className = `
-                    flex items-center justify-between w-full text-sm font-medium
-                    bg-gray-800 text-gray-400 border border-gray-700
-                    px-3 py-2 rounded-lg transition-colors duration-200
-                    hover:text-white hover:border-gray-600
-                `.trim();
+        button.className = 'language-switcher-button is-footer';
       }
 
       const dropdown = switcher.querySelector(
         'div[role="menu"]'
       ) as HTMLElement | null;
       if (dropdown) {
-        dropdown.classList.remove('mt-2', 'w-64');
-        dropdown.classList.add('bottom-full', 'mb-2', 'w-full');
+        dropdown.classList.add('is-footer');
       }
 
       wrapper.appendChild(switcher);
