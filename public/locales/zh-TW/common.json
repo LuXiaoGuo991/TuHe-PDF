@@ -640,6 +640,9 @@
       "deleteNode": "刪除節點"
     }
   },
+  "theme": {
+    "toggle": "切換深色 / 淺色主題"
+  },
   "viewMetadata": {
     "noInfoDict": "- 未找到 Info Dictionary 資料 -",
     "noFormFields": "- 未找到互動式表單欄位 -",

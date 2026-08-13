@@ -22,6 +22,7 @@
 }
 
 :root {
+  color-scheme: dark;
   --color-canvas: #171a18;
   --color-surface: #202522;
   --color-surface-raised: #2a302c;
@@ -40,6 +41,24 @@
   --color-warning: #d6a653;
   --color-danger: #d85b55;
   --color-info: #77b9c4;
+}
+
+/* 暖白阅读主题：与深色主题共享组件结构，仅覆盖语义 token。 */
+[data-theme='light'] {
+  color-scheme: light;
+  --color-canvas: #f5f3ec;
+  --color-surface: #ffffff;
+  --color-surface-raised: #f0f2ec;
+  --color-surface-sunken: #e8eae3;
+  --color-border-subtle: #e1e4db;
+  --color-border: #d1d7cc;
+  --color-text-primary: #252b27;
+  --color-text-secondary: #5d685f;
+  --color-text-tertiary: #818a81;
+  --color-action: #39785c;
+  --color-action-hover: #2d674d;
+  --color-focus: #317d8d;
+  --color-brand-accent: #b8513d;
 }
 
 .ui-surface {
@@ -937,6 +956,33 @@ body:has(#workbench) {
 .wb-topbar-nav a:hover {
   color: var(--color-text-primary);
   background: var(--color-surface);
+}
+
+.wb-topbar-theme-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin-left: 4px;
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    color 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.wb-topbar-theme-btn:hover {
+  color: var(--color-text-primary);
+  background: var(--color-surface);
+}
+
+.wb-topbar-theme-btn i {
+  font-size: 18px;
 }
 
 .language-switcher {

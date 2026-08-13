@@ -640,6 +640,9 @@
       "deleteNode": "Delete node"
     }
   },
+  "theme": {
+    "toggle": "Toggle dark / light theme"
+  },
   "viewMetadata": {
     "noInfoDict": "- No Info Dictionary data found -",
     "noFormFields": "- No interactive form fields found -",
