@@ -98,16 +98,16 @@ function initializePage(): void {
   if (dropZone) {
     dropZone.addEventListener('dragover', (e) => {
       e.preventDefault();
-      dropZone.classList.add('bg-gray-700');
+      dropZone.classList.add('ui-bg-raised');
     });
 
     dropZone.addEventListener('dragleave', () => {
-      dropZone.classList.remove('bg-gray-700');
+      dropZone.classList.remove('ui-bg-raised');
     });
 
     dropZone.addEventListener('drop', (e) => {
       e.preventDefault();
-      dropZone.classList.remove('bg-gray-700');
+      dropZone.classList.remove('ui-bg-raised');
       const droppedFiles = e.dataTransfer?.files;
       if (droppedFiles && droppedFiles.length > 0) {
         handlePdfFile(droppedFiles[0]);
@@ -125,16 +125,16 @@ function initializePage(): void {
   if (certDropZone) {
     certDropZone.addEventListener('dragover', (e) => {
       e.preventDefault();
-      certDropZone.classList.add('bg-gray-700');
+      certDropZone.classList.add('ui-bg-raised');
     });
 
     certDropZone.addEventListener('dragleave', () => {
-      certDropZone.classList.remove('bg-gray-700');
+      certDropZone.classList.remove('ui-bg-raised');
     });
 
     certDropZone.addEventListener('drop', (e) => {
       e.preventDefault();
-      certDropZone.classList.remove('bg-gray-700');
+      certDropZone.classList.remove('ui-bg-raised');
       const droppedFiles = e.dataTransfer?.files;
       if (droppedFiles && droppedFiles.length > 0) {
         handleCertFile(droppedFiles[0]);
@@ -284,17 +284,17 @@ async function updatePdfDisplay(): Promise<void> {
 
   const fileDiv = document.createElement('div');
   fileDiv.className =
-    'flex items-center justify-between bg-gray-700 p-3 rounded-lg';
+    'flex items-center justify-between ui-bg-raised p-3 rounded-lg';
 
   const infoContainer = document.createElement('div');
   infoContainer.className = 'flex flex-col flex-1 min-w-0';
 
   const nameSpan = document.createElement('div');
-  nameSpan.className = 'truncate font-medium text-gray-200 text-sm mb-1';
+  nameSpan.className = 'truncate font-medium ui-text-primary text-sm mb-1';
   nameSpan.textContent = state.pdfFile.name;
 
   const metaSpan = document.createElement('div');
-  metaSpan.className = 'text-xs text-gray-400';
+  metaSpan.className = 'text-xs ui-text-secondary';
   metaSpan.textContent = translate(
     'tools:digitalSignPdf.dynamic.3775b9c3ce',
     `${formatBytes(state.pdfFile.size)} • ${t('common.loadingPageCount')}`,
@@ -307,7 +307,8 @@ async function updatePdfDisplay(): Promise<void> {
   infoContainer.append(nameSpan, metaSpan);
 
   const removeBtn = document.createElement('button');
-  removeBtn.className = 'ml-4 text-red-400 hover:text-red-300 flex-shrink-0';
+  removeBtn.className =
+    'ml-4 ui-text-danger ui-hover-text-danger flex-shrink-0';
   removeBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
   removeBtn.onclick = () => {
     state.pdfFile = null;
@@ -432,14 +433,14 @@ async function handleCertFile(file: File): Promise<void> {
         if (certStatus) {
           certStatus.innerHTML = `${t('tools:digitalSignPdf.certificateLoaded')} <i data-lucide="check" class="inline w-4 h-4"></i>`;
           createIcons({ icons });
-          certStatus.className = 'text-xs text-green-400';
+          certStatus.className = 'text-xs ui-text-success';
         }
       }
     } catch {
       const certStatus = getElement<HTMLDivElement>('cert-status');
       if (certStatus) {
         certStatus.textContent = t('tools:digitalSignPdf.failedParsePem');
-        certStatus.className = 'text-xs text-red-400';
+        certStatus.className = 'text-xs ui-text-danger';
       }
     }
   } else {
@@ -460,24 +461,25 @@ function updateCertDisplay(): void {
 
   const certDiv = document.createElement('div');
   certDiv.className =
-    'flex items-center justify-between bg-gray-700 p-3 rounded-lg';
+    'flex items-center justify-between ui-bg-raised p-3 rounded-lg';
 
   const infoContainer = document.createElement('div');
   infoContainer.className = 'flex flex-col flex-1 min-w-0';
 
   const nameSpan = document.createElement('div');
-  nameSpan.className = 'truncate font-medium text-gray-200 text-sm mb-1';
+  nameSpan.className = 'truncate font-medium ui-text-primary text-sm mb-1';
   nameSpan.textContent = state.certFile.name;
 
   const metaSpan = document.createElement('div');
-  metaSpan.className = 'text-xs text-gray-400';
+  metaSpan.className = 'text-xs ui-text-secondary';
   metaSpan.id = 'cert-status';
   metaSpan.textContent = t('tools:digitalSignPdf.enterPasswordToUnlock');
 
   infoContainer.append(nameSpan, metaSpan);
 
   const removeBtn = document.createElement('button');
-  removeBtn.className = 'ml-4 text-red-400 hover:text-red-300 flex-shrink-0';
+  removeBtn.className =
+    'ml-4 ui-text-danger ui-hover-text-danger flex-shrink-0';
   removeBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
   removeBtn.onclick = () => {
     state.certFile = null;
@@ -587,7 +589,7 @@ async function handlePasswordInput(): Promise<void> {
     if (certStatus) {
       certStatus.innerHTML = `${t('tools:digitalSignPdf.certificateUnlocked')} <i data-lucide="check-circle" class="inline w-4 h-4"></i>`;
       createIcons({ icons });
-      certStatus.className = 'text-xs text-green-400';
+      certStatus.className = 'text-xs ui-text-success';
     }
   } catch (error) {
     state.certData = null;
@@ -603,7 +605,7 @@ async function handlePasswordInput(): Promise<void> {
       certStatus.textContent = errorMessage.includes('password')
         ? t('tools:digitalSignPdf.incorrectPassword')
         : t('tools:digitalSignPdf.failedParseCertificate');
-      certStatus.className = 'text-xs text-red-400';
+      certStatus.className = 'text-xs ui-text-danger';
     }
   }
 }

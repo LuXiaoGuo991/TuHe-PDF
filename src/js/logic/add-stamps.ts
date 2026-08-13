@@ -95,7 +95,7 @@ function updateFileList() {
 
   const wrapper = document.createElement('div');
   wrapper.className =
-    'bg-gray-700 p-3 rounded-lg border border-gray-600 hover:border-indigo-500 transition-colors';
+    'ui-bg-raised p-3 rounded-lg border ui-border ui-hover-border-action transition-colors';
 
   const innerDiv = document.createElement('div');
   innerDiv.className = 'flex items-center justify-between';
@@ -104,18 +104,18 @@ function updateFileList() {
   infoDiv.className = 'flex-1 min-w-0';
 
   const nameSpan = document.createElement('p');
-  nameSpan.className = 'truncate font-medium text-white';
+  nameSpan.className = 'truncate font-medium ui-text-primary';
   nameSpan.textContent = selectedFile.name;
 
   const sizeSpan = document.createElement('p');
-  sizeSpan.className = 'text-gray-400 text-sm';
+  sizeSpan.className = 'ui-text-secondary text-sm';
   sizeSpan.textContent = formatBytes(selectedFile.size);
 
   infoDiv.append(nameSpan, sizeSpan);
 
   const deleteBtn = document.createElement('button');
   deleteBtn.className =
-    'text-red-400 hover:text-red-300 p-2 flex-shrink-0 ml-2';
+    'ui-text-danger ui-hover-text-danger p-2 flex-shrink-0 ml-2';
   deleteBtn.title = translate(
     'tools:addStamps.dynamic.612ed3ad3b',
     'Remove file'
@@ -296,14 +296,14 @@ const dropZone = document.getElementById('drop-zone');
 if (dropZone) {
   dropZone.addEventListener('dragover', (e) => {
     e.preventDefault();
-    dropZone.classList.add('border-indigo-500');
+    dropZone.classList.add('ui-border-action');
   });
   dropZone.addEventListener('dragleave', () => {
-    dropZone.classList.remove('border-indigo-500');
+    dropZone.classList.remove('ui-border-action');
   });
   dropZone.addEventListener('drop', async (e) => {
     e.preventDefault();
-    dropZone.classList.remove('border-indigo-500');
+    dropZone.classList.remove('ui-border-action');
     const file = e.dataTransfer?.files[0];
     if (file && file.type === 'application/pdf') {
       await onPdfSelected(file);

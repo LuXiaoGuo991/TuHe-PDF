@@ -97,7 +97,7 @@ function createPageWrapper(
 
   const container = document.createElement('div');
   container.className =
-    'page-thumbnail relative bg-gray-700 rounded-lg overflow-hidden';
+    'page-thumbnail relative ui-bg-raised rounded-lg overflow-hidden';
   container.dataset.pageIndex = pageIndex.toString();
   container.dataset.pageNumber = pageNumber.toString();
 
@@ -114,7 +114,7 @@ function createPageWrapper(
 
   const pageLabel = document.createElement('div');
   pageLabel.className =
-    'absolute top-1 left-1 bg-black bg-opacity-60 text-white text-xs px-2 py-1 rounded';
+    'absolute top-1 left-1 ui-bg-sunken bg-opacity-60 ui-text-primary text-xs px-2 py-1 rounded';
   pageLabel.textContent = translate(
     'tools:rotateCustom.dynamic.bbc1fbce78',
     `${pageNumber}`,
@@ -126,7 +126,8 @@ function createPageWrapper(
 
   // Per-page rotation controls - Custom angle input
   const controls = document.createElement('div');
-  controls.className = 'flex items-center justify-center gap-1 p-2 bg-gray-800';
+  controls.className =
+    'flex items-center justify-center gap-1 p-2 ui-bg-surface';
 
   const angleInput = document.createElement('input');
   angleInput.type = 'number';
@@ -136,7 +137,7 @@ function createPageWrapper(
   angleInput.id = `page-angle-${pageIndex}`;
   angleInput.value = pageState.rotations[pageIndex]?.toString() || '0';
   angleInput.className =
-    'w-16 h-8 text-center bg-gray-700 border border-gray-600 text-white rounded text-xs';
+    'w-16 h-8 text-center ui-bg-raised border ui-border ui-text-primary rounded text-xs';
 
   const commitAngle = (normalize: boolean) => {
     const angle = parseAngleInput(angleInput.value);
@@ -150,7 +151,7 @@ function createPageWrapper(
 
   const decrementBtn = document.createElement('button');
   decrementBtn.className =
-    'w-8 h-8 flex items-center justify-center bg-gray-700 hover:bg-gray-600 text-white rounded border border-gray-600 text-sm';
+    'w-8 h-8 flex items-center justify-center ui-bg-raised ui-hover-bg-raised ui-text-primary rounded border ui-border text-sm';
   decrementBtn.textContent = translate(
     'tools:rotateCustom.dynamic.03a27bd0ab',
     '-'
@@ -164,7 +165,7 @@ function createPageWrapper(
 
   const incrementBtn = document.createElement('button');
   incrementBtn.className =
-    'w-8 h-8 flex items-center justify-center bg-gray-700 hover:bg-gray-600 text-white rounded border border-gray-600 text-sm';
+    'w-8 h-8 flex items-center justify-center ui-bg-raised ui-hover-bg-raised ui-text-primary rounded border ui-border text-sm';
   incrementBtn.textContent = translate(
     'tools:rotateCustom.dynamic.fa49b7e42c',
     '+'
@@ -217,17 +218,17 @@ async function updateUI() {
   if (pageState.file) {
     const fileDiv = document.createElement('div');
     fileDiv.className =
-      'flex items-center justify-between bg-gray-700 p-3 rounded-lg text-sm';
+      'flex items-center justify-between ui-bg-raised p-3 rounded-lg text-sm';
 
     const infoContainer = document.createElement('div');
     infoContainer.className = 'flex flex-col overflow-hidden';
 
     const nameSpan = document.createElement('div');
-    nameSpan.className = 'truncate font-medium text-gray-200 text-sm mb-1';
+    nameSpan.className = 'truncate font-medium ui-text-primary text-sm mb-1';
     nameSpan.textContent = pageState.file.name;
 
     const metaSpan = document.createElement('div');
-    metaSpan.className = 'text-xs text-gray-400';
+    metaSpan.className = 'text-xs ui-text-secondary';
     metaSpan.textContent = translate(
       'tools:rotateCustom.dynamic.105a3c6f65',
       `${formatBytes(pageState.file.size)} • Loading...`,
@@ -237,7 +238,8 @@ async function updateUI() {
     infoContainer.append(nameSpan, metaSpan);
 
     const removeBtn = document.createElement('button');
-    removeBtn.className = 'ml-4 text-red-400 hover:text-red-300 flex-shrink-0';
+    removeBtn.className =
+      'ml-4 ui-text-danger ui-hover-text-danger flex-shrink-0';
     removeBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
     removeBtn.onclick = function () {
       resetState();
@@ -449,17 +451,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     dropZone.addEventListener('dragover', function (e) {
       e.preventDefault();
-      dropZone.classList.add('bg-gray-700');
+      dropZone.classList.add('ui-bg-raised');
     });
 
     dropZone.addEventListener('dragleave', function (e) {
       e.preventDefault();
-      dropZone.classList.remove('bg-gray-700');
+      dropZone.classList.remove('ui-bg-raised');
     });
 
     dropZone.addEventListener('drop', function (e) {
       e.preventDefault();
-      dropZone.classList.remove('bg-gray-700');
+      dropZone.classList.remove('ui-bg-raised');
       const files = e.dataTransfer?.files;
       if (files && files.length > 0) {
         const pdfFiles = Array.from(files).filter(function (f) {

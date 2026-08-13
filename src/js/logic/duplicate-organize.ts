@@ -136,7 +136,7 @@ export async function renderDuplicateOrganizeThumbnails() {
 
     const imgContainer = document.createElement('div');
     imgContainer.className =
-      'w-full h-36 bg-gray-900 rounded-lg flex items-center justify-center overflow-hidden border-2 border-gray-600';
+      'w-full h-36 ui-bg-canvas rounded-lg flex items-center justify-center overflow-hidden border-2 ui-border';
 
     const img = document.createElement('img');
     img.src = canvas.toDataURL();
@@ -145,7 +145,7 @@ export async function renderDuplicateOrganizeThumbnails() {
 
     const pageNumberSpan = document.createElement('span');
     pageNumberSpan.className =
-      'page-number absolute top-1 left-1 bg-gray-900 bg-opacity-75 text-white text-xs rounded-full px-2 py-1';
+      'page-number absolute top-1 left-1 ui-bg-canvas bg-opacity-75 ui-text-primary text-xs rounded-full px-2 py-1';
     pageNumberSpan.textContent = pageNumber.toString();
 
     const controlsDiv = document.createElement('div');
@@ -153,7 +153,7 @@ export async function renderDuplicateOrganizeThumbnails() {
 
     const duplicateBtn = document.createElement('button');
     duplicateBtn.className =
-      'duplicate-btn bg-green-600 hover:bg-green-700 text-white rounded-full w-8 h-8 flex items-center justify-center';
+      'duplicate-btn ui-bg-success ui-hover-bg-success ui-text-primary rounded-full w-8 h-8 flex items-center justify-center';
     duplicateBtn.title = translate(
       'common.dynamic.c565bcea4a',
       'Duplicate Page'
@@ -165,7 +165,7 @@ export async function renderDuplicateOrganizeThumbnails() {
 
     const deleteBtn = document.createElement('button');
     deleteBtn.className =
-      'delete-btn bg-red-600 hover:bg-red-700 text-white rounded-full w-8 h-8 flex items-center justify-center';
+      'delete-btn bg-red-600 hover:bg-red-700 ui-text-primary rounded-full w-8 h-8 flex items-center justify-center';
     deleteBtn.title = translate('common.dynamic.5efb3e8ec6', 'Delete Page');
     const deleteIcon = document.createElement('i');
     deleteIcon.setAttribute('data-lucide', 'x-circle');

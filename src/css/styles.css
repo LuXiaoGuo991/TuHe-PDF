@@ -2170,6 +2170,12 @@ body:has(#workbench) {
 .ui-border-action-soft {
   border-color: color-mix(in srgb, var(--color-action), transparent 40%);
 }
+.ui-ring-action {
+  box-shadow: 0 0 0 2px var(--color-action);
+}
+.ui-divide-subtle > :not([hidden]) ~ :not([hidden]) {
+  border-top: 1px solid var(--color-border-subtle);
+}
 .ui-hover-bg-raised:hover {
   background-color: var(--color-surface-raised);
 }

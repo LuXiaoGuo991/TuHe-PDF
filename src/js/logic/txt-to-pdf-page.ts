@@ -40,14 +40,14 @@ const updateUI = () => {
     files.forEach((file, index) => {
       const fileDiv = document.createElement('div');
       fileDiv.className =
-        'flex items-center justify-between bg-gray-700 p-3 rounded-lg text-sm';
+        'flex items-center justify-between ui-bg-raised p-3 rounded-lg text-sm';
 
       const infoSpan = document.createElement('span');
-      infoSpan.className = 'truncate font-medium text-gray-200';
+      infoSpan.className = 'truncate font-medium ui-text-primary';
       infoSpan.textContent = file.name;
 
       const sizeSpan = document.createElement('span');
-      sizeSpan.className = 'text-gray-400 text-xs ml-2';
+      sizeSpan.className = 'ui-text-secondary text-xs ml-2';
       sizeSpan.textContent = translate(
         'tools:textToPdf.dynamic.8c9a7c9a67',
         `(${formatBytes(file.size)})`,
@@ -55,7 +55,7 @@ const updateUI = () => {
       );
 
       const removeBtn = document.createElement('button');
-      removeBtn.className = 'ml-4 text-red-400 hover:text-red-300';
+      removeBtn.className = 'ml-4 ui-text-danger ui-hover-text-danger';
       removeBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
       removeBtn.onclick = () => {
         files = files.filter((_, i) => i !== index);
@@ -220,20 +220,20 @@ document.addEventListener('DOMContentLoaded', () => {
   if (uploadModeBtn && textModeBtn && uploadPanel && textPanel) {
     uploadModeBtn.addEventListener('click', () => {
       currentMode = 'upload';
-      uploadModeBtn.classList.remove('bg-gray-700', 'text-gray-300');
-      uploadModeBtn.classList.add('bg-indigo-600', 'text-white');
-      textModeBtn.classList.remove('bg-indigo-600', 'text-white');
-      textModeBtn.classList.add('bg-gray-700', 'text-gray-300');
+      uploadModeBtn.classList.remove('ui-bg-raised', 'ui-text-secondary');
+      uploadModeBtn.classList.add('ui-bg-action', 'ui-text-primary');
+      textModeBtn.classList.remove('ui-bg-action', 'ui-text-primary');
+      textModeBtn.classList.add('ui-bg-raised', 'ui-text-secondary');
       uploadPanel.classList.remove('hidden');
       textPanel.classList.add('hidden');
     });
 
     textModeBtn.addEventListener('click', () => {
       currentMode = 'text';
-      textModeBtn.classList.remove('bg-gray-700', 'text-gray-300');
-      textModeBtn.classList.add('bg-indigo-600', 'text-white');
-      uploadModeBtn.classList.remove('bg-indigo-600', 'text-white');
-      uploadModeBtn.classList.add('bg-gray-700', 'text-gray-300');
+      textModeBtn.classList.remove('ui-bg-raised', 'ui-text-secondary');
+      textModeBtn.classList.add('ui-bg-action', 'ui-text-primary');
+      uploadModeBtn.classList.remove('ui-bg-action', 'ui-text-primary');
+      uploadModeBtn.classList.add('ui-bg-raised', 'ui-text-secondary');
       textPanel.classList.remove('hidden');
       uploadPanel.classList.add('hidden');
     });
@@ -277,17 +277,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     dropZone.addEventListener('dragover', (e) => {
       e.preventDefault();
-      dropZone.classList.add('bg-gray-700');
+      dropZone.classList.add('ui-bg-raised');
     });
 
     dropZone.addEventListener('dragleave', (e) => {
       e.preventDefault();
-      dropZone.classList.remove('bg-gray-700');
+      dropZone.classList.remove('ui-bg-raised');
     });
 
     dropZone.addEventListener('drop', (e) => {
       e.preventDefault();
-      dropZone.classList.remove('bg-gray-700');
+      dropZone.classList.remove('ui-bg-raised');
       handleFileSelect(e.dataTransfer?.files ?? null);
     });
 

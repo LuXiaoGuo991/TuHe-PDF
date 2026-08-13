@@ -35,19 +35,19 @@ function getOrCreateModal(): HTMLElement {
   modal.className =
     'fixed inset-0 bg-black/80 backdrop-blur-sm z-[60] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-200';
   modal.innerHTML = `
-    <button id="preview-close" class="absolute top-4 right-4 text-white/70 hover:text-white z-10 transition-colors" title="${translate('pagePreview.closeEsc', 'Close (Esc)')}">
+    <button id="preview-close" class="absolute top-4 right-4 text-white/70 ui-hover-text-primary z-10 transition-colors" title="${translate('pagePreview.closeEsc', 'Close (Esc)')}">
       <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
     </button>
-    <button id="preview-prev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-2" title="${translate('pagePreview.previousPage', 'Previous page')}">
+    <button id="preview-prev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white/50 ui-hover-text-primary transition-colors p-2" title="${translate('pagePreview.previousPage', 'Previous page')}">
       <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
     </button>
-    <button id="preview-next" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-2" title="${translate('pagePreview.nextPage', 'Next page')}">
+    <button id="preview-next" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/50 ui-hover-text-primary transition-colors p-2" title="${translate('pagePreview.nextPage', 'Next page')}">
       <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
     </button>
     <div id="preview-canvas-container" class="flex items-center justify-center max-w-[90vw] max-h-[85vh]">
       <div id="preview-loading" class="text-white/60 text-sm">${translate('common.loading', 'Loading...')}</div>
     </div>
-    <div id="preview-page-info" class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-gray-900/80 text-white text-sm px-4 py-2 rounded-full backdrop-blur-sm"></div>
+    <div id="preview-page-info" class="absolute bottom-6 left-1/2 -translate-x-1/2 ui-bg-canvas ui-text-primary text-sm px-4 py-2 rounded-full backdrop-blur-sm"></div>
   `;
 
   modal.addEventListener('click', (e) => {
@@ -111,7 +111,7 @@ async function renderPreviewPage(pageNumber: number): Promise<void> {
     state.currentPage = pageNumber;
   } catch (err) {
     console.error('Preview render error:', err);
-    container.innerHTML = `<div class="text-red-400 text-sm">${translate('pagePreview.failedToRender', 'Failed to render page')}</div>`;
+    container.innerHTML = `<div class="ui-text-danger text-sm">${translate('pagePreview.failedToRender', 'Failed to render page')}</div>`;
   }
 }
 
@@ -189,7 +189,7 @@ export function initPagePreview(
 
     const icon = document.createElement('button');
     icon.className =
-      'page-preview-btn absolute bottom-1 right-1 bg-gray-900/80 hover:bg-indigo-600 text-white/70 hover:text-white rounded-full w-7 h-7 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10';
+      'page-preview-btn absolute bottom-1 right-1 ui-bg-canvas hover:ui-bg-action text-white/70 ui-hover-text-primary rounded-full w-7 h-7 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10';
     icon.title = translate('common.dynamic.aff4164a23', 'Preview');
     icon.innerHTML =
       '<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>';

@@ -96,20 +96,20 @@
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
   </head>
 
-  <body class="antialiased bg-gray-900">
+  <body class="phase2-tool-page antialiased ui-bg-canvas">
     {{> navbar }}
 
     <div
       id="uploader"
-      class="min-h-screen flex flex-col items-center justify-start py-12 p-4 bg-gray-900"
+      class="min-h-screen flex flex-col items-center justify-start py-12 p-4 ui-bg-canvas"
     >
       <div
         id="tool-uploader"
-        class="bg-gray-800 rounded-xl shadow-xl px-4 py-8 md:p-8 max-w-2xl w-full text-gray-200 border border-gray-700"
+        class="ui-bg-surface rounded-xl shadow-xl px-4 py-8 md:p-8 max-w-2xl w-full ui-text-primary border ui-border-subtle"
       >
         <button
           id="back-to-tools"
-          class="flex items-center gap-2 text-indigo-400 hover:text-indigo-300 mb-6 font-semibold"
+          class="ui-button-secondary flex items-center gap-2 ui-text-action ui-hover-text-action mb-6 font-semibold"
         >
           <i data-lucide="arrow-left" class="cursor-pointer"></i>
           <span class="cursor-pointer" data-i18n="tools.backToTools">
@@ -118,13 +118,13 @@
         </button>
 
         <h1
-          class="text-2xl font-bold text-white mb-2"
+          class="text-2xl font-bold ui-text-primary mb-2"
           data-i18n="tools:validateSignaturePdf.name"
         >
           Validate PDF Signature
         </h1>
         <p
-          class="text-gray-400 mb-6"
+          class="ui-text-secondary mb-6"
           data-i18n="tools:validateSignaturePdf.subtitle"
         >
           Verify digital signatures in your PDF files. Check certificate
@@ -134,33 +134,36 @@
 
         <div
           id="drop-zone"
-          class="relative flex flex-col items-center justify-center w-full h-48 md:h-64 border-2 border-dashed border-gray-600 rounded-xl cursor-pointer bg-gray-900 hover:bg-gray-700 transition-colors duration-300"
+          class="ui-panel ui-drop-zone relative flex flex-col items-center justify-center w-full h-48 md:h-64 border-2 border-dashed ui-border rounded-xl cursor-pointer ui-bg-canvas ui-hover-bg-raised transition-colors duration-300"
         >
           <div class="flex flex-col items-center justify-center pt-5 pb-6">
             <i
               data-lucide="cloud-upload"
-              class="w-10 h-10 mb-3 text-gray-400"
+              class="w-10 h-10 mb-3 ui-text-secondary"
             ></i>
-            <p class="mb-2 text-sm text-gray-400">
+            <p class="mb-2 text-sm ui-text-secondary">
               <span class="font-semibold" data-i18n="upload.clickToSelect"
                 >Click to select a file</span
               >
               <span data-i18n="upload.orDragAndDrop">or drag and drop</span>
             </p>
             <p
-              class="text-xs text-gray-500"
+              class="text-xs ui-text-tertiary"
               data-i18n="upload.hints.pdfDocuments"
             >
               PDF Documents
             </p>
-            <p class="text-xs text-gray-500" data-i18n="upload.filesNeverLeave">
+            <p
+              class="text-xs ui-text-tertiary"
+              data-i18n="upload.filesNeverLeave"
+            >
               Your files never leave your device.
             </p>
           </div>
           <input
             id="file-input"
             type="file"
-            class="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
+            class="ui-input absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
             accept="application/pdf"
           />
         </div>
@@ -170,14 +173,14 @@
         <div id="custom-cert-section" class="hidden mt-6 space-y-3">
           <div class="flex items-center justify-between">
             <h2
-              class="text-sm font-semibold text-gray-300"
+              class="text-sm font-semibold ui-text-secondary"
               data-i18n="tools:validateSignaturePdf.auto.669c25442e"
             >
               Custom Certificate File X.509 (Optional)
             </h2>
           </div>
           <p
-            class="text-xs text-gray-500"
+            class="text-xs ui-text-tertiary"
             data-i18n="tools:validateSignaturePdf.auto.fb82dce5a5"
           >
             Upload a trusted X.509 certificate to validate against a custom
@@ -185,12 +188,15 @@
           </p>
           <div
             id="cert-drop-zone"
-            class="relative flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-gray-600 rounded-xl cursor-pointer bg-gray-900 hover:bg-gray-700 transition-colors duration-300"
+            class="ui-panel ui-drop-zone relative flex flex-col items-center justify-center w-full h-24 border-2 border-dashed ui-border rounded-xl cursor-pointer ui-bg-canvas ui-hover-bg-raised transition-colors duration-300"
           >
             <div class="flex flex-col items-center justify-center py-2">
-              <i data-lucide="shield" class="w-6 h-6 mb-1 text-gray-400"></i>
+              <i
+                data-lucide="shield"
+                class="w-6 h-6 mb-1 ui-text-secondary"
+              ></i>
               <p
-                class="text-xs text-gray-400"
+                class="text-xs ui-text-secondary"
                 data-i18n="tools:validateSignaturePdf.auto.cb52b69ce2"
               >
                 Upload certificate (.pem, .crt, .cer)
@@ -199,7 +205,7 @@
             <input
               id="cert-input"
               type="file"
-              class="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
+              class="ui-input absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
               accept=".pem,.crt,.cer,.der"
             />
           </div>
@@ -208,7 +214,7 @@
 
         <div id="results-section" class="hidden mt-6">
           <h2
-            class="text-lg font-semibold text-white mb-4"
+            class="text-lg font-semibold ui-text-primary mb-4"
             data-i18n="tools:validateSignaturePdf.auto.4205553299"
           >
             Signature Validation Results
@@ -220,15 +226,15 @@
 
     <div
       id="loader-modal"
-      class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
+      class="hidden fixed inset-0 ui-bg-sunken bg-opacity-75 flex items-center justify-center z-50"
     >
       <div
-        class="bg-gray-800 p-8 rounded-lg flex flex-col items-center gap-4 border border-gray-700 shadow-xl"
+        class="ui-bg-surface p-8 rounded-lg flex flex-col items-center gap-4 border ui-border-subtle shadow-xl"
       >
         <div class="solid-spinner"></div>
         <p
           id="loader-text"
-          class="text-white text-lg font-medium"
+          class="ui-text-primary text-lg font-medium"
           data-i18n="loader.processing"
         >
           Processing...
@@ -238,22 +244,22 @@
 
     <div
       id="alert-modal"
-      class="fixed inset-0 bg-gray-900 bg-opacity-90 flex items-center justify-center z-50 hidden"
+      class="fixed inset-0 ui-bg-canvas bg-opacity-90 flex items-center justify-center z-50 hidden"
     >
       <div
-        class="bg-gray-800 rounded-lg shadow-xl p-6 max-w-sm w-full border border-gray-700"
+        class="ui-bg-surface rounded-lg shadow-xl p-6 max-w-sm w-full border ui-border-subtle"
       >
         <h3
           id="alert-title"
-          class="text-xl font-bold text-white mb-2"
+          class="text-xl font-bold ui-text-primary mb-2"
           data-i18n="alert.title"
         >
           Alert
         </h3>
-        <p id="alert-message" class="text-gray-300 mb-6"></p>
+        <p id="alert-message" class="ui-text-secondary mb-6"></p>
         <button
           id="alert-ok"
-          class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
+          class="ui-button-primary w-full ui-bg-action ui-hover-bg-action ui-text-primary font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
           data-i18n="alert.ok"
         >
           OK
@@ -264,7 +270,7 @@
     <!-- How It Works Section -->
     <section class="max-w-4xl mx-auto px-4 py-12">
       <h2
-        class="text-2xl md:text-3xl font-bold text-white mb-8 text-center"
+        class="text-2xl md:text-3xl font-bold ui-text-primary mb-8 text-center"
         data-i18n="howItWorks.title"
       >
         How It Works
@@ -272,19 +278,19 @@
       <div class="space-y-6">
         <div class="flex items-start gap-4">
           <div
-            class="flex-shrink-0 w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold"
+            class="flex-shrink-0 w-10 h-10 ui-bg-action rounded-full flex items-center justify-center ui-text-primary font-bold"
           >
             1
           </div>
           <div class="flex-1">
             <h3
-              class="text-lg font-semibold text-white mb-1"
+              class="text-lg font-semibold ui-text-primary mb-1"
               data-i18n="tools:validateSignaturePdf.auto.5515cecbd8"
             >
               Upload Your PDF
             </h3>
             <p
-              class="text-gray-400"
+              class="ui-text-secondary"
               data-i18n="tools:validateSignaturePdf.auto.c0481911b9"
             >
               Select a digitally signed PDF file from your device
@@ -293,19 +299,19 @@
         </div>
         <div class="flex items-start gap-4">
           <div
-            class="flex-shrink-0 w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold"
+            class="flex-shrink-0 w-10 h-10 ui-bg-action rounded-full flex items-center justify-center ui-text-primary font-bold"
           >
             2
           </div>
           <div class="flex-1">
             <h3
-              class="text-lg font-semibold text-white mb-1"
+              class="text-lg font-semibold ui-text-primary mb-1"
               data-i18n="tools:validateSignaturePdf.auto.1224313bb3"
             >
               Automatic Analysis
             </h3>
             <p
-              class="text-gray-400"
+              class="ui-text-secondary"
               data-i18n="tools:validateSignaturePdf.auto.1118722b1e"
             >
               The tool extracts and parses all digital signatures in the
@@ -315,19 +321,19 @@
         </div>
         <div class="flex items-start gap-4">
           <div
-            class="flex-shrink-0 w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold"
+            class="flex-shrink-0 w-10 h-10 ui-bg-action rounded-full flex items-center justify-center ui-text-primary font-bold"
           >
             3
           </div>
           <div class="flex-1">
             <h3
-              class="text-lg font-semibold text-white mb-1"
+              class="text-lg font-semibold ui-text-primary mb-1"
               data-i18n="tools:validateSignaturePdf.auto.730ace573c"
             >
               View Results
             </h3>
             <p
-              class="text-gray-400"
+              class="ui-text-secondary"
               data-i18n="tools:validateSignaturePdf.auto.bec47e5e06"
             >
               See signer information, certificate validity, and signature status
@@ -340,7 +346,7 @@
     <!-- Related Tools Section -->
     <section class="max-w-6xl mx-auto px-4 py-12">
       <h2
-        class="text-2xl md:text-3xl font-bold text-white mb-6 text-center"
+        class="text-2xl md:text-3xl font-bold ui-text-primary mb-6 text-center"
         data-i18n="relatedTools.title"
       >
         Related PDF Tools
@@ -348,16 +354,16 @@
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
         <a
           href="digital-sign-pdf.html"
-          class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
+          class="block ui-bg-surface p-4 rounded-lg ui-hover-bg-raised transition-colors border ui-border-subtle"
         >
           <h3
-            class="text-white font-semibold mb-1"
+            class="ui-text-primary font-semibold mb-1"
             data-i18n="tools:validateSignaturePdf.auto.fcf771a47b"
           >
             Digital Signature
           </h3>
           <p
-            class="text-gray-400 text-sm"
+            class="ui-text-secondary text-sm"
             data-i18n="tools:validateSignaturePdf.auto.3743e5ffa0"
           >
             Add cryptographic signature
@@ -365,16 +371,16 @@
         </a>
         <a
           href="encrypt-pdf.html"
-          class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
+          class="block ui-bg-surface p-4 rounded-lg ui-hover-bg-raised transition-colors border ui-border-subtle"
         >
           <h3
-            class="text-white font-semibold mb-1"
+            class="ui-text-primary font-semibold mb-1"
             data-i18n="tools:encryptPdf.name"
           >
             Encrypt PDF
           </h3>
           <p
-            class="text-gray-400 text-sm"
+            class="ui-text-secondary text-sm"
             data-i18n="tools:validateSignaturePdf.auto.a390b2f206"
           >
             Password protect PDF
@@ -382,16 +388,16 @@
         </a>
         <a
           href="view-metadata.html"
-          class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
+          class="block ui-bg-surface p-4 rounded-lg ui-hover-bg-raised transition-colors border ui-border-subtle"
         >
           <h3
-            class="text-white font-semibold mb-1"
+            class="ui-text-primary font-semibold mb-1"
             data-i18n="tools:viewMetadata.name"
           >
             View Metadata
           </h3>
           <p
-            class="text-gray-400 text-sm"
+            class="ui-text-secondary text-sm"
             data-i18n="tools:validateSignaturePdf.auto.023a377cc0"
           >
             Inspect PDF properties
@@ -403,15 +409,15 @@
     <!-- FAQ Section -->
     <section class="max-w-4xl mx-auto px-4 py-12">
       <h2
-        class="text-2xl md:text-3xl font-bold text-white mb-6 text-center"
+        class="text-2xl md:text-3xl font-bold ui-text-primary mb-6 text-center"
         data-i18n="faq.sectionTitle"
       >
         Frequently Asked Questions
       </h2>
       <div class="space-y-4">
-        <details class="bg-gray-800 p-5 rounded-lg border border-gray-700">
+        <details class="ui-bg-surface p-5 rounded-lg border ui-border-subtle">
           <summary
-            class="cursor-pointer font-semibold text-white flex items-center justify-between"
+            class="cursor-pointer font-semibold ui-text-primary flex items-center justify-between"
           >
             <span data-i18n="tools:validateSignaturePdf.faq1q"
               >What types of signatures can be validated?</span
@@ -419,7 +425,7 @@
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
           <p
-            class="mt-3 text-gray-400"
+            class="mt-3 ui-text-secondary"
             data-i18n="tools:validateSignaturePdf.auto.1d96bf7498"
           >
             This tool validates PKCS#7 digital signatures created with X.509
@@ -427,9 +433,9 @@
             certificate authorities.
           </p>
         </details>
-        <details class="bg-gray-800 p-5 rounded-lg border border-gray-700">
+        <details class="ui-bg-surface p-5 rounded-lg border ui-border-subtle">
           <summary
-            class="cursor-pointer font-semibold text-white flex items-center justify-between"
+            class="cursor-pointer font-semibold ui-text-primary flex items-center justify-between"
           >
             <span data-i18n="tools:validateSignaturePdf.faq2q"
               >What does "Self-Signed Certificate" mean?</span
@@ -437,7 +443,7 @@
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
           <p
-            class="mt-3 text-gray-400"
+            class="mt-3 ui-text-secondary"
             data-i18n="tools:validateSignaturePdf.auto.6a2b4465ca"
           >
             A self-signed certificate is one where the issuer and subject are
@@ -445,9 +451,9 @@
             certificate wasn't issued by a trusted Certificate Authority (CA).
           </p>
         </details>
-        <details class="bg-gray-800 p-5 rounded-lg border border-gray-700">
+        <details class="ui-bg-surface p-5 rounded-lg border ui-border-subtle">
           <summary
-            class="cursor-pointer font-semibold text-white flex items-center justify-between"
+            class="cursor-pointer font-semibold ui-text-primary flex items-center justify-between"
           >
             <span data-i18n="tools:validateSignaturePdf.faq3q"
               >Is my PDF uploaded to a server?</span
@@ -455,7 +461,7 @@
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
           <p
-            class="mt-3 text-gray-400"
+            class="mt-3 ui-text-secondary"
             data-i18n="tools:validateSignaturePdf.auto.63c5883377"
           >
             No, all processing happens entirely in your browser. Your PDF files

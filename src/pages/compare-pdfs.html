@@ -558,20 +558,20 @@
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
   </head>
 
-  <body class="antialiased bg-gray-900">
+  <body class="phase2-tool-page antialiased ui-bg-canvas">
     {{> navbar }}
 
     <div
       id="uploader"
-      class="min-h-screen flex flex-col items-center justify-start py-12 p-4 bg-gray-900"
+      class="min-h-screen flex flex-col items-center justify-start py-12 p-4 ui-bg-canvas"
     >
       <div
         id="tool-uploader"
-        class="bg-gray-800 rounded-xl shadow-xl px-4 py-8 md:p-8 max-w-[96rem] w-full text-gray-200 border border-gray-700"
+        class="ui-bg-surface rounded-xl shadow-xl px-4 py-8 md:p-8 max-w-[96rem] w-full ui-text-primary border ui-border-subtle"
       >
         <button
           id="back-to-tools"
-          class="flex items-center gap-2 text-indigo-400 hover:text-indigo-300 mb-6 font-semibold"
+          class="ui-button-secondary flex items-center gap-2 ui-text-action ui-hover-text-action mb-6 font-semibold"
         >
           <i data-lucide="arrow-left" class="cursor-pointer"></i>
           <span class="cursor-pointer" data-i18n="tools.backToTools">
@@ -580,12 +580,15 @@
         </button>
 
         <h1
-          class="text-2xl font-bold text-white mb-2"
+          class="text-2xl font-bold ui-text-primary mb-2"
           data-i18n="tools:comparePdfs.name"
         >
           Compare PDFs
         </h1>
-        <p class="text-gray-400 mb-6" data-i18n="tools:comparePdfs.subtitle">
+        <p
+          class="ui-text-secondary mb-6"
+          data-i18n="tools:comparePdfs.subtitle"
+        >
           Compare two PDFs side by side.
         </p>
 
@@ -593,21 +596,24 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <div
             id="drop-zone-1"
-            class="relative flex flex-col items-center justify-center w-full h-48 md:h-64 border-2 border-dashed border-gray-600 rounded-xl cursor-pointer bg-gray-900 hover:bg-gray-700 transition-colors duration-300"
+            class="ui-panel ui-drop-zone relative flex flex-col items-center justify-center w-full h-48 md:h-64 border-2 border-dashed ui-border rounded-xl cursor-pointer ui-bg-canvas ui-hover-bg-raised transition-colors duration-300"
           >
             <div
               id="file-display-1"
               class="flex flex-col items-center justify-center"
             >
-              <i data-lucide="file-text" class="w-8 h-8 mb-2 text-gray-400"></i>
+              <i
+                data-lucide="file-text"
+                class="w-8 h-8 mb-2 ui-text-secondary"
+              ></i>
               <p
-                class="text-sm text-gray-400"
+                class="text-sm ui-text-secondary"
                 data-i18n="tools:comparePdfs.firstPdf"
               >
                 First PDF
               </p>
               <p
-                class="text-xs text-gray-500"
+                class="text-xs ui-text-tertiary"
                 data-i18n="tools:comparePdfs.clickOrDrop"
               >
                 Click or drop
@@ -616,27 +622,30 @@
             <input
               id="file-input-1"
               type="file"
-              class="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
+              class="ui-input absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
               accept="application/pdf"
             />
           </div>
           <div
             id="drop-zone-2"
-            class="relative flex flex-col items-center justify-center w-full h-48 md:h-64 border-2 border-dashed border-gray-600 rounded-xl cursor-pointer bg-gray-900 hover:bg-gray-700 transition-colors duration-300"
+            class="ui-panel ui-drop-zone relative flex flex-col items-center justify-center w-full h-48 md:h-64 border-2 border-dashed ui-border rounded-xl cursor-pointer ui-bg-canvas ui-hover-bg-raised transition-colors duration-300"
           >
             <div
               id="file-display-2"
               class="flex flex-col items-center justify-center"
             >
-              <i data-lucide="file-text" class="w-8 h-8 mb-2 text-gray-400"></i>
+              <i
+                data-lucide="file-text"
+                class="w-8 h-8 mb-2 ui-text-secondary"
+              ></i>
               <p
-                class="text-sm text-gray-400"
+                class="text-sm ui-text-secondary"
                 data-i18n="tools:comparePdfs.secondPdf"
               >
                 Second PDF
               </p>
               <p
-                class="text-xs text-gray-500"
+                class="text-xs ui-text-tertiary"
                 data-i18n="tools:comparePdfs.clickOrDrop"
               >
                 Click or drop
@@ -645,7 +654,7 @@
             <input
               id="file-input-2"
               type="file"
-              class="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
+              class="ui-input absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
               accept="application/pdf"
             />
           </div>
@@ -655,24 +664,24 @@
         <div id="compare-viewer" class="hidden">
           <!-- Toolbar -->
           <div
-            class="flex flex-wrap items-center gap-3 mb-3 p-2 bg-gray-900 rounded-lg border border-gray-700"
+            class="flex flex-wrap items-center gap-3 mb-3 p-2 ui-bg-canvas rounded-lg border ui-border-subtle"
           >
             <button
               id="prev-page-compare"
-              class="btn p-1.5 rounded bg-gray-700 hover:bg-gray-600 disabled:opacity-50"
+              class="ui-button-secondary btn p-1.5 rounded ui-bg-raised ui-hover-bg-raised disabled:opacity-50"
               disabled
               title="Previous page"
               data-i18n-title="tools:comparePdfs.prevPage"
             >
               <i data-lucide="chevron-left" class="w-4 h-4"></i>
             </button>
-            <span class="text-sm text-white font-medium">
+            <span class="text-sm ui-text-primary font-medium">
               Page <span id="current-page-display-compare">1</span> /
               <span id="total-pages-display-compare">1</span>
             </span>
             <button
               id="next-page-compare"
-              class="btn p-1.5 rounded bg-gray-700 hover:bg-gray-600 disabled:opacity-50"
+              class="ui-button-secondary btn p-1.5 rounded ui-bg-raised ui-hover-bg-raised disabled:opacity-50"
               disabled
               title="Next page"
               data-i18n-title="tools:comparePdfs.nextPage"
@@ -680,30 +689,30 @@
               <i data-lucide="chevron-right" class="w-4 h-4"></i>
             </button>
 
-            <div class="border-l border-gray-700 h-5 mx-1"></div>
+            <div class="border-l ui-border-subtle h-5 mx-1"></div>
 
-            <div class="bg-gray-700 p-0.5 rounded flex gap-0.5">
+            <div class="ui-bg-raised p-0.5 rounded flex gap-0.5">
               <button
                 id="view-mode-overlay"
-                class="btn bg-indigo-600 px-2.5 py-1 rounded text-xs font-semibold"
+                class="ui-button-primary btn ui-bg-action px-2.5 py-1 rounded text-xs font-semibold"
                 data-i18n="tools:comparePdfs.overlay"
               >
                 Overlay
               </button>
               <button
                 id="view-mode-side"
-                class="btn px-2.5 py-1 rounded text-xs font-semibold"
+                class="ui-button-secondary btn px-2.5 py-1 rounded text-xs font-semibold"
                 data-i18n="tools:comparePdfs.sideBySide"
               >
                 Side-by-Side
               </button>
             </div>
 
-            <div class="border-l border-gray-700 h-5 mx-1"></div>
+            <div class="border-l ui-border-subtle h-5 mx-1"></div>
 
             <button
               id="prev-change-btn"
-              class="btn bg-gray-700 hover:bg-gray-600 px-2.5 py-1 rounded text-xs font-semibold disabled:opacity-50"
+              class="ui-button-secondary btn ui-bg-raised ui-hover-bg-raised px-2.5 py-1 rounded text-xs font-semibold disabled:opacity-50"
               disabled
               title="Previous change"
               data-i18n-title="tools:comparePdfs.prevChange"
@@ -712,7 +721,7 @@
             </button>
             <button
               id="next-change-btn"
-              class="btn bg-gray-700 hover:bg-gray-600 px-2.5 py-1 rounded text-xs font-semibold disabled:opacity-50"
+              class="ui-button-secondary btn ui-bg-raised ui-hover-bg-raised px-2.5 py-1 rounded text-xs font-semibold disabled:opacity-50"
               disabled
               title="Next change"
               data-i18n-title="tools:comparePdfs.nextChange"
@@ -720,11 +729,11 @@
               <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
             </button>
 
-            <div class="border-l border-gray-700 h-5 mx-1"></div>
+            <div class="border-l ui-border-subtle h-5 mx-1"></div>
 
             <button
               id="zoom-out-btn"
-              class="btn p-1.5 rounded bg-gray-700 hover:bg-gray-600 disabled:opacity-50"
+              class="ui-button-secondary btn p-1.5 rounded ui-bg-raised ui-hover-bg-raised disabled:opacity-50"
               title="Zoom out"
               data-i18n-title="tools:comparePdfs.auto.a4ae4b24a1"
             >
@@ -732,12 +741,12 @@
             </button>
             <span
               id="zoom-level-display"
-              class="text-xs text-gray-300 font-medium min-w-[3rem] text-center select-none"
+              class="text-xs ui-text-secondary font-medium min-w-[3rem] text-center select-none"
               >100%</span
             >
             <button
               id="zoom-in-btn"
-              class="btn p-1.5 rounded bg-gray-700 hover:bg-gray-600 disabled:opacity-50"
+              class="ui-button-secondary btn p-1.5 rounded ui-bg-raised ui-hover-bg-raised disabled:opacity-50"
               title="Zoom in"
               data-i18n-title="tools:comparePdfs.auto.4fc05f2763"
             >
@@ -745,7 +754,7 @@
             </button>
             <button
               id="zoom-reset-btn"
-              class="btn px-2.5 py-1 rounded bg-gray-700 hover:bg-gray-600 text-xs font-semibold"
+              class="ui-button-secondary btn px-2.5 py-1 rounded ui-bg-raised ui-hover-bg-raised text-xs font-semibold"
               title="Reset zoom to fit"
               data-i18n-title="tools:comparePdfs.resetZoom"
               data-i18n="tools:comparePdfs.auto.dab564d809"
@@ -756,17 +765,17 @@
             <div class="flex-1"></div>
 
             <div id="overlay-controls" class="hidden flex items-center gap-2">
-              <div class="bg-gray-700 p-0.5 rounded flex gap-0.5">
+              <div class="ui-bg-raised p-0.5 rounded flex gap-0.5">
                 <button
                   id="overlay-scope-all"
-                  class="btn bg-indigo-600 px-2.5 py-1 rounded text-xs font-semibold"
+                  class="ui-button-primary btn ui-bg-action px-2.5 py-1 rounded text-xs font-semibold"
                   data-i18n="tools:comparePdfs.auto.85174b7376"
                 >
                   All changes
                 </button>
                 <button
                   id="overlay-scope-content-only"
-                  class="btn px-2.5 py-1 rounded text-xs font-semibold bg-gray-700"
+                  class="ui-button-secondary btn px-2.5 py-1 rounded text-xs font-semibold ui-bg-raised"
                   data-i18n="tools:comparePdfs.auto.f90072a74b"
                 >
                   Content only
@@ -774,19 +783,19 @@
               </div>
               <button
                 id="flicker-btn"
-                class="btn bg-gray-700 hover:bg-gray-600 px-2.5 py-1 rounded text-xs font-semibold"
+                class="ui-button-secondary btn ui-bg-raised ui-hover-bg-raised px-2.5 py-1 rounded text-xs font-semibold"
                 data-i18n="tools:comparePdfs.flicker"
               >
                 Flicker
               </button>
               <label
-                class="flex items-center gap-1.5 text-xs text-gray-300 cursor-pointer"
+                class="flex items-center gap-1.5 text-xs ui-text-secondary cursor-pointer"
               >
                 <input
                   type="checkbox"
                   id="overlay-ocr-toggle"
                   checked
-                  class="w-3.5 h-3.5 rounded text-indigo-600 bg-gray-700 border-gray-600"
+                  class="ui-input w-3.5 h-3.5 rounded ui-text-action ui-bg-raised ui-border"
                 />
                 <span data-i18n="tools:comparePdfs.ocr">OCR</span>
               </label>
@@ -797,32 +806,32 @@
                 max="1"
                 step="0.05"
                 value="0.5"
-                class="w-20 accent-indigo-500"
+                class="ui-input w-20 accent-indigo-500"
               />
             </div>
 
             <div id="side-by-side-controls" class="flex items-center gap-2">
               <label
-                class="flex items-center gap-1.5 text-xs text-gray-300 cursor-pointer"
+                class="flex items-center gap-1.5 text-xs ui-text-secondary cursor-pointer"
               >
                 <input
                   type="checkbox"
                   id="sync-scroll-toggle"
                   checked
-                  class="w-3.5 h-3.5 rounded text-indigo-600 bg-gray-700 border-gray-600"
+                  class="ui-input w-3.5 h-3.5 rounded ui-text-action ui-bg-raised ui-border"
                 />
                 <span data-i18n="tools:comparePdfs.syncScroll"
                   >Sync scroll</span
                 >
               </label>
               <label
-                class="flex items-center gap-1.5 text-xs text-gray-300 cursor-pointer"
+                class="flex items-center gap-1.5 text-xs ui-text-secondary cursor-pointer"
               >
                 <input
                   type="checkbox"
                   id="ocr-toggle"
                   checked
-                  class="w-3.5 h-3.5 rounded text-indigo-600 bg-gray-700 border-gray-600"
+                  class="ui-input w-3.5 h-3.5 rounded ui-text-action ui-bg-raised ui-border"
                 />
                 <span data-i18n="tools:comparePdfs.ocr">OCR</span>
               </label>
@@ -831,7 +840,7 @@
             <div class="relative" id="export-dropdown-wrapper">
               <button
                 id="export-dropdown-btn"
-                class="btn bg-indigo-600 hover:bg-indigo-500 px-3 py-1.5 rounded text-xs font-semibold flex items-center gap-1.5 disabled:opacity-50"
+                class="ui-button-primary btn ui-bg-action ui-hover-bg-action px-3 py-1.5 rounded text-xs font-semibold flex items-center gap-1.5 disabled:opacity-50"
                 disabled
               >
                 <i data-lucide="upload" class="w-3.5 h-3.5"></i>
@@ -840,10 +849,10 @@
               </button>
               <div
                 id="export-dropdown-menu"
-                class="hidden absolute right-0 top-full mt-1 w-48 bg-gray-800 border border-gray-600 rounded-lg shadow-xl z-50 py-1"
+                class="hidden absolute right-0 top-full mt-1 w-48 ui-bg-surface border ui-border rounded-lg shadow-xl z-50 py-1"
               >
                 <div
-                  class="px-3 py-1.5 text-xs font-semibold text-gray-400 uppercase tracking-wider"
+                  class="px-3 py-1.5 text-xs font-semibold ui-text-secondary uppercase tracking-wider"
                 >
                   <span data-i18n="tools:comparePdfs.exportAsPdf"
                     >Export as PDF</span
@@ -851,45 +860,54 @@
                 </div>
                 <button
                   data-export-mode="overlay"
-                  class="export-menu-item export-menu-item-overlay w-full px-3 py-2 text-sm text-left text-gray-200 hover:bg-gray-700 flex items-center gap-2 hidden"
+                  class="ui-button-secondary export-menu-item export-menu-item-overlay w-full px-3 py-2 text-sm text-left ui-text-primary ui-hover-bg-raised flex items-center gap-2 hidden"
                 >
-                  <i data-lucide="layers" class="w-4 h-4 text-gray-400"></i>
+                  <i data-lucide="layers" class="w-4 h-4 ui-text-secondary"></i>
                   <span data-i18n="tools:comparePdfs.overlayView"
                     >Overlay view</span
                   >
                 </button>
                 <button
                   data-export-mode="split"
-                  class="export-menu-item export-menu-item-side w-full px-3 py-2 text-sm text-left text-gray-200 hover:bg-gray-700 flex items-center gap-2"
+                  class="ui-button-secondary export-menu-item export-menu-item-side w-full px-3 py-2 text-sm text-left ui-text-primary ui-hover-bg-raised flex items-center gap-2"
                 >
-                  <i data-lucide="columns-2" class="w-4 h-4 text-gray-400"></i>
+                  <i
+                    data-lucide="columns-2"
+                    class="w-4 h-4 ui-text-secondary"
+                  ></i>
                   <span data-i18n="tools:comparePdfs.splitView"
                     >Split view</span
                   >
                 </button>
                 <button
                   data-export-mode="alternating"
-                  class="export-menu-item export-menu-item-side w-full px-3 py-2 text-sm text-left text-gray-200 hover:bg-gray-700 flex items-center gap-2"
+                  class="ui-button-secondary export-menu-item export-menu-item-side w-full px-3 py-2 text-sm text-left ui-text-primary ui-hover-bg-raised flex items-center gap-2"
                 >
-                  <i data-lucide="layers" class="w-4 h-4 text-gray-400"></i>
+                  <i data-lucide="layers" class="w-4 h-4 ui-text-secondary"></i>
                   <span data-i18n="tools:comparePdfs.alternating"
                     >Alternating</span
                   >
                 </button>
                 <button
                   data-export-mode="left"
-                  class="export-menu-item export-menu-item-side w-full px-3 py-2 text-sm text-left text-gray-200 hover:bg-gray-700 flex items-center gap-2"
+                  class="ui-button-secondary export-menu-item export-menu-item-side w-full px-3 py-2 text-sm text-left ui-text-primary ui-hover-bg-raised flex items-center gap-2"
                 >
-                  <i data-lucide="columns-2" class="w-4 h-4 text-gray-400"></i>
+                  <i
+                    data-lucide="columns-2"
+                    class="w-4 h-4 ui-text-secondary"
+                  ></i>
                   <span data-i18n="tools:comparePdfs.leftDocument"
                     >Left Document</span
                   >
                 </button>
                 <button
                   data-export-mode="right"
-                  class="export-menu-item export-menu-item-side w-full px-3 py-2 text-sm text-left text-gray-200 hover:bg-gray-700 flex items-center gap-2"
+                  class="ui-button-secondary export-menu-item export-menu-item-side w-full px-3 py-2 text-sm text-left ui-text-primary ui-hover-bg-raised flex items-center gap-2"
                 >
-                  <i data-lucide="columns-2" class="w-4 h-4 text-gray-400"></i>
+                  <i
+                    data-lucide="columns-2"
+                    class="w-4 h-4 ui-text-secondary"
+                  ></i>
                   <span data-i18n="tools:comparePdfs.rightDocument"
                     >Right Document</span
                   >
@@ -949,14 +967,17 @@
                   <span
                     class="absolute inset-y-0 left-0 flex items-center pl-3"
                   >
-                    <i data-lucide="search" class="w-4 h-4 text-gray-400"></i>
+                    <i
+                      data-lucide="search"
+                      class="w-4 h-4 ui-text-secondary"
+                    ></i>
                   </span>
                   <input
                     type="text"
                     id="compare-search-input"
                     placeholder="Search changes..."
                     data-i18n-placeholder="tools:comparePdfs.searchChanges"
-                    class="w-full pl-9 pr-3 py-2 bg-gray-700 text-white text-sm border border-gray-600 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+                    class="ui-input w-full pl-9 pr-3 py-2 ui-bg-raised ui-text-primary text-sm border ui-border rounded-lg ui-focus-ring ui-focus-ring"
                   />
                 </div>
               </div>
@@ -969,29 +990,41 @@
                   >
                     Change Type
                   </div>
-                  <button id="filter-removed" class="compare-pill removed">
+                  <button
+                    id="filter-removed"
+                    class="ui-button-secondary compare-pill removed"
+                  >
                     <span class="compare-change-dot removed"></span>
                     <span id="summary-removed-count">0</span>
                     <span data-i18n="tools:comparePdfs.deleted">Deleted</span>
                   </button>
-                  <button id="filter-added" class="compare-pill added">
+                  <button
+                    id="filter-added"
+                    class="ui-button-secondary compare-pill added"
+                  >
                     <span class="compare-change-dot added"></span>
                     <span id="summary-added-count">0</span>
                     <span data-i18n="tools:comparePdfs.added">Added</span>
                   </button>
-                  <button id="filter-modified" class="compare-pill modified">
+                  <button
+                    id="filter-modified"
+                    class="ui-button-secondary compare-pill modified"
+                  >
                     <span class="compare-change-dot modified"></span>
                     <span id="summary-modified-count">0</span>
                     <span data-i18n="tools:comparePdfs.modified">Modified</span>
                   </button>
-                  <button id="filter-moved" class="compare-pill moved">
+                  <button
+                    id="filter-moved"
+                    class="ui-button-secondary compare-pill moved"
+                  >
                     <span class="compare-change-dot moved"></span>
                     <span id="summary-moved-count">0</span>
                     <span data-i18n="tools:comparePdfs.moved">Moved</span>
                   </button>
                   <button
                     id="filter-style-changed"
-                    class="compare-pill style-changed"
+                    class="ui-button-secondary compare-pill style-changed"
                   >
                     <span class="compare-change-dot style-changed"></span>
                     <span id="summary-style-changed-count">0</span>
@@ -1007,28 +1040,28 @@
                   </div>
                   <button
                     id="category-text"
-                    class="compare-pill category active"
+                    class="ui-button-secondary compare-pill category active"
                   >
                     <span id="category-count-text">0</span>
                     <span data-i18n="tools:comparePdfs.text">Text</span>
                   </button>
                   <button
                     id="category-image"
-                    class="compare-pill category active"
+                    class="ui-button-secondary compare-pill category active"
                   >
                     <span id="category-count-image">0</span>
                     <span data-i18n="tools:comparePdfs.images">Images</span>
                   </button>
                   <button
                     id="category-header-footer"
-                    class="compare-pill category active"
+                    class="ui-button-secondary compare-pill category active"
                   >
                     <span id="category-count-header-footer">0</span>
                     <span data-i18n="tools:comparePdfs.headers">Headers</span>
                   </button>
                   <button
                     id="category-annotation"
-                    class="compare-pill category active"
+                    class="ui-button-secondary compare-pill category active"
                   >
                     <span id="category-count-annotation">0</span>
                     <span data-i18n="tools:comparePdfs.annotations"
@@ -1037,7 +1070,7 @@
                   </button>
                   <button
                     id="category-formatting"
-                    class="compare-pill category active"
+                    class="ui-button-secondary compare-pill category active"
                   >
                     <span id="category-count-formatting">0</span>
                     <span data-i18n="tools:comparePdfs.formatting"
@@ -1046,7 +1079,7 @@
                   </button>
                   <button
                     id="category-background"
-                    class="compare-pill category active"
+                    class="ui-button-secondary compare-pill category active"
                   >
                     <span id="category-count-background">0</span>
                     <span data-i18n="tools:comparePdfs.backgrounds"
@@ -1075,15 +1108,15 @@
     <!-- Loader Modal -->
     <div
       id="loader-modal"
-      class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
+      class="hidden fixed inset-0 ui-bg-sunken bg-opacity-75 flex items-center justify-center z-50"
     >
       <div
-        class="bg-gray-800 p-8 rounded-lg flex flex-col items-center gap-4 border border-gray-700 shadow-xl"
+        class="ui-bg-surface p-8 rounded-lg flex flex-col items-center gap-4 border ui-border-subtle shadow-xl"
       >
         <div class="solid-spinner"></div>
         <p
           id="loader-text"
-          class="text-white text-lg font-medium"
+          class="ui-text-primary text-lg font-medium"
           data-i18n="loader.processing"
         >
           Processing...
@@ -1094,22 +1127,22 @@
     <!-- Alert Modal -->
     <div
       id="alert-modal"
-      class="fixed inset-0 bg-gray-900 bg-opacity-90 flex items-center justify-center z-50 hidden"
+      class="fixed inset-0 ui-bg-canvas bg-opacity-90 flex items-center justify-center z-50 hidden"
     >
       <div
-        class="bg-gray-800 rounded-lg shadow-xl p-6 max-w-sm w-full border border-gray-700"
+        class="ui-bg-surface rounded-lg shadow-xl p-6 max-w-sm w-full border ui-border-subtle"
       >
         <h3
           id="alert-title"
-          class="text-xl font-bold text-white mb-2"
+          class="text-xl font-bold ui-text-primary mb-2"
           data-i18n="alert.title"
         >
           Alert
         </h3>
-        <p id="alert-message" class="text-gray-300 mb-6"></p>
+        <p id="alert-message" class="ui-text-secondary mb-6"></p>
         <button
           id="alert-ok"
-          class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
+          class="ui-button-primary w-full ui-bg-action ui-hover-bg-action ui-text-primary font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
           data-i18n="alert.ok"
         >
           OK
@@ -1120,7 +1153,7 @@
     <!-- How It Works Section -->
     <section class="max-w-4xl mx-auto px-4 py-12">
       <h2
-        class="text-2xl md:text-3xl font-bold text-white mb-8 text-center"
+        class="text-2xl md:text-3xl font-bold ui-text-primary mb-8 text-center"
         data-i18n="howItWorks.title"
       >
         How It Works
@@ -1128,54 +1161,54 @@
       <div class="space-y-6">
         <div class="flex items-start gap-4">
           <div
-            class="flex-shrink-0 w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold"
+            class="flex-shrink-0 w-10 h-10 ui-bg-action rounded-full flex items-center justify-center ui-text-primary font-bold"
           >
             1
           </div>
           <div class="flex-1">
             <h3
-              class="text-lg font-semibold text-white mb-1"
+              class="text-lg font-semibold ui-text-primary mb-1"
               data-i18n="howItWorks.step1Title"
             >
               Upload File
             </h3>
-            <p class="text-gray-400" data-i18n="howItWorks.step1">
+            <p class="ui-text-secondary" data-i18n="howItWorks.step1">
               Click or drag and drop your file to begin
             </p>
           </div>
         </div>
         <div class="flex items-start gap-4">
           <div
-            class="flex-shrink-0 w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold"
+            class="flex-shrink-0 w-10 h-10 ui-bg-action rounded-full flex items-center justify-center ui-text-primary font-bold"
           >
             2
           </div>
           <div class="flex-1">
             <h3
-              class="text-lg font-semibold text-white mb-1"
+              class="text-lg font-semibold ui-text-primary mb-1"
               data-i18n="howItWorks.step2Title"
             >
               Process
             </h3>
-            <p class="text-gray-400" data-i18n="howItWorks.step2">
+            <p class="ui-text-secondary" data-i18n="howItWorks.step2">
               Click the process button to start
             </p>
           </div>
         </div>
         <div class="flex items-start gap-4">
           <div
-            class="flex-shrink-0 w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold"
+            class="flex-shrink-0 w-10 h-10 ui-bg-action rounded-full flex items-center justify-center ui-text-primary font-bold"
           >
             3
           </div>
           <div class="flex-1">
             <h3
-              class="text-lg font-semibold text-white mb-1"
+              class="text-lg font-semibold ui-text-primary mb-1"
               data-i18n="howItWorks.step3Title"
             >
               Download
             </h3>
-            <p class="text-gray-400" data-i18n="howItWorks.step3">
+            <p class="ui-text-secondary" data-i18n="howItWorks.step3">
               Save your processed file instantly
             </p>
           </div>
@@ -1186,7 +1219,7 @@
     <!-- Related Tools Section -->
     <section class="max-w-6xl mx-auto px-4 py-12">
       <h2
-        class="text-2xl md:text-3xl font-bold text-white mb-6 text-center"
+        class="text-2xl md:text-3xl font-bold ui-text-primary mb-6 text-center"
         data-i18n="relatedTools.title"
       >
         Related PDF Tools
@@ -1194,30 +1227,33 @@
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
         <a
           href="merge-pdf.html"
-          class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
+          class="block ui-bg-surface p-4 rounded-lg ui-hover-bg-raised transition-colors border ui-border-subtle"
         >
           <h3
-            class="text-white font-semibold mb-1"
+            class="ui-text-primary font-semibold mb-1"
             data-i18n="tools:comparePdfs.auto.bb9dede377"
           >
             Merge Pdf
           </h3>
-          <p class="text-gray-400 text-sm" data-i18n="tools:mergePdf.cardDesc">
+          <p
+            class="ui-text-secondary text-sm"
+            data-i18n="tools:mergePdf.cardDesc"
+          >
             Free online merge pdf tool
           </p>
         </a>
         <a
           href="compress-pdf.html"
-          class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
+          class="block ui-bg-surface p-4 rounded-lg ui-hover-bg-raised transition-colors border ui-border-subtle"
         >
           <h3
-            class="text-white font-semibold mb-1"
+            class="ui-text-primary font-semibold mb-1"
             data-i18n="tools:comparePdfs.auto.ae395b2670"
           >
             Compress Pdf
           </h3>
           <p
-            class="text-gray-400 text-sm"
+            class="ui-text-secondary text-sm"
             data-i18n="tools:compressPdf.cardDesc"
           >
             Free online compress pdf tool
@@ -1225,43 +1261,52 @@
         </a>
         <a
           href="split-pdf.html"
-          class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
+          class="block ui-bg-surface p-4 rounded-lg ui-hover-bg-raised transition-colors border ui-border-subtle"
         >
           <h3
-            class="text-white font-semibold mb-1"
+            class="ui-text-primary font-semibold mb-1"
             data-i18n="tools:comparePdfs.auto.0784d816a9"
           >
             Split Pdf
           </h3>
-          <p class="text-gray-400 text-sm" data-i18n="tools:splitPdf.cardDesc">
+          <p
+            class="ui-text-secondary text-sm"
+            data-i18n="tools:splitPdf.cardDesc"
+          >
             Free online split pdf tool
           </p>
         </a>
         <a
           href="edit-pdf.html"
-          class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
+          class="block ui-bg-surface p-4 rounded-lg ui-hover-bg-raised transition-colors border ui-border-subtle"
         >
           <h3
-            class="text-white font-semibold mb-1"
+            class="ui-text-primary font-semibold mb-1"
             data-i18n="tools:comparePdfs.auto.0a193ffe0a"
           >
             Edit Pdf
           </h3>
-          <p class="text-gray-400 text-sm" data-i18n="tools:pdfEditor.cardDesc">
+          <p
+            class="ui-text-secondary text-sm"
+            data-i18n="tools:pdfEditor.cardDesc"
+          >
             Free online edit pdf tool
           </p>
         </a>
         <a
           href="rotate-pdf.html"
-          class="block bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors border border-gray-700"
+          class="block ui-bg-surface p-4 rounded-lg ui-hover-bg-raised transition-colors border ui-border-subtle"
         >
           <h3
-            class="text-white font-semibold mb-1"
+            class="ui-text-primary font-semibold mb-1"
             data-i18n="tools:comparePdfs.auto.ed40c6ff84"
           >
             Rotate Pdf
           </h3>
-          <p class="text-gray-400 text-sm" data-i18n="tools:rotatePdf.cardDesc">
+          <p
+            class="ui-text-secondary text-sm"
+            data-i18n="tools:rotatePdf.cardDesc"
+          >
             Free online rotate pdf tool
           </p>
         </a>
@@ -1271,50 +1316,50 @@
     <!-- FAQ Section -->
     <section class="max-w-4xl mx-auto px-4 py-12">
       <h2
-        class="text-2xl md:text-3xl font-bold text-white mb-6 text-center"
+        class="text-2xl md:text-3xl font-bold ui-text-primary mb-6 text-center"
         data-i18n="faq.sectionTitle"
       >
         Frequently Asked Questions
       </h2>
       <div class="space-y-4">
-        <details class="bg-gray-800 p-5 rounded-lg border border-gray-700">
+        <details class="ui-bg-surface p-5 rounded-lg border ui-border-subtle">
           <summary
-            class="cursor-pointer font-semibold text-white flex items-center justify-between"
+            class="cursor-pointer font-semibold ui-text-primary flex items-center justify-between"
           >
             <span data-i18n="tools:comparePdfs.faq1q"
               >Is compare pdfs really free?</span
             >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400" data-i18n="tools:comparePdfs.faq1a">
+          <p class="mt-3 ui-text-secondary" data-i18n="tools:comparePdfs.faq1a">
             Yes! TuHe PDF is 100% free with no hidden fees, no signup required,
             and unlimited file processing.
           </p>
         </details>
-        <details class="bg-gray-800 p-5 rounded-lg border border-gray-700">
+        <details class="ui-bg-surface p-5 rounded-lg border ui-border-subtle">
           <summary
-            class="cursor-pointer font-semibold text-white flex items-center justify-between"
+            class="cursor-pointer font-semibold ui-text-primary flex items-center justify-between"
           >
             <span data-i18n="tools:comparePdfs.faq2q"
               >Are my files private and secure?</span
             >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400" data-i18n="tools:comparePdfs.faq2a">
+          <p class="mt-3 ui-text-secondary" data-i18n="tools:comparePdfs.faq2a">
             Absolutely! All processing happens in your browser. Your files never
             leave your device, ensuring complete privacy.
           </p>
         </details>
-        <details class="bg-gray-800 p-5 rounded-lg border border-gray-700">
+        <details class="ui-bg-surface p-5 rounded-lg border ui-border-subtle">
           <summary
-            class="cursor-pointer font-semibold text-white flex items-center justify-between"
+            class="cursor-pointer font-semibold ui-text-primary flex items-center justify-between"
           >
             <span data-i18n="tools:comparePdfs.faq3q"
               >Is there a file size limit?</span
             >
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </summary>
-          <p class="mt-3 text-gray-400" data-i18n="tools:comparePdfs.faq3a">
+          <p class="mt-3 ui-text-secondary" data-i18n="tools:comparePdfs.faq3a">
             No! Process files of any size, as many times as you want, completely
             free.
           </p>

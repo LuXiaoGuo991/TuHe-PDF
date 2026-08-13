@@ -77,13 +77,13 @@ function updateFileDisplay() {
   const pageCount = pageState.pdfDoc.getPageCount();
 
   displayArea.innerHTML = `
-        <div class="bg-gray-700 p-3 rounded-lg border border-gray-600 hover:border-indigo-500 transition-colors">
+        <div class="ui-bg-raised p-3 rounded-lg border ui-border ui-hover-border-action transition-colors">
             <div class="flex items-center justify-between">
                 <div class="flex-1 min-w-0">
-                    <p class="truncate font-medium text-white">${escapeHtml(pageState.file.name)}</p>
-                    <p class="text-gray-400 text-sm">${fileSize} • ${translate('common.filePages', '{{count}} pages', { count: pageCount })}</p>
+                    <p class="truncate font-medium ui-text-primary">${escapeHtml(pageState.file.name)}</p>
+                    <p class="ui-text-secondary text-sm">${fileSize} • ${translate('common.filePages', '{{count}} pages', { count: pageCount })}</p>
                 </div>
-                <button id="remove-file" class="text-red-400 hover:text-red-300 p-2 flex-shrink-0 ml-2" title="${translate('tools:common.removeFile', 'Remove file')}">
+                <button id="remove-file" class="ui-text-danger ui-hover-text-danger p-2 flex-shrink-0 ml-2" title="${translate('tools:common.removeFile', 'Remove file')}">
                     <i data-lucide="trash-2" class="w-4 h-4"></i>
                 </button>
             </div>
@@ -218,16 +218,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   dropZone?.addEventListener('dragover', (e) => {
     e.preventDefault();
-    dropZone.classList.add('border-indigo-500');
+    dropZone.classList.add('ui-border-action');
   });
 
   dropZone?.addEventListener('dragleave', () => {
-    dropZone.classList.remove('border-indigo-500');
+    dropZone.classList.remove('ui-border-action');
   });
 
   dropZone?.addEventListener('drop', (e) => {
     e.preventDefault();
-    dropZone.classList.remove('border-indigo-500');
+    dropZone.classList.remove('ui-border-action');
     const file = e.dataTransfer?.files[0];
     if (file) handleFileUpload(file);
   });

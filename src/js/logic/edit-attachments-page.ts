@@ -117,7 +117,7 @@ function displayAttachments(attachments: AttachmentInfo[]) {
 
   if (attachments.length === 0) {
     const noAttachments = document.createElement('p');
-    noAttachments.className = 'text-gray-400 text-center py-4';
+    noAttachments.className = 'ui-text-secondary text-center py-4';
     noAttachments.textContent = translate(
       'tools:editAttachments.dynamic.df05883ac6',
       'No attachments found in this PDF.'
@@ -132,7 +132,7 @@ function displayAttachments(attachments: AttachmentInfo[]) {
 
   const removeAllBtn = document.createElement('button');
   removeAllBtn.className =
-    'bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded text-sm';
+    'bg-red-500 hover:bg-red-600 ui-text-primary px-4 py-2 rounded text-sm';
   removeAllBtn.textContent = translate(
     'tools:editAttachments.dynamic.73e3ef7c28',
     'Remove All Attachments'
@@ -154,7 +154,7 @@ function displayAttachments(attachments: AttachmentInfo[]) {
           element.classList.remove('opacity-50', 'line-through');
           const btn = element.querySelector('button');
           if (btn) {
-            btn.classList.remove('bg-gray-600');
+            btn.classList.remove('ui-bg-raised');
             btn.classList.add('bg-red-600');
           }
         }
@@ -173,7 +173,7 @@ function displayAttachments(attachments: AttachmentInfo[]) {
           element.classList.add('opacity-50', 'line-through');
           const btn = element.querySelector('button');
           if (btn) {
-            btn.classList.add('bg-gray-600');
+            btn.classList.add('ui-bg-raised');
             btn.classList.remove('bg-red-600');
           }
         }
@@ -192,18 +192,18 @@ function displayAttachments(attachments: AttachmentInfo[]) {
   for (const attachment of attachments) {
     const attachmentDiv = document.createElement('div');
     attachmentDiv.className =
-      'flex items-center justify-between p-3 bg-gray-800 rounded-lg border border-gray-700';
+      'flex items-center justify-between p-3 ui-bg-surface rounded-lg border ui-border-subtle';
     attachmentDiv.dataset.attachmentIndex = attachment.index.toString();
 
     const infoDiv = document.createElement('div');
     infoDiv.className = 'flex-1';
 
     const nameSpan = document.createElement('span');
-    nameSpan.className = 'text-white font-medium block';
+    nameSpan.className = 'ui-text-primary font-medium block';
     nameSpan.textContent = attachment.name;
 
     const levelSpan = document.createElement('span');
-    levelSpan.className = 'text-gray-400 text-sm block';
+    levelSpan.className = 'ui-text-secondary text-sm block';
     if (attachment.page === 0) {
       levelSpan.textContent = translate(
         'tools:editAttachments.dynamic.9ee1e04045',
@@ -223,7 +223,7 @@ function displayAttachments(attachments: AttachmentInfo[]) {
     actionsDiv.className = 'flex items-center gap-2';
 
     const removeBtn = document.createElement('button');
-    removeBtn.className = `${pageState.attachmentsToRemove.has(attachment.index) ? 'bg-gray-600' : 'bg-red-600'} hover:bg-red-700 text-white px-3 py-1 rounded text-sm`;
+    removeBtn.className = `${pageState.attachmentsToRemove.has(attachment.index) ? 'ui-bg-raised' : 'bg-red-600'} hover:bg-red-700 ui-text-primary px-3 py-1 rounded text-sm`;
     removeBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
     removeBtn.title = translate(
       'tools:editAttachments.dynamic.151df6b489',
@@ -233,12 +233,12 @@ function displayAttachments(attachments: AttachmentInfo[]) {
       if (pageState.attachmentsToRemove.has(attachment.index)) {
         pageState.attachmentsToRemove.delete(attachment.index);
         attachmentDiv.classList.remove('opacity-50', 'line-through');
-        removeBtn.classList.remove('bg-gray-600');
+        removeBtn.classList.remove('ui-bg-raised');
         removeBtn.classList.add('bg-red-600');
       } else {
         pageState.attachmentsToRemove.add(attachment.index);
         attachmentDiv.classList.add('opacity-50', 'line-through');
-        removeBtn.classList.add('bg-gray-600');
+        removeBtn.classList.add('ui-bg-raised');
         removeBtn.classList.remove('bg-red-600');
       }
 
@@ -374,23 +374,24 @@ async function updateUI() {
   if (pageState.file) {
     const fileDiv = document.createElement('div');
     fileDiv.className =
-      'flex items-center justify-between bg-gray-700 p-3 rounded-lg text-sm';
+      'flex items-center justify-between ui-bg-raised p-3 rounded-lg text-sm';
 
     const infoContainer = document.createElement('div');
     infoContainer.className = 'flex flex-col overflow-hidden';
 
     const nameSpan = document.createElement('div');
-    nameSpan.className = 'truncate font-medium text-gray-200 text-sm mb-1';
+    nameSpan.className = 'truncate font-medium ui-text-primary text-sm mb-1';
     nameSpan.textContent = pageState.file.name;
 
     const metaSpan = document.createElement('div');
-    metaSpan.className = 'text-xs text-gray-400';
+    metaSpan.className = 'text-xs ui-text-secondary';
     metaSpan.textContent = formatBytes(pageState.file.size);
 
     infoContainer.append(nameSpan, metaSpan);
 
     const removeBtn = document.createElement('button');
-    removeBtn.className = 'ml-4 text-red-400 hover:text-red-300 flex-shrink-0';
+    removeBtn.className =
+      'ml-4 ui-text-danger ui-hover-text-danger flex-shrink-0';
     removeBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
     removeBtn.onclick = function () {
       resetState();
@@ -443,17 +444,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     dropZone.addEventListener('dragover', function (e) {
       e.preventDefault();
-      dropZone.classList.add('bg-gray-700');
+      dropZone.classList.add('ui-bg-raised');
     });
 
     dropZone.addEventListener('dragleave', function (e) {
       e.preventDefault();
-      dropZone.classList.remove('bg-gray-700');
+      dropZone.classList.remove('ui-bg-raised');
     });
 
     dropZone.addEventListener('drop', function (e) {
       e.preventDefault();
-      dropZone.classList.remove('bg-gray-700');
+      dropZone.classList.remove('ui-bg-raised');
       const files = e.dataTransfer?.files;
       if (files && files.length > 0) {
         const pdfFiles = Array.from(files).filter(function (f) {
