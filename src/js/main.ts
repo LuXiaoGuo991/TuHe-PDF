@@ -19,9 +19,11 @@ import {
   isCurrentPageDisabled,
 } from './utils/disabled-tools.js';
 import { initWorkbench } from './workbench.js';
+import { initTheme } from './utils/theme.js';
 declare const __BRAND_NAME__: string;
 
 const init = async () => {
+  initTheme();
   await initI18n();
   await loadRuntimeConfig();
   injectLanguageSwitcher();
