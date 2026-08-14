@@ -66,6 +66,17 @@
   <body class="antialiased">
     <!-- ===== 全局唯一顶部导航 ===== -->
     <header class="wb-topbar">
+      <!-- 移动端：打开左侧工具列表的汉堡按钮（桌面隐藏） -->
+      <button
+        id="topbar-rail-btn"
+        class="wb-topbar-rail-btn"
+        type="button"
+        aria-label="打开工具列表"
+        data-i18n-title="workbench.openToolRail"
+        data-i18n-aria="workbench.openToolRail"
+      >
+        <i class="ph ph-list" aria-hidden="true"></i>
+      </button>
       <button
         id="topbar-brand"
         class="wb-topbar-brand"

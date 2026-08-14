@@ -1,9 +1,30 @@
 import { PDFDocument as PDFLibDocument } from 'pdf-lib';
-import { preprocessImageFile } from './image-input-utils.js';
+import { preprocessImageFile, getFileExtension } from './image-input-utils.js';
+import { compressImageFile, type ImageQuality } from './image-compress.js';
 
 export interface EmbeddableImage {
   bytes: Uint8Array;
   format: 'jpg' | 'png';
+}
+
+/**
+ * 浏览器 canvas 可稳定解码、且无需引擎预处理的格式 → 走 pdf-lib 快路径（不加载 WASM 引擎）。
+ * 其余格式（TIFF/SVG/AVIF/JPEG2000/JXR/PSD/PNM 系列等）需要 PyMuPDF 引擎兜底，
+ * 以保证跨浏览器兼容性与转换质量不回归。
+ */
+const CANVAS_SAFE_EXTENSIONS = new Set([
+  '.jpg',
+  '.jpeg',
+  '.png',
+  '.webp',
+  '.gif',
+  '.bmp',
+  '.heic',
+  '.heif',
+]);
+
+export function isCanvasSafeImage(file: File): boolean {
+  return CANVAS_SAFE_EXTENSIONS.has(getFileExtension(file.name));
 }
 
 export async function normalizeImageToEmbeddable(
@@ -57,10 +78,19 @@ export async function normalizeImageToEmbeddable(
   }
 }
 
-export async function convertImagesToPdfFile(images: File[]): Promise<File> {
+export async function convertImagesToPdfFile(
+  images: File[],
+  quality?: ImageQuality
+): Promise<File> {
   const pdfDoc = await PDFLibDocument.create();
   for (const img of images) {
-    const { bytes, format } = await normalizeImageToEmbeddable(img);
+    const processed = await preprocessImageFile(img);
+    // medium/low 时先压缩（canvas 缩放/重编码为 JPEG），high 或不传则原样嵌入，与引擎路径行为一致
+    const toEmbed =
+      quality && quality !== 'high'
+        ? await compressImageFile(processed, quality)
+        : processed;
+    const { bytes, format } = await normalizeImageToEmbeddable(toEmbed);
     const embedded =
       format === 'jpg'
         ? await pdfDoc.embedJpg(bytes)

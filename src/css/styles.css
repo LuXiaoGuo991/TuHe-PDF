@@ -940,6 +940,34 @@ body:has(#workbench) {
   background: var(--color-surface);
 }
 
+/* 移动端：打开工具列表的汉堡按钮（桌面隐藏） */
+.wb-topbar-rail-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  color: var(--color-text-primary);
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.wb-topbar-rail-btn:hover {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+.wb-topbar-rail-btn i {
+  font-size: 22px;
+  line-height: 1;
+}
+
 .theme-logo--light {
   display: none;
 }
@@ -1166,6 +1194,10 @@ body:has(#workbench) {
   .wb-topbar {
     gap: 8px;
     padding: 0 12px;
+  }
+
+  .wb-topbar-rail-btn {
+    display: flex;
   }
 
   .wb-topbar-brand {

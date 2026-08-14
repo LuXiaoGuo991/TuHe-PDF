@@ -29,6 +29,7 @@ vi.mock('pdf-lib', () => {
 import {
   normalizeImageToEmbeddable,
   convertImagesToPdfFile,
+  isCanvasSafeImage,
 } from '../js/utils/images-to-pdf-lib';
 
 function makeFile(name: string, type: string, bytes = [1, 2, 3]): File {
@@ -194,6 +195,50 @@ describe('normalizeImageToEmbeddable', () => {
   });
 });
 
+describe('isCanvasSafeImage', () => {
+  it('returns true for canvas-safe formats', () => {
+    const names = [
+      'a.jpg',
+      'b.jpeg',
+      'c.png',
+      'd.webp',
+      'e.gif',
+      'f.bmp',
+      'g.heic',
+      'h.HEIC',
+      'i.jpg',
+    ];
+    for (const name of names) {
+      expect(isCanvasSafeImage(makeFile(name, ''))).toBe(true);
+    }
+  });
+
+  it('returns false for engine-only formats and unknown extensions', () => {
+    const names = [
+      'a.tiff',
+      'b.svg',
+      'c.avif',
+      'd.jp2',
+      'e.jpx',
+      'f.jxr',
+      'g.psd',
+      'h.pnm',
+      'i.pgm',
+      'j.pbm',
+      'k.ppm',
+      'l.pam',
+      'm.unknown',
+    ];
+    for (const name of names) {
+      expect(isCanvasSafeImage(makeFile(name, ''))).toBe(false);
+    }
+  });
+
+  it('handles files with no extension', () => {
+    expect(isCanvasSafeImage(makeFile('noext', ''))).toBe(false);
+  });
+});
+
 describe('convertImagesToPdfFile', () => {
   beforeEach(() => {
     mockEmbedJpg.mockReset();
@@ -233,6 +278,15 @@ describe('convertImagesToPdfFile', () => {
     expect(result.name).toBe('scan.pdf');
   });
 
+  it('passes images through unchanged on high quality', async () => {
+    const file = makeFile('scan.png', 'image/png', [0x89, 0x50]);
+    await convertImagesToPdfFile([file], 'high');
+
+    expect(mockEmbedPng).toHaveBeenCalledTimes(1);
+    expect(mockEmbedJpg).not.toHaveBeenCalled();
+    expect(mockAddPage).toHaveBeenCalledWith([600, 400]);
+  });
+
   it('embeds multiple images and uses generic filename', async () => {
     const files = [
       makeFile('a.jpg', 'image/jpeg'),
@@ -266,5 +320,60 @@ describe('convertImagesToPdfFile', () => {
     await expect(convertImagesToPdfFile([file])).rejects.toThrow(
       /embed failed/
     );
+  });
+
+  describe('compression path (medium/low quality)', () => {
+    const originalCreateElement = document.createElement.bind(document);
+    const originalImage = globalThis.Image;
+    const originalCreateObjectURL = URL.createObjectURL;
+    const originalRevokeObjectURL = URL.revokeObjectURL;
+
+    beforeEach(() => {
+      URL.createObjectURL = vi.fn(() => 'blob:test');
+      URL.revokeObjectURL = vi.fn();
+
+      globalThis.Image = class {
+        naturalWidth = 100;
+        naturalHeight = 50;
+        onload: (() => void) | null = null;
+        onerror: (() => void) | null = null;
+        set src(_: string) {
+          setTimeout(() => this.onload?.(), 0);
+        }
+      } as unknown as typeof Image;
+
+      document.createElement = ((tagName: string) => {
+        if (tagName !== 'canvas') {
+          return originalCreateElement(tagName);
+        }
+        return {
+          width: 0,
+          height: 0,
+          getContext: vi.fn(() => ({ drawImage: vi.fn() })),
+          toBlob: vi.fn((cb: (b: Blob | null) => void) => {
+            cb(
+              new Blob([new Uint8Array([0xff, 0xd8])], { type: 'image/jpeg' })
+            );
+          }),
+        } as unknown as HTMLCanvasElement;
+      }) as typeof document.createElement;
+    });
+
+    afterEach(() => {
+      document.createElement = originalCreateElement;
+      globalThis.Image = originalImage;
+      URL.createObjectURL = originalCreateObjectURL;
+      URL.revokeObjectURL = originalRevokeObjectURL;
+    });
+
+    it('re-encodes to JPEG and embeds via embedJpg when quality is medium', async () => {
+      const file = makeFile('photo.png', 'image/png', [0x89, 0x50]);
+      const result = await convertImagesToPdfFile([file], 'medium');
+
+      expect(mockEmbedJpg).toHaveBeenCalledTimes(1);
+      expect(mockEmbedPng).not.toHaveBeenCalled();
+      expect(mockAddPage).toHaveBeenCalledWith([300, 200]);
+      expect(result.type).toBe('application/pdf');
+    });
   });
 });
