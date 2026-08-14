@@ -459,11 +459,12 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
     const tab = tabs.get(id);
     if (!tab) return;
 
+    const returnsToHome = activeTabId === id && tabs.size === 1;
     tab.tabEl.classList.add('closing');
-    window.setTimeout(() => {
+    const removeClosingTab = () => {
       tab.tabEl.remove();
       tab.panelEl.remove();
-    }, 180);
+    };
     tabs.delete(id);
 
     if (activeTabId === id) {
@@ -472,6 +473,17 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
         activateTab(remaining[remaining.length - 1]);
       }
     }
+
+    // The last panel covers the home view until its exit animation completes.
+    if (returnsToHome) {
+      window.setTimeout(() => {
+        removeClosingTab();
+        updateChrome();
+      }, 180);
+      return;
+    }
+
+    window.setTimeout(removeClosingTab, 180);
     updateChrome();
   };
 
