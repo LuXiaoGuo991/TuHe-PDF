@@ -232,6 +232,9 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
     if ((e as any).isComposing) return;
     filterRail(searchInput.value);
   });
+  searchInput?.addEventListener('compositionend', () => {
+    filterRail(searchInput.value);
+  });
 
   window.addEventListener('keydown', (e) => {
     const key = e.key.toLowerCase();
