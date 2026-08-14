@@ -46,9 +46,9 @@ ARG DISABLE_TOOLS
 ENV DISABLE_TOOLS=$DISABLE_TOOLS
 
 # Public-facing canonical site URL. Defaults to the official site so self-hosters
-# consolidate SEO signals back to www.tuhepdf.cn. Override with --build-arg
+# consolidate SEO signals back to tuhepdf.cn. Override with --build-arg
 # SITE_URL=https://your-domain.example to claim canonical for your own deployment.
-ARG SITE_URL=https://www.tuhepdf.cn
+ARG SITE_URL=https://tuhepdf.cn
 ENV SITE_URL=$SITE_URL
 
 ENV NODE_OPTIONS="--max-old-space-size=3072"
