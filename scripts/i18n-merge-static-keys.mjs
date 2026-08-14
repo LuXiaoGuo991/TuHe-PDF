@@ -145,7 +145,7 @@ const zhMap = {
     '我们可能会不时更新本隐私政策。我们将通过在此页面上发布新政策并更新顶部的“最后更新”日期来通知您任何变更。建议您定期查看本隐私政策以了解任何变更。',
   'privacy.section8': '8. 联系我们',
   'privacy.section8Content':
-    '如果您对本隐私政策有任何疑问，请通过 <a href="mailto:contact@tuhepdf.cn">contact@tuhepdf.cn</a> 与我们联系。',
+    '如果您对本隐私政策有任何疑问，请通过 <a href="mailto:lw122524@foxmail.com">lw122524@foxmail.com</a> 与我们联系。',
 
   // terms.html
   'terms.heading': '服务条款',
@@ -187,7 +187,7 @@ const zhMap = {
     '我们保留随时自行决定修改或替换这些条款的权利。我们将通过更新本页顶部的“最后更新”日期来通知变更。在修订生效后继续访问或使用我们的服务，即表示您同意受修订后条款的约束。',
   'terms.section9': '9. 联系我们',
   'terms.section9Content':
-    '如果您对这些条款有任何疑问，请通过 <a href="mailto:contact@tuhepdf.cn">contact@tuhepdf.cn</a> 与我们联系。',
+    '如果您对这些条款有任何疑问，请通过 <a href="mailto:lw122524@foxmail.com">lw122524@foxmail.com</a> 与我们联系。',
   'terms.section10': '10. 商业许可条款',
   'terms.section10Content':
     '购买 TuHe PDF 的商业许可，即表示您确认并同意以下内容：',

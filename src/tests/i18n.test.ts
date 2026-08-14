@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { getLanguageFromUrl } from '@/js/i18n/i18n';
+import i18next from 'i18next';
+import { applyTranslations, getLanguageFromUrl } from '@/js/i18n/i18n';
 
 describe('getLanguageFromUrl', () => {
   const originalLocation = window.location;
@@ -125,5 +126,32 @@ describe('getLanguageFromUrl', () => {
       writable: true,
     });
     expect(getLanguageFromUrl()).toBe('en');
+  });
+});
+
+describe('applyTranslations', () => {
+  afterEach(() => {
+    document.body.replaceChildren();
+    vi.restoreAllMocks();
+  });
+
+  it('interpolates data-i18n-options for text translations', () => {
+    document.body.innerHTML =
+      '<span data-i18n="tools:pdfWorkflow.nodeCount" data-i18n-options=\'{"count":0}\'>0 nodes</span>';
+    const translate = vi.spyOn(i18next, 't').mockImplementation(((
+      key: string,
+      options?: Record<string, unknown>
+    ) => {
+      return key === 'tools:pdfWorkflow.nodeCount'
+        ? `${options?.count} nodes`
+        : key;
+    }) as typeof i18next.t);
+
+    applyTranslations();
+
+    expect(document.body.textContent).toBe('0 nodes');
+    expect(translate).toHaveBeenCalledWith('tools:pdfWorkflow.nodeCount', {
+      count: 0,
+    });
   });
 });

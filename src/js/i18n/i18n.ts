@@ -191,12 +191,28 @@ export const changeLanguage = (lang: SupportedLanguage): void => {
   window.location.href = newUrl;
 };
 
+function getTranslationOptions(
+  element: Element
+): Record<string, unknown> | undefined {
+  const rawOptions = element.getAttribute('data-i18n-options');
+  if (!rawOptions) return undefined;
+
+  try {
+    const options: unknown = JSON.parse(rawOptions);
+    return options && typeof options === 'object' && !Array.isArray(options)
+      ? (options as Record<string, unknown>)
+      : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
 // Apply translations to all elements with data-i18n attribute
 export const applyTranslations = (): void => {
   document.querySelectorAll('[data-i18n-html]').forEach((element) => {
     const key = element.getAttribute('data-i18n-html');
     if (key) {
-      const translation = t(key);
+      const translation = t(key, getTranslationOptions(element));
       if (translation && translation !== key) {
         const sanitized = DOMPurify.sanitize(translation);
         const parsed = new DOMParser().parseFromString(sanitized, 'text/html');
@@ -210,7 +226,7 @@ export const applyTranslations = (): void => {
     .forEach((element) => {
       const key = element.getAttribute('data-i18n');
       if (key) {
-        const translation = t(key);
+        const translation = t(key, getTranslationOptions(element));
         if (translation && translation !== key) {
           // Preserve child elements (e.g. icons) by updating only direct text.
           if (element.children.length > 0) {
