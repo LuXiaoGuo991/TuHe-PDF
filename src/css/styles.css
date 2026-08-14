@@ -940,6 +940,18 @@ body:has(#workbench) {
   background: var(--color-surface);
 }
 
+.theme-logo--light {
+  display: none;
+}
+
+[data-theme='light'] .theme-logo--light {
+  display: block;
+}
+
+[data-theme='light'] .theme-logo--dark {
+  display: none;
+}
+
 .wb-topbar-brand img {
   width: 28px;
   height: 28px;

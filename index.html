@@ -73,11 +73,26 @@
         title="TuHe PDF 首页"
         data-i18n-title="homePage"
       >
+        {{#if brandLogo}}
         <img
-          src="{{baseUrl}}{{#if brandLogo}}{{brandLogo}}{{else}}images/favicon-no-bg.svg{{/if}}"
+          src="{{baseUrl}}{{brandLogo}}"
           alt="图合 PDF 标志"
           data-i18n-alt="logoAlt"
         />
+        {{else}}
+        <img
+          src="{{baseUrl}}images/tuhe-logo-light.svg"
+          alt="图合 PDF 标志"
+          data-i18n-alt="logoAlt"
+          class="theme-logo theme-logo--light"
+        />
+        <img
+          src="{{baseUrl}}images/tuhe-logo-dark.svg"
+          alt="图合 PDF 标志"
+          data-i18n-alt="logoAlt"
+          class="theme-logo theme-logo--dark"
+        />
+        {{/if}}
         <span class="wb-topbar-brand-name">TuHe PDF</span>
         <span class="wb-topbar-version">v{{appVersion}}</span>
       </button>
@@ -182,11 +197,26 @@
             <div class="tuhe-home-inner">
               <header class="tuhe-home-heading">
                 <div class="tuhe-logo-badge">
+                  {{#if brandLogo}}
                   <img
-                    src="{{baseUrl}}{{#if brandLogo}}{{brandLogo}}{{else}}images/favicon-no-bg.svg{{/if}}"
+                    src="{{baseUrl}}{{brandLogo}}"
                     alt="图合 PDF"
                     data-i18n-alt="logoAlt"
                   />
+                  {{else}}
+                  <img
+                    src="{{baseUrl}}images/tuhe-logo-light.svg"
+                    alt="图合 PDF"
+                    data-i18n-alt="logoAlt"
+                    class="theme-logo theme-logo--light"
+                  />
+                  <img
+                    src="{{baseUrl}}images/tuhe-logo-dark.svg"
+                    alt="图合 PDF"
+                    data-i18n-alt="logoAlt"
+                    class="theme-logo theme-logo--dark"
+                  />
+                  {{/if}}
                 </div>
                 <div>
                   <h1 class="tuhe-title">
