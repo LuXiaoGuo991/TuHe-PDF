@@ -7,6 +7,11 @@ services:
       - "8080"
     networks:
       - tuhe-internal
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   caddy:
     image: docker.xuanyuan.run/library/caddy:2.11.4-alpine
@@ -24,6 +29,11 @@ services:
       - caddy-config:/config
     networks:
       - tuhe-internal
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 networks:
   tuhe-internal:
