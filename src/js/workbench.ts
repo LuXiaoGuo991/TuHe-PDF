@@ -57,6 +57,7 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
   const home = document.getElementById('tuhe-home');
   const backdrop = document.getElementById('rail-backdrop');
   const mobileRailBtn = document.getElementById('mobile-rail-btn');
+  const topbarRailBtn = document.getElementById('topbar-rail-btn');
 
   if (
     !rail ||
@@ -278,10 +279,12 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
     backdrop?.classList.remove('show');
   };
 
-  mobileRailBtn?.addEventListener('click', () => {
+  const openMobileRail = () => {
     rail.classList.add('mobile-open');
     backdrop?.classList.add('show');
-  });
+  };
+  mobileRailBtn?.addEventListener('click', openMobileRail);
+  topbarRailBtn?.addEventListener('click', openMobileRail);
   backdrop?.addEventListener('click', closeMobileRail);
 
   /* ---------- 标签页 ---------- */

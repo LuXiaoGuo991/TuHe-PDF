@@ -18,6 +18,10 @@ import {
   getSelectedQuality,
   compressImageFile,
 } from '../utils/image-compress.js';
+import {
+  convertImagesToPdfFile,
+  isCanvasSafeImage,
+} from '../utils/images-to-pdf-lib.js';
 
 const SUPPORTED_FORMATS = '.jpg,.jpeg,.jp2,.jpx';
 const SUPPORTED_MIME_TYPES = ['image/jpeg', 'image/jpg', 'image/jp2'];
@@ -121,6 +125,12 @@ function handleFiles(newFiles: FileList) {
   if (validFiles.length > 0) {
     files = [...files, ...validFiles];
     updateUI();
+    // JPEG2000（.jp2/.jpx）生僻格式：选入即后台预加载引擎，减少点击后的等待
+    if (validFiles.some((file) => !isCanvasSafeImage(file))) {
+      ensurePyMuPDF().catch((error: unknown) =>
+        console.warn('[JpgToPdf] engine preload failed', error)
+      );
+    }
   }
 }
 
@@ -198,6 +208,50 @@ async function convertToPdf() {
     return;
   }
 
+  // 含 JPEG2000（.jp2/.jpx，canvas 无法解码）→ 整批交给 PyMuPDF 引擎
+  const needsEngine = files.some((file) => !isCanvasSafeImage(file));
+
+  if (needsEngine) {
+    await convertViaEngine();
+    return;
+  }
+
+  // 快路径：全部是 canvas 可解码的 JPG → 纯 pdf-lib，秒开
+  showLoader(
+    translate('tools:jpgToPdf.converting', 'Converting images to PDF...')
+  );
+
+  try {
+    const quality = getSelectedQuality();
+    const pdfFile = await convertImagesToPdfFile(files, quality);
+
+    downloadFile(pdfFile, pdfFile.name);
+
+    showAlert(
+      translate('alert.success', 'Success'),
+      translate('tools:jpgToPdf.createSuccess', 'PDF created successfully!'),
+      'success',
+      () => {
+        resetState();
+      }
+    );
+  } catch (e: unknown) {
+    console.error('[JpgToPdf]', e);
+    showAlert(
+      translate('tools:jpgToPdf.conversionErrorTitle', 'Conversion Error'),
+      e instanceof Error
+        ? e.message
+        : translate(
+            'tools:jpgToPdf.convertFailed',
+            'Failed to convert images to PDF.'
+          )
+    );
+  } finally {
+    hideLoader();
+  }
+}
+
+async function convertViaEngine(): Promise<void> {
   showLoader(translate('tools:jpgToPdf.loadingEngine', 'Loading engine...'));
 
   try {

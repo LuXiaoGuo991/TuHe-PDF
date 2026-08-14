@@ -23,6 +23,10 @@ import {
   isValidImageFile,
   preprocessImageFile,
 } from '@/js/utils/image-input-utils.js';
+import {
+  convertImagesToPdfFile,
+  isCanvasSafeImage,
+} from '@/js/utils/images-to-pdf-lib.js';
 
 let files: File[] = [];
 let pymupdf: PyMuPDFInstance | null = null;
@@ -117,6 +121,12 @@ function handleFiles(newFiles: FileList) {
   if (validFiles.length > 0) {
     files = [...files, ...validFiles];
     updateUI();
+    // 含 canvas 无法解码的生僻格式：趁用户整理文件的间隙预加载引擎，缩短点击后的等待
+    if (validFiles.some((file) => !isCanvasSafeImage(file))) {
+      ensurePyMuPDF().catch((error: unknown) =>
+        console.warn('[ImageToPDF] engine preload failed', error)
+      );
+    }
   }
 }
 
@@ -198,6 +208,50 @@ async function convertToPdf() {
     return;
   }
 
+  const needsEngine = files.some((file) => !isCanvasSafeImage(file));
+
+  if (needsEngine) {
+    await convertViaEngine();
+    return;
+  }
+
+  // 快路径：全部是 canvas 可解码的常见格式 → 纯 pdf-lib，不加载 WASM 引擎
+  showLoader(
+    translate(
+      'tools:imageToPdf.dynamic.f90007716a',
+      'Converting images to PDF...'
+    )
+  );
+
+  try {
+    const quality = getSelectedQuality();
+    const pdfFile = await convertImagesToPdfFile(files, quality);
+
+    downloadFile(pdfFile, pdfFile.name);
+
+    showAlert(
+      translate('alert.success', 'Success'),
+      translate(
+        'tools:imageToPdf.dynamic.73b1f127c0',
+        'PDF created successfully!'
+      ),
+      'success',
+      () => {
+        resetState();
+      }
+    );
+  } catch (e: unknown) {
+    console.error('[ImageToPDF]', e);
+    showAlert(
+      translate('tools:imageToPdf.dynamic.1da1ea7fe4', 'Conversion Error'),
+      translate('alert.processFailed', 'Processing failed. Please try again.')
+    );
+  } finally {
+    hideLoader();
+  }
+}
+
+async function convertViaEngine(): Promise<void> {
   showLoader(
     translate('tools:imageToPdf.dynamic.b387c08ee8', 'Processing images...')
   );
