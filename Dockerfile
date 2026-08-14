@@ -2,13 +2,24 @@
 # Build to serve under Subdirectory BASE_URL if provided, eg: "ARG BASE_URL=/pdf/", otherwise leave blank: "ARG BASE_URL="
 ARG BASE_URL=
 
+# Base images and npm registry are overridable so mirror-backed builds work in
+# restricted networks, e.g.:
+#   --build-arg NODE_IMAGE=docker.xuanyuan.run/library/node:20-alpine
+#   --build-arg NGINX_IMAGE=docker.xuanyuan.run/nginxinc/nginx-unprivileged:alpine-slim
+#   --build-arg NPM_REGISTRY=https://registry.npmmirror.com
+ARG NODE_IMAGE=public.ecr.aws/docker/library/node:20-alpine
+ARG NGINX_IMAGE=quay.io/nginx/nginx-unprivileged:alpine-slim
+ARG NPM_REGISTRY=
+
 # Build stage
-FROM public.ecr.aws/docker/library/node:20-alpine AS builder
+FROM ${NODE_IMAGE} AS builder
+ARG NPM_REGISTRY
 WORKDIR /app
 COPY package*.json ./
 COPY vendor ./vendor
 ENV HUSKY=0
-RUN npm config set fetch-retries 5 && \
+RUN if [ -n "$NPM_REGISTRY" ]; then npm config set registry "$NPM_REGISTRY"; fi; \
+    npm config set fetch-retries 5 && \
     npm config set fetch-retry-mintimeout 60000 && \
     npm config set fetch-retry-maxtimeout 300000 && \
     npm config set fetch-timeout 600000 && \
@@ -56,7 +67,7 @@ ENV NODE_OPTIONS="--max-old-space-size=3072"
 RUN npm run build
 
 # Production stage
-FROM quay.io/nginx/nginx-unprivileged:alpine-slim
+FROM ${NGINX_IMAGE}
 
 # global arg to local arg
 ARG BASE_URL
