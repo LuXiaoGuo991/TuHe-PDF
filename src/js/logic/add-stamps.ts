@@ -33,9 +33,6 @@ const viewerCard = document.getElementById(
 const saveStampedBtn = document.getElementById(
   'save-stamped-btn'
 ) as HTMLButtonElement;
-const backToToolsBtn = document.getElementById(
-  'back-to-tools'
-) as HTMLButtonElement | null;
 const toolUploader = document.getElementById(
   'tool-uploader'
 ) as HTMLDivElement | null;
@@ -369,12 +366,6 @@ if (saveStampedBtn) {
         )
       );
     }
-  });
-}
-
-if (backToToolsBtn) {
-  backToToolsBtn.addEventListener('click', () => {
-    window.location.href = import.meta.env.BASE_URL;
   });
 }
 

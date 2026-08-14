@@ -299,7 +299,7 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
   };
 
   /**
-   * 拦截 iframe 内指向站内首页的链接（如"返回工具列表"、导航栏 Logo），
+   * 拦截 iframe 内指向站内首页的链接，
    * 改为在工作区内显示 TuHe 默认首页，避免工作台嵌套加载。
    */
   const wireIframeNavigation = (iframe: HTMLIFrameElement) => {
@@ -307,22 +307,6 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
       const doc = iframe.contentDocument;
       if (!doc) return;
       const base = import.meta.env.BASE_URL || '/';
-      const goHome = () => {
-        window.postMessage({ type: 'tuhe:show-home' }, window.location.origin);
-      };
-      // "返回工具列表"按钮是 JS 导航，需在捕获阶段拦截，阻止工具页自身的跳转
-      doc.addEventListener(
-        'click',
-        (e) => {
-          const target = e.target as HTMLElement | null;
-          if (target?.closest?.('#back-to-tools, #home-logo')) {
-            e.preventDefault();
-            e.stopPropagation();
-            goHome();
-          }
-        },
-        true
-      );
       doc.addEventListener('click', (e) => {
         const anchor = (e.target as HTMLElement | null)?.closest?.('a');
         if (!anchor) return;

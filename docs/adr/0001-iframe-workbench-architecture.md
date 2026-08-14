@@ -13,7 +13,7 @@ TuHe PDF 已有大量彼此独立的工具页。每个页面拥有自己的 HTML
 
 工作台使用 `index.html` + `src/js/workbench.ts` 管理外壳，每个工具页通过同源 `iframe` 装载。工具卡片打开或复用标签页；关闭标签页前由外壳检查 iframe 中的任务状态。
 
-`workbench.ts` 在 iframe 加载后注册同源导航拦截：捕获“返回工具列表”和 Logo 点击，将其转换为 `tuhe:show-home` 消息；普通链接仅在解析后确认同源且目标为工作台首页时拦截。消息监听同时校验 `event.origin === window.location.origin`。
+`workbench.ts` 在 iframe 加载后注册同源导航拦截：普通链接仅在解析后确认同源且目标为工作台首页时拦截，并转换为 `tuhe:show-home` 消息。消息监听同时校验 `event.origin === window.location.origin`。（早期版本还以捕获阶段拦截工具页“返回工具列表”按钮与 Logo 的点击；2026-08-13 起工具页已移除“返回工具列表”按钮，该部分拦截一并移除。）
 
 ## Consequences
 
