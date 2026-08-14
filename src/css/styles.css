@@ -1824,10 +1824,24 @@ body:has(#workbench) {
       transparent 70%
     ),
     var(--color-canvas);
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease,
+    visibility 0s linear;
 }
 
 #tuhe-home.hidden-home {
-  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease,
+    visibility 0s linear 0.18s;
 }
 
 .tuhe-home-inner {
@@ -2004,6 +2018,18 @@ body:has(#workbench) {
   }
   50% {
     transform: translateX(-6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #tuhe-home {
+    transition-duration: 1ms;
+  }
+
+  .tuhe-home-inner,
+  .tuhe-logo-badge,
+  .tuhe-hint .ph {
+    animation: none;
   }
 }
 

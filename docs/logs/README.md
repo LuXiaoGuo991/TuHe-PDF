@@ -4,15 +4,15 @@
 
 ## 日志文件
 
-| 日期                        | 摘要                                                                                                             | 标签                                                                                            |
-| --------------------------- | ---------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| [2026-08-08](2026-08-08.md) | 项目基线、Docker 本地部署、测试结果和日志规范初始化。                                                            | bootstrap, cleanup, docker, testing, logs                                                       |
-| [2026-08-09](2026-08-09.md) | 前端门面规划、办公用户审计、部署准备、DNS/安全组记录、TuHe T/H 标志探索和技能安装。                              | progress, planning, testing, deployment, frontend, design, logo, imagegen, office-users, skills |
-| [2026-08-10](2026-08-10.md) | 工作台标签页无任务时复用替换、原位替换动画优化，并移除全部 115 个工具页面的页脚区块。                            | workbench, tabs, footer, animation, frontend                                                    |
-| [2026-08-11](2026-08-11.md) | Review 国际化和品牌配置，实施同源资源与中文静态渲染；提交前审查记录资源复现、URL/CSP、DOM 和字体阻断。           | review, i18n, branding, seo, testing, wasm, ocr, offline, security, delivery                    |
-| [2026-08-12](2026-08-12.md) | 中文 UX 与法律合规收敛；完成 Phase 0 稳定基线提交，并实施 Phase 2 Design Token、工作台与 10 个高频工具视觉迁移。 | review, phase0, phase2, design-token, workbench, tools, accessibility, i18n, testing            |
-| [2026-08-13](2026-08-13.md) | 精简工作台首页并完成八卡响应式布局；审查并修复 Phase 3 主题同步、WCAG、迁移门控和繁中结构审计遗漏。              | frontend, workbench, homepage, responsive, playwright, review, phase3, accessibility, i18n      |
-| [2026-08-14](2026-08-14.md) | 核对并通过 Phase 3 门控；修复工作流节点计数插值，更新联系渠道，收敛绿色主题，并记录 Logo 工具建议。              | progress, phase3, verification, i18n, workflow, contact, frontend, theming, branding, gitnexus  |
+| 日期                        | 摘要                                                                                                              | 标签                                                                                                      |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| [2026-08-08](2026-08-08.md) | 项目基线、Docker 本地部署、测试结果和日志规范初始化。                                                             | bootstrap, cleanup, docker, testing, logs                                                                 |
+| [2026-08-09](2026-08-09.md) | 前端门面规划、办公用户审计、部署准备、DNS/安全组记录、TuHe T/H 标志探索和技能安装。                               | progress, planning, testing, deployment, frontend, design, logo, imagegen, office-users, skills           |
+| [2026-08-10](2026-08-10.md) | 工作台标签页无任务时复用替换、原位替换动画优化，并移除全部 115 个工具页面的页脚区块。                             | workbench, tabs, footer, animation, frontend                                                              |
+| [2026-08-11](2026-08-11.md) | Review 国际化和品牌配置，实施同源资源与中文静态渲染；提交前审查记录资源复现、URL/CSP、DOM 和字体阻断。            | review, i18n, branding, seo, testing, wasm, ocr, offline, security, delivery                              |
+| [2026-08-12](2026-08-12.md) | 中文 UX 与法律合规收敛；完成 Phase 0 稳定基线提交，并实施 Phase 2 Design Token、工作台与 10 个高频工具视觉迁移。  | review, phase0, phase2, design-token, workbench, tools, accessibility, i18n, testing                      |
+| [2026-08-13](2026-08-13.md) | 精简工作台首页并完成八卡响应式布局；审查并修复 Phase 3 主题同步、WCAG、迁移门控和繁中结构审计遗漏。               | frontend, workbench, homepage, responsive, playwright, review, phase3, accessibility, i18n                |
+| [2026-08-14](2026-08-14.md) | 核对并通过 Phase 3 门控；修复工作流节点计数插值，更新联系渠道，收敛绿色主题与品牌资源，并补齐工作台首页回归动画。 | progress, phase3, verification, i18n, workflow, contact, frontend, theming, branding, animation, gitnexus |
 
 ## 查询方式
 
