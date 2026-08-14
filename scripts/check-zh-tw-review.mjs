@@ -137,6 +137,39 @@ function isIsoDate(value) {
   );
 }
 
+function validateReleaseApproval(approval, issues) {
+  if (!approval) return false;
+  if (!approval || typeof approval !== 'object' || Array.isArray(approval)) {
+    issues.push('manifest.releaseApproval 必须是对象');
+    return false;
+  }
+  if (approval.approved !== true) {
+    issues.push('manifest.releaseApproval.approved 必须为 true');
+  }
+  if (typeof approval.approvedBy !== 'string' || !approval.approvedBy.trim()) {
+    issues.push('manifest.releaseApproval 缺少确认人');
+  }
+  if (!isIsoDate(approval.approvedAt)) {
+    issues.push('manifest.releaseApproval 确认日期格式错误');
+  }
+  if (typeof approval.scope !== 'string' || !approval.scope.trim()) {
+    issues.push('manifest.releaseApproval 缺少确认范围');
+  }
+  if (typeof approval.basis !== 'string' || !approval.basis.trim()) {
+    issues.push('manifest.releaseApproval 缺少确认依据');
+  }
+  return (
+    approval.approved === true &&
+    typeof approval.approvedBy === 'string' &&
+    approval.approvedBy.trim() &&
+    isIsoDate(approval.approvedAt) &&
+    typeof approval.scope === 'string' &&
+    approval.scope.trim() &&
+    typeof approval.basis === 'string' &&
+    approval.basis.trim()
+  );
+}
+
 // Chinese does not render English plural suffixes, and this one tool name is
 // already expressed by the surrounding localized noun phrase.
 const APPROVED_PLACEHOLDER_OMISSIONS = new Map([
@@ -161,6 +194,10 @@ const enTools = flatten(loadJson('en', 'tools'));
 
 const issues = [];
 let reviewedKeys = 0;
+const releaseApproved = validateReleaseApproval(
+  manifest.releaseApproval,
+  issues
+);
 
 if (
   !reviewRecords ||
@@ -260,7 +297,7 @@ console.log(
   `zh-TW tools: ${reviewedKeys}/${totalKeys} keys in ${reviewed.size} reviewed namespace(s).`
 );
 
-if (!structureOnly && uncoveredNamespaces.size > 0) {
+if (!structureOnly && uncoveredNamespaces.size > 0 && !releaseApproved) {
   issues.push(
     `未复核命名空间 ${uncoveredNamespaces.size} 个（${totalKeys - reviewedKeys} 键未落入已完成批次）`
   );
@@ -314,6 +351,10 @@ if (issues.length) {
 if (structureOnly) {
   console.log(
     `\nzh-TW 结构门控通过；人工复核进度 ${reviewedKeys}/${totalKeys} 键。`
+  );
+} else if (releaseApproved) {
+  console.log(
+    `\nzh-TW 发布门控通过：${manifest.releaseApproval.approvedBy} 已于 ${manifest.releaseApproval.approvedAt} 确认 ${manifest.releaseApproval.scope}。`
   );
 } else {
   console.log('\nzh-TW 人工复核门控通过：所有键已复核且结构一致。');
