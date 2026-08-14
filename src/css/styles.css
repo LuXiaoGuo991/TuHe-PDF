@@ -252,11 +252,11 @@ body {
 }
 
 .category-header:hover {
-  color: #818cf8;
+  color: var(--color-action-hover);
 }
 
 .category-header:hover .category-chevron {
-  color: #818cf8;
+  color: var(--color-action-hover);
 }
 
 .category-tools {
@@ -342,7 +342,19 @@ body {
 
 /* Custom file input */
 input[type='file']::file-selector-button {
-  @apply bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg cursor-pointer hover:bg-indigo-700 transition-colors duration-200 mr-4;
+  margin-right: 1rem;
+  padding: 0.5rem 1rem;
+  color: var(--color-on-action);
+  font-weight: 600;
+  background: var(--color-action);
+  border: 0;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+input[type='file']:hover::file-selector-button {
+  background: var(--color-action-hover);
 }
 
 /* Custom scrollbar */
@@ -351,23 +363,22 @@ input[type='file']::file-selector-button {
 }
 
 ::-webkit-scrollbar-track {
-  background: #1f2937;
+  background: var(--color-surface-sunken);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4f46e5;
+  background: var(--color-action);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4338ca;
-  /* indigo-700 */
+  background: var(--color-action-hover);
 }
 
 /* Style for drag-and-drop placeholder */
 .sortable-ghost {
   opacity: 0.4;
-  border: 2px dashed #4f46e5;
+  border: 2px dashed var(--color-action);
 }
 
 #embed-pdf-container > div {
@@ -451,9 +462,8 @@ footer a {
 }
 
 .cta-button {
-  background-color: #4f46e5;
-  /* indigo-600 */
-  color: white;
+  background-color: var(--color-action);
+  color: var(--color-on-action);
   font-weight: 600;
   padding: 12px 24px;
   border-radius: 8px;
@@ -462,8 +472,7 @@ footer a {
 }
 
 .cta-button:hover {
-  background-color: #4338ca;
-  /* indigo-700 */
+  background-color: var(--color-action-hover);
 }
 
 .marker-text {
@@ -501,14 +510,18 @@ footer a {
   right: 0;
   bottom: 0;
   height: 6px;
-  background: linear-gradient(120deg, #6366f1, #8b5cf6);
+  background: var(--color-action);
   z-index: -1;
 }
 
 .section-divider {
   height: 1px;
-  background: linear-gradient(to right, transparent, #4d44f7, transparent);
-  /* Fades from transparent to indigo and back */
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-action),
+    transparent
+  );
   margin: 2rem auto;
   /* my-16 */
   max-width: 42rem;
@@ -522,8 +535,7 @@ footer a {
   /* py-3 px-8 */
   border-radius: 0.5rem;
   /* rounded-lg */
-  background-image: linear-gradient(to bottom, #6366f1, #4f46e5);
-  /* from-indigo-500 to-indigo-600 */
+  background-color: var(--color-action);
   color: #ffffff;
   /* text-white */
   font-weight: 600;
@@ -534,9 +546,10 @@ footer a {
 }
 
 .btn-gradient:hover {
+  background-color: var(--color-action-hover);
   box-shadow:
-    0 10px 15px -3px rgba(79, 70, 229, 0.3),
-    0 4px 6px -4px rgba(79, 70, 229, 0.3);
+    0 10px 15px -3px color-mix(in srgb, var(--color-action) 30%, transparent),
+    0 4px 6px -4px color-mix(in srgb, var(--color-action) 30%, transparent);
 }
 
 .btn-gradient:focus {
@@ -544,8 +557,7 @@ footer a {
   outline-offset: 2px;
   box-shadow:
     0 0 0 2px #111827,
-    0 0 0 4px #818cf8;
-  /* focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-indigo-400 */
+    0 0 0 4px var(--color-focus);
 }
 
 .btn-gradient:disabled {
@@ -560,10 +572,8 @@ footer a {
   /* w-16 */
   height: 64px;
   /* h-16 */
-  border: 5px solid #374151;
-  /* border-gray-700 */
-  border-bottom-color: #4f46e5;
-  /* border-indigo-600 */
+  border: 5px solid var(--color-border);
+  border-bottom-color: var(--color-action);
   border-radius: 50%;
   display: inline-block;
   box-sizing: border-box;
@@ -592,9 +602,8 @@ footer a {
 
 /* Highlight for selected signature in the saved list */
 .saved-signature.selected {
-  border-color: #4f46e5;
-  /* indigo-600 */
-  box-shadow: 0 0 10px rgba(79, 70, 229, 0.5);
+  border-color: var(--color-action);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--color-action) 50%, transparent);
 }
 
 /* Cursor change when hovering over a placed signature */
@@ -619,8 +628,7 @@ footer a {
 }
 
 .faq-item.open .faq-question {
-  color: #818cf8;
-  /* indigo-400 */
+  color: var(--color-action-hover);
 }
 
 .faq-item.open .faq-icon {
@@ -712,7 +720,7 @@ footer a {
   font-size: 1.25rem;
   line-height: 1.75rem;
   font-weight: 600;
-  color: rgb(129 140 248);
+  color: var(--color-action-hover);
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
 }
@@ -732,12 +740,12 @@ footer a {
 }
 
 .legal-content a {
-  color: rgb(129 140 248);
+  color: var(--color-action-hover);
   text-decoration: underline;
 }
 
 .legal-content a:hover {
-  color: rgb(165 180 252);
+  color: var(--color-action);
 }
 
 details > summary {
@@ -796,8 +804,8 @@ button:disabled,
 
 .shortcut-input:focus {
   outline: none;
-  border-color: #6366f1;
-  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+  border-color: var(--color-action);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-action) 20%, transparent);
 }
 
 /* Custom Scrollbar for Modal Content */
