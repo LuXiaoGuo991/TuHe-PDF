@@ -33,9 +33,6 @@ const statusMessage = document.getElementById('status-message') as HTMLElement;
 const fileDisplayArea = document.getElementById(
   'file-display-area'
 ) as HTMLElement;
-const backToToolsBtn = document.getElementById(
-  'back-to-tools'
-) as HTMLButtonElement;
 
 interface TOCSuccessResponse {
   status: 'success';
@@ -214,12 +211,6 @@ worker.onerror = (error) => {
   showStatus(t('tools:tableOfContents.workerErrorOccurred'), 'error');
   generateBtn.disabled = false;
 };
-
-if (backToToolsBtn) {
-  backToToolsBtn.addEventListener('click', () => {
-    window.location.href = import.meta.env.BASE_URL;
-  });
-}
 
 generateBtn.addEventListener('click', generateTableOfContents);
 

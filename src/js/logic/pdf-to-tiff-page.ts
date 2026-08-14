@@ -368,7 +368,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const fileInput = document.getElementById('file-input') as HTMLInputElement;
   const dropZone = document.getElementById('drop-zone');
   const processBtn = document.getElementById('process-btn');
-  const backBtn = document.getElementById('back-to-tools');
   const dpiSlider = document.getElementById('tiff-dpi') as HTMLInputElement;
   const dpiValue = document.getElementById('tiff-dpi-value');
   const compressionSelect = document.getElementById(
@@ -377,12 +376,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const colorModeSelect = document.getElementById(
     'tiff-color-mode'
   ) as HTMLSelectElement;
-
-  if (backBtn) {
-    backBtn.addEventListener('click', () => {
-      window.location.href = import.meta.env.BASE_URL;
-    });
-  }
 
   if (dpiSlider && dpiValue) {
     dpiSlider.addEventListener('input', () => {

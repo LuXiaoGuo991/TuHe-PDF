@@ -2903,16 +2903,6 @@ downloadBtn.addEventListener('click', async () => {
   }
 });
 
-// Back to tools button
-const backToToolsBtns = document.querySelectorAll<HTMLButtonElement>(
-  '[id^="back-to-tools"]'
-);
-backToToolsBtns.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    window.location.href = import.meta.env.BASE_URL;
-  });
-});
-
 function getPageDimensions(size: string): { width: number; height: number } {
   let dimensions: [number, number];
   switch (size) {

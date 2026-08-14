@@ -75,7 +75,6 @@ function initializePage() {
 
   const fileInput = document.getElementById('file-input') as HTMLInputElement;
   const dropZone = document.getElementById('drop-zone');
-  const backBtn = document.getElementById('back-to-tools');
   const processBtn = document.getElementById('process-btn');
   const addMoreBtn = document.getElementById('add-more-btn');
   const clearFilesBtn = document.getElementById('clear-files-btn');
@@ -107,12 +106,6 @@ function initializePage() {
       e.preventDefault();
       dropZone.classList.remove('ui-border-action');
       if (e.dataTransfer?.files.length) handleFiles(e.dataTransfer.files);
-    });
-  }
-
-  if (backBtn) {
-    backBtn.addEventListener('click', () => {
-      window.location.href = import.meta.env.BASE_URL;
     });
   }
 

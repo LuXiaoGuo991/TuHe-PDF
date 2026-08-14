@@ -74,11 +74,6 @@ function initializePage() {
   if (processBtn) {
     processBtn.addEventListener('click', applyAndSaveSignatures);
   }
-
-  document.getElementById('back-to-tools')?.addEventListener('click', () => {
-    cleanup();
-    window.location.href = import.meta.env.BASE_URL;
-  });
 }
 
 function handleFileUpload(e: Event) {

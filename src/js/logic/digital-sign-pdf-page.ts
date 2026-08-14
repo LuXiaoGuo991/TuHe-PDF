@@ -86,7 +86,6 @@ function initializePage(): void {
   const certDropZone = getElement<HTMLDivElement>('cert-drop-zone');
   const certPassword = getElement<HTMLInputElement>('cert-password');
   const processBtn = getElement<HTMLButtonElement>('process-btn');
-  const backBtn = getElement<HTMLButtonElement>('back-to-tools');
 
   if (fileInput) {
     fileInput.addEventListener('change', handlePdfUpload);
@@ -153,12 +152,6 @@ function initializePage(): void {
 
   if (processBtn) {
     processBtn.addEventListener('click', processSignature);
-  }
-
-  if (backBtn) {
-    backBtn.addEventListener('click', () => {
-      window.location.href = import.meta.env.BASE_URL;
-    });
   }
 
   const enableVisibleSig = getElement<HTMLInputElement>('enable-visible-sig');

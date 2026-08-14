@@ -696,18 +696,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const fileControls = document.getElementById('file-controls');
   const addMoreBtn = document.getElementById('add-more-btn');
   const clearFilesBtn = document.getElementById('clear-files-btn');
-  const backBtn = document.getElementById('back-to-tools');
   const mergeOptions = document.getElementById('merge-options');
   const clearConfirmModal = document.getElementById('clear-confirm-modal');
   const clearCancelBtn = document.getElementById('clear-cancel-btn');
   const clearConfirmBtn = document.getElementById('clear-confirm-btn');
   const downloadResultBtn = document.getElementById('download-result-btn');
-
-  if (backBtn) {
-    backBtn.addEventListener('click', () => {
-      window.location.href = import.meta.env.BASE_URL;
-    });
-  }
 
   if (fileInput && dropZone) {
     fileInput.addEventListener('change', async (e) => {

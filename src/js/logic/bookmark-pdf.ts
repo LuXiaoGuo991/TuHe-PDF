@@ -78,9 +78,6 @@ const loaderModal = document.getElementById(
 const fileDisplayArea = document.getElementById(
   'file-display-area'
 ) as HTMLElement | null;
-const backToToolsBtn = document.getElementById(
-  'back-to-tools'
-) as HTMLButtonElement | null;
 const closeBtn = document.getElementById(
   'back-btn'
 ) as HTMLButtonElement | null;
@@ -2345,12 +2342,6 @@ async function extractExistingBookmarks(): Promise<BookmarkTree> {
     console.error('Error extracting bookmarks:', err);
     return [];
   }
-}
-
-if (backToToolsBtn) {
-  backToToolsBtn.addEventListener('click', () => {
-    window.location.href = import.meta.env.BASE_URL;
-  });
 }
 
 if (closeBtn) {
