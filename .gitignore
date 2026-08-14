@@ -16,7 +16,7 @@ deploy/*.tar
 .env
 .env.production
 .env.local
-
+!docs/zh-TW-review-manifest.json
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
