@@ -68,14 +68,18 @@ bentopdf-*.tgz
 dist-test
 test
 
-# Project task logs are documentation and must be version controlled.
-!docs/
-!docs/logs/
-!docs/logs/*.md
+# 本地开发工具与文档（ADR/ROADMAP/任务日志等仅本地留存，不版本化）
+docs/
+.claude/
 !public/wasm/ocr/fonts/FONT-LICENSES.txt
 
 # Local font subset source cache
 .cache/fonts/
 
-# Playwright visual validation artifacts
-output/playwright/
+# 本地测试/视觉回归产物，均可在构建或脚本中再生成
+output/
+.playwright-cli/
+# 本地 GitNexus 索引缓存
+.gitnexus/
+# 遗留的占位/临时文件
+public/images/HTML代码.txt
