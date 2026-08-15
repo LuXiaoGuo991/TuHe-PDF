@@ -54,6 +54,7 @@ import {
   deleteTemplate,
 } from '@/js/workflow/serialization';
 import { getAvailableTesseractLanguageEntries } from '@/js/utils/tesseract-language-availability.js';
+import { getTesseractLanguageName } from '@/js/config/tesseract-languages.js';
 import { isToolDisabled } from '@/js/utils/disabled-tools.js';
 import { IMAGE_ACCEPT } from '@/js/utils/image-input-utils.js';
 
@@ -1405,8 +1406,8 @@ function showNodeSettings(node: BaseWorkflowNode) {
       { label: 'High (288 DPI)', value: '3.0' },
       { label: 'Ultra (384 DPI)', value: '4.0' },
     ],
-    language: getAvailableTesseractLanguageEntries().map(([code, name]) => ({
-      label: name,
+    language: getAvailableTesseractLanguageEntries().map(([code]) => ({
+      label: getTesseractLanguageName(code),
       value: code,
     })),
     gridMode: [

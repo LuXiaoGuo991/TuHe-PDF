@@ -3,7 +3,8 @@ import { t } from '../i18n/i18n';
 const ocrTranslate = (code: string, fallback: string): string => {
   const key = `ocrLanguage.${code}`;
   const value = t(key);
-  return value !== key ? value : fallback;
+  // 模块加载时 i18n 尚未初始化，t() 可能返回 undefined/空串，回退到英文名
+  return value && value !== key ? value : fallback;
 };
 
 export const tesseractLanguages: Record<string, string> = {
@@ -109,4 +110,14 @@ export const tesseractLanguages: Record<string, string> = {
   uzb_cyrl: ocrTranslate('uzb_cyrl', 'Uzbek - Cyrillic'),
   vie: ocrTranslate('vie', 'Vietnamese'),
   yid: ocrTranslate('yid', 'Yiddish'),
+};
+
+/**
+ * 惰性取语言的本地化显示名：在 i18n 初始化完成后调用，优先返回本地化名称；
+ * 模块加载时 tesseractLanguages 只存了英文兜底名，此处每次调用都会重新走 t()。
+ */
+export const getTesseractLanguageName = (code: string): string => {
+  const key = `ocrLanguage.${code}`;
+  const value = t(key);
+  return value && value !== key ? value : (tesseractLanguages[code] ?? code);
 };

@@ -1,4 +1,7 @@
-import { tesseractLanguages } from '../config/tesseract-languages.js';
+import {
+  getTesseractLanguageName,
+  tesseractLanguages,
+} from '../config/tesseract-languages.js';
 
 export const TESSERACT_AVAILABLE_LANGUAGES_ENV_KEY =
   'VITE_TESSERACT_AVAILABLE_LANGUAGES' as const;
@@ -31,7 +34,7 @@ function normalizeLanguageCodes(value: string | string[]): string[] {
 }
 
 function formatLanguageLabel(code: string): string {
-  const label = tesseractLanguages[code as TesseractLanguageCode];
+  const label = getTesseractLanguageName(code);
   return label ? `${label} (${code})` : code;
 }
 
