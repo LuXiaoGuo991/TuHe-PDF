@@ -274,13 +274,19 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
 
   /* ---------- 移动端抽屉 ---------- */
 
+  let railExpandedBeforeMobileOpen = false;
+
   const closeMobileRail = () => {
     rail.classList.remove('mobile-open');
+    // 还原打开抽屉前的展开/收起偏好，避免影响桌面端状态
+    rail.classList.toggle('rail-expanded', railExpandedBeforeMobileOpen);
     backdrop?.classList.remove('show');
   };
 
   const openMobileRail = () => {
-    rail.classList.add('mobile-open');
+    railExpandedBeforeMobileOpen = rail.classList.contains('rail-expanded');
+    // 移动端抽屉宽度恒为展开态，必须带 rail-expanded 才显示完整卡片（图标+名称）
+    rail.classList.add('mobile-open', 'rail-expanded');
     backdrop?.classList.add('show');
   };
   mobileRailBtn?.addEventListener('click', openMobileRail);
