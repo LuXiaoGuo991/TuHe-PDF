@@ -258,10 +258,6 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
     }
   };
 
-  railToggle.addEventListener('click', () => {
-    setRailExpanded(!rail.classList.contains('rail-expanded'));
-  });
-
   let savedExpanded: boolean;
   try {
     savedExpanded = JSON.parse(
@@ -292,6 +288,15 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
   mobileRailBtn?.addEventListener('click', openMobileRail);
   topbarRailBtn?.addEventListener('click', openMobileRail);
   backdrop?.addEventListener('click', closeMobileRail);
+
+  // 展开/收起按钮：桌面端收放卡片栏；手机端抽屉是覆盖式界面，折叠成图标无意义，点击视为关闭抽屉
+  railToggle.addEventListener('click', () => {
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      closeMobileRail();
+      return;
+    }
+    setRailExpanded(!rail.classList.contains('rail-expanded'));
+  });
 
   /* ---------- 标签页 ---------- */
 
