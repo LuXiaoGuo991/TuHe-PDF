@@ -7,7 +7,7 @@ const translate = (
   return value && value !== key ? value : fallback;
 };
 
-import { tesseractLanguages } from '../config/tesseract-languages.js';
+import { getTesseractLanguageName } from '../config/tesseract-languages.js';
 import { showAlert } from '../ui.js';
 import { downloadFile, formatBytes } from '../utils/helpers.js';
 import { loadPdfWithPasswordPrompt } from '../utils/password-prompt.js';
@@ -281,11 +281,12 @@ function populateLanguageList() {
     return;
   }
 
-  availableEntries.forEach(function ([code, name]) {
+  availableEntries.forEach(function ([code]) {
+    const displayName = getTesseractLanguageName(code);
     const label = document.createElement('label');
     label.className =
       'flex items-center gap-2 p-2 rounded-md ui-hover-bg-raised cursor-pointer';
-    label.dataset.search = `${name} ${code}`.toLowerCase();
+    label.dataset.search = `${displayName} ${code}`.toLowerCase();
 
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
@@ -294,7 +295,7 @@ function populateLanguageList() {
       'lang-checkbox w-4 h-4 rounded ui-text-action ui-bg-raised ui-border ui-focus-ring';
 
     label.append(checkbox);
-    label.append(document.createTextNode(' ' + name));
+    label.append(document.createTextNode(' ' + displayName));
     langList.appendChild(label);
   });
 }
@@ -381,9 +382,7 @@ document.addEventListener('DOMContentLoaded', async function () {
       const selected = Array.from(
         langList.querySelectorAll('.lang-checkbox:checked')
       ).map(function (cb) {
-        return tesseractLanguages[
-          (cb as HTMLInputElement).value as keyof typeof tesseractLanguages
-        ];
+        return getTesseractLanguageName((cb as HTMLInputElement).value);
       });
 
       if (selectedLangsDisplay) {
