@@ -36,16 +36,17 @@ const PALETTE_DARK: AmbientPalette = {
   clouds: ['#2e8b6a', '#3fa88c', '#77b9c4'],
 };
 
-/** 亮色主题：浅色底上流体需更深更饱和才能显形，粒子随之加深。 */
+/** 亮色主题：浅底上用「白瓷水洗」——低饱和浅绿 + 低 intensity，
+ *  让合成后的背景落在 canvas 附近的亮区，浅色主题的正文 token 才能保持 AA。 */
 const PALETTE_LIGHT: AmbientPalette = {
-  a: '#58a583',
-  b: '#2e7d5b',
-  c: '#17402f',
-  intensity: 1.25,
+  a: '#dfeee7',
+  b: '#bcdccb',
+  c: '#f2f7f4',
+  intensity: 1.05,
   speed: 0.45,
-  surface: 0.1,
-  particles: ['#2d674d', '#39785c', '#317d8d'],
-  clouds: ['#7fc4a3', '#69b58c', '#8fc8d0'],
+  surface: 0.05,
+  particles: ['#4f8f74', '#5c9a86', '#5a93a3'],
+  clouds: ['#bfe0cd', '#a9d2bd', '#c7e2e8'],
 };
 
 interface QualityProfile {
