@@ -64,6 +64,7 @@ const replacements = new Map([
   ['hover:border-gray-500', 'ui-hover-border-action'],
   ['focus:ring-gray-300', 'ui-focus-ring'],
   ['placeholder-gray-400', 'ui-placeholder-muted'],
+  ['focus:ring-indigo-400', 'ui-focus-ring'],
   ['ring-indigo-400', 'ui-focus-ring'],
   ['bg-gray-600', 'ui-bg-raised'],
   ['bg-gray-500', 'ui-bg-raised'],
@@ -102,8 +103,19 @@ const semanticColorMap = [
 
 // ---------------------------------------------------------------------------
 // 豁免表：逐条登记「文件 + 选择器/token + 原因」，禁止整文件跳过。
+//
+// 唯一例外是 `wholeFile: true`，且仅允许用于**不进入构建、自带固定色板的
+// 独立开发工具页**（`svg-repair.html`）。站点面（`src/pages/**`、
+// `src/partials/**`）与已发布的根站点页一律不得整文件豁免——这是 2026-09
+// 旧色板长期漏检的教训，测试 `migrate-visual-batch.test.ts` 会守住这条边界。
 // ---------------------------------------------------------------------------
 export const EXEMPTIONS = [
+  {
+    file: 'svg-repair.html',
+    wholeFile: true,
+    reason:
+      '本地 SVG 修整台：不参与 vite 构建、不引用 styles.css，自带固定浅色 paper 色板（--ink/--paper/--side/--line/--green/--red），不跟随站点主题',
+  },
   {
     file: 'src/pages/compare-pdfs.html',
     customProperty: '--compare-',
@@ -173,6 +185,11 @@ function isColorFamilyExempt(file, colorFamily) {
   );
 }
 
+/** 整文件豁免（仅限非构建产物的独立开发工具页，见 EXEMPTIONS 注释）。 */
+export function isWholeFileExempt(file) {
+  return matchingExemptions(file).some((ex) => ex.wholeFile);
+}
+
 // ---------------------------------------------------------------------------
 // 颜色检测
 // ---------------------------------------------------------------------------
@@ -183,8 +200,18 @@ const COLOR_LITERAL_RE =
 const COLOR_FAMILY =
   'gray|slate|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose';
 
+// 会消费调色板的 Tailwind 工具族。早期版本漏了 `ring-offset` 与 `shadow`，
+// 于是 `focus:ring-offset-gray-900`、`hover:shadow-indigo-500/30` 这类色相泄漏
+// 既不报警、也不在迁移范围内。`ring|ring-offset` 的顺序保证长前缀先被尝试。
+const COLOR_UTILITY_PREFIXES =
+  'bg|text|border|divide|ring|ring-offset|outline|placeholder|accent|fill|stroke|from|via|to|shadow|decoration|caret';
+
+// 尾界定必须同时接受「分隔符」与「串尾」：`tailwindIssues()` 收到的是
+// `class` 属性值本身（不含引号），因此每个类属性里最后一个颜色类永远以
+// 字符串结尾收尾。旧版只认 `[\s"'\x60]`，导致 `class="… text-gray-400"`
+// 这类尾部 token 被系统性漏检（每个属性恰好漏 1 个）。
 const TAILWIND_COLOR_RE = new RegExp(
-  `(?:^|[\\s"'\\x60])((?:[a-z-]+:)*(?:bg|text|border|ring|divide|outline|placeholder|accent|fill|stroke|from|via|to)-(${COLOR_FAMILY})(?:-\\d+)?(?:\\/\\d+)?)(?=[\\s"'\\x60])`,
+  `(?:^|[\\s"'\\x60])((?:[a-z-]+:)*(?:${COLOR_UTILITY_PREFIXES})-(${COLOR_FAMILY})(?:-\\d+)?(?:\\/\\d+)?)(?=[\\s"'\\x60]|$)`,
   'g'
 );
 
@@ -240,6 +267,7 @@ function tailwindIssues(file, text) {
 export function collectIssues(file, content) {
   const rel = toPosix(file);
   const issues = [];
+  if (isWholeFileExempt(rel)) return issues;
   const isHtml = rel.endsWith('.html');
 
   if (isHtml) {
@@ -281,7 +309,16 @@ export function collectIssues(file, content) {
 // 迁移（apply）
 // ---------------------------------------------------------------------------
 
-export function migrate(content, isHtml) {
+/**
+ * 迁移一个文件的旧色板用法。
+ *
+ * `toolPage` 控制「工具页专属的结构性注入」（`<body>` 加 `phase2-tool-page`、
+ * 给 input/button/drop-zone 补 `ui-*` 组件类）。这些注入只对
+ * `src/pages/**` 的 115 个工具页成立；站点页、partial 与首页共用同一套
+ * `ui-*` 语义类，但不接受工具页标记，否则 `<body>` 会被加上多余的
+ * `phase2-tool-page`。默认 `false`（只做颜色替换，绝不改动结构）。
+ */
+export function migrate(content, isHtml, { toolPage = false } = {}) {
   let next = content;
   for (const [from, to] of [...replacements].sort(
     (a, b) => b[0].length - a[0].length
@@ -331,7 +368,7 @@ export function migrate(content, isHtml) {
     );
   }
 
-  if (isHtml) {
+  if (isHtml && toolPage) {
     next = next.replace(
       /<body class="(?![^"]*\bphase2-tool-page\b)/,
       '<body class="phase2-tool-page '
@@ -382,12 +419,37 @@ function collectTsFiles() {
   return out;
 }
 
-function collectHtmlFiles() {
-  const pagesDir = path.join(ROOT, 'src', 'pages');
-  return fs
-    .readdirSync(pagesDir)
-    .filter((f) => f.endsWith('.html'))
-    .map((f) => path.join(pagesDir, f));
+/** 递归收集目录下所有 .html 文件。 */
+function walkHtml(dir, out) {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) walkHtml(full, out);
+    else if (entry.name.endsWith('.html')) out.push(full);
+  }
+  return out;
+}
+
+/**
+ * 门控 HTML 扫描范围 = 三者并集：
+ *   1. `src/pages/**`     —— 115 个工具页（递归，兼容未来子目录）
+ *   2. `src/partials/**`  —— 站点 partial（footer / footer-simple / navbar-simple 等）
+ *   3. 仓库根 `*.html`    —— 站点页与首页（404 / about / contact / index /
+ *                            licensing / privacy / terms / svg-repair）
+ *
+ * 历史缺陷：v1 只 `readdirSync(src/pages)` 取顶层 `.html`，于是
+ * `src/partials/**`、根目录 `*.html`（含 `index.html`）全在门控之外，
+ * 站点页与页脚的旧调色板类长期无人看守。回归用例见
+ * `src/tests/migrate-visual-batch.test.ts`。
+ */
+export function collectHtmlFiles() {
+  return [
+    ...walkHtml(path.join(ROOT, 'src', 'pages'), []),
+    ...walkHtml(path.join(ROOT, 'src', 'partials'), []),
+    ...fs
+      .readdirSync(ROOT, { withFileTypes: true })
+      .filter((entry) => entry.isFile() && entry.name.endsWith('.html'))
+      .map((entry) => path.join(ROOT, entry.name)),
+  ].sort();
 }
 
 if (isMain) {
@@ -414,12 +476,22 @@ if (isMain) {
 
   let changed = 0;
   let unapprovedTotal = 0;
+  let exemptSkipped = 0;
   const unapprovedByFile = [];
 
   for (const { file, isHtml } of targets) {
     const original = fs.readFileSync(file, 'utf8');
     const relative = toPosix(path.relative(ROOT, file));
-    const migrated = migrate(original, isHtml);
+
+    // 整文件豁免（非构建产物的独立开发工具页）：既不迁移，也不计入未批准。
+    if (isWholeFileExempt(relative)) {
+      exemptSkipped++;
+      continue;
+    }
+
+    // 结构性注入只对工具页成立；partial 与站点页只做颜色替换。
+    const toolPage = relative.startsWith('src/pages/');
+    const migrated = migrate(original, isHtml, { toolPage });
 
     if (migrated !== original) {
       changed++;
@@ -438,7 +510,7 @@ if (isMain) {
   }
 
   console.log(
-    `${targets.length} file(s), ${changed} file(s) ${write ? 'updated' : 'need migration'}, ${unapprovedTotal} unapproved legacy color(s) in ${unapprovedByFile.length} file(s).`
+    `${targets.length} file(s) (${exemptSkipped} whole-file exempt), ${changed} file(s) ${write ? 'updated' : 'need migration'}, ${unapprovedTotal} unapproved legacy color(s) in ${unapprovedByFile.length} file(s).`
   );
   if (check && (changed > 0 || unapprovedTotal > 0)) process.exitCode = 1;
 }

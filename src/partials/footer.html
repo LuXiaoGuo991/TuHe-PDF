@@ -1,5 +1,5 @@
 {{#if simpleMode}} {{> footer-simple}} {{else}}
-<footer class="mt-16 border-t-2 border-gray-700 py-8">
+<footer class="mt-16 border-t-2 ui-border-subtle py-8">
   <div class="container mx-auto px-4 text-center md:text-left">
     <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
       <div>
@@ -10,21 +10,21 @@
           <img src="{{baseUrl}}images/light.png" alt="TuHe PDF Logo" class="theme-logo theme-logo--light mr-3 h-10 w-10" />
           <img id="footer-logo" src="{{baseUrl}}images/dark.png" alt="TuHe PDF Logo" class="theme-logo theme-logo--dark mr-3 h-10 w-10" />
           {{/if}}
-          <span id="footer-brand" class="text-xl font-bold text-white">TuHe PDF</span>
+          <span id="footer-brand" class="text-xl font-bold ui-text-primary">TuHe PDF</span>
         </div>
-        <p class="text-sm text-gray-400">图合PDF工具（TuHe PDF），由个人开发者运营</p>
-        <p id="footer-copyright" class="mt-2 text-sm text-gray-400">
+        <p class="text-sm ui-text-secondary">图合PDF工具（TuHe PDF），由个人开发者运营</p>
+        <p id="footer-copyright" class="mt-2 text-sm ui-text-secondary">
           {{#if footerText}}{{footerText}}{{else}}&copy; 2026 TuHe PDF.{{/if}}
         </p>
-        <p class="mt-2 text-xs text-gray-500">
+        <p class="mt-2 text-xs ui-text-tertiary">
           <span data-i18n="footer.version">Version</span>
           <span id="app-version">{{appVersion}}</span>
         </p>
       </div>
 
       <div>
-        <h2 class="mb-4 font-bold text-white">服务与联系</h2>
-        <ul class="space-y-2 text-gray-400">
+        <h2 class="mb-4 font-bold ui-text-primary">服务与联系</h2>
+        <ul class="space-y-2 ui-text-secondary">
           <li><a href="about.html" class="ui-hover-text-action">关于图合PDF工具</a></li>
           <li><a href="contact.html" class="ui-hover-text-action">联系与投诉</a></li>
           <li><a href="terms.html" class="ui-hover-text-action">服务条款</a></li>
@@ -34,8 +34,8 @@
       </div>
 
       <div>
-        <h2 class="mb-4 font-bold text-white">备案与开源</h2>
-        <div class="space-y-3 text-sm text-gray-400">
+        <h2 class="mb-4 font-bold ui-text-primary">备案与开源</h2>
+        <div class="space-y-3 text-sm ui-text-secondary">
           <p><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" class="ui-hover-text-action">苏ICP备2026010377号</a></p>
           <p class="flex items-center justify-center gap-1 md:justify-start">
             <img src="{{baseUrl}}images/备案图标.png" alt="公安备案图标" class="h-4 w-4" />
@@ -44,7 +44,7 @@
           <p>
             <a href="https://github.com/alam00000/tuhe-pdf" target="_blank" rel="noopener noreferrer" class="ui-hover-text-action">TuHe PDF 开源仓库（GitHub）</a>
           </p>
-          <p class="text-xs text-gray-500">访问境外平台将适用其隐私规则。</p>
+          <p class="text-xs ui-text-tertiary">访问境外平台将适用其隐私规则。</p>
         </div>
       </div>
     </div>

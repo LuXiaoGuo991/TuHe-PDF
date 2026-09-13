@@ -55,7 +55,7 @@
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
   </head>
 
-  <body class="antialiased bg-gray-900 text-gray-300">
+  <body class="antialiased ui-bg-canvas">
     {{> navbar }}
 
     <div id="app" class="min-h-screen container mx-auto p-4 md:p-8">
@@ -63,7 +63,7 @@
         <!-- 404 Number -->
         <div class="mb-8">
           <h1
-            class="text-9xl md:text-[12rem] font-bold text-indigo-500 leading-none"
+            class="text-9xl md:text-[12rem] font-bold ui-text-action leading-none"
           >
             404
           </h1>
@@ -71,7 +71,7 @@
 
         <!-- Main heading -->
         <h2
-          class="text-3xl md:text-5xl font-bold text-white mb-4"
+          class="text-3xl md:text-5xl font-bold ui-text-primary mb-4"
           data-i18n="notFound.heading"
         >
           页面未找到
@@ -79,7 +79,7 @@
 
         <!-- Description -->
         <p
-          class="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto"
+          class="text-lg md:text-xl ui-text-secondary mb-8 max-w-2xl mx-auto"
           data-i18n="notFound.description"
         >
           哎呀！您要找的页面似乎走丢了。不过别担心，我们的 PDF
@@ -92,10 +92,10 @@
         >
           <a
             href="index.html"
-            class="inline-flex items-center gap-3 pl-8 pr-2 py-2 rounded-full bg-gradient-to-b from-indigo-500 to-indigo-600 text-white font-semibold focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-indigo-400 hover:shadow-xl hover:shadow-indigo-500/30 transition-all duration-200 transform hover:-translate-y-1"
+            class="inline-flex items-center gap-3 pl-8 pr-2 py-2 rounded-full bg-gradient-to-b from-[var(--color-action)] to-[var(--color-action-active)] ui-text-primary font-semibold ui-focus-ring hover:shadow-xl hover:shadow-[var(--color-action)]/30 transition-all duration-200 transform hover:-translate-y-1"
           >
             <span data-i18n="notFound.backHome">返回首页</span>
-            <span class="bg-white text-indigo-600 rounded-full p-2">
+            <span class="ui-bg-light ui-text-action rounded-full p-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -116,7 +116,7 @@
 
           <a
             href="/index.html#tools"
-            class="inline-block px-8 py-3 rounded-full bg-gray-800 text-white font-semibold border border-gray-700 hover:bg-gray-700 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-gray-700 transition-all duration-200"
+            class="inline-block px-8 py-3 rounded-full ui-bg-surface ui-text-primary font-semibold border ui-border-subtle ui-hover-bg-raised ui-focus-ring transition-all duration-200"
             data-i18n="notFound.browseTools"
           >
             浏览全部工具
@@ -125,31 +125,31 @@
 
         <!-- Helpful links -->
         <div class="mt-16">
-          <p class="text-gray-500 mb-4" data-i18n="notFound.tryPopular">
+          <p class="ui-text-tertiary mb-4" data-i18n="notFound.tryPopular">
             或者试试这些热门工具：
           </p>
           <div class="flex flex-wrap justify-center gap-3">
             <a
               href="/merge-pdf"
-              class="px-4 py-2 bg-gray-800 text-gray-300 rounded-lg hover:bg-gray-700 hover:text-white transition-colors text-sm"
+              class="px-4 py-2 ui-bg-surface ui-text-secondary rounded-lg ui-hover-bg-raised ui-hover-text-primary transition-colors text-sm"
             >
               <span data-i18n="tools:mergePdf.name">合并 PDF</span>
             </a>
             <a
               href="/split-pdf"
-              class="px-4 py-2 bg-gray-800 text-gray-300 rounded-lg hover:bg-gray-700 hover:text-white transition-colors text-sm"
+              class="px-4 py-2 ui-bg-surface ui-text-secondary rounded-lg ui-hover-bg-raised ui-hover-text-primary transition-colors text-sm"
             >
               <span data-i18n="tools:splitPdf.name">拆分 PDF</span>
             </a>
             <a
               href="/compress-pdf"
-              class="px-4 py-2 bg-gray-800 text-gray-300 rounded-lg hover:bg-gray-700 hover:text-white transition-colors text-sm"
+              class="px-4 py-2 ui-bg-surface ui-text-secondary rounded-lg ui-hover-bg-raised ui-hover-text-primary transition-colors text-sm"
             >
               <span data-i18n="tools:compressPdf.name">压缩 PDF</span>
             </a>
             <a
               href="/edit-pdf"
-              class="px-4 py-2 bg-gray-800 text-gray-300 rounded-lg hover:bg-gray-700 hover:text-white transition-colors text-sm"
+              class="px-4 py-2 ui-bg-surface ui-text-secondary rounded-lg ui-hover-bg-raised ui-hover-text-primary transition-colors text-sm"
             >
               <span data-i18n="tools:pdfEditor.name">编辑 PDF</span>
             </a>

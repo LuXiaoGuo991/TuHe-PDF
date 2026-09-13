@@ -191,24 +191,31 @@
     'Noto Sans SC', ui-sans-serif, system-ui, sans-serif;
 }
 
+/* 站点基线：并入 @layer base。
+ *
+ * 历史上这里是**未分层**的 `body {}`，而未分层规则在层叠中恒高于
+ * `@layer utilities`，于是 `<body class="bg-gray-900 text-gray-300">` 这类
+ * Tailwind 调色板类被静默压掉——页面「看着正常」纯属假象，也正是站点页旧
+ * 色板能长期逃过门控的原因。并入 base 后语义归位（基线归 base、工具类归
+ * utilities），同时消除了这个掩盖层。
+ *
+ * 生效值保持不变：`ui-*` 与 `.phase2-tool-page` 都是未分层类（特异性 0,1,0），
+ * 仍然胜过 base 元素选择器；115 个工具页 body 上的 `ui-bg-canvas` 与
+ * `phase2-tool-page` 继续提供背景与文字色。 */
 @layer base {
   body {
     @apply antialiased;
-    font-family: var(--font-sans);
+    font-family:
+      'Source Han Sans SC', 'DM Sans', 'PingFang SC', 'Microsoft YaHei',
+      'Noto Sans SC', sans-serif;
+    background-color: var(--color-canvas);
+    color: var(--color-text-primary);
+    line-height: 1.6;
   }
 }
 
 html {
   scroll-behavior: smooth;
-}
-
-body {
-  font-family:
-    'Source Han Sans SC', 'DM Sans', 'PingFang SC', 'Microsoft YaHei',
-    'Noto Sans SC', sans-serif;
-  background-color: var(--color-canvas);
-  color: var(--color-text-primary);
-  line-height: 1.6;
 }
 
 .tool-card {
