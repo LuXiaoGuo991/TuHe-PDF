@@ -52,6 +52,21 @@ function buildUrl(lang, pageName) {
   return pagePath ? `${SITE_URL}/${lang}/${pagePath}` : `${SITE_URL}/${lang}`;
 }
 
+const DOCS_DIR = path.join(DIST_DIR, 'docs');
+
+function collectDocsPages(dir, rel = '') {
+  if (!fs.existsSync(dir)) return [];
+  const out = [];
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    const relPath = rel ? `${rel}/${entry.name}` : entry.name;
+    if (entry.isDirectory()) out.push(...collectDocsPages(full, relPath));
+    else if (entry.name.endsWith('.html'))
+      out.push(relPath.replace(/\.html$/, ''));
+  }
+  return out;
+}
+
 function generateSitemap() {
   console.log('🗺️  Generating multilingual sitemap...');
   console.log(`   SITE_URL: ${SITE_URL}`);
@@ -111,6 +126,29 @@ function generateSitemap() {
 `;
   }
 
+  // docs 文档站页面（dist/docs 递归扫描，clean URL，无多语言 alternates）
+  const docsPages = collectDocsPages(DOCS_DIR);
+  for (const pagePath of docsPages) {
+    const slug = pagePath === 'index' ? '' : pagePath;
+    const url = `${SITE_URL}/docs/${slug}`;
+    let lastmod;
+    try {
+      lastmod = fs
+        .statSync(path.join(DOCS_DIR, `${pagePath}.html`))
+        .mtime.toISOString()
+        .slice(0, 10);
+    } catch {
+      lastmod = new Date().toISOString().slice(0, 10);
+    }
+    sitemap += `  <url>
+    <loc>${url}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+`;
+  }
+
   sitemap += `</urlset>
 `;
 
@@ -121,7 +159,7 @@ function generateSitemap() {
   fs.writeFileSync(publicSitemapPath, sitemap);
 
   console.log(
-    `✅ Sitemap generated with ${htmlFiles.length} canonical URLs (${languages.length} hreflang alternates each)`
+    `✅ Sitemap generated with ${htmlFiles.length} canonical URLs (${languages.length} hreflang alternates each) + ${docsPages.length} docs URLs`
   );
 }
 

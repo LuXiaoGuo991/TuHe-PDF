@@ -3,16 +3,27 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 /**
- * 可审计的 zh-TW 人工复核门控。
+ * zh-TW 结构门控。
  *
- * 复核按工具命名空间（tools.json 的顶层 key）分批进行，人工完成的批次登记到
- * `docs/zh-TW-review-manifest.json` 的 `reviewedNamespaces`。本脚本校验：
+ * 只有「结构契约」参与退出码；人工复核台账（`docs/zh-TW-review-manifest.json` 与
+ * `docs/zh-TW-review-checklist.md`）**仅作提示输出，永不参与退出码**。
  *
- *   1. 当前 tools.json 的全部扁平键是否都落入「已完成批次」；未覆盖的键视为
- *      「新增 / 未复核」，直接使门控失败（防止新增键静默漏审）。
- *   2. 插值占位符（`{{...}}`）是否符合英文运行时参数契约与显式豁免。
- *   3. HTML 标记（`<tag>`）在 zh-TW 与 en 之间是否一致。
- *   4. 快捷键 token（Ctrl / ⌘ / Shift / Enter …）是否被翻译破坏。
+ * 原因：`docs/` 是本地目录、不进版本控制（见 `.gitignore`），干净检出时这两个文件
+ * 都不存在。台账缺失、解析失败或与 locale 文件不一致，都不应阻断 `npm run build`。
+ *
+ * 致命校验（issues，非空则 exit 1）：
+ *   1. 插值占位符（`{{...}}`）符合英文运行时参数契约与显式豁免。
+ *   2. HTML 标记（`<tag>`）在 zh-TW 与 en 之间保持一致。
+ *   3. 快捷键 token（Ctrl / ⌘ / Shift / Enter …）未被翻译破坏。
+ *
+ * 提示（notices，永不致命）：
+ *   - 台账缺失 / 解析失败 / 结构不符；
+ *   - `reviewedNamespaces` 与 tools.json 命名空间的键数、复核人、日期一致性；
+ *   - `releaseApproval` 完整性；
+ *   - 非 `--structure-only` 模式下的复核覆盖率。
+ *
+ * 向后兼容：`--structure-only` 仍然接受（`npm run check:zh-tw-structure` 在用），
+ * 它与默认模式的差别现在只剩「不输出覆盖率提示」。
  *
  * OpenCC 仅用于生成候选 diff，绝不自动覆盖已人工确认的文本——本脚本不写入任何
  * locale 文件，只输出审计结果。
@@ -137,37 +148,58 @@ function isIsoDate(value) {
   );
 }
 
-function validateReleaseApproval(approval, issues) {
-  if (!approval) return false;
+/** 读取本地台账文件；不存在或不可读都返回 null，绝不抛错。 */
+function readTextIfExists(file) {
+  try {
+    return fs.readFileSync(file, 'utf8');
+  } catch {
+    return null;
+  }
+}
+
+/** 宽松读取台账 JSON：返回 { value, reason }，失败时 value 为 null。 */
+function readJsonIfExists(file) {
+  const text = readTextIfExists(file);
+  if (text === null) return { value: null, reason: '文件不存在' };
+  let parsed;
+  try {
+    parsed = JSON.parse(text);
+  } catch (error) {
+    return { value: null, reason: `JSON 解析失败（${error.message}）` };
+  }
+  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+    return { value: null, reason: '根节点不是对象' };
+  }
+  return { value: parsed, reason: null };
+}
+
+/** 台账完整性巡检：只写提示，不影响退出码。 */
+function inspectReleaseApproval(approval, notices) {
+  if (approval === undefined) {
+    notices.push('manifest 缺少 releaseApproval 字段');
+    return false;
+  }
   if (!approval || typeof approval !== 'object' || Array.isArray(approval)) {
-    issues.push('manifest.releaseApproval 必须是对象');
+    notices.push('manifest.releaseApproval 必须是对象');
     return false;
   }
   if (approval.approved !== true) {
-    issues.push('manifest.releaseApproval.approved 必须为 true');
+    notices.push('manifest.releaseApproval.approved 不为 true');
+    return false;
   }
   if (typeof approval.approvedBy !== 'string' || !approval.approvedBy.trim()) {
-    issues.push('manifest.releaseApproval 缺少确认人');
+    notices.push('manifest.releaseApproval 缺少确认人');
   }
   if (!isIsoDate(approval.approvedAt)) {
-    issues.push('manifest.releaseApproval 确认日期格式错误');
+    notices.push('manifest.releaseApproval 确认日期格式错误');
   }
   if (typeof approval.scope !== 'string' || !approval.scope.trim()) {
-    issues.push('manifest.releaseApproval 缺少确认范围');
+    notices.push('manifest.releaseApproval 缺少确认范围');
   }
   if (typeof approval.basis !== 'string' || !approval.basis.trim()) {
-    issues.push('manifest.releaseApproval 缺少确认依据');
+    notices.push('manifest.releaseApproval 缺少确认依据');
   }
-  return (
-    approval.approved === true &&
-    typeof approval.approvedBy === 'string' &&
-    approval.approvedBy.trim() &&
-    isIsoDate(approval.approvedAt) &&
-    typeof approval.scope === 'string' &&
-    approval.scope.trim() &&
-    typeof approval.basis === 'string' &&
-    approval.basis.trim()
-  );
+  return true;
 }
 
 // Chinese does not render English plural suffixes, and this one tool name is
@@ -180,32 +212,49 @@ const APPROVED_PLACEHOLDER_OMISSIONS = new Map([
   ['emailToPdf.dynamic.e2b1b6aa34', new Set(['value0'])],
 ]);
 
-const manifest = JSON.parse(fs.readFileSync(MANIFEST, 'utf8'));
-const reviewRecords = manifest.reviewedNamespaces ?? {};
-const reviewed = new Set(
-  reviewRecords && !Array.isArray(reviewRecords)
-    ? Object.keys(reviewRecords)
-    : []
-);
-const checklist = parseChecklist(fs.readFileSync(CHECKLIST, 'utf8'));
+// issues：致命，决定退出码。notices：人工复核台账提示，永不致命。
+const issues = [];
+const notices = [];
+
+const manifestRead = readJsonIfExists(MANIFEST);
+const manifest = manifestRead.value;
+const reviewRecords =
+  manifest &&
+  manifest.reviewedNamespaces &&
+  typeof manifest.reviewedNamespaces === 'object' &&
+  !Array.isArray(manifest.reviewedNamespaces)
+    ? manifest.reviewedNamespaces
+    : {};
+const reviewed = new Set(Object.keys(reviewRecords));
+
+const checklistText = readTextIfExists(CHECKLIST);
+const checklist = checklistText === null ? null : parseChecklist(checklistText);
+
+if (manifest === null) {
+  notices.push(
+    `人工复核台账不可用（docs/zh-TW-review-manifest.json ${manifestRead.reason}），已跳过台账核对`
+  );
+} else if (
+  // 空对象是合法状态（尚无逐命名空间复核记录），仅当形状不对时才提示。
+  manifest.reviewedNamespaces !== undefined &&
+  (!manifest.reviewedNamespaces ||
+    typeof manifest.reviewedNamespaces !== 'object' ||
+    Array.isArray(manifest.reviewedNamespaces))
+) {
+  notices.push('manifest.reviewedNamespaces 必须是带复核元数据的对象');
+}
+if (checklist === null) {
+  notices.push(
+    '人工复核清单不可用（docs/zh-TW-review-checklist.md 不存在），已跳过命名空间/键数核对'
+  );
+}
+
+const releaseApproved = manifest
+  ? inspectReleaseApproval(manifest.releaseApproval, notices)
+  : false;
 
 const twTools = flatten(loadJson('zh-TW', 'tools'));
 const enTools = flatten(loadJson('en', 'tools'));
-
-const issues = [];
-let reviewedKeys = 0;
-const releaseApproved = validateReleaseApproval(
-  manifest.releaseApproval,
-  issues
-);
-
-if (
-  !reviewRecords ||
-  Array.isArray(reviewRecords) ||
-  typeof reviewRecords !== 'object'
-) {
-  issues.push('manifest.reviewedNamespaces 必须是带复核元数据的对象');
-}
 
 const namespaceKeyCounts = new Map();
 for (const key of Object.keys(twTools)) {
@@ -216,72 +265,76 @@ for (const key of Object.keys(twTools)) {
   );
 }
 
-for (const [namespace, keyCount] of namespaceKeyCounts) {
-  const row = checklist.get(namespace);
-  if (!row) {
-    issues.push(`复核清单缺少命名空间: ${namespace}`);
-  } else if (row.keyCount !== keyCount) {
-    issues.push(
-      `复核清单键数不一致: ${namespace} (${row.keyCount} != ${keyCount})`
+if (checklist) {
+  for (const [namespace, keyCount] of namespaceKeyCounts) {
+    const row = checklist.get(namespace);
+    if (!row) {
+      notices.push(`复核清单缺少命名空间: ${namespace}`);
+    } else if (row.keyCount !== keyCount) {
+      notices.push(
+        `复核清单键数不一致: ${namespace} (${row.keyCount} != ${keyCount})`
+      );
+    }
+  }
+  for (const namespace of checklist.keys()) {
+    if (!namespaceKeyCounts.has(namespace)) {
+      notices.push(`复核清单包含未知命名空间: ${namespace}`);
+    }
+  }
+
+  const reviewedDates = [];
+  for (const [namespace, record] of Object.entries(reviewRecords)) {
+    const row = checklist.get(namespace);
+    const keyCount = namespaceKeyCounts.get(namespace);
+    if (keyCount === undefined) {
+      notices.push(`manifest 包含未知命名空间: ${namespace}`);
+      continue;
+    }
+    if (!row) {
+      notices.push(`manifest 命名空间不在复核清单中: ${namespace}`);
+      continue;
+    }
+    if (!record || typeof record !== 'object' || Array.isArray(record)) {
+      notices.push(`复核记录格式错误: ${namespace}`);
+      continue;
+    }
+    if (record.keyCount !== keyCount) {
+      notices.push(`manifest 键数不一致: ${namespace}`);
+    }
+    if (typeof record.reviewer !== 'string' || !record.reviewer.trim()) {
+      notices.push(`manifest 缺少复核人: ${namespace}`);
+    }
+    if (!isIsoDate(record.reviewedAt)) {
+      notices.push(`manifest 复核日期格式错误: ${namespace}`);
+    } else {
+      reviewedDates.push(record.reviewedAt);
+    }
+    if (!row.status.includes('✅')) {
+      notices.push(`清单未标记为已复核: ${namespace}`);
+    }
+    if (
+      row.reviewer !== record.reviewer ||
+      row.reviewedAt !== record.reviewedAt
+    ) {
+      notices.push(`清单与 manifest 复核元数据不一致: ${namespace}`);
+    }
+  }
+
+  const expectedLastReviewed = reviewedDates.sort().at(-1) ?? null;
+  if (manifest && manifest.lastReviewed !== expectedLastReviewed) {
+    notices.push(
+      `manifest.lastReviewed 不一致: ${manifest.lastReviewed ?? 'null'} != ${expectedLastReviewed ?? 'null'}`
     );
   }
-}
-for (const namespace of checklist.keys()) {
-  if (!namespaceKeyCounts.has(namespace)) {
-    issues.push(`复核清单包含未知命名空间: ${namespace}`);
+  for (const [namespace, row] of checklist) {
+    if (manifest && row.status.includes('✅') && !reviewed.has(namespace)) {
+      notices.push(`清单已完成但 manifest 未登记: ${namespace}`);
+    }
   }
 }
 
-const reviewedDates = [];
-for (const [namespace, record] of Object.entries(reviewRecords)) {
-  const row = checklist.get(namespace);
-  const keyCount = namespaceKeyCounts.get(namespace);
-  if (keyCount === undefined) {
-    issues.push(`manifest 包含未知命名空间: ${namespace}`);
-    continue;
-  }
-  if (!row) {
-    issues.push(`manifest 命名空间不在复核清单中: ${namespace}`);
-    continue;
-  }
-  if (!record || typeof record !== 'object' || Array.isArray(record)) {
-    issues.push(`复核记录格式错误: ${namespace}`);
-    continue;
-  }
-  if (record.keyCount !== keyCount) {
-    issues.push(`manifest 键数不一致: ${namespace}`);
-  }
-  if (typeof record.reviewer !== 'string' || !record.reviewer.trim()) {
-    issues.push(`manifest 缺少复核人: ${namespace}`);
-  }
-  if (!isIsoDate(record.reviewedAt)) {
-    issues.push(`manifest 复核日期格式错误: ${namespace}`);
-  } else {
-    reviewedDates.push(record.reviewedAt);
-  }
-  if (!row.status.includes('✅')) {
-    issues.push(`清单未标记为已复核: ${namespace}`);
-  }
-  if (
-    row.reviewer !== record.reviewer ||
-    row.reviewedAt !== record.reviewedAt
-  ) {
-    issues.push(`清单与 manifest 复核元数据不一致: ${namespace}`);
-  }
-}
-const expectedLastReviewed = reviewedDates.sort().at(-1) ?? null;
-if (manifest.lastReviewed !== expectedLastReviewed) {
-  issues.push(
-    `manifest.lastReviewed 不一致: ${manifest.lastReviewed ?? 'null'} != ${expectedLastReviewed ?? 'null'}`
-  );
-}
-for (const [namespace, row] of checklist) {
-  if (row.status.includes('✅') && !reviewed.has(namespace)) {
-    issues.push(`清单已完成但 manifest 未登记: ${namespace}`);
-  }
-}
-
-// 1. 覆盖：每个键是否落入已完成批次。
+// 1. 覆盖：每个键是否落入已完成批次（仅提示）。
+let reviewedKeys = 0;
 const uncoveredNamespaces = new Set();
 for (const key of Object.keys(twTools)) {
   const ns = topNamespace(key);
@@ -298,7 +351,7 @@ console.log(
 );
 
 if (!structureOnly && uncoveredNamespaces.size > 0 && !releaseApproved) {
-  issues.push(
+  notices.push(
     `未复核命名空间 ${uncoveredNamespaces.size} 个（${totalKeys - reviewedKeys} 键未落入已完成批次）`
   );
 }
@@ -340,22 +393,30 @@ for (const key of Object.keys(twTools)) {
   }
 }
 
+if (notices.length) {
+  console.warn(
+    `\n${notices.length} 条人工复核台账提示（仅提示，不影响退出码）：`
+  );
+  for (const notice of notices.slice(0, 20)) console.warn(`- ${notice}`);
+  if (notices.length > 20)
+    console.warn(`  … 以及另外 ${notices.length - 20} 条`);
+}
+
 if (issues.length) {
-  console.error(`\n${issues.length} 个审计问题：`);
+  console.error(`\n${issues.length} 个结构问题：`);
   for (const issue of issues.slice(0, 100)) console.error(`- ${issue}`);
   if (issues.length > 100)
     console.error(`  … 以及另外 ${issues.length - 100} 个`);
   process.exit(1);
 }
 
+const coverage = `人工复核进度（提示）：${reviewedKeys}/${totalKeys} 键。`;
 if (structureOnly) {
-  console.log(
-    `\nzh-TW 结构门控通过；人工复核进度 ${reviewedKeys}/${totalKeys} 键。`
-  );
+  console.log(`\nzh-TW 结构门控通过；${coverage}`);
 } else if (releaseApproved) {
   console.log(
-    `\nzh-TW 发布门控通过：${manifest.releaseApproval.approvedBy} 已于 ${manifest.releaseApproval.approvedAt} 确认 ${manifest.releaseApproval.scope}。`
+    `\nzh-TW 结构门控通过：台账声明 ${manifest.releaseApproval.approvedBy} 已于 ${manifest.releaseApproval.approvedAt} 确认 ${manifest.releaseApproval.scope}；${coverage}`
   );
 } else {
-  console.log('\nzh-TW 人工复核门控通过：所有键已复核且结构一致。');
+  console.log(`\nzh-TW 结构门控通过；${coverage}`);
 }
