@@ -1684,7 +1684,8 @@ body:has(#workbench) {
   display: none;
   align-items: flex-end;
   gap: 4px;
-  padding: 8px 12px 0;
+  /* 收紧标签栏左侧/上方留白：标签更贴近卡片栏与顶栏，仍保留一丝“搁板”呼吸感 */
+  padding: 4px 6px 0;
   background: var(--color-surface-sunken);
   border-bottom: 1px solid var(--color-surface);
   overflow-x: auto;
@@ -1708,10 +1709,10 @@ body:has(#workbench) {
 .wb-tab {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   max-width: 220px;
-  padding: 8px 10px 8px 12px;
-  border-radius: 10px 10px 0 0;
+  padding: 6px 8px 6px 10px;
+  border-radius: 9px 9px 0 0;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-bottom: none;
@@ -1884,7 +1885,18 @@ body:has(#workbench) {
 
 .wb-panel.wb-panel-active {
   display: block;
-  animation: wb-panel-in 0.25s ease;
+  /* 进入的面板压在退出面板/首页之上，保证切换时是“新内容淡入覆盖旧内容” */
+  z-index: 2;
+  animation: wb-panel-in 0.24s ease;
+}
+
+/* 关闭中的面板：淡出并轻微内缩，给“叉掉标签”一个收束感。
+   放在 .wb-panel-active 之后，二者同时存在时以退出态为准。 */
+.wb-panel.wb-panel-closing {
+  display: block;
+  z-index: 1;
+  pointer-events: none;
+  animation: wb-panel-out 0.18s ease forwards;
 }
 
 @keyframes wb-panel-in {
@@ -1893,6 +1905,17 @@ body:has(#workbench) {
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes wb-panel-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.985);
   }
 }
 

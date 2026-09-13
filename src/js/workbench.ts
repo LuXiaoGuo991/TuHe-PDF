@@ -476,31 +476,57 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
     const tab = tabs.get(id);
     if (!tab) return;
 
-    const returnsToHome = activeTabId === id && tabs.size === 1;
+    const wasActive = activeTabId === id;
+    const returnsToHome = wasActive && tabs.size === 1;
+
+    // 标签芯片：淡出 + 下沉的退出动画
     tab.tabEl.classList.add('closing');
+
+    if (wasActive) {
+      // 冻结面板尺寸：回到首页时标签栏会立即收起、工作区随之变高，
+      // 冻结后退出中的 iframe 不会因容器变高而重排（避免可见的内容跳动）。
+      const rect = tab.panelEl.getBoundingClientRect();
+      tab.panelEl.style.width = `${rect.width}px`;
+      tab.panelEl.style.height = `${rect.height}px`;
+      tab.panelEl.style.right = 'auto';
+      tab.panelEl.style.bottom = 'auto';
+      // 旧面板淡出：层级低于即将淡入的新面板，但高于首页（具体见 CSS）
+      tab.panelEl.classList.remove('wb-panel-active');
+      tab.panelEl.classList.add('wb-panel-closing');
+    }
+
+    tabs.delete(id);
+
     const removeClosingTab = () => {
       tab.tabEl.remove();
       tab.panelEl.remove();
     };
-    tabs.delete(id);
 
-    if (activeTabId === id) {
+    // 关闭最后一个标签：回到首页。首页淡入与旧面板淡出交叉进行，
+    // 标签栏立即收起，首页在全高工作区中直接居中，不会“先偏上再下移”。
+    if (returnsToHome) {
+      activeTabId = null;
+      setHomeVisible(true);
+      tabBar.classList.remove('has-tabs');
+      document.title =
+        deps.t('pageTitle') !== 'pageTitle'
+          ? deps.t('pageTitle')
+          : BASE_TITLE_FALLBACK;
+      highlightActiveCard(null);
+      window.setTimeout(removeClosingTab, 200);
+      return;
+    }
+
+    // 关闭的是当前标签但仍有其它标签：切到相邻标签，
+    // 新面板淡入覆盖正在淡出的旧面板，形成平滑的横向切换感。
+    if (wasActive) {
       const remaining = Array.from(tabs.keys());
       if (remaining.length > 0) {
         activateTab(remaining[remaining.length - 1]);
       }
     }
 
-    // The last panel covers the home view until its exit animation completes.
-    if (returnsToHome) {
-      window.setTimeout(() => {
-        removeClosingTab();
-        updateChrome();
-      }, 180);
-      return;
-    }
-
-    window.setTimeout(removeClosingTab, 180);
+    window.setTimeout(removeClosingTab, 200);
     updateChrome();
   };
 
