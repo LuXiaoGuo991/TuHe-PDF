@@ -20,6 +20,8 @@ import {
 } from './utils/disabled-tools.js';
 import { initWorkbench } from './workbench.js';
 import { initTheme } from './utils/theme.js';
+// 首页环境背景（流体玻璃 + 流云粒子）；模块自检 #tuhe-home，非首页自动跳过。
+import './ambient-bg.js';
 declare const __BRAND_NAME__: string;
 
 const init = async () => {

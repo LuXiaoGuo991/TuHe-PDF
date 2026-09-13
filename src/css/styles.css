@@ -50,6 +50,15 @@
   --color-status-warning-text: #d6a653;
   --color-status-danger-text: #d85b55;
   --color-status-info-text: #77b9c4;
+
+  /* 玻璃材质 token（首页 + 站点页；工具页不消费）。
+   * 深色下玻璃是「白雾」：低透明白 + 白色高光描边。 */
+  --glass-bg: rgba(255, 255, 255, 0.045);
+  --glass-bg-strong: rgba(32, 37, 34, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.09);
+  --glass-highlight: rgba(255, 255, 255, 0.12);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.28);
+  --glass-blur: 16px;
 }
 
 /* 暖白阅读主题：与深色主题共享组件结构，仅覆盖语义 token。 */
@@ -75,6 +84,14 @@
   --color-status-warning-text: #795200;
   --color-status-danger-text: #a52f2f;
   --color-status-info-text: #236c78;
+
+  /* 亮色下玻璃是「白瓷」：半透明白 + 深色细边 + 白色顶高光。 */
+  --glass-bg: rgba(255, 255, 255, 0.52);
+  --glass-bg-strong: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(37, 43, 39, 0.1);
+  --glass-highlight: rgba(255, 255, 255, 0.85);
+  --glass-shadow: 0 8px 32px rgba(37, 43, 39, 0.1);
+  --glass-blur: 16px;
 }
 
 .ui-surface {
@@ -1001,6 +1018,114 @@ body:has(#workbench) {
 }
 
 /* ---- 全局唯一顶部导航 ---- */
+/* ===== 玻璃材质与首页环境背景层 =====
+ * 视觉参照 prism-glass 的材料语言：半透明 surface + backdrop 模糊 +
+ * 1px 高光描边 + 顶部内高光；全部消费 --glass-* token，双主题自动切换。
+ * 只作用于首页（index.html）与 6 个站点页，115 个工具页不消费这些类。 */
+.ui-glass {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
+  border: 1px solid var(--glass-border);
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    var(--glass-shadow);
+}
+
+/* 首页环境背景容器：固定在视口最底层（z-index:-1 位于 body 传播背景之上、
+ * 内容之下）。容器自身的 CSS 渐变就是 WebGL 不可用 / prefers-reduced-motion
+ * 时的兜底画面，canvas 只是叠加其上的动效层。 */
+.tuhe-ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      ellipse 70% 50% at 18% 0%,
+      color-mix(in srgb, var(--color-action) 16%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 55% 45% at 88% 88%,
+      color-mix(in srgb, var(--color-focus) 10%, transparent),
+      transparent 72%
+    ),
+    var(--color-canvas);
+}
+
+.tuhe-ambient-bg canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.tuhe-ambient-bg canvas.is-fallback,
+.tuhe-ambient-bg canvas.is-hidden {
+  display: none;
+}
+
+/* 站点页（法律页/404）的纯 CSS 环境光晕：body.tuhe-ambient 由页面标记，
+ * 光晕用 brand 三色，比首页流体更克制。 */
+body.tuhe-ambient::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 60% 40% at 15% 0%,
+      color-mix(in srgb, var(--color-action) 14%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 45% 40% at 90% 20%,
+      color-mix(in srgb, var(--color-focus) 10%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 45% at 80% 95%,
+      color-mix(in srgb, var(--color-brand-accent) 8%, transparent),
+      transparent 72%
+    );
+}
+
+body.tuhe-ambient .legal-content {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.25);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.25);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    var(--glass-shadow);
+  padding: 2rem 2.25rem;
+}
+
+body.tuhe-ambient .legal-notice {
+  background-color: color-mix(
+    in srgb,
+    var(--color-surface-sunken) 55%,
+    transparent
+  );
+}
+
+body.tuhe-ambient > footer {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.25);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.25);
+}
+
+@media (max-width: 640px) {
+  body.tuhe-ambient .legal-content {
+    padding: 1.25rem 1rem;
+  }
+}
+
 .wb-topbar {
   display: flex;
   align-items: center;
@@ -1009,8 +1134,11 @@ body:has(#workbench) {
   height: 56px;
   padding: 0 20px;
   flex-shrink: 0;
-  background: var(--color-surface-sunken);
-  border-bottom: 1px solid var(--color-surface);
+  /* 玻璃顶栏：半透明下沉色 + backdrop 模糊，背后的流体背景隐约透出。 */
+  background: color-mix(in srgb, var(--color-surface-sunken) 55%, transparent);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.35);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.35);
+  border-bottom: 1px solid var(--glass-border);
   z-index: 40;
 }
 
@@ -1676,7 +1804,8 @@ body:has(#workbench) {
   display: flex;
   flex-direction: column;
   min-width: 0;
-  background: var(--color-canvas);
+  /* 透明：让固定在视口底层的 .tuhe-ambient-bg 透出（工具 iframe 自带不透明底色）。 */
+  background: transparent;
 }
 
 /* 标签页栏 */
@@ -1962,13 +2091,8 @@ body:has(#workbench) {
   justify-content: center;
   padding: 40px 24px;
   text-align: center;
-  background:
-    radial-gradient(
-      ellipse 60% 45% at 50% 0%,
-      color-mix(in srgb, var(--color-action) 14%, transparent),
-      transparent 70%
-    ),
-    var(--color-canvas);
+  /* 透明：背景由 .tuhe-ambient-bg（流体玻璃 + 粒子 / CSS 渐变兜底）提供。 */
+  background: transparent;
   opacity: 1;
   transform: translateY(0);
   visibility: visible;
@@ -2019,8 +2143,11 @@ body:has(#workbench) {
     color-mix(in srgb, var(--color-action) 8%, transparent)
   );
   border: 1px solid color-mix(in srgb, var(--color-action) 35%, transparent);
-  box-shadow: 0 12px 40px
-    color-mix(in srgb, var(--color-action) 25%, transparent);
+  box-shadow:
+    0 12px 40px color-mix(in srgb, var(--color-action) 25%, transparent),
+    inset 0 1px 0 var(--glass-highlight);
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  backdrop-filter: blur(var(--glass-blur));
   margin-bottom: 24px;
   animation: tuhe-float 5s ease-in-out infinite;
 }
@@ -2080,6 +2207,12 @@ body:has(#workbench) {
   padding: 11px 16px 11px 44px;
   border-radius: 8px;
   font-size: 14px;
+  /* 玻璃搜索框：仅作用于首页搜索，不影响工具页的 .ui-input。 */
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
+  border-color: var(--glass-border);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
 }
 
 .tuhe-quick-grid {
@@ -2096,8 +2229,12 @@ body:has(#workbench) {
   gap: 8px;
   padding: 18px 12px;
   border-radius: 8px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  /* 玻璃卡片：材质替换，尺寸/圆角/内边距不变。 */
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
+  border: 1px solid var(--glass-border);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
   color: var(--color-text-primary);
   font-size: 13px;
   font-weight: 600;
@@ -2109,7 +2246,7 @@ body:has(#workbench) {
 }
 
 .tuhe-quick-card:hover {
-  background: var(--color-surface-raised);
+  background: color-mix(in srgb, var(--color-surface-raised) 62%, transparent);
   border-color: var(--color-action-hover);
 }
 
@@ -2600,11 +2737,15 @@ body:has(#workbench) {
 
 .wb-modal-card {
   color: var(--color-text-primary);
-  background: var(--color-surface-raised);
-  border: 1px solid var(--color-border);
+  /* 玻璃弹窗：用更不透明的 --glass-bg-strong 保证内容可读。 */
+  background: var(--glass-bg-strong);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
+  border: 1px solid var(--glass-border);
   border-radius: 8px;
-  box-shadow: 0 18px 48px
-    color-mix(in srgb, var(--color-surface-sunken) 72%, transparent);
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    0 18px 48px color-mix(in srgb, var(--color-surface-sunken) 72%, transparent);
 }
 
 .wb-modal-card .border-b,
