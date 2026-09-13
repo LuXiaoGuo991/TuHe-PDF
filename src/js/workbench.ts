@@ -723,4 +723,28 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
 
   renderRail();
   updateChrome();
+
+  /* URL 深链：?tool=<slug> 自动以标签页打开对应工具。
+   * 入口是文档站（/docs/）正文中的工具链接（生成期改写为 /?tool=<slug>）。
+   * 消费后清理查询参数，避免刷新或分享 URL 时重复打开。 */
+  const toolSlug = new URLSearchParams(window.location.search)
+    .get('tool')
+    ?.trim()
+    .toLowerCase();
+  if (toolSlug) {
+    const tool = toolIndex.get(toolSlug);
+    if (tool && !deps.isToolDisabled(tool.id)) {
+      openTab(tool.id);
+    }
+    const params = new URLSearchParams(window.location.search);
+    params.delete('tool');
+    const query = params.toString();
+    window.history.replaceState(
+      null,
+      '',
+      window.location.pathname +
+        (query ? `?${query}` : '') +
+        window.location.hash
+    );
+  }
 };

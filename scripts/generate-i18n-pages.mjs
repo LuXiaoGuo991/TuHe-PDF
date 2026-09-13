@@ -180,6 +180,10 @@ function injectToolBreadcrumb(document, lang, toolName, toolUrl) {
   if (document.querySelector(`[${BREADCRUMB_MARKER}]`)) return;
 
   const homeUrl = buildUrl(lang === 'en' ? '' : lang, '');
+  // 可见面包屑使用根相对地址：绝对生产地址会让本地 preview / 预发环境点击
+  // “TuHe PDF”后跳到线上站（线上未部署新功能时表现为回首页后再点文档 404）。
+  // JSON-LD 结构化数据仍用绝对地址（SEO 需要）。
+  const homeHref = lang === 'en' ? `${BASE_PATH}/` : `${BASE_PATH}/${lang}/`;
 
   const nav = document.createElement('nav');
   nav.setAttribute(
@@ -194,7 +198,7 @@ function injectToolBreadcrumb(document, lang, toolName, toolUrl) {
   nav.className = 'text-sm text-gray-400 mb-4';
 
   const homeLink = document.createElement('a');
-  homeLink.href = homeUrl;
+  homeLink.href = homeHref;
   homeLink.className = 'hover:text-indigo-300';
   homeLink.textContent = 'TuHe PDF';
 

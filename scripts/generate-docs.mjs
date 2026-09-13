@@ -9,7 +9,9 @@
  * - front-matter 字段：title / description / group（start|guides）/ order（数字）
  * - 文件名即 slug：docs-site/guides/compress.md → /docs/guides/compress
  * - 正文一级标题由 front-matter 的 title 渲染，md 内请从 ## 开始
- * - 正文中链接工具页请使用根路径（如 /merge-pdf），链接文档页使用 /docs/xxx
+ * - 正文中链接工具页请使用根路径（如 /merge-pdf），生成时会自动改写为
+ *   工作台深链（/?tool=merge-pdf），点击后在工作台标签页中打开工具；
+ *   链接文档页使用 /docs/xxx
  * - 依赖主站构建产物：需先跑 `vite build`（从 dist/about.html 解析 main-[hash].css）
  * - docs 区 CSP（security-headers-docs.conf）允许 'unsafe-inline' script/style，
  *   因此主题切换与搜索脚本直接内联；所有资源保持同源
@@ -122,7 +124,15 @@ md.renderer.rules.heading_open = (tokens, idx, options, env, self) => {
   return defaultHeadingOpen(tokens, idx, options, env, self);
 };
 
-// 外链自动加 target/rel
+// 工具页 slug 集合：src/pages/*.html 文件名（不含扩展名）
+const TOOL_SLUGS = new Set(
+  fs
+    .readdirSync(path.join(ROOT, 'src', 'pages'))
+    .filter((f) => f.endsWith('.html'))
+    .map((f) => f.replace(/\.html$/, ''))
+);
+
+// 外链自动加 target/rel；站内工具链接改写为工作台深链（见下）
 const defaultLinkOpen =
   md.renderer.rules.link_open ||
   ((tokens, idx, options, _env, self) =>
@@ -132,6 +142,15 @@ md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
   if (/^https?:\/\//.test(href)) {
     tokens[idx].attrSet('target', '_blank');
     tokens[idx].attrSet('rel', 'noopener noreferrer');
+  } else {
+    // 工具链接（如 /merge-pdf）改指主站工作台深链 /?tool=merge-pdf：
+    // 点击后在工作台标签页中打开工具，而不是跳出文档进入无导航的独立工具页。
+    // 主站 workbench.ts 初始化时消费该参数。/docs/** 与法律页（/privacy 等
+    // 根级页面，不在 src/pages 下）不受影响。
+    const m = href.match(/^\/([a-z0-9][a-z0-9-]*)$/);
+    if (m && TOOL_SLUGS.has(m[1])) {
+      tokens[idx].attrSet('href', `${BASE}?tool=${m[1]}`);
+    }
   }
   return defaultLinkOpen(tokens, idx, options, env, self);
 };
@@ -322,6 +341,17 @@ const DOCS_CSS = `
   .docs-sidebar.open{transform:none}
   .docs-menu-btn{display:inline-flex}
   .docs-article{padding:1.1rem 1rem}
+}
+
+/* 跨文档视图过渡：文档之间切换时淡入淡出（需新旧页面都声明，故只影响 docs 内部导航；
+   顶栏/侧栏各页一致，交叉淡化后视觉无缝，正文区域带轻微上浮） */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:docs-vt-out .16s ease-out both}
+::view-transition-new(root){animation:docs-vt-in .22s ease-out both}
+@keyframes docs-vt-out{from{opacity:1}to{opacity:0}}
+@keyframes docs-vt-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  ::view-transition-old(root),::view-transition-new(root){animation:none}
 }
 `;
 
