@@ -1,6 +1,10 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import i18next from 'i18next';
-import { applyTranslations, getLanguageFromUrl } from '@/js/i18n/i18n';
+import {
+  applyTranslations,
+  getLanguageFromUrl,
+  rewriteLinks,
+} from '@/js/i18n/i18n';
 
 describe('getLanguageFromUrl', () => {
   const originalLocation = window.location;
@@ -153,5 +157,80 @@ describe('applyTranslations', () => {
     expect(translate).toHaveBeenCalledWith('tools:pdfWorkflow.nodeCount', {
       count: 0,
     });
+  });
+});
+
+describe('rewriteLinks', () => {
+  const originalLocation = window.location;
+
+  const setPath = (pathname: string) => {
+    Object.defineProperty(window, 'location', {
+      value: { ...originalLocation, pathname },
+      writable: true,
+      configurable: true,
+    });
+  };
+
+  const renderLinks = (html: string) => {
+    document.body.replaceChildren();
+    const container = document.createElement('div');
+    container.innerHTML = html;
+    document.body.appendChild(container);
+    rewriteLinks();
+    return Array.from(container.querySelectorAll('a')).map((a) => ({
+      href: a.getAttribute('href'),
+      text: a.textContent,
+    }));
+  };
+
+  beforeEach(() => {
+    localStorage.clear();
+    vi.stubEnv('BASE_URL', '/');
+  });
+
+  afterEach(() => {
+    document.body.replaceChildren();
+    Object.defineProperty(window, 'location', {
+      value: originalLocation,
+      writable: true,
+      configurable: true,
+    });
+    vi.unstubAllEnvs();
+    vi.restoreAllMocks();
+  });
+
+  it('keeps /docs/ untouched (docs subsite is language-neutral)', () => {
+    setPath('/zh/');
+    expect(renderLinks('<a href="/docs/">文档</a>')).toEqual([
+      { href: '/docs/', text: '文档' },
+    ]);
+  });
+
+  it('keeps /docs without trailing slash untouched', () => {
+    setPath('/zh/');
+    expect(renderLinks('<a href="/docs">文档</a>')).toEqual([
+      { href: '/docs', text: '文档' },
+    ]);
+  });
+
+  it('still prefixes other root-absolute links with the language', () => {
+    setPath('/zh/');
+    expect(renderLinks('<a href="/merge-pdf">合并</a>')).toEqual([
+      { href: '/zh/merge-pdf', text: '合并' },
+    ]);
+  });
+
+  it('still prefixes relative links with the language', () => {
+    setPath('/de/');
+    expect(renderLinks('<a href="about.html">关于</a>')).toEqual([
+      { href: '/de/about.html', text: '关于' },
+    ]);
+  });
+
+  it('does nothing for the English site', () => {
+    setPath('/en/');
+    expect(renderLinks('<a href="/docs/">Docs</a>')).toEqual([
+      { href: '/docs/', text: 'Docs' },
+    ]);
   });
 });

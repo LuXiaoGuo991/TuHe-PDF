@@ -338,6 +338,13 @@ export const rewriteLinks = (): void => {
       return;
     }
 
+    // 文档子站（/docs/**）是语言无关的根级子站：docs-site/ 只产出 zh-CN 一套，
+    // 不存在 /zh/docs/。若参与语言前缀重写会得到死链（preview 下更会被 SPA
+    // 回退渲染成首页）。构建期 generate-i18n-pages.mjs 有同口径豁免。
+    if (href === `${basePath}/docs` || href.startsWith(`${basePath}/docs/`)) {
+      return;
+    }
+
     const langPrefixRegex = new RegExp(
       `^(${basePath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})?/?(en|ar|fr|es|de|zh|zh-TW|vi|tr|id|it|pt|nl|be|da|ko|sv|ru|ja|uk|sk)(/|$)`
     );

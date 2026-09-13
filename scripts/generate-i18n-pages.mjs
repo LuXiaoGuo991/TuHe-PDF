@@ -365,6 +365,12 @@ function processFileForLanguage(
 
     if (href.startsWith('/assets/') || href.includes('/assets/')) return;
 
+    // 文档子站（/docs/**）是语言无关的根级子站：docs-site/ 只产出 zh-CN 一套，
+    // 不存在 /zh/docs/ 或 /en/docs/。若参与语言前缀重写会生成 404 链接。
+    if (href === `${BASE_PATH}/docs` || href.startsWith(`${BASE_PATH}/docs/`)) {
+      return;
+    }
+
     const langPrefixRegex = new RegExp(
       `^(${BASE_PATH})?/(${languages.join('|')})(/|$)`
     );
