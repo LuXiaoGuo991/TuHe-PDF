@@ -1059,6 +1059,54 @@ body:has(#workbench) {
     var(--color-canvas);
 }
 
+/* 顶栏下沿垫层：顶栏本身是玻璃的，背后流体加重后，亮色主题里
+ * --color-text-secondary 的导航文字会掉到 4.4:1 一带。这里在顶部（56px 顶栏
+ * 高度 + 向下淡出到 104px）垫一层 canvas 色，把顶栏文字落点拉回 canvas 基线；
+ * 横向大面积仍是流体本体，不影响整体的「加重」观感。
+ * 必须是 ::after 而不是容器自身的 background —— 容器背景被两层 canvas
+ * （WebGL 流体 + 粒子）整块盖住，只有晚于 canvas 绘制的伪元素才在它们之上。 */
+.tuhe-ambient-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--color-canvas) 78%, transparent) 0,
+    transparent 104px
+  );
+}
+
+/* 亮色兜底：浅底上同样的 brand 光晕会显得很淡，单独加重一档，让 WebGL 不可用 /
+ * prefers-reduced-motion 的静帧画面与加重后的亮色流体观感一致。 */
+[data-theme='light'] .tuhe-ambient-bg {
+  background:
+    radial-gradient(
+      ellipse 76% 56% at 16% 0%,
+      color-mix(in srgb, var(--color-action) 34%, transparent),
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 62% 50% at 90% 86%,
+      color-mix(in srgb, var(--color-focus) 22%, transparent),
+      transparent 74%
+    ),
+    radial-gradient(
+      ellipse 52% 44% at 80% 20%,
+      color-mix(in srgb, var(--color-brand-accent) 10%, transparent),
+      transparent 76%
+    ),
+    var(--color-canvas);
+}
+
+[data-theme='light'] .tuhe-ambient-bg::after {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--color-canvas) 84%, transparent) 0,
+    transparent 104px
+  );
+}
+
 .tuhe-ambient-bg canvas {
   position: absolute;
   inset: 0;
@@ -1081,6 +1129,13 @@ body.tuhe-ambient::before {
   z-index: -1;
   pointer-events: none;
   background:
+    /* 顶栏下沿垫层：与首页 .tuhe-ambient-bg 同配方，稳住玻璃顶栏内的
+     * 次级文字对比度（详见 .tuhe-ambient-bg 处注释）。 */
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--color-canvas) 78%, transparent) 0,
+      transparent 104px
+    ),
     radial-gradient(
       ellipse 60% 40% at 15% 0%,
       color-mix(in srgb, var(--color-action) 14%, transparent),
@@ -1144,6 +1199,13 @@ body.tuhe-ambient > footer {
   backdrop-filter: blur(var(--glass-blur)) saturate(1.35);
   border-bottom: 1px solid var(--glass-border);
   z-index: 40;
+}
+
+/* 亮色主题的流体加重后，55% 的下沉色加上页面顶栏垫层仍只把导航文字顶到
+ * 4.5:1 的临界（实测 4.51:1）。亮色单独提到 66%，留出余量；深色不受影响
+ * （深色导航实测 8.4:1，无需改动）。 */
+[data-theme='light'] .wb-topbar {
+  background: color-mix(in srgb, var(--color-surface-sunken) 66%, transparent);
 }
 
 .wb-topbar-brand {
@@ -1451,6 +1513,12 @@ body.tuhe-ambient > footer {
 #tool-rail {
   --rail-w-collapsed: 88px;
   --rail-w-expanded: 312px;
+  /* 卡片统一高度（展开 / 收起两态共用）：
+   *   padding 9×2 + 名称 16.9(13px/1.3) + 副标题 16.2(12px/1.35) + 间距 2
+   *   + 图标 34 + 边框 1×2 ≈ 57。
+   * 副标题一律单行截断，故内容高度确定，min-height 即可保证整栏等高；
+   * 收起态同样吃这个高度，两态切换时卡片不再跳。 */
+  --rail-card-h: 57px;
 
   position: relative;
   z-index: 30;
@@ -1690,29 +1758,41 @@ body.tuhe-ambient > footer {
   align-items: center;
   gap: 10px;
   width: 100%;
+  min-height: var(--rail-card-h);
   padding: 9px 10px;
   border-radius: 8px;
-  /* 侧栏内卡片：底色取 surface 的半透明，比玻璃侧栏底再亮一档，
-   * 在侧栏玻璃上仍能读出「一张卡」。不再单独 backdrop 模糊——
-   * 父级已建立 backdrop root，套一层模糊无视觉效果。 */
-  background: color-mix(in srgb, var(--color-surface) 58%, transparent);
+  box-sizing: border-box;
+  /* 侧栏内卡片：整栏等高（副标题单行截断，见下方 .rail-card-subtitle）。
+   * 玻璃质感靠「光的层次」而非模糊——父级 #tool-rail 已带 backdrop-filter
+   * 并建立 backdrop root，卡片自身再叠模糊只能糊到侧栏已磨砂的结果，无视觉
+   * 效果却多发一个合成层。故这里只做四件事：半透填充 + 玻璃描边 +
+   * 顶部内高光 + hover/active 抬升阴影（静止态不加，115 张卡逐个投影会显脏）。 */
+  background: var(--glass-bg);
   border: 1px solid var(--glass-border);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
   color: var(--color-text-primary);
   text-align: left;
   cursor: pointer;
   transition:
     background 0.18s ease,
-    border-color 0.18s ease;
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
 }
 
 .rail-card:hover {
   background: color-mix(in srgb, var(--color-surface-raised) 78%, transparent);
   border-color: var(--color-action-hover);
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    var(--glass-shadow);
 }
 
 .rail-card.rail-card-active {
   background: color-mix(in srgb, var(--color-action) 16%, transparent);
   border-color: var(--color-action);
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    var(--glass-shadow);
 }
 
 .rail-card-icon {
@@ -1723,7 +1803,9 @@ body.tuhe-ambient > footer {
   width: 34px;
   height: 34px;
   border-radius: 8px;
+  /* 图标托块与卡片同属一层玻璃：同样的顶高光，深浅一致才不会读成两块材质。 */
   background: color-mix(in srgb, var(--color-action) 12%, transparent);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
   color: var(--color-action-hover);
   font-size: 19px;
 }
@@ -1739,40 +1821,60 @@ body.tuhe-ambient > footer {
   transition: opacity 0.2s ease;
 }
 
+/* 名称与副标题都显式钉住 line-height：不钉的话名称会继承 body 的 1.6
+ * （13px→20.8px），卡片高度随字体度量浮动，--rail-card-h 就失去依据。 */
 .rail-card-name {
   display: block;
   font-size: 13px;
   font-weight: 600;
+  line-height: 1.3;
   color: var(--color-text-primary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
+/* 副标题一律单行截断（原为 -webkit-line-clamp: 2），这是整栏等高的前提：
+ * 中文有 64/123 条副标题超一行，其余 20 个语言包中位数 27–58 字符、最长
+ * 232 字符（荷兰语），只按中文调是稳不住的。完整副标题见卡片 title 提示。 */
 .rail-card-subtitle {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  display: block;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
   font-size: 12px;
   line-height: 1.35;
   color: var(--color-text-secondary);
   margin-top: 2px;
 }
 
-/* 收起态：卡片只留图标 */
+/* 收起态：卡片只留图标，但高度与展开态一致（共用 --rail-card-h），
+ * 切栏时卡片不再跳。填充归零——收起态只有图标，画卡片轮廓会显得碎。 */
 #tool-rail:not(.rail-expanded) .rail-card {
   justify-content: center;
   padding: 8px 0;
+  min-height: var(--rail-card-h);
   background: transparent;
+  border-color: transparent;
+  box-shadow: none;
 }
 
 #tool-rail:not(.rail-expanded) .rail-card:hover {
-  background: color-mix(in srgb, var(--color-surface) 58%, transparent);
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
 }
 
+/* 顺序放在 :hover 之后——此前 hover 规则排在激活态之后且同为 (0,2,0)，
+ * 悬停当前工具时激活色会被 hover 色压掉。 */
 #tool-rail:not(.rail-expanded) .rail-card.rail-card-active {
   background: color-mix(in srgb, var(--color-action) 16%, transparent);
+  border-color: var(--color-action);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
+}
+
+#tool-rail:not(.rail-expanded) .rail-card-text {
+  display: none;
 }
 
 #tool-rail:not(.rail-expanded) .rail-card-text {
@@ -2133,13 +2235,16 @@ body.tuhe-ambient > footer {
 
 /* 首页内容区对比度垫层：流体在内容区中部的亮度波动会把正文/提示文字压到
  * AA 边缘（亮色主题尤其明显，--color-text-secondary 曾降到 2.7:1）。这里用
- * canvas 色做一层柔和径向薄雾——深色下压暗、亮色下提亮，把文字落点拉回
- * canvas 基线附近；纯 background，不新增元素、不动布局。 */
+ * canvas 色做一层径向薄雾——深色下压暗、亮色下提亮，把文字落点拉回 canvas
+ * 基线附近；纯 background，不新增元素、不动布局。
+ * 亮色流体加重后，垫层同步「收窄 + 加密」：核心不透明度提高以顶住更深的流体
+ * 底色，半径收窄让四周（画面边缘与工具页）能露出更多流体，避免整屏发白。 */
 #tuhe-home {
   background-image: radial-gradient(
-    ellipse 88% 80% at 50% 50%,
-    color-mix(in srgb, var(--color-canvas) 58%, transparent),
-    transparent 80%
+    ellipse 74% 66% at 50% 50%,
+    color-mix(in srgb, var(--color-canvas) 74%, transparent) 0%,
+    color-mix(in srgb, var(--color-canvas) 46%, transparent) 55%,
+    transparent 84%
   );
 }
 
@@ -2928,17 +3033,39 @@ body.phase2-tool-page::before {
     );
 }
 
-/* 工具页最外层包裹（112/115 页为 body 直接子级 .ui-bg-canvas，典型 #uploader）
- * 原本是不透明 canvas，会把上面这层光晕整块盖住。改为透明后光晕才可见；
- * 页面底色由 body 的 canvas 提供，视觉上等价（仅在光晕处多出渐变）。
- * `:not(.fixed)` 排除 body 层级的 fixed 全屏弹层（alert/input modal），
- * 它们的遮罩不受影响。 */
-body.phase2-tool-page > .ui-bg-canvas:not(.fixed) {
-  background-color: transparent;
+/* --- 材质配方与声明顺序说明 ---------------------------------------------
+ * 全部规则都限定在 body.phase2-tool-page 作用域内（115 个工具页里只有
+ * pdf-multi-tool 的 body 需要补该类，见日志）。素材层级按「抬升程度」分档：
+ *   抬升卡片（shadow）  → 完整玻璃：--glass-bg + blur(16) + 顶部内高光 + --glass-shadow
+ *   平铺面板 / 内嵌托板 → 半透明填充（不加 backdrop-filter）
+ *   下沉控件（输入/次级按钮）→ 下沉/抬升色半透明化 + --glass-border
+ *   弹窗                → 遮罩模糊 + 卡片走 --glass-bg-strong 高可读层
+ * 为什么不给平铺面板加 backdrop-filter：工具页 iframe 内的背景是一层平滑
+ * 渐变（没有 WebGL 流体、也没有可滚动的内容从面板背后经过），对平滑渐变做
+ * 模糊在视觉上几乎无差别，却要为每页几十个面板各建一个合成层。只在「会被
+ * 内容从背后穿过」的层级（抬升卡片 / 拖放区 / 弹窗遮罩）保留模糊。
+ * 声明顺序即覆盖顺序：同级特异性下后者胜，故整页包裹与拖放区必须排在
+ * 「canvas 托板」之后，否则它们的底色会被托板规则改写。 */
+
+/* 1) 页内 canvas 色托板 / 面板：分段控件槽、缩略图区、内嵌信息卡。
+ *    由不透明 canvas 改为半透明，让页内光晕透上来。
+ *    `:where()` 把本规则的特异性压到 (0,1,1)，使它成为本节的「最低优先级
+ *    兜底」：拖放区、整页包裹、弹窗遮罩都带 ui-bg-canvas，必须由各自更具体
+ *    的规则覆盖，否则托板底色会吃掉它们的处理。 */
+body.phase2-tool-page :where(.ui-bg-canvas:not(.fixed)) {
+  background-color: color-mix(in srgb, var(--color-canvas) 62%, transparent);
 }
 
-/* 主卡片：.ui-glass 配方，覆盖 ui-bg-surface + border ui-border-subtle + shadow-xl。
- * 只覆盖材质属性，卡片尺寸由原有 padding / max-w 工具类决定。 */
+/* 2) 平铺内容面板（feature 磁贴 / FAQ 折叠项）：surface + 边框、无抬升阴影。 */
+body.phase2-tool-page .ui-bg-surface.ui-border-subtle,
+body.phase2-tool-page .ui-bg-surface.ui-border {
+  background-color: color-mix(in srgb, var(--color-surface) 62%, transparent);
+}
+
+/* 3) 抬升内容卡片：主卡片、独立面板、弹窗卡片（后两类由 4) 再分档）。
+ *    覆盖 ui-bg-surface + shadow-xl / shadow-2xl 的组合，不枚举边框类。 */
+body.phase2-tool-page .ui-bg-surface.shadow-xl,
+body.phase2-tool-page .ui-bg-surface.shadow-2xl,
 body.phase2-tool-page #tool-uploader {
   background: var(--glass-bg);
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
@@ -2949,7 +3076,20 @@ body.phase2-tool-page #tool-uploader {
     var(--glass-shadow);
 }
 
-/* 拖放区 / 面板（.ui-panel.ui-drop-zone）：下沉色半透明化 + 玻璃描边。
+/* 4) 弹窗卡片：内容需要高可读层，用 --glass-bg-strong（弹窗专用配方）。 */
+body.phase2-tool-page .fixed .ui-bg-surface {
+  background: var(--glass-bg-strong);
+}
+
+/* 5) 工具页最外层包裹（112/115 页为 body 直接子级 .ui-bg-canvas，典型 #uploader）
+ * 原本是不透明 canvas，会把页内光晕整块盖住。改为透明后光晕才可见；
+ * 页面底色由 body 的 canvas 提供，视觉上等价（仅在光晕处多出渐变）。
+ * `:not(.fixed)` 排除 body 层级的 fixed 全屏弹层（alert/input modal）。 */
+body.phase2-tool-page > .ui-bg-canvas:not(.fixed) {
+  background-color: transparent;
+}
+
+/* 6) 拖放区（.ui-panel.ui-drop-zone）：下沉色半透明化 + 玻璃描边。
  * 选择器带 body 元素，特异性高于 .ui-drop-zone:hover，故 hover 态需一并声明。 */
 body.phase2-tool-page .ui-drop-zone {
   background: color-mix(in srgb, var(--color-surface-sunken) 58%, transparent);
@@ -2962,4 +3102,64 @@ body.phase2-tool-page .ui-drop-zone:hover,
 body.phase2-tool-page .ui-drop-zone.is-dragging {
   background: color-mix(in srgb, var(--color-surface) 62%, transparent);
   border-color: var(--color-action-hover);
+}
+
+/* 7) 表单控件（输入框 / 下拉 / 文本域）与次级按钮、抬升控件容器：
+ * 保留各自原有的「下沉 / 抬升」层次，只把实色换成半透明 + 玻璃描边。
+ * 排列顺序与原 styles.css 一致（.ui-input 在前、.ui-bg-raised 在后），
+ * 使同时带两类的可见表单控件仍走 raised 色，视觉层级不变。
+ * 120 个 opacity-0 的隐藏文件选择器也命中此规则，但不可见，无副作用。 */
+body.phase2-tool-page .ui-input {
+  background-color: color-mix(
+    in srgb,
+    var(--color-surface-sunken) 62%,
+    transparent
+  );
+  border-color: var(--glass-border);
+}
+
+body.phase2-tool-page .ui-bg-raised,
+body.phase2-tool-page .ui-button-secondary {
+  background-color: color-mix(
+    in srgb,
+    var(--color-surface-raised) 62%,
+    transparent
+  );
+  border-color: var(--glass-border);
+}
+
+/* 悬停时提高一档不透明度，保持「控件被抬起」的反馈；同时覆盖
+ * feature 磁贴的 ui-hover-bg-raised:hover（原值为不透明 raised）。 */
+body.phase2-tool-page .ui-hover-bg-raised:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--color-surface-raised) 78%,
+    transparent
+  );
+}
+
+/* 次级按钮的悬停描边：原规则 .ui-button-secondary:hover 特异性 (0,2,0) 低于
+ * 上面的基态规则 (0,2,1)，必须在这里显式重声明，否则悬停时描边不变化。 */
+body.phase2-tool-page .ui-button-secondary:hover {
+  border-color: var(--color-action-hover);
+}
+
+/* 8) 弹窗遮罩：两种既有变体（canvas @ bg-opacity-90 / surface-sunken @
+ * bg-opacity-75）统一改为「半透明 + 背景模糊」，与工作台 .wb-modal-card 的
+ * 玻璃语言一致；保留较高不透明度，弹窗聚焦感不变。
+ * 注意：这两类遮罩不再受 5) 的 `:not(.fixed)` 影响（那里只改 canvas 包裹层）。 */
+body.phase2-tool-page .ui-bg-canvas.fixed {
+  background-color: color-mix(in srgb, var(--color-canvas) 74%, transparent);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  backdrop-filter: blur(16px) saturate(1.2);
+}
+
+body.phase2-tool-page .ui-bg-sunken.fixed {
+  background-color: color-mix(
+    in srgb,
+    var(--color-surface-sunken) 74%,
+    transparent
+  );
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  backdrop-filter: blur(16px) saturate(1.2);
 }

@@ -36,17 +36,18 @@ const PALETTE_DARK: AmbientPalette = {
   clouds: ['#2e8b6a', '#3fa88c', '#77b9c4'],
 };
 
-/** 亮色主题：浅底上用「白瓷水洗」——低饱和浅绿 + 低 intensity，
- *  让合成后的背景落在 canvas 附近的亮区，浅色主题的正文 token 才能保持 AA。 */
+/** 亮色主题：基色取中浅绿，亮色端保持接近 canvas 的浅色，让流体在浅底上真的
+ *  看得见（原先的「白瓷水洗」太淡，整体近似发白）。正文落点由 #tuhe-home 的
+ *  canvas 径向垫层拉回亮区，故可放心加重 intensity / surface。 */
 const PALETTE_LIGHT: AmbientPalette = {
-  a: '#dfeee7',
-  b: '#bcdccb',
-  c: '#f2f7f4',
-  intensity: 1.05,
+  a: '#8fc7a9',
+  b: '#4a9576',
+  c: '#e2f0e8',
+  intensity: 1.34,
   speed: 0.45,
-  surface: 0.05,
-  particles: ['#4f8f74', '#5c9a86', '#5a93a3'],
-  clouds: ['#bfe0cd', '#a9d2bd', '#c7e2e8'],
+  surface: 0.13,
+  particles: ['#3c7f65', '#498b74', '#447f8d'],
+  clouds: ['#9dcfb6', '#82bda1', '#9ecbd6'],
 };
 
 interface QualityProfile {
