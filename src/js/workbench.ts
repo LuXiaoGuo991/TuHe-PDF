@@ -272,9 +272,24 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
 
   let railExpandedBeforeMobileOpen = false;
 
+  /** 当前是否处于移动端抽屉模式（与 CSS 的 `@media (max-width: 768px)` 同断点） */
+  const isMobileRailMode = () =>
+    window.matchMedia('(max-width: 768px)').matches;
+
+  /**
+   * 关闭移动端抽屉。
+   *
+   * 约束收在本函数内部而非各个调用点：抽屉态与桌面展开态共用 `rail-expanded`
+   * 这一个类，`mobile-open` 只负责位移。因此「关抽屉」必须只在移动端生效——
+   * 否则桌面端点开工具时，下面的 toggle 会把 `rail-expanded` 写回
+   * `railExpandedBeforeMobileOpen`（该变量只在移动端打开抽屉时赋值，桌面端恒为
+   * 初始值 false），把用户的展开态静默清掉，且不写 localStorage 导致刷新后也丢。
+   * 放在这里，将来任何新增调用点都不会再踩这个坑。
+   */
   const closeMobileRail = () => {
+    if (!isMobileRailMode()) return;
     rail.classList.remove('mobile-open');
-    // 还原打开抽屉前的展开/收起偏好，避免影响桌面端状态
+    // 还原打开抽屉前的展开/收起偏好
     rail.classList.toggle('rail-expanded', railExpandedBeforeMobileOpen);
     backdrop?.classList.remove('show');
   };
@@ -291,7 +306,7 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
 
   // 展开/收起按钮：桌面端收放卡片栏；手机端抽屉是覆盖式界面，折叠成图标无意义，点击视为关闭抽屉
   railToggle.addEventListener('click', () => {
-    if (window.matchMedia('(max-width: 768px)').matches) {
+    if (isMobileRailMode()) {
       closeMobileRail();
       return;
     }

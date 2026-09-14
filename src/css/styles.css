@@ -1877,10 +1877,6 @@ body.tuhe-ambient > footer {
   display: none;
 }
 
-#tool-rail:not(.rail-expanded) .rail-card-text {
-  display: none;
-}
-
 /* 搜索无结果提示 */
 .rail-empty {
   padding: 24px 12px;
