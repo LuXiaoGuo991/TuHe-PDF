@@ -60,13 +60,8 @@
   </head>
 
   <body class="antialiased">
-    <!-- 首页环境背景层：流体玻璃（WebGL）+ 流云粒子（Canvas 2D）。
-         固定在视口最底层，不接收事件；CSS 渐变即 WebGL 失败时的兜底画面。
-         初始化逻辑见 src/js/ambient-bg.ts（外部模块，CSP 合规）。 -->
-    <div class="tuhe-ambient-bg" aria-hidden="true">
-      <canvas id="tuhe-ambient-gl"></canvas>
-      <canvas id="tuhe-ambient-fx"></canvas>
-    </div>
+    <!-- 全站环境背景层（流体玻璃 + 流云粒子），与 6 个站点页共用同一份 partial -->
+    {{> ambient-bg }}
     <!-- ===== 全局唯一顶部导航 ===== -->
     <header class="wb-topbar">
       <!-- 移动端：打开左侧工具列表的汉堡按钮（桌面隐藏） -->

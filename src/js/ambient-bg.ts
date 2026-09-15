@@ -1,5 +1,5 @@
 /*!
- * 图合 PDF 首页环境背景：流体玻璃（WebGL）+ 流云粒子（Canvas 2D）。
+ * 图合 PDF 环境背景：流体玻璃（WebGL）+ 流云粒子（Canvas 2D）。
  *
  * 流体着色器与渲染核心改编自 fluidglass-ui
  *   https://github.com/csuyincs-creator/fluidglass-ui
@@ -11,6 +11,13 @@
  * 将「固定 144px 指标卡片」形态改造为单张全屏环境背景画布，
  * 新增双主题调色板、流云粒子层、工作台首页可见性暂停；
  * 移除原项目的卡片配置、设置面板、localStorage 持久化与导出功能。
+ *
+ * 适用范围（见 src/partials/ambient-bg.html）：
+ *   - 工作台首页 index.html：存在 #tuhe-home，切到工具页时整层暂停；
+ *   - 6 个站点页（about / contact / licensing / privacy / terms / 404）：
+ *     无 #tuhe-home，视为常驻可见，并按「长阅读页」降档（calm）。
+ *   两者共用同一份 palette，故背景在首页与站点页之间保持同源。
+ *   没有 canvas 容器的页面（115 个工具页 iframe 等）直接跳过。
  */
 
 interface AmbientPalette {
@@ -51,15 +58,23 @@ const PALETTE_LIGHT: AmbientPalette = {
 };
 
 interface QualityProfile {
-  name: 'high' | 'balanced' | 'eco' | 'static';
+  name: 'high' | 'balanced' | 'calm' | 'eco' | 'static';
   fps: number;
   dpr: number;
+  /** 粒子/流云数量系数：站点页按长阅读场景减量。 */
+  density: number;
 }
 
-/** 与 fluidglass-ui qualityProfile 同源的分档逻辑（去掉 URL 参数入口）。 */
-function resolveQuality(): QualityProfile {
+/**
+ * 与 fluidglass-ui qualityProfile 同源的分档逻辑（去掉 URL 参数入口）。
+ *
+ * `calm` 为本项目新增：站点页是长滚动阅读页，背景在视口内长时间可见，
+ * 故相对首页降帧降密度（但复用同一 palette，观感仍同源）。
+ */
+function resolveQuality(calm: boolean): QualityProfile {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduced) return { name: 'static', fps: 0, dpr: 1 };
+  if (reduced)
+    return { name: 'static', fps: 0, dpr: 1, density: calm ? 0.6 : 1 };
   const conn = (navigator as { connection?: { saveData?: boolean } })
     .connection;
   const saveData = Boolean(conn && conn.saveData);
@@ -67,11 +82,24 @@ function resolveQuality(): QualityProfile {
   const lowMemory =
     ((navigator as { deviceMemory?: number }).deviceMemory || 8) <= 4;
   if (saveData || lowCpu || lowMemory)
-    return { name: 'eco', fps: 24, dpr: Math.min(devicePixelRatio || 1, 1) };
+    return {
+      name: 'eco',
+      fps: 24,
+      dpr: Math.min(devicePixelRatio || 1, 1),
+      density: calm ? 0.5 : 0.8,
+    };
+  if (calm)
+    return {
+      name: 'calm',
+      fps: 30,
+      dpr: Math.min(devicePixelRatio || 1, 1.25),
+      density: 0.6,
+    };
   return {
     name: 'balanced',
     fps: 45,
     dpr: Math.min(devicePixelRatio || 1, 1.35),
+    density: 1,
   };
 }
 
@@ -306,7 +334,9 @@ class FluidBackground {
         premultipliedAlpha: false,
         preserveDrawingBuffer: false,
         powerPreference:
-          this.profile.name === 'eco' ? 'low-power' : 'high-performance',
+          this.profile.name === 'eco' || this.profile.name === 'calm'
+            ? 'low-power'
+            : 'high-performance',
       });
       if (!gl) throw new Error('WebGL context unavailable');
       this.gl = gl;
@@ -459,11 +489,13 @@ class ParticleField {
   private particles: Particle[] = [];
   private clouds: Cloud[] = [];
   private palette: AmbientPalette;
+  private density: number;
   running = true;
 
-  constructor(canvas: HTMLCanvasElement) {
+  constructor(canvas: HTMLCanvasElement, density = 1) {
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
+    this.density = density;
     this.palette = currentPalette();
     this.resize();
     window.addEventListener('resize', () => this.resize());
@@ -483,7 +515,12 @@ class ParticleField {
 
   private seed(): void {
     const area = this.canvas.width * this.canvas.height;
-    const count = clamp(Math.round(area / 42000), 24, 56);
+    const count = clamp(
+      Math.round((area / 42000) * this.density),
+      Math.round(24 * this.density),
+      Math.round(56 * this.density)
+    );
+    const cloudCount = Math.max(3, Math.round(5 * this.density));
     const rand = (a: number, b: number) => a + Math.random() * (b - a);
     this.particles = Array.from({ length: count }, () => ({
       x: Math.random() * this.canvas.width,
@@ -495,7 +532,7 @@ class ParticleField {
       alpha: rand(0.14, 0.42),
       phase: Math.random() * Math.PI * 2,
     }));
-    this.clouds = Array.from({ length: 5 }, () => ({
+    this.clouds = Array.from({ length: cloudCount }, () => ({
       x: Math.random() * this.canvas.width,
       y: Math.random() * this.canvas.height,
       r: rand(140, 320),
@@ -573,16 +610,22 @@ function currentPalette(): AmbientPalette {
 }
 
 function initAmbientBackground(): void {
-  const home = document.getElementById('tuhe-home');
   const glCanvas = document.getElementById(
     'tuhe-ambient-gl'
   ) as HTMLCanvasElement | null;
   const fxCanvas = document.getElementById(
     'tuhe-ambient-fx'
   ) as HTMLCanvasElement | null;
-  if (!home || !glCanvas || !fxCanvas) return;
+  // canvas 容器是唯一的启动条件：index.html 与 6 个站点页共用
+  // {{> ambient-bg }}；没有它的页面（115 个工具页 iframe 等）直接跳过。
+  if (!glCanvas || !fxCanvas) return;
 
-  const profile = resolveQuality();
+  // #tuhe-home 只存在于工作台首页，用于「切到工具页时整层暂停」。
+  // 站点页没有它 → 视为常驻可见，并按长阅读场景降档（calm）。
+  const home = document.getElementById('tuhe-home');
+  const calm = !home;
+
+  const profile = resolveQuality(calm);
   const container = glCanvas.parentElement;
   container?.classList.toggle('is-static', profile.name === 'static');
 
@@ -599,7 +642,9 @@ function initAmbientBackground(): void {
     }
   }
   const particles =
-    profile.name === 'static' ? null : new ParticleField(fxCanvas);
+    profile.name === 'static'
+      ? null
+      : new ParticleField(fxCanvas, profile.density);
   if (!particles) fxCanvas.classList.add('is-hidden');
 
   // 主题切换：跟随 <html data-theme>（由 theme-init.js / theme.ts 维护）。
@@ -612,16 +657,19 @@ function initAmbientBackground(): void {
     attributeFilter: ['data-theme'],
   });
 
-  // 工具标签页打开时首页隐藏，背景整体暂停，不浪费 GPU。
-  let homeVisible = !home.classList.contains('hidden-home');
-  new MutationObserver(() => {
-    homeVisible = !home.classList.contains('hidden-home');
+  if (home) {
+    // 工作台：工具标签页打开时首页隐藏，背景整体暂停，不浪费 GPU。
+    // 站点页没有 #tuhe-home，running 保持默认 true，无需这段监听。
+    let homeVisible = !home.classList.contains('hidden-home');
+    new MutationObserver(() => {
+      homeVisible = !home.classList.contains('hidden-home');
+      if (fluid) fluid.running = homeVisible;
+      if (particles) particles.running = homeVisible;
+    }).observe(home, { attributes: true, attributeFilter: ['class'] });
+
     if (fluid) fluid.running = homeVisible;
     if (particles) particles.running = homeVisible;
-  }).observe(home, { attributes: true, attributeFilter: ['class'] });
-
-  if (fluid) fluid.running = homeVisible;
-  if (particles) particles.running = homeVisible;
+  }
 
   if (profile.name !== 'static') {
     const loop = (now: number) => {

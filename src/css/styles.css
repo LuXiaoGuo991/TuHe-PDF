@@ -1120,9 +1120,13 @@ body:has(#workbench) {
   display: none;
 }
 
-/* 站点页（法律页/404）的纯 CSS 环境光晕：body.tuhe-ambient 由页面标记，
- * 光晕用 brand 三色，比首页流体更克制。 */
-body.tuhe-ambient::before {
+/* 站点页（法律页/404）的兼容光晕：body.tuhe-ambient 由页面标记。
+ *
+ * 2026-09-15：6 个站点页已与首页共用 {{> ambient-bg }} partial（流体玻璃 +
+ * 流云粒子），故本层在「页面确实挂了 canvas 容器」时关闭——它与
+ * .tuhe-ambient-bg 同为 z-index:-1 的负层，叠加会变成双重曝光。
+ * 保留本规则只为兜住没有 canvas 容器的 body.tuhe-ambient 页面。 */
+body.tuhe-ambient:not(:has(.tuhe-ambient-bg))::before {
   content: '';
   position: fixed;
   inset: 0;
@@ -1153,8 +1157,16 @@ body.tuhe-ambient::before {
     );
 }
 
+/* 正文卡片（法律页 / 关于页 / 联系页）。
+ *
+ * 2026-09-15：站点页接入首页的流体 + 粒子背景后，正文背后不再是接近纯色的
+ * canvas，而是明暗起伏的流体。原用的 --glass-bg 在暗色只有 4.5% 白、亮色
+ * 52% 白，Chromium 像素探针实测正文对比度最差 p5 掉到 2.96（亮色 4.47），
+ * 低于 WCAG AA —— 而改动前是 4.73 / 5.4x。
+ * 改用 --glass-bg-strong（暗 0.72 / 亮 0.82）后，正文最差 p5 回到 6.24 /
+ * 5.04，卡片外围的流体与粒子仍完整可见，背景与首页保持同源。 */
 body.tuhe-ambient .legal-content {
-  background: var(--glass-bg);
+  background: var(--glass-bg-strong);
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.25);
   backdrop-filter: blur(var(--glass-blur)) saturate(1.25);
   border: 1px solid var(--glass-border);

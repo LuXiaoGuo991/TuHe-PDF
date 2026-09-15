@@ -1,0 +1,12 @@
+{{!-- 全站环境背景层：流体玻璃（WebGL）+ 流云粒子（Canvas 2D）。
+固定在视口最底层（z-index:-1），不接收指针事件；容器自身的 CSS 渐变 （见
+src/css/styles.css 的 .tuhe-ambient-bg）即 WebGL 不可用或 prefers-reduced-motion
+时的兜底画面。 初始化逻辑见 src/js/ambient-bg.ts（外部模块，CSP 合规）。
+使用方：index.html（工作台首页）+ 6 个站点页（about / contact / licensing /
+privacy / terms / 404）。两处共用同一份标记与同一套
+palette，故背景在首页与站点页之间保持同源。 115 个工具页不消费本 partial（它们在
+iframe 内，背景被 iframe 边界隔离）。 --}}
+<div class="tuhe-ambient-bg" aria-hidden="true">
+  <canvas id="tuhe-ambient-gl"></canvas>
+  <canvas id="tuhe-ambient-fx"></canvas>
+</div>
