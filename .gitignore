@@ -82,3 +82,9 @@ output/
 .gitnexus/
 # 遗留的占位/临时文件
 public/images/HTML代码.txt
+
+# AI 代理说明与本地工作记忆（仅本地留存，不版本化）
+AGENTS.md
+CLAUDE.md
+CONTEXT.md
+.workbuddy/
