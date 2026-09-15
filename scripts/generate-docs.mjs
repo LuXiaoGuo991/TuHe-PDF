@@ -608,7 +608,7 @@ function renderPage({
         <img src="${u('images/备案图标.png')}" alt="公安备案图标" />
         <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32132202001544" target="_blank" rel="noopener noreferrer">苏公网安备32132202001544号</a>
       </span>
-      <a href="https://github.com/alam00000/tuhe-pdf" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="${u('licensing')}" target="_blank" rel="noopener noreferrer">源码获取</a>
     </div>
   </footer>
 

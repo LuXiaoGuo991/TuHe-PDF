@@ -9,13 +9,13 @@ order: 4
 
 图合PDF是**纯静态站点**：所有处理逻辑都在浏览器端通过 WebAssembly 完成，服务端只需要一个静态文件服务器。官方镜像使用 nginx 提供服务（默认监听 8080 端口），没有数据库、没有后端进程、没有需要保密的密钥。
 
-项目以 AGPL-3.0 协议开源，仓库地址：[github.com/alam00000/tuhe-pdf](https://github.com/alam00000/tuhe-pdf)。
+项目以 AGPL-3.0-only 协议开源，修改后的源码已公开，可免费获取，仓库入口见[许可页](/licensing)。
 
 ## 用 Docker Compose 快速启动
 
 ```bash
-git clone https://github.com/alam00000/tuhe-pdf.git
-cd tuhe-pdf
+git clone https://github.com/LuXiaoGuo991/TuHe-PDF.git
+cd TuHe-PDF
 docker compose up -d --build
 ```
 

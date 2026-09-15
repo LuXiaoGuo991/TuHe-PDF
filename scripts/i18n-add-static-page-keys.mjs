@@ -160,21 +160,21 @@ const enNewKeys = {
     section9: '9. Contact Us',
     section9Content:
       'If you have any questions about these Terms, please contact us at <a href="mailto:lw122524@foxmail.com">lw122524@foxmail.com</a>.',
-    section10: '10. Commercial License Terms',
+    section10: '10. Open Source License',
     section10Content:
-      'By purchasing a commercial license for TuHe PDF, you acknowledge and agree to the following:',
+      'TuHe PDF is released under AGPL-3.0-only and does not sell alternative licenses that permit closed-source use or waive AGPL obligations.',
     section10Item1:
-      '<strong>License Agreement:</strong> You have read and fully understand the <a href="licensing.html" class="text-indigo-400 hover:underline">Licensing page</a> in its entirety before purchasing.',
+      '<strong>License Terms:</strong> See the <a href="licensing.html" class="text-indigo-400 hover:underline">Licensing page</a> for source access and license details.',
     section10Item2:
-      '<strong>Nature of License:</strong> You are purchasing a commercial license for the TuHe PDF open source code, granting you the right to use the software in closed-source and proprietary environments without the obligations of the AGPL-3.0 license.',
+      '<strong>Nature of License:</strong> Use, modification, and redistribution of TuHe PDF must comply with AGPL-3.0-only.',
     section10Item3:
-      '<strong>No License Keys:</strong> TuHe PDF does not use license keys. Upon purchase, you will receive a ZIP archive containing the complete source code and binaries, identical to what is publicly available in the open source repository.',
+      '<strong>Source Access:</strong> The modified source code is publicly available free of charge; access details are on the licensing page.',
     section10Item4:
-      '<strong>No Refund Policy:</strong> <strong class="text-red-400">No refunds will be issued under any circumstances after purchase.</strong> All sales are final. By completing your purchase, you confirm that you have evaluated the software (freely available on GitHub) and are satisfied with its capabilities.',
+      '<strong>Fees:</strong> <strong class="text-red-400">TuHe PDF does not sell commercial licenses.</strong> There are no license purchases or related refunds.',
     section10Item5:
-      '<strong>Third-Party Components:</strong> The commercial license does not grant the right to use AGPL-licensed third-party components (such as CPDF, PyMuPDF, and Ghostscript) in a closed-source manner. You must either comply with the AGPL v3 terms for these components or obtain separate commercial licenses from their respective vendors.',
+      '<strong>Third-Party Components:</strong> Components such as CPDF, PyMuPDF, and Ghostscript remain subject to their respective licenses; this project does not grant alternative licenses for them.',
     section10Item6:
-      '<strong>Unlimited Use:</strong> The license permits unlimited use on devices, servers, and user machines within your organization, with no per-user, per-machine, or per-seat restrictions.',
+      '<strong>Use:</strong> Use on organizational devices and servers must comply with AGPL-3.0-only and applicable third-party licenses.',
     section10Footer:
       'For complete license details, please visit our <a href="licensing.html" class="text-indigo-400 hover:underline">Licensing page</a>.',
   },
@@ -323,20 +323,20 @@ const zhNewKeys = {
     section9: '9. 联系我们',
     section9Content:
       '如果您对这些条款有任何疑问，请通过 <a href="mailto:lw122524@foxmail.com">lw122524@foxmail.com</a> 与我们联系。',
-    section10: '10. 商业许可条款',
-    section10Content: '购买 TuHe PDF 的商业许可，即表示您确认并同意以下内容：',
+    section10: '10. 开源许可',
+    section10Content: 'TuHe PDF 按 AGPL-3.0-only 发布，不出售允许闭源或免除 AGPL 义务的替代授权。',
     section10Item1:
-      '<strong>许可协议：</strong> 您已在购买前完整阅读并理解 <a href="licensing.html" class="text-indigo-400 hover:underline">许可页面</a> 的全部内容。',
+      '<strong>许可条款：</strong> 源码获取方式与许可详情见 <a href="licensing.html" class="text-indigo-400 hover:underline">许可页面</a>。',
     section10Item2:
-      '<strong>许可性质：</strong> 您购买的是 TuHe PDF 开源代码的商业许可，该许可授予您在闭源和专有环境中使用软件的权利，无需承担 AGPL-3.0 许可证的义务。',
+      '<strong>许可性质：</strong> 使用、修改和再分发 TuHe PDF 须遵守 AGPL-3.0-only。',
     section10Item3:
-      '<strong>无许可证密钥：</strong> TuHe PDF 不使用许可证密钥。购买后，您将收到一个包含完整源代码和二进制文件的 ZIP 归档包，与公开可用的开源仓库内容一致。',
+      '<strong>源码获取：</strong> 修改后的源码已经公开，可免费获取，获取方式见许可页。',
     section10Item4:
-      '<strong>不退款政策：</strong> <strong class="text-red-400">购买后任何情况下均不退款。</strong> 所有销售均为最终决定。完成购买即表示您确认已评估该软件（可在 GitHub 上免费获取）并对其功能感到满意。',
+      '<strong>收费说明：</strong> <strong class="text-red-400">TuHe PDF 不出售商业许可。</strong> 不存在许可购买及相关退款安排。',
     section10Item5:
-      '<strong>第三方组件：</strong> 商业许可不授予以闭源方式使用 AGPL 许可的第三方组件（如 CPDF、PyMuPDF 和 Ghostscript）的权利。您必须遵守这些组件的 AGPL v3 条款，或从其各自的供应商处获取单独的商业许可。',
+      '<strong>第三方组件：</strong> CPDF、PyMuPDF、Ghostscript 等组件仍适用各自的许可证，本项目不提供这些组件的替代授权。',
     section10Item6:
-      '<strong>无限使用：</strong> 该许可允许在您组织内的设备、服务器和用户机器上无限制地使用，没有按用户、按机器或按席位的限制。',
+      '<strong>使用范围：</strong> 在组织内的设备和服务器上使用时，须遵守 AGPL-3.0-only 及适用的第三方许可证。',
     section10Footer:
       '有关完整的许可详情，请访问我们的 <a href="licensing.html" class="text-indigo-400 hover:underline">许可页面</a>。',
   },
