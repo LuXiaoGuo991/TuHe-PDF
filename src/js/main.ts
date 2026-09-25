@@ -26,6 +26,12 @@ declare const __BRAND_NAME__: string;
 
 const init = async () => {
   initTheme();
+  // 嵌入检测：在主页工作台的 iframe 中打开时给 body 加 embedded-tool 标记，
+  // 供「工具页透出主页流体」方案消费（由 #workspace.wb-fluid-tool 总开关控制，
+  // 见 styles.css「流体工具页总开关」一节）。独立访问的页面不受影响。
+  if (window.top !== window.self) {
+    document.body.classList.add('embedded-tool');
+  }
   await initI18n();
   await loadRuntimeConfig();
   injectLanguageSwitcher();

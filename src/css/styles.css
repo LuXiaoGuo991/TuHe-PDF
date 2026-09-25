@@ -2247,6 +2247,25 @@ body.tuhe-ambient > footer {
   color: var(--color-text-secondary);
 }
 
+/* ---- 流体工具页总开关（试点期，默认关闭）--------------------------------
+ * localStorage `tuhe.fluidTool === '1'` 时 workbench.ts 给 #workspace 加
+ * .wb-fluid-tool：面板与 iframe 背景透明，加载遮罩改玻璃，配合工具页
+ * body.embedded-tool（main.ts 检测 iframe 嵌入时添加）即可让主页 WebGL
+ * 流体透出工具页。开关关闭时下列规则不命中，渲染与此前完全一致。 */
+#workspace.wb-fluid-tool .wb-panel {
+  background: transparent;
+}
+
+#workspace.wb-fluid-tool .wb-panel iframe {
+  background: transparent;
+}
+
+#workspace.wb-fluid-tool .wb-panel-loading {
+  background: color-mix(in srgb, var(--color-canvas) 45%, transparent);
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  backdrop-filter: blur(var(--glass-blur));
+}
+
 /* ---- TuHe 默认首页 ---- */
 #tuhe-home {
   position: absolute;
