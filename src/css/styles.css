@@ -3132,6 +3132,36 @@ body.phase2-tool-page::before {
     );
 }
 
+/* --- 嵌入态：工具页透出主页流体（body.embedded-tool，由 main.ts 检测）-----
+ * 仅在主页工作台 iframe 内生效，需配合外壳 #workspace.wb-fluid-tool 总开关
+ * （iframe 背景透明）才完整；独立访问的工具页无 embedded-tool 类，一切照旧。
+ * 1) body 透明：主页 WebGL 流体直接成为工具页背景；
+ * 2) 关闭页内自建光晕：嵌入态背景是真实流体，光晕叠加会双重发亮；
+ * 3) 页内其余 canvas 托板（结果区 / 文件列表 / 分段控件槽等）从 62% 降到 30%：
+ *    让流体透上来，同时保留一层轻纱稳住对比度（试点值，按验证调整）。
+ *    注意：最外层包裹（#uploader 等）由本节后文的规则 5 保持完全透明
+ *    （该规则特异性更高，本规则不作用于它），流体在包裹层是 100% 透出的；
+ * 4) 打印兜底：打印强制恢复实色，不透出。 */
+
+body.phase2-tool-page.embedded-tool {
+  background: transparent;
+}
+
+body.phase2-tool-page.embedded-tool::before {
+  content: none;
+}
+
+body.phase2-tool-page.embedded-tool :where(.ui-bg-canvas:not(.fixed)) {
+  background-color: color-mix(in srgb, var(--color-canvas) 30%, transparent);
+}
+
+@media print {
+  body.phase2-tool-page.embedded-tool,
+  body.phase2-tool-page.embedded-tool :where(.ui-bg-canvas:not(.fixed)) {
+    background-color: var(--color-canvas);
+  }
+}
+
 /* --- 材质配方与声明顺序说明 ---------------------------------------------
  * 全部规则都限定在 body.phase2-tool-page 作用域内（115 个工具页里只有
  * pdf-multi-tool 的 body 需要补该类，见日志）。素材层级按「抬升程度」分档：
