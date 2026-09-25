@@ -3241,6 +3241,14 @@ body.phase2-tool-page .ui-button-secondary:hover {
   border-color: var(--color-action-hover);
 }
 
+/* 8.5) .btn-gradient 与 .ui-button-secondary 同挂的按钮（108 页的通用主按钮
+ * 写法）：规则 7 会把底色覆写为 raised 62% 半透明，而 .btn-gradient 的白色
+ * 文字（#fff，声明更晚）保留——亮色下白字浅底、对比度全失。同特异性后来者胜，
+ * 这里把 action 底色夺回；悬停/聚焦/禁用态沿用 .btn-gradient 原有规则。 */
+body.phase2-tool-page .btn-gradient {
+  background-color: var(--color-action);
+}
+
 /* 8) 弹窗遮罩：两种既有变体（canvas @ bg-opacity-90 / surface-sunken @
  * bg-opacity-75）统一改为「半透明 + 背景模糊」，与工作台 .wb-modal-card 的
  * 玻璃语言一致；保留较高不透明度，弹窗聚焦感不变。
