@@ -1059,10 +1059,10 @@ body:has(#workbench) {
     var(--color-canvas);
 }
 
-/* 顶栏下沿垫层：顶栏本身是玻璃的，背后流体加重后，亮色主题里
- * --color-text-secondary 的导航文字会掉到 4.4:1 一带。这里在顶部（56px 顶栏
- * 高度 + 向下淡出到 104px）垫一层 canvas 色，把顶栏文字落点拉回 canvas 基线；
- * 横向大面积仍是流体本体，不影响整体的「加重」观感。
+/* 顶栏下沿垫层：顶栏本身已完全透明（2026-09-26，见 .wb-topbar），这垫层是
+ * 顶栏文字对比度的唯一来源，同步加强：文字落点（约 28px 高度）从原配方
+ * 实测的 ~57%/~61% canvas 提到 ~77%/~81%。仍只在顶部 104px 内淡出，
+ * 横向大面积仍是流体本体，读感是「流体向上渐暗」而非一条栏。
  * 必须是 ::after 而不是容器自身的 background —— 容器背景被两层 canvas
  * （WebGL 流体 + 粒子）整块盖住，只有晚于 canvas 绘制的伪元素才在它们之上。 */
 .tuhe-ambient-bg::after {
@@ -1072,7 +1072,8 @@ body:has(#workbench) {
   pointer-events: none;
   background: linear-gradient(
     to bottom,
-    color-mix(in srgb, var(--color-canvas) 78%, transparent) 0,
+    color-mix(in srgb, var(--color-canvas) 84%, transparent) 0,
+    color-mix(in srgb, var(--color-canvas) 66%, transparent) 40px,
     transparent 104px
   );
 }
@@ -1102,7 +1103,8 @@ body:has(#workbench) {
 [data-theme='light'] .tuhe-ambient-bg::after {
   background: linear-gradient(
     to bottom,
-    color-mix(in srgb, var(--color-canvas) 84%, transparent) 0,
+    color-mix(in srgb, var(--color-canvas) 88%, transparent) 0,
+    color-mix(in srgb, var(--color-canvas) 74%, transparent) 40px,
     transparent 104px
   );
 }
@@ -1205,19 +1207,11 @@ body.tuhe-ambient > footer {
   height: 56px;
   padding: 0 20px;
   flex-shrink: 0;
-  /* 玻璃顶栏：半透明下沉色 + backdrop 模糊，背后的流体背景隐约透出。 */
-  background: color-mix(in srgb, var(--color-surface-sunken) 55%, transparent);
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.35);
-  backdrop-filter: blur(var(--glass-blur)) saturate(1.35);
-  border-bottom: 1px solid var(--glass-border);
+  /* 2026-09-26：顶栏不再有任何栏背景——流体背景全屏铺开，顶栏只是「加在
+   * 流体上的文字与图标」。文字对比度由 .tuhe-ambient-bg::after 顶部垫层
+   * 单独承担（同步加强，见该处注释）；hover 底等交互态仍由各自规则提供。 */
+  background: transparent;
   z-index: 40;
-}
-
-/* 亮色主题的流体加重后，55% 的下沉色加上页面顶栏垫层仍只把导航文字顶到
- * 4.5:1 的临界（实测 4.51:1）。亮色单独提到 66%，留出余量；深色不受影响
- * （深色导航实测 8.4:1，无需改动）。 */
-[data-theme='light'] .wb-topbar {
-  background: color-mix(in srgb, var(--color-surface-sunken) 66%, transparent);
 }
 
 .wb-topbar-brand {
@@ -1538,12 +1532,11 @@ body.tuhe-ambient > footer {
   flex-direction: column;
   flex-shrink: 0;
   width: var(--rail-w-collapsed);
-  /* 玻璃侧栏：与 .wb-topbar 同一配方（半透明下沉色 + backdrop 模糊），
-   * 背后是首页流体背景层或工具面板的不透明底色。 */
-  background: color-mix(in srgb, var(--color-surface-sunken) 55%, transparent);
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.35);
-  backdrop-filter: blur(var(--glass-blur)) saturate(1.35);
-  border-right: 1px solid var(--glass-border);
+  /* 2026-09-26：侧栏不再有任何栏背景——流体背景全屏铺开，栏里只剩
+   * 「展开按钮 + 可滚动图标/卡片 + 底部信息」，全部直接漂在流体上。
+   * 文字对比度由卡片自身底色与悬停态承担；移动端抽屉态在下方媒体查询里
+   * 恢复实色 + 边线 + 模糊。 */
+  background: transparent;
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
 }
@@ -1558,38 +1551,57 @@ body.tuhe-ambient > footer {
   align-items: center;
   gap: 8px;
   padding: 12px 12px 10px;
-  border-bottom: 1px solid var(--glass-border);
+  /* 2026-09-26：栏背景已透明，分隔线会让按钮变成「一条栏」，移除。 */
   min-height: 56px;
 }
 
-/* 展开/收起按钮：固定在栏右上角 */
+/* 展开/收起按钮：悬浮圆钮，直接漂在流体上。
+ * 2026-09-26 第二版：圆形（与卡片方角区分）+ 微浮起阴影 + 悬停放大并亮起
+ * 品牌色光圈 + 按下回弹；方向图标在展开时旋转 180°。 */
 .rail-toggle {
   margin-left: auto;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
   color: var(--color-text-secondary);
-  background: transparent;
-  border: 1px solid transparent;
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(12px) saturate(1.25);
+  backdrop-filter: blur(12px) saturate(1.25);
+  border: 1px solid var(--glass-border);
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    0 4px 14px color-mix(in srgb, var(--color-canvas) 55%, transparent);
   cursor: pointer;
   transition:
     color 0.2s ease,
     background 0.2s ease,
-    border-color 0.2s ease;
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .rail-toggle:hover {
   color: var(--color-text-primary);
-  background: var(--color-surface);
-  border-color: var(--color-border);
+  background: color-mix(in srgb, var(--color-surface) 78%, transparent);
+  transform: scale(1.07);
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    0 6px 18px color-mix(in srgb, var(--color-canvas) 65%, transparent),
+    0 0 0 3px color-mix(in srgb, var(--color-action) 18%, transparent);
+}
+
+.rail-toggle:active {
+  transform: scale(0.95);
 }
 
 .rail-toggle svg,
 .rail-toggle i {
+  width: 18px;
+  height: 18px;
   transition: transform 0.3s ease;
 }
 
@@ -1669,26 +1681,48 @@ body.tuhe-ambient > footer {
   overflow-y: auto;
   overflow-x: hidden;
   padding: 10px 10px 16px;
+  /* 2026-09-26 第二版：三态渐显的 Firefox 侧——常态 22% 痕迹，
+   * 悬停列表 45%。WebKit 细案见下方 ::-webkit-scrollbar 规则。 */
   scrollbar-width: thin;
-  scrollbar-color: var(--color-border) transparent;
+  scrollbar-color: color-mix(
+      in srgb,
+      var(--color-text-tertiary) 22%,
+      transparent
+    )
+    transparent;
+}
+
+.rail-scroll:hover {
+  scrollbar-color: color-mix(
+      in srgb,
+      var(--color-text-tertiary) 45%,
+      transparent
+    )
+    transparent;
 }
 
 .rail-scroll::-webkit-scrollbar {
-  width: 8px;
+  width: 5px;
 }
 
 .rail-scroll::-webkit-scrollbar-track {
   background: transparent;
 }
 
+/* 2026-09-26 第二版：三态渐显——常态只留 20% 痕迹（不破坏流体的干净），
+ * 悬停列表升到 45%（宣告可滚），按住拖到 thumb 上 75%（操作反馈）。
+ * Firefox 用 scrollbar-color 走两级（常态/悬停）。 */
 .rail-scroll::-webkit-scrollbar-thumb {
-  background: var(--color-border);
+  background: color-mix(in srgb, var(--color-text-tertiary) 20%, transparent);
   border-radius: 999px;
-  border: 2px solid var(--color-surface-sunken);
+}
+
+.rail-scroll:hover::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-text-tertiary) 45%, transparent);
 }
 
 .rail-scroll::-webkit-scrollbar-thumb:hover {
-  background: var(--color-border);
+  background: color-mix(in srgb, var(--color-text-tertiary) 75%, transparent);
 }
 
 /* 分类 */
@@ -1900,7 +1934,7 @@ body.tuhe-ambient > footer {
 /* 栏底部 */
 .rail-foot {
   padding: 10px 12px;
-  border-top: 1px solid var(--glass-border);
+  /* 2026-09-26：栏背景已透明，分隔线会形成「一条栏」，移除。 */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1932,15 +1966,16 @@ body.tuhe-ambient > footer {
 /* 标签页栏 */
 #tab-bar {
   display: none;
-  align-items: flex-end;
-  gap: 4px;
-  /* 收紧标签栏左侧/上方留白：标签更贴近卡片栏与顶栏，仍保留一丝“搁板”呼吸感 */
-  padding: 4px 6px 0;
-  /* 玻璃标签栏：与 .wb-topbar / #tool-rail 同一配方。 */
-  background: color-mix(in srgb, var(--color-surface-sunken) 55%, transparent);
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.35);
-  backdrop-filter: blur(var(--glass-blur)) saturate(1.35);
-  border-bottom: 1px solid var(--glass-border);
+  align-items: center;
+  gap: 6px;
+  /* 2026-09-25：标签改为浮起圆角 pill 后，不再需要贴合格架的留白。 */
+  padding: 6px 10px 6px;
+  /* 2026-09-26：标签栏完全透明（与顶栏/侧栏同一语言），标签 pill 直接浮在
+   * 流体上；激活标签向下与工具面板顶边咬合（见 .wb-tab-active），故用负
+   * margin 把工作区主体上移 16px，让面板顶边探入标签行下方 2px。 */
+  margin-bottom: -16px;
+  position: relative;
+  z-index: 3;
   overflow-x: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--color-border) transparent;
@@ -1959,16 +1994,17 @@ body.tuhe-ambient > footer {
   display: flex;
 }
 
+/* 标签：浮起圆角 pill。未激活为半透明 surface 玻璃，激活为 canvas 实色
+ *（与下方工具面板的 canvas 底色同属一族，色差不靠描边而靠明度层级区分）。 */
 .wb-tab {
   display: flex;
   align-items: center;
   gap: 7px;
   max-width: 220px;
-  padding: 6px 8px 6px 10px;
-  border-radius: 9px 9px 0 0;
-  background: color-mix(in srgb, var(--color-surface) 62%, transparent);
+  padding: 6px 8px 6px 12px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-surface) 55%, transparent);
   border: 1px solid var(--glass-border);
-  border-bottom: none;
   color: var(--color-text-secondary);
   font-size: 13px;
   cursor: pointer;
@@ -1980,26 +2016,20 @@ body.tuhe-ambient > footer {
 }
 
 .wb-tab:hover {
-  background: color-mix(in srgb, var(--color-surface-raised) 78%, transparent);
+  background: color-mix(in srgb, var(--color-surface-raised) 72%, transparent);
+  color: var(--color-text-primary);
 }
 
 .wb-tab.wb-tab-active {
-  /* 活动标签保持 canvas 实色：与下方不透明工具面板连成一体。 */
+  /* 与下方工具面板顶边咬合：下半圆角拉直、下描边透明，标签下缘探出 2px
+   * 盖住面板顶边（面板因 #tab-bar 负 margin 上移，顶边恰好探到标签行下方），
+   * 二者同为 canvas 实色且共享一条边线，视觉上连成一体。 */
   background: var(--color-canvas);
   color: var(--color-text-primary);
   border-color: var(--glass-border);
+  border-bottom-color: transparent;
+  border-radius: 12px 12px 0 0;
   position: relative;
-}
-
-.wb-tab.wb-tab-active::after {
-  content: '';
-  position: absolute;
-  left: 10px;
-  right: 10px;
-  bottom: -1px;
-  height: 2px;
-  border-radius: 999px;
-  background: var(--color-action);
 }
 
 .wb-tab-icon {
@@ -2135,9 +2165,18 @@ body.tuhe-ambient > footer {
 
 .wb-panel {
   position: absolute;
-  inset: 0;
+  /* 2026-09-25：四周留出 8px 流体缝隙，面板从「整屏色块」变为
+   * 「浮在流体上的一张玻璃纸」，与首页的玻璃语言统一；
+   * overflow:hidden 同时把 iframe 内容裁进圆角。 */
+  inset: 8px;
   display: none;
   background: var(--color-canvas);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    var(--glass-shadow);
 }
 
 .wb-panel.wb-panel-active {
@@ -2472,6 +2511,16 @@ body.tuhe-ambient > footer {
     width: var(--rail-w-expanded);
     box-shadow: 12px 0 40px
       color-mix(in srgb, var(--color-surface-sunken) 82%, transparent);
+    /* 抽屉是浮在遮罩上的独立面板，恢复实色染色 + 右边线 + 模糊，
+     * 覆盖桌面端的完全透明。 */
+    background: color-mix(
+      in srgb,
+      var(--color-surface-sunken) 55%,
+      transparent
+    );
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.35);
+    backdrop-filter: blur(var(--glass-blur)) saturate(1.35);
+    border-right: 1px solid var(--glass-border);
   }
 
   #tool-rail.mobile-open {
@@ -3022,21 +3071,44 @@ body.phase2-tool-page::before {
   pointer-events: none;
   /* 与 .tuhe-ambient-bg 的 CSS 兜底渐变同配方（brand 三色光晕 + canvas 底），
    * 但强度提高一档：工具页没有 WebGL 流体，全靠这层光晕给玻璃卡片提供
-   * 可折射的底色深度。取值已按工具页高阅读密度校准（文字对比度见验证）。 */
+   * 可折射的底色深度。取值已按工具页高阅读密度校准（文字对比度见验证）。
+   * 2026-09-25：光晕位置/强度对齐首页兜底渐变（18%/0% 主光、88%/88% 次光、
+   * 80%/20% brand 光），缩小工具页与首页流体的观感色差。 */
   background:
     radial-gradient(
-      ellipse 72% 48% at 16% 6%,
-      color-mix(in srgb, var(--color-action) 18%, transparent),
+      ellipse 70% 50% at 18% 0%,
+      color-mix(in srgb, var(--color-action) 20%, transparent),
       transparent 72%
     ),
     radial-gradient(
-      ellipse 52% 44% at 92% 20%,
-      color-mix(in srgb, var(--color-focus) 12%, transparent),
+      ellipse 55% 45% at 88% 88%,
+      color-mix(in srgb, var(--color-focus) 13%, transparent),
       transparent 74%
     ),
     radial-gradient(
-      ellipse 58% 48% at 78% 96%,
-      color-mix(in srgb, var(--color-brand-accent) 6%, transparent),
+      ellipse 52% 44% at 80% 20%,
+      color-mix(in srgb, var(--color-brand-accent) 8%, transparent),
+      transparent 76%
+    );
+}
+
+/* 亮色覆写：与 [data-theme='light'] .tuhe-ambient-bg 同强度（34/22/10），
+ * 此前亮色工具页只有深色强度的光晕，比首页流体明显偏淡。 */
+[data-theme='light'] body.phase2-tool-page::before {
+  background:
+    radial-gradient(
+      ellipse 76% 56% at 16% 0%,
+      color-mix(in srgb, var(--color-action) 34%, transparent),
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 62% 50% at 90% 86%,
+      color-mix(in srgb, var(--color-focus) 22%, transparent),
+      transparent 74%
+    ),
+    radial-gradient(
+      ellipse 52% 44% at 80% 20%,
+      color-mix(in srgb, var(--color-brand-accent) 10%, transparent),
       transparent 76%
     );
 }
