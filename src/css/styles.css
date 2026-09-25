@@ -2266,6 +2266,25 @@ body.tuhe-ambient > footer {
   backdrop-filter: blur(var(--glass-blur));
 }
 
+/* 流体模式下舍弃工具页外轮廓：面板全出血（无边框/圆角/阴影），标签不再
+ * 与工作区咬合——标签行恢复默认流内布局，激活标签恢复完整 pill 圆角，
+ * 二者各自独立浮于流体（工具页内容由页内玻璃卡片自成层次）。 */
+#workspace.wb-fluid-tool #tab-bar {
+  margin-bottom: 0;
+}
+
+#workspace.wb-fluid-tool .wb-panel {
+  inset: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+#workspace.wb-fluid-tool .wb-tab-active {
+  border-radius: 999px;
+  border-bottom-color: var(--glass-border);
+}
+
 /* ---- TuHe 默认首页 ---- */
 #tuhe-home {
   position: absolute;
