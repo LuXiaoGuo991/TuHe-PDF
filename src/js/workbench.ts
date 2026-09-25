@@ -73,16 +73,6 @@ export const initWorkbench = (deps: WorkbenchDeps): void => {
 
   const { categories, categoryTranslationKeys, toolTranslationKeys, t } = deps;
 
-  /* 「工具页透出流体」总开关（试点期默认关闭）：只决定外壳透明与否，
-   * 工具页自身的透明化由 body.embedded-tool 的 CSS 规则承担。 */
-  try {
-    if (localStorage.getItem('tuhe.fluidTool') === '1') {
-      document.getElementById('workspace')?.classList.add('wb-fluid-tool');
-    }
-  } catch {
-    /* localStorage 不可用时保持关闭 */
-  }
-
   const tabs = new Map<string, TabEntry>();
   let activeTabId: string | null = null;
 

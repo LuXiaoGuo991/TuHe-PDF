@@ -1968,14 +1968,8 @@ body.tuhe-ambient > footer {
   display: none;
   align-items: center;
   gap: 6px;
-  /* 2026-09-25：标签改为浮起圆角 pill 后，不再需要贴合格架的留白。 */
+  /* 标签 pill 直接浮在流体上（与顶栏/侧栏同一语言，无任何底色）。 */
   padding: 6px 10px 6px;
-  /* 2026-09-26：标签栏完全透明（与顶栏/侧栏同一语言），标签 pill 直接浮在
-   * 流体上；激活标签向下与工具面板顶边咬合（见 .wb-tab-active），故用负
-   * margin 把工作区主体上移 16px，让面板顶边探入标签行下方 2px。 */
-  margin-bottom: -16px;
-  position: relative;
-  z-index: 3;
   overflow-x: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--color-border) transparent;
@@ -2021,15 +2015,10 @@ body.tuhe-ambient > footer {
 }
 
 .wb-tab.wb-tab-active {
-  /* 与下方工具面板顶边咬合：下半圆角拉直、下描边透明，标签下缘探出 2px
-   * 盖住面板顶边（面板因 #tab-bar 负 margin 上移，顶边恰好探到标签行下方），
-   * 二者同为 canvas 实色且共享一条边线，视觉上连成一体。 */
+  /* 完整 pill 浮岛：canvas 实色与未激活玻璃区分，整体独立悬浮于流体。 */
   background: var(--color-canvas);
   color: var(--color-text-primary);
   border-color: var(--glass-border);
-  border-bottom-color: transparent;
-  border-radius: 12px 12px 0 0;
-  position: relative;
 }
 
 .wb-tab-icon {
@@ -2165,18 +2154,12 @@ body.tuhe-ambient > footer {
 
 .wb-panel {
   position: absolute;
-  /* 2026-09-25：四周留出 8px 流体缝隙，面板从「整屏色块」变为
-   * 「浮在流体上的一张玻璃纸」，与首页的玻璃语言统一；
-   * overflow:hidden 同时把 iframe 内容裁进圆角。 */
-  inset: 8px;
+  /* 正式形态（2026-09-26 用户确认）：面板全出血、无轮廓——无边框/圆角/阴影/
+   * 底色，主页 WebGL 流体直接成为工具页背景（工具页 body.embedded-tool 透明，
+   * 见「嵌入态」一节），内容层次由页内玻璃卡片承担。 */
+  inset: 0;
   display: none;
-  background: var(--color-canvas);
-  border: 1px solid var(--glass-border);
-  border-radius: 14px;
   overflow: hidden;
-  box-shadow:
-    inset 0 1px 0 var(--glass-highlight),
-    var(--glass-shadow);
 }
 
 .wb-panel.wb-panel-active {
@@ -2220,10 +2203,11 @@ body.tuhe-ambient > footer {
   height: 100%;
   border: none;
   display: block;
-  background: var(--color-canvas);
+  /* 透明：配合工具页 body.embedded-tool 的透明背景，透出主页流体。 */
+  background: transparent;
 }
 
-/* iframe 加载遮罩 */
+/* iframe 加载遮罩：玻璃配方（正式形态唯一版本） */
 .wb-panel-loading {
   position: absolute;
   inset: 0;
@@ -2232,7 +2216,9 @@ body.tuhe-ambient > footer {
   align-items: center;
   justify-content: center;
   gap: 14px;
-  background: var(--color-canvas);
+  background: color-mix(in srgb, var(--color-canvas) 45%, transparent);
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  backdrop-filter: blur(var(--glass-blur));
   z-index: 5;
   transition: opacity 0.3s ease;
 }
@@ -2245,44 +2231,6 @@ body.tuhe-ambient > footer {
 .wb-panel-loading p {
   font-size: 13px;
   color: var(--color-text-secondary);
-}
-
-/* ---- 流体工具页总开关（试点期，默认关闭）--------------------------------
- * localStorage `tuhe.fluidTool === '1'` 时 workbench.ts 给 #workspace 加
- * .wb-fluid-tool：面板与 iframe 背景透明，加载遮罩改玻璃，配合工具页
- * body.embedded-tool（main.ts 检测 iframe 嵌入时添加）即可让主页 WebGL
- * 流体透出工具页。开关关闭时下列规则不命中，渲染与此前完全一致。 */
-#workspace.wb-fluid-tool .wb-panel {
-  background: transparent;
-}
-
-#workspace.wb-fluid-tool .wb-panel iframe {
-  background: transparent;
-}
-
-#workspace.wb-fluid-tool .wb-panel-loading {
-  background: color-mix(in srgb, var(--color-canvas) 45%, transparent);
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  backdrop-filter: blur(var(--glass-blur));
-}
-
-/* 流体模式下舍弃工具页外轮廓：面板全出血（无边框/圆角/阴影），标签不再
- * 与工作区咬合——标签行恢复默认流内布局，激活标签恢复完整 pill 圆角，
- * 二者各自独立浮于流体（工具页内容由页内玻璃卡片自成层次）。 */
-#workspace.wb-fluid-tool #tab-bar {
-  margin-bottom: 0;
-}
-
-#workspace.wb-fluid-tool .wb-panel {
-  inset: 0;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-}
-
-#workspace.wb-fluid-tool .wb-tab-active {
-  border-radius: 999px;
-  border-bottom-color: var(--glass-border);
 }
 
 /* ---- TuHe 默认首页 ---- */
@@ -3152,8 +3100,9 @@ body.phase2-tool-page::before {
 }
 
 /* --- 嵌入态：工具页透出主页流体（body.embedded-tool，由 main.ts 检测）-----
- * 仅在主页工作台 iframe 内生效，需配合外壳 #workspace.wb-fluid-tool 总开关
- * （iframe 背景透明）才完整；独立访问的工具页无 embedded-tool 类，一切照旧。
+ * 2026-09-26 起为正式形态（用户确认，不再可切换）：仅在主页工作台 iframe 内
+ * 生效，配合外壳透明面板（.wb-panel 无轮廓全出血），主页 WebGL 流体直接成为
+ * 工具页背景；独立访问的工具页无 embedded-tool 类，一切照旧。
  * 1) body 透明：主页 WebGL 流体直接成为工具页背景；
  * 2) 关闭页内自建光晕：嵌入态背景是真实流体，光晕叠加会双重发亮；
  * 3) 页内其余 canvas 托板（结果区 / 文件列表 / 分段控件槽等）从 62% 降到 30%：
