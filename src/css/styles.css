@@ -2110,11 +2110,9 @@ body.tuhe-ambient > footer {
   flex-wrap: wrap;
   gap: 4px 14px;
   padding: 6px 16px;
-  border-top: 1px solid var(--glass-border);
-  /* 玻璃合规条：与顶栏/侧栏同配方，透出背后的流体或工具面板底色。 */
-  background: color-mix(in srgb, var(--color-surface-sunken) 55%, transparent);
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.35);
-  backdrop-filter: blur(var(--glass-blur)) saturate(1.35);
+  /* 完全透明：与顶栏/侧栏同一语言，文字直接浮在流体上（原玻璃底色带的
+   * 顶缘在观感上仍是一条分割线，2026-09-28 用户复测后移除）。 */
+  background: transparent;
   color: var(--color-text-secondary);
   font-size: 11px;
   line-height: 1.4;
