@@ -301,7 +301,7 @@ async function updatePdfDisplay(): Promise<void> {
 
   const removeBtn = document.createElement('button');
   removeBtn.className =
-    'ml-4 ui-text-danger ui-hover-text-danger flex-shrink-0';
+    'ui-button-ghost ui-button-ghost--danger ml-4 flex-shrink-0';
   removeBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
   removeBtn.onclick = () => {
     state.pdfFile = null;
@@ -472,7 +472,7 @@ function updateCertDisplay(): void {
 
   const removeBtn = document.createElement('button');
   removeBtn.className =
-    'ml-4 ui-text-danger ui-hover-text-danger flex-shrink-0';
+    'ui-button-ghost ui-button-ghost--danger ml-4 flex-shrink-0';
   removeBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
   removeBtn.onclick = () => {
     state.certFile = null;

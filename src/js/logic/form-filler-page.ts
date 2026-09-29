@@ -94,7 +94,7 @@ function updateFileDisplay() {
   const removeBtn = document.createElement('button');
   removeBtn.id = 'remove-file';
   removeBtn.className =
-    'ui-text-danger ui-hover-text-danger p-2 flex-shrink-0 ml-2';
+    'ui-button-ghost ui-button-ghost--danger p-2 flex-shrink-0 ml-2';
   removeBtn.title = translate(
     'tools:pdfFormFiller.dynamic.e4f9662450',
     'Remove file'

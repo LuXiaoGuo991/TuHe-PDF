@@ -409,7 +409,7 @@
 
           <button
             id="process-btn"
-            class="ui-button-primary btn-gradient w-full disabled:opacity-50"
+            class="btn-gradient w-full"
             disabled
             data-i18n="tools:ocrPdf.startButton"
           >
@@ -466,7 +466,7 @@
             ></textarea>
             <button
               id="copy-text-btn"
-              class="ui-button-secondary absolute top-2 right-2 ui-bg-raised ui-hover-bg-raised p-2 rounded-md"
+              class="ui-button-secondary absolute top-2 right-2 p-2"
               title="Copy to Clipboard"
               data-i18n-title="tools:ocrPdf.copyToClipboard"
             >
@@ -479,14 +479,14 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
             <button
               id="download-txt-btn"
-              class="ui-button-secondary w-full ui-bg-raised ui-text-primary font-semibold py-3 rounded-lg ui-hover-bg-raised"
+              class="ui-button-secondary w-full py-3"
               data-i18n="tools:ocrPdf.downloadTxt"
             >
               Download as .txt
             </button>
             <button
               id="download-searchable-pdf"
-              class="ui-button-secondary w-full ui-bg-success ui-text-primary font-semibold py-3 rounded-lg ui-hover-bg-success"
+              class="ui-button-secondary w-full py-3"
               data-i18n="tools:ocrPdf.downloadSearchablePdf"
             >
               Download Searchable PDF
@@ -531,11 +531,7 @@
           Alert
         </h3>
         <p id="alert-message" class="ui-text-secondary mb-6"></p>
-        <button
-          id="alert-ok"
-          class="ui-button-primary w-full ui-bg-action ui-hover-bg-action ui-text-primary font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
-          data-i18n="alert.ok"
-        >
+        <button id="alert-ok" class="btn-gradient w-full" data-i18n="alert.ok">
           OK
         </button>
       </div>

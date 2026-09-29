@@ -112,7 +112,7 @@ function updateFileList() {
 
   const deleteBtn = document.createElement('button');
   deleteBtn.className =
-    'ui-text-danger ui-hover-text-danger p-2 flex-shrink-0 ml-2';
+    'ui-button-ghost ui-button-ghost--danger p-2 flex-shrink-0 ml-2';
   deleteBtn.title = translate(
     'tools:addStamps.dynamic.612ed3ad3b',
     'Remove file'

@@ -561,7 +561,7 @@ async function handleSinglePdfUpload(toolId: string, file: File) {
         const removeBtn = document.createElement('button');
         removeBtn.type = 'button';
         removeBtn.className =
-          'btn p-2 ui-text-danger ui-hover-bg-raised rounded-full self-center sm:self-auto';
+          'ui-button-ghost ui-button-ghost--danger p-2 rounded-full self-center sm:self-auto';
         removeBtn.innerHTML = '<i data-lucide="trash-2"></i>';
         removeBtn.addEventListener('click', () => fieldWrapper.remove());
 

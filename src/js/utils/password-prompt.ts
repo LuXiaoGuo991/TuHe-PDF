@@ -500,7 +500,7 @@ export async function promptAndDecryptBatch(
             <input type="password" data-pw-idx="${i}" placeholder="${translate('passwordPrompt.password', 'Password')}"
               class="w-32 ui-bg-raised border ui-border ui-text-primary rounded px-2 py-1 text-xs focus:ring-1 ui-focus-ring focus:border-transparent" autocomplete="off" />
             <button type="button" data-skip-idx="${i}" title="${translate('passwordPrompt.skipFile', 'Skip this file')}"
-              class="p-1 rounded ui-text-secondary hover:ui-text-danger ui-hover-bg-raised transition-colors">
+              class="ui-button-ghost ui-button-ghost--danger p-1">
               <i data-lucide="x" class="w-3.5 h-3.5"></i>
             </button>
           </div>

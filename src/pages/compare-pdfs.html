@@ -787,7 +787,7 @@
           >
             <button
               id="prev-page-compare"
-              class="ui-button-secondary btn p-1.5 rounded ui-bg-raised ui-hover-bg-raised disabled:opacity-50"
+              class="ui-button-secondary p-1.5"
               disabled
               title="Previous page"
               data-i18n-title="tools:comparePdfs.prevPage"
@@ -800,7 +800,7 @@
             </span>
             <button
               id="next-page-compare"
-              class="ui-button-secondary btn p-1.5 rounded ui-bg-raised ui-hover-bg-raised disabled:opacity-50"
+              class="ui-button-secondary p-1.5"
               disabled
               title="Next page"
               data-i18n-title="tools:comparePdfs.nextPage"
@@ -810,17 +810,17 @@
 
             <div class="border-l ui-border-subtle h-5 mx-1"></div>
 
-            <div class="ui-bg-raised p-0.5 rounded flex gap-0.5">
+            <div class="ui-segment">
               <button
                 id="view-mode-overlay"
-                class="ui-button-primary btn ui-bg-action px-2.5 py-1 rounded text-xs font-semibold"
+                class="ui-segment-btn px-2.5 py-1 text-xs ui-bg-action ui-text-primary"
                 data-i18n="tools:comparePdfs.overlay"
               >
                 Overlay
               </button>
               <button
                 id="view-mode-side"
-                class="ui-button-secondary btn px-2.5 py-1 rounded text-xs font-semibold"
+                class="ui-segment-btn px-2.5 py-1 text-xs ui-bg-raised ui-text-secondary"
                 data-i18n="tools:comparePdfs.sideBySide"
               >
                 Side-by-Side
@@ -831,7 +831,7 @@
 
             <button
               id="prev-change-btn"
-              class="ui-button-secondary btn ui-bg-raised ui-hover-bg-raised px-2.5 py-1 rounded text-xs font-semibold disabled:opacity-50"
+              class="ui-button-secondary px-2.5 py-1 text-xs"
               disabled
               title="Previous change"
               data-i18n-title="tools:comparePdfs.prevChange"
@@ -840,7 +840,7 @@
             </button>
             <button
               id="next-change-btn"
-              class="ui-button-secondary btn ui-bg-raised ui-hover-bg-raised px-2.5 py-1 rounded text-xs font-semibold disabled:opacity-50"
+              class="ui-button-secondary px-2.5 py-1 text-xs"
               disabled
               title="Next change"
               data-i18n-title="tools:comparePdfs.nextChange"
@@ -852,7 +852,7 @@
 
             <button
               id="zoom-out-btn"
-              class="ui-button-secondary btn p-1.5 rounded ui-bg-raised ui-hover-bg-raised disabled:opacity-50"
+              class="ui-button-secondary p-1.5"
               title="Zoom out"
               data-i18n-title="tools:comparePdfs.auto.a4ae4b24a1"
             >
@@ -865,7 +865,7 @@
             >
             <button
               id="zoom-in-btn"
-              class="ui-button-secondary btn p-1.5 rounded ui-bg-raised ui-hover-bg-raised disabled:opacity-50"
+              class="ui-button-secondary p-1.5"
               title="Zoom in"
               data-i18n-title="tools:comparePdfs.auto.4fc05f2763"
             >
@@ -873,7 +873,7 @@
             </button>
             <button
               id="zoom-reset-btn"
-              class="ui-button-secondary btn px-2.5 py-1 rounded ui-bg-raised ui-hover-bg-raised text-xs font-semibold"
+              class="ui-button-secondary px-2.5 py-1 text-xs"
               title="Reset zoom to fit"
               data-i18n-title="tools:comparePdfs.resetZoom"
               data-i18n="tools:comparePdfs.auto.dab564d809"
@@ -884,17 +884,17 @@
             <div class="flex-1"></div>
 
             <div id="overlay-controls" class="hidden flex items-center gap-2">
-              <div class="ui-bg-raised p-0.5 rounded flex gap-0.5">
+              <div class="ui-segment">
                 <button
                   id="overlay-scope-all"
-                  class="ui-button-primary btn ui-bg-action px-2.5 py-1 rounded text-xs font-semibold"
+                  class="ui-segment-btn px-2.5 py-1 text-xs ui-bg-action ui-text-primary"
                   data-i18n="tools:comparePdfs.auto.85174b7376"
                 >
                   All changes
                 </button>
                 <button
                   id="overlay-scope-content-only"
-                  class="ui-button-secondary btn px-2.5 py-1 rounded text-xs font-semibold ui-bg-raised"
+                  class="ui-segment-btn px-2.5 py-1 text-xs ui-bg-raised ui-text-secondary"
                   data-i18n="tools:comparePdfs.auto.f90072a74b"
                 >
                   Content only
@@ -902,7 +902,7 @@
               </div>
               <button
                 id="flicker-btn"
-                class="ui-button-secondary btn ui-bg-raised ui-hover-bg-raised px-2.5 py-1 rounded text-xs font-semibold"
+                class="ui-button-secondary px-2.5 py-1 text-xs"
                 data-i18n="tools:comparePdfs.flicker"
               >
                 Flicker
@@ -959,7 +959,7 @@
             <div class="relative" id="export-dropdown-wrapper">
               <button
                 id="export-dropdown-btn"
-                class="ui-button-primary btn ui-bg-action ui-hover-bg-action px-3 py-1.5 rounded text-xs font-semibold flex items-center gap-1.5 disabled:opacity-50"
+                class="btn-gradient !px-3 !py-1.5 text-xs"
                 disabled
               >
                 <i data-lucide="upload" class="w-3.5 h-3.5"></i>
@@ -979,7 +979,7 @@
                 </div>
                 <button
                   data-export-mode="overlay"
-                  class="ui-button-secondary export-menu-item export-menu-item-overlay w-full px-3 py-2 text-sm text-left ui-text-primary ui-hover-bg-raised flex items-center gap-2 hidden"
+                  class="ui-button-secondary export-menu-item export-menu-item-overlay w-full px-3 py-2 text-sm text-left hidden"
                 >
                   <i data-lucide="layers" class="w-4 h-4 ui-text-secondary"></i>
                   <span data-i18n="tools:comparePdfs.overlayView"
@@ -988,7 +988,7 @@
                 </button>
                 <button
                   data-export-mode="split"
-                  class="ui-button-secondary export-menu-item export-menu-item-side w-full px-3 py-2 text-sm text-left ui-text-primary ui-hover-bg-raised flex items-center gap-2"
+                  class="ui-button-secondary export-menu-item export-menu-item-side w-full px-3 py-2 text-sm text-left"
                 >
                   <i
                     data-lucide="columns-2"
@@ -1000,7 +1000,7 @@
                 </button>
                 <button
                   data-export-mode="alternating"
-                  class="ui-button-secondary export-menu-item export-menu-item-side w-full px-3 py-2 text-sm text-left ui-text-primary ui-hover-bg-raised flex items-center gap-2"
+                  class="ui-button-secondary export-menu-item export-menu-item-side w-full px-3 py-2 text-sm text-left"
                 >
                   <i data-lucide="layers" class="w-4 h-4 ui-text-secondary"></i>
                   <span data-i18n="tools:comparePdfs.alternating"
@@ -1009,7 +1009,7 @@
                 </button>
                 <button
                   data-export-mode="left"
-                  class="ui-button-secondary export-menu-item export-menu-item-side w-full px-3 py-2 text-sm text-left ui-text-primary ui-hover-bg-raised flex items-center gap-2"
+                  class="ui-button-secondary export-menu-item export-menu-item-side w-full px-3 py-2 text-sm text-left"
                 >
                   <i
                     data-lucide="columns-2"
@@ -1021,7 +1021,7 @@
                 </button>
                 <button
                   data-export-mode="right"
-                  class="ui-button-secondary export-menu-item export-menu-item-side w-full px-3 py-2 text-sm text-left ui-text-primary ui-hover-bg-raised flex items-center gap-2"
+                  class="ui-button-secondary export-menu-item export-menu-item-side w-full px-3 py-2 text-sm text-left"
                 >
                   <i
                     data-lucide="columns-2"
@@ -1259,11 +1259,7 @@
           Alert
         </h3>
         <p id="alert-message" class="ui-text-secondary mb-6"></p>
-        <button
-          id="alert-ok"
-          class="ui-button-primary w-full ui-bg-action ui-hover-bg-action ui-text-primary font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
-          data-i18n="alert.ok"
-        >
+        <button id="alert-ok" class="btn-gradient w-full" data-i18n="alert.ok">
           OK
         </button>
       </div>

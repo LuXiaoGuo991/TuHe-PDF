@@ -100,7 +100,8 @@ function addCustomFieldRow(key: string = '', value: string = '') {
 
   const removeBtn = document.createElement('button');
   removeBtn.type = 'button';
-  removeBtn.className = 'ui-text-danger ui-hover-text-danger p-2 self-center';
+  removeBtn.className =
+    'ui-button-ghost ui-button-ghost--danger p-2 self-center';
   removeBtn.innerHTML = '<i data-lucide="trash-2" class="w-5 h-5"></i>';
   removeBtn.onclick = function () {
     row.remove();
@@ -231,7 +232,7 @@ async function updateUI() {
 
     const removeBtn = document.createElement('button');
     removeBtn.className =
-      'ml-4 ui-text-danger ui-hover-text-danger flex-shrink-0';
+      'ui-button-ghost ui-button-ghost--danger ml-4 flex-shrink-0';
     removeBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
     removeBtn.onclick = function () {
       resetState();

@@ -266,7 +266,7 @@
             <div class="flex gap-2 flex-wrap">
               <button
                 id="undo-btn"
-                class="ui-button-secondary px-3 py-2 text-sm ui-bg-raised ui-hover-bg-raised ui-text-primary rounded disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1"
+                class="ui-button-secondary px-3 py-2 text-sm disabled:cursor-not-allowed"
                 disabled
               >
                 <i data-lucide="undo-2" class="w-4 h-4"></i>
@@ -274,7 +274,7 @@
               </button>
               <button
                 id="redo-btn"
-                class="ui-button-secondary px-3 py-2 text-sm ui-bg-raised ui-hover-bg-raised ui-text-primary rounded disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1"
+                class="ui-button-secondary px-3 py-2 text-sm disabled:cursor-not-allowed"
                 disabled
               >
                 <i data-lucide="redo-2" class="w-4 h-4"></i>
@@ -282,7 +282,7 @@
               </button>
               <button
                 id="delete-all-btn"
-                class="ui-button-secondary px-3 py-2 text-sm ui-bg-danger ui-hover-bg-danger ui-text-primary rounded flex items-center gap-1"
+                class="ui-button-secondary px-3 py-2 text-sm"
               >
                 <i data-lucide="trash-2" class="w-4 h-4"></i>
                 <span data-i18n="tools:editBookmarks.deleteAll"
@@ -291,7 +291,7 @@
               </button>
               <button
                 id="reset-btn"
-                class="ui-button-secondary px-3 py-2 text-sm ui-bg-warning ui-hover-bg-warning ui-text-primary rounded flex items-center gap-1"
+                class="ui-button-secondary px-3 py-2 text-sm"
               >
                 <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
                 <span data-i18n="tools:editBookmarks.reset">Reset</span>
@@ -299,7 +299,7 @@
 
               <button
                 id="back-btn"
-                class="ui-button-secondary px-3 py-2 text-sm ui-bg-raised ui-hover-bg-raised ui-text-primary rounded flex items-center gap-1"
+                class="ui-button-secondary px-3 py-2 text-sm"
               >
                 <i data-lucide="arrow-left" class="w-4 h-4"></i>
                 <span data-i18n="tools:editBookmarks.backToTools"
@@ -312,17 +312,17 @@
       </header>
 
       <div class="lg:hidden ui-bg-surface border-b ui-border-subtle">
-        <div class="flex">
+        <div class="ui-segment">
           <button
             id="show-viewer-btn"
-            class="ui-button-primary flex-1 py-3 text-sm font-medium ui-bg-action ui-text-primary"
+            class="ui-segment-btn flex-1 py-3 text-sm ui-bg-action ui-text-primary"
             data-i18n="tools:editBookmarks.auto.70941407a3"
           >
             PDF Viewer
           </button>
           <button
             id="show-bookmarks-btn"
-            class="ui-button-secondary flex-1 py-3 text-sm font-medium ui-text-secondary ui-hover-text-primary"
+            class="ui-segment-btn flex-1 py-3 text-sm ui-bg-raised ui-text-secondary"
             data-i18n="tools:editBookmarks.auto.ca3cddd25b"
           >
             Bookmarks
@@ -340,7 +340,7 @@
                 <div class="flex items-center gap-2">
                   <button
                     id="prev-page"
-                    class="ui-button-secondary px-3 py-2 ui-bg-raised ui-hover-bg-raised rounded text-sm"
+                    class="ui-button-secondary px-3 py-2 text-sm"
                   >
                     <i
                       data-lucide="chevron-left"
@@ -355,7 +355,7 @@
                   >
                   <button
                     id="next-page"
-                    class="ui-button-secondary px-3 py-2 ui-bg-raised ui-hover-bg-raised rounded text-sm"
+                    class="ui-button-secondary px-3 py-2 text-sm"
                   >
                     <i
                       data-lucide="chevron-right"
@@ -377,7 +377,7 @@
                   />
                   <button
                     id="goto-btn"
-                    class="ui-button-secondary px-3 py-1 ui-bg-info ui-hover-bg-info ui-text-primary rounded text-sm"
+                    class="ui-button-secondary px-3 py-1 text-sm"
                   >
                     <span data-i18n="tools:editBookmarks.go">Go</span>
                   </button>
@@ -385,7 +385,7 @@
                 <div class="flex items-center gap-2">
                   <button
                     id="zoom-out-btn"
-                    class="ui-button-secondary px-3 py-2 ui-bg-raised ui-hover-bg-raised rounded text-sm"
+                    class="ui-button-secondary px-3 py-2 text-sm"
                     title="Zoom Out"
                     data-i18n-title="tools:editBookmarks.auto.87af1da361"
                   >
@@ -398,7 +398,7 @@
                   >
                   <button
                     id="zoom-in-btn"
-                    class="ui-button-secondary px-3 py-2 ui-bg-raised ui-hover-bg-raised rounded text-sm"
+                    class="ui-button-secondary px-3 py-2 text-sm"
                     title="Zoom In"
                     data-i18n-title="tools:editBookmarks.auto.e59ac86a75"
                   >
@@ -406,7 +406,7 @@
                   </button>
                   <button
                     id="zoom-fit-btn"
-                    class="ui-button-secondary px-3 py-1 ui-bg-raised ui-hover-bg-raised rounded text-sm"
+                    class="ui-button-secondary px-3 py-1 text-sm"
                     title="Fit to Width"
                     data-i18n-title="tools:editBookmarks.fitToWidth"
                     data-i18n="tools:editBookmarks.auto.dab564d809"
@@ -431,7 +431,7 @@
                   </div>
                   <button
                     id="cancel-picking-btn"
-                    class="ui-button-secondary px-3 py-1 ui-bg-danger ui-hover-bg-danger ui-text-primary rounded text-xs"
+                    class="ui-button-secondary px-3 py-1 text-xs"
                     data-i18n="warning.cancel"
                   >
                     Cancel
@@ -491,7 +491,7 @@
                 />
                 <button
                   id="add-top-level-btn"
-                  class="ui-button-secondary w-full px-3 py-2 btn-gradient hover:shadow-xl ui-text-primary rounded text-sm font-medium !flex items-center justify-center gap-2 focus:ring-2 ui-focus-ring transition duration-200"
+                  class="w-full btn-gradient text-sm"
                 >
                   <i data-lucide="plus" class="w-4 h-4"></i>
                   <span data-i18n="tools:editBookmarks.addToPage"
@@ -534,7 +534,7 @@
                     <div class="flex gap-2">
                       <button
                         id="select-all-btn"
-                        class="ui-button-secondary flex-1 px-3 py-2 ui-bg-info ui-hover-bg-info ui-text-primary rounded text-xs flex items-center justify-center gap-1"
+                        class="ui-button-secondary flex-1 px-3 py-2 text-xs"
                       >
                         <i data-lucide="check-square" class="w-3 h-3"></i>
                         <span data-i18n="tools:editBookmarks.selectAll"
@@ -543,7 +543,7 @@
                       </button>
                       <button
                         id="deselect-all-btn"
-                        class="ui-button-secondary flex-1 px-3 py-2 ui-bg-raised ui-hover-bg-raised ui-text-primary rounded text-xs flex items-center justify-center gap-1"
+                        class="ui-button-secondary flex-1 px-3 py-2 text-xs"
                       >
                         <i data-lucide="square" class="w-3 h-3"></i>
                         <span data-i18n="tools:editBookmarks.deselectAll"
@@ -635,7 +635,7 @@
 
                     <button
                       id="batch-delete-btn"
-                      class="ui-button-secondary px-3 py-2 ui-bg-danger ui-hover-bg-danger ui-text-primary rounded text-xs flex items-center justify-center gap-1"
+                      class="ui-button-secondary px-3 py-2 text-xs"
                     >
                       <i data-lucide="trash-2" class="w-3 h-3"></i>
                       <span data-i18n="tools:editBookmarks.deleteSelected"
@@ -649,7 +649,7 @@
               <div class="flex gap-2 mb-4">
                 <button
                   id="expand-all-btn"
-                  class="ui-button-secondary flex-1 px-3 py-2 ui-bg-raised hover:shadow-md ui-text-secondary rounded text-sm font-medium flex items-center justify-center gap-1 focus:ring-2 ui-focus-ring transition duration-200"
+                  class="ui-button-secondary flex-1 px-3 py-2 hover:shadow-md text-sm"
                 >
                   <i data-lucide="chevrons-down" class="w-4 h-4"></i>
                   <span data-i18n="tools:editBookmarks.expandAll"
@@ -658,7 +658,7 @@
                 </button>
                 <button
                   id="collapse-all-btn"
-                  class="ui-button-secondary flex-1 px-3 py-2 ui-bg-raised hover:shadow-md ui-text-secondary rounded text-sm font-medium flex items-center justify-center gap-1 focus:ring-2 ui-focus-ring transition duration-200"
+                  class="ui-button-secondary flex-1 px-3 py-2 hover:shadow-md text-sm"
                 >
                   <i data-lucide="chevrons-up" class="w-4 h-4"></i>
                   <span data-i18n="tools:editBookmarks.collapseAll"
@@ -671,7 +671,7 @@
                 <div class="relative">
                   <button
                     id="import-dropdown-btn"
-                    class="ui-button-secondary w-full px-3 py-2 ui-bg-raised hover:shadow-md ui-text-secondary rounded text-sm font-medium flex items-center justify-center gap-1 focus:ring-2 ui-focus-ring transition duration-200"
+                    class="ui-button-secondary w-full px-3 py-2 hover:shadow-md text-sm"
                   >
                     <i data-lucide="upload" class="w-4 h-4"></i>
                     <span data-i18n="tools:editBookmarks.importBtn"
@@ -685,7 +685,7 @@
                   >
                     <button
                       id="import-csv-btn"
-                      class="ui-button-secondary w-full px-3 py-2 text-sm text-left flex items-center gap-2 rounded-t-lg ui-bg-raised transition duration-150"
+                      class="ui-button-secondary w-full px-3 py-2 text-sm text-left rounded-t-lg duration-150"
                     >
                       <i
                         data-lucide="file-text"
@@ -697,7 +697,7 @@
                     </button>
                     <button
                       id="import-json-btn"
-                      class="ui-button-secondary w-full px-3 py-2 text-sm text-left flex items-center gap-2 rounded-b-lg ui-bg-raised transition duration-150"
+                      class="ui-button-secondary w-full px-3 py-2 text-sm text-left rounded-b-lg duration-150"
                     >
                       <i
                         data-lucide="braces"
@@ -713,7 +713,7 @@
                 <div class="relative">
                   <button
                     id="export-dropdown-btn"
-                    class="ui-button-secondary w-full px-3 py-2 ui-bg-raised hover:shadow-md ui-text-secondary rounded text-sm font-medium flex items-center justify-center gap-1 focus:ring-2 ui-focus-ring transition duration-200"
+                    class="ui-button-secondary w-full px-3 py-2 hover:shadow-md text-sm"
                   >
                     <i data-lucide="download" class="w-4 h-4"></i>
                     <span data-i18n="tools:editBookmarks.exportBtn"
@@ -727,7 +727,7 @@
                   >
                     <button
                       id="export-csv-btn"
-                      class="ui-button-secondary w-full px-3 py-2 text-sm text-left hover:ui-bg-surface flex items-center gap-2 rounded-t-lg"
+                      class="ui-button-secondary w-full px-3 py-2 text-sm text-left hover:ui-bg-surface rounded-t-lg"
                     >
                       <i data-lucide="file-text" class="w-4 h-4"></i>
                       <span data-i18n="tools:editBookmarks.exportCsvBtn"
@@ -736,7 +736,7 @@
                     </button>
                     <button
                       id="export-json-btn"
-                      class="ui-button-secondary w-full px-3 py-2 text-sm text-left hover:ui-bg-surface flex items-center gap-2 rounded-b-lg"
+                      class="ui-button-secondary w-full px-3 py-2 text-sm text-left hover:ui-bg-surface rounded-b-lg"
                     >
                       <i data-lucide="braces" class="w-4 h-4"></i>
                       <span data-i18n="tools:editBookmarks.exportJsonBtn"
@@ -764,14 +764,14 @@
               <div class="space-y-2">
                 <button
                   id="download-btn"
-                  class="ui-button-secondary w-full px-4 py-2 btn-gradient hover:shadow-xl ui-text-primary rounded font-medium !flex items-center justify-center gap-2 focus:ring-2 ui-focus-ring transition duration-200"
+                  class="w-full btn-gradient"
                   data-i18n="tools:editBookmarks.auto.5f197f4813"
                 >
                   Save PDF with Bookmarks
                 </button>
                 <button
                   id="extract-existing-btn"
-                  class="ui-button-secondary w-full px-4 py-2 ui-bg-surface ui-text-primary border ui-border-subtle rounded-xl font-medium flex items-center justify-center gap-2 shadow-sm hover:shadow-md transition duration-200"
+                  class="ui-button-secondary w-full px-4 py-2 rounded-xl shadow-sm hover:shadow-md"
                   data-i18n="tools:editBookmarks.auto.800c985bb1"
                 >
                   Extract Existing Bookmarks

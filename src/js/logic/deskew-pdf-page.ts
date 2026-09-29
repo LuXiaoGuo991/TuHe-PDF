@@ -112,7 +112,7 @@ function updateFileDisplay(): void {
     info.append(fileIcon, nameSpan, sizeSpan);
 
     const removeBtn = document.createElement('button');
-    removeBtn.className = 'remove-file ui-text-secondary hover:ui-text-danger';
+    removeBtn.className = 'ui-button-ghost ui-button-ghost--danger remove-file';
     removeBtn.dataset.index = String(index);
 
     const removeIcon = document.createElement('i');

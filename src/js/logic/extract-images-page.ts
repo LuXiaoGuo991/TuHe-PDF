@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const removeBtn = document.createElement('button');
         removeBtn.className =
-          'ml-4 ui-text-danger ui-hover-text-danger flex-shrink-0';
+          'ui-button-ghost ui-button-ghost--danger ml-4 flex-shrink-0';
         removeBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
         removeBtn.onclick = () => {
           state.files = state.files.filter((_: File, i: number) => i !== index);
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
       name.textContent = img.name;
 
       const downloadBtn = document.createElement('button');
-      downloadBtn.className = 'ui-text-action ui-hover-text-action';
+      downloadBtn.className = 'ui-button-ghost';
       downloadBtn.innerHTML = '<i data-lucide="download" class="w-4 h-4"></i>';
       downloadBtn.onclick = () => {
         downloadFile(blob, img.name);

@@ -273,7 +273,7 @@ export const renderPageThumbnails = async (
 
       const deleteBtn = document.createElement('button');
       deleteBtn.className =
-        'delete-page-btn ui-button-danger absolute top-1 right-1 rounded-full w-6 h-6 flex items-center justify-center z-10';
+        'delete-page-btn ui-button-ghost ui-button-ghost--danger absolute top-1 right-1 w-6 h-6 z-10';
       deleteBtn.innerHTML = '&times;';
       deleteBtn.addEventListener('click', (e) => {
         (e.currentTarget as HTMLElement).parentElement.remove();
@@ -375,8 +375,7 @@ export const renderPageThumbnails = async (
       stepperContainer.append(decrementBtn, angleInput, incrementBtn);
 
       const rotateBtn = document.createElement('button');
-      rotateBtn.className =
-        'rotate-btn ui-button-secondary p-1.5 rounded-md transition-colors flex-shrink-0';
+      rotateBtn.className = 'rotate-btn ui-button-ghost p-1.5 flex-shrink-0';
       rotateBtn.title = translate('common.dynamic.b1c9a82c0a', 'Rotate +90°');
       rotateBtn.innerHTML = '<i data-lucide="rotate-cw" class="w-4 h-4"></i>';
       rotateBtn.addEventListener('click', (e) => {
@@ -519,10 +518,10 @@ const createFileInputHTML = (options: FileInputOptions = {}) => {
             ? `
             <!-- NEW: Add control buttons for multi-file uploads -->
             <div id="file-controls" class="hidden mt-4 flex gap-3">
-                <button id="add-more-btn" class="btn ui-button-primary font-semibold px-4 py-2 rounded-lg flex items-center gap-2">
+                <button id="add-more-btn" class="ui-button-secondary px-4 py-2">
                     <i data-lucide="plus"></i> ${t('upload.addMore')}
                 </button>
-                <button id="clear-files-btn" class="btn ui-button-danger font-semibold px-4 py-2 rounded-lg flex items-center gap-2">
+                <button id="clear-files-btn" class="ui-button-danger px-4 py-2">
                     <i data-lucide="trash-2"></i> ${t('upload.clearAll')}
                 </button>
             </div>

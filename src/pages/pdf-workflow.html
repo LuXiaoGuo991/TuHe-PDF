@@ -291,14 +291,11 @@
         >
           <button
             id="toolbox-toggle"
-            class="ui-button-secondary md:hidden ui-bg-raised ui-hover-bg-raised ui-text-primary p-1.5 rounded-lg transition-colors"
+            class="ui-button-secondary md:hidden p-1.5"
           >
             <i class="ph ph-plus-circle text-lg"></i>
           </button>
-          <button
-            id="run-btn"
-            class="ui-button-primary ui-bg-action ui-hover-bg-action ui-text-primary font-semibold px-3 md:px-4 py-1.5 rounded-lg flex items-center gap-1.5 text-sm transition-colors"
-          >
+          <button id="run-btn" class="btn-gradient !px-4 !py-1.5 text-sm">
             <i class="ph ph-play text-base"></i>
             <span class="hidden md:inline" data-i18n="tools:pdfWorkflow.run"
               >Run</span
@@ -306,7 +303,7 @@
           </button>
           <button
             id="clear-btn"
-            class="ui-button-secondary ui-bg-raised ui-hover-bg-raised ui-text-primary px-2.5 md:px-3 py-1.5 rounded-lg text-sm flex items-center gap-1 transition-colors"
+            class="ui-button-secondary px-2.5 md:px-3 py-1.5 text-sm"
           >
             <i class="ph ph-trash text-base md:hidden"></i>
             <span class="hidden md:inline" data-i18n="tools:pdfWorkflow.clear"
@@ -316,7 +313,7 @@
           <div class="flex-1"></div>
           <button
             id="save-btn"
-            class="ui-button-secondary ui-bg-raised ui-hover-bg-raised ui-text-primary px-2.5 md:px-3 py-1.5 rounded-lg text-sm flex items-center gap-1 transition-colors"
+            class="ui-button-secondary px-2.5 md:px-3 py-1.5 text-sm"
           >
             <i class="ph ph-floppy-disk text-sm"></i>
             <span class="hidden md:inline" data-i18n="tools:pdfWorkflow.save"
@@ -325,7 +322,7 @@
           </button>
           <button
             id="load-btn"
-            class="ui-button-secondary ui-bg-raised ui-hover-bg-raised ui-text-primary px-2.5 md:px-3 py-1.5 rounded-lg text-sm flex items-center gap-1 transition-colors"
+            class="ui-button-secondary px-2.5 md:px-3 py-1.5 text-sm"
           >
             <i class="ph ph-folder-open text-sm"></i>
             <span class="hidden md:inline" data-i18n="tools:pdfWorkflow.load"
@@ -334,7 +331,7 @@
           </button>
           <button
             id="export-btn"
-            class="ui-button-secondary ui-bg-raised ui-hover-bg-raised ui-text-primary px-2.5 md:px-3 py-1.5 rounded-lg text-sm flex items-center gap-1 transition-colors"
+            class="ui-button-secondary px-2.5 md:px-3 py-1.5 text-sm"
           >
             <i class="ph ph-export text-sm"></i>
             <span class="hidden md:inline" data-i18n="tools:pdfWorkflow.export"
@@ -343,7 +340,7 @@
           </button>
           <button
             id="import-btn"
-            class="ui-button-secondary ui-bg-raised ui-hover-bg-raised ui-text-primary px-2.5 md:px-3 py-1.5 rounded-lg text-sm flex items-center gap-1 transition-colors"
+            class="ui-button-secondary px-2.5 md:px-3 py-1.5 text-sm"
           >
             <i class="ph ph-download-simple text-sm"></i>
             <span class="hidden md:inline" data-i18n="tools:pdfWorkflow.import"
@@ -388,10 +385,7 @@
           >
             Settings
           </h2>
-          <button
-            id="close-settings"
-            class="ui-button-secondary ui-text-secondary ui-hover-text-primary transition-colors"
-          >
+          <button id="close-settings" class="ui-button-secondary">
             <i class="ph ph-x text-base"></i>
           </button>
         </div>
@@ -459,14 +453,14 @@
           <button
             id="save-template-cancel"
             data-i18n="tools:pdfWorkflow.cancel"
-            class="ui-button-secondary flex-1 ui-bg-raised ui-hover-bg-raised ui-text-secondary font-medium py-2.5 px-4 rounded-lg transition-colors text-sm"
+            class="ui-button-secondary flex-1 py-2.5 px-4 text-sm"
           >
             Cancel
           </button>
           <button
             id="save-template-confirm"
             data-i18n="tools:pdfWorkflow.save"
-            class="ui-button-primary flex-1 ui-bg-action ui-hover-bg-action ui-text-primary font-medium py-2.5 px-4 rounded-lg transition-colors text-sm"
+            class="btn-gradient flex-1"
           >
             Save
           </button>
@@ -510,7 +504,7 @@
         <button
           id="load-template-cancel"
           data-i18n="tools:pdfWorkflow.cancel"
-          class="ui-button-secondary w-full ui-bg-raised ui-hover-bg-raised ui-text-secondary font-medium py-2.5 px-4 rounded-lg transition-colors text-sm mt-2"
+          class="ui-button-secondary w-full py-2.5 px-4 text-sm mt-2"
         >
           Cancel
         </button>
@@ -533,12 +527,7 @@
           Alert
         </h3>
         <p id="alert-message" class="ui-text-secondary text-sm mb-6"></p>
-        <button
-          id="alert-ok"
-          class="ui-button-primary w-full ui-bg-action ui-hover-bg-action ui-text-primary font-medium py-2.5 px-4 rounded-lg transition-colors text-sm"
-        >
-          OK
-        </button>
+        <button id="alert-ok" class="btn-gradient w-full">OK</button>
       </div>
     </div>
 
@@ -575,14 +564,14 @@
           <button
             id="pdf-password-skip"
             data-i18n="passwordPrompt.skip"
-            class="ui-button-secondary flex-1 ui-bg-raised ui-hover-bg-raised ui-text-secondary text-xs py-2 rounded-lg transition-colors"
+            class="ui-button-secondary flex-1 text-xs py-2"
           >
             Skip
           </button>
           <button
             id="pdf-password-unlock"
             data-i18n="passwordPrompt.unlock"
-            class="ui-button-primary flex-1 ui-bg-action ui-hover-bg-action ui-text-primary text-xs py-2 rounded-lg transition-colors"
+            class="btn-gradient flex-1"
           >
             Unlock
           </button>

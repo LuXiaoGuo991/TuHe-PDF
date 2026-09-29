@@ -41,7 +41,8 @@ describe('collectHtmlFiles (扫描范围)', () => {
     expect(files).toContain('src/partials/footer.html');
     expect(files).toContain('src/partials/footer-simple.html');
     expect(files).toContain('src/partials/navbar-simple.html');
-    expect(files.filter((f) => f.startsWith('src/partials/')).length).toBe(6);
+    // 2026-09-28 起为 7 个（含 ambient-bg / navbar / settings-modal / warning-modal）。
+    expect(files.filter((f) => f.startsWith('src/partials/')).length).toBe(7);
   });
 
   it('覆盖仓库根 *.html（含 index.html）', () => {
@@ -184,6 +185,38 @@ describe('migrate', () => {
     const html = '<body class="antialiased bg-gray-900">';
     const out = migrate(html, true, { toolPage: true });
     expect(out).toContain('<body class="phase2-tool-page antialiased');
+  });
+
+  // 回归（ADR 0005 按钮四档体系）：注入规则不得给已收敛的新体系角色类
+  // 再叠旧类——btn-gradient 独立成主按钮档、ui-segment-btn 为分段控件段钮
+  // （激活态由 JS 切 ui-bg-* 工具类）、ui-button-ghost 为幽灵/图标档。
+  it('btn-gradient 按钮不再被注入 ui-button-secondary（独立主按钮档）', () => {
+    const html = '<button id="p" class="btn-gradient w-full mt-6">Go</button>';
+    expect(migrate(html, true, { toolPage: true })).toBe(html);
+  });
+
+  it('ui-segment-btn 段钮不被注入任何 ui-button-* 角色类', () => {
+    const html =
+      '<button class="ui-segment-btn flex-1 py-2 ui-bg-action ui-text-primary">A</button>' +
+      '<button class="ui-segment-btn flex-1 py-2 ui-bg-raised ui-text-secondary">B</button>';
+    expect(migrate(html, true, { toolPage: true })).toBe(html);
+  });
+
+  it('无角色类的遗留按钮仍会被兜底注入 ui-button-secondary（旧页面不回退）', () => {
+    const html = '<button id="x" class="px-4 py-2">OK</button>';
+    const out = migrate(html, true, { toolPage: true });
+    expect(out).toContain('class="ui-button-secondary px-4 py-2"');
+  });
+
+  it('ui-bg-action 遗留按钮仍被注入 ui-button-primary，但段钮除外', () => {
+    const legacy =
+      '<button id="a" class="px-4 py-2 ui-bg-action ui-text-primary">Add</button>';
+    expect(migrate(legacy, true, { toolPage: true })).toContain(
+      'class="ui-button-primary px-4 py-2 ui-bg-action ui-text-primary"'
+    );
+    const seg =
+      '<button class="ui-segment-btn py-2 ui-bg-action">Mode</button>';
+    expect(migrate(seg, true, { toolPage: true })).toBe(seg);
   });
 });
 

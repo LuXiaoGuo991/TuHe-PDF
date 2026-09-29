@@ -310,7 +310,7 @@ class="w-full px-2 py-1 border ui-border rounded text-sm ui-text-primary" />
 class="w-full px-2 py-1 border ui-border rounded text-sm ui-text-primary" />
   </div>
   </div>
-  <button id="modal-pick-destination" class="w-full px-3 py-2 btn-gradient ui-text-primary rounded text-xs !flex items-center justify-center gap-1">
+  <button id="modal-pick-destination" class="btn-gradient w-full">
     <i data-lucide="crosshair" class="w-3 h-3"></i> ${translate('tools:editBookmarks.clickToPickLocation', 'Click on PDF to Pick Location')}
       </button>
       <p class="text-xs ui-text-tertiary italic">${translate('tools:editBookmarks.clickToPickLocationHint', 'Click the button above, then click on the PDF where you want the bookmark to jump to')}</p>
@@ -340,7 +340,7 @@ class="w-full px-2 py-1 border ui-border rounded text-sm ui-text-primary" />
 </div>
   <div class="flex gap-2 justify-end">
     <button id="modal-cancel" class="px-4 py-2 rounded-lg ui-bg-raised ui-hover-bg-raised ui-text-secondary">${translate('common.cancel', 'Cancel')}</button>
-      <button id="modal-confirm" class="px-4 py-2 rounded btn-gradient ui-text-primary">${translate('tools:editBookmarks.confirm', 'Confirm')}</button>
+      <button id="modal-confirm" class="btn-gradient">${translate('tools:editBookmarks.confirm', 'Confirm')}</button>
         </div>
         </div>
           `;
@@ -852,7 +852,7 @@ function showConfirmModal(message: string): Promise<boolean> {
       <p class="ui-text-tertiary mb-6">${escapeHTML(message)}</p>
         <div class="flex gap-2 justify-end">
           <button id="modal-cancel" class="px-4 py-2 rounded-lg ui-bg-raised ui-hover-bg-raised ui-text-secondary">${translate('common.cancel', 'Cancel')}</button>
-            <button id="modal-confirm" class="px-4 py-2 rounded btn-gradient ui-text-primary">${translate('tools:editBookmarks.confirm', 'Confirm')}</button>
+            <button id="modal-confirm" class="btn-gradient">${translate('tools:editBookmarks.confirm', 'Confirm')}</button>
               </div>
               </div>
                 `;
@@ -904,7 +904,7 @@ function showAlertModal(title: string, message: string): Promise<boolean> {
                 <h3 class="text-xl font-bold ui-text-primary mb-4">${escapeHTML(title)}</h3>
                   <p class="ui-text-tertiary mb-6">${escapeHTML(message)}</p>
                     <div class="flex justify-end">
-                      <button id="modal-ok" class="px-4 py-2 rounded btn-gradient ui-text-primary">${translate('common.ok', 'OK')}</button>
+                      <button id="modal-ok" class="btn-gradient">${translate('common.ok', 'OK')}</button>
                         </div>
                         </div>
                           `;
@@ -1954,7 +1954,7 @@ function createNodeElement(node: BookmarkNode, level = 0): HTMLLIElement {
   actionsDiv.appendChild(editBtn);
 
   const deleteBtn = document.createElement('button');
-  deleteBtn.className = 'p-1 ui-hover-bg-raised rounded ui-text-danger';
+  deleteBtn.className = 'ui-button-ghost ui-button-ghost--danger p-1';
   deleteBtn.title = translate(
     'tools:editBookmarks.dynamic.80825a5a20',
     'Delete'

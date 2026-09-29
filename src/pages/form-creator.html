@@ -171,10 +171,7 @@
         </div>
 
         <div>
-          <button
-            id="blankPdfBtn"
-            class="ui-button-secondary w-full ui-bg-raised ui-hover-bg-raised ui-text-primary p-4 rounded-lg flex items-center justify-center gap-3 transition-colors"
-          >
+          <button id="blankPdfBtn" class="ui-button-secondary w-full p-4">
             <i data-lucide="file-plus" class="w-5 h-5"></i>
             <span
               class="font-semibold"
@@ -271,7 +268,7 @@
 
             <button
               id="confirmBlankBtn"
-              class="ui-button-primary w-full mt-3 ui-bg-action ui-hover-bg-action ui-text-primary p-2 rounded transition-colors"
+              class="btn-gradient w-full"
               data-i18n="tools:createPdfForm.auto.1d581357bc"
             >
               Start Creating
@@ -354,7 +351,7 @@
               >
                 <button
                   id="prevPageBtn"
-                  class="ui-button-secondary ui-bg-raised ui-hover-bg-raised ui-text-primary p-2 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  class="ui-button-secondary p-2 disabled:cursor-not-allowed"
                   disabled
                 >
                   <i data-lucide="chevron-left" class="w-4 h-4"></i>
@@ -367,7 +364,7 @@
                 >
                 <button
                   id="nextPageBtn"
-                  class="ui-button-secondary ui-bg-raised ui-hover-bg-raised ui-text-primary p-2 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  class="ui-button-secondary p-2 disabled:cursor-not-allowed"
                   disabled
                 >
                   <i data-lucide="chevron-right" class="w-4 h-4"></i>
@@ -388,7 +385,7 @@
                   />
                   <button
                     id="gotoPageBtn"
-                    class="ui-button-primary ui-bg-action ui-hover-bg-action ui-text-primary px-2 py-1 rounded text-sm transition-colors"
+                    class="ui-button-secondary px-2 py-1 text-sm"
                     data-i18n="tools:createPdfForm.goToBtn"
                   >
                     Go
@@ -432,7 +429,7 @@
                   />
                   <button
                     id="toggleGridBtn"
-                    class="ui-button-secondary ui-bg-raised ui-hover-bg-raised ui-text-primary p-1 rounded transition-colors"
+                    class="ui-button-secondary p-1"
                     title="Toggle Grid"
                     data-i18n-title="tools:createPdfForm.auto.605a6e91fb"
                   >
@@ -441,17 +438,11 @@
                 </div>
               </div>
               <div class="flex items-center justify-center gap-2">
-                <button
-                  id="resetBtn"
-                  class="ui-button-secondary ui-bg-raised ui-hover-bg-raised ui-text-primary p-2 px-3 rounded flex items-center gap-2 transition-colors"
-                >
+                <button id="resetBtn" class="ui-button-secondary p-2 px-3">
                   <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
                   <span class="text-sm" data-i18n="multiTool.reset">Reset</span>
                 </button>
-                <button
-                  id="addPageBtn"
-                  class="ui-button-primary ui-bg-action ui-hover-bg-action ui-text-primary p-2 px-3 rounded flex items-center gap-2 transition-colors"
-                >
+                <button id="addPageBtn" class="ui-button-secondary px-3 py-2">
                   <i data-lucide="file-plus" class="w-4 h-4"></i>
                   <span
                     class="text-sm"
@@ -642,10 +633,7 @@
             </div>
 
             <!-- Download Button -->
-            <button
-              id="downloadBtn"
-              class="ui-button-secondary btn-gradient w-full flex items-center justify-center gap-2 py-3"
-            >
+            <button id="downloadBtn" class="btn-gradient w-full">
               <span data-i18n="tools:createPdfForm.auto.fd37c215ff"
                 >Download PDF Form</span
               >
@@ -905,7 +893,7 @@
           </p>
           <button
             id="errorModalClose"
-            class="ui-button-primary w-full ui-bg-action ui-hover-bg-action ui-text-primary font-semibold py-2 px-4 rounded transition-colors"
+            class="btn-gradient w-full"
             data-i18n="preview.close"
           >
             Close

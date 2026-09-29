@@ -468,7 +468,7 @@ function showLoadTemplateModal(
 
       const delBtn = document.createElement('button');
       delBtn.className =
-        'ui-text-tertiary hover:ui-text-danger transition-colors flex-shrink-0';
+        'ui-button-ghost ui-button-ghost--danger flex-shrink-0';
       delBtn.innerHTML = '<i class="ph ph-trash text-sm"></i>';
       delBtn.addEventListener('click', () => {
         deleteTemplate(name);
@@ -670,7 +670,7 @@ function buildFileList(
 
     const removeBtn = document.createElement('button');
     removeBtn.className =
-      'ui-text-tertiary hover:ui-text-danger text-lg leading-none flex-shrink-0';
+      'ui-button-ghost ui-button-ghost--danger text-lg leading-none flex-shrink-0';
     removeBtn.innerHTML = '&times;';
     removeBtn.addEventListener('click', () => onRemove(i));
     row.appendChild(removeBtn);
@@ -899,7 +899,7 @@ function showNodeSettings(node: BaseWorkflowNode) {
 
       const removeBtn = document.createElement('button');
       removeBtn.className =
-        'ui-text-danger ui-hover-text-danger text-xs flex-shrink-0';
+        'ui-button-ghost ui-button-ghost--danger text-xs flex-shrink-0';
       removeBtn.textContent = translate('common.dynamic.559f7af87a', 'Remove');
       removeBtn.addEventListener('click', () => {
         node.removeCert();

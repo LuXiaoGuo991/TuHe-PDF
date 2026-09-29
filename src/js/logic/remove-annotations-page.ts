@@ -83,7 +83,7 @@ function updateFileDisplay() {
                     <p class="truncate font-medium ui-text-primary">${escapeHtml(pageState.file.name)}</p>
                     <p class="ui-text-secondary text-sm">${fileSize} • ${translate('common.filePages', '{{count}} pages', { count: pageCount })}</p>
                 </div>
-                <button id="remove-file" class="ui-text-danger ui-hover-text-danger p-2 flex-shrink-0 ml-2" title="${translate('tools:common.removeFile', 'Remove file')}">
+                <button id="remove-file" class="ui-button-ghost ui-button-ghost--danger p-2 flex-shrink-0 ml-2" title="${translate('tools:common.removeFile', 'Remove file')}">
                     <i data-lucide="trash-2" class="w-4 h-4"></i>
                 </button>
             </div>

@@ -50,7 +50,7 @@ const init = async () => {
         <i class="ph ph-prohibit text-6xl ui-text-tertiary mb-4"></i>
         <h1 class="text-2xl font-bold ui-text-primary mb-2">${heading}</h1>
         <p class="ui-text-secondary mb-6">${message}</p>
-        <a href="${import.meta.env.BASE_URL}" class="ui-button-primary px-6 py-2 rounded-lg transition">${backHome}</a>
+        <a href="${import.meta.env.BASE_URL}" class="btn-gradient">${backHome}</a>
       </div>
     `;
     return;
@@ -999,7 +999,7 @@ const init = async () => {
 
         const clearBtn = document.createElement('button');
         clearBtn.className =
-          'absolute -right-2 -top-2 ui-button-danger rounded-full p-0.5 hidden group-hover:block shadow-sm';
+          'ui-button-ghost ui-button-ghost--danger absolute -right-2 -top-2 p-0.5 hidden group-hover:block';
         clearBtn.innerHTML = '<i data-lucide="x" class="w-3 h-3"></i>';
         if (currentShortcut) {
           right.classList.add('group');

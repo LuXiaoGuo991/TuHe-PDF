@@ -181,6 +181,58 @@
   border-color: var(--color-border-subtle);
   cursor: not-allowed;
 }
+
+/* 按钮体系四档统一键盘焦点环（ADR 0005 §2.2）：
+ * 四档共用同一 focus-visible 配方，替代 .btn-gradient:focus 的 #111827 硬编码。 */
+.ui-button-primary:focus-visible,
+.ui-button-secondary:focus-visible,
+.ui-button-danger:focus-visible,
+.btn-gradient:focus-visible,
+.ui-button-ghost:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* 幽灵/图标按钮（ADR 0005 §2.1 第四档）：工具栏与行内图标钮。
+ * 透明底 + 悬停着色，几何由标记侧 p-2 类提供（32px 方形）。 */
+.ui-button-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--color-text-secondary);
+  background-color: transparent;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.ui-button-ghost:hover {
+  color: var(--color-text-primary);
+  background-color: color-mix(
+    in srgb,
+    var(--color-surface-raised) 62%,
+    transparent
+  );
+}
+
+.ui-button-ghost:disabled {
+  color: var(--color-text-tertiary);
+  background-color: transparent;
+  cursor: not-allowed;
+}
+
+/* 危险变体：行内删除类图标钮，悬停染危险色（文字用 status-danger-text，AA 达标）。 */
+.ui-button-ghost--danger:hover {
+  color: var(--color-status-danger-text);
+  background-color: color-mix(
+    in srgb,
+    var(--color-status-danger-text) 14%,
+    transparent
+  );
+}
 .ui-status-success,
 .ui-status-warning,
 .ui-status-danger,
@@ -554,19 +606,23 @@ footer a {
 }
 
 .btn-gradient {
-  display: inline-block;
-  padding: 0.75rem 2rem;
-  /* py-3 px-8 */
+  /* 主按钮（CTA，ADR 0005 §2.1）：每视图唯一主动作。
+   * color 走 --color-on-action 而非硬编码 #fff——暗色主题下白字压
+   * #4f9b78 仅 3.34:1（AA 不达标），token 化后暗色 5.62:1、亮色 5.1:1。 */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  /* CTA 档 48px 高 */
   border-radius: 0.5rem;
-  /* rounded-lg */
   background-color: var(--color-action);
-  color: #ffffff;
-  /* text-white */
+  color: var(--color-on-action);
   font-weight: 600;
-  /* font-semibold */
-  transition-property: all;
-  transition-duration: 200ms;
-  transform: translateY(0);
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    box-shadow 160ms ease;
 }
 
 .btn-gradient:hover {
@@ -576,12 +632,14 @@ footer a {
     0 4px 6px -4px color-mix(in srgb, var(--color-action) 30%, transparent);
 }
 
-.btn-gradient:focus {
-  outline: 2px solid transparent;
+.btn-gradient:active {
+  background-color: var(--color-action-active);
+  transform: scale(0.98);
+}
+
+.btn-gradient:focus-visible {
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
-  box-shadow:
-    0 0 0 2px #111827,
-    0 0 0 4px var(--color-focus);
 }
 
 .btn-gradient:disabled {
@@ -3239,14 +3297,6 @@ body.phase2-tool-page .ui-button-secondary:hover {
   border-color: var(--color-action-hover);
 }
 
-/* 8.5) .btn-gradient 与 .ui-button-secondary 同挂的按钮（108 页的通用主按钮
- * 写法）：规则 7 会把底色覆写为 raised 62% 半透明，而 .btn-gradient 的白色
- * 文字（#fff，声明更晚）保留——亮色下白字浅底、对比度全失。同特异性后来者胜，
- * 这里把 action 底色夺回；悬停/聚焦/禁用态沿用 .btn-gradient 原有规则。 */
-body.phase2-tool-page .btn-gradient {
-  background-color: var(--color-action);
-}
-
 /* 8) 弹窗遮罩：两种既有变体（canvas @ bg-opacity-90 / surface-sunken @
  * bg-opacity-75）统一改为「半透明 + 背景模糊」，与工作台 .wb-modal-card 的
  * 玻璃语言一致；保留较高不透明度，弹窗聚焦感不变。
@@ -3265,4 +3315,43 @@ body.phase2-tool-page .ui-bg-sunken.fixed {
   );
   -webkit-backdrop-filter: blur(16px) saturate(1.2);
   backdrop-filter: blur(16px) saturate(1.2);
+}
+
+/* 9) 分段控件（.ui-segment，ADR 0005 §2.3）：玻璃槽 + 段钮。
+ *    JS 在 ui-bg-action / ui-bg-raised 工具类间切换激活态（见
+ *    merge-pdf-page.ts setMode 类逻辑），本组件不改切换机制，只以更高
+ *    特异性钉住文字色：原 ui-text-primary 压 action 底在双主题下均
+ *    不达 AA（暗 2.98:1 / 亮 2.9:1），激活段文字改用 --color-on-action
+ *    由 token 保证（暗 5.62:1 / 亮 5.1:1）。 */
+body.phase2-tool-page .ui-segment {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  border-radius: 8px;
+  background-color: color-mix(
+    in srgb,
+    var(--color-surface-sunken) 62%,
+    transparent
+  );
+  border: 1px solid var(--glass-border);
+}
+
+body.phase2-tool-page .ui-segment-btn {
+  color: var(--color-text-secondary);
+  border: 0;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+body.phase2-tool-page .ui-segment-btn.ui-bg-action {
+  color: var(--color-on-action);
+}
+
+body.phase2-tool-page .ui-segment-btn:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
 }

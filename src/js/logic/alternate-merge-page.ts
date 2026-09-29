@@ -67,7 +67,7 @@ async function updateUI() {
     );
 
     const clearBtn = document.createElement('button');
-    clearBtn.className = 'ui-text-danger ui-hover-text-danger';
+    clearBtn.className = 'ui-button-ghost ui-button-ghost--danger';
     clearBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
     clearBtn.onclick = function () {
       resetState();

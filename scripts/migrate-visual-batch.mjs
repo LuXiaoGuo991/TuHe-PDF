@@ -378,15 +378,19 @@ export function migrate(content, isHtml, { toolPage = false } = {}) {
       '<$1$2class="ui-input '
     );
     next = next.replace(
-      /<button(\s[^>]*?)class="(?![^"]*\bui-button-primary\b)([^"]*\bui-bg-action\b[^"]*)"/g,
+      /<button(\s[^>]*?)class="(?![^"]*\bui-button-primary\b)(?![^"]*\bui-segment-btn\b)([^"]*\bui-bg-action\b[^"]*)"/g,
       '<button$1class="ui-button-primary $2"'
     );
     next = next.replace(
       /<button(\s[^>]*?)class="([^"]*\bui-text-danger\b[^"]*)"/g,
       '<button$1class="ui-button-danger $2"'
     );
+    // 兜底注入 ui-button-secondary，但跳过三类已有角色的按钮
+    // （ADR 0005 §2.1）：btn-gradient 独立成主按钮档、ui-segment-btn 为
+    // 分段控件段钮（状态由 JS 切 ui-bg-* 工具类）、ui-button-ghost 为
+    // 幽灵/图标档——三者均不得再被叠上次级按钮类。
     next = next.replace(
-      /<button(\s[^>]*?)class="(?![^"]*\bui-button-)([^"]*)"/g,
+      /<button(\s[^>]*?)class="(?![^"]*\b(?:ui-button-|btn-gradient|ui-segment-btn)\b)([^"]*)"/g,
       '<button$1class="ui-button-secondary $2"'
     );
     next = next.replace(

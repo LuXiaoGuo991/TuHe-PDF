@@ -209,7 +209,7 @@ function updateFileDisplay() {
 
   const removeBtn = document.createElement('button');
   removeBtn.className =
-    'ml-4 ui-text-danger ui-hover-text-danger flex-shrink-0';
+    'ui-button-ghost ui-button-ghost--danger ml-4 flex-shrink-0';
   removeBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
   removeBtn.onclick = resetState;
 
@@ -258,7 +258,7 @@ function renderRules() {
     const removeBtn = document.createElement('button');
     removeBtn.type = 'button';
     removeBtn.className =
-      'ui-text-danger ui-hover-text-danger disabled:ui-text-tertiary disabled:cursor-not-allowed';
+      'ui-button-ghost ui-button-ghost--danger disabled:ui-text-tertiary disabled:cursor-not-allowed';
     removeBtn.disabled = pageState.rules.length === 1;
     removeBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
     removeBtn.addEventListener('click', () => {

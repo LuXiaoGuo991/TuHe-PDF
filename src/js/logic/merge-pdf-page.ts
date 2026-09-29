@@ -621,7 +621,8 @@ export async function refreshMergeUI() {
     inputWrapper.append(label, input);
 
     const deleteBtn = document.createElement('button');
-    deleteBtn.className = 'ui-button-danger p-2 flex-shrink-0';
+    deleteBtn.className =
+      'ui-button-ghost ui-button-ghost--danger p-2 flex-shrink-0';
     deleteBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
     deleteBtn.title = translate('tools:mergePdf.removeFile', 'Remove file');
     deleteBtn.onclick = (e) => {

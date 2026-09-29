@@ -201,7 +201,7 @@ function updateFileDisplay() {
   infoContainer.append(nameSpan, metaSpan);
   const removeBtn = document.createElement('button');
   removeBtn.className =
-    'ml-4 ui-text-danger ui-hover-text-danger flex-shrink-0';
+    'ui-button-ghost ui-button-ghost--danger ml-4 flex-shrink-0';
   removeBtn.innerHTML = '<i data-lucide="trash-2" class="w-4 h-4"></i>';
   removeBtn.onclick = resetState;
   fileDiv.append(infoContainer, removeBtn);
@@ -524,9 +524,9 @@ function setupEditorControls() {
   typeTextBtn?.addEventListener('click', () => {
     watermarkType = 'text';
     typeTextBtn.className =
-      'flex-1 py-2 px-3 text-sm font-medium rounded-lg ui-bg-action ui-text-primary transition-colors';
+      'ui-segment-btn flex-1 py-2 px-3 text-sm ui-bg-action ui-text-primary';
     typeImageBtn!.className =
-      'flex-1 py-2 px-3 text-sm font-medium rounded-lg ui-bg-raised ui-text-secondary ui-hover-bg-raised transition-colors';
+      'ui-segment-btn flex-1 py-2 px-3 text-sm ui-bg-raised ui-text-secondary';
     textOptions?.classList.remove('hidden');
     imageOptions?.classList.add('hidden');
     updateWatermarkOverlay();
@@ -535,9 +535,9 @@ function setupEditorControls() {
   typeImageBtn?.addEventListener('click', () => {
     watermarkType = 'image';
     typeImageBtn.className =
-      'flex-1 py-2 px-3 text-sm font-medium rounded-lg ui-bg-action ui-text-primary transition-colors';
+      'ui-segment-btn flex-1 py-2 px-3 text-sm ui-bg-action ui-text-primary';
     typeTextBtn!.className =
-      'flex-1 py-2 px-3 text-sm font-medium rounded-lg ui-bg-raised ui-text-secondary ui-hover-bg-raised transition-colors';
+      'ui-segment-btn flex-1 py-2 px-3 text-sm ui-bg-raised ui-text-secondary';
     textOptions?.classList.add('hidden');
     imageOptions?.classList.remove('hidden');
     updateWatermarkOverlay();
@@ -628,10 +628,10 @@ function updatePresetHighlight(x: number, y: number) {
     const [bx, by] = pos.split(',').map(Number);
     if (Math.abs(bx - x) < 0.01 && Math.abs(by - y) < 0.01) {
       btn.className =
-        'pos-preset-btn py-1.5 text-xs ui-bg-action ui-hover-bg-action ui-text-primary rounded-md transition-colors';
+        'ui-segment-btn pos-preset-btn py-1.5 text-xs ui-bg-action ui-text-primary';
     } else {
       btn.className =
-        'pos-preset-btn py-1.5 text-xs ui-bg-raised ui-hover-bg-raised ui-text-secondary rounded-md transition-colors';
+        'ui-segment-btn pos-preset-btn py-1.5 text-xs ui-bg-raised ui-text-secondary';
     }
   });
 }

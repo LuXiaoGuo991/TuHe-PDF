@@ -166,10 +166,7 @@
         <div
           class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0 sm:justify-between mb-4 sm:mb-6"
         >
-          <button
-            id="editor-back-btn"
-            class="ui-button-secondary flex items-center gap-2 ui-text-action ui-hover-text-action font-semibold text-sm"
-          >
+          <button id="editor-back-btn" class="ui-button-ghost text-sm">
             <i data-lucide="arrow-left" class="w-4 h-4"></i>
             <span data-i18n="tools:addWatermark.auto.1062570190"
               >Change File</span
@@ -196,7 +193,7 @@
                   <button
                     id="prev-page-btn"
                     disabled
-                    class="ui-button-secondary p-1 rounded ui-hover-bg-raised ui-text-secondary disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                    class="ui-button-ghost p-1"
                   >
                     <i data-lucide="chevron-left" class="w-4 h-4"></i>
                   </button>
@@ -215,7 +212,7 @@
                   <button
                     id="next-page-btn"
                     disabled
-                    class="ui-button-secondary p-1 rounded ui-hover-bg-raised ui-text-secondary disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                    class="ui-button-ghost p-1"
                   >
                     <i data-lucide="chevron-right" class="w-4 h-4"></i>
                   </button>
@@ -283,17 +280,17 @@
             <div
               class="ui-bg-surface rounded-xl border ui-border-subtle p-3 sm:p-5 space-y-3 sm:space-y-5"
             >
-              <div class="flex gap-2">
+              <div class="ui-segment">
                 <button
                   id="type-text-btn"
-                  class="ui-button-primary flex-1 py-2 px-3 text-sm font-medium rounded-lg ui-bg-action ui-text-primary transition-colors"
+                  class="ui-segment-btn flex-1 py-2 px-3 text-sm ui-bg-action ui-text-primary"
                   data-i18n="tools:digitalSignPdf.text"
                 >
                   Text
                 </button>
                 <button
                   id="type-image-btn"
-                  class="ui-button-secondary flex-1 py-2 px-3 text-sm font-medium rounded-lg ui-bg-raised ui-text-secondary ui-hover-bg-raised transition-colors"
+                  class="ui-segment-btn flex-1 py-2 px-3 text-sm ui-bg-raised ui-text-secondary"
                   data-i18n="tools:addWatermark.auto.50e19fda0d"
                 >
                   Image
@@ -514,63 +511,63 @@
                 <div class="grid grid-cols-3 gap-1.5">
                   <button
                     data-pos="0.15,0.15"
-                    class="ui-button-secondary pos-preset-btn py-1.5 text-xs ui-bg-raised ui-hover-bg-raised ui-text-secondary rounded-md transition-colors"
+                    class="ui-segment-btn pos-preset-btn py-1.5 text-xs ui-bg-raised ui-text-secondary"
                     data-i18n="tools:addWatermark.auto.589ad2aaca"
                   >
                     Top Left
                   </button>
                   <button
                     data-pos="0.5,0.15"
-                    class="ui-button-secondary pos-preset-btn py-1.5 text-xs ui-bg-raised ui-hover-bg-raised ui-text-secondary rounded-md transition-colors"
+                    class="ui-segment-btn pos-preset-btn py-1.5 text-xs ui-bg-raised ui-text-secondary"
                     data-i18n="tools:addWatermark.auto.cae0435c41"
                   >
                     Top
                   </button>
                   <button
                     data-pos="0.85,0.15"
-                    class="ui-button-secondary pos-preset-btn py-1.5 text-xs ui-bg-raised ui-hover-bg-raised ui-text-secondary rounded-md transition-colors"
+                    class="ui-segment-btn pos-preset-btn py-1.5 text-xs ui-bg-raised ui-text-secondary"
                     data-i18n="tools:addWatermark.auto.d0fa5ce893"
                   >
                     Top Right
                   </button>
                   <button
                     data-pos="0.15,0.5"
-                    class="ui-button-secondary pos-preset-btn py-1.5 text-xs ui-bg-raised ui-hover-bg-raised ui-text-secondary rounded-md transition-colors"
+                    class="ui-segment-btn pos-preset-btn py-1.5 text-xs ui-bg-raised ui-text-secondary"
                     data-i18n="multiTool.rotateLeft"
                   >
                     Left
                   </button>
                   <button
                     data-pos="0.5,0.5"
-                    class="ui-button-primary pos-preset-btn py-1.5 text-xs ui-bg-action ui-hover-bg-action ui-text-primary rounded-md transition-colors"
+                    class="ui-segment-btn pos-preset-btn py-1.5 text-xs ui-bg-action ui-text-primary"
                     data-i18n="tools:addWatermark.auto.a2391118c8"
                   >
                     Center
                   </button>
                   <button
                     data-pos="0.85,0.5"
-                    class="ui-button-secondary pos-preset-btn py-1.5 text-xs ui-bg-raised ui-hover-bg-raised ui-text-secondary rounded-md transition-colors"
+                    class="ui-segment-btn pos-preset-btn py-1.5 text-xs ui-bg-raised ui-text-secondary"
                     data-i18n="multiTool.rotateRight"
                   >
                     Right
                   </button>
                   <button
                     data-pos="0.15,0.85"
-                    class="ui-button-secondary pos-preset-btn py-1.5 text-xs ui-bg-raised ui-hover-bg-raised ui-text-secondary rounded-md transition-colors"
+                    class="ui-segment-btn pos-preset-btn py-1.5 text-xs ui-bg-raised ui-text-secondary"
                     data-i18n="tools:addWatermark.auto.922e100333"
                   >
                     Bottom Left
                   </button>
                   <button
                     data-pos="0.5,0.85"
-                    class="ui-button-secondary pos-preset-btn py-1.5 text-xs ui-bg-raised ui-hover-bg-raised ui-text-secondary rounded-md transition-colors"
+                    class="ui-segment-btn pos-preset-btn py-1.5 text-xs ui-bg-raised ui-text-secondary"
                     data-i18n="tools:addWatermark.auto.cce7f2f2f0"
                   >
                     Bottom
                   </button>
                   <button
                     data-pos="0.85,0.85"
-                    class="ui-button-secondary pos-preset-btn py-1.5 text-xs ui-bg-raised ui-hover-bg-raised ui-text-secondary rounded-md transition-colors"
+                    class="ui-segment-btn pos-preset-btn py-1.5 text-xs ui-bg-raised ui-text-secondary"
                     data-i18n="tools:addWatermark.auto.45c0e2551b"
                   >
                     Bottom Right
@@ -603,7 +600,7 @@
 
               <button
                 id="process-btn"
-                class="ui-button-primary btn-gradient w-full"
+                class="btn-gradient w-full"
                 data-i18n="tools:addWatermark.name"
               >
                 Add Watermark
@@ -647,11 +644,7 @@
           Alert
         </h3>
         <p id="alert-message" class="ui-text-secondary mb-6"></p>
-        <button
-          id="alert-ok"
-          class="ui-button-primary w-full ui-bg-action ui-hover-bg-action ui-text-primary font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
-          data-i18n="alert.ok"
-        >
+        <button id="alert-ok" class="btn-gradient w-full" data-i18n="alert.ok">
           OK
         </button>
       </div>
